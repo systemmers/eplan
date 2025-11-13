@@ -1,0 +1,180 @@
+{% if not request.headers.get('HX-Request') %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}ePlan - 글로벌 교육의 혁신, 전화영어와 기업 어학 교육 전문{% endblock %}">
+    <title>{% block title %}ePlan{% endblock %}</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-bar-left">
+                        <!-- 향후 확장용 -->
+                    </div>
+                    <div class="top-bar-right">
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('admin.dashboard') }}">Dashboard</a>
+                        <span class="divider">|</span>
+                        <a href="{{ url_for('auth.logout') }}">Logout</a>
+                        {% else %}
+                        <a href="{{ url_for('auth.login') }}">Login</a>
+                        <span class="divider">|</span>
+                        <a href="#">Signup</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle Bar -->
+        <div class="middle-bar">
+            <div class="container">
+                <div class="middle-bar-content">
+                    <a href="{{ url_for('main.index') }}" hx-get="{{ url_for('main.index') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true" class="logo">
+                        <img src="{{ url_for('static', filename='images/eplan_logo.png') }}" alt="ePlan Logo">
+                    </a>
+                    <div class="header-contact">
+                        <!-- 선택사항: 연락처 정보 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar (Navigation) -->
+        <div class="bottom-bar">
+            <div class="container">
+                <nav class="navbar">
+                    <button class="nav-toggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
+                    <ul class="nav-menu">
+                        <li><a href="{{ url_for('main.company') }}" hx-get="{{ url_for('main.company') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">회사소개</a></li>
+                        <li class="dropdown">
+                            <a href="{{ url_for('main.phone_english') }}" hx-get="{{ url_for('main.phone_english') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true" class="dropdown-toggle">전화영어</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">일반회화<br>General conversation</a></li>
+                                <li><a href="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">비즈니스<br>Business conversation</a></li>
+                                <li><a href="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">토론<br>Discussion</a></li>
+                                <li><a href="{{ url_for('main.phone_english_detail', curriculum='test-prep') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='test-prep') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">공인시험<br>TOEIC Speaking</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ url_for('main.corporate_programs') }}" hx-get="{{ url_for('main.corporate_programs') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true" class="dropdown-toggle">기업출강</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('main.corporate_program_detail', program='in-house') }}" hx-get="{{ url_for('main.corporate_program_detail', program='in-house') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">사내과정<br>In-house program</a></li>
+                                <li><a href="{{ url_for('main.corporate_program_detail', program='intensive') }}" hx-get="{{ url_for('main.corporate_program_detail', program='intensive') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">집중과정<br>Intensive program</a></li>
+                                <li><a href="{{ url_for('main.corporate_program_detail', program='executive') }}" hx-get="{{ url_for('main.corporate_program_detail', program='executive') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">임원코칭<br>Executive coaching</a></li>
+                                <li><a href="{{ url_for('main.corporate_program_detail', program='resident') }}" hx-get="{{ url_for('main.corporate_program_detail', program='resident') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">주재원<br>Resident employee program</a></li>
+                                <li><a href="{{ url_for('main.corporate_program_detail', program='blended') }}" hx-get="{{ url_for('main.corporate_program_detail', program='blended') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">블렌디드<br>Blended program</a></li>
+                                <li><a href="{{ url_for('main.corporate_program_detail', program='oct') }}" hx-get="{{ url_for('main.corporate_program_detail', program='oct') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">상주강사<br>OCT</a></li>
+                            </ul>
+                        </li>
+                        <!-- <li><a href="{{ url_for('main.writing_correction') }}" hx-get="{{ url_for('main.writing_correction') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Writing 첨삭</a></li> -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">게시판</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('main.board_list', category='notice') }}" hx-get="{{ url_for('main.board_list', category='notice') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">공지사항<br>Notice</a></li>
+                                <li><a href="{{ url_for('main.board_list', category='news') }}" hx-get="{{ url_for('main.board_list', category='news') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">뉴스<br>News</a></li>
+                                <li><a href="{{ url_for('main.board_list', category='english') }}" hx-get="{{ url_for('main.board_list', category='english') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">영어<br>English</a></li>
+                                <li><a href="{{ url_for('main.board_list', category='japanese') }}" hx-get="{{ url_for('main.board_list', category='japanese') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">일본어<br>Japanese</a></li>
+                                <li><a href="{{ url_for('main.board_list', category='chinese') }}" hx-get="{{ url_for('main.board_list', category='chinese') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">중국어<br>Chinese</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ url_for('main.consulting') }}" hx-get="{{ url_for('main.consulting') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">컨설팅문의</a></li>
+                        <li><a href="{{ url_for('main.for_instructors') }}" hx-get="{{ url_for('main.for_instructors') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">강사지원</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            <div class="container">
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                    <button class="close-alert">&times;</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+{% endif %}
+        {% block content %}{% endblock %}
+{% if not request.headers.get('HX-Request') %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ePlan</h4>
+                    <p>글로벌 교육의 혁신<br>지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="{{ url_for('main.phone_english') }}" hx-get="{{ url_for('main.phone_english') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">전화영어</a></li>
+                        <li><a href="{{ url_for('main.corporate_programs') }}" hx-get="{{ url_for('main.corporate_programs') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">기업출강</a></li>
+                        <!-- <li><a href="{{ url_for('main.writing_correction') }}" hx-get="{{ url_for('main.writing_correction') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Writing 첨삭</a></li> -->
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>회사정보</h4>
+                    <ul>
+                        <li><a href="{{ url_for('main.company') }}" hx-get="{{ url_for('main.company') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">회사소개</a></li>
+                        <li><a href="{{ url_for('main.board_list', category='notice') }}" hx-get="{{ url_for('main.board_list', category='notice') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">공지사항</a></li>
+                        <li><a href="{{ url_for('main.board_list', category='news') }}" hx-get="{{ url_for('main.board_list', category='news') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">뉴스</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>연락처</h4>
+                    <p>
+                        이메일: kevinhwang@eplando.com<br>
+                        대표번호: 031-8039-7705<br>
+                        주소: 14, 48beongil, Jangmi-ro<br>
+                        Bundang-gu, Seongnam-si, Gyunggi-do
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ePlan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/accordion.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+{% endif %}
+

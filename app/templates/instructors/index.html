@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}강사 지원 - ePlan{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>강사 지원</h1>
+        <p>ePlan과 함께 글로벌 인재를 양성하는 강사가 되어주세요</p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">지원 요건</h2>
+        
+        <div class="grid grid--2">
+            <div class="card">
+                <h4 class="card__title">✓ 학사 학위 이상</h4>
+                <p>관련 분야 학사 학위 이상 소지자</p>
+            </div>
+            
+            <div class="card">
+                <h4 class="card__title">✓ 언어 구사력</h4>
+                <p>원어민 또는 원어민에 준하는 언어 구사력</p>
+            </div>
+            
+            <div class="card">
+                <h4 class="card__title">✓ 교육 자격증</h4>
+                <p>TESOL, TEFL 등 교육 관련 자격증 소지자 우대</p>
+            </div>
+            
+            <div class="card">
+                <h4 class="card__title">✓ 합법적 취업 자격</h4>
+                <p>한국에서 합법적으로 일할 수 있는 자격 보유</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">지원 절차</h2>
+        
+        <div class="study-steps">
+            <div class="card">
+                <div class="step-number">1</div>
+                <h4>온라인 지원서 제출</h4>
+                <p>아래 양식을 통해 지원서 제출</p>
+            </div>
+            
+            <div class="card">
+                <div class="step-number">2</div>
+                <h4>서류 심사</h4>
+                <p>제출하신 서류 검토</p>
+            </div>
+            
+            <div class="card">
+                <div class="step-number">3</div>
+                <h4>온라인 인터뷰</h4>
+                <p>화상 인터뷰 진행</p>
+            </div>
+            
+            <div class="card">
+                <div class="step-number">4</div>
+                <h4>모의 수업 평가</h4>
+                <p>강의 능력 평가</p>
+            </div>
+            
+            <div class="card">
+                <div class="step-number">5</div>
+                <h4>최종 합격 및 계약</h4>
+                <p>근무 조건 협의 및 계약</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">강사 혜택</h2>
+        
+        <div class="grid grid--2">
+            <div class="card">
+                <div class="service-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <h4>경쟁력 있는 급여</h4>
+                <p>업계 최고 수준의 급여 제공</p>
+            </div>
+            
+            <div class="card">
+                <div class="service-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                </div>
+                <h4>전문성 개발</h4>
+                <p>정기적인 워크샵 및 세미나 기회</p>
+            </div>
+            
+            <div class="card">
+                <div class="service-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h4>유연한 근무 시간</h4>
+                <p>라이프스타일에 맞는 근무 시간 조정</p>
+            </div>
+            
+            <div class="card">
+                <div class="service-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                        <polyline points="17 6 23 6 23 12"/>
+                    </svg>
+                </div>
+                <h4>경력 개발 지원</h4>
+                <p>체계적인 경력 관리 프로그램</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="u-bg-white">
+    <div class="container">
+        <h2 class="section-title">지원서 작성</h2>
+        
+        <form method="POST" class="form" style="max-width: 800px; margin: 0 auto;">
+            {{ form.hidden_tag() }}
+            
+            <div class="form__group">
+                {{ form.name.label(class="form__label") }}
+                {{ form.name(class="form__input") }}
+                {% if form.name.errors %}
+                <div class="form__error">{{ form.name.errors[0] }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form__group">
+                {{ form.email.label(class="form__label") }}
+                {{ form.email(class="form__input", type="email") }}
+                {% if form.email.errors %}
+                <div class="form__error">{{ form.email.errors[0] }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form__group">
+                {{ form.phone.label(class="form__label") }}
+                {{ form.phone(class="form__input") }}
+                {% if form.phone.errors %}
+                <div class="form__error">{{ form.phone.errors[0] }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form__group">
+                {{ form.education.label(class="form__label") }}
+                {{ form.education(class="form__textarea", rows="4") }}
+                {% if form.education.errors %}
+                <div class="form__error">{{ form.education.errors[0] }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form__group">
+                {{ form.experience.label(class="form__label") }}
+                {{ form.experience(class="form__textarea", rows="4") }}
+                {% if form.experience.errors %}
+                <div class="form__error">{{ form.experience.errors[0] }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form__group">
+                {{ form.certificates.label(class="form__label") }}
+                {{ form.certificates(class="form__textarea", rows="3") }}
+            </div>
+            
+            <div class="form__group">
+                {{ form.motivation.label(class="form__label") }}
+                {{ form.motivation(class="form__textarea", rows="5") }}
+                {% if form.motivation.errors %}
+                <div class="form__error">{{ form.motivation.errors[0] }}</div>
+                {% endif %}
+            </div>
+            
+            <div class="form__actions">
+                {{ form.submit(class="btn btn--primary btn--lg") }}
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+

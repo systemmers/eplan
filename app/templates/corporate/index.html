@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block title %}기업출강 프로그램 - ePlan{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>기업출강 프로그램</h1>
+        <p class="hero-tagline">Your success is just around the corner.</p>
+    </div>
+</section>
+
+<!-- Program Introduction -->
+<section class="u-bg-teal">
+    <div class="container">
+        <div class="intro-content u-mx-auto" style="max-width: 800px;">
+            <h2 class="u-text-center">기업 맞춤형 어학 교육</h2>
+            <p class="u-text-center">ePlan의 기업출강 프로그램은 귀사의 니즈에 맞는 맞춤형 어학 교육을 제공합니다.</p>
+            <p class="u-text-center">글로벌 인재 양성을 통해 기업의 경쟁력을 높여드립니다.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Programs Grid -->
+<section>
+    <div class="container">
+        <h2 class="section-title">프로그램 종류</h2>
+        
+        <div class="grid grid--3">
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">In-House Program</h3>
+                    <h4>사내어학과정</h4>
+                    <ul class="u-mt-3">
+                        <li>연간 어학지원 과정</li>
+                        <li>Global 인재 pool 형성</li>
+                        <li>레벨별 맞춤 수업</li>
+                        <li>정기적인 성과 측정</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.corporate_program_detail', program='in-house') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                </div>
+            </div>
+            
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">Intensive Program</h3>
+                    <h4>집중과정</h4>
+                    <ul class="u-mt-3">
+                        <li>단기 집중 목표달성 과정</li>
+                        <li>Business Skill 단기 master</li>
+                        <li>4주/8주/12주 과정</li>
+                        <li>실전 중심 학습</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.corporate_program_detail', program='intensive') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                </div>
+            </div>
+            
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">1:1 Executive Coaching</h3>
+                    <h4>1:1 임원과정</h4>
+                    <ul class="u-mt-3">
+                        <li>바쁜 스케줄에 맞는 맞춤형 영어 개발</li>
+                        <li>High-level의 customizing 과정 운영</li>
+                        <li>완전 맞춤형 1:1 수업</li>
+                        <li>비즈니스 케이스 스터디</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.corporate_program_detail', program='executive') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                </div>
+            </div>
+            
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">Resident Employee Programs</h3>
+                    <h4>주재원파견 과정</h4>
+                    <ul class="u-mt-3">
+                        <li>파견임무 수행을 위한 biz-skill 단련</li>
+                        <li>Global Culture 이해</li>
+                        <li>실무 중심 교육</li>
+                        <li>문화적응 프로그램</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.corporate_program_detail', program='resident') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                </div>
+            </div>
+            
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">Blended Program</h3>
+                    <h4>융합과정</h4>
+                    <ul class="u-mt-3">
+                        <li>온/오프라인 통합 학습</li>
+                        <li>자기주도적 학습 능력 향상</li>
+                        <li>유연한 학습 환경</li>
+                        <li>다양한 학습 도구 활용</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.corporate_program_detail', program='blended') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                </div>
+            </div>
+            
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">OCT</h3>
+                    <h4>상주강사제도</h4>
+                    <ul class="u-mt-3">
+                        <li>기업 내 상주 원어민 강사 배치</li>
+                        <li>실시간 어학 지원 및 교육</li>
+                        <li>즉각적인 피드백</li>
+                        <li>현장 맞춤형 교육</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.corporate_program_detail', program='oct') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="u-bg-white">
+    <div class="container">
+        <h2 class="section-title">맞춤형 교육의 특징</h2>
+        
+        <div class="grid grid--4">
+            <div class="card u-text-center">
+                <div class="service-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
+                <h4>교육 목적별 과정설계</h4>
+                <p class="text-muted">귀사의 목표에 맞는 맞춤형 커리큘럼</p>
+            </div>
+            
+            <div class="card u-text-center">
+                <div class="service-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                </div>
+                <h4>맞춤 Topic Book</h4>
+                <p class="text-muted">고객사별 특화 교재 제공</p>
+            </div>
+            
+            <div class="card u-text-center">
+                <div class="service-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <h4>실무 중심 커리큘럼</h4>
+                <p class="text-muted">실제 업무에 적용 가능한 교육</p>
+            </div>
+            
+            <div class="card u-text-center">
+                <div class="service-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <h4>성과 분석 및 피드백</h4>
+                <p class="text-muted">정기적인 학습 성과 분석</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Expected Results -->
+<section>
+    <div class="container">
+        <h2 class="section-title">기대 효과</h2>
+        
+        <div class="grid grid--4">
+            <div class="card u-text-center">
+                <div class="strength-number">30%</div>
+                <p>영어 능력 향상도</p>
+                <p class="text-muted u-text-sm">평균 상승률</p>
+            </div>
+            
+            <div class="card u-text-center">
+                <div class="strength-number">25%</div>
+                <p>업무 효율성 증가</p>
+                <p class="text-muted u-text-sm">생산성 개선</p>
+            </div>
+            
+            <div class="card u-text-center">
+                <div class="strength-number">40%</div>
+                <p>글로벌 비즈니스 성과</p>
+                <p class="text-muted u-text-sm">해외 거래 증가</p>
+            </div>
+            
+            <div class="card u-text-center">
+                <div class="strength-number">95%</div>
+                <p>직원 만족도</p>
+                <p class="text-muted u-text-sm">만족도 조사 결과</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="u-bg-teal">
+    <div class="container u-text-center">
+        <h2>지금 바로 상담을 신청하세요</h2>
+        <p class="u-mb-4">귀사에 맞는 최적의 교육 프로그램을 제안해드립니다</p>
+        <a href="{{ url_for('main.consulting') }}" class="btn btn--primary btn--lg">상담 신청하기</a>
+    </div>
+</section>
+
+<!-- Modals (여기서는 간단한 모달 1개만 예시로 추가, 나머지는 동일 패턴) -->
+<div id="modal-inhouse" class="modal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content">
+        <div class="modal__header">
+            <h3 class="modal__title">In-House Program 상세</h3>
+            <button class="modal__close">&times;</button>
+        </div>
+        <div class="modal__body">
+            <h4>교육목표</h4>
+            <p>연간 어학지원을 통한 글로벌 인재 양성</p>
+            
+            <h4 class="u-mt-4">교육특징</h4>
+            <ul>
+                <li>레벨별 맞춤 수업</li>
+                <li>정기적인 성과 측정</li>
+                <li>체계적인 커리큘럼</li>
+            </ul>
+            
+            <h4 class="u-mt-4">추천 대상</h4>
+            <p>전 직원 대상 어학 능력 향상이 필요한 기업</p>
+        </div>
+        <div class="modal__footer">
+            <button class="btn btn--secondary modal__close">닫기</button>
+            <a href="{{ url_for('main.consulting') }}" class="btn btn--primary">상담 신청</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

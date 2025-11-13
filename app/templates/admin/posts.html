@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}게시글 관리 - ePlan{% endblock %}
+
+{% block content %}
+<section class="admin-section">
+    <div class="container">
+        <div class="section-header">
+            <h1>게시글 관리</h1>
+            <a href="{{ url_for('admin.new_post') }}" class="btn btn--primary">새 게시글 작성</a>
+        </div>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>카테고리</th>
+                    <th>조회수</th>
+                    <th>상태</th>
+                    <th>작성일</th>
+                    <th>작업</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td><a href="{{ url_for('main.board_detail', category=post.category.slug, post_id=post.id) }}">{{ post.title }}</a></td>
+                    <td>{{ post.category.name }}</td>
+                    <td>{{ post.views }}</td>
+                    <td>
+                        {% if post.is_published %}
+                        <span class="badge badge-success">게시중</span>
+                        {% else %}
+                        <span class="badge badge-secondary">비공개</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                    <td>
+                        <a href="{{ url_for('admin.edit_post', post_id=post.id) }}" class="btn btn--sm btn--secondary">수정</a>
+                        <form method="POST" action="{{ url_for('admin.delete_post', post_id=post.id) }}" style="display:inline;">
+                            <button type="submit" class="btn btn--sm btn--danger" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        {% if pagination.pages > 1 %}
+        <div class="pagination">
+            {% if pagination.has_prev %}
+            <a href="{{ url_for('admin.posts', page=pagination.prev_num) }}" class="btn btn-sm">&laquo; 이전</a>
+            {% endif %}
+            
+            {% for page in pagination.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+                {% if page %}
+                    {% if page == pagination.page %}
+                    <span class="current">{{ page }}</span>
+                    {% else %}
+                    <a href="{{ url_for('admin.posts', page=page) }}">{{ page }}</a>
+                    {% endif %}
+                {% else %}
+                <span>...</span>
+                {% endif %}
+            {% endfor %}
+            
+            {% if pagination.has_next %}
+            <a href="{{ url_for('admin.posts', page=pagination.next_num) }}" class="btn btn-sm">다음 &raquo;</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+

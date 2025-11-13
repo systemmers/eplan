@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+
+{% block title %}전화영어 - ePlan{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>전화영어</h1>
+        <p class="tagline">Your success is just around the corner.</p>
+    </div>
+</section>
+
+<!-- Course Introduction -->
+<section class="course-intro-section">
+    <div class="container">
+        <div class="intro-content">
+            <h2>ePlan 전화영어</h2>
+            <p>ePlan의 전화영어는 1:1 맞춤형 교육으로 여러분의 영어 실력을 빠르게 향상시킵니다.</p>
+            <p>원어민 강사와의 실전 대화를 통해 자신감 있는 영어 구사를 경험하세요.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Learning Levels -->
+<section class="levels-section">
+    <div class="container">
+        <h2 class="section-title">레벨별 학습 목표</h2>
+        
+        <div class="levels-grid">
+            <div class="level-card card">
+                <h3>Beginner</h3>
+                <span class="level-badge">Level 1-3</span>
+                <ul>
+                    <li>기초 문법과 회화의 틀 형성</li>
+                    <li>일상생활에서 사용되는 기본 표현 습득</li>
+                </ul>
+            </div>
+            
+            <div class="level-card card">
+                <h3>Pre-intermediate</h3>
+                <span class="level-badge">Level 4-6</span>
+                <ul>
+                    <li>일상 대화 및 간단한 비즈니스 상황 대처</li>
+                    <li>기본적인 의견 표현 및 질문 능력 향상</li>
+                </ul>
+            </div>
+            
+            <div class="level-card card">
+                <h3>Intermediate</h3>
+                <span class="level-badge">Level 7-8</span>
+                <ul>
+                    <li>복잡한 주제에 대한 의견 교환</li>
+                    <li>비즈니스 상황에서의 효과적인 커뮤니케이션</li>
+                </ul>
+            </div>
+            
+            <div class="level-card card">
+                <h3>Advanced</h3>
+                <span class="level-badge">Level 9</span>
+                <ul>
+                    <li>학술적, 전문적 주제에 대한 토론</li>
+                    <li>원어민 수준의 유창성 개발</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Curriculum Cards -->
+<section>
+    <div class="container">
+        <h2 class="section-title">커리큘럼</h2>
+        <p class="u-text-center u-mb-4">각 과정을 클릭하여 자세한 정보를 확인하세요</p>
+        
+        <div class="grid grid--2">
+            <!-- General Conversation -->
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">General Conversation</h3>
+                    <h4>일반회화</h4>
+                    <p class="u-mt-3">일상생활 주제 중심의 자연스러운 대화 연습</p>
+                    <ul class="u-mt-3">
+                        <li>Level 1-9 (모든 레벨)</li>
+                        <li>발음 교정 및 어휘력 확장</li>
+                        <li>실생활 표현 습득</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" class="btn btn--secondary">자세히 보기</a>
+                </div>
+            </div>
+            
+            <!-- Business Conversation -->
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">Business Conversation</h3>
+                    <h4>비즈니스회화</h4>
+                    <p class="u-mt-3">비즈니스 상황별 필수 표현과 실무 영어</p>
+                    <ul class="u-mt-3">
+                        <li>Level 4-9 (Pre-intermediate ~ Advanced)</li>
+                        <li>이메일, 전화, 미팅</li>
+                        <li>프레젠테이션 스킬</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" class="btn btn--secondary">자세히 보기</a>
+                </div>
+            </div>
+            
+            <!-- Discussion -->
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">Discussion</h3>
+                    <h4>토론과정</h4>
+                    <p class="u-mt-3">시사 및 전문 주제에 대한 토론 능력 개발</p>
+                    <ul class="u-mt-3">
+                        <li>Level 7-9 (Intermediate ~ Advanced)</li>
+                        <li>논리적 사고와 표현력 강화</li>
+                        <li>고급 어휘 및 표현 습득</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" class="btn btn--secondary">자세히 보기</a>
+                </div>
+            </div>
+            
+            <!-- Test Preparation -->
+            <div class="card card--hoverable">
+                <div class="card__body">
+                    <h3 class="card__title">TOEIC Speaking / OPIc / SPA</h3>
+                    <h4>공인테스트대비</h4>
+                    <p class="u-mt-3">체계적인 전략으로 목표 점수 달성</p>
+                    <ul class="u-mt-3">
+                        <li>Level 5-9 (Intermediate ~ Advanced)</li>
+                        <li>테스트 유형별 전략 학습</li>
+                        <li>모의 테스트 및 피드백</li>
+                    </ul>
+                </div>
+                <div class="card__footer">
+                    <a href="{{ url_for('main.phone_english_detail', curriculum='test-prep') }}" class="btn btn--secondary">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How to Study -->
+<section class="how-to-study-section">
+    <div class="container">
+        <h2 class="section-title">수강 방법</h2>
+        
+        <div class="study-steps">
+            <div class="step card">
+                <div class="step-number">1</div>
+                <h3>레벨 테스트 진행</h3>
+                <p>현재 영어 실력을 정확하게 진단합니다</p>
+            </div>
+            
+            <div class="step card">
+                <div class="step-number">2</div>
+                <h3>학습 목표 설정</h3>
+                <p>개인별 목표와 일정을 설정합니다</p>
+            </div>
+            
+            <div class="step card">
+                <div class="step-number">3</div>
+                <h3>1:1 전화 수업</h3>
+                <p>주 3회 또는 5회 맞춤형 수업 진행</p>
+            </div>
+            
+            <div class="step card">
+                <div class="step-number">4</div>
+                <h3>복습 및 과제</h3>
+                <p>체계적인 복습과 과제로 실력 향상</p>
+            </div>
+            
+            <div class="step card">
+                <div class="step-number">5</div>
+                <h3>프로그레스 체크</h3>
+                <p>정기적인 평가로 학습 진도 확인</p>
+            </div>
+            
+            <div class="step card">
+                <div class="step-number">6</div>
+                <h3>레벨 업</h3>
+                <p>새로운 목표 설정 및 레벨 업</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+    <div class="container">
+        <h2 class="section-title">자주 묻는 질문</h2>
+        
+        <div class="faq-list">
+            <div class="faq-item card">
+                <h3>Q: 수업 시간은 어떻게 되나요?</h3>
+                <p>A: 수업은 1회당 20분이며, 주 3회 또는 5회 중 선택 가능합니다.</p>
+            </div>
+            
+            <div class="faq-item card">
+                <h3>Q: 강사 변경이 가능한가요?</h3>
+                <p>A: 네, 첫 한 달 이내에는 무료로 강사 변경이 가능합니다.</p>
+            </div>
+            
+            <div class="faq-item card">
+                <h3>Q: 수업 예약은 어떻게 하나요?</h3>
+                <p>A: 온라인 예약 시스템을 통해 원하는 시간에 자유롭게 예약할 수 있습니다.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+

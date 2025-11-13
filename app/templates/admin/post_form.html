@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - ePlan{% endblock %}
+
+{% block content %}
+<section class="admin-section">
+    <div class="container">
+        <h1>{{ title }}</h1>
+        
+        <form method="POST" class="post-form form">
+            {{ form.hidden_tag() }}
+            
+            <div class="form__group">
+                {{ form.title.label(class="form__label") }}
+                {{ form.title(class="form__input", placeholder="게시글 제목을 입력하세요") }}
+                {% if form.title.errors %}
+                <div class="form__error">
+                    {% for error in form.title.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="form__group">
+                {{ form.category_id.label(class="form__label") }}
+                {{ form.category_id(class="form__select") }}
+                {% if form.category_id.errors %}
+                <div class="form__error">
+                    {% for error in form.category_id.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="form__group">
+                {{ form.content.label(class="form__label") }}
+                {{ form.content(class="form__textarea", rows="15", placeholder="게시글 내용을 입력하세요") }}
+                {% if form.content.errors %}
+                <div class="form__error">
+                    {% for error in form.content.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="form__group form__group--checkbox">
+                {{ form.is_published() }}
+                {{ form.is_published.label }}
+            </div>
+            
+            <div class="form__actions">
+                {{ form.submit(class="btn btn--primary") }}
+                <a href="{{ url_for('admin.posts') }}" class="btn btn--secondary">취소</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+

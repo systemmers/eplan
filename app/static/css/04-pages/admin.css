@@ -1,0 +1,108 @@
+/* Admin Pages Specific Styles */
+
+/* Login Section */
+.login-section {
+    min-height: calc(100vh - 80px - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-4xl) 0;
+}
+
+.login-box {
+    max-width: 400px;
+    width: 100%;
+    background: var(--color-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.login-box h2 {
+    text-align: center;
+    color: var(--color-teal-dark);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Admin Section */
+.admin-section {
+    padding: var(--spacing-4xl) 0;
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.stat-card {
+    text-align: center;
+    background: var(--color-white);
+    padding: var(--spacing-2xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-card h3 {
+    font-size: var(--font-size-5xl);
+    color: var(--color-teal-dark);
+}
+
+.stat-card p {
+    color: var(--color-text-muted);
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.recent-posts h2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.badge {
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.badge-success {
+    background: var(--color-mint-light);
+    color: var(--color-teal-dark);
+}
+
+.badge-secondary {
+    background: var(--color-gray-blue);
+    color: var(--color-white);
+}
+
+/* Post Form */
+.post-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-actions {
+        flex-direction: column;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: flex-start;
+    }
+}
+

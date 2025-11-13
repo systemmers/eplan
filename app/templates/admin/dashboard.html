@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}관리자 대시보드 - ePlan{% endblock %}
+
+{% block content %}
+<section class="admin-section">
+    <div class="container">
+        <h1>관리자 대시보드</h1>
+        
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>{{ total_posts }}</h3>
+                <p>전체 게시글</p>
+            </div>
+            
+            {% for category_name, count in category_stats.items() %}
+            <div class="stat-card">
+                <h3>{{ count }}</h3>
+                <p>{{ category_name }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="dashboard-actions">
+            <a href="{{ url_for('admin.new_post') }}" class="btn btn--primary">새 게시글 작성</a>
+            <a href="{{ url_for('admin.posts') }}" class="btn btn--secondary">게시글 관리</a>
+        </div>
+        
+        <div class="recent-posts">
+            <h2>최근 게시글</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>제목</th>
+                        <th>카테고리</th>
+                        <th>조회수</th>
+                        <th>작성일</th>
+                        <th>작업</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in recent_posts %}
+                    <tr>
+                        <td><a href="{{ url_for('main.board_detail', category=post.category.slug, post_id=post.id) }}">{{ post.title }}</a></td>
+                        <td>{{ post.category.name }}</td>
+                        <td>{{ post.views }}</td>
+                        <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                        <td>
+                            <a href="{{ url_for('admin.edit_post', post_id=post.id) }}" class="btn btn--sm btn--secondary">수정</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

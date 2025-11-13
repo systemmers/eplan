@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - {{ category.name }} - ePlan{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>{{ category.name }}</h1>
+    </div>
+</section>
+
+<!-- Post Detail -->
+<section class="post-section">
+    <div class="container">
+        <article class="post-detail card">
+            <!-- Post Header -->
+            <div class="post-header">
+                <h2 class="post-title">{{ post.title }}</h2>
+                <div class="post-meta">
+                    <span class="post-author">작성자: {{ post.author.username }}</span>
+                    <span class="post-date">작성일: {{ post.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                    {% if post.updated_at and post.updated_at != post.created_at %}
+                    <span class="post-updated">수정일: {{ post.updated_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                    {% endif %}
+                    <span class="post-views">조회수: {{ post.views }}</span>
+                </div>
+            </div>
+            
+            <!-- Post Content -->
+            <div class="post-content">
+                {{ post.content|safe }}
+            </div>
+            
+            <!-- Post Footer -->
+            <div class="post-footer">
+                <a href="{{ url_for('main.board_list', category=category.slug) }}" 
+                   class="btn btn--secondary">목록으로</a>
+                
+                {% if current_user.is_authenticated %}
+                <div class="post-actions">
+                    <a href="{{ url_for('admin.edit_post', post_id=post.id) }}" 
+                       class="btn btn--secondary">수정</a>
+                    <form method="POST" 
+                          action="{{ url_for('admin.delete_post', post_id=post.id) }}" 
+                          style="display:inline;">
+                        <button type="submit" 
+                                class="btn btn--danger" 
+                                onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </article>
+        
+        <!-- Navigation -->
+        <div class="post-navigation">
+            <div class="nav-item">
+                {% if prev_post %}
+                <a href="{{ url_for('main.board_detail', category=category.slug, post_id=prev_post.id) }}">
+                    <span class="nav-label">이전글</span>
+                    <span class="nav-title">{{ prev_post.title }}</span>
+                </a>
+                {% else %}
+                <span class="nav-none">이전글이 없습니다</span>
+                {% endif %}
+            </div>
+            
+            <div class="nav-item">
+                {% if next_post %}
+                <a href="{{ url_for('main.board_detail', category=category.slug, post_id=next_post.id) }}">
+                    <span class="nav-label">다음글</span>
+                    <span class="nav-title">{{ next_post.title }}</span>
+                </a>
+                {% else %}
+                <span class="nav-none">다음글이 없습니다</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

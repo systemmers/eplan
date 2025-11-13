@@ -1,0 +1,83 @@
+/* Buttons */
+
+.btn {
+    display: inline-block;
+    padding: var(--spacing-md) var(--spacing-2xl);
+    border-radius: var(--border-radius-md);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+    line-height: 1;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Primary Button */
+.btn--primary {
+    background-color: var(--color-teal-dark);
+    color: var(--color-white);
+}
+
+.btn--primary:hover:not(:disabled) {
+    background-color: var(--color-teal-medium);
+}
+
+/* Secondary Button */
+.btn--secondary {
+    background-color: var(--color-orange-warm);
+    color: var(--color-white);
+}
+
+.btn--secondary:hover:not(:disabled) {
+    background-color: var(--color-orange-coral);
+}
+
+/* Outline Button */
+.btn--outline {
+    background-color: transparent;
+    border-color: var(--color-teal-dark);
+    color: var(--color-teal-dark);
+}
+
+.btn--outline:hover:not(:disabled) {
+    background-color: var(--color-teal-dark);
+    color: var(--color-white);
+}
+
+/* Danger Button */
+.btn--danger {
+    background-color: var(--color-orange-deep);
+    color: var(--color-white);
+}
+
+.btn--danger:hover:not(:disabled) {
+    background-color: #d84315;
+}
+
+/* Button Sizes */
+.btn--sm {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.btn--lg {
+    padding: var(--spacing-lg) var(--spacing-3xl);
+    font-size: var(--font-size-lg);
+}
+
+.btn--block {
+    display: block;
+    width: 100%;
+}
+
+/* Icon Button */
+.btn--icon {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-full);
+}
+

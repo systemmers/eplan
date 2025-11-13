@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }} - ePlan{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>{{ category.name }}</h1>
+        <p>ePlan의 소식을 확인하세요</p>
+    </div>
+</section>
+
+<!-- Board List -->
+<section class="board-section">
+    <div class="container">
+        <div class="board-header">
+            <h2>총 {{ pagination.total }}개의 게시글</h2>
+        </div>
+        
+        <div class="board-list">
+            <table class="board-table">
+                <thead>
+                    <tr>
+                        <th class="col-number">번호</th>
+                        <th class="col-title">제목</th>
+                        <th class="col-author">작성자</th>
+                        <th class="col-date">작성일</th>
+                        <th class="col-views">조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if posts %}
+                        {% for post in posts %}
+                        <tr>
+                            <td class="col-number">{{ post.id }}</td>
+                            <td class="col-title">
+                                <a href="{{ url_for('main.board_detail', category=category.slug, post_id=post.id) }}">
+                                    {{ post.title }}
+                                </a>
+                            </td>
+                            <td class="col-author">{{ post.author.username }}</td>
+                            <td class="col-date">{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                            <td class="col-views">{{ post.views }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="no-posts">등록된 게시글이 없습니다.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Pagination -->
+        {% if pagination.pages > 1 %}
+        <div class="pagination">
+            {% if pagination.has_prev %}
+            <a href="{{ url_for('main.board_list', category=category.slug, page=pagination.prev_num) }}" 
+               class="page-link">&laquo; 이전</a>
+            {% endif %}
+            
+            {% for page in pagination.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+                {% if page %}
+                    {% if page == pagination.page %}
+                    <span class="page-link current">{{ page }}</span>
+                    {% else %}
+                    <a href="{{ url_for('main.board_list', category=category.slug, page=page) }}" 
+                       class="page-link">{{ page }}</a>
+                    {% endif %}
+                {% else %}
+                <span class="page-link dots">...</span>
+                {% endif %}
+            {% endfor %}
+            
+            {% if pagination.has_next %}
+            <a href="{{ url_for('main.board_list', category=category.slug, page=pagination.next_num) }}" 
+               class="page-link">다음 &raquo;</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+

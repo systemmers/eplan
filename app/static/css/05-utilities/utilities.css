@@ -1,0 +1,113 @@
+/* Utility Classes */
+
+/* Spacing Utilities */
+.u-mt-0 { margin-top: 0; }
+.u-mt-1 { margin-top: var(--spacing-xs); }
+.u-mt-2 { margin-top: var(--spacing-sm); }
+.u-mt-3 { margin-top: var(--spacing-md); }
+.u-mt-4 { margin-top: var(--spacing-lg); }
+.u-mt-5 { margin-top: var(--spacing-xl); }
+
+.u-mb-0 { margin-bottom: 0; }
+.u-mb-1 { margin-bottom: var(--spacing-xs); }
+.u-mb-2 { margin-bottom: var(--spacing-sm); }
+.u-mb-3 { margin-bottom: var(--spacing-md); }
+.u-mb-4 { margin-bottom: var(--spacing-lg); }
+.u-mb-5 { margin-bottom: var(--spacing-xl); }
+
+.u-ml-0 { margin-left: 0; }
+.u-ml-auto { margin-left: auto; }
+
+.u-mr-0 { margin-right: 0; }
+.u-mr-auto { margin-right: auto; }
+
+.u-mx-auto { margin-left: auto; margin-right: auto; }
+
+.u-pt-1 { padding-top: var(--spacing-xs); }
+.u-pt-2 { padding-top: var(--spacing-sm); }
+.u-pt-3 { padding-top: var(--spacing-md); }
+.u-pt-4 { padding-top: var(--spacing-lg); }
+.u-pt-5 { padding-top: var(--spacing-xl); }
+
+.u-pb-1 { padding-bottom: var(--spacing-xs); }
+.u-pb-2 { padding-bottom: var(--spacing-sm); }
+.u-pb-3 { padding-bottom: var(--spacing-md); }
+.u-pb-4 { padding-bottom: var(--spacing-lg); }
+.u-pb-5 { padding-bottom: var(--spacing-xl); }
+
+/* Text Utilities */
+.u-text-center { text-align: center; }
+.u-text-left { text-align: left; }
+.u-text-right { text-align: right; }
+
+.u-text-bold { font-weight: var(--font-weight-bold); }
+.u-text-medium { font-weight: var(--font-weight-medium); }
+.u-text-normal { font-weight: var(--font-weight-normal); }
+
+.u-text-muted { color: var(--color-text-muted); }
+.u-text-primary { color: var(--color-teal-dark); }
+.u-text-secondary { color: var(--color-orange-warm); }
+
+.u-text-sm { font-size: var(--font-size-sm); }
+.u-text-md { font-size: var(--font-size-md); }
+.u-text-lg { font-size: var(--font-size-lg); }
+.u-text-xl { font-size: var(--font-size-xl); }
+
+/* Display Utilities */
+.u-hidden { display: none !important; }
+.u-visible { display: block !important; }
+
+.u-flex { display: flex !important; }
+.u-inline-flex { display: inline-flex !important; }
+
+.u-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.u-flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+    .u-hidden-mobile { display: none !important; }
+    .u-visible-mobile { display: block !important; }
+}
+
+@media (min-width: 769px) {
+    .u-hidden-desktop { display: none !important; }
+    .u-visible-desktop { display: block !important; }
+}
+
+/* Background Utilities */
+.u-bg-white { background-color: var(--color-white); }
+.u-bg-gray { background-color: var(--color-bg-white); }
+.u-bg-teal { background-color: var(--color-teal-lightest); }
+
+/* Border Utilities */
+.u-border { border: 1px solid var(--color-border); }
+.u-border-top { border-top: 1px solid var(--color-border); }
+.u-border-bottom { border-bottom: 1px solid var(--color-border); }
+
+/* Width Utilities */
+.u-w-full { width: 100%; }
+.u-w-auto { width: auto; }
+
+/* Shadow Utilities */
+.u-shadow-sm { box-shadow: var(--shadow-sm); }
+.u-shadow-md { box-shadow: var(--shadow-md); }
+.u-shadow-lg { box-shadow: var(--shadow-lg); }
+
+/* HTMX Loading Indicator */
+.htmx-request #main-content {
+    opacity: 0.6;
+    transition: opacity 200ms ease-in-out;
+}
+
+.htmx-request .main-content {
+    pointer-events: none;
+}

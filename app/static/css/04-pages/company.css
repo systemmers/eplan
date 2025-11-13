@@ -1,0 +1,244 @@
+/* Company Page Specific Styles */
+
+/* Mission Section */
+.mission-section {
+    background: var(--color-white);
+}
+
+.mission-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mission-content h3 {
+    color: var(--color-teal-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.mission-kr {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Values Section */
+.values-section {
+    background: var(--color-bg-white);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.value-card h3 {
+    color: var(--color-teal-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.value-card ul {
+    list-style: disc;
+    padding-left: var(--spacing-xl);
+}
+
+/* Service Process */
+.our-service-section {
+    background: var(--color-white);
+}
+
+.service-process {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.process-step h3 {
+    color: var(--color-teal-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.process-step ul {
+    list-style: disc;
+    padding-left: var(--spacing-xl);
+}
+
+/* Organization Chart - 개선된 버전 */
+.organization-section {
+    background: var(--color-bg-white);
+}
+
+.org-chart {
+    padding: var(--spacing-3xl) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2xl);
+}
+
+/* Org Level - 각 계층 */
+.org-level {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--spacing-3xl);
+    width: 100%;
+    position: relative;
+}
+
+/* Org Box - 각 노드 */
+.org-box {
+    background: var(--color-white);
+    border: 2px solid #E5E7EB;
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.org-box:hover {
+    border-color: var(--color-teal-medium);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.org-box h4 {
+    color: var(--color-teal-dark);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.org-box ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-sm) 0 0 0;
+    text-align: center;
+}
+
+.org-box ul li {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) 0;
+}
+
+/* CEO Box - 최상위 */
+.org-box.ceo {
+    background: linear-gradient(135deg, var(--color-teal-dark), var(--color-teal-medium));
+    color: var(--color-white);
+    border: none;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    padding: var(--spacing-xl);
+}
+
+/* 수직 연결선 */
+.org-box::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 40px;
+    background: #D1D5DB;
+}
+
+/* 첫 번째 레벨은 연결선 없음 */
+.org-level:first-child .org-box::before {
+    display: none;
+}
+
+/* 수평 연결선 (형제 노드 간) */
+.org-level::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 60%;
+    background: #D1D5DB;
+    z-index: -1;
+}
+
+/* 첫 번째와 두 번째 레벨은 수평선 없음 */
+.org-level:first-child::after,
+.org-level:nth-child(2)::after {
+    display: none;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .org-level {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+        align-items: center;
+    }
+    
+    .org-level::after {
+        display: none;
+    }
+    
+    .org-box {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Clients Showcase */
+.our-clients-section {
+    background: var(--color-white);
+}
+
+.clients-showcase {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.client-category {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.client-category h3 {
+    color: var(--color-teal-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.client-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.client-list span {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Network Section */
+.network-section {
+    background: var(--color-bg-white);
+}
+
+.network-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.network-card {
+    text-align: center;
+}
+
+.network-card h3 {
+    color: var(--color-teal-dark);
+}
+

@@ -1,0 +1,34 @@
+/* ePlan Main CSS - Modular Import Structure */
+
+/* 01 - Base */
+@import url('01-base/variables.css');
+@import url('01-base/reset.css');
+@import url('01-base/typography.css');
+
+/* 02 - Layout */
+@import url('02-layout/header.css');
+@import url('02-layout/footer.css');
+@import url('02-layout/grid.css');
+
+/* 03 - Components */
+@import url('03-components/buttons.css');
+@import url('03-components/cards.css');
+@import url('03-components/forms.css');
+@import url('03-components/tables.css');
+@import url('03-components/pagination.css');
+@import url('03-components/modals.css');
+@import url('03-components/accordion.css');
+@import url('03-components/alerts.css');
+
+/* 04 - Pages */
+@import url('04-pages/common.css');
+@import url('04-pages/home.css');
+@import url('04-pages/company.css');
+@import url('04-pages/phone-english.css');
+@import url('04-pages/board.css');
+@import url('04-pages/admin.css');
+@import url('04-pages/curriculum-detail.css');
+
+/* 05 - Utilities */
+@import url('05-utilities/utilities.css');
+

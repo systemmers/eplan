@@ -1,0 +1,82 @@
+/* Forms */
+
+.form {
+    max-width: 600px;
+}
+
+.form__group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form__label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-dark);
+}
+
+.form__input,
+.form__textarea,
+.form__select {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-md);
+    transition: border-color var(--transition-base);
+}
+
+.form__input:focus,
+.form__textarea:focus,
+.form__select:focus {
+    border-color: var(--color-teal-dark);
+}
+
+.form__textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form__checkbox,
+.form__radio {
+    width: auto;
+    margin-right: var(--spacing-sm);
+}
+
+.form__group--checkbox,
+.form__group--radio {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.form__error {
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+}
+
+.form__help {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+}
+
+/* Form States */
+.form__input--error,
+.form__textarea--error,
+.form__select--error {
+    border-color: var(--color-error);
+}
+
+.form__input--success {
+    border-color: var(--color-success);
+}
+
+/* Form Actions */
+.form__actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+

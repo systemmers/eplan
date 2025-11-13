@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}컨설팅 문의 - ePlan{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>컨설팅 문의</h1>
+        <p>귀사에 맞는 최적의 교육 프로그램을 제안해드립니다</p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="grid" style="grid-template-columns: 2fr 1fr; gap: 4rem;">
+            <div>
+                <h2 class="u-mb-4">문의 양식</h2>
+                
+                <form method="POST" class="form">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="form__group">
+                        {{ form.company_name.label(class="form__label") }}
+                        {{ form.company_name(class="form__input", placeholder="회사명을 입력하세요") }}
+                        {% if form.company_name.errors %}
+                        <div class="form__error">
+                            {% for error in form.company_name.errors %}{{ error }}{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form__group">
+                        {{ form.name.label(class="form__label") }}
+                        {{ form.name(class="form__input", placeholder="담당자 이름을 입력하세요") }}
+                        {% if form.name.errors %}
+                        <div class="form__error">
+                            {% for error in form.name.errors %}{{ error }}{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form__group">
+                        {{ form.email.label(class="form__label") }}
+                        {{ form.email(class="form__input", type="email", placeholder="email@example.com") }}
+                        {% if form.email.errors %}
+                        <div class="form__error">
+                            {% for error in form.email.errors %}{{ error }}{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form__group">
+                        {{ form.phone.label(class="form__label") }}
+                        {{ form.phone(class="form__input", placeholder="010-0000-0000") }}
+                        {% if form.phone.errors %}
+                        <div class="form__error">
+                            {% for error in form.phone.errors %}{{ error }}{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="form__group">
+                        {{ form.interested_courses.label(class="form__label") }}
+                        {{ form.interested_courses(class="form__input", placeholder="예: 전화영어, 기업출강") }}
+                    </div>
+                    
+                    <div class="form__group">
+                        {{ form.message.label(class="form__label") }}
+                        {{ form.message(class="form__textarea", rows="5", placeholder="기타 요청사항을 입력하세요") }}
+                    </div>
+                    
+                    <div class="form__actions">
+                        {{ form.submit(class="btn btn--primary") }}
+                    </div>
+                </form>
+            </div>
+            
+            <div>
+                <div class="card">
+                    <h3 class="card__title">연락처 정보</h3>
+                    <div class="card__body">
+                        <p><strong>이메일</strong><br>kevinhwang@eplando.com</p>
+                        <p class="u-mt-3"><strong>대표번호</strong><br>031-8039-7705</p>
+                        <p class="u-mt-3"><strong>주소</strong><br>
+                        14, 48beongil, Jangmi-ro<br>
+                        Bundang-gu, Seongnam-si,<br>
+                        Gyunggi-do</p>
+                    </div>
+                </div>
+                
+                <div class="card u-mt-4">
+                    <h4 class="card__title">상담 시간</h4>
+                    <div class="card__body">
+                        <p>평일: 09:00 - 18:00<br>
+                        주말 및 공휴일 휴무</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">자주 묻는 질문</h2>
+        
+        <div class="accordion" data-single>
+            <div class="accordion__item">
+                <div class="accordion__header">
+                    <h3 class="accordion__title">Q: 컨설팅은 무료인가요?</h3>
+                    <span class="accordion__icon">▼</span>
+                </div>
+                <div class="accordion__content">
+                    <div class="accordion__body">
+                        <p>네, 초기 컨설팅은 무료로 제공됩니다. 귀사의 니즈를 파악하고 최적의 프로그램을 제안해드립니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion__item">
+                <div class="accordion__header">
+                    <h3 class="accordion__title">Q: 기업 맞춤형 프로그램 개발이 가능한가요?</h3>
+                    <span class="accordion__icon">▼</span>
+                </div>
+                <div class="accordion__content">
+                    <div class="accordion__body">
+                        <p>네, 귀사의 요구사항에 맞는 완전 맞춤형 프로그램을 개발해 드립니다. 업종, 직무, 레벨에 맞는 커리큘럼을 설계합니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion__item">
+                <div class="accordion__header">
+                    <h3 class="accordion__title">Q: 컨설팅 후 어떤 절차로 진행되나요?</h3>
+                    <span class="accordion__icon">▼</span>
+                </div>
+                <div class="accordion__content">
+                    <div class="accordion__body">
+                        <p>컨설팅 → 제안서 작성 → 프로그램 개발 → 시범 운영 → 정식 런칭 순으로 진행됩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"name": "eplan",
+			"path": "."
+		},
+		{
+			"name": "PROJECT_MANAGEMENT",
+			"path": "../../../../mnt/c/OneDrive/projects_cloude/dev_docs/PROJECT_MANAGEMENT"
+		},
+		{
+			"path": "../../../../mnt/c/OneDrive/projects_cloude/dev_files/small_Projekts/Web_eplando"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "eplan"
+	}
+}

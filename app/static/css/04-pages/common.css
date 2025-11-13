@@ -1,0 +1,112 @@
+/* Common Page Styles */
+
+/* Main Content */
+.main-content {
+    min-height: calc(100vh - 80px - 200px);
+}
+
+/* Section */
+section {
+    padding: var(--spacing-4xl) 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+    color: var(--color-teal-dark);
+}
+
+.section-subtitle {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text-muted);
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--color-teal-dark) 0%, var(--color-teal-medium) 100%);
+    color: var(--color-white);
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-white);
+}
+
+.page-header p {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-teal-dark) 0%, var(--color-teal-medium) 100%);
+    color: var(--color-white);
+    text-align: center;
+}
+
+/* Hero Section with Video - Override height */
+.hero-section.hero-video {
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.hero-title {
+    font-size: var(--font-size-5xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-white);
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-tagline {
+    font-size: 4.5rem; /* 72px - 약 3.6배 확대 */
+    font-style: italic;
+    margin-bottom: var(--spacing-xl);
+    opacity: 1;
+    font-weight: var(--font-weight-bold);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    section {
+        padding: var(--spacing-3xl) 0;
+    }
+    
+    .page-header,
+    .hero-section {
+        height: 300px;
+    }
+    
+    /* Video hero stays full height on mobile */
+    .hero-section.hero-video {
+        height: 100vh;
+        min-height: 100vh;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    .hero-tagline {
+        font-size: 2.5rem; /* 40px - 모바일에 적절한 크기 */
+    }
+}
+
