@@ -1,0 +1,103 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# SQLite database (local only)
+*.db
+*.sqlite
+*.sqlite3
+eplan.db
+
+# IDE and editor files
+.vscode/
+.idea/
+.cursor/
+.claude/
+*.swp
+*.swo
+*~
+
+# Claude documentation
+claudedocs/
+session_save/
+
+# Styleguide and prototypes (not needed in production)
+styleguide/
+prototype/
+
+# Planning documents
+planning/
+
+# Note files
+note.md
+notes.md
+*.md
+!README.md
+!DEPLOYMENT_GUIDE.md
+
+# Playwright MCP
+.playwright-mcp/
+
+# Temporary files
+contents/
+tmp/
+temp/
+
+# Large static files (uploaded to Cloud Storage separately)
+app/static/images/
+app/static/videos/
+
+# Keep only CSS and JS for GAE
+!app/static/css/
+!app/static/js/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test files
+tests/
+test_*.py
+*_test.py
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
