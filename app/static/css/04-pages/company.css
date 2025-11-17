@@ -1,5 +1,37 @@
 /* Company Page Specific Styles */
 
+/* Page Header Modifier - Company */
+.page-header--company {
+    background-image: url('/static/images/company.jpg');
+    background-size: cover;
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 400px;
+}
+
+/* Dark overlay for better text readability */
+.page-header--company::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+.page-header--company h1,
+.page-header--company p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive: disable fixed attachment on mobile for better performance */
+@media (max-width: 768px) {
+    .page-header--company {
+        background-attachment: scroll;
+        height: 300px;
+    }
+}
+
 /* Mission Section */
 .mission-section {
     background: var(--color-white);
@@ -14,6 +46,10 @@
 .mission-content h3 {
     color: var(--color-teal-dark);
     margin-bottom: var(--spacing-md);
+}
+
+.mission-content p {
+    color: var(--color-text);
 }
 
 .mission-kr {

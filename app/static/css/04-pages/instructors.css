@@ -1,0 +1,33 @@
+/* For Instructors Page Specific Styles */
+
+/* Page Header Modifier - Instructors */
+.page-header--instructors {
+    background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=80');
+    background-size: cover;
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 400px;
+}
+
+/* Dark overlay for better text readability */
+.page-header--instructors::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+.page-header--instructors h1,
+.page-header--instructors p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive: disable fixed attachment on mobile for better performance */
+@media (max-width: 768px) {
+    .page-header--instructors {
+        background-attachment: scroll;
+        height: 300px;
+    }
+}

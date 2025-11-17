@@ -1,5 +1,37 @@
 /* Curriculum Detail Pages */
 
+/* Page Header Modifier - Curriculum Detail */
+.page-header--curriculum {
+    background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1920&q=80');
+    background-size: cover;
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 400px;
+}
+
+/* Dark overlay for better text readability */
+.page-header--curriculum::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+.page-header--curriculum h1,
+.page-header--curriculum p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive: disable fixed attachment on mobile for better performance */
+@media (max-width: 768px) {
+    .page-header--curriculum {
+        background-attachment: scroll;
+        height: 300px;
+    }
+}
+
 .curriculum-detail {
     display: grid;
     gap: var(--spacing-2xl);

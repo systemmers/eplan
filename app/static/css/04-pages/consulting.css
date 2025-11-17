@@ -1,0 +1,33 @@
+/* Consulting Page Specific Styles */
+
+/* Page Header Modifier - Consulting */
+.page-header--consulting {
+    background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&q=80');
+    background-size: cover;
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 400px;
+}
+
+/* Dark overlay for better text readability */
+.page-header--consulting::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+.page-header--consulting h1,
+.page-header--consulting p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive: disable fixed attachment on mobile for better performance */
+@media (max-width: 768px) {
+    .page-header--consulting {
+        background-attachment: scroll;
+        height: 300px;
+    }
+}

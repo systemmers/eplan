@@ -1,5 +1,37 @@
 /* Board Page Specific Styles */
 
+/* Page Header Modifier - Board */
+.page-header--board {
+    background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1920&q=80');
+    background-size: cover;
+    background-position: center 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 400px;
+}
+
+/* Dark overlay for better text readability */
+.page-header--board::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+.page-header--board h1,
+.page-header--board p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive: disable fixed attachment on mobile for better performance */
+@media (max-width: 768px) {
+    .page-header--board {
+        background-attachment: scroll;
+        height: 300px;
+    }
+}
+
 .board-section {
     padding: var(--spacing-4xl) 0;
 }

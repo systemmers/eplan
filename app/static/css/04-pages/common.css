@@ -22,15 +22,22 @@ section {
     color: var(--color-text-muted);
 }
 
-/* Page Header */
+/* Page Header - Base Styles */
 .page-header {
-    background: linear-gradient(135deg, var(--color-teal-dark) 0%, var(--color-teal-medium) 100%);
-    color: var(--color-white);
+    position: relative;
     height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    /* Default gradient - can be overridden by modifiers */
+    background: linear-gradient(135deg, var(--color-teal-dark) 0%, var(--color-teal-medium) 100%);
+    color: var(--color-white);
+}
+
+.page-header .container {
+    position: relative;
+    z-index: 1;
 }
 
 .page-header h1 {
@@ -41,6 +48,7 @@ section {
 .page-header p {
     font-size: var(--font-size-lg);
     opacity: 0.9;
+    color: var(--color-white);
 }
 
 /* Hero Section */

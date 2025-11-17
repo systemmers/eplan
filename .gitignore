@@ -45,3 +45,17 @@ eplan.db
 .DS_Store
 Thumbs.db
 
+# Development tools
+.playwright-mcp/
+
+# Documentation (Claude-generated)
+claudedocs/
+
+# Temporary content
+contents/
+
+# Styleguide (개발용 샘플)
+styleguide/*.html
+styleguide/**/*.html
+!styleguide/README.md
+
