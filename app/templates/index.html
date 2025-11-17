@@ -6,7 +6,7 @@
 <!-- Hero Section -->
 <section class="hero-section hero-video">
     <video class="hero-video__background" autoplay muted loop playsinline>
-        <source src="{{ url_for('static', filename='videos/landing4.mp4') }}" type="video/mp4">
+        <source src="{{ static_url('videos/landing4.mp4') }}" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     
@@ -410,13 +410,13 @@
                 '경찰청', '소방청', '문화재청', '특허청', '조달청'
             ] %}
             {% for i in range(55) %}
-            <img src="{{ url_for('static', filename='images/clients/client-%02d.jpg'|format(i + 1)) }}"
+            <img src="{{ static_url('images/clients/client-%02d.jpg'|format(i + 1)) }}"
                  alt="{{ client_names[i] }}"
                  class="client-logo">
             {% endfor %}
             <!-- 무한 스크롤을 위한 이미지 복제 -->
             {% for i in range(55) %}
-            <img src="{{ url_for('static', filename='images/clients/client-%02d.jpg'|format(i + 1)) }}"
+            <img src="{{ static_url('images/clients/client-%02d.jpg'|format(i + 1)) }}"
                  alt="{{ client_names[i] }}"
                  class="client-logo">
             {% endfor %}

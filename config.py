@@ -29,6 +29,12 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     DEBUG = False
 
+    # GAE에서는 /tmp만 쓰기 가능
+    SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/eplan.db'
+
+    # Cloud Storage URL (환경 변수로 설정)
+    STATIC_URL_PREFIX = os.environ.get('STATIC_URL_PREFIX', '')
+
 
 config = {
     'development': DevelopmentConfig,
