@@ -1,0 +1,170 @@
+/* Curriculum Roadmap Page Styles */
+/* 커리큘럼 로드맵 페이지 전용 스타일 */
+
+/* Page Header */
+.page-header--curriculum {
+    background: var(--gradient-header);
+    color: var(--color-white);
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    border-radius: var(--border-radius-lg);
+}
+
+.page-header--curriculum h1 {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-md);
+}
+
+.page-header--curriculum p {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+}
+
+/* Legend */
+.curriculum-legend {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-2xl);
+    margin-top: var(--spacing-2xl);
+}
+
+.curriculum-legend h2 {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    background: var(--gradient-header);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-lg);
+}
+
+.curriculum-legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.curriculum-legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.curriculum-legend-color {
+    width: 50px;
+    height: 35px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.curriculum-legend-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Legend 색상 가이드용 레벨 색상 */
+.curriculum-legend-color.lv1 {
+    background: var(--gradient-lv1);
+}
+.curriculum-legend-color.lv2 {
+    background: var(--gradient-lv2);
+}
+.curriculum-legend-color.lv3 {
+    background: var(--gradient-lv3);
+}
+.curriculum-legend-color.lv4 {
+    background: var(--gradient-lv4);
+}
+.curriculum-legend-color.lv5 {
+    background: var(--gradient-lv5);
+}
+.curriculum-legend-color.lv6 {
+    background: var(--gradient-lv6);
+}
+.curriculum-legend-color.lv7 {
+    background: var(--gradient-lv7);
+}
+.curriculum-legend-color.lv8 {
+    background: var(--gradient-lv8);
+}
+.curriculum-legend-color.lv9 {
+    background: var(--gradient-lv9);
+}
+.curriculum-legend-color.lv10 {
+    background: var(--gradient-lv10);
+}
+
+/* ===== Responsive Design ===== */
+
+@media (max-width: 768px) {
+    .page-header--curriculum {
+        padding: var(--spacing-2xl) var(--spacing-md);
+    }
+
+    .page-header--curriculum h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .page-header--curriculum p {
+        font-size: var(--font-size-md);
+    }
+
+    .curriculum-legend {
+        padding: var(--spacing-lg);
+    }
+
+    .curriculum-legend h2 {
+        font-size: var(--font-size-xl);
+    }
+
+    .curriculum-table {
+        font-size: var(--font-size-xs);
+    }
+
+    .curriculum-table th,
+    .curriculum-table td {
+        padding: var(--spacing-sm);
+    }
+
+    .textbook-thumbnail {
+        width: 67.5px;
+        height: 90px;
+    }
+
+    .textbook-cell-content {
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-xs);
+    }
+
+    /* 모달 반응형 */
+    .modal__content--curriculum {
+        width: 95%;
+        max-height: 95vh;
+        padding: var(--spacing-lg);
+    }
+
+    .modal__header {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .modal__title {
+        font-size: var(--font-size-xl);
+    }
+
+    .modal__body {
+        padding: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .curriculum-legend-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}

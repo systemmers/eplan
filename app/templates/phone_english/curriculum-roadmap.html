@@ -1,0 +1,384 @@
+{% extends "base.html" %}
+
+{% block title %}커리큘럼 로드맵 - 전화영어 - ePlan{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header page-header--curriculum">
+    <div class="container">
+        <h1>커리큘럼 로드맵</h1>
+        <p>레벨별 교재 구성 및 학습 경로</p>
+    </div>
+</section>
+
+<!-- Curriculum Table Section -->
+<section>
+    <div class="container">
+        <div class="curriculum-table-wrapper">
+            <div class="curriculum-scroll-notice">
+                ← 좌우로 스크롤하여 전체 로드맵을 확인하세요 →
+            </div>
+            <div class="curriculum-table-scroll">
+                <table class="curriculum-table">
+                    <thead>
+                        <!-- 1줄: 초급/중급/고급 그룹 -->
+                        <tr>
+                            <th rowspan="3">Category</th>
+                            <th colspan="6" class="level-group">Beginner</th>
+                            <th colspan="8" class="level-group">Intermediate</th>
+                            <th colspan="6" class="level-group">Advanced</th>
+                        </tr>
+                        <!-- 2줄: 메인 레벨 (Level 1~10) -->
+                        <tr>
+                            <th colspan="2" class="lv1">Level 1</th>
+                            <th colspan="2" class="lv2">Level 2</th>
+                            <th colspan="2" class="lv3">Level 3</th>
+                            <th colspan="2" class="lv4">Level 4</th>
+                            <th colspan="2" class="lv5">Level 5</th>
+                            <th colspan="2" class="lv6">Level 6</th>
+                            <th colspan="2" class="lv7">Level 7</th>
+                            <th colspan="2" class="lv8">Level 8</th>
+                            <th colspan="2" class="lv9">Level 9</th>
+                            <th colspan="2" class="lv10">Level 10</th>
+                        </tr>
+                        <!-- 3줄: 서브 레벨 (L/H) -->
+                        <tr>
+                            <th class="lv1">L</th><th class="lv1">H</th>
+                            <th class="lv2">L</th><th class="lv2">H</th>
+                            <th class="lv3">L</th><th class="lv3">H</th>
+                            <th class="lv4">L</th><th class="lv4">H</th>
+                            <th class="lv5">L</th><th class="lv5">H</th>
+                            <th class="lv6">L</th><th class="lv6">H</th>
+                            <th class="lv7">L</th><th class="lv7">H</th>
+                            <th class="lv8">L</th><th class="lv8">H</th>
+                            <th class="lv9">L</th><th class="lv9">H</th>
+                            <th class="lv10">L</th><th class="lv10">H</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- General English -->
+                        <tr>
+                            <th rowspan="5" class="category-general"><span>General English</span></th>
+                            <td colspan="10" class="textbook-cell lvbg2_7" data-textbook-ids='["sc-starter","sc-main","sbs-1-3"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Smart Choice Starter 1~5</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/sc-starter.jpg') }}" alt="Smart Choice Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/sc-main.jpg') }}" alt="Smart Choice" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/sbs-1-3.jpg') }}" alt="Side by Side 1~3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg6_9" data-textbook-ids='["sc-main","sbs-4-7"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Smart Choice 1~5</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/sc-main.jpg') }}" alt="Smart Choice" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/sbs-4-7.jpg') }}" alt="Side by Side 4~7" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="textbook-cell lvbg1_3" data-textbook-ids='["sbs-1-3","sc-starter","touchstone-1-4","interchange-intro"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Side by Side 1~3</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/sbs-1-3.jpg') }}" alt="Side by Side 1~3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/sc-starter.jpg') }}" alt="Smart Choice Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-1-4.jpg') }}" alt="Touchstone 1~4" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/interchange-intro.jpg') }}" alt="Interchange Intro" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="8" class="textbook-cell lvbg4_7" data-textbook-ids='["sbs-4-7","touchstone-5-7","interchange-2-3"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Side by Side 4~7</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/sbs-4-7.jpg') }}" alt="Side by Side 4~7" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-5-7.jpg') }}" alt="Touchstone 5~7" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/interchange-2-3.jpg') }}" alt="Interchange 2~3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook-ids='["sbs-plus","passages","touchstone-8-10","conversation-strategies","business-venture-plus"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Side by Side Plus</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/sbs-plus.jpg') }}" alt="Side by Side Plus" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/passages.jpg') }}" alt="Passages" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-8-10.jpg') }}" alt="Touchstone 8~10" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/conversation-strategies.jpg') }}" alt="Conversation Strategies" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-plus.jpg') }}" alt="Business Venture Plus" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8" class="textbook-cell lvbg2_7" data-textbook-ids='["touchstone-1-4","american-headway","lets-talk"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Touchstone 1~4</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-1-4.jpg') }}" alt="Touchstone 1~4" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/american-headway.jpg') }}" alt="American Headway" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/lets-talk.jpg') }}" alt="Let's Talk" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg5_8" data-textbook-ids='["touchstone-5-7","speak-up-main"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Touchstone 5~7</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-5-7.jpg') }}" alt="Touchstone 5~7" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/speak-up-main.jpg') }}" alt="Speak Up" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook-ids='["touchstone-8-10","market-leader-advanced","business-venture-3","passages"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Touchstone 8~10</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-8-10.jpg') }}" alt="Touchstone 8~10" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/market-leader-advanced.jpg') }}" alt="Market Leader Advanced" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-3.jpg') }}" alt="Business Venture 3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/passages.jpg') }}" alt="Passages" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="textbook-cell lvbg1_3" data-textbook-ids='["interchange-intro","business-venture-1-2","market-leader-basic"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Interchange Intro~1</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/interchange-intro.jpg') }}" alt="Interchange Intro" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-1-2.jpg') }}" alt="Business Venture 1~2" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/market-leader-basic.jpg') }}" alt="Market Leader Basic" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="8" class="textbook-cell lvbg4_7" data-textbook-ids='["interchange-2-3","conversation-strategies"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Interchange 2~3</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/interchange-2-3.jpg') }}" alt="Interchange 2~3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook-ids='["passages","sbs-plus","touchstone-8-10","conversation-strategies"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Passages 1~2</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/passages.jpg') }}" alt="Passages" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/sbs-plus.jpg') }}" alt="Side by Side Plus" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-8-10.jpg') }}" alt="Touchstone 8~10" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/conversation-strategies.jpg') }}" alt="Conversation Strategies" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="20" class="textbook-cell lvbg2_7" data-textbook-ids='["american-headway","sc-starter","touchstone-1-4"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">American Headway Starter~5</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/american-headway.jpg') }}" alt="American Headway" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/sc-starter.jpg') }}" alt="Smart Choice Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-1-4.jpg') }}" alt="Touchstone 1~4" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Pre-Talking -->
+                        <tr>
+                            <th rowspan="2" class="category-pretalking"><span>Pre-Talking</span></th>
+                            <td colspan="10" class="textbook-cell lvbg3_5" data-textbook-ids='["speak-up-starter","lets-talk","business-result","sc-starter"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Speak Up Starter~3</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/speak-up-starter.jpg') }}" alt="Speak Up Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/lets-talk.jpg') }}" alt="Let's Talk" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-result.jpg') }}" alt="Business Result" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/sc-starter.jpg') }}" alt="Smart Choice Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg6_9" data-textbook-ids='["speak-up-main","conversation-strategies","sc-main"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Speak Up 1~5</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/speak-up-main.jpg') }}" alt="Speak Up" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/conversation-strategies.jpg') }}" alt="Conversation Strategies" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/sc-main.jpg') }}" alt="Smart Choice" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg1_3" data-textbook-ids='["lets-talk","speak-up-starter"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Let's Talk 1~3</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/lets-talk.jpg') }}" alt="Let's Talk" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/speak-up-starter.jpg') }}" alt="Speak Up Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg7_10" data-textbook-ids='["conversation-strategies","passages","market-leader-advanced","touchstone-8-10"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Conversation Strategies</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/conversation-strategies.jpg') }}" alt="Conversation Strategies" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/speak-up-main.jpg') }}" alt="Speak Up" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/passages.jpg') }}" alt="Passages" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/market-leader-advanced.jpg') }}" alt="Market Leader Advanced" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-8-10.jpg') }}" alt="Touchstone 8~10" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Business English -->
+                        <tr>
+                            <th rowspan="3" class="category-business"><span>Business English</span></th>
+                            <td colspan="8" class="textbook-cell lvbg1_3" data-textbook-ids='["business-venture-1-2","market-leader-basic","business-result","interchange-intro"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Business Venture 1~2</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-1-2.jpg') }}" alt="Business Venture 1~2" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/market-leader-basic.jpg') }}" alt="Market Leader Basic" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-result.jpg') }}" alt="Business Result" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/interchange-intro.jpg') }}" alt="Interchange Intro" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="8" class="textbook-cell lvbg5_8" data-textbook-ids='["business-venture-3","business-result","touchstone-5-7"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Business Venture 3</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-3.jpg') }}" alt="Business Venture 3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-result.jpg') }}" alt="Business Result" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-5-7.jpg') }}" alt="Touchstone 5~7" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="4" class="textbook-cell lvbg8_10" data-textbook-ids='["business-venture-plus","market-leader-advanced"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Business Venture Plus</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-plus.jpg') }}" alt="Business Venture Plus" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/market-leader-advanced.jpg') }}" alt="Market Leader Advanced" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg1_3" data-textbook-ids='["market-leader-basic","business-venture-1-2","business-result"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Market Leader Elementary~Pre-Intermediate</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/market-leader-basic.jpg') }}" alt="Market Leader Basic" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-1-2.jpg') }}" alt="Business Venture 1~2" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-result.jpg') }}" alt="Business Result" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg7_10" data-textbook-ids='["market-leader-advanced","business-venture-plus","conversation-strategies","passages"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Market Leader Intermediate~Advanced</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/market-leader-advanced.jpg') }}" alt="Market Leader Advanced" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-plus.jpg') }}" alt="Business Venture Plus" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/conversation-strategies.jpg') }}" alt="Conversation Strategies" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/passages.jpg') }}" alt="Passages" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="20" class="textbook-cell lvbg3_5" data-textbook-ids='["business-result","market-leader-basic","business-venture-1-2","business-venture-3"]'>
+                                <div class="textbook-cell-content">
+                                    <span class="textbook-name">Business Result Elementary~Advanced</span>
+                                    <div class="textbook-images">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-result.jpg') }}" alt="Business Result" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/market-leader-basic.jpg') }}" alt="Market Leader Basic" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-1-2.jpg') }}" alt="Business Venture 1~2" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-3.jpg') }}" alt="Business Venture 3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="curriculum-legend">
+            <h2>레벨 가이드</h2>
+            <div class="curriculum-legend-grid">
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv1"></div>
+                    <span class="curriculum-legend-label">Level 1</span>
+                </div>
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv2"></div>
+                    <span class="curriculum-legend-label">Level 2</span>
+                </div>
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv3"></div>
+                    <span class="curriculum-legend-label">Level 3</span>
+                </div>
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv4"></div>
+                    <span class="curriculum-legend-label">Level 4</span>
+                </div>
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv5"></div>
+                    <span class="curriculum-legend-label">Level 5</span>
+                </div>
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv6"></div>
+                    <span class="curriculum-legend-label">Level 6</span>
+                </div>
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv7"></div>
+                    <span class="curriculum-legend-label">Level 7</span>
+                </div>
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv8"></div>
+                    <span class="curriculum-legend-label">Level 8</span>
+                </div>
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv9"></div>
+                    <span class="curriculum-legend-label">Level 9</span>
+                </div>
+                <div class="curriculum-legend-item">
+                    <div class="curriculum-legend-color lv10"></div>
+                    <span class="curriculum-legend-label">Level 10</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Curriculum Modal -->
+<div class="modal" id="curriculumModal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content modal__content--curriculum">
+        <div class="modal__header modal__header--curriculum">
+            <h2 class="modal__title">교재 정보</h2>
+            <button class="modal__close" aria-label="닫기">&times;</button>
+        </div>
+        <div class="modal__body modal__body--curriculum" id="curriculumModalContent">
+            <!-- Dynamic content loaded by JavaScript -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/textbookData.js') }}"></script>
+<script src="{{ url_for('static', filename='js/curriculum.js') }}"></script>
+{% endblock %}

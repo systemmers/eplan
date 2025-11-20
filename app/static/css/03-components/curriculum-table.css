@@ -1,0 +1,263 @@
+/* Curriculum Table Component */
+/* 테이블 구조 및 레벨 시스템 스타일 */
+
+/* Table Wrapper */
+.curriculum-table-wrapper {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.curriculum-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile Scroll Notice */
+.curriculum-scroll-notice {
+    display: none;
+    background: var(--gradient-header);
+    color: var(--color-white);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+@media (max-width: 1024px) {
+    .curriculum-scroll-notice {
+        display: block;
+    }
+
+    .curriculum-table-scroll {
+        overflow-x: scroll;
+    }
+}
+
+/* Curriculum Table */
+.curriculum-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-sm);
+    table-layout: fixed;
+}
+
+.curriculum-table thead {
+    background: var(--gradient-header);
+    color: var(--color-white);
+    height: 120px;
+}
+
+.curriculum-table th {
+    padding: var(--spacing-md);
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+    border: 1px solid var(--color-curriculum-header-border);
+    height: 40px;
+    font-family: var(--font-family-heading);
+}
+
+.curriculum-table td {
+    padding: var(--spacing-md);
+    text-align: center;
+    border: 1px solid var(--color-curriculum-border);
+    vertical-align: middle;
+    transition: all var(--transition-base);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+}
+
+.curriculum-table tbody th {
+    background: var(--gradient-lv1);
+    color: var(--color-text-dark);
+    font-weight: var(--font-weight-bold);
+    text-align: left;
+    white-space: normal;
+    word-break: break-word;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-family-heading);
+}
+
+/* 카테고리 셀 배경 이미지 */
+.curriculum-table tbody th::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.curriculum-table tbody th span {
+    position: relative;
+    z-index: 1;
+}
+
+/* 구분 컬럼 너비 고정 */
+.curriculum-table thead th:first-child,
+.curriculum-table tbody th:first-child {
+    width: 150px;
+    min-width: 150px;
+}
+
+/* 셀 오버플로우 방지 */
+.curriculum-table td,
+.curriculum-table th {
+    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Level Headers */
+.curriculum-table .level-group {
+    background: var(--gradient-header);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-md);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Level Backgrounds - Gradients ===== */
+.curriculum-table .lv1 {
+    background: var(--gradient-lv1);
+    color: var(--color-text-dark);
+}
+.curriculum-table .lv2 {
+    background: var(--gradient-lv2);
+    color: var(--color-text-dark);
+}
+.curriculum-table .lv3 {
+    background: var(--gradient-lv3);
+    color: var(--color-text-dark);
+}
+.curriculum-table .lv4 {
+    background: var(--gradient-lv4);
+    color: var(--color-text-dark);
+}
+.curriculum-table .lv5 {
+    background: var(--gradient-lv5);
+    color: var(--color-white);
+}
+.curriculum-table .lv6 {
+    background: var(--gradient-lv6);
+    color: var(--color-text-dark);
+}
+.curriculum-table .lv7 {
+    background: var(--gradient-lv7);
+    color: var(--color-text-dark);
+}
+.curriculum-table .lv8 {
+    background: var(--gradient-lv8);
+    color: var(--color-white);
+}
+.curriculum-table .lv9 {
+    background: var(--gradient-lv9);
+    color: var(--color-white);
+}
+.curriculum-table .lv10 {
+    background: var(--gradient-lv10);
+    color: var(--color-white);
+}
+
+/* ===== Textbook Cells ===== */
+.textbook-cell {
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Gradient Textbook Backgrounds */
+.lvbg1_3 {
+    background: var(--gradient-textbook-1-3);
+    color: var(--color-white);
+}
+.lvbg2_7 {
+    background: var(--gradient-textbook-2-7);
+    color: var(--color-white);
+}
+.lvbg3_5 {
+    background: var(--gradient-textbook-3-5);
+    color: var(--color-white);
+}
+.lvbg4_7 {
+    background: var(--gradient-textbook-4-7);
+    color: var(--color-text-dark);
+}
+.lvbg5_8 {
+    background: var(--gradient-textbook-5-8);
+    color: var(--color-text-dark);
+}
+.lvbg6_9 {
+    background: var(--gradient-textbook-6-9);
+    color: var(--color-white);
+}
+.lvbg7_10 {
+    background: var(--gradient-textbook-7-10);
+    color: var(--color-text-dark);
+}
+.lvbg8_10 {
+    background: var(--gradient-textbook-8-10);
+    color: var(--color-text-dark);
+}
+
+/* Textbook Cell with Thumbnail */
+.textbook-cell-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    padding: var(--spacing-md);
+}
+
+.textbook-name {
+    width: 100%;
+    text-align: center;
+    word-break: break-word;
+    line-height: var(--line-height-base);
+    order: -1;
+    font-weight: var(--font-weight-bold);
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: var(--font-family-heading);
+}
+
+.textbook-images {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    min-height: 120px;
+    width: 100%;
+    padding-left: var(--spacing-sm);
+}
+
+.textbook-thumbnail {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    position: relative;
+}
+
+.textbook-thumbnail:not(:first-child) {
+    margin-left: -60px;
+}
+
+.textbook-thumbnail:hover {
+    transform: scale(1.05) translateY(-5px);
+    z-index: 10;
+    box-shadow: var(--shadow-lg);
+}

@@ -94,3 +94,195 @@
     max-width: 1000px;
 }
 
+/* ===== Curriculum Modal Variant ===== */
+
+.modal__content--curriculum {
+    max-width: 900px;
+    padding: 0;
+}
+
+.modal__header--curriculum {
+    background: var(--gradient-header);
+    color: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    margin-bottom: 0;
+}
+
+.modal__header--curriculum .modal__title {
+    color: var(--color-white);
+    font-family: var(--font-family-heading);
+}
+
+.modal__header--curriculum .modal__close {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+}
+
+.modal__header--curriculum .modal__close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modal__body--curriculum {
+    padding: var(--spacing-2xl);
+}
+
+/* Curriculum Modal - Cover Image */
+.curriculum-modal-cover {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto var(--spacing-xl);
+    display: block;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+/* Curriculum Modal - Meta Info */
+.curriculum-modal-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--gradient-modal-meta);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.curriculum-modal-meta-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.curriculum-modal-meta-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.curriculum-modal-meta-value {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-dark);
+}
+
+/* Curriculum Modal - Section */
+.curriculum-modal-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.curriculum-modal-section h3 {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-dark);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-teal-medium);
+}
+
+/* Curriculum Modal - Objectives List */
+.curriculum-modal-objectives {
+    list-style: none;
+    padding: 0;
+}
+
+.curriculum-modal-objectives li {
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-xl);
+    position: relative;
+    color: var(--color-text-dark);
+    line-height: var(--line-height-relaxed);
+}
+
+.curriculum-modal-objectives li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-teal-medium);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+}
+
+/* Curriculum Modal - Samples Grid */
+.curriculum-modal-samples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.curriculum-modal-sample-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.curriculum-modal-sample-image:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Curriculum Modal - Textbook Grid (다중 교재 선택) */
+.curriculum-modal-textbook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--gradient-modal-textbook-grid);
+    border-radius: var(--border-radius-md);
+    border: 2px solid var(--color-teal-lightest);
+}
+
+.curriculum-modal-textbook-grid-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.curriculum-modal-textbook-thumbnail {
+    cursor: pointer;
+    text-align: center;
+    transition: transform var(--transition-base), background var(--transition-base);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+    border: 2px solid transparent;
+}
+
+.curriculum-modal-textbook-thumbnail:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-md);
+}
+
+.curriculum-modal-textbook-thumbnail.is-active {
+    background: var(--color-teal-lightest);
+    border-color: var(--color-teal-medium);
+}
+
+.curriculum-modal-textbook-thumbnail img {
+    width: 100%;
+    max-width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.curriculum-modal-textbook-thumbnail span {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-tight);
+    word-break: break-word;
+}
+

@@ -61,6 +61,12 @@ def phone_english_detail(curriculum):
     return render_template(f'phone_english/{curriculum}.html')
 
 
+@main.route('/phone-english/curriculum-roadmap')
+def curriculum_roadmap():
+    """전화영어 커리큘럼 로드맵 페이지"""
+    return render_template('phone_english/curriculum-roadmap.html')
+
+
 @main.route('/corporate-programs')
 def corporate_programs():
     return render_template('corporate/index.html')

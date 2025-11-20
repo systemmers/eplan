@@ -96,5 +96,42 @@
     --bp-mobile: 768px;
     --bp-tablet: 1024px;
     --bp-desktop: 1200px;
+
+    /* ===== 커리큘럼 전용 색상 (Curriculum-specific) ===== */
+
+    /* Level 배경 그라데이션 */
+    --gradient-lv1: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    --gradient-lv2: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    --gradient-lv3: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    --gradient-lv4: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    --gradient-lv5: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-lv6: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --gradient-lv7: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --gradient-lv8: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-lv9: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-lv10: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+    /* 교재 셀 배경 그라데이션 */
+    --gradient-textbook-1-3: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-textbook-2-7: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-textbook-3-5: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-textbook-4-7: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --gradient-textbook-5-8: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --gradient-textbook-6-9: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+    --gradient-textbook-7-10: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    --gradient-textbook-8-10: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+
+    /* 헤더 및 페이지 배경 그라데이션 */
+    --gradient-header: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-page-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+    /* 모달 메타 섹션 배경 */
+    --gradient-modal-meta: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 20%);
+    --gradient-modal-textbook-grid: linear-gradient(135deg, #f5f7fa 0%, #e3e9f2 100%);
+
+    /* 커리큘럼 특화 색상 */
+    --color-curriculum-border: rgba(0, 0, 0, 0.05);
+    --color-curriculum-header-border: rgba(255, 255, 255, 0.2);
+    --color-curriculum-accent: #667eea;
 }
 
