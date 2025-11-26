@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography Components</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f0f0f0;
+            padding: 40px 20px;
+        }
+
+        .style-label {
+            background: #000;
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        .component-wrapper {
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ========================================
+           COMPONENT 1: Hero Quote
+        ======================================== */
+        .quote-hero {
+            background: #0a0a0a;
+            padding: 80px 60px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-hero::before {
+            content: '"';
+            position: absolute;
+            top: -40px;
+            left: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 300px;
+            color: rgba(212,175,55,0.1);
+            line-height: 1;
+        }
+
+        .quote-hero .quote-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.4;
+            color: #fff;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-hero .quote-author {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-hero .quote-author::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: #D4AF37;
+        }
+
+        .quote-hero .author-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #D4AF37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .quote-hero .author-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.5);
+            margin-top: 4px;
+        }
+
+        /* ========================================
+           COMPONENT 2: Stats Card
+        ======================================== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .stat-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #D4AF37, #B8960C);
+        }
+
+        .stat-card .number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            color: #1a1a1a;
+            letter-spacing: 2px;
+        }
+
+        .stat-card .number span {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: #D4AF37;
+        }
+
+        .stat-card .label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 12px;
+        }
+
+        /* ========================================
+           COMPONENT 3: Feature List
+        ======================================== */
+        .feature-list {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 24px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .feature-list {
+                grid-template-columns: 1fr;
+                padding: 40px 24px;
+            }
+        }
+
+        .feature-list .header {
+            grid-column: 1 / -1;
+        }
+
+        .feature-list .header .label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #D4AF37;
+            margin-bottom: 12px;
+        }
+
+        .feature-list .header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .feature-item .number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(212,175,55,0.4);
+            flex-shrink: 0;
+        }
+
+        .feature-item h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ========================================
+           COMPONENT 4: Blog Card
+        ======================================== */
+        .blog-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 768px) {
+            .blog-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .blog-card .image {
+            background: linear-gradient(135deg, #D4AF37, #B8960C);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-card .image span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.2);
+        }
+
+        .blog-card .content {
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blog-card .meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .blog-card .category {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #D4AF37;
+            background: rgba(212,175,55,0.1);
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .blog-card .date {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .blog-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        .blog-card .excerpt {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        .blog-card .author {
+            margin-top: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .blog-card .author-avatar {
+            width: 40px;
+            height: 40px;
+            background: #eee;
+            border-radius: 50%;
+        }
+
+        .blog-card .author-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .blog-card .author-role {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        /* ========================================
+           COMPONENT 5: Pricing Card
+        ======================================== */
+        .pricing-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 400px;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card.featured {
+            border-color: #D4AF37;
+        }
+
+        .pricing-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #D4AF37, #B8960C);
+            color: #000;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+
+        .pricing-card .plan-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .currency {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .pricing-card .amount {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            line-height: 1;
+            color: #1a1a1a;
+            letter-spacing: 2px;
+        }
+
+        .pricing-card .period {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .pricing-card .description {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-card .features {
+            list-style: none;
+        }
+
+        .pricing-card .features li {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #444;
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pricing-card .features li::before {
+            content: '✓';
+            color: #D4AF37;
+            font-weight: bold;
+        }
+
+        /* ========================================
+           COMPONENT 6: Testimonial
+        ======================================== */
+        .testimonial {
+            background: #0a0a0a;
+            border-radius: 24px;
+            padding: 60px;
+            display: flex;
+            gap: 48px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial {
+                flex-direction: column;
+                padding: 40px 24px;
+                text-align: center;
+            }
+        }
+
+        .testimonial .avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #D4AF37, #B8960C);
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial .avatar span {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #000;
+        }
+
+        .testimonial .content {
+            flex: 1;
+        }
+
+        .testimonial .stars {
+            color: #D4AF37;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .testimonial .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.6;
+            color: #fff;
+            margin-bottom: 24px;
+        }
+
+        .testimonial .author-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial .author-info {
+                justify-content: center;
+            }
+        }
+
+        .testimonial .author-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #D4AF37;
+        }
+
+        .testimonial .divider {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .testimonial .author-company {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ========================================
+           COMPONENT 7: Timeline
+        ======================================== */
+        .timeline {
+            background: #fff;
+            border-radius: 24px;
+            padding: 60px;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .timeline-header .label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #D4AF37;
+            margin-bottom: 12px;
+        }
+
+        .timeline-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+
+        .timeline-items {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .timeline-items::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 60px;
+            right: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #D4AF37, #B8960C);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-items {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .timeline-items::before {
+                display: none;
+            }
+        }
+
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            flex: 1;
+        }
+
+        .timeline-item .dot {
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            border: 3px solid #D4AF37;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-item .dot span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: #D4AF37;
+        }
+
+        .timeline-item .year {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #888;
+            max-width: 180px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           COMPONENT 8: CTA Section
+        ======================================== */
+        .cta-section {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8960C 100%);
+            border-radius: 24px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: 'START';
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15rem;
+            color: rgba(0,0,0,0.05);
+            white-space: nowrap;
+        }
+
+        .cta-section .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section .label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.5);
+            margin-bottom: 16px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #000;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            color: rgba(0,0,0,0.6);
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .cta-section .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #000;
+            color: #D4AF37;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .cta-section .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ========================================
+           COMPONENT 9: Article Header
+        ======================================== */
+        .article-header {
+            background: #fff;
+            border-radius: 24px;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .article-header .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .article-header .breadcrumb span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .article-header .breadcrumb .current {
+            color: #D4AF37;
+        }
+
+        .article-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            color: #1a1a1a;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: 0 auto 24px;
+        }
+
+        .article-header h1 em {
+            font-style: italic;
+            color: #B8960C;
+        }
+
+        .article-header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .article-header .meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .article-header .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .article-header .meta-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #bbb;
+        }
+
+        .article-header .meta-value {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        /* ========================================
+           COMPONENT 10: Profile Card
+        ======================================== */
+        .profile-card {
+            background: #0a0a0a;
+            border-radius: 24px;
+            padding: 60px;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 40px 24px;
+            }
+        }
+
+        .profile-card .avatar-section {
+            flex-shrink: 0;
+        }
+
+        .profile-card .avatar {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #D4AF37, #B8960C);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-card .avatar span {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #000;
+        }
+
+        .profile-card .social {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .profile-card .social a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .profile-card .info {
+            flex: 1;
+        }
+
+        .profile-card .role {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #D4AF37;
+            margin-bottom: 8px;
+        }
+
+        .profile-card .name {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .profile-card .bio {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 24px;
+            max-width: 500px;
+        }
+
+        .profile-card .stats {
+            display: flex;
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card .stats {
+                justify-content: center;
+            }
+        }
+
+        .profile-card .stat-item .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .profile-card .stat-item .stat-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- COMPONENT 1: Hero Quote -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 1 — Hero Quote</div>
+        <div class="quote-hero">
+            <p class="quote-text">The only way to do great work is to love what you do. Innovation distinguishes between a leader and a follower.</p>
+            <div class="quote-author">
+                <div>
+                    <div class="author-name">Steve Jobs</div>
+                    <div class="author-title">Co-founder of Apple Inc.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT 2: Stats Card -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 2 — Stats Cards</div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">500<span>+</span></div>
+                <div class="label">Students Trained</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">98<span>%</span></div>
+                <div class="label">Success Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">15<span>+</span></div>
+                <div class="label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">24<span>/7</span></div>
+                <div class="label">Support Available</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT 3: Feature List -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 3 — Feature List</div>
+        <div class="feature-list">
+            <div class="header">
+                <div class="label">What We Offer</div>
+                <h2>Program Features</h2>
+            </div>
+            <div class="feature-item">
+                <div class="number">01</div>
+                <div>
+                    <h3>Personalized Learning</h3>
+                    <p>Customized curriculum tailored to your specific goals and learning pace.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="number">02</div>
+                <div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals with years of real-world experience.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="number">03</div>
+                <div>
+                    <h3>Flexible Schedule</h3>
+                    <p>Choose between intensive bootcamp or part-time learning options.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="number">04</div>
+                <div>
+                    <h3>Career Support</h3>
+                    <p>Get guidance on job placement and professional development.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT 4: Blog Card -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 4 — Blog Card</div>
+        <div class="blog-card">
+            <div class="image">
+                <span>EP</span>
+            </div>
+            <div class="content">
+                <div class="meta">
+                    <span class="category">Business</span>
+                    <span class="date">Nov 25, 2025</span>
+                </div>
+                <h2>The Future of Global Business Communication</h2>
+                <p class="excerpt">Discover how modern professionals are adapting to the changing landscape of international business and what skills will be most valuable in the coming decade.</p>
+                <div class="author">
+                    <div class="author-avatar"></div>
+                    <div>
+                        <div class="author-name">Sarah Johnson</div>
+                        <div class="author-role">Senior Editor</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT 5: Pricing Card -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 5 — Pricing Card</div>
+        <div class="pricing-card featured">
+            <div class="badge">Most Popular</div>
+            <div class="plan-name">Professional</div>
+            <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">299</span>
+                <span class="period">/month</span>
+            </div>
+            <p class="description">Perfect for professionals looking to advance their business communication skills quickly and effectively.</p>
+            <ul class="features">
+                <li>Unlimited access to all courses</li>
+                <li>1-on-1 coaching sessions</li>
+                <li>Certificate upon completion</li>
+                <li>Priority support</li>
+                <li>Exclusive webinars</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- COMPONENT 6: Testimonial -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 6 — Testimonial</div>
+        <div class="testimonial">
+            <div class="avatar">
+                <span>JK</span>
+            </div>
+            <div class="content">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"This program completely transformed my approach to business communication. The instructors were exceptional, and the practical exercises gave me confidence I never had before."</p>
+                <div class="author-info">
+                    <span class="author-name">Jennifer Kim</span>
+                    <span class="divider">—</span>
+                    <span class="author-company">Marketing Director at TechCorp</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT 7: Timeline -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 7 — Timeline</div>
+        <div class="timeline">
+            <div class="timeline-header">
+                <div class="label">Our Journey</div>
+                <h2>Company Milestones</h2>
+            </div>
+            <div class="timeline-items">
+                <div class="timeline-item">
+                    <div class="dot"><span>1</span></div>
+                    <div class="year">2015</div>
+                    <h3>Foundation</h3>
+                    <p>Started with a vision to transform education</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="dot"><span>2</span></div>
+                    <div class="year">2018</div>
+                    <h3>Expansion</h3>
+                    <p>Opened new centers across the country</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="dot"><span>3</span></div>
+                    <div class="year">2021</div>
+                    <h3>Global Reach</h3>
+                    <p>Launched international programs</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="dot"><span>4</span></div>
+                    <div class="year">2024</div>
+                    <h3>Innovation</h3>
+                    <p>Introduced AI-powered learning tools</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT 8: CTA Section -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 8 — CTA Section</div>
+        <div class="cta-section">
+            <div class="content">
+                <div class="label">Ready to Begin?</div>
+                <h2>Start Your Journey Today</h2>
+                <p>Join thousands of successful professionals who have transformed their careers with our programs.</p>
+                <a href="#" class="btn">Get Started Now →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT 9: Article Header -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 9 — Article Header</div>
+        <div class="article-header">
+            <div class="breadcrumb">
+                <span>Home</span>
+                <span>/</span>
+                <span>Blog</span>
+                <span>/</span>
+                <span class="current">Article</span>
+            </div>
+            <h1>The Art of Effective <em>Communication</em> in Modern Business</h1>
+            <p class="subtitle">How mastering the subtle nuances of professional dialogue can elevate your career to new heights</p>
+            <div class="meta">
+                <div class="meta-item">
+                    <span class="meta-label">Author</span>
+                    <span class="meta-value">Michael Chen</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Published</span>
+                    <span class="meta-value">November 25, 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Read Time</span>
+                    <span class="meta-value">8 min read</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENT 10: Profile Card -->
+    <div class="component-wrapper">
+        <div class="style-label">Component 10 — Profile Card</div>
+        <div class="profile-card">
+            <div class="avatar-section">
+                <div class="avatar">
+                    <span>DL</span>
+                </div>
+                <div class="social">
+                    <a href="#">in</a>
+                    <a href="#">tw</a>
+                    <a href="#">ig</a>
+                </div>
+            </div>
+            <div class="info">
+                <div class="role">Lead Instructor</div>
+                <h2 class="name">David Lee</h2>
+                <p class="bio">"Passionate educator with over 15 years of experience in corporate training and business communication. Dedicated to helping professionals unlock their full potential."</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2,500+</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Exp.</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.9</div>
+                        <div class="stat-label">Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커리큘럼 로드맵 - ePlan 스타일가이드</title>
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ePlan 디자인 토큰 */
+        :root {
+            /* Colors - Teal Palette */
+            --color-teal-dark: #00635C;
+            --color-teal-medium: #029488;
+            --color-teal-light: #A1D6D0;
+            --color-teal-lightest: #E8F5F3;
+
+            /* Colors - Orange Palette */
+            --color-orange-warm: #F37335;
+            --color-orange-light: #FBD4C1;
+
+            /* Colors - Neutral */
+            --color-white: #FFFFFF;
+            --color-bg-white: #FAFAFA;
+            --color-text-dark: #333333;
+            --color-text-muted: #666666;
+            --color-border: #DDDDDD;
+            --color-border-light: #EEEEEE;
+
+            /* Level Colors */
+            --color-level-1: #D1F2EB;
+            --color-level-2: #A3E4D7;
+            --color-level-3: #76D7C4;
+            --color-level-4: #AED6F1;
+            --color-level-5: #85C1E2;
+            --color-level-6: #5DADE2;
+            --color-level-7: #D7BDE2;
+            --color-level-8: #C39BD3;
+            --color-level-9: #AF7AC5;
+            --color-level-10: #9B59B6;
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            --spacing-3xl: 64px;
+            --spacing-4xl: 96px;
+
+            /* Typography */
+            --font-family-primary: 'Open Sans', 'Noto Sans KR', sans-serif;
+            --font-family-heading: 'Poppins', 'Noto Sans KR', sans-serif;
+
+            --font-size-xs: 12px;
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 30px;
+            --font-size-4xl: 36px;
+
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+
+            --line-height-tight: 1.25;
+            --line-height-base: 1.5;
+            --line-height-relaxed: 1.75;
+
+            /* Effects */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-full: 9999px;
+
+            --transition-base: 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            color: var(--color-text-dark);
+            background: var(--color-bg-white);
+            padding: var(--spacing-2xl);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .header h1 {
+            font-family: var(--font-family-heading);
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-teal-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .header p {
+            color: var(--color-text-muted);
+            font-size: var(--font-size-lg);
+        }
+
+        /* Table Wrapper */
+        .table-wrapper {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Mobile Scroll Notice */
+        .scroll-notice {
+            display: none;
+            background: var(--color-teal-lightest);
+            color: var(--color-teal-dark);
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: center;
+            font-size: var(--font-size-sm);
+            border-bottom: 1px solid var(--color-teal-light);
+        }
+
+        @media (max-width: 1024px) {
+            .scroll-notice {
+                display: block;
+            }
+        }
+
+        /* Curriculum Table */
+        .curriculum-table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+            font-size: var(--font-size-sm);
+        }
+
+        .curriculum-table thead {
+            background: var(--color-teal-dark);
+            color: var(--color-white);
+        }
+
+        .curriculum-table th {
+            padding: var(--spacing-md);
+            text-align: center;
+            font-weight: var(--font-weight-semibold);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .curriculum-table td {
+            padding: var(--spacing-md);
+            text-align: center;
+            border: 1px solid var(--color-border-light);
+            vertical-align: middle;
+            transition: all var(--transition-base);
+        }
+
+        .curriculum-table tbody th {
+            background: var(--color-teal-lightest);
+            color: var(--color-teal-dark);
+            font-weight: var(--font-weight-semibold);
+            text-align: left;
+        }
+
+        /* Level Headers */
+        .curriculum-table .level-group {
+            background: var(--color-teal-medium);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-base);
+        }
+
+        .curriculum-table .lv1 { background: var(--color-level-1); color: var(--color-text-dark); }
+        .curriculum-table .lv2 { background: var(--color-level-2); color: var(--color-text-dark); }
+        .curriculum-table .lv3 { background: var(--color-level-3); color: var(--color-text-dark); }
+        .curriculum-table .lv4 { background: var(--color-level-4); color: var(--color-text-dark); }
+        .curriculum-table .lv5 { background: var(--color-level-5); color: var(--color-text-dark); }
+        .curriculum-table .lv6 { background: var(--color-level-6); color: var(--color-text-dark); }
+        .curriculum-table .lv7 { background: var(--color-level-7); color: var(--color-text-dark); }
+        .curriculum-table .lv8 { background: var(--color-level-8); color: var(--color-white); }
+        .curriculum-table .lv9 { background: var(--color-level-9); color: var(--color-white); }
+        .curriculum-table .lv10 { background: var(--color-level-10); color: var(--color-white); }
+
+        /* Textbook Cell Backgrounds */
+        .textbook-cell {
+            font-weight: var(--font-weight-medium);
+            cursor: default;
+        }
+
+        .textbook-cell:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Level Background Classes for Textbook Cells */
+        .lvbg1_3 { background: linear-gradient(135deg, var(--color-level-1), var(--color-level-3)); }
+        .lvbg2_7 { background: linear-gradient(135deg, var(--color-level-2), var(--color-level-7)); }
+        .lvbg3_5 { background: linear-gradient(135deg, var(--color-level-3), var(--color-level-5)); }
+        .lvbg4_7 { background: linear-gradient(135deg, var(--color-level-4), var(--color-level-7)); }
+        .lvbg5_8 { background: linear-gradient(135deg, var(--color-level-5), var(--color-level-8)); }
+        .lvbg6_9 { background: linear-gradient(135deg, var(--color-level-6), var(--color-level-9)); }
+        .lvbg7_10 { background: linear-gradient(135deg, var(--color-level-7), var(--color-level-10)); }
+        .lvbg8_10 { background: linear-gradient(135deg, var(--color-level-8), var(--color-level-10)); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+
+            .header h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .header p {
+                font-size: var(--font-size-base);
+            }
+
+            .curriculum-table {
+                font-size: var(--font-size-xs);
+            }
+
+            .curriculum-table th,
+            .curriculum-table td {
+                padding: var(--spacing-sm);
+            }
+        }
+
+        /* Legend */
+        .legend {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-xl);
+        }
+
+        .legend h2 {
+            font-family: var(--font-family-heading);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-teal-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .legend-color {
+            width: 40px;
+            height: 30px;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--color-border);
+        }
+
+        .legend-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>커리큘럼 로드맵</h1>
+            <p>레벨별 교재 구성 및 학습 경로</p>
+        </div>
+
+        <div class="table-wrapper">
+            <div class="scroll-notice">
+                ← 좌우로 스크롤하여 전체 로드맵을 확인하세요 →
+            </div>
+            <div class="table-scroll">
+                <table class="curriculum-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">구분</th>
+                            <th colspan="3" class="level-group">초급</th>
+                            <th colspan="4" class="level-group">중급</th>
+                            <th colspan="3" class="level-group">고급</th>
+                        </tr>
+                        <tr>
+                            <th class="lv1">Level 1</th>
+                            <th class="lv2">Level 2</th>
+                            <th class="lv3">Level 3</th>
+                            <th class="lv4">Level 4</th>
+                            <th class="lv5">Level 5</th>
+                            <th class="lv6">Level 6</th>
+                            <th class="lv7">Level 7</th>
+                            <th class="lv8">Level 8</th>
+                            <th class="lv9">Level 9</th>
+                            <th class="lv10">Level 10</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 일반회화 -->
+                        <tr>
+                            <th rowspan="5">일반회화</th>
+                            <td colspan="5" class="textbook-cell lvbg2_7">
+                                Smart Choice Starter 1~5
+                            </td>
+                            <td colspan="5" class="textbook-cell lvbg6_9">
+                                Smart Choice 1~5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="textbook-cell lvbg1_3">
+                                Side by Side 1~3
+                            </td>
+                            <td colspan="4" class="textbook-cell lvbg4_7">
+                                Side by Side 4~7
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg8_10">
+                                Side by Side Plus
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="textbook-cell lvbg2_7">
+                                Touchstone 1~4
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg5_8">
+                                Touchstone 5~7
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg8_10">
+                                Touchstone 8~10
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="textbook-cell lvbg1_3">
+                                Interchange Intro~1
+                            </td>
+                            <td colspan="4" class="textbook-cell lvbg4_7">
+                                Interchange 2~3
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg8_10">
+                                Passages 1~2
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg2_7">
+                                American Headway Starter~5
+                            </td>
+                        </tr>
+
+                        <!-- 프리토킹 -->
+                        <tr>
+                            <th rowspan="2">프리토킹</th>
+                            <td colspan="5" class="textbook-cell lvbg3_5">
+                                Speak Up Starter~3
+                            </td>
+                            <td colspan="5" class="textbook-cell lvbg6_9">
+                                Speak Up 1~5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="textbook-cell lvbg2_7">
+                                Let's Talk 1~3
+                            </td>
+                            <td colspan="5" class="textbook-cell lvbg7_10">
+                                Conversation Strategies
+                            </td>
+                        </tr>
+
+                        <!-- 회화특화 -->
+                        <tr>
+                            <th rowspan="3">회화특화</th>
+                            <td colspan="4" class="textbook-cell lvbg2_7">
+                                Real English Conversation 1~4
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg5_8">
+                                Real English Conversation 5~7
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg8_10">
+                                Advanced Discussion Topics
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="textbook-cell lvbg3_5">
+                                English in Common 1~5
+                            </td>
+                            <td colspan="5" class="textbook-cell lvbg6_9">
+                                English in Common 6~10
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg4_7">
+                                Impact Issues 1~3
+                            </td>
+                        </tr>
+
+                        <!-- 시험대비 -->
+                        <tr>
+                            <th rowspan="3">시험대비</th>
+                            <td colspan="4" class="textbook-cell lvbg3_5">
+                                TOEIC Speaking Starter~Intermediate
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg5_8">
+                                TOEIC Speaking Advanced
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg8_10">
+                                TOEIC Speaking Expert
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="textbook-cell lvbg2_7">
+                                OPIc IM1~IM2
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg5_8">
+                                OPIc IH
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg8_10">
+                                OPIc AL
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="textbook-cell lvbg4_7">
+                                IELTS Foundation~Intermediate
+                            </td>
+                            <td colspan="5" class="textbook-cell lvbg7_10">
+                                IELTS Advanced~Expert
+                            </td>
+                        </tr>
+
+                        <!-- 비즈니스 -->
+                        <tr>
+                            <th rowspan="3">비즈니스</th>
+                            <td colspan="4" class="textbook-cell lvbg3_5">
+                                Business Venture 1~2
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg5_8">
+                                Business Venture 3
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg8_10">
+                                Business Venture Plus
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="textbook-cell lvbg4_7">
+                                Market Leader Elementary~Pre-Intermediate
+                            </td>
+                            <td colspan="5" class="textbook-cell lvbg7_10">
+                                Market Leader Intermediate~Advanced
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg5_8">
+                                Business Result Elementary~Advanced
+                            </td>
+                        </tr>
+
+                        <!-- 주니어 -->
+                        <tr>
+                            <th rowspan="2">주니어</th>
+                            <td colspan="4" class="textbook-cell lvbg1_3">
+                                Kids Box Starter~2
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg4_7">
+                                Kids Box 3~5
+                            </td>
+                            <td colspan="3" class="textbook-cell lvbg7_10">
+                                Kids Box 6~8
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="textbook-cell lvbg2_7">
+                                Big English Starter~3
+                            </td>
+                            <td colspan="5" class="textbook-cell lvbg6_9">
+                                Big English 4~6
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <h2>레벨 색상 가이드</h2>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-color lv1"></div>
+                    <span class="legend-label">Level 1 - 입문</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv2"></div>
+                    <span class="legend-label">Level 2 - 초급 I</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv3"></div>
+                    <span class="legend-label">Level 3 - 초급 II</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv4"></div>
+                    <span class="legend-label">Level 4 - 중급 I</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv5"></div>
+                    <span class="legend-label">Level 5 - 중급 II</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv6"></div>
+                    <span class="legend-label">Level 6 - 중급 III</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv7"></div>
+                    <span class="legend-label">Level 7 - 중급 IV</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv8"></div>
+                    <span class="legend-label">Level 8 - 고급 I</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv9"></div>
+                    <span class="legend-label">Level 9 - 고급 II</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv10"></div>
+                    <span class="legend-label">Level 10 - 고급 III</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

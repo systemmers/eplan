@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Selector</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background-color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    /* Header Section */
+    .header {
+      width: 100%;
+      max-width: 42rem;
+      padding: 0 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.025em;
+      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInFromTop 0.8s ease-in-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    @media (min-width: 768px) {
+      .header h1 {
+        font-size: 3rem;
+      }
+    }
+
+    .header p {
+      font-size: 1.125rem;
+      color: #d1d5db;
+      font-weight: 500;
+      max-width: 36rem;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInFromTop 0.8s ease-in-out forwards;
+      animation-delay: 0.6s;
+    }
+
+    @media (min-width: 768px) {
+      .header p {
+        font-size: 1.25rem;
+      }
+    }
+
+    /* Spacer */
+    .spacer {
+      height: 3rem;
+    }
+
+    /* Options Container */
+    .options {
+      display: flex;
+      width: 100%;
+      max-width: 900px;
+      min-width: 600px;
+      height: 400px;
+      margin: 0;
+      align-items: stretch;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Option Card */
+    .option {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      min-width: 60px;
+      min-height: 100px;
+      margin: 0;
+      border-radius: 0;
+      border: 2px solid #292929;
+      cursor: pointer;
+      background-color: #18181b;
+      background-size: auto 120%;
+      background-position: center;
+      backface-visibility: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.30);
+      flex: 1 1 0%;
+      z-index: 1;
+      will-change: flex-grow, box-shadow, background-size, background-position;
+      
+      /* Initial state for entrance animation */
+      opacity: 0;
+      transform: translateX(-60px);
+      
+      /* Transitions */
+      transition: 
+        flex 0.7s ease-in-out,
+        box-shadow 0.7s ease-in-out,
+        background-size 0.7s ease-in-out,
+        border-color 0.7s ease-in-out,
+        opacity 0.5s ease-out,
+        transform 0.5s ease-out;
+    }
+
+    .option.animated {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .option.active {
+      flex: 7 1 0%;
+      border-color: #fff;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.50);
+      background-size: auto 100%;
+      z-index: 10;
+    }
+
+    /* Shadow overlay */
+    .option .shadow {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -40px;
+      height: 120px;
+      pointer-events: none;
+      box-shadow: inset 0 -120px 0px -120px #000, inset 0 -120px 0px -80px #000;
+      transition: all 0.7s ease-in-out;
+    }
+
+    .option.active .shadow {
+      bottom: 0;
+      box-shadow: inset 0 -120px 120px -120px #000, inset 0 -120px 120px -80px #000;
+    }
+
+    /* Label Container */
+    .label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 3rem;
+      z-index: 2;
+      pointer-events: none;
+      padding: 0 1rem;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    /* Icon */
+    .icon {
+      min-width: 44px;
+      max-width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(32, 32, 32, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+      border: 2px solid #444;
+      flex-shrink: 0;
+      flex-grow: 0;
+      transition: all 0.2s;
+    }
+
+    .icon svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+
+    /* Info Text */
+    .info {
+      color: white;
+      white-space: pre;
+      position: relative;
+    }
+
+    .info .main {
+      font-weight: 700;
+      font-size: 1.125rem;
+      opacity: 0;
+      transform: translateX(25px);
+      transition: all 0.7s ease-in-out;
+    }
+
+    .info .sub {
+      font-size: 1rem;
+      color: #d1d5db;
+      opacity: 0;
+      transform: translateX(25px);
+      transition: all 0.7s ease-in-out;
+    }
+
+    .option.active .info .main,
+    .option.active .info .sub {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Animations */
+    @keyframes fadeInFromTop {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .options {
+        min-width: 100%;
+        max-width: 100%;
+        height: 350px;
+        padding: 0 1rem;
+      }
+
+      .option {
+        min-width: 40px;
+      }
+
+      .icon {
+        min-width: 36px;
+        max-width: 36px;
+        height: 36px;
+      }
+
+      .icon svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .info .main {
+        font-size: 1rem;
+      }
+
+      .info .sub {
+        font-size: 0.875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header">
+    <h1>Escape in Style</h1>
+    <p>Discover luxurious camping experiences in nature's most breathtaking spots.</p>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Options Container -->
+  <div class="options" id="optionsContainer">
+    <!-- Options will be inserted by JavaScript -->
+  </div>
+
+  <script>
+    // Options Data
+    const options = [
+      {
+        title: "Luxury Tent",
+        description: "Cozy glamping under the stars",
+        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+        icon: "campground"
+      },
+      {
+        title: "Campfire Feast",
+        description: "Gourmet s'mores & stories",
+        image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80",
+        icon: "fire"
+      },
+      {
+        title: "Lakeside Retreat",
+        description: "Private dock & canoe rides",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+        icon: "water"
+      },
+      {
+        title: "Mountain Spa",
+        description: "Outdoor sauna & hot tub",
+        image: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80",
+        icon: "hottub"
+      },
+      {
+        title: "Guided Adventure",
+        description: "Expert-led nature tours",
+        image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80",
+        icon: "hiking"
+      }
+    ];
+
+    // SVG Icons (converted from react-icons/fa)
+    const icons = {
+      campground: `<svg viewBox="0 0 576 512"><path d="M560 512H16c-8.84 0-16-7.16-16-16v-32c0-8.84 7.16-16 16-16h16V291.78c0-14.31 9.53-26.87 23.31-30.72l64-17.92c12.36-3.46 25.54 2.94 31.01 14.27L192 336l40.77-81.53C243.11 233.8 264.48 224 288 224c23.52 0 44.89 9.8 55.23 30.47L384 336l41.68-78.59c5.46-11.33 18.65-17.73 31.01-14.27l64 17.92c13.78 3.85 23.31 16.41 23.31 30.72V448h16c8.84 0 16 7.16 16 16v32c0 8.84-7.16 16-16 16zM288 384l-80-160-48.29 120.73c-4.61 11.53-17.52 17.78-29.44 14.22L64 336v112h144v-64zm208 64V336l-66.27 22.95c-11.92 3.56-24.84-2.69-29.44-14.22L352 224l-80 160v64h224z"/></svg>`,
+      fire: `<svg viewBox="0 0 384 512"><path d="M216 23.86c0-23.8-30.65-32.77-44.15-13.04C48 191.85 224 200 224 288c0 35.63-29.11 64.46-64.85 63.99-35.17-.45-63.15-29.77-63.15-64.94v-85.51c0-21.7-26.47-32.23-41.43-16.5C27.8 213.16 0 261.33 0 320c0 105.87 86.13 192 192 192s192-86.13 192-192c0-170.29-168-193-168-296.14z"/></svg>`,
+      water: `<svg viewBox="0 0 352 512"><path d="M205.22 22.09c-7.94-28.78-49.44-30.12-58.44 0C100.01 179.85 0 222.72 0 333.91 0 432.35 78.72 512 176 512s176-79.65 176-178.09c0-111.75-99.79-153.34-146.78-311.82zM176 448c-61.75 0-112-50.25-112-112 0-8.84 7.16-16 16-16s16 7.16 16 16c0 44.11 35.89 80 80 80 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg>`,
+      hottub: `<svg viewBox="0 0 512 512"><path d="M414.21 177.65c1.02-1.56 1.63-3.41 1.63-5.38L415.5 32c0-8.84-7.16-16-16-16h-39c-8.84 0-16 7.16-16 16v54.06c-7.47-2.74-15.31-4.37-23.43-4.63-13.74-.45-26.41 3.42-37.12 10.34-8.25 5.34-14.99 12.15-20.21 20.08-10.35 15.72-10.96 36.15-.69 52.5 10.78 17.17 28.37 27.13 48.48 27.73 13.74.42 26.41-3.42 37.12-10.35a64.154 64.154 0 0 0 20.21-20.07c2.35-3.59 4.29-7.42 5.82-11.39 3.86.57 7.56 1.94 10.99 4.14 9.71 6.26 15.53 17.39 15.53 29.68v99.26c-22.38-11.03-47.65-17.29-74.45-17.29-18.03 0-35.37 2.85-51.67 8.08 9.4-10.58 16.24-23.54 19.63-38.04 6.05-25.88-1.47-51.8-19.42-71.07-11.32-12.16-26.1-20.67-42.8-24.67l-96.29-22.98c-14.51-3.47-29.49-.81-41.63 7.24C45.06 141.87 36.64 158.59 36.64 176.74c0 20.6 11.79 39.39 30.37 48.42l53.99 26.3L76.58 304H48c-26.51 0-48 21.49-48 48v112c0 26.51 21.49 48 48 48h320c26.51 0 48-21.49 48-48V352c0-26.51-21.49-48-48-48h-28.58l-44.43-52.55 10.67-5.19c21.97 13.11 47.67 20.7 74.89 20.7 27.22 0 52.92-7.59 74.89-20.69 9.43-5.62 13.66-18.67 8.07-28.08-5.59-9.41-18.67-13.66-28.08-8.07-16.29 9.71-35.87 15.47-55.52 15.69v-48.71c-1.32-21.97-13.84-41.98-33.7-52.1zM280 388.65c0 12.26-5.82 23.39-15.53 29.68-9.69 6.26-21.53 7.31-32.11 2.93-10.55-4.37-18.36-13.99-20.87-25.66-2.51-11.68 1.16-23.63 9.82-31.95 6.57-6.31 14.98-9.84 23.68-9.84 4.54 0 9.12.89 13.47 2.71 10.55 4.37 18.36 13.99 20.87 25.66.35 1.6.55 3.21.64 4.82v1.65zm-171.77-34.34l59.35-78.85c1.9-2.51 4.21-4.42 6.79-5.73-.23 2.65-.37 5.33-.37 8.03 0 20.37 6.51 39.25 17.51 54.67l-45.77 54.13c-13.96-8.35-26.43-18.52-37.51-30.25v-2zm203.88 117.4H119.88c-8.98 0-16.26-7.28-16.26-16.26s7.28-16.26 16.26-16.26h192.24c8.98 0 16.26 7.28 16.26 16.26s-7.29 16.26-16.27 16.26z"/></svg>`,
+      hiking: `<svg viewBox="0 0 384 512"><path d="M80.95 472.23c-4.28 17.16 6.14 34.53 23.28 38.81 2.61.66 5.22.95 7.8.95 14.33 0 27.37-9.7 31.02-24.23l25.24-100.97 52.63 52.63c11.04 11.04 24.6 18.23 39.01 21.01V224h-16c-17.67 0-32-14.33-32-32s14.33-32 32-32h16v-24.11c0-21.52 8.54-42.15 23.75-57.36l25.21-25.21c10.19-10.19 22.79-17.1 36.42-20.21l54.66-12.45c17.22-3.92 34.21 6.88 38.13 24.11 3.92 17.22-6.88 34.21-24.11 38.13l-54.66 12.45c-4.47 1.02-8.59 3.28-11.92 6.61l-25.21 25.21c-4.98 4.98-7.78 11.74-7.78 18.79V160h16c17.67 0 32 14.33 32 32s-14.33 32-32 32h-16v236.76c0 14.83-6.08 29.08-16.86 39.36l-85.57 81.69c-12.28 11.71-31.72 11.33-43.43-.95-11.71-12.28-11.33-31.72.95-43.43l67.92-64.84-55.38-55.38-16.19 64.78zM160 64c35.35 0 64-28.65 64-64H96c0 35.35 28.65 64 64 64z"/></svg>`
+    };
+
+    // State
+    let activeIndex = 0;
+
+    // Create option element
+    function createOption(option, index) {
+      const div = document.createElement('div');
+      div.className = `option ${index === activeIndex ? 'active' : ''}`;
+      div.style.backgroundImage = `url('${option.image}')`;
+      div.dataset.index = index;
+
+      div.innerHTML = `
+        <div class="shadow"></div>
+        <div class="label">
+          <div class="icon">
+            ${icons[option.icon]}
+          </div>
+          <div class="info">
+            <div class="main">${option.title}</div>
+            <div class="sub">${option.description}</div>
+          </div>
+        </div>
+      `;
+
+      // Click handler
+      div.addEventListener('click', () => {
+        if (index !== activeIndex) {
+          setActiveIndex(index);
+        }
+      });
+
+      return div;
+    }
+
+    // Set active index
+    function setActiveIndex(index) {
+      const allOptions = document.querySelectorAll('.option');
+      
+      allOptions.forEach((opt, i) => {
+        if (i === index) {
+          opt.classList.add('active');
+        } else {
+          opt.classList.remove('active');
+        }
+      });
+
+      activeIndex = index;
+    }
+
+    // Initialize
+    const container = document.getElementById('optionsContainer');
+
+    options.forEach((option, index) => {
+      const optionElement = createOption(option, index);
+      container.appendChild(optionElement);
+    });
+
+    // Staggered entrance animation
+    const optionElements = document.querySelectorAll('.option');
+    
+    optionElements.forEach((opt, index) => {
+      setTimeout(() => {
+        opt.classList.add('animated');
+      }, 180 * index);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Parallax</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Main Container */
+    .hero-parallax {
+      height: 300vh;
+      padding: 10rem 0;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+
+    /* Header Section */
+    .header {
+      max-width: 80rem;
+      position: relative;
+      margin: 0 auto;
+      padding: 5rem 1rem;
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    @media (min-width: 768px) {
+      .header {
+        padding: 10rem 1rem;
+      }
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+      .header h1 {
+        font-size: 4.5rem;
+      }
+    }
+
+    .header p {
+      max-width: 42rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+      color: #e5e5e5;
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      .header p {
+        font-size: 1.25rem;
+      }
+    }
+
+    /* Motion Container */
+    .motion-container {
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+    }
+
+    /* Product Rows */
+    .product-row {
+      display: flex;
+      margin-bottom: 5rem;
+      gap: 5rem;
+    }
+
+    .product-row.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .product-row:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Product Card */
+    .product-card {
+      height: 32rem;
+      width: 24rem;
+      min-width: 24rem;
+      position: relative;
+      flex-shrink: 0;
+      will-change: transform;
+      transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .product-card:hover {
+      transform: translateY(-20px) !important;
+    }
+
+    .product-card a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .product-card:hover a {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .product-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 0.5rem;
+    }
+
+    .product-card .overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      border-radius: 0.5rem;
+    }
+
+    .product-card:hover .overlay {
+      opacity: 0.8;
+    }
+
+    .product-card h2 {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      opacity: 0;
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+
+    .product-card:hover h2 {
+      opacity: 1;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .product-card {
+        height: 22rem;
+        width: 16rem;
+        min-width: 16rem;
+      }
+
+      .product-row {
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-parallax" id="heroParallax">
+    <!-- Header -->
+    <div class="header">
+      <h1>The Ultimate <br> development studio</h1>
+      <p>We build beautiful products with the latest technologies and frameworks. We are a team of passionate developers and designers that love to build amazing products.</p>
+    </div>
+
+    <!-- Motion Container -->
+    <div class="motion-container" id="motionContainer">
+      <!-- First Row (reverse) -->
+      <div class="product-row reverse" id="row1"></div>
+      
+      <!-- Second Row -->
+      <div class="product-row" id="row2"></div>
+      
+      <!-- Third Row (reverse) -->
+      <div class="product-row reverse" id="row3"></div>
+    </div>
+  </div>
+
+  <script>
+    // Product Data
+    const products = [
+      {
+        title: "Moonbeam",
+        link: "https://gomoonbeam.com",
+        thumbnail: "../books_img/big-english-starter.jpg"
+      },
+      {
+        title: "Cursor",
+        link: "https://cursor.so",
+        thumbnail: "../books_img/big-english-4-6.jpg"
+      },
+      {
+        title: "Rogue",
+        link: "https://userogue.com",
+        thumbnail: "../books_img/kids-box-6-8.jpg"
+      },
+      {
+        title: "Editorially",
+        link: "https://editorially.org",
+        thumbnail: "../books_img/sc-starter.jpg"
+      },
+      {
+        title: "Editrix AI",
+        link: "https://editrix.ai",
+        thumbnail: "../books_img/sc-main.jpg"
+      },
+      {
+        title: "Pixel Perfect",
+        link: "https://app.pixelperfect.quest",
+        thumbnail: "../books_img/advanced-discussion.jpg"
+      },
+      {
+        title: "Algochurn",
+        link: "https://algochurn.com",
+        thumbnail: "../books_img/american-headway.jpg"
+      },
+      {
+        title: "Aceternity UI",
+        link: "https://ui.aceternity.com",
+        thumbnail: "../books_img/business-result.jpg"
+      },
+      {
+        title: "Tailwind Master Kit",
+        link: "https://tailwindmasterkit.com",
+        thumbnail: "../books_img/business-venture-1-2.jpg"
+      },
+      {
+        title: "SmartBridge",
+        link: "https://smartbridgetech.com",
+        thumbnail: "../books_img/business-venture-3.jpg"
+      },
+      {
+        title: "Renderwork Studio",
+        link: "https://renderwork.studio",
+        thumbnail: "../books_img/conversation-strategies.jpg"
+      },
+      {
+        title: "Creme Digital",
+        link: "https://cremedigital.com",
+        thumbnail: "../books_img/ielts-advanced.jpg"
+      },
+      {
+        title: "Golden Bells Academy",
+        link: "https://goldenbellsacademy.com",
+        thumbnail: "../books_img/ielts-basic.jpg"
+      },
+      {
+        title: "Invoker Labs",
+        link: "https://invoker.lol",
+        thumbnail: "../books_img/kids-box-3-5.jpg"
+      },
+      {
+        title: "E Free Invoice",
+        link: "https://efreeinvoice.com",
+        thumbnail: "../books_img/kids-box-starter.jpg"
+      }
+    ];
+
+    // Create Product Card HTML
+    function createProductCard(product) {
+      return `
+        <div class="product-card">
+          <a href="${product.link}" target="_blank" rel="noopener noreferrer">
+            <img src="${product.thumbnail}" alt="${product.title}" loading="lazy">
+          </a>
+          <div class="overlay"></div>
+          <h2>${product.title}</h2>
+        </div>
+      `;
+    }
+
+    // Populate rows
+    const row1 = document.getElementById('row1');
+    const row2 = document.getElementById('row2');
+    const row3 = document.getElementById('row3');
+
+    products.slice(0, 5).forEach(product => {
+      row1.innerHTML += createProductCard(product);
+    });
+
+    products.slice(5, 10).forEach(product => {
+      row2.innerHTML += createProductCard(product);
+    });
+
+    products.slice(10, 15).forEach(product => {
+      row3.innerHTML += createProductCard(product);
+    });
+
+    // Spring Physics Animation Class
+    class SpringValue {
+      constructor(initialValue = 0, config = {}) {
+        this.value = initialValue;
+        this.target = initialValue;
+        this.velocity = 0;
+        this.stiffness = config.stiffness || 300;
+        this.damping = config.damping || 30;
+      }
+
+      setTarget(target) {
+        this.target = target;
+      }
+
+      update(deltaTime) {
+        const dt = Math.min(deltaTime, 0.064); // Cap delta time
+        
+        // Spring force
+        const springForce = -this.stiffness * (this.value - this.target);
+        
+        // Damping force
+        const dampingForce = -this.damping * this.velocity;
+        
+        // Total acceleration
+        const acceleration = springForce + dampingForce;
+        
+        // Update velocity and position
+        this.velocity += acceleration * dt;
+        this.value += this.velocity * dt;
+        
+        return this.value;
+      }
+    }
+
+    // Transform helper function
+    function transform(value, inputRange, outputRange) {
+      const [inMin, inMax] = inputRange;
+      const [outMin, outMax] = outputRange;
+      
+      // Clamp input value
+      const clampedValue = Math.max(inMin, Math.min(inMax, value));
+      
+      // Linear interpolation
+      const ratio = (clampedValue - inMin) / (inMax - inMin);
+      return outMin + ratio * (outMax - outMin);
+    }
+
+    // Animation State
+    const springConfig = { stiffness: 300, damping: 30 };
+    
+    const springs = {
+      translateX: new SpringValue(0, springConfig),
+      translateXReverse: new SpringValue(0, springConfig),
+      rotateX: new SpringValue(15, springConfig),
+      rotateZ: new SpringValue(20, springConfig),
+      translateY: new SpringValue(-700, springConfig),
+      opacity: new SpringValue(0.2, springConfig)
+    };
+
+    const motionContainer = document.getElementById('motionContainer');
+    const heroParallax = document.getElementById('heroParallax');
+    const row1Cards = row1.querySelectorAll('.product-card');
+    const row2Cards = row2.querySelectorAll('.product-card');
+    const row3Cards = row3.querySelectorAll('.product-card');
+
+    let lastTime = performance.now();
+    let isAnimating = true;
+
+    // Calculate scroll progress
+    function getScrollProgress() {
+      const rect = heroParallax.getBoundingClientRect();
+      const elementTop = -rect.top;
+      const elementHeight = rect.height - window.innerHeight;
+      
+      return Math.max(0, Math.min(1, elementTop / elementHeight));
+    }
+
+    // Update spring targets based on scroll
+    function updateSpringTargets() {
+      const progress = getScrollProgress();
+      
+      springs.translateX.setTarget(transform(progress, [0, 1], [0, 1000]));
+      springs.translateXReverse.setTarget(transform(progress, [0, 1], [0, -1000]));
+      springs.rotateX.setTarget(transform(progress, [0, 0.2], [15, 0]));
+      springs.rotateZ.setTarget(transform(progress, [0, 0.2], [20, 0]));
+      springs.translateY.setTarget(transform(progress, [0, 0.2], [-700, 500]));
+      springs.opacity.setTarget(transform(progress, [0, 0.2], [0.2, 1]));
+    }
+
+    // Animation loop
+    function animate() {
+      const currentTime = performance.now();
+      const deltaTime = (currentTime - lastTime) / 1000;
+      lastTime = currentTime;
+
+      // Update all springs
+      const translateX = springs.translateX.update(deltaTime);
+      const translateXReverse = springs.translateXReverse.update(deltaTime);
+      const rotateX = springs.rotateX.update(deltaTime);
+      const rotateZ = springs.rotateZ.update(deltaTime);
+      const translateY = springs.translateY.update(deltaTime);
+      const opacity = springs.opacity.update(deltaTime);
+
+      // Apply transforms to motion container
+      motionContainer.style.transform = `
+        rotateX(${rotateX}deg)
+        rotateZ(${rotateZ}deg)
+        translateY(${translateY}px)
+      `;
+      motionContainer.style.opacity = opacity;
+
+      // Apply horizontal transforms to cards
+      row1Cards.forEach(card => {
+        card.style.transform = `translateX(${translateX}px)`;
+      });
+
+      row2Cards.forEach(card => {
+        card.style.transform = `translateX(${translateXReverse}px)`;
+      });
+
+      row3Cards.forEach(card => {
+        card.style.transform = `translateX(${translateX}px)`;
+      });
+
+      if (isAnimating) {
+        requestAnimationFrame(animate);
+      }
+    }
+
+    // Event listeners
+    window.addEventListener('scroll', updateSpringTargets, { passive: true });
+    window.addEventListener('resize', updateSpringTargets, { passive: true });
+
+    // Initialize
+    updateSpringTargets();
+    animate();
+
+    // Cleanup on page hide
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        isAnimating = false;
+      } else {
+        isAnimating = true;
+        lastTime = performance.now();
+        animate();
+      }
+    });
+  </script>
+</body>
+</html>

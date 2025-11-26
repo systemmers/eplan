@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePlan 스타일가이드 Part 2 - 가로형 카드 컴포넌트</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #f5f7fa;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .header .subtitle {
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            opacity: 0.85;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            background: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav a:hover {
+            color: #764ba2;
+            background: #f7fafc;
+        }
+
+        /* ===== SECTION LAYOUT ===== */
+        .section {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #1a202c;
+            font-weight: 700;
+        }
+
+        .section-desc {
+            color: #718096;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        /* ===== HORIZONTAL CARD BASE ===== */
+        .card-horizontal {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            min-height: 100px;
+        }
+
+        .card-horizontal:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SECTION 1: BOARD/LIST CARDS ===== */
+
+        /* Card 1: Category Bar Card */
+        .card-category {
+            border-left: 4px solid #667eea;
+            position: relative;
+        }
+
+        .card-category.category-notice { border-left-color: #e53e3e; }
+        .card-category.category-news { border-left-color: #38b2ac; }
+        .card-category.category-english { border-left-color: #ed8936; }
+        .card-category.category-japanese { border-left-color: #9f7aea; }
+        .card-category.category-chinese { border-left-color: #48bb78; }
+
+        .card-category__content {
+            flex: 1;
+        }
+
+        .card-category__header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-category__category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #edf2f7;
+            color: #4a5568;
+        }
+
+        .card-category.category-notice .card-category__category {
+            background: #fff5f5;
+            color: #c53030;
+        }
+
+        .card-category.category-news .card-category__category {
+            background: #e6fffa;
+            color: #2c7a7b;
+        }
+
+        .card-category__title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-category__meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .card-category__meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Card 2: Status Badge Card */
+        .card-status {
+            position: relative;
+        }
+
+        .card-status__badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card-status__badge--new {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .card-status__badge--hot {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+
+        .card-status__badge--event {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .card-status__content {
+            flex: 1;
+            padding-right: 5rem;
+        }
+
+        .card-status__title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-status__excerpt {
+            font-size: 0.95rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .card-status__footer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+
+        /* Card 3: Compact List Card */
+        .card-compact {
+            padding: 1rem 1.5rem;
+            min-height: auto;
+        }
+
+        .card-compact:hover {
+            background: #f7fafc;
+        }
+
+        .card-compact__content {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-compact__left {
+            flex: 1;
+        }
+
+        .card-compact__title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-compact__meta {
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+
+        .card-compact__right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-compact__views {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .card-compact__icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #edf2f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1rem;
+        }
+
+        /* ===== SECTION 2: PROFILE/TEAM CARDS ===== */
+
+        /* Card 4: Instructor Card */
+        .card-instructor {
+            padding: 2rem;
+        }
+
+        .card-instructor__avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .card-instructor__avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card-instructor__content {
+            flex: 1;
+        }
+
+        .card-instructor__name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-instructor__role {
+            font-size: 0.95rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-instructor__bio {
+            font-size: 0.95rem;
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .card-instructor__social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .card-instructor__social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #edf2f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .card-instructor__social-link:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Card 5: Team Member Card */
+        .card-team {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .card-team__avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .card-team__content {
+            flex: 1;
+        }
+
+        .card-team__name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.15rem;
+        }
+
+        .card-team__position {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-team__contact {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .card-team__contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.85rem;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* Card 6: Compact Profile Card */
+        .card-profile-compact {
+            padding: 1rem 1.5rem;
+            min-height: auto;
+        }
+
+        .card-profile-compact__avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #38b2ac 0%, #48bb78 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .card-profile-compact__content {
+            flex: 1;
+        }
+
+        .card-profile-compact__name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .card-profile-compact__role {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .card-profile-compact__badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            background: #e6fffa;
+            color: #2c7a7b;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* ===== SECTION 3: PROGRAM/COURSE CARDS ===== */
+
+        /* Card 7: Course Card */
+        .card-course {
+            padding: 1.5rem;
+        }
+
+        .card-course__thumbnail {
+            width: 140px;
+            height: 140px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .card-course__thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-course__content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-course__header {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-course__title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-course__badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: #fff5f5;
+            color: #c53030;
+        }
+
+        .card-course__description {
+            font-size: 0.95rem;
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .card-course__info {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-course__info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-course__info-label {
+            font-size: 0.8rem;
+            color: #a0aec0;
+            margin-bottom: 0.15rem;
+        }
+
+        .card-course__info-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .card-course__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .card-course__price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .card-course__cta {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .card-course__cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Card 8: Program Overview Card */
+        .card-program {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .card-program:hover {
+            transform: translateY(-2px);
+        }
+
+        .card-program__icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .card-program__content {
+            flex: 1;
+        }
+
+        .card-program__title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-program__description {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .card-program__features {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-program__feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .card-program__cta {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            background: white;
+            color: #667eea;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .card-program__cta:hover {
+            background: #f7fafc;
+            transform: scale(1.05);
+        }
+
+        /* ===== SECTION 4: STAT/METRIC CARDS ===== */
+
+        /* Card 9: KPI Card */
+        .card-kpi {
+            padding: 2rem;
+            text-align: center;
+            background: white;
+        }
+
+        .card-kpi__icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .card-kpi__label {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-kpi__value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-kpi__change {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+        }
+
+        .card-kpi__change--up {
+            background: #e6fffa;
+            color: #2c7a7b;
+        }
+
+        .card-kpi__change--down {
+            background: #fff5f5;
+            color: #c53030;
+        }
+
+        /* Card 10: Dashboard Stat Card */
+        .card-stat {
+            padding: 1.5rem;
+            min-height: auto;
+        }
+
+        .card-stat--teal {
+            background: linear-gradient(135deg, #38b2ac 0%, #48bb78 100%);
+            color: white;
+        }
+
+        .card-stat--orange {
+            background: linear-gradient(135deg, #ed8936 0%, #f6ad55 100%);
+            color: white;
+        }
+
+        .card-stat--purple {
+            background: linear-gradient(135deg, #9f7aea 0%, #b794f4 100%);
+            color: white;
+        }
+
+        .card-stat__icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .card-stat__content {
+            flex: 1;
+        }
+
+        .card-stat__label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-stat__value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .card-stat__trend {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            margin-top: 0.25rem;
+        }
+
+        /* ===== SECTION 5: CURRICULUM CARDS ===== */
+
+        /* Card 11: Curriculum Image Card - Standard */
+        .card-curriculum {
+            padding: 0;
+            overflow: hidden;
+            flex-direction: row;
+        }
+
+        .card-curriculum__image {
+            width: 200px;
+            height: 200px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .card-curriculum__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-curriculum__content {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-curriculum__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .card-curriculum__level {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .card-curriculum__title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-curriculum__description {
+            font-size: 0.95rem;
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .card-curriculum__features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-curriculum__feature {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            background: #edf2f7;
+            font-size: 0.85rem;
+            color: #4a5568;
+        }
+
+        .card-curriculum__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .card-curriculum__info {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .card-curriculum__cta {
+            padding: 0.65rem 1.5rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .card-curriculum__cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Card 12: Curriculum Image Card - Compact */
+        .card-curriculum--compact .card-curriculum__image {
+            width: 120px;
+            height: 120px;
+        }
+
+        .card-curriculum--compact .card-curriculum__content {
+            padding: 1.25rem;
+        }
+
+        .card-curriculum--compact .card-curriculum__title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-curriculum--compact .card-curriculum__description {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Card 13: Curriculum Image Card - Featured */
+        .card-curriculum--featured {
+            border: 2px solid #667eea;
+            position: relative;
+        }
+
+        .card-curriculum--featured::before {
+            content: '추천';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .card-curriculum--featured .card-curriculum__image {
+            width: 240px;
+            height: 240px;
+        }
+
+        /* Card 14: Curriculum Image Card - Vertical */
+        .card-curriculum--vertical {
+            flex-direction: column;
+            max-width: 400px;
+        }
+
+        .card-curriculum--vertical .card-curriculum__image {
+            width: 100%;
+            height: 220px;
+        }
+
+        .card-curriculum--vertical .card-curriculum__footer {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .card-curriculum--vertical .card-curriculum__cta {
+            width: 100%;
+        }
+
+        /* Card 15: Curriculum Image Card - Overlay */
+        .card-curriculum--overlay {
+            position: relative;
+            padding: 0;
+            min-height: 280px;
+            overflow: hidden;
+        }
+
+        .card-curriculum--overlay .card-curriculum__image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-curriculum--overlay .card-curriculum__image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+        }
+
+        .card-curriculum--overlay .card-curriculum__content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 280px;
+        }
+
+        .card-curriculum--overlay .card-curriculum__level {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+        .card-curriculum--overlay .card-curriculum__title {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .card-curriculum--overlay .card-curriculum__description {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .card-curriculum--overlay .card-curriculum__feature {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-curriculum--overlay .card-curriculum__footer {
+            border-top-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-curriculum--overlay .card-curriculum__info {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .card-curriculum--overlay .card-curriculum__cta {
+            background: white;
+            color: #667eea;
+        }
+
+        .card-curriculum--overlay .card-curriculum__cta:hover {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Card 16: Curriculum Price Card - Price Focused */
+        .card-curriculum--price {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border: 2px solid #e2e8f0;
+        }
+
+        .card-curriculum--price .card-curriculum__image {
+            width: 160px;
+            height: 160px;
+        }
+
+        .card-curriculum--price .card-curriculum__content {
+            position: relative;
+        }
+
+        .card-curriculum--price .card-curriculum__price-tag {
+            position: absolute;
+            top: -0.5rem;
+            right: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .card-curriculum--price .card-curriculum__price-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .card-curriculum--price .card-curriculum__price-period {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Card 17: Curriculum Mini Card - Compact List */
+        .card-curriculum--mini {
+            padding: 1rem 1.25rem;
+            min-height: auto;
+        }
+
+        .card-curriculum--mini .card-curriculum__image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+        }
+
+        .card-curriculum--mini .card-curriculum__content {
+            padding: 0 0 0 1rem;
+        }
+
+        .card-curriculum--mini .card-curriculum__title {
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .card-curriculum--mini .card-curriculum__description {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-curriculum--mini .card-curriculum__features {
+            gap: 0.35rem;
+            margin-bottom: 0;
+        }
+
+        .card-curriculum--mini .card-curriculum__feature {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+        }
+
+        .card-curriculum--mini .card-curriculum__footer {
+            padding-top: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .card-curriculum--mini .card-curriculum__info {
+            font-size: 0.8rem;
+            gap: 1rem;
+        }
+
+        .card-curriculum--mini .card-curriculum__cta {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* Card 18: Curriculum Split Card - 50/50 Layout */
+        .card-curriculum--split {
+            padding: 0;
+        }
+
+        .card-curriculum--split .card-curriculum__image {
+            width: 50%;
+            height: 300px;
+        }
+
+        .card-curriculum--split .card-curriculum__content {
+            width: 50%;
+            padding: 2rem;
+            justify-content: center;
+        }
+
+        /* Card 19: Curriculum Schedule Card - Timetable Focused */
+        .card-curriculum--schedule .card-curriculum__image {
+            width: 180px;
+            height: 180px;
+        }
+
+        .card-curriculum--schedule .card-curriculum__schedule {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .card-curriculum--schedule .card-curriculum__schedule-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .card-curriculum--schedule .card-curriculum__schedule-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .card-curriculum--schedule .card-curriculum__schedule-text {
+            flex: 1;
+        }
+
+        .card-curriculum--schedule .card-curriculum__schedule-label {
+            font-size: 0.75rem;
+            color: #a0aec0;
+            display: block;
+        }
+
+        .card-curriculum--schedule .card-curriculum__schedule-value {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Card 20: Curriculum Review Card - Rating Focused */
+        .card-curriculum--review .card-curriculum__image {
+            width: 180px;
+            height: 180px;
+        }
+
+        .card-curriculum--review .card-curriculum__rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            border-radius: 8px;
+        }
+
+        .card-curriculum--review .card-curriculum__rating-score {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .card-curriculum--review .card-curriculum__rating-details {
+            flex: 1;
+        }
+
+        .card-curriculum--review .card-curriculum__stars {
+            color: #f6ad55;
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-curriculum--review .card-curriculum__rating-count {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .card-curriculum--review .card-curriculum__testimonial {
+            font-style: italic;
+            color: #4a5568;
+            font-size: 0.9rem;
+            padding: 0.75rem 1rem;
+            background: #f7fafc;
+            border-left: 3px solid #667eea;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .card-curriculum--review .card-curriculum__reviewer {
+            font-size: 0.85rem;
+            color: #718096;
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            color: #718096;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .card-horizontal {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.25rem;
+            }
+
+            .card-instructor__avatar,
+            .card-team__avatar,
+            .card-profile-compact__avatar,
+            .card-course__thumbnail,
+            .card-program__icon,
+            .card-stat__icon,
+            .card-curriculum__image {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .card-curriculum {
+                flex-direction: column;
+            }
+
+            .card-curriculum__image {
+                width: 100%;
+                height: 180px;
+            }
+
+            .card-curriculum--compact .card-curriculum__image,
+            .card-curriculum--featured .card-curriculum__image {
+                width: 100%;
+                height: 180px;
+            }
+
+            .card-curriculum--vertical {
+                max-width: 100%;
+            }
+
+            .card-curriculum--split {
+                flex-direction: column;
+            }
+
+            .card-curriculum--split .card-curriculum__image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .card-curriculum--split .card-curriculum__content {
+                width: 100%;
+            }
+
+            .card-curriculum--schedule .card-curriculum__schedule {
+                grid-template-columns: 1fr;
+            }
+
+            .card-status__content {
+                padding-right: 0;
+            }
+
+            .card-status__badge {
+                position: static;
+                display: inline-block;
+                margin-bottom: 0.5rem;
+            }
+
+            .card-compact__content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .card-course__info,
+            .card-program__features {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .card-course__footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <h1>ePlan 스타일가이드 Part 2</h1>
+        <p>가로형 카드 컴포넌트 (Horizontal Card Components)</p>
+        <p class="subtitle">10가지 카드 디자인 패턴 - 게시판, 프로필, 프로그램, 통계</p>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <ul>
+            <li><a href="#board-cards">게시판 카드</a></li>
+            <li><a href="#profile-cards">프로필 카드</a></li>
+            <li><a href="#program-cards">프로그램 카드</a></li>
+            <li><a href="#stat-cards">통계 카드</a></li>
+            <li><a href="#curriculum-cards">커리큘럼 카드</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECTION 1: BOARD/LIST CARDS -->
+    <div class="section" id="board-cards">
+        <h2 class="section-title">1. 게시판/목록 카드 (Board & List Cards)</h2>
+        <p class="section-desc">게시판, 공지사항, 뉴스 목록에 적합한 가로형 카드 (3가지 타입)</p>
+
+        <div class="card-container">
+            <!-- Card 1-1: Category Bar Card - Notice -->
+            <div class="card-horizontal card-category category-notice">
+                <div class="card-category__content">
+                    <div class="card-category__header">
+                        <span class="card-category__category">공지사항</span>
+                    </div>
+                    <h3 class="card-category__title">2024년 겨울방학 특강 일정 안내</h3>
+                    <div class="card-category__meta">
+                        <span class="card-category__meta-item">📅 2024-11-14</span>
+                        <span class="card-category__meta-item">👤 관리자</span>
+                        <span class="card-category__meta-item">👁️ 328</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 1-2: Category Bar Card - News -->
+            <div class="card-horizontal card-category category-news">
+                <div class="card-category__content">
+                    <div class="card-category__header">
+                        <span class="card-category__category">뉴스</span>
+                    </div>
+                    <h3 class="card-category__title">ePlan, 삼성전자와 기업출강 MOU 체결</h3>
+                    <div class="card-category__meta">
+                        <span class="card-category__meta-item">📅 2024-11-13</span>
+                        <span class="card-category__meta-item">👤 홍보팀</span>
+                        <span class="card-category__meta-item">👁️ 542</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 1-3: Category Bar Card - English -->
+            <div class="card-horizontal card-category category-english">
+                <div class="card-category__content">
+                    <div class="card-category__header">
+                        <span class="card-category__category">영어</span>
+                    </div>
+                    <h3 class="card-category__title">비즈니스 영어 회화 완벽 가이드</h3>
+                    <div class="card-category__meta">
+                        <span class="card-category__meta-item">📅 2024-11-12</span>
+                        <span class="card-category__meta-item">👤 김영희 강사</span>
+                        <span class="card-category__meta-item">👁️ 1,203</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <!-- Card 2-1: Status Badge Card - New -->
+            <div class="card-horizontal card-status">
+                <span class="card-status__badge card-status__badge--new">NEW</span>
+                <div class="card-status__content">
+                    <h3 class="card-status__title">TOEIC Speaking 집중 코스 오픈</h3>
+                    <p class="card-status__excerpt">4주 완성 프로그램으로 레벨 7 이상 목표! 실전 모의고사와 1:1 피드백이 포함된 특별 과정입니다.</p>
+                    <div class="card-status__footer">
+                        <span>강의기간: 4주</span>
+                        <span>수강료: 480,000원</span>
+                        <span>모집: 11/20 마감</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2-2: Status Badge Card - Hot -->
+            <div class="card-horizontal card-status">
+                <span class="card-status__badge card-status__badge--hot">HOT</span>
+                <div class="card-status__content">
+                    <h3 class="card-status__title">전화영어 베스트셀러 수강후기 이벤트</h3>
+                    <p class="card-status__excerpt">가장 많은 수강생이 선택한 General Conversation 과정! 지금 신청하시면 교재 무료 증정 및 첫 달 20% 할인 혜택을 드립니다.</p>
+                    <div class="card-status__footer">
+                        <span>이벤트 기간: ~11/30</span>
+                        <span>할인율: 20%</span>
+                        <span>참여자: 238명</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2-3: Status Badge Card - Event -->
+            <div class="card-horizontal card-status">
+                <span class="card-status__badge card-status__badge--event">EVENT</span>
+                <div class="card-status__content">
+                    <h3 class="card-status__title">기업출강 무료 컨설팅 상담 진행 중</h3>
+                    <p class="card-status__excerpt">우리 회사에 딱 맞는 맞춤형 영어교육 프로그램을 설계해드립니다. 전문 컨설턴트가 직접 방문하여 니즈 분석부터 커리큘럼 제안까지 무료로 진행합니다.</p>
+                    <div class="card-status__footer">
+                        <span>신청방법: 온라인 문의</span>
+                        <span>상담시간: 평일 09:00-18:00</span>
+                        <span>대상: 기업 인사담당자</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <!-- Card 3-1: Compact List Card -->
+            <div class="card-horizontal card-compact">
+                <div class="card-compact__content">
+                    <div class="card-compact__left">
+                        <h4 class="card-compact__title">Writing 첨삭 서비스 이용 가이드</h4>
+                        <p class="card-compact__meta">2024-11-10 • 운영팀</p>
+                    </div>
+                    <div class="card-compact__right">
+                        <span class="card-compact__views">👁️ 156</span>
+                        <span class="card-compact__icon">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3-2: Compact List Card -->
+            <div class="card-horizontal card-compact">
+                <div class="card-compact__content">
+                    <div class="card-compact__left">
+                        <h4 class="card-compact__title">일본어 전화 과정 11월 시간표 안내</h4>
+                        <p class="card-compact__meta">2024-11-09 • 일본어팀</p>
+                    </div>
+                    <div class="card-compact__right">
+                        <span class="card-compact__views">👁️ 89</span>
+                        <span class="card-compact__icon">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3-3: Compact List Card -->
+            <div class="card-horizontal card-compact">
+                <div class="card-compact__content">
+                    <div class="card-compact__left">
+                        <h4 class="card-compact__title">중국어 HSK 대비반 모집 공고</h4>
+                        <p class="card-compact__meta">2024-11-08 • 중국어팀</p>
+                    </div>
+                    <div class="card-compact__right">
+                        <span class="card-compact__views">👁️ 203</span>
+                        <span class="card-compact__icon">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: PROFILE/TEAM CARDS -->
+    <div class="section" id="profile-cards">
+        <h2 class="section-title">2. 프로필/팀 카드 (Profile & Team Cards)</h2>
+        <p class="section-desc">강사 소개, 팀 멤버, 운영진 정보에 적합한 가로형 카드 (3가지 타입)</p>
+
+        <div class="card-container">
+            <!-- Card 4-1: Instructor Card -->
+            <div class="card-horizontal card-instructor">
+                <div class="card-instructor__avatar">JK</div>
+                <div class="card-instructor__content">
+                    <h3 class="card-instructor__name">John Kim (김준수)</h3>
+                    <p class="card-instructor__role">Senior Business English Instructor</p>
+                    <p class="card-instructor__bio">
+                        15년 경력의 비즈니스 영어 전문 강사. 삼성, LG, 현대 등 주요 대기업 임원 영어 코칭 경험 보유.
+                        TESOL 자격증 및 MBA 학위 소지. 실무 중심의 실용적인 영어교육을 지향합니다.
+                    </p>
+                    <div class="card-instructor__social">
+                        <a href="#" class="card-instructor__social-link">📧</a>
+                        <a href="#" class="card-instructor__social-link">💼</a>
+                        <a href="#" class="card-instructor__social-link">🔗</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4-2: Instructor Card -->
+            <div class="card-horizontal card-instructor">
+                <div class="card-instructor__avatar">SL</div>
+                <div class="card-instructor__content">
+                    <h3 class="card-instructor__name">Sarah Lee (이서영)</h3>
+                    <p class="card-instructor__role">TOEIC Speaking Specialist</p>
+                    <p class="card-instructor__bio">
+                        TOEIC Speaking 만점 강사. 10년간 5,000명 이상의 수강생을 레벨 7 이상으로 이끈 경험 보유.
+                        체계적인 발음 교정과 실전 전략으로 단기간 점수 향상을 보장합니다.
+                    </p>
+                    <div class="card-instructor__social">
+                        <a href="#" class="card-instructor__social-link">📧</a>
+                        <a href="#" class="card-instructor__social-link">💼</a>
+                        <a href="#" class="card-instructor__social-link">🔗</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <!-- Card 5-1: Team Member Card -->
+            <div class="card-horizontal card-team">
+                <div class="card-team__avatar">MJ</div>
+                <div class="card-team__content">
+                    <h3 class="card-team__name">박민지</h3>
+                    <p class="card-team__position">교육운영팀 팀장</p>
+                    <div class="card-team__contact">
+                        <a href="mailto:mj.park@eplan.com" class="card-team__contact-item">
+                            📧 mj.park@eplan.com
+                        </a>
+                        <a href="tel:02-1234-5678" class="card-team__contact-item">
+                            📞 02-1234-5678
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5-2: Team Member Card -->
+            <div class="card-horizontal card-team">
+                <div class="card-team__avatar">DH</div>
+                <div class="card-team__content">
+                    <h3 class="card-team__name">최동훈</h3>
+                    <p class="card-team__position">기업출강팀 매니저</p>
+                    <div class="card-team__contact">
+                        <a href="mailto:dh.choi@eplan.com" class="card-team__contact-item">
+                            📧 dh.choi@eplan.com
+                        </a>
+                        <a href="tel:02-1234-5679" class="card-team__contact-item">
+                            📞 02-1234-5679
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5-3: Team Member Card -->
+            <div class="card-horizontal card-team">
+                <div class="card-team__avatar">JY</div>
+                <div class="card-team__content">
+                    <h3 class="card-team__name">김지영</h3>
+                    <p class="card-team__position">고객지원팀 매니저</p>
+                    <div class="card-team__contact">
+                        <a href="mailto:jy.kim@eplan.com" class="card-team__contact-item">
+                            📧 jy.kim@eplan.com
+                        </a>
+                        <a href="tel:02-1234-5680" class="card-team__contact-item">
+                            📞 02-1234-5680
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <!-- Card 6-1: Compact Profile Card -->
+            <div class="card-horizontal card-profile-compact">
+                <div class="card-profile-compact__avatar">HJ</div>
+                <div class="card-profile-compact__content">
+                    <h4 class="card-profile-compact__name">한지훈</h4>
+                    <p class="card-profile-compact__role">일본어 강사</p>
+                </div>
+                <span class="card-profile-compact__badge">JLPT N1</span>
+            </div>
+
+            <!-- Card 6-2: Compact Profile Card -->
+            <div class="card-horizontal card-profile-compact">
+                <div class="card-profile-compact__avatar">YM</div>
+                <div class="card-profile-compact__content">
+                    <h4 class="card-profile-compact__name">양민수</h4>
+                    <p class="card-profile-compact__role">중국어 강사</p>
+                </div>
+                <span class="card-profile-compact__badge">HSK 6급</span>
+            </div>
+
+            <!-- Card 6-3: Compact Profile Card -->
+            <div class="card-horizontal card-profile-compact">
+                <div class="card-profile-compact__avatar">KS</div>
+                <div class="card-profile-compact__content">
+                    <h4 class="card-profile-compact__name">강서연</h4>
+                    <p class="card-profile-compact__role">영어 강사</p>
+                </div>
+                <span class="card-profile-compact__badge">TESOL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: PROGRAM/COURSE CARDS -->
+    <div class="section" id="program-cards">
+        <h2 class="section-title">3. 프로그램/강의 카드 (Program & Course Cards)</h2>
+        <p class="section-desc">강의 과정, 교육 프로그램 소개에 적합한 가로형 카드 (2가지 타입)</p>
+
+        <div class="card-container">
+            <!-- Card 7-1: Course Card -->
+            <div class="card-horizontal card-course">
+                <div class="card-course__thumbnail">📚</div>
+                <div class="card-course__content">
+                    <div class="card-course__header">
+                        <div>
+                            <h3 class="card-course__title">Business Conversation 전화영어</h3>
+                        </div>
+                        <span class="card-course__badge">인기</span>
+                    </div>
+                    <p class="card-course__description">
+                        실무에서 바로 활용 가능한 비즈니스 영어 회화 과정. 미팅, 프레젠테이션, 협상 등
+                        비즈니스 상황별 핵심 표현을 집중 학습합니다.
+                    </p>
+                    <div class="card-course__info">
+                        <div class="card-course__info-item">
+                            <span class="card-course__info-label">난이도</span>
+                            <span class="card-course__info-value">중급~고급</span>
+                        </div>
+                        <div class="card-course__info-item">
+                            <span class="card-course__info-label">수업시간</span>
+                            <span class="card-course__info-value">20분 x 주5회</span>
+                        </div>
+                        <div class="card-course__info-item">
+                            <span class="card-course__info-label">수강기간</span>
+                            <span class="card-course__info-value">3개월</span>
+                        </div>
+                    </div>
+                    <div class="card-course__footer">
+                        <span class="card-course__price">360,000원</span>
+                        <button class="card-course__cta">수강 신청</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7-2: Course Card -->
+            <div class="card-horizontal card-course">
+                <div class="card-course__thumbnail">🎯</div>
+                <div class="card-course__content">
+                    <div class="card-course__header">
+                        <div>
+                            <h3 class="card-course__title">TOEIC Speaking 집중 코스</h3>
+                        </div>
+                        <span class="card-course__badge">신규</span>
+                    </div>
+                    <p class="card-course__description">
+                        4주 완성 단기 집중 프로그램. 파트별 전략 학습과 실전 모의고사를 통해
+                        레벨 7 이상 목표 점수 달성을 보장합니다.
+                    </p>
+                    <div class="card-course__info">
+                        <div class="card-course__info-item">
+                            <span class="card-course__info-label">난이도</span>
+                            <span class="card-course__info-value">중급</span>
+                        </div>
+                        <div class="card-course__info-item">
+                            <span class="card-course__info-label">수업시간</span>
+                            <span class="card-course__info-value">30분 x 주5회</span>
+                        </div>
+                        <div class="card-course__info-item">
+                            <span class="card-course__info-label">수강기간</span>
+                            <span class="card-course__info-value">1개월</span>
+                        </div>
+                    </div>
+                    <div class="card-course__footer">
+                        <span class="card-course__price">480,000원</span>
+                        <button class="card-course__cta">수강 신청</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <!-- Card 8-1: Program Overview Card -->
+            <div class="card-horizontal card-program">
+                <div class="card-program__icon">🏢</div>
+                <div class="card-program__content">
+                    <h3 class="card-program__title">기업출강 In-House Program</h3>
+                    <p class="card-program__description">
+                        귀사의 업무 환경과 니즈에 맞춘 100% 맞춤형 영어 교육 프로그램.
+                        전문 강사진이 직접 회사로 방문하여 실무 중심 교육을 진행합니다.
+                    </p>
+                    <div class="card-program__features">
+                        <span class="card-program__feature">✓ 맞춤형 커리큘럼</span>
+                        <span class="card-program__feature">✓ 전문 강사 파견</span>
+                        <span class="card-program__feature">✓ 유연한 일정</span>
+                        <span class="card-program__feature">✓ 정기 평가</span>
+                    </div>
+                    <button class="card-program__cta">무료 컨설팅 신청</button>
+                </div>
+            </div>
+
+            <!-- Card 8-2: Program Overview Card -->
+            <div class="card-horizontal card-program">
+                <div class="card-program__icon">✍️</div>
+                <div class="card-program__content">
+                    <h3 class="card-program__title">Writing 전문 첨삭 서비스</h3>
+                    <p class="card-program__description">
+                        원어민 수준의 영작문을 위한 1:1 맞춤 첨삭 서비스. 이메일, 보고서, 에세이 등
+                        모든 종류의 영문 작성물을 24시간 내 전문적으로 첨삭해드립니다.
+                    </p>
+                    <div class="card-program__features">
+                        <span class="card-program__feature">✓ 24시간 첨삭</span>
+                        <span class="card-program__feature">✓ 상세 피드백</span>
+                        <span class="card-program__feature">✓ 무제한 재첨삭</span>
+                        <span class="card-program__feature">✓ 월 정액제</span>
+                    </div>
+                    <button class="card-program__cta">서비스 상세보기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: STAT/METRIC CARDS -->
+    <div class="section" id="stat-cards">
+        <h2 class="section-title">4. 통계/지표 카드 (Statistics & KPI Cards)</h2>
+        <p class="section-desc">대시보드, 성과 지표, 통계 데이터 표시에 적합한 가로형 카드 (2가지 타입)</p>
+
+        <div class="card-container">
+            <!-- Card 9-1: KPI Card -->
+            <div class="card-horizontal card-kpi">
+                <div class="card-kpi__icon">👥</div>
+                <p class="card-kpi__label">총 수강생</p>
+                <p class="card-kpi__value">12,847</p>
+                <span class="card-kpi__change card-kpi__change--up">↑ 23.5% vs 지난달</span>
+            </div>
+
+            <!-- Card 9-2: KPI Card -->
+            <div class="card-horizontal card-kpi">
+                <div class="card-kpi__icon">⭐</div>
+                <p class="card-kpi__label">평균 만족도</p>
+                <p class="card-kpi__value">4.8/5.0</p>
+                <span class="card-kpi__change card-kpi__change--up">↑ 0.3점 향상</span>
+            </div>
+
+            <!-- Card 9-3: KPI Card -->
+            <div class="card-horizontal card-kpi">
+                <div class="card-kpi__icon">🎓</div>
+                <p class="card-kpi__label">목표 달성률</p>
+                <p class="card-kpi__value">87%</p>
+                <span class="card-kpi__change card-kpi__change--down">↓ 3% vs 지난달</span>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <!-- Card 10-1: Dashboard Stat Card - Teal -->
+            <div class="card-horizontal card-stat card-stat--teal">
+                <div class="card-stat__icon">📞</div>
+                <div class="card-stat__content">
+                    <p class="card-stat__label">오늘 진행된 수업</p>
+                    <p class="card-stat__value">1,248</p>
+                    <p class="card-stat__trend">어제보다 +156 증가</p>
+                </div>
+            </div>
+
+            <!-- Card 10-2: Dashboard Stat Card - Orange -->
+            <div class="card-horizontal card-stat card-stat--orange">
+                <div class="card-stat__icon">💰</div>
+                <div class="card-stat__content">
+                    <p class="card-stat__label">이번 달 매출</p>
+                    <p class="card-stat__value">₩128M</p>
+                    <p class="card-stat__trend">목표 대비 92% 달성</p>
+                </div>
+            </div>
+
+            <!-- Card 10-3: Dashboard Stat Card - Purple -->
+            <div class="card-horizontal card-stat card-stat--purple">
+                <div class="card-stat__icon">🏆</div>
+                <div class="card-stat__content">
+                    <p class="card-stat__label">이번 주 신규 등록</p>
+                    <p class="card-stat__value">342</p>
+                    <p class="card-stat__trend">지난주보다 +28% 증가</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: CURRICULUM CARDS -->
+    <div class="section" id="curriculum-cards">
+        <h2 class="section-title">5. 커리큘럼 카드 (Curriculum Cards with Images)</h2>
+        <p class="section-desc">이미지가 포함된 강의 커리큘럼 소개 카드 (10가지 레이아웃 스타일)</p>
+
+        <div class="card-container">
+            <!-- Card 11: Standard Curriculum Card -->
+            <div class="card-horizontal card-curriculum">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=400&fit=crop" alt="General Conversation">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">초급~중급</span>
+                    </div>
+                    <h3 class="card-curriculum__title">General Conversation (일반 회화)</h3>
+                    <p class="card-curriculum__description">
+                        일상생활과 관심사에 대한 자유로운 대화를 통해 자연스러운 영어 표현력을 키웁니다.
+                        다양한 주제의 토론과 롤플레이를 통해 실생활에서 바로 활용 가능한 회화 능력을 향상시킵니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">📚 30개 토픽</span>
+                        <span class="card-curriculum__feature">⏰ 20분/회</span>
+                        <span class="card-curriculum__feature">🎯 주 5회</span>
+                        <span class="card-curriculum__feature">📖 교재 제공</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>수강기간: 3개월</span>
+                            <span>수강료: 320,000원</span>
+                        </div>
+                        <button class="card-curriculum__cta">자세히 보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 12: Compact Curriculum Card -->
+            <div class="card-horizontal card-curriculum card-curriculum--compact">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=400&h=400&fit=crop" alt="Business Conversation">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">중급~고급</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Business Conversation (비즈니스 회화)</h3>
+                    <p class="card-curriculum__description">
+                        실무에서 필요한 비즈니스 영어 회화를 집중 학습합니다. 미팅, 프레젠테이션, 협상 등
+                        비즈니스 상황별 핵심 표현과 에티켓을 익힙니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">📚 비즈니스 시나리오</span>
+                        <span class="card-curriculum__feature">⏰ 20분/회</span>
+                        <span class="card-curriculum__feature">🎯 주 5회</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>수강기간: 3개월</span>
+                            <span>수강료: 360,000원</span>
+                        </div>
+                        <button class="card-curriculum__cta">자세히 보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 13: Featured Curriculum Card -->
+            <div class="card-horizontal card-curriculum card-curriculum--featured">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=400&fit=crop" alt="TOEIC Speaking">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">중급</span>
+                    </div>
+                    <h3 class="card-curriculum__title">TOEIC Speaking 집중 코스</h3>
+                    <p class="card-curriculum__description">
+                        4주 완성 단기 집중 프로그램으로 TOEIC Speaking 레벨 7 이상을 목표로 합니다.
+                        파트별 전략 학습과 실전 모의고사를 통해 체계적으로 점수를 향상시킵니다.
+                        만점 강사진의 1:1 맞춤 피드백으로 취약점을 집중 보완합니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">🎯 레벨 7+ 목표</span>
+                        <span class="card-curriculum__feature">⏰ 30분/회</span>
+                        <span class="card-curriculum__feature">📝 실전 모의고사</span>
+                        <span class="card-curriculum__feature">💯 만점 강사</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>수강기간: 1개월</span>
+                            <span>수강료: 480,000원</span>
+                            <span>⭐ 인기</span>
+                        </div>
+                        <button class="card-curriculum__cta">수강 신청</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 14: Vertical Curriculum Card -->
+            <div class="card-horizontal card-curriculum card-curriculum--vertical">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop" alt="Discussion">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">고급</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Discussion (토론)</h3>
+                    <p class="card-curriculum__description">
+                        시사, 문화, 경제 등 다양한 주제에 대해 영어로 깊이 있는 토론을 진행합니다.
+                        논리적 사고와 설득력 있는 표현 능력을 키우며 고급 어휘력을 향상시킵니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">📰 시사 이슈</span>
+                        <span class="card-curriculum__feature">🗣️ 토론 중심</span>
+                        <span class="card-curriculum__feature">🎯 주 3회</span>
+                        <span class="card-curriculum__feature">📖 아티클 제공</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>수강기간: 3개월</span>
+                            <span>수강료: 390,000원</span>
+                        </div>
+                        <button class="card-curriculum__cta">자세히 보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 15: Overlay Curriculum Card -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=800&h=400&fit=crop" alt="In-House Program">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">기업 맞춤형</span>
+                    </div>
+                    <h3 class="card-curriculum__title">In-House Program (기업 출강)</h3>
+                    <p class="card-curriculum__description">
+                        귀사의 업무 환경과 니즈에 100% 맞춘 맞춤형 영어 교육 프로그램입니다.
+                        전문 강사진이 직접 회사로 방문하여 실무 중심의 영어 교육을 진행합니다.
+                        유연한 일정과 체계적인 커리큘럼으로 임직원의 영어 실력을 효과적으로 향상시킵니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">🏢 현장 출강</span>
+                        <span class="card-curriculum__feature">📋 맞춤 커리큘럼</span>
+                        <span class="card-curriculum__feature">👥 그룹/개인</span>
+                        <span class="card-curriculum__feature">📊 정기 평가</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>상담을 통한 맞춤 견적</span>
+                            <span>최소 인원: 10명</span>
+                        </div>
+                        <button class="card-curriculum__cta">무료 컨설팅</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 16: Price-focused Curriculum Card -->
+            <div class="card-horizontal card-curriculum card-curriculum--price">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=400&fit=crop" alt="Writing Correction">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__price-tag">
+                        <span class="card-curriculum__price-amount">¥280K</span>
+                        <span class="card-curriculum__price-period">/3개월</span>
+                    </div>
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">전 레벨</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Writing Correction (영작 첨삭)</h3>
+                    <p class="card-curriculum__description">
+                        전문 첨삭 강사의 상세한 피드백으로 영작 실력을 향상시킵니다.
+                        이메일, 에세이, 보고서 등 다양한 형태의 영문 작성물을 24시간 내 첨삭해드립니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">✍️ 무제한 첨삭</span>
+                        <span class="card-curriculum__feature">⏰ 24시간 내</span>
+                        <span class="card-curriculum__feature">📝 상세 피드백</span>
+                        <span class="card-curriculum__feature">🔄 재첨삭 가능</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>월 정액제</span>
+                            <span>최대 20편/월</span>
+                        </div>
+                        <button class="card-curriculum__cta">신청하기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 17: Mini Curriculum Card -->
+            <div class="card-horizontal card-curriculum card-curriculum--mini">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=200&h=200&fit=crop" alt="Japanese">
+                </div>
+                <div class="card-curriculum__content">
+                    <h3 class="card-curriculum__title">일본어 전화 과정</h3>
+                    <p class="card-curriculum__description">
+                        일상 회화부터 비즈니스 일본어까지 체계적으로 학습하는 전화 일본어 프로그램입니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">🇯🇵 원어민</span>
+                        <span class="card-curriculum__feature">⏰ 15분</span>
+                        <span class="card-curriculum__feature">🎯 주 5회</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>3개월</span>
+                            <span>¥290,000</span>
+                        </div>
+                        <button class="card-curriculum__cta">보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 18: Mini Curriculum Card (Chinese) -->
+            <div class="card-horizontal card-curriculum card-curriculum--mini">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1529148482759-b35b25c5f217?w=200&h=200&fit=crop" alt="Chinese">
+                </div>
+                <div class="card-curriculum__content">
+                    <h3 class="card-curriculum__title">중국어 전화 과정</h3>
+                    <p class="card-curriculum__description">
+                        HSK 대비반과 비즈니스 중국어 과정을 제공합니다. 원어민 강사와의 실전 회화 연습으로 유창성을 키웁니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">🇨🇳 원어민</span>
+                        <span class="card-curriculum__feature">⏰ 15분</span>
+                        <span class="card-curriculum__feature">🎯 주 5회</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>3개월</span>
+                            <span>¥290,000</span>
+                        </div>
+                        <button class="card-curriculum__cta">보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 19: Split Curriculum Card -->
+            <div class="card-horizontal card-curriculum card-curriculum--split">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&h=400&fit=crop" alt="Intensive Program">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">중급~고급</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Intensive Program (집중 프로그램)</h3>
+                    <p class="card-curriculum__description">
+                        단기간 영어 실력 향상을 목표로 하는 고강도 집중 프로그램입니다.
+                        주 10회 이상 수업과 개별 과제를 통해 빠른 실력 향상을 보장합니다.
+                        토익, 오픽, 회화 등 원하는 분야를 집중적으로 학습할 수 있습니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">🔥 고강도</span>
+                        <span class="card-curriculum__feature">⏰ 30분/회</span>
+                        <span class="card-curriculum__feature">🎯 주 10회</span>
+                        <span class="card-curriculum__feature">📚 과제 포함</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>수강기간: 2개월</span>
+                            <span>수강료: 680,000원</span>
+                        </div>
+                        <button class="card-curriculum__cta">집중 신청</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 20: Schedule Card -->
+            <div class="card-horizontal card-curriculum card-curriculum--schedule">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=400&fit=crop" alt="Executive Coaching">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">임원 전용</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Executive Coaching (임원 코칭)</h3>
+                    <p class="card-curriculum__description">
+                        기업 임원을 위한 1:1 맞춤형 영어 코칭 프로그램입니다.
+                        국제 회의, 해외 출장, 프레젠테이션 등 실전 상황에 특화된 코칭을 제공합니다.
+                    </p>
+
+                    <div class="card-curriculum__schedule">
+                        <div class="card-curriculum__schedule-item">
+                            <div class="card-curriculum__schedule-icon">📅</div>
+                            <div class="card-curriculum__schedule-text">
+                                <span class="card-curriculum__schedule-label">수업 일정</span>
+                                <span class="card-curriculum__schedule-value">협의 가능</span>
+                            </div>
+                        </div>
+                        <div class="card-curriculum__schedule-item">
+                            <div class="card-curriculum__schedule-icon">⏰</div>
+                            <div class="card-curriculum__schedule-text">
+                                <span class="card-curriculum__schedule-label">수업 시간</span>
+                                <span class="card-curriculum__schedule-value">45분/회</span>
+                            </div>
+                        </div>
+                        <div class="card-curriculum__schedule-item">
+                            <div class="card-curriculum__schedule-icon">🎯</div>
+                            <div class="card-curriculum__schedule-text">
+                                <span class="card-curriculum__schedule-label">수업 빈도</span>
+                                <span class="card-curriculum__schedule-value">주 2-3회</span>
+                            </div>
+                        </div>
+                        <div class="card-curriculum__schedule-item">
+                            <div class="card-curriculum__schedule-icon">👔</div>
+                            <div class="card-curriculum__schedule-text">
+                                <span class="card-curriculum__schedule-label">강사 등급</span>
+                                <span class="card-curriculum__schedule-value">Senior+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>맞춤 견적</span>
+                            <span>비공개 수업</span>
+                        </div>
+                        <button class="card-curriculum__cta">상담 신청</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 21: Review/Rating Card -->
+            <div class="card-horizontal card-curriculum card-curriculum--review">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=400&fit=crop" alt="Blended Program">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">중급</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Blended Program (블렌디드 러닝)</h3>
+                    <p class="card-curriculum__description">
+                        온라인 전화 수업과 오프라인 그룹 수업을 결합한 하이브리드 프로그램입니다.
+                        체계적인 학습 관리와 다양한 학습 경험을 동시에 제공합니다.
+                    </p>
+
+                    <div class="card-curriculum__rating">
+                        <div class="card-curriculum__rating-score">4.9</div>
+                        <div class="card-curriculum__rating-details">
+                            <div class="card-curriculum__stars">★★★★★</div>
+                            <div class="card-curriculum__rating-count">328명의 수강생 평가</div>
+                        </div>
+                    </div>
+
+                    <div class="card-curriculum__testimonial">
+                        "온라인과 오프라인의 장점을 모두 누릴 수 있어서 정말 만족스럽습니다.
+                        전화 수업으로 꾸준히 회화 연습을 하고, 주말 그룹 수업에서 실전 적용까지 완벽해요!"
+                        <div class="card-curriculum__reviewer">- 삼성전자 김** 님</div>
+                    </div>
+
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">📞 전화 수업</span>
+                        <span class="card-curriculum__feature">👥 그룹 수업</span>
+                        <span class="card-curriculum__feature">📊 진도 관리</span>
+                        <span class="card-curriculum__feature">🎓 수료증</span>
+                    </div>
+
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>6개월</span>
+                            <span>¥520,000</span>
+                            <span>⭐ 베스트</span>
+                        </div>
+                        <button class="card-curriculum__cta">수강 신청</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <h2>20개 가로형 카드 컴포넌트 디자인 완료</h2>
+        <p>
+            게시판 카드(3) • 프로필 카드(3) • 프로그램 카드(2) • 통계 카드(2) • <strong>커리큘럼 카드(10) ✨</strong><br>
+            총 20가지 타입 × 다양한 변형 = 37개 예시 제공<br>
+            <strong>반응형 레이아웃 지원 • 이미지 포함 • 가격/일정/리뷰 특화 • 재사용 가능한 CSS 클래스 구조</strong>
+        </p>
+        <p style="margin-top: 1.5rem; color: #667eea; font-size: 0.95rem;">
+            <strong>새로 추가된 커리큘럼 카드:</strong><br>
+            가격 강조형 • 미니 카드 • 분할 레이아웃 • 일정 중심 • 리뷰/평점 중심
+        </p>
+    </div>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('.nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

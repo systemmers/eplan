@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커리큘럼 로드맵 - 아코디언 갤러리 - ePlan 스타일가이드</title>
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ePlan 디자인 토큰 */
+        :root {
+            --color-teal-dark: #00635C;
+            --color-teal-medium: #029488;
+            --color-teal-light: #A1D6D0;
+            --color-teal-lightest: #E8F5F3;
+            --color-orange-warm: #F37335;
+            --color-orange-light: #FBD4C1;
+            --color-white: #FFFFFF;
+            --color-bg-white: #FAFAFA;
+            --color-text-dark: #333333;
+            --color-text-muted: #666666;
+            --color-border: #DDDDDD;
+            --color-border-light: #EEEEEE;
+
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            --spacing-3xl: 64px;
+
+            --font-family-primary: 'Open Sans', 'Noto Sans KR', sans-serif;
+            --font-family-heading: 'Poppins', 'Noto Sans KR', sans-serif;
+            --font-size-xs: 12px;
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 30px;
+
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+
+            --line-height-base: 1.5;
+
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+
+            --transition-base: 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            color: var(--color-text-dark);
+            background: var(--color-bg-white);
+            padding: var(--spacing-2xl);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .header h1 {
+            font-family: var(--font-family-heading);
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-teal-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .header p {
+            color: var(--color-text-muted);
+            font-size: var(--font-size-lg);
+        }
+
+        /* Accordion */
+        .accordion {
+            display: grid;
+            gap: var(--spacing-lg);
+        }
+
+        .accordion-item {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-xl);
+            background: var(--color-teal-dark);
+            color: var(--color-white);
+            cursor: pointer;
+            transition: background var(--transition-base);
+        }
+
+        .accordion-header:hover {
+            background: var(--color-teal-medium);
+        }
+
+        .accordion-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .accordion-title h2 {
+            font-family: var(--font-family-heading);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .accordion-badge {
+            background: var(--color-orange-warm);
+            color: var(--color-white);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-sm);
+        }
+
+        .accordion-icon {
+            font-size: var(--font-size-2xl);
+            transition: transform var(--transition-base);
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-base);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 2000px;
+        }
+
+        .accordion-body {
+            padding: var(--spacing-xl);
+        }
+
+        /* Textbook Gallery */
+        .textbook-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .textbook-card {
+            background: var(--color-bg-white);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .textbook-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .textbook-image {
+            position: relative;
+            width: 100%;
+            padding-top: 140%;
+            background: var(--color-teal-lightest);
+            overflow: hidden;
+        }
+
+        .textbook-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .textbook-info {
+            padding: var(--spacing-md);
+        }
+
+        .textbook-level {
+            display: inline-block;
+            background: var(--color-teal-dark);
+            color: var(--color-white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .textbook-name {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-dark);
+            margin-bottom: var(--spacing-xs);
+            min-height: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .textbook-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+
+            .header h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .textbook-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .accordion-header {
+                padding: var(--spacing-md);
+            }
+
+            .accordion-title h2 {
+                font-size: var(--font-size-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>커리큘럼 로드맵 - 아코디언 갤러리</h1>
+            <p>카테고리를 선택하여 레벨별 교재를 확인하세요</p>
+        </div>
+
+        <div class="accordion">
+            <!-- 일반회화 -->
+            <div class="accordion-item active">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <h2>일반회화</h2>
+                        <span class="accordion-badge">Level 1-10</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="textbook-gallery" id="gallery-general"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 프리토킹 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <h2>프리토킹</h2>
+                        <span class="accordion-badge">Level 1-10</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="textbook-gallery" id="gallery-freetalk"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 회화특화 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <h2>회화특화</h2>
+                        <span class="accordion-badge">Level 1-10</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="textbook-gallery" id="gallery-conversation"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 시험대비 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <h2>시험대비</h2>
+                        <span class="accordion-badge">Level 1-10</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="textbook-gallery" id="gallery-exam"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 비즈니스 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <h2>비즈니스</h2>
+                        <span class="accordion-badge">Level 3-10</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="textbook-gallery" id="gallery-business"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 주니어 -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title">
+                        <h2>주니어</h2>
+                        <span class="accordion-badge">Level 1-8</span>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="textbook-gallery" id="gallery-junior"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Textbook Data
+        const textbookData = {
+            general: [
+                { level: 'Level 2-7', name: 'Smart Choice Starter 1~5', image: '../contents/books_img/b01.jpg' },
+                { level: 'Level 6-9', name: 'Smart Choice 1~5', image: '../contents/books_img/b02.jpg' },
+                { level: 'Level 1-3', name: 'Side by Side 1~3', image: '../contents/books_img/b03.jpg' },
+                { level: 'Level 4-7', name: 'Side by Side 4~7', image: '../contents/books_img/b04.jpg' },
+                { level: 'Level 8-10', name: 'Side by Side Plus', image: '../contents/books_img/b05.jpg' },
+                { level: 'Level 2-7', name: 'Touchstone 1~4', image: '../contents/books_img/b06.jpg' },
+                { level: 'Level 5-8', name: 'Touchstone 5~7', image: '../contents/books_img/b07.jpg' },
+                { level: 'Level 8-10', name: 'Touchstone 8~10', image: '../contents/books_img/b08.jpg' },
+                { level: 'Level 1-3', name: 'Interchange Intro~1', image: '../contents/books_img/b09.jpg' },
+                { level: 'Level 4-7', name: 'Interchange 2~3', image: '../contents/books_img/b10.jpg' },
+                { level: 'Level 8-10', name: 'Passages 1~2', image: '../contents/books_img/b11.jpg' },
+                { level: 'Level 2-7', name: 'American Headway Starter~5', image: '../contents/books_img/b12.jpg' }
+            ],
+            freetalk: [
+                { level: 'Level 3-5', name: 'Speak Up Starter~3', image: '../contents/books_img/b13.jpg' },
+                { level: 'Level 6-9', name: 'Speak Up 1~5', image: '../contents/books_img/b14.jpg' },
+                { level: 'Level 2-7', name: 'Let\'s Talk 1~3', image: '../contents/books_img/b15.jpg' },
+                { level: 'Level 7-10', name: 'Conversation Strategies', image: '../contents/books_img/b16.jpg' }
+            ],
+            conversation: [
+                { level: 'Level 2-7', name: 'Real English Conversation 1~4', image: '../contents/books_img/b17.jpg' },
+                { level: 'Level 5-8', name: 'Real English Conversation 5~7', image: '../contents/books_img/b18.jpg' },
+                { level: 'Level 8-10', name: 'Advanced Discussion Topics', image: '../contents/books_img/b19.jpg' },
+                { level: 'Level 3-5', name: 'English in Common 1~5', image: '../contents/books_img/b20.jpg' },
+                { level: 'Level 6-9', name: 'English in Common 6~10', image: '../contents/books_img/b21.jpg' },
+                { level: 'Level 4-7', name: 'Impact Issues 1~3', image: '../contents/books_img/b22.jpg' }
+            ],
+            exam: [
+                { level: 'Level 3-5', name: 'TOEIC Speaking Starter~Intermediate', image: '../contents/books_img/b23.jpg' },
+                { level: 'Level 5-8', name: 'TOEIC Speaking Advanced', image: '../contents/books_img/b24.jpg' },
+                { level: 'Level 8-10', name: 'TOEIC Speaking Expert', image: '../contents/books_img/b25.jpg' },
+                { level: 'Level 2-7', name: 'OPIc IM1~IM2', image: '../contents/books_img/b26.jpg' },
+                { level: 'Level 5-8', name: 'OPIc IH', image: '../contents/books_img/b27.jpg' },
+                { level: 'Level 8-10', name: 'OPIc AL', image: '../contents/books_img/b28.jpg' },
+                { level: 'Level 4-7', name: 'IELTS Foundation~Intermediate', image: '../contents/books_img/b29.jpg' },
+                { level: 'Level 7-10', name: 'IELTS Advanced~Expert', image: '../contents/books_img/b30.jpg' }
+            ],
+            business: [
+                { level: 'Level 3-5', name: 'Business Venture 1~2', image: '../contents/books_img/b31.jpg' },
+                { level: 'Level 5-8', name: 'Business Venture 3', image: '../contents/books_img/b32.jpg' },
+                { level: 'Level 8-10', name: 'Business Venture Plus', image: '../contents/books_img/b33.jpg' },
+                { level: 'Level 4-7', name: 'Market Leader Elementary~Pre-Intermediate', image: '../contents/books_img/b34.jpg' },
+                { level: 'Level 7-10', name: 'Market Leader Intermediate~Advanced', image: '../contents/books_img/b35.jpg' },
+                { level: 'Level 5-8', name: 'Business Result Elementary~Advanced', image: '../contents/books_img/b36.jpg' }
+            ],
+            junior: [
+                { level: 'Level 1-3', name: 'Kids Box Starter~2', image: '../contents/books_img/b37.jpg' },
+                { level: 'Level 4-7', name: 'Kids Box 3~5', image: '../contents/books_img/b38.jpg' },
+                { level: 'Level 7-10', name: 'Kids Box 6~8', image: '../contents/books_img/b39.jpg' },
+                { level: 'Level 2-7', name: 'Big English Starter~3', image: '../contents/books_img/b40.jpg' },
+                { level: 'Level 6-9', name: 'Big English 4~6', image: '../contents/books_img/b100.jpg' }
+            ]
+        };
+
+        // Render Gallery
+        function renderGallery(category, containerId) {
+            const container = document.getElementById(containerId);
+            const books = textbookData[category];
+
+            books.forEach(book => {
+                const card = document.createElement('div');
+                card.className = 'textbook-card';
+                card.innerHTML = `
+                    <div class="textbook-image">
+                        <img src="${book.image}" alt="${book.name}">
+                    </div>
+                    <div class="textbook-info">
+                        <span class="textbook-level">${book.level}</span>
+                        <div class="textbook-name">${book.name}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Initialize galleries
+        renderGallery('general', 'gallery-general');
+        renderGallery('freetalk', 'gallery-freetalk');
+        renderGallery('conversation', 'gallery-conversation');
+        renderGallery('exam', 'gallery-exam');
+        renderGallery('business', 'gallery-business');
+        renderGallery('junior', 'gallery-junior');
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all accordion items
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't already active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

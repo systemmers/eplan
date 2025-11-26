@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커리큘럼 로드맵 - 그라데이션 모던 스타일</title>
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Gradient Modern Design Tokens */
+        :root {
+            /* Text Colors */
+            --color-text-dark: #2c3e50;
+            --color-text-light: #7f8c8d;
+            --color-white: #ffffff;
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+
+            /* Typography */
+            --font-family-primary: 'Open Sans', 'Noto Sans KR', sans-serif;
+            --font-family-heading: 'Poppins', 'Noto Sans KR', sans-serif;
+
+            --font-size-xs: 12px;
+            --font-size-sm: 14px;
+            --font-size-base: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 30px;
+
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+
+            --line-height-tight: 1.25;
+            --line-height-base: 1.5;
+
+            /* Effects */
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+            --transition-base: 0.5s ease;
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            color: var(--color-text-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: var(--spacing-2xl);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .header h1 {
+            font-family: var(--font-family-heading);
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .header p {
+            color: var(--color-text-light);
+            font-size: var(--font-size-lg);
+        }
+
+        /* Table Wrapper */
+        .table-wrapper {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: visible;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .table-scroll {
+            overflow-x: visible;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Mobile Scroll Notice */
+        .scroll-notice {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: center;
+            font-size: var(--font-size-sm);
+        }
+
+        @media (max-width: 1024px) {
+            .scroll-notice {
+                display: block;
+            }
+        }
+
+        /* Curriculum Table */
+        .curriculum-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--font-size-sm);
+            table-layout: fixed;
+        }
+
+        .curriculum-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-white);
+            height: 120px;
+        }
+
+        .curriculum-table th {
+            padding: var(--spacing-md);
+            text-align: center;
+            font-weight: var(--font-weight-semibold);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: 40px;
+        }
+
+        .curriculum-table td {
+            padding: var(--spacing-md);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            vertical-align: middle;
+            transition: all var(--transition-base);
+            background-size: 200% 200%;
+            background-position: 0% 0%;
+        }
+
+        .curriculum-table tbody th {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: var(--color-text-dark);
+            font-weight: var(--font-weight-semibold);
+            text-align: left;
+            white-space: normal;
+            word-break: break-word;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 카테고리 셀 배경 이미지 */
+        .curriculum-table tbody th::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .curriculum-table tbody th span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 각 카테고리별 배경 이미지 */
+        /* .curriculum-table tbody th.category-general::before {
+            background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400');
+        }
+
+        .curriculum-table tbody th.category-pretalking::before {
+            background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400'); 
+        }
+
+        .curriculum-table tbody th.category-conversation::before {
+            background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400');
+        }
+
+        .curriculum-table tbody th.category-test::before {
+            background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400');
+        }
+
+        .curriculum-table tbody th.category-business::before {
+            background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400');
+        }
+
+        .curriculum-table tbody th.category-junior::before {
+            background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400');
+        } */
+
+        /* 구분 컬럼 너비 고정 */
+        .curriculum-table thead th:first-child,
+        .curriculum-table tbody th:first-child {
+            width: 150px;
+            min-width: 150px;
+        }
+
+        /* 셀 오버플로우 방지 */
+        .curriculum-table td,
+        .curriculum-table th {
+            overflow: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Level Headers */
+        .curriculum-table .level-group {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-base);
+        }
+
+        /* Level Backgrounds - Gradients */
+        .curriculum-table .lv1 {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: var(--color-text-dark);
+        }
+        .curriculum-table .lv2 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: var(--color-text-dark);
+        }
+        .curriculum-table .lv3 {
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            color: var(--color-text-dark);
+        }
+        .curriculum-table .lv4 {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            color: var(--color-text-dark);
+        }
+        .curriculum-table .lv5 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: var(--color-white);
+        }
+        .curriculum-table .lv6 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: var(--color-text-dark);
+        }
+        .curriculum-table .lv7 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: var(--color-text-dark);
+        }
+        .curriculum-table .lv8 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-white);
+        }
+        .curriculum-table .lv9 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: var(--color-white);
+        }
+        .curriculum-table .lv10 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: var(--color-white);
+        }
+
+        /* Textbook Cells */
+        .textbook-cell {
+            font-weight: var(--font-weight-medium);
+            cursor: default;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .textbook-cell:hover {
+            background-position: 100% 100%;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Gradient Textbook Backgrounds */
+        .lvbg1_3 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-white);
+        }
+        .lvbg2_7 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: var(--color-white);
+        }
+        .lvbg3_5 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: var(--color-white);
+        }
+        .lvbg4_7 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: var(--color-text-dark);
+        }
+        .lvbg5_8 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: var(--color-text-dark);
+        }
+        .lvbg6_9 {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            color: var(--color-white);
+        }
+        .lvbg7_10 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: var(--color-text-dark);
+        }
+        .lvbg8_10 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: var(--color-text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: var(--spacing-md);
+            }
+
+            .header h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .header p {
+                font-size: var(--font-size-base);
+            }
+
+            .curriculum-table {
+                font-size: var(--font-size-xs);
+            }
+
+            .curriculum-table th,
+            .curriculum-table td {
+                padding: var(--spacing-sm);
+            }
+        }
+
+        /* Legend */
+        .legend {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-xl);
+        }
+
+        .legend h2 {
+            font-family: var(--font-family-heading);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .legend-color {
+            width: 40px;
+            height: 30px;
+            border-radius: var(--border-radius-md);
+        }
+
+        .legend-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-light);
+        }
+
+        /* Legend 색상 가이드용 레벨 색상 */
+        .legend-color.lv1 {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+        .legend-color.lv2 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+        .legend-color.lv3 {
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+        }
+        .legend-color.lv4 {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+        }
+        .legend-color.lv5 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .legend-color.lv6 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        .legend-color.lv7 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        .legend-color.lv8 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .legend-color.lv9 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .legend-color.lv10 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        /* Textbook Cell with Thumbnail */
+        .textbook-cell-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            cursor: pointer;
+            padding: var(--spacing-sm);
+        }
+
+        .textbook-name {
+            width: 100%;
+            text-align: center;
+            word-break: break-word;
+            line-height: 1.4;
+            order: -1;
+            font-weight: var(--font-weight-medium);
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .textbook-images {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            min-height: 120px;
+            width: 100%;
+            padding-left: 10px;
+        }
+
+        .textbook-thumbnail {
+            width: 90px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+            position: relative;
+        }
+
+        .textbook-thumbnail:not(:first-child) {
+            margin-left: -60px;
+        }
+
+        .textbook-thumbnail:hover {
+            transform: scale(1.05) translateY(-5px);
+            z-index: 10;
+        }
+
+        .textbook-cell:hover .textbook-thumbnail {
+            transform: scale(1.02);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Modal Card */
+        .modal-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        /* Modal Header */
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--color-white);
+            font-size: var(--font-size-2xl);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Modal Body */
+        .modal-body {
+            padding: var(--spacing-xl);
+        }
+
+        .modal-cover-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 0 auto var(--spacing-lg);
+            display: block;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+        }
+
+        .modal-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 20%);
+            border-radius: var(--border-radius-md);
+        }
+
+        .modal-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-meta-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .modal-meta-value {
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-dark);
+        }
+
+        .modal-section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .modal-section h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-dark);
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid #667eea;
+        }
+
+        .modal-objectives {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-objectives li {
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+        }
+
+        .modal-objectives li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: var(--font-weight-bold);
+        }
+
+        .modal-samples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .modal-sample-image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease;
+        }
+
+        .modal-sample-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .modal-card {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .modal-header h2 {
+                font-size: var(--font-size-xl);
+            }
+
+            .modal-body {
+                padding: var(--spacing-lg);
+            }
+
+            .textbook-thumbnail {
+                width: 67.5px;
+                height: 90px;
+            }
+
+            .textbook-cell-content {
+                font-size: var(--font-size-xs);
+                padding: var(--spacing-xs);
+            }
+        }
+
+        /* 모달 내부 교재 썸네일 그리드 */
+        .modal-textbook-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e3e9f2 100%);
+            border-radius: var(--border-radius-md);
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .modal-textbook-grid-title {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-sm);
+            text-align: center;
+        }
+
+        .modal-textbook-thumbnail {
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-md);
+        }
+
+        .modal-textbook-thumbnail:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .modal-textbook-thumbnail.active {
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px solid #667eea;
+        }
+
+        .modal-textbook-thumbnail img {
+            width: 100%;
+            max-width: 90px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .modal-textbook-thumbnail span {
+            display: block;
+            font-size: var(--font-size-xs);
+            color: var(--color-text-light);
+            line-height: 1.3;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>커리큘럼 로드맵</h1>
+            <p>레벨별 교재 구성 및 학습 경로 - 그라데이션 모던 스타일</p>
+        </div>
+
+        <div class="table-wrapper">
+            <div class="scroll-notice">
+                ← 좌우로 스크롤하여 전체 로드맵을 확인하세요 →
+            </div>
+            <div class="table-scroll">
+                <table class="curriculum-table">
+                    <thead>
+                        <!-- 1줄: 초급/중급/고급 그룹 -->
+                        <tr>
+                            <th rowspan="3">Category</th>
+                            <th colspan="6" class="level-group">Beginner</th>
+                            <th colspan="8" class="level-group">Intermediate</th>
+                            <th colspan="6" class="level-group">Advanced</th>
+                        </tr>
+                        <!-- 2줄: 메인 레벨 (Level 1~10) -->
+                        <tr>
+                            <th colspan="2" class="lv1">Level 1</th>
+                            <th colspan="2" class="lv2">Level 2</th>
+                            <th colspan="2" class="lv3">Level 3</th>
+                            <th colspan="2" class="lv4">Level 4</th>
+                            <th colspan="2" class="lv5">Level 5</th>
+                            <th colspan="2" class="lv6">Level 6</th>
+                            <th colspan="2" class="lv7">Level 7</th>
+                            <th colspan="2" class="lv8">Level 8</th>
+                            <th colspan="2" class="lv9">Level 9</th>
+                            <th colspan="2" class="lv10">Level 10</th>
+                        </tr>
+                        <!-- 3줄: 서브 레벨 (L/H) -->
+                        <tr>
+                            <th class="lv1">L</th><th class="lv1">H</th>
+                            <th class="lv2">L</th><th class="lv2">H</th>
+                            <th class="lv3">L</th><th class="lv3">H</th>
+                            <th class="lv4">L</th><th class="lv4">H</th>
+                            <th class="lv5">L</th><th class="lv5">H</th>
+                            <th class="lv6">L</th><th class="lv6">H</th>
+                            <th class="lv7">L</th><th class="lv7">H</th>
+                            <th class="lv8">L</th><th class="lv8">H</th>
+                            <th class="lv9">L</th><th class="lv9">H</th>
+                            <th class="lv10">L</th><th class="lv10">H</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 일반회화 -->
+                        <tr>
+                            <th rowspan="5" class="category-general"><span>General English</span></th>
+                            <td colspan="10" class="textbook-cell lvbg2_7" data-textbook="sc-starter">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/sc-starter.jpg" alt="Smart Choice Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Smart Choice Starter 1~5</span>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg6_9" data-textbook="sc-main">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/sc-main.jpg" alt="Smart Choice" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Smart Choice 1~5</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="textbook-cell lvbg1_3" data-textbook="sbs-1-3">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/sbs-1-3.jpg" alt="Side by Side 1~3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Side by Side 1~3</span>
+                                </div>
+                            </td>
+                            <td colspan="8" class="textbook-cell lvbg4_7" data-textbook="sbs-4-7">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/sbs-4-7.jpg" alt="Side by Side 4~7" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Side by Side 4~7</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook="sbs-plus">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/sbs-plus.jpg" alt="Side by Side Plus" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Side by Side Plus</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8" class="textbook-cell lvbg2_7" data-textbook="touchstone-1-4">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/touchstone-1-4.jpg" alt="Touchstone 1~4" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Touchstone 1~4</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg5_8" data-textbook="touchstone-5-7">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/touchstone-5-7.jpg" alt="Touchstone 5~7" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Touchstone 5~7</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook="touchstone-8-10">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/touchstone-8-10.jpg" alt="Touchstone 8~10" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Touchstone 8~10</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" class="textbook-cell lvbg1_3" data-textbook="interchange-intro">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/interchange-intro.jpg" alt="Interchange Intro~1" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Interchange Intro~1</span>
+                                </div>
+                            </td>
+                            <td colspan="8" class="textbook-cell lvbg4_7" data-textbook="interchange-2-3">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/interchange-2-3.jpg" alt="Interchange 2~3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Interchange 2~3</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook="passages">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/passages.jpg" alt="Passages 1~2" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Passages 1~2</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="20" class="textbook-cell lvbg2_7" data-textbook="american-headway">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/american-headway.jpg" alt="American Headway" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">American Headway Starter~5</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- 프리토킹 -->
+                        <tr>
+                            <th rowspan="2" class="category-pretalking"><span>Pre-Talking</span></th>
+                            <td colspan="10" class="textbook-cell lvbg3_5" data-textbook="speak-up-starter">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/speak-up-starter.jpg" alt="Speak Up Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Speak Up Starter~3</span>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg6_9" data-textbook="speak-up-main">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/speak-up-main.jpg" alt="Speak Up" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Speak Up 1~5</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg2_7" data-textbook="lets-talk">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/lets-talk.jpg" alt="Let's Talk" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Let's Talk 1~3</span>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg7_10" data-textbook="conversation-strategies">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/conversation-strategies.jpg" alt="Conversation Strategies" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Conversation Strategies</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- 회화특화 -->
+                        <tr>
+                            <th rowspan="3" class="category-conversation"><span>Conversation Specialization</span></th>
+                            <td colspan="8" class="textbook-cell lvbg2_7" data-textbook="real-english-1-4">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/real-english-1-4.jpg" alt="Real English Conversation 1~4" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Real English Conversation 1~4</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg5_8" data-textbook="real-english-5-7">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/real-english-5-7.jpg" alt="Real English Conversation 5~7" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Real English Conversation 5~7</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook="advanced-discussion">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/advanced-discussion.jpg" alt="Advanced Discussion Topics" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Advanced Discussion Topics</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg3_5" data-textbook="english-common-1-5">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/english-common-1-5.jpg" alt="English in Common 1~5" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">English in Common 1~5</span>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg6_9" data-textbook="english-common-6-10">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/english-common-6-10.jpg" alt="English in Common 6~10" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">English in Common 6~10</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="20" class="textbook-cell lvbg4_7" data-textbook="impact-issues">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/impact-issues.jpg" alt="Impact Issues" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Impact Issues 1~3</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- 시험대비 -->
+                        <tr>
+                            <th rowspan="3" class="category-test"><span>Test Preparation</span></th>
+                            <td colspan="8" class="textbook-cell lvbg3_5" data-textbook="toeic-speaking-basic">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/toeic-speaking-basic.jpg" alt="TOEIC Speaking Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">TOEIC Speaking Starter~Intermediate</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg5_8" data-textbook="toeic-speaking-advanced">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/toeic-speaking-advanced.jpg" alt="TOEIC Speaking Advanced" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">TOEIC Speaking Advanced</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook="toeic-speaking-expert">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/toeic-speaking-expert.jpg" alt="TOEIC Speaking Expert" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">TOEIC Speaking Expert</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8" class="textbook-cell lvbg2_7" data-textbook="opic-im">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/opic-im.jpg" alt="OPIc IM" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">OPIc IM1~IM2</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg5_8" data-textbook="opic-ih">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/opic-ih.jpg" alt="OPIc IH" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">OPIc IH</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook="opic-al">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/opic-al.jpg" alt="OPIc AL" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">OPIc AL</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg4_7" data-textbook="ielts-basic">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/ielts-basic.jpg" alt="IELTS Foundation" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">IELTS Foundation~Intermediate</span>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg7_10" data-textbook="ielts-advanced">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/ielts-advanced.jpg" alt="IELTS Advanced" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">IELTS Advanced~Expert</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- 비즈니스 -->
+                        <tr>
+                            <th rowspan="3" class="category-business"><span>Business</span></th>
+                            <td colspan="8" class="textbook-cell lvbg3_5" data-textbook="business-venture-1-2">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/business-venture-1-2.jpg" alt="Business Venture 1~2" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Business Venture 1~2</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg5_8" data-textbook="business-venture-3">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/business-venture-3.jpg" alt="Business Venture 3" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Business Venture 3</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg8_10" data-textbook="business-venture-plus">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/business-venture-plus.jpg" alt="Business Venture Plus" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Business Venture Plus</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg4_7" data-textbook="market-leader-basic">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/market-leader-basic.jpg" alt="Market Leader Elementary" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Market Leader Elementary~Pre-Intermediate</span>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg7_10" data-textbook="market-leader-advanced">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/market-leader-advanced.jpg" alt="Market Leader Intermediate" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Market Leader Intermediate~Advanced</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="20" class="textbook-cell lvbg5_8" data-textbook="business-result">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/business-result.jpg" alt="Business Result" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Business Result Elementary~Advanced</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- 주니어 -->
+                        <tr>
+                            <th rowspan="2" class="category-junior"><span>Junior</span></th>
+                            <td colspan="8" class="textbook-cell lvbg1_3" data-textbook="kids-box-starter">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/kids-box-starter.jpg" alt="Kids Box Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Kids Box Starter~2</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg4_7" data-textbook="kids-box-3-5">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/kids-box-3-5.jpg" alt="Kids Box 3~5" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Kids Box 3~5</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="textbook-cell lvbg7_10" data-textbook="kids-box-6-8">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/kids-box-6-8.jpg" alt="Kids Box 6~8" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Kids Box 6~8</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="textbook-cell lvbg2_7" data-textbook="big-english-starter">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/big-english-starter.jpg" alt="Big English Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Big English Starter~3</span>
+                                </div>
+                            </td>
+                            <td colspan="10" class="textbook-cell lvbg6_9" data-textbook="big-english-4-6">
+                                <div class="textbook-cell-content">
+                                    <img src="../books_img/big-english-4-6.jpg" alt="Big English 4~6" class="textbook-thumbnail" onerror="this.style.display='none'">
+                                    <span class="textbook-name">Big English 4~6</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <h2>레벨 색상 가이드</h2>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-color lv1"></div>
+                    <span class="legend-label">Level 1 - 입문</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv2"></div>
+                    <span class="legend-label">Level 2 - 초급 I</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv3"></div>
+                    <span class="legend-label">Level 3 - 초급 II</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv4"></div>
+                    <span class="legend-label">Level 4 - 중급 I</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv5"></div>
+                    <span class="legend-label">Level 5 - 중급 II</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv6"></div>
+                    <span class="legend-label">Level 6 - 중급 III</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv7"></div>
+                    <span class="legend-label">Level 7 - 중급 IV</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv8"></div>
+                    <span class="legend-label">Level 8 - 고급 I</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv9"></div>
+                    <span class="legend-label">Level 9 - 고급 II</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv10"></div>
+                    <span class="legend-label">Level 10 - 고급 III</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="textbookModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2 id="modalTitle">교재 상세 정보</h2>
+                <button class="modal-close" aria-label="닫기" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalContent">
+                <!-- 동적으로 생성됨 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 교재 데이터
+        const textbookData = {
+            'sc-starter': {
+                id: 'sc-starter',
+                name: 'Smart Choice Starter 1~5',
+                publisher: 'Oxford University Press',
+                levels: 'Level 1-5',
+                coverImage: '../books_img/sc-starter.jpg',
+                thumbnailImage: '../books_img/sc-starter.jpg',
+                description: '초급 학습자를 위한 체계적인 영어 회화 교재입니다. 실생활에서 바로 사용할 수 있는 표현들을 중심으로 구성되어 있습니다.',
+                objectives: [
+                    '기초 문법 패턴 습득',
+                    '일상 회화 표현 학습',
+                    '듣기 및 말하기 능력 향상',
+                    '기본 어휘력 강화'
+                ],
+                samples: [
+                    '../books_img/samples/sc-starter-1.jpg',
+                    '../books_img/samples/sc-starter-2.jpg'
+                ]
+            },
+            'sc-main': {
+                id: 'sc-main',
+                name: 'Smart Choice 1~5',
+                publisher: 'Oxford University Press',
+                levels: 'Level 6-10',
+                coverImage: '../books_img/sc-main.jpg',
+                thumbnailImage: '../books_img/sc-main.jpg',
+                description: '중급 이상 학습자를 위한 심화 영어 회화 교재입니다. 다양한 주제와 상황을 다루며 실용적인 영어 실력을 키웁니다.',
+                objectives: [
+                    '중급 문법 및 표현 마스터',
+                    '다양한 주제별 회화 연습',
+                    '실생활 영어 능력 향상',
+                    '고급 어휘 및 관용구 학습'
+                ],
+                samples: [
+                    '/static/books_img/samples/sc-main-1.jpg',
+                    '/static/books_img/samples/sc-main-2.jpg'
+                ]
+            },
+            'sbs-1-3': {
+                id: 'sbs-1-3',
+                name: 'Side by Side 1~3',
+                publisher: 'Pearson Education',
+                levels: 'Level 1-3',
+                coverImage: '../books_img/sbs-1-3.jpg',
+                thumbnailImage: '../books_img/sbs-1-3.jpg',
+                description: '전 세계적으로 검증된 영어 학습 교재입니다. 문법, 회화, 듣기, 읽기를 통합적으로 학습할 수 있습니다.',
+                objectives: [
+                    '기초 영문법 체계적 학습',
+                    '4가지 영역 통합 학습',
+                    '반복 학습을 통한 패턴 습득',
+                    '실용적인 회화 능력 개발'
+                ],
+                samples: [
+                    '/static/books_img/samples/sbs-1.jpg',
+                    '/static/books_img/samples/sbs-2.jpg'
+                ]
+            },
+            'sbs-4-7': {
+                id: 'sbs-4-7',
+                name: 'Side by Side 4~7',
+                publisher: 'Pearson Education',
+                levels: 'Level 4-7',
+                coverImage: '../books_img/sbs-4-7.jpg',
+                thumbnailImage: '../books_img/sbs-4-7.jpg',
+                description: 'Side by Side 심화 과정으로 중급 이상의 영어 실력을 갖추게 됩니다.',
+                objectives: [
+                    '중급 문법 심화 학습',
+                    '복잡한 문장 구조 이해',
+                    '고급 회화 표현 습득',
+                    '실전 영어 능력 강화'
+                ],
+                samples: []
+            },
+            'sbs-plus': {
+                id: 'sbs-plus',
+                name: 'Side by Side Plus',
+                publisher: 'Pearson Education',
+                levels: 'Level 8-10',
+                coverImage: '../books_img/sbs-plus.jpg',
+                thumbnailImage: '../books_img/sbs-plus.jpg',
+                description: '고급 영어 학습자를 위한 완성 단계 교재입니다.',
+                objectives: [
+                    '고급 영문법 완성',
+                    '유창한 회화 능력 개발',
+                    '다양한 상황 대처 능력',
+                    '원어민 수준의 표현력'
+                ],
+                samples: []
+            },
+            'touchstone-1-4': {
+                id: 'touchstone-1-4',
+                name: 'Touchstone 1~4',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 2-7',
+                coverImage: '../books_img/touchstone-1-4.jpg',
+                thumbnailImage: '../books_img/touchstone-1-4.jpg',
+                description: 'Cambridge 대학 출판부의 검증된 영어 교재로 미국식 영어를 체계적으로 학습합니다.',
+                objectives: [
+                    '미국식 영어 표현 습득',
+                    '실제 대화 중심 학습',
+                    '문법과 회화의 조화',
+                    '자연스러운 영어 구사'
+                ],
+                samples: []
+            },
+            'touchstone-5-7': {
+                id: 'touchstone-5-7',
+                name: 'Touchstone 5~7',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 5-8',
+                coverImage: '../books_img/touchstone-5-7.jpg',
+                thumbnailImage: '../books_img/touchstone-5-7.jpg',
+                description: 'Touchstone 중급 과정으로 더욱 심화된 영어 능력을 개발합니다.',
+                objectives: [
+                    '중급 회화 완성',
+                    '복잡한 주제 토론',
+                    '고급 어휘 확장',
+                    '자신감 있는 영어 구사'
+                ],
+                samples: []
+            },
+            'touchstone-8-10': {
+                id: 'touchstone-8-10',
+                name: 'Touchstone 8~10',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 8-10',
+                coverImage: '../books_img/touchstone-8-10.jpg',
+                thumbnailImage: '../books_img/touchstone-8-10.jpg',
+                description: '고급 영어 학습자를 위한 최상위 과정입니다.',
+                objectives: [
+                    '전문적인 영어 구사',
+                    '학술적 토론 능력',
+                    '원어민 수준 달성',
+                    '비즈니스 영어 활용'
+                ],
+                samples: []
+            },
+            'interchange-intro': {
+                id: 'interchange-intro',
+                name: 'Interchange Intro~1',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 1-3',
+                coverImage: '../books_img/interchange-intro.jpg',
+                thumbnailImage: '../books_img/interchange-intro.jpg',
+                description: '초급 학습자를 위한 실용적인 커뮤니케이션 중심 교재입니다.',
+                objectives: [
+                    '기초 회화 능력 개발',
+                    '실생활 커뮤니케이션 연습',
+                    '듣기 및 말하기 집중 학습',
+                    '문법과 어휘의 균형 잡힌 학습'
+                ],
+                samples: []
+            },
+            'interchange-2-3': {
+                id: 'interchange-2-3',
+                name: 'Interchange 2~3',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 4-7',
+                coverImage: '../books_img/interchange-2-3.jpg',
+                thumbnailImage: '../books_img/interchange-2-3.jpg',
+                description: '중급 학습자를 위한 종합 영어 교재입니다.',
+                objectives: [
+                    '중급 회화 능력 강화',
+                    '다양한 주제 토론',
+                    '실용 문법 마스터',
+                    '유창성 향상'
+                ],
+                samples: []
+            },
+            'passages': {
+                id: 'passages',
+                name: 'Passages 1~2',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 8-10',
+                coverImage: '../books_img/passages.jpg',
+                thumbnailImage: '../books_img/passages.jpg',
+                description: '고급 학습자를 위한 심화 회화 및 독해 교재입니다.',
+                objectives: [
+                    '고급 회화 및 독해 능력',
+                    '비판적 사고력 개발',
+                    '복잡한 주제 토론',
+                    '학술적 영어 실력 향상'
+                ],
+                samples: []
+            },
+            'american-headway': {
+                id: 'american-headway',
+                name: 'American Headway Starter~5',
+                publisher: 'Oxford University Press',
+                levels: 'Level 1-10',
+                coverImage: '../books_img/american-headway.jpg',
+                thumbnailImage: '../books_img/american-headway.jpg',
+                description: '미국식 영어를 체계적으로 학습할 수 있는 종합 교재입니다.',
+                objectives: [
+                    '미국식 영어 완전 습득',
+                    '4대 영역 통합 학습',
+                    '문법 및 어휘 체계적 학습',
+                    '실용적인 영어 능력 개발'
+                ],
+                samples: []
+            },
+            'speak-up-starter': {
+                id: 'speak-up-starter',
+                name: 'Speak Up Starter~3',
+                publisher: 'Pearson Education',
+                levels: 'Level 1-5',
+                coverImage: '../books_img/speak-up-starter.jpg',
+                thumbnailImage: '../books_img/speak-up-starter.jpg',
+                description: '프리토킹 능력 개발을 위한 대화 중심 교재입니다.',
+                objectives: [
+                    '자유로운 회화 능력',
+                    '주제별 토론 연습',
+                    '의견 표현 능력 향상',
+                    '자연스러운 대화 스킬'
+                ],
+                samples: []
+            },
+            'speak-up-main': {
+                id: 'speak-up-main',
+                name: 'Speak Up 1~5',
+                publisher: 'Pearson Education',
+                levels: 'Level 6-10',
+                coverImage: '../books_img/speak-up-main.jpg',
+                thumbnailImage: '../books_img/speak-up-main.jpg',
+                description: '심화 프리토킹을 위한 토론 중심 교재입니다.',
+                objectives: [
+                    '고급 회화 능력',
+                    '복잡한 주제 토론',
+                    '논리적 의견 전개',
+                    '설득력 있는 커뮤니케이션'
+                ],
+                samples: []
+            },
+            'lets-talk': {
+                id: 'lets-talk',
+                name: "Let's Talk 1~3",
+                publisher: 'Cambridge University Press',
+                levels: 'Level 1-5',
+                coverImage: '../books_img/lets-talk.jpg',
+                thumbnailImage: '../books_img/lets-talk.jpg',
+                description: '실제 대화 상황을 통한 회화 연습 교재입니다.',
+                objectives: [
+                    '실생활 대화 능력',
+                    '자연스러운 표현 학습',
+                    '토론 및 논의 기술',
+                    '유창성 향상'
+                ],
+                samples: []
+            },
+            'conversation-strategies': {
+                id: 'conversation-strategies',
+                name: 'Conversation Strategies',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 7-10',
+                coverImage: '../books_img/conversation-strategies.jpg',
+                thumbnailImage: '../books_img/conversation-strategies.jpg',
+                description: '효과적인 대화 전략을 배우는 고급 회화 교재입니다.',
+                objectives: [
+                    '전략적 대화 능력',
+                    '상황별 대응 스킬',
+                    '효과적인 의사소통',
+                    '고급 회화 표현'
+                ],
+                samples: []
+            },
+            'real-english-1-4': {
+                id: 'real-english-1-4',
+                name: 'Real English Conversation 1~4',
+                publisher: 'Pearson Education',
+                levels: 'Level 2-7',
+                coverImage: '../books_img/real-english-1-4.jpg',
+                thumbnailImage: '../books_img/real-english-1-4.jpg',
+                description: '실제 영어 회화 상황에 특화된 교재입니다.',
+                objectives: [
+                    '실전 영어 회화',
+                    '상황별 표현 학습',
+                    '자연스러운 대화 연습',
+                    '실용 영어 마스터'
+                ],
+                samples: []
+            },
+            'real-english-5-7': {
+                id: 'real-english-5-7',
+                name: 'Real English Conversation 5~7',
+                publisher: 'Pearson Education',
+                levels: 'Level 5-8',
+                coverImage: '../books_img/real-english-5-7.jpg',
+                thumbnailImage: '../books_img/real-english-5-7.jpg',
+                description: '심화 실전 영어 회화 교재입니다.',
+                objectives: [
+                    '고급 회화 표현',
+                    '복잡한 상황 대응',
+                    '전문적인 영어 구사',
+                    '실전 영어 완성'
+                ],
+                samples: []
+            },
+            'advanced-discussion': {
+                id: 'advanced-discussion',
+                name: 'Advanced Discussion Topics',
+                publisher: 'Cengage Learning',
+                levels: 'Level 8-10',
+                coverImage: '../books_img/advanced-discussion.jpg',
+                thumbnailImage: '../books_img/advanced-discussion.jpg',
+                description: '고급 주제에 대한 심도 있는 토론 교재입니다.',
+                objectives: [
+                    '심화 토론 능력',
+                    '비판적 사고',
+                    '논리적 주장 전개',
+                    '학술적 토론 스킬'
+                ],
+                samples: []
+            },
+            'english-common-1-5': {
+                id: 'english-common-1-5',
+                name: 'English in Common 1~5',
+                publisher: 'Pearson Education',
+                levels: 'Level 1-5',
+                coverImage: '../books_img/english-common-1-5.jpg',
+                thumbnailImage: '../books_img/english-common-1-5.jpg',
+                description: '일상 영어를 체계적으로 배우는 종합 교재입니다.',
+                objectives: [
+                    '일상 영어 완성',
+                    '실용적인 회화',
+                    '기초부터 중급까지',
+                    '균형 잡힌 4대 영역'
+                ],
+                samples: []
+            },
+            'english-common-6-10': {
+                id: 'english-common-6-10',
+                name: 'English in Common 6~10',
+                publisher: 'Pearson Education',
+                levels: 'Level 6-10',
+                coverImage: '../books_img/english-common-6-10.jpg',
+                thumbnailImage: '../books_img/english-common-6-10.jpg',
+                description: '중급부터 고급까지 영어 실력을 완성하는 교재입니다.',
+                objectives: [
+                    '고급 영어 완성',
+                    '전문적인 회화',
+                    '학술 영어 능력',
+                    '원어민 수준 달성'
+                ],
+                samples: []
+            },
+            'impact-issues': {
+                id: 'impact-issues',
+                name: 'Impact Issues 1~3',
+                publisher: 'Pearson Education',
+                levels: 'Level 4-7',
+                coverImage: '../books_img/impact-issues.jpg',
+                thumbnailImage: '../books_img/impact-issues.jpg',
+                description: '사회적 이슈를 다루는 토론 중심 교재입니다.',
+                objectives: [
+                    '사회 이슈 토론',
+                    '비판적 사고 개발',
+                    '논리적 의견 제시',
+                    '설득력 있는 표현'
+                ],
+                samples: []
+            },
+            'toeic-speaking-basic': {
+                id: 'toeic-speaking-basic',
+                name: 'TOEIC Speaking Starter~Intermediate',
+                publisher: 'ETS',
+                levels: 'Level 1-4',
+                coverImage: '../books_img/toeic-speaking-basic.jpg',
+                thumbnailImage: '../books_img/toeic-speaking-basic.jpg',
+                description: 'TOEIC Speaking 시험 대비 기초 과정입니다.',
+                objectives: [
+                    'TOEIC Speaking 기초',
+                    '시험 유형 익히기',
+                    '기본 답변 전략',
+                    '점수 향상 기법'
+                ],
+                samples: []
+            },
+            'toeic-speaking-advanced': {
+                id: 'toeic-speaking-advanced',
+                name: 'TOEIC Speaking Advanced',
+                publisher: 'ETS',
+                levels: 'Level 5-8',
+                coverImage: '../books_img/toeic-speaking-advanced.jpg',
+                thumbnailImage: '../books_img/toeic-speaking-advanced.jpg',
+                description: 'TOEIC Speaking 고급 과정입니다.',
+                objectives: [
+                    '고득점 전략',
+                    '심화 답변 기법',
+                    '실전 모의고사',
+                    'Level 7-8 달성'
+                ],
+                samples: []
+            },
+            'toeic-speaking-expert': {
+                id: 'toeic-speaking-expert',
+                name: 'TOEIC Speaking Expert',
+                publisher: 'ETS',
+                levels: 'Level 8-10',
+                coverImage: '../books_img/toeic-speaking-expert.jpg',
+                thumbnailImage: '../books_img/toeic-speaking-expert.jpg',
+                description: 'TOEIC Speaking 최고 득점을 위한 전문가 과정입니다.',
+                objectives: [
+                    '만점 전략',
+                    '전문가 답변 기법',
+                    'Level 8 달성',
+                    '완벽한 시험 대비'
+                ],
+                samples: []
+            },
+            'opic-im': {
+                id: 'opic-im',
+                name: 'OPIc IM1~IM2',
+                publisher: 'ACTFL',
+                levels: 'Level 2-4',
+                coverImage: '../books_img/opic-im.jpg',
+                thumbnailImage: '../books_img/opic-im.jpg',
+                description: 'OPIc IM 등급 달성을 위한 교재입니다.',
+                objectives: [
+                    'OPIc 기초 학습',
+                    'IM 등급 전략',
+                    '주제별 답변 연습',
+                    '실전 대비'
+                ],
+                samples: []
+            },
+            'opic-ih': {
+                id: 'opic-ih',
+                name: 'OPIc IH',
+                publisher: 'ACTFL',
+                levels: 'Level 5-8',
+                coverImage: '../books_img/opic-ih.jpg',
+                thumbnailImage: '../books_img/opic-ih.jpg',
+                description: 'OPIc IH 등급 달성을 위한 중급 교재입니다.',
+                objectives: [
+                    'IH 등급 달성',
+                    '심화 답변 전략',
+                    '복잡한 주제 대응',
+                    '유창성 향상'
+                ],
+                samples: []
+            },
+            'opic-al': {
+                id: 'opic-al',
+                name: 'OPIc AL',
+                publisher: 'ACTFL',
+                levels: 'Level 8-10',
+                coverImage: '../books_img/opic-al.jpg',
+                thumbnailImage: '../books_img/opic-al.jpg',
+                description: 'OPIc 최고 등급 AL 달성을 위한 고급 교재입니다.',
+                objectives: [
+                    'AL 등급 달성',
+                    '전문가 수준 답변',
+                    '완벽한 유창성',
+                    '원어민 수준 대응'
+                ],
+                samples: []
+            },
+            'ielts-basic': {
+                id: 'ielts-basic',
+                name: 'IELTS Foundation~Intermediate',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 1-5',
+                coverImage: '../books_img/ielts-basic.jpg',
+                thumbnailImage: '../books_img/ielts-basic.jpg',
+                description: 'IELTS 기초부터 중급까지 대비하는 교재입니다.',
+                objectives: [
+                    'IELTS 기초 다지기',
+                    '4대 영역 학습',
+                    'Band 5-6 달성',
+                    '시험 전략 수립'
+                ],
+                samples: []
+            },
+            'ielts-advanced': {
+                id: 'ielts-advanced',
+                name: 'IELTS Advanced~Expert',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 7-10',
+                coverImage: '../books_img/ielts-advanced.jpg',
+                thumbnailImage: '../books_img/ielts-advanced.jpg',
+                description: 'IELTS 고급 과정 및 고득점 달성 교재입니다.',
+                objectives: [
+                    'Band 7-9 달성',
+                    '고급 전략 습득',
+                    '완벽한 시험 대비',
+                    '실전 모의고사'
+                ],
+                samples: []
+            },
+            'business-venture-1-2': {
+                id: 'business-venture-1-2',
+                name: 'Business Venture 1~2',
+                publisher: 'Oxford University Press',
+                levels: 'Level 1-4',
+                coverImage: '../books_img/business-venture-1-2.jpg',
+                thumbnailImage: '../books_img/business-venture-1-2.jpg',
+                description: '비즈니스 영어 기초를 다지는 교재입니다.',
+                objectives: [
+                    '비즈니스 영어 기초',
+                    '업무 회화 연습',
+                    '비즈니스 어휘 학습',
+                    '실무 영어 능력'
+                ],
+                samples: []
+            },
+            'business-venture-3': {
+                id: 'business-venture-3',
+                name: 'Business Venture 3',
+                publisher: 'Oxford University Press',
+                levels: 'Level 5-8',
+                coverImage: '../books_img/business-venture-3.jpg',
+                thumbnailImage: '../books_img/business-venture-3.jpg',
+                description: '중급 비즈니스 영어 교재입니다.',
+                objectives: [
+                    '실무 영어 심화',
+                    '비즈니스 커뮤니케이션',
+                    '회의 및 프레젠테이션',
+                    '협상 영어'
+                ],
+                samples: []
+            },
+            'business-venture-plus': {
+                id: 'business-venture-plus',
+                name: 'Business Venture Plus',
+                publisher: 'Oxford University Press',
+                levels: 'Level 8-10',
+                coverImage: '../books_img/business-venture-plus.jpg',
+                thumbnailImage: '../books_img/business-venture-plus.jpg',
+                description: '고급 비즈니스 영어 완성 교재입니다.',
+                objectives: [
+                    '전문 비즈니스 영어',
+                    '경영 영어',
+                    '국제 비즈니스',
+                    '리더십 커뮤니케이션'
+                ],
+                samples: []
+            },
+            'market-leader-basic': {
+                id: 'market-leader-basic',
+                name: 'Market Leader Elementary~Pre-Intermediate',
+                publisher: 'Pearson Education',
+                levels: 'Level 1-5',
+                coverImage: '../books_img/market-leader-basic.jpg',
+                thumbnailImage: '../books_img/market-leader-basic.jpg',
+                description: '비즈니스 영어의 표준 교재, 기초 과정입니다.',
+                objectives: [
+                    '비즈니스 영어 표준',
+                    '실제 비즈니스 사례',
+                    '업무 영어 능력',
+                    '국제 비즈니스 환경'
+                ],
+                samples: []
+            },
+            'market-leader-advanced': {
+                id: 'market-leader-advanced',
+                name: 'Market Leader Intermediate~Advanced',
+                publisher: 'Pearson Education',
+                levels: 'Level 7-10',
+                coverImage: '../books_img/market-leader-advanced.jpg',
+                thumbnailImage: '../books_img/market-leader-advanced.jpg',
+                description: 'Market Leader 고급 과정으로 전문 비즈니스 영어를 완성합니다.',
+                objectives: [
+                    '전문 비즈니스 영어',
+                    '경영 전략 토론',
+                    '글로벌 비즈니스',
+                    '리더십 영어'
+                ],
+                samples: []
+            },
+            'business-result': {
+                id: 'business-result',
+                name: 'Business Result Elementary~Advanced',
+                publisher: 'Oxford University Press',
+                levels: 'Level 1-10',
+                coverImage: '../books_img/business-result.jpg',
+                thumbnailImage: '../books_img/business-result.jpg',
+                description: '실무 중심 비즈니스 영어 종합 교재입니다.',
+                objectives: [
+                    '실무 영어 완성',
+                    '비즈니스 상황 대응',
+                    '효과적인 커뮤니케이션',
+                    '글로벌 업무 능력'
+                ],
+                samples: []
+            },
+            'kids-box-starter': {
+                id: 'kids-box-starter',
+                name: 'Kids Box Starter~2',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 1-4',
+                coverImage: '../books_img/kids-box-starter.jpg',
+                thumbnailImage: '../books_img/kids-box-starter.jpg',
+                description: '어린이를 위한 재미있는 영어 학습 교재입니다.',
+                objectives: [
+                    '영어에 대한 흥미 유발',
+                    '기초 단어 및 표현',
+                    '파닉스 학습',
+                    '영어에 대한 자신감'
+                ],
+                samples: []
+            },
+            'kids-box-3-5': {
+                id: 'kids-box-3-5',
+                name: 'Kids Box 3~5',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 4-7',
+                coverImage: '../books_img/kids-box-3-5.jpg',
+                thumbnailImage: '../books_img/kids-box-3-5.jpg',
+                description: '어린이 중급 영어 학습 교재입니다.',
+                objectives: [
+                    '영어 실력 향상',
+                    '독해 능력 개발',
+                    '작문 기초',
+                    '영어 사고력 향상'
+                ],
+                samples: []
+            },
+            'kids-box-6-8': {
+                id: 'kids-box-6-8',
+                name: 'Kids Box 6~8',
+                publisher: 'Cambridge University Press',
+                levels: 'Level 7-10',
+                coverImage: '../books_img/kids-box-6-8.jpg',
+                thumbnailImage: '../books_img/kids-box-6-8.jpg',
+                description: '어린이 고급 영어 학습 교재입니다.',
+                objectives: [
+                    '고급 영어 능력',
+                    '논리적 사고',
+                    '창의적 표현',
+                    '학술 영어 준비'
+                ],
+                samples: []
+            },
+            'big-english-starter': {
+                id: 'big-english-starter',
+                name: 'Big English Starter~3',
+                publisher: 'Pearson Education',
+                levels: 'Level 1-5',
+                coverImage: '../books_img/big-english-starter.jpg',
+                thumbnailImage: '../books_img/big-english-starter.jpg',
+                description: '어린이를 위한 종합 영어 교재입니다.',
+                objectives: [
+                    '영어 기초 완성',
+                    '4대 영역 통합',
+                    '재미있는 학습',
+                    '체계적인 학습'
+                ],
+                samples: []
+            },
+            'big-english-4-6': {
+                id: 'big-english-4-6',
+                name: 'Big English 4~6',
+                publisher: 'Pearson Education',
+                levels: 'Level 6-10',
+                coverImage: '../books_img/big-english-4-6.jpg',
+                thumbnailImage: '../books_img/big-english-4-6.jpg',
+                description: '어린이 심화 영어 교재입니다.',
+                objectives: [
+                    '영어 실력 완성',
+                    '독립적 학습 능력',
+                    '비판적 사고',
+                    '글로벌 마인드'
+                ],
+                samples: []
+            }
+        };
+
+        // 모달 열기
+        // 현재 모달에 표시된 교재 ID 배열
+        let currentModalTextbooks = [];
+
+        function openModal(textbookIdsOrId, initialId) {
+            // 배열/단일 ID 모두 처리
+            const ids = Array.isArray(textbookIdsOrId) ? textbookIdsOrId : [textbookIdsOrId];
+
+            if (ids.length === 0) return;
+
+            currentModalTextbooks = ids;
+            const displayId = initialId || ids[0];
+
+            const data = textbookData[displayId];
+            if (!data) return;
+
+            const modalContent = document.getElementById('modalContent');
+            const modalTitle = document.getElementById('modalTitle');
+
+            modalTitle.textContent = data.name;
+
+            // 썸네일 그리드 HTML (2개 이상인 경우만)
+            let thumbnailGridHtml = '';
+            if (ids.length > 1) {
+                thumbnailGridHtml = `
+                    <div style="margin-bottom: var(--spacing-lg);">
+                        <div class="modal-textbook-grid-title">
+                            📚 이 셀에 포함된 교재 (${ids.length}개)
+                        </div>
+                        <div class="modal-textbook-grid">
+                            ${ids.map(id => {
+                                const tbData = textbookData[id];
+                                const isActive = id === displayId ? 'active' : '';
+                                return `
+                                    <div class="modal-textbook-thumbnail ${isActive}"
+                                         data-textbook-id="${id}"
+                                         onclick="switchModalContent('${id}')">
+                                        <img src="${tbData.thumbnailImage}" alt="${tbData.name}">
+                                        <span>${tbData.name}</span>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            let samplesHtml = '';
+            if (data.samples && data.samples.length > 0) {
+                samplesHtml = `
+                    <div class="modal-section">
+                        <h3>📄 샘플 페이지</h3>
+                        <div class="modal-samples">
+                            ${data.samples.map(sample => `
+                                <img src="${sample}" alt="샘플 페이지" class="modal-sample-image" onerror="this.style.display='none'">
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            modalContent.innerHTML = `
+                ${thumbnailGridHtml}
+                <img src="${data.coverImage}" alt="${data.name} 표지" class="modal-cover-image" onerror="this.style.display='none'">
+
+                <div class="modal-meta">
+                    <div class="modal-meta-item">
+                        <span class="modal-meta-label">출판사</span>
+                        <span class="modal-meta-value">${data.publisher}</span>
+                    </div>
+                    <div class="modal-meta-item">
+                        <span class="modal-meta-label">레벨</span>
+                        <span class="modal-meta-value">${data.levels}</span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>📖 교재 소개</h3>
+                    <p>${data.description}</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>🎯 학습 목표</h3>
+                    <ul class="modal-objectives">
+                        ${data.objectives.map(obj => `<li>${obj}</li>`).join('')}
+                    </ul>
+                </div>
+
+                ${samplesHtml}
+            `;
+
+            const modal = document.getElementById('textbookModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 썸네일 클릭 시 해당 교재로 전환
+        function switchModalContent(textbookId) {
+            if (currentModalTextbooks.length === 0) return;
+
+            // 동일한 모달 재호출하여 내용 교체
+            openModal(currentModalTextbooks, textbookId);
+        }
+
+        // 모달 닫기
+        function closeModal() {
+            const modal = document.getElementById('textbookModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 모달 외부 클릭 시 닫기
+        document.getElementById('textbookModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // 랜덤 교재 배치 함수
+        function populateRandomTextbooks() {
+            const allTextbookIds = Object.keys(textbookData);
+            const cells = document.querySelectorAll('.textbook-cell');
+
+            cells.forEach(cell => {
+                // 셀에서 기존 콘텐츠 가져오기
+                const content = cell.querySelector('.textbook-cell-content');
+                if (!content) return;
+
+                const existingName = content.querySelector('.textbook-name');
+                const categoryName = existingName ? existingName.textContent : '';
+
+                // 1-5개 랜덤 개수
+                const count = Math.floor(Math.random() * 5) + 1;
+
+                // 랜덤 교재 선택
+                const shuffled = [...allTextbookIds].sort(() => Math.random() - 0.5);
+                const selectedIds = shuffled.slice(0, count);
+
+                // ✅ 셀에 교재 ID 배열 저장
+                cell.setAttribute('data-textbook-ids', JSON.stringify(selectedIds));
+                cell.setAttribute('data-first-textbook', selectedIds[0]);
+
+                // 이미지 컨테이너 생성
+                const imagesContainer = document.createElement('div');
+                imagesContainer.className = 'textbook-images';
+
+                // 이미지 추가
+                selectedIds.forEach(id => {
+                    const data = textbookData[id];
+                    const img = document.createElement('img');
+                    img.src = data.coverImage;
+                    img.alt = data.name;
+                    img.className = 'textbook-thumbnail';
+                    img.onerror = function() { this.style.display = 'none'; };
+                    // ✅ 이미지 클릭: 해당 교재만 모달 표시
+                    img.onclick = function(e) {
+                        e.stopPropagation();
+                        openModal([id], id);
+                    };
+                    imagesContainer.appendChild(img);
+                });
+
+                // 기존 이미지 제거하고 새로 추가
+                const oldImg = content.querySelector('.textbook-thumbnail');
+                if (oldImg) {
+                    oldImg.remove();
+                }
+
+                content.appendChild(imagesContainer);
+            });
+
+            // ✅ 셀 클릭 이벤트 등록
+            attachCellClickEvents();
+        }
+
+        // 셀 클릭 이벤트 등록 함수
+        function attachCellClickEvents() {
+            const cells = document.querySelectorAll('.textbook-cell');
+
+            cells.forEach(cell => {
+                // 기존 onclick 속성 제거
+                cell.removeAttribute('onclick');
+
+                // 새 클릭 이벤트 등록
+                cell.addEventListener('click', function() {
+                    const textbookIdsJson = this.getAttribute('data-textbook-ids');
+                    const firstTextbook = this.getAttribute('data-first-textbook');
+
+                    if (textbookIdsJson) {
+                        const ids = JSON.parse(textbookIdsJson);
+                        // ✅ 셀 클릭: 모든 교재 전달, 첫 번째 교재를 초기 표시
+                        openModal(ids, firstTextbook || ids[0]);
+                    }
+                });
+            });
+        }
+
+        // 페이지 로드 시 랜덤 교재 배치
+        window.addEventListener('DOMContentLoaded', populateRandomTextbooks);
+    </script>
+</body>
+</html>
+

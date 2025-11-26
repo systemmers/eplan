@@ -61,47 +61,93 @@
 
 .hero-nav-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-lg);
-    max-width: 1100px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 64rem;
     margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .hero-nav-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-nav-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .hero-nav-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    padding: var(--spacing-xl);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    min-height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s;
+    transition: background 0.2s, transform 0.2s;
     text-decoration: none;
     color: white;
     text-align: center;
 }
 
+@media (min-width: 768px) {
+    .hero-nav-card {
+        padding: 1.5rem;
+        min-height: 10rem;
+        gap: 0.75rem;
+    }
+}
+
 .hero-nav-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
 }
 
 .hero-nav-icon {
-    font-size: 2.5rem;
+    width: 24px;
+    height: 24px;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+    .hero-nav-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+.hero-nav-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
 }
 
 .hero-nav-title {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     margin-bottom: var(--spacing-xs);
+    color: #ffffff;
 }
 
 .hero-nav-desc {
     font-size: var(--font-size-sm);
-    opacity: 0.9;
+    color: #d4d4d4;
 }
 
 /* Services Section */
@@ -265,6 +311,92 @@
     font-weight: var(--font-weight-bold);
     color: var(--color-teal-dark);
     margin-bottom: var(--spacing-sm);
+}
+
+/* ========================================
+   Company Strengths - Circle Progress Style
+======================================== */
+
+.stats-circle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+}
+
+@media (max-width: 1024px) {
+    .stats-circle-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .stats-circle-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Stat Circle Card */
+.stat-circle {
+    background: var(--color-white);
+    border-radius: 20px;
+    padding: 36px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.stat-circle:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+/* Circle Progress */
+.stat-circle .circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--color-teal-dark) 0deg var(--progress, 270deg),
+        var(--color-gray-light) var(--progress, 270deg) 360deg
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    position: relative;
+}
+
+.stat-circle .circle::before {
+    content: '';
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    background: var(--color-white);
+    border-radius: 50%;
+}
+
+.stat-circle .circle-value {
+    position: relative;
+    z-index: 1;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+/* Labels */
+.stat-circle .stat-label {
+    font-family: var(--font-family-heading);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-dark);
+}
+
+.stat-circle .stat-sublabel {
+    font-family: var(--font-family-base);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: 4px;
 }
 
 /* Curriculum Section */
@@ -492,6 +624,7 @@
 /* Clients Section */
 .clients-section {
     background: var(--color-white);
+    padding-bottom: 0;
 }
 
 /* 클라이언트 롤링 슬라이더 - 전체 너비 */
@@ -785,23 +918,6 @@
     .service-card-overlay__btn {
         padding: 12px 24px;
         font-size: 13px;
-    }
-
-    .hero-nav-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-md);
-    }
-
-    .hero-nav-card {
-        padding: var(--spacing-md);
-    }
-
-    .hero-nav-icon {
-        font-size: 2rem;
-    }
-
-    .hero-nav-title {
-        font-size: var(--font-size-md);
     }
 
     /* Horizontal Cards 태블릿 조정 */

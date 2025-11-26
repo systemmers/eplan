@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Hero Section</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Main Container */
+    .hero-container {
+      min-height: 100svh;
+      width: 100vw;
+      background: linear-gradient(to bottom right, #000000, #1A2428);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* Three.js Canvas Container */
+    .canvas-container {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    #three-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Content Overlay */
+    .content {
+      width: 100%;
+      max-width: 72rem;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* Header Section */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .badge:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Title Section */
+    .title-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .title {
+      font-size: 1.875rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      max-width: 48rem;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+      .title {
+        font-size: 3.75rem;
+      }
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+      color: #d4d4d4;
+      max-width: 42rem;
+      line-height: 1.6;
+    }
+
+    /* Buttons */
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    @media (min-width: 640px) {
+      .button-group {
+        flex-direction: row;
+      }
+    }
+
+    .btn {
+      font-size: 0.875rem;
+      padding: 0.75rem 2rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: white;
+      color: black;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-primary:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Feature Card */
+    .feature-card {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      height: 10rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    @media (min-width: 768px) {
+      .feature-card {
+        padding: 1.5rem;
+        height: 12rem;
+        gap: 0.75rem;
+      }
+    }
+
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      width: 18px;
+      height: 18px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    @media (min-width: 768px) {
+      .feature-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .feature-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      .feature-title {
+        font-size: 1rem;
+      }
+    }
+
+    .feature-description {
+      font-size: 0.75rem;
+      color: #a3a3a3;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 768px) {
+      .feature-description {
+        font-size: 0.875rem;
+      }
+    }
+
+    /* SVG Icons */
+    .icon {
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-container">
+    <!-- Three.js Canvas -->
+    <div class="canvas-container">
+      <canvas id="three-canvas"></canvas>
+    </div>
+
+    <!-- Content Overlay -->
+    <div class="content">
+      <!-- Header -->
+      <div class="header">
+        <span class="badge">✨ Next Generation Tools</span>
+        
+        <div class="title-section">
+          <h1 class="title">Discover minimalism and power in one place</h1>
+          <p class="subtitle">Designed with aesthetics and performance in mind. Experience ultra-fast processing, advanced security, and intuitive design.</p>
+          
+          <div class="button-group">
+            <button class="btn btn-primary">Get Started</button>
+            <button class="btn btn-secondary">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="features-grid">
+        <!-- Performance -->
+        <div class="feature-card">
+          <svg class="feature-icon icon" viewBox="0 0 24 24">
+            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <line x1="9" y1="1" x2="9" y2="4"></line>
+            <line x1="15" y1="1" x2="15" y2="4"></line>
+            <line x1="9" y1="20" x2="9" y2="23"></line>
+            <line x1="15" y1="20" x2="15" y2="23"></line>
+            <line x1="20" y1="9" x2="23" y2="9"></line>
+            <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
+          </svg>
+          <h3 class="feature-title">Performance</h3>
+          <p class="feature-description">Ultra-fast data processing in every situation.</p>
+        </div>
+
+        <!-- Security -->
+        <div class="feature-card">
+          <svg class="feature-icon icon" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="9 12 11 14 15 10"></polyline>
+          </svg>
+          <h3 class="feature-title">Security</h3>
+          <p class="feature-description">Advanced protection for complete peace of mind.</p>
+        </div>
+
+        <!-- Modularity -->
+        <div class="feature-card">
+          <svg class="feature-icon icon" viewBox="0 0 24 24">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+          <h3 class="feature-title">Modularity</h3>
+          <p class="feature-description">Easy integration with existing architecture.</p>
+        </div>
+
+        <!-- Responsiveness -->
+        <div class="feature-card">
+          <svg class="feature-icon icon" viewBox="0 0 24 24">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <h3 class="feature-title">Responsiveness</h3>
+          <p class="feature-description">Instant response to every command.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <script>
+    // Three.js Scene Setup
+    const canvas = document.getElementById('three-canvas');
+    const renderer = new THREE.WebGLRenderer({ 
+      canvas, 
+      antialias: true, 
+      alpha: true 
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1;
+
+    const scene = new THREE.Scene();
+
+    // Camera
+    const camera = new THREE.PerspectiveCamera(
+      40,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.set(5, 5, 20);
+    camera.lookAt(0, 0, 0);
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 15);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 15);
+    directionalLight.position.set(10, 10, 5);
+    scene.add(directionalLight);
+
+    // Create Rounded Rectangle Shape
+    function createRoundedRectShape(width, height, radius) {
+      const shape = new THREE.Shape();
+      const halfWidth = width / 2;
+      const halfHeight = height / 2;
+
+      // Start from top-right corner
+      shape.absarc(halfWidth - radius, halfHeight - radius, radius, 0, Math.PI / 2, false);
+      shape.absarc(-halfWidth + radius, halfHeight - radius, radius, Math.PI / 2, Math.PI, false);
+      shape.absarc(-halfWidth + radius, -halfHeight + radius, radius, Math.PI, Math.PI * 1.5, false);
+      shape.absarc(halfWidth - radius, -halfHeight + radius, radius, Math.PI * 1.5, Math.PI * 2, false);
+
+      return shape;
+    }
+
+    // Create rounded rectangle geometry (matching React component)
+    function createBoxGeometry() {
+      const shape = new THREE.Shape();
+      const angleStep = Math.PI * 0.5;
+      const radius = 1;
+
+      shape.absarc(2, 2, radius, angleStep * 0, angleStep * 1);
+      shape.absarc(-2, 2, radius, angleStep * 1, angleStep * 2);
+      shape.absarc(-2, -2, radius, angleStep * 2, angleStep * 3);
+      shape.absarc(2, -2, radius, angleStep * 3, angleStep * 4);
+
+      const extrudeSettings = {
+        depth: 0.3,
+        bevelEnabled: true,
+        bevelThickness: 0.05,
+        bevelSize: 0.05,
+        bevelSegments: 20,
+        curveSegments: 20
+      };
+
+      const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+      geometry.center();
+
+      return geometry;
+    }
+
+    // Physical Material (matching React component properties)
+    const material = new THREE.MeshPhysicalMaterial({
+      color: 0x232323,
+      metalness: 1,
+      roughness: 0.3,
+      reflectivity: 0.5,
+      ior: 1.5,
+      emissive: 0x000000,
+      emissiveIntensity: 0,
+      transparent: false,
+      opacity: 1.0,
+      transmission: 0.0,
+      thickness: 0.5,
+      clearcoat: 0.0,
+      clearcoatRoughness: 0.0,
+      sheen: 0,
+      sheenRoughness: 1.0,
+      sheenColor: 0xffffff,
+      specularIntensity: 1.0,
+      specularColor: 0xffffff,
+      iridescence: 1,
+      iridescenceIOR: 1.3,
+      iridescenceThicknessRange: [100, 400],
+      flatShading: false,
+      side: THREE.FrontSide,
+      alphaTest: 0,
+      depthWrite: true,
+      depthTest: true
+    });
+
+    // Create box geometry once and reuse
+    const boxGeometry = createBoxGeometry();
+
+    // Group for all boxes
+    const boxGroup = new THREE.Group();
+    scene.add(boxGroup);
+
+    // Create 50 boxes (matching React component)
+    const boxCount = 50;
+    for (let i = 0; i < boxCount; i++) {
+      const mesh = new THREE.Mesh(boxGeometry, material);
+      
+      // Position: (index - 25) * 0.75
+      mesh.position.set((i - 25) * 0.75, 0, 0);
+      
+      // Rotation: [(index - 10) * 0.1, Math.PI / 2, 0]
+      mesh.rotation.set(
+        (i - 10) * 0.1,
+        Math.PI / 2,
+        0
+      );
+      
+      boxGroup.add(mesh);
+    }
+
+    // Animation
+    let lastTime = 0;
+    
+    function animate(currentTime) {
+      requestAnimationFrame(animate);
+
+      // Calculate delta time
+      const delta = (currentTime - lastTime) / 1000;
+      lastTime = currentTime;
+
+      // Rotate group (matching React useFrame: rotation.x += delta * 0.05)
+      if (delta && delta < 1) { // Avoid large jumps on first frame
+        boxGroup.rotation.x += delta * 0.05;
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    // Handle window resize
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    window.addEventListener('resize', onWindowResize);
+
+    // Start animation
+    animate(0);
+
+    // Optional: Add mouse interaction for subtle camera movement
+    let mouseX = 0;
+    let mouseY = 0;
+    const targetCameraX = 5;
+    const targetCameraY = 5;
+
+    document.addEventListener('mousemove', (event) => {
+      mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    function updateCamera() {
+      requestAnimationFrame(updateCamera);
+      
+      // Subtle camera movement based on mouse position
+      camera.position.x += (targetCameraX + mouseX * 2 - camera.position.x) * 0.02;
+      camera.position.y += (targetCameraY - mouseY * 2 - camera.position.y) * 0.02;
+      camera.lookAt(0, 0, 0);
+    }
+
+    updateCamera();
+  </script>
+</body>
+</html>

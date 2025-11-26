@@ -92,7 +92,7 @@
 
 .nav-menu {
     display: flex;
-    gap: var(--spacing-2xl);
+    gap: var(--spacing-lg);
     align-items: center;
 }
 

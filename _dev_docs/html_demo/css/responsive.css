@@ -1,0 +1,46 @@
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-md);
+    }
+
+    .header h1 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .header p {
+        font-size: var(--font-size-base);
+    }
+
+    .curriculum-table {
+        font-size: var(--font-size-xs);
+    }
+
+    .curriculum-table th,
+    .curriculum-table td {
+        padding: var(--spacing-sm);
+    }
+
+    .modal-card {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .modal-header h2 {
+        font-size: var(--font-size-xl);
+    }
+
+    .modal-body {
+        padding: var(--spacing-lg);
+    }
+
+    .textbook-thumbnail {
+        width: 67.5px;
+        height: 90px;
+    }
+
+    .textbook-cell-content {
+        font-size: var(--font-size-xs);
+        padding: var(--spacing-xs);
+    }
+}

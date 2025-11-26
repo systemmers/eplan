@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Tooltip</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background-color: #0a0a0a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Container */
+    .tooltip-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Avatar Wrapper */
+    .avatar-wrapper {
+      position: relative;
+      margin-right: -1rem;
+      cursor: pointer;
+    }
+
+    .avatar-wrapper:last-child {
+      margin-right: 0;
+    }
+
+    /* Avatar Image */
+    .avatar {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid #0a0a0a;
+      position: relative;
+      transition: transform 0.5s ease, z-index 0s;
+    }
+
+    .avatar-wrapper:hover .avatar {
+      transform: scale(1.05);
+      z-index: 30;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: absolute;
+      top: -4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      background-color: #fafafa;
+      color: #0a0a0a;
+      z-index: 50;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      white-space: nowrap;
+      pointer-events: none;
+      
+      /* Initial state */
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .tooltip.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Tooltip Content */
+    .tooltip-name {
+      font-weight: 700;
+      font-size: 1rem;
+      position: relative;
+      z-index: 30;
+    }
+
+    .tooltip-designation {
+      font-size: 0.75rem;
+      color: #737373;
+    }
+
+    /* Gradient Lines */
+    .tooltip::before,
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      height: 1px;
+      z-index: 30;
+    }
+
+    .tooltip::before {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20%;
+      background: linear-gradient(to right, transparent, #10b981, transparent);
+    }
+
+    .tooltip::after {
+      left: 2.5rem;
+      width: 40%;
+      background: linear-gradient(to right, transparent, #0ea5e9, transparent);
+    }
+
+    /* Light Mode */
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #f5f5f5;
+      }
+
+      .avatar {
+        border-color: #ffffff;
+      }
+
+      .tooltip {
+        background-color: #18181b;
+        color: #fafafa;
+      }
+
+      .tooltip-designation {
+        color: #a1a1aa;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tooltip-container" id="tooltipContainer">
+    <!-- Avatars will be inserted by JavaScript -->
+  </div>
+
+  <script>
+    // People Data
+    const people = [
+      {
+        id: 1,
+        name: "John Doe",
+        designation: "Software Engineer",
+        image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+      },
+      {
+        id: 2,
+        name: "Robert Johnson",
+        designation: "Product Manager",
+        image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+      },
+      {
+        id: 3,
+        name: "Jane Smith",
+        designation: "Data Scientist",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+      },
+      {
+        id: 4,
+        name: "Emily Davis",
+        designation: "UX Designer",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+      },
+      {
+        id: 5,
+        name: "Tyler Durden",
+        designation: "Soap Developer",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+      },
+      {
+        id: 6,
+        name: "Dora",
+        designation: "The Explorer",
+        image: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+      }
+    ];
+
+    // Spring Physics Class
+    class SpringValue {
+      constructor(initialValue = 0, config = {}) {
+        this.value = initialValue;
+        this.target = initialValue;
+        this.velocity = 0;
+        this.stiffness = config.stiffness || 100;
+        this.damping = config.damping || 5;
+      }
+
+      setTarget(target) {
+        this.target = target;
+      }
+
+      update(deltaTime) {
+        const dt = Math.min(deltaTime, 0.064);
+        
+        // Spring force
+        const springForce = -this.stiffness * (this.value - this.target);
+        
+        // Damping force
+        const dampingForce = -this.damping * this.velocity;
+        
+        // Acceleration
+        const acceleration = springForce + dampingForce;
+        
+        // Update velocity and position
+        this.velocity += acceleration * dt;
+        this.value += this.velocity * dt;
+        
+        return this.value;
+      }
+
+      reset(value) {
+        this.value = value;
+        this.target = value;
+        this.velocity = 0;
+      }
+    }
+
+    // Transform helper (linear interpolation)
+    function transform(value, inputRange, outputRange) {
+      const [inMin, inMax] = inputRange;
+      const [outMin, outMax] = outputRange;
+      const clampedValue = Math.max(inMin, Math.min(inMax, value));
+      const ratio = (clampedValue - inMin) / (inMax - inMin);
+      return outMin + ratio * (outMax - outMin);
+    }
+
+    // Animation state for each tooltip
+    const tooltipStates = new Map();
+
+    // Create avatar HTML
+    function createAvatar(person) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'avatar-wrapper';
+      wrapper.dataset.id = person.id;
+
+      wrapper.innerHTML = `
+        <div class="tooltip" data-tooltip-id="${person.id}">
+          <div class="tooltip-name">${person.name}</div>
+          <div class="tooltip-designation">${person.designation}</div>
+        </div>
+        <img 
+          src="${person.image}" 
+          alt="${person.name}"
+          class="avatar"
+          loading="lazy"
+        >
+      `;
+
+      // Initialize spring values for this tooltip
+      const springConfig = { stiffness: 100, damping: 5 };
+      tooltipStates.set(person.id, {
+        mouseX: 0,
+        rotateSpring: new SpringValue(0, springConfig),
+        translateXSpring: new SpringValue(0, springConfig),
+        // Enter animation springs
+        opacity: 0,
+        scale: 0.6,
+        y: 20,
+        isVisible: false,
+        enterProgress: 0
+      });
+
+      return wrapper;
+    }
+
+    // Initialize container
+    const container = document.getElementById('tooltipContainer');
+
+    people.forEach(person => {
+      const avatar = createAvatar(person);
+      container.appendChild(avatar);
+    });
+
+    // Animation loop
+    let lastTime = performance.now();
+    let isAnimating = true;
+
+    function animate(currentTime) {
+      const deltaTime = (currentTime - lastTime) / 1000;
+      lastTime = currentTime;
+
+      tooltipStates.forEach((state, id) => {
+        const tooltip = document.querySelector(`[data-tooltip-id="${id}"]`);
+        if (!tooltip) return;
+
+        // Update rotation and translateX springs
+        const targetRotate = transform(state.mouseX, [-100, 100], [-45, 45]);
+        const targetTranslateX = transform(state.mouseX, [-100, 100], [-50, 50]);
+
+        state.rotateSpring.setTarget(targetRotate);
+        state.translateXSpring.setTarget(targetTranslateX);
+
+        const rotate = state.rotateSpring.update(deltaTime);
+        const translateX = state.translateXSpring.update(deltaTime);
+
+        // Enter/Exit animation
+        const enterSpringConfig = { stiffness: 260, damping: 10 };
+        const enterDt = deltaTime * 3; // Speed up for snappier feel
+
+        if (state.isVisible) {
+          // Animate in
+          state.opacity += (1 - state.opacity) * enterDt * enterSpringConfig.stiffness / 100;
+          state.scale += (1 - state.scale) * enterDt * enterSpringConfig.stiffness / 100;
+          state.y += (0 - state.y) * enterDt * enterSpringConfig.stiffness / 100;
+        } else {
+          // Animate out
+          state.opacity += (0 - state.opacity) * enterDt * 8;
+          state.scale += (0.6 - state.scale) * enterDt * 8;
+          state.y += (20 - state.y) * enterDt * 8;
+        }
+
+        // Clamp values
+        state.opacity = Math.max(0, Math.min(1, state.opacity));
+        state.scale = Math.max(0.6, Math.min(1, state.scale));
+
+        // Apply transforms
+        const baseTranslateX = -50; // center alignment
+        tooltip.style.transform = `
+          translateX(calc(${baseTranslateX}% + ${translateX}px))
+          translateY(${state.y}px)
+          rotate(${rotate}deg)
+          scale(${state.scale})
+        `;
+        tooltip.style.opacity = state.opacity;
+
+        // Toggle visibility class
+        if (state.opacity > 0.01) {
+          tooltip.classList.add('visible');
+        } else {
+          tooltip.classList.remove('visible');
+        }
+      });
+
+      if (isAnimating) {
+        requestAnimationFrame(animate);
+      }
+    }
+
+    // Start animation
+    animate(performance.now());
+
+    // Event handlers
+    const avatarWrappers = document.querySelectorAll('.avatar-wrapper');
+
+    avatarWrappers.forEach(wrapper => {
+      const id = parseInt(wrapper.dataset.id);
+      const avatar = wrapper.querySelector('.avatar');
+
+      // Mouse enter
+      wrapper.addEventListener('mouseenter', () => {
+        const state = tooltipStates.get(id);
+        if (state) {
+          state.isVisible = true;
+        }
+      });
+
+      // Mouse leave
+      wrapper.addEventListener('mouseleave', () => {
+        const state = tooltipStates.get(id);
+        if (state) {
+          state.isVisible = false;
+        }
+      });
+
+      // Mouse move on avatar
+      avatar.addEventListener('mousemove', (e) => {
+        const state = tooltipStates.get(id);
+        if (state) {
+          const rect = avatar.getBoundingClientRect();
+          const halfWidth = rect.width / 2;
+          const offsetX = e.clientX - rect.left;
+          state.mouseX = offsetX - halfWidth;
+        }
+      });
+    });
+
+    // Cleanup on page hide
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        isAnimating = false;
+      } else {
+        isAnimating = true;
+        lastTime = performance.now();
+        animate(performance.now());
+      }
+    });
+  </script>
+</body>
+</html>

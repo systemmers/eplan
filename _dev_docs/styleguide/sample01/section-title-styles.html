@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Title Styles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Serif+Display&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f5f5f5;
+        }
+
+        .style-label {
+            background: #000;
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .demo-section {
+            padding: 80px 40px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .demo-section.light {
+            background: #ffffff;
+        }
+
+        .demo-section.dark {
+            background: #0a0a0a;
+        }
+
+        .demo-section.gray {
+            background: #f8f8f8;
+        }
+
+        .demo-section.gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8960C 100%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Dummy content for context */
+        .dummy-content {
+            margin-top: 32px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .dummy-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dummy-card {
+            background: rgba(0,0,0,0.03);
+            border-radius: 12px;
+            padding: 24px;
+            height: 120px;
+        }
+
+        .dark .dummy-card {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .gold .dummy-card {
+            background: rgba(0,0,0,0.1);
+        }
+
+        /* ========================================
+           STYLE 1: Minimal Icon
+        ======================================== */
+        .section-title-1 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title-1 .icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+        }
+
+        .section-title-1 h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        /* ========================================
+           STYLE 2: Badge + Title
+        ======================================== */
+        .section-title-2 {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .section-title-2 .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #D4AF37;
+        }
+
+        .section-title-2 .badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #D4AF37;
+            border-radius: 50%;
+        }
+
+        .section-title-2 h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+        }
+
+        /* ========================================
+           STYLE 3: Number Accent
+        ======================================== */
+        .section-title-3 {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .section-title-3 .number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(212,175,55,0.3);
+        }
+
+        .section-title-3 .text {
+            padding-top: 8px;
+        }
+
+        .section-title-3 h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .section-title-3 p {
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        /* ========================================
+           STYLE 4: Left Border
+        ======================================== */
+        .section-title-4 {
+            border-left: 4px solid #D4AF37;
+            padding-left: 20px;
+        }
+
+        .section-title-4 .label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .section-title-4 h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        /* ========================================
+           STYLE 5: Center Divider
+        ======================================== */
+        .section-title-5 {
+            text-align: center;
+        }
+
+        .section-title-5 .label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #D4AF37;
+            margin-bottom: 12px;
+        }
+
+        .section-title-5 h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-title-5 h2 span {
+            font-style: italic;
+        }
+
+        .section-title-5 .divider {
+            width: 60px;
+            height: 2px;
+            background: #D4AF37;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           STYLE 6: Icon Box
+        ======================================== */
+        .section-title-6 {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-title-6 .icon-box {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B8960C 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .section-title-6 h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        /* ========================================
+           STYLE 7: Underline Accent
+        ======================================== */
+        .section-title-7 {
+            display: inline-block;
+        }
+
+        .section-title-7 h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline;
+        }
+
+        .section-title-7 h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #D4AF37 0%, rgba(212,175,55,0) 100%);
+        }
+
+        .section-title-7 p {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        /* ========================================
+           STYLE 8: Tag Style
+        ======================================== */
+        .section-title-8 {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-title-8 .tag {
+            background: rgba(212,175,55,0.15);
+            border: 1px solid rgba(212,175,55,0.3);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title-8 h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        /* ========================================
+           STYLE 9: Split Line
+        ======================================== */
+        .section-title-9 {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .section-title-9 h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .section-title-9 .line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #B8960C, rgba(184,150,12,0.2));
+        }
+
+        .section-title-9 .number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(0,0,0,0.4);
+        }
+
+        /* ========================================
+           STYLE 10: Vertical Label
+        ======================================== */
+        .section-title-10 {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .section-title-10 .vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #D4AF37;
+            padding-top: 4px;
+        }
+
+        .section-title-10 .content h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .section-title-10 .content p {
+            font-size: 0.95rem;
+            color: #888;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STYLE 1: Minimal Icon -->
+    <div class="style-label">Style 1 — Minimal Icon</div>
+    <section class="demo-section light">
+        <div class="container">
+            <div class="section-title-1">
+                <div class="icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
+                <h2>Training Goals</h2>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STYLE 2: Badge + Title -->
+    <div class="style-label">Style 2 — Badge + Title</div>
+    <section class="demo-section gray">
+        <div class="container">
+            <div class="section-title-2">
+                <div class="badge">Our Mission</div>
+                <h2>Training Goals</h2>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STYLE 3: Number Accent -->
+    <div class="style-label">Style 3 — Number Accent</div>
+    <section class="demo-section light">
+        <div class="container">
+            <div class="section-title-3">
+                <div class="number">01</div>
+                <div class="text">
+                    <h2>Training Goals</h2>
+                    <p>Intensive short-term programs designed for success</p>
+                </div>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STYLE 4: Left Border -->
+    <div class="style-label">Style 4 — Left Border</div>
+    <section class="demo-section dark">
+        <div class="container">
+            <div class="section-title-4">
+                <div class="label">What We Offer</div>
+                <h2>Training Goals</h2>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STYLE 5: Center Divider -->
+    <div class="style-label">Style 5 — Center Divider</div>
+    <section class="demo-section light">
+        <div class="container">
+            <div class="section-title-5">
+                <div class="label">Our Mission</div>
+                <h2>Training <span>Goals</span></h2>
+                <div class="divider"></div>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STYLE 6: Icon Box -->
+    <div class="style-label">Style 6 — Icon Box</div>
+    <section class="demo-section dark">
+        <div class="container">
+            <div class="section-title-6">
+                <div class="icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </div>
+                <h2>Training Goals</h2>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STYLE 7: Underline Accent -->
+    <div class="style-label">Style 7 — Underline Accent</div>
+    <section class="demo-section gray">
+        <div class="container">
+            <div class="section-title-7">
+                <h2>Training Goals</h2>
+                <p>Intensive short-term programs designed for success</p>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STYLE 8: Tag Style -->
+    <div class="style-label">Style 8 — Tag Style</div>
+    <section class="demo-section dark">
+        <div class="container">
+            <div class="section-title-8">
+                <div class="tag">Goals</div>
+                <h2>Training Goals</h2>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STYLE 9: Split Line -->
+    <div class="style-label">Style 9 — Split Line</div>
+    <section class="demo-section gold">
+        <div class="container">
+            <div class="section-title-9">
+                <h2>Training Goals</h2>
+                <div class="line"></div>
+                <div class="number">01</div>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STYLE 10: Vertical Label -->
+    <div class="style-label">Style 10 — Vertical Label</div>
+    <section class="demo-section light">
+        <div class="container">
+            <div class="section-title-10">
+                <div class="vertical">Our Mission</div>
+                <div class="content">
+                    <h2>Training Goals</h2>
+                    <p>Intensive short-term programs designed for achieving success in global business</p>
+                </div>
+            </div>
+            <div class="dummy-content">
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+                <div class="dummy-card"></div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

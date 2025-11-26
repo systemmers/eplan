@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Hover Effect</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background-color: #0a0a0a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    /* Container */
+    .container {
+      max-width: 64rem;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Grid */
+    .hover-effect-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      padding: 2.5rem 0;
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .hover-effect-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hover-effect-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Card Link Wrapper */
+    .card-link {
+      position: relative;
+      display: block;
+      padding: 0.5rem;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+    }
+
+    /* Hover Background (shared animated element) */
+    .hover-background {
+      position: absolute;
+      border-radius: 1.5rem;
+      background-color: rgba(30, 41, 59, 0.8); /* dark:bg-slate-800/[0.8] */
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .hover-background.active {
+      opacity: 1;
+    }
+
+    .hover-background.exiting {
+      opacity: 0;
+      transition: opacity 0.15s ease 0.2s;
+    }
+
+    /* Light mode */
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #ffffff;
+      }
+      
+      .hover-background {
+        background-color: #e5e5e5; /* bg-neutral-200 */
+      }
+    }
+
+    /* Card */
+    .card {
+      position: relative;
+      z-index: 20;
+      border-radius: 1rem;
+      height: 100%;
+      width: 100%;
+      padding: 1rem;
+      overflow: hidden;
+      background-color: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: border-color 0.2s ease;
+    }
+
+    .card-link:hover .card {
+      border-color: #334155; /* slate-700 */
+    }
+
+    /* Card Content */
+    .card-content {
+      position: relative;
+      z-index: 50;
+      padding: 1rem;
+    }
+
+    /* Card Title */
+    .card-title {
+      color: #f4f4f5; /* zinc-100 */
+      font-weight: 700;
+      letter-spacing: 0.025em;
+      margin-top: 1rem;
+      font-size: 1.125rem;
+    }
+
+    /* Card Description */
+    .card-description {
+      margin-top: 2rem;
+      color: #a1a1aa; /* zinc-400 */
+      letter-spacing: 0.025em;
+      line-height: 1.625;
+      font-size: 0.875rem;
+    }
+
+    /* Light mode cards */
+    @media (prefers-color-scheme: light) {
+      .card {
+        background-color: #1a1a1a;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hover-effect-grid" id="cardGrid">
+      <!-- Animated hover background -->
+      <div class="hover-background" id="hoverBg"></div>
+      
+      <!-- Cards will be inserted here by JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    // Project Data
+    const projects = [
+      {
+        title: "Stripe",
+        description: "A technology company that builds economic infrastructure for the internet.",
+        link: "https://stripe.com",
+      },
+      {
+        title: "Netflix",
+        description: "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
+        link: "https://netflix.com",
+      },
+      {
+        title: "Google",
+        description: "A multinational technology company that specializes in Internet-related services and products.",
+        link: "https://google.com",
+      },
+      {
+        title: "Meta",
+        description: "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
+        link: "https://meta.com",
+      },
+      {
+        title: "Amazon",
+        description: "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+        link: "https://amazon.com",
+      },
+      {
+        title: "Microsoft",
+        description: "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+        link: "https://microsoft.com",
+      },
+    ];
+
+    // Create card HTML
+    function createCard(item, index) {
+      return `
+        <a href="${item.link}" 
+           class="card-link" 
+           data-index="${index}"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div class="card">
+            <div class="card-content">
+              <h4 class="card-title">${item.title}</h4>
+              <p class="card-description">${item.description}</p>
+            </div>
+          </div>
+        </a>
+      `;
+    }
+
+    // Initialize grid
+    const cardGrid = document.getElementById('cardGrid');
+    const hoverBg = document.getElementById('hoverBg');
+
+    // Add cards to grid
+    projects.forEach((project, index) => {
+      cardGrid.insertAdjacentHTML('beforeend', createCard(project, index));
+    });
+
+    // Hover effect state
+    let currentHoveredIndex = null;
+    let isAnimating = false;
+    let exitTimeout = null;
+
+    // Get all card links
+    const cardLinks = document.querySelectorAll('.card-link');
+
+    // FLIP Animation for hover background
+    function animateHoverBackground(targetElement) {
+      if (!targetElement) {
+        // Exit animation
+        hoverBg.classList.remove('active');
+        hoverBg.classList.add('exiting');
+        return;
+      }
+
+      // Clear exit timeout if exists
+      if (exitTimeout) {
+        clearTimeout(exitTimeout);
+        exitTimeout = null;
+      }
+
+      // Get target position relative to grid
+      const gridRect = cardGrid.getBoundingClientRect();
+      const targetRect = targetElement.getBoundingClientRect();
+
+      const newLeft = targetRect.left - gridRect.left;
+      const newTop = targetRect.top - gridRect.top;
+      const newWidth = targetRect.width;
+      const newHeight = targetRect.height;
+
+      // Check if this is the first hover (no previous position)
+      const isFirstHover = !hoverBg.classList.contains('active') && 
+                          !hoverBg.classList.contains('exiting');
+
+      if (isFirstHover) {
+        // Instant positioning for first hover
+        hoverBg.style.transition = 'opacity 0.15s ease';
+        hoverBg.style.left = `${newLeft}px`;
+        hoverBg.style.top = `${newTop}px`;
+        hoverBg.style.width = `${newWidth}px`;
+        hoverBg.style.height = `${newHeight}px`;
+      } else {
+        // Smooth animation between cards
+        hoverBg.style.transition = 'left 0.2s ease, top 0.2s ease, width 0.2s ease, height 0.2s ease, opacity 0.15s ease';
+        hoverBg.style.left = `${newLeft}px`;
+        hoverBg.style.top = `${newTop}px`;
+        hoverBg.style.width = `${newWidth}px`;
+        hoverBg.style.height = `${newHeight}px`;
+      }
+
+      // Show background
+      hoverBg.classList.remove('exiting');
+      hoverBg.classList.add('active');
+    }
+
+    // Add event listeners to each card
+    cardLinks.forEach((link, index) => {
+      link.addEventListener('mouseenter', () => {
+        currentHoveredIndex = index;
+        animateHoverBackground(link);
+      });
+
+      link.addEventListener('mouseleave', () => {
+        currentHoveredIndex = null;
+        
+        // Delay the exit to allow for smooth transition to next card
+        exitTimeout = setTimeout(() => {
+          if (currentHoveredIndex === null) {
+            animateHoverBackground(null);
+          }
+        }, 50);
+      });
+    });
+
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (currentHoveredIndex !== null) {
+          const currentCard = cardLinks[currentHoveredIndex];
+          animateHoverBackground(currentCard);
+        }
+      }, 100);
+    });
+
+    // Remove exiting class after animation completes
+    hoverBg.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'opacity' && !hoverBg.classList.contains('active')) {
+        hoverBg.classList.remove('exiting');
+      }
+    });
+  </script>
+</body>
+</html>
