@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block title %}For Instructors Pattern Demo - ePlan{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header page-header--instructors">
+    <div class="container">
+        <h1>For Instructors Pattern Demo</h1>
+        <p class="tagline">Instructor Recruitment Page Components</p>
+        <p>Stats, Requirements, Clients - Reusable UI Patterns</p>
+    </div>
+</section>
+
+<!-- Section 1: About ePlan -->
+<section>
+    <div class="container">
+        <h2 class="section-title">About ePlan</h2>
+        <div class="about-content">
+            <p>ePlan Inc. offers corporate in-house teaching and other educational programs for qualified instructors since 2015. We are an organization of experts in each field and a company that provides customized learning services for students and instructors. Teachers who are novice in this industry also have many opportunities to help their careers.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2: Requirements -->
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">Requirements</h2>
+        <p class="section-subtitle">What we look for in our instructors</p>
+
+        <div class="requirements-grid">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Bachelor's Degree</h3>
+                <p class="goal-card__desc">From a 4-year accredited university</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Native / Fluent Speaker</h3>
+                <p class="goal-card__desc">Of the language to be taught</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Legal Work Status</h3>
+                <p class="goal-card__desc">Legally allowed to stay and work in Korea</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="7"/>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Teaching Certificate</h3>
+                <p class="goal-card__desc">TESOL, TEFL, or equivalent preferred</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: ePlan Clients - Stats -->
+<section>
+    <div class="container">
+        <h2 class="section-title">ePlan Clients</h2>
+        <p class="section-subtitle">Our diverse client portfolio</p>
+
+        <h3 class="u-text-center u-mb-4" style="color: var(--color-text-muted); font-size: var(--font-size-base); text-transform: uppercase; letter-spacing: 0.1em;">Portion of Clients</h3>
+
+        <div class="stats-grid">
+            <div class="stats-card stats-card--global">
+                <div class="stats-card__number">58%</div>
+                <div class="stats-card__label">Global Companies</div>
+            </div>
+            <div class="stats-card stats-card--government">
+                <div class="stats-card__number">20%</div>
+                <div class="stats-card__label">Government Agencies</div>
+            </div>
+            <div class="stats-card stats-card--education">
+                <div class="stats-card__number">23%</div>
+                <div class="stats-card__label">Education Agencies</div>
+            </div>
+        </div>
+
+        <div class="number-stats">
+            <div class="number-stat">
+                <div class="number-stat__value">17+</div>
+                <div class="number-stat__label">Government Agencies</div>
+            </div>
+            <div class="number-stat">
+                <div class="number-stat__value">23+</div>
+                <div class="number-stat__label">Global Leading Companies</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Client Logos -->
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">Our Partners</h2>
+        <p class="section-subtitle">Trusted by leading organizations</p>
+
+        <div class="client-logo-grid">
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Samsung</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">LG</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Korean Air</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">SK Telecom</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Huvis</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Ministry of Justice</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">MOHW</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Seongnam City</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Hongik Univ.</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Yonsei Medical</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Hyundai Motor</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Korea University</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Posco</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Hanwha</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Lotte</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">CJ Group</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Doosan</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">GS Caltex</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 5: Job Posting (Optional) -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Current Openings</h2>
+        <p class="section-subtitle">Available teaching positions</p>
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">English Instructor</h4>
+                <ul class="detail-card__list">
+                    <li>Full-time corporate in-house position</li>
+                    <li>Business English focus</li>
+                    <li>Seoul/Bundang area</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Phone English Instructor</h4>
+                <ul class="detail-card__list">
+                    <li>Part-time remote position</li>
+                    <li>Flexible hours</li>
+                    <li>Work from home available</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Japanese Instructor</h4>
+                <ul class="detail-card__list">
+                    <li>Corporate training position</li>
+                    <li>Business Japanese focus</li>
+                    <li>Experience preferred</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Chinese Instructor</h4>
+                <ul class="detail-card__list">
+                    <li>Part-time / Full-time available</li>
+                    <li>Mandarin Chinese</li>
+                    <li>Native speakers only</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 6: How to Apply -->
+<section class="cta-section">
+    <div class="container u-text-center">
+        <h2>How to Apply</h2>
+        <p class="u-mt-3 u-mb-4">Please send us your resume and join our team of professional instructors</p>
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('main.for_instructors') }}" class="btn btn--primary btn--lg">Apply Now</a>
+            <a href="{{ url_for('main.consulting') }}" class="btn btn--outline btn--lg">Contact Us</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

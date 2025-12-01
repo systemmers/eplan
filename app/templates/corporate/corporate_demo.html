@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Corporate Pattern Demo - ePlan{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header page-header--corporate">
+    <div class="container">
+        <h1>Corporate Pattern Demo</h1>
+        <p class="tagline">Corporate Section Pattern Components</p>
+        <p>Level, Goals, Details - Reusable UI Patterns</p>
+    </div>
+</section>
+
+<!-- Section 1: Level Cards -->
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">Learning Levels</h2>
+        <p class="section-subtitle">4-tier level system for systematic learning path</p>
+
+        <div class="level-cards-grid">
+            <div class="level-card level-card--beginner">
+                <span class="level-card__badge">Level 1-3</span>
+                <h3 class="level-card__title">Beginner</h3>
+                <p class="level-card__desc">English learner beginners</p>
+            </div>
+            <div class="level-card level-card--elementary">
+                <span class="level-card__badge">Level 4-5</span>
+                <h3 class="level-card__title">Elementary</h3>
+                <p class="level-card__desc">Basic conversation level</p>
+            </div>
+            <div class="level-card level-card--intermediate">
+                <span class="level-card__badge">Level 6-7</span>
+                <h3 class="level-card__title">Intermediate</h3>
+                <p class="level-card__desc">Business English users</p>
+            </div>
+            <div class="level-card level-card--advanced">
+                <span class="level-card__badge">Level 8-9</span>
+                <h3 class="level-card__title">Advanced</h3>
+                <p class="level-card__desc">Advanced English speakers</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2: Goals Cards -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Education Goals</h2>
+        <p class="section-subtitle">In-House Program Core Objectives</p>
+
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Annual Language Support</h3>
+                <p class="goal-card__desc">Systematic long-term education program for continuous improvement</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Global Talent Pool</h3>
+                <p class="goal-card__desc">Systematically develop global talents capable of overseas work</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Global Ready Workforce</h3>
+                <p class="goal-card__desc">Build a workforce ready for global business deployment</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Details Bento -->
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">Education Details</h2>
+        <p class="section-subtitle">In-House Program Specifications</p>
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Features</h4>
+                <ul class="detail-card__list">
+                    <li>Expert instructors dispatched to client companies</li>
+                    <li>Foster internal language learning culture</li>
+                    <li>Systematic learning management system</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <p class="detail-card__content">Level 1-7 Employees</p>
+                <p class="detail-card__content" style="margin-top: var(--spacing-sm); color: var(--color-text-muted); font-size: var(--font-size-sm);">All levels from beginner to intermediate</p>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>Speak Now</li>
+                    <li>Smart Choice</li>
+                    <li>American English File</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Course/Module</h4>
+                <ul class="detail-card__list">
+                    <li>General Conversation (Speaking/Reading/Listening)</li>
+                    <li>Business Communication (Basic/Practice)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Intensive Program Example -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Intensive Program</h2>
+        <p class="section-subtitle">Short-term intensive goal achievement course</p>
+
+        <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Short-term Goals</h3>
+                <p class="goal-card__desc">4/8/12 week intensive courses</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Business Skills Master</h3>
+                <p class="goal-card__desc">Practical skills for immediate application</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Test Score Goals</h3>
+                <p class="goal-card__desc">TOEIC, OPIc target score achievement</p>
+            </div>
+        </div>
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Features</h4>
+                <ul class="detail-card__list">
+                    <li>On-off job course design for work conditions</li>
+                    <li>Residential/Non-residential, 4/8/12 week options</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <p class="detail-card__content">Level 1-7 / Employees, Business deployment and promotion candidates</p>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>Best Practice</li>
+                    <li>English for Meetings, Presentation, Negotiating, Emails</li>
+                    <li>Business Result</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Module</h4>
+                <ul class="detail-card__list">
+                    <li>Meeting & Socializing Skill</li>
+                    <li>Presentation Skill</li>
+                    <li>Negotiation Skill</li>
+                    <li>Communication Skill</li>
+                    <li>Writing Skill</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container u-text-center">
+        <h2>Find the Right Program for Your Company</h2>
+        <p class="u-mt-3 u-mb-4">Boost global competitiveness with customized corporate training</p>
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('main.consulting') }}" class="btn btn--primary btn--lg">Free Consultation</a>
+            <a href="{{ url_for('main.corporate_programs') }}" class="btn btn--outline btn--lg">View All Programs</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

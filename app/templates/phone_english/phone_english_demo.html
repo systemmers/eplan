@@ -1,0 +1,652 @@
+{% extends "base.html" %}
+
+{% block title %}Phone English Pattern Demo - ePlan{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header page-header--phone-english">
+    <div class="container">
+        <h1>Phone English Pattern Demo</h1>
+        <p class="tagline">Phone English Section Pattern Components</p>
+        <p>Level, Goals, Details - Reusable UI Patterns</p>
+    </div>
+</section>
+
+<!-- Section 1: Level Cards -->
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">Learning Levels</h2>
+        <p class="section-subtitle">4-tier level system for phone English courses</p>
+
+        <div class="level-cards-grid">
+            <div class="level-card level-card--beginner">
+                <span class="level-card__badge">Level 1-3</span>
+                <h3 class="level-card__title">Beginner</h3>
+                <p class="level-card__desc">L1, H1, L2, H2, L3, H3</p>
+            </div>
+            <div class="level-card level-card--elementary">
+                <span class="level-card__badge">Level 4-6</span>
+                <h3 class="level-card__title">Pre-intermediate</h3>
+                <p class="level-card__desc">Business Basic level</p>
+            </div>
+            <div class="level-card level-card--intermediate">
+                <span class="level-card__badge">Level 7-8</span>
+                <h3 class="level-card__title">Intermediate</h3>
+                <p class="level-card__desc">Business Skill level</p>
+            </div>
+            <div class="level-card level-card--advanced">
+                <span class="level-card__badge">Level 9</span>
+                <h3 class="level-card__title">Advanced</h3>
+                <p class="level-card__desc">Discussion & Free Talk</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2: General Conversation -->
+<section>
+    <div class="container">
+        <h2 class="section-title">General Conversation</h2>
+        <p class="section-subtitle">Foundation course for grammar and basic conversation</p>
+
+        <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Grammar Foundation</h3>
+                <p class="goal-card__desc">Build basic grammar and conversation framework</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Basic Conversation</h3>
+                <p class="goal-card__desc">Enable basic conversation with native speakers</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Pronunciation</h3>
+                <p class="goal-card__desc">Complete basic pronunciation correction</p>
+            </div>
+        </div>
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <p class="detail-card__content">Level 1-7</p>
+                <ul class="detail-card__list" style="margin-top: var(--spacing-sm);">
+                    <li>Beginners seeking natural conversation</li>
+                    <li>General public and office workers</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>Speak Now</li>
+                    <li>Smart Choice</li>
+                    <li>American English File</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Learning Process</h4>
+                <ul class="detail-card__list">
+                    <li>Daily 10-min 1:1 lessons with native instructor</li>
+                    <li>Self-study + Further Study (30 min/day)</li>
+                    <li>Weekly: Textbook 4x + Special Topic 1x</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Features</h4>
+                <ul class="detail-card__list">
+                    <li>Pattern repetition learning system</li>
+                    <li>MP3 recording for review</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Business Conversation -->
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">Business Conversation</h2>
+        <p class="section-subtitle">Practical business English skills for professionals</p>
+
+        <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Language Needs</h3>
+                <p class="goal-card__desc">Address real business language requirements</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Case Study</h3>
+                <p class="goal-card__desc">Learn through real business cases and best practices</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Practical Skills</h3>
+                <p class="goal-card__desc">Master practical skills for immediate application</p>
+            </div>
+        </div>
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <p class="detail-card__content">Level 4-7</p>
+                <p class="detail-card__content" style="margin-top: var(--spacing-sm); color: var(--color-text-muted); font-size: var(--font-size-sm);">Mid to advanced level professionals</p>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>Best Practice 1-3 (Level 4-5)</li>
+                    <li>Business Result 1-3 (Level 5-7)</li>
+                    <li>Meetings, Presentations, Negotiating, Emails</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Learning Process</h4>
+                <ul class="detail-card__list">
+                    <li>Daily 10-min 1:1 lessons with native instructor</li>
+                    <li>Weekly: Textbook 4x + Special Topic 1x + Pronunciation</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Skill Modules</h4>
+                <ul class="detail-card__list">
+                    <li>Presentation Skills</li>
+                    <li>Negotiation Skills</li>
+                    <li>Meeting Skills</li>
+                    <li>Marketing Communication</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Discussion -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Discussion / Debate</h2>
+        <p class="section-subtitle">Advanced thinking and argumentation skills</p>
+
+        <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Critical Thinking</h3>
+                <p class="goal-card__desc">Expand thinking through topics and current issues</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Logical Argumentation</h3>
+                <p class="goal-card__desc">Practice problem-solving and persuasive communication</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Background Knowledge</h3>
+                <p class="goal-card__desc">Build diverse vocabulary and background knowledge</p>
+            </div>
+        </div>
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <p class="detail-card__content">Level 4-9</p>
+                <ul class="detail-card__list" style="margin-top: var(--spacing-sm);">
+                    <li>Those seeking diverse communication topics</li>
+                    <li>Those wanting current issues and vocabulary patterns</li>
+                    <li>Those needing persuasive communication skills</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>Communication Strategy 1</li>
+                    <li>Communication Strategy 2</li>
+                    <li>Communication Strategy 3</li>
+                    <li>Communication Strategy 4</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Learning System</h4>
+                <ul class="detail-card__list">
+                    <li>3x/week: Textbook 2x + Learner Topics 1x</li>
+                    <li>5x/week: Textbook 3x + Learner Topics 2x</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Integrated Learning</h4>
+                <ul class="detail-card__list">
+                    <li>Listening (News/Video)</li>
+                    <li>Reading (News/Current Affairs)</li>
+                    <li>Speaking (Main Lesson)</li>
+                    <li>Pronunciation Correction</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 5: Test Prep -->
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">Test Preparation</h2>
+        <p class="section-subtitle">TOEIC Speaking / OPIc / SPA certification prep</p>
+
+        <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="12" y1="18" x2="12" y2="12"/>
+                        <line x1="9" y1="15" x2="15" y2="15"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Certification Ready</h3>
+                <p class="goal-card__desc">Solid preparation for corporate certification tests</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                        <polyline points="17 6 23 6 23 12"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Level Up Goal</h3>
+                <p class="goal-card__desc">Target 1-level improvement in 3 months</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Practical Skills</h3>
+                <p class="goal-card__desc">Develop practical English skills simultaneously</p>
+            </div>
+        </div>
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <ul class="detail-card__list">
+                    <li>TOEIC Speaking / OPIc / SPA test candidates</li>
+                    <li>Job seekers and promotion candidates</li>
+                    <li>Corporate speaking test preparation</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>TOEIC Speaking Official Practice</li>
+                    <li>New OPIc SOS</li>
+                    <li>Sparta SPA</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Learning Process</h4>
+                <ul class="detail-card__list">
+                    <li>Orientation on test methods</li>
+                    <li>Skill-up practice sessions</li>
+                    <li>Mock test every 1-2 weeks</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Weekly Schedule</h4>
+                <ul class="detail-card__list">
+                    <li>5x/week: Textbook 3x + Special Topic 1x + Mock Test 1x</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 6: Textbooks Guide - Accordion Style -->
+<section class="u-bg-teal-lightest">
+    <div class="container">
+        <h2 class="section-title">Textbooks</h2>
+        <p class="section-subtitle">마우스를 올리거나 클릭하여 교재를 선택하세요</p>
+
+        <!-- General Conversation -->
+        <div class="textbook-accordion-block">
+            <h3 class="textbook-category__title">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                General Conversation
+            </h3>
+            <div class="textbook-accordion-wrapper">
+                <div class="book-detail-panel" id="detail-general">
+                    <!-- 동적으로 업데이트 -->
+                </div>
+                <div class="book-accordion" data-category="general">
+                    <div class="book-accordion-item active" data-index="0">
+                        <img src="{{ url_for('static', filename='images/books_img/sc-starter.jpg') }}" alt="Smart Choice Starter" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Smart Choice Starter</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="1">
+                        <img src="{{ url_for('static', filename='images/books_img/sc-main.jpg') }}" alt="Smart Choice Main" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Smart Choice Main</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="2">
+                        <img src="{{ url_for('static', filename='images/books_img/sbs-1-3.jpg') }}" alt="Side by Side 1-3" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Side by Side 1-3</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="3">
+                        <img src="{{ url_for('static', filename='images/books_img/sbs-4-7.jpg') }}" alt="Side by Side 4-7" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Side by Side 4-7</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="4">
+                        <img src="{{ url_for('static', filename='images/books_img/touchstone-1-4.jpg') }}" alt="Touchstone 1-4" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Touchstone 1-4</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="5">
+                        <img src="{{ url_for('static', filename='images/books_img/interchange-intro.jpg') }}" alt="Interchange Intro" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Interchange Intro</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business English -->
+        <div class="textbook-accordion-block">
+            <h3 class="textbook-category__title">
+                <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Business English
+            </h3>
+            <div class="textbook-accordion-wrapper">
+                <div class="book-detail-panel" id="detail-business">
+                    <!-- 동적으로 업데이트 -->
+                </div>
+                <div class="book-accordion" data-category="business">
+                    <div class="book-accordion-item active" data-index="0">
+                        <img src="{{ url_for('static', filename='images/books_img/business-venture-1-2.jpg') }}" alt="Business Venture 1-2" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Business Venture 1-2</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="1">
+                        <img src="{{ url_for('static', filename='images/books_img/business-venture-3.jpg') }}" alt="Business Venture 3" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Business Venture 3</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="2">
+                        <img src="{{ url_for('static', filename='images/books_img/market-leader-basic.jpg') }}" alt="Market Leader Basic" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Market Leader Basic</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="3">
+                        <img src="{{ url_for('static', filename='images/books_img/market-leader-advanced.jpg') }}" alt="Market Leader Advanced" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Market Leader Advanced</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="4">
+                        <img src="{{ url_for('static', filename='images/books_img/business-result.jpg') }}" alt="Business Result" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Business Result</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Preparation -->
+        <div class="textbook-accordion-block">
+            <h3 class="textbook-category__title">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                Test Preparation
+            </h3>
+            <div class="textbook-accordion-wrapper">
+                <div class="book-detail-panel" id="detail-test">
+                    <!-- 동적으로 업데이트 -->
+                </div>
+                <div class="book-accordion" data-category="test">
+                    <div class="book-accordion-item active" data-index="0">
+                        <img src="{{ url_for('static', filename='images/books_img/toeic-speaking-basic.jpg') }}" alt="TOEIC Speaking Basic" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">TOEIC Speaking Basic</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="1">
+                        <img src="{{ url_for('static', filename='images/books_img/toeic-speaking-advanced.jpg') }}" alt="TOEIC Speaking Advanced" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">TOEIC Speaking Advanced</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="2">
+                        <img src="{{ url_for('static', filename='images/books_img/toeic-speaking-expert.jpg') }}" alt="TOEIC Speaking Expert" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">TOEIC Speaking Expert</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="3">
+                        <img src="{{ url_for('static', filename='images/books_img/opic-im.jpg') }}" alt="OPIc IM" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">OPIc IM</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="4">
+                        <img src="{{ url_for('static', filename='images/books_img/opic-ih.jpg') }}" alt="OPIc IH" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">OPIc IH</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="5">
+                        <img src="{{ url_for('static', filename='images/books_img/opic-al.jpg') }}" alt="OPIc AL" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">OPIc AL</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Discussion & Debate -->
+        <div class="textbook-accordion-block">
+            <h3 class="textbook-category__title">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Discussion & Debate
+            </h3>
+            <div class="textbook-accordion-wrapper">
+                <div class="book-detail-panel" id="detail-discussion">
+                    <!-- 동적으로 업데이트 -->
+                </div>
+                <div class="book-accordion" data-category="discussion">
+                    <div class="book-accordion-item active" data-index="0">
+                        <img src="{{ url_for('static', filename='images/books_img/conversation-strategies.jpg') }}" alt="Conversation Strategies" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Conversation Strategies</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="1">
+                        <img src="{{ url_for('static', filename='images/books_img/impact-issues.jpg') }}" alt="Impact Issues" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Impact Issues</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="2">
+                        <img src="{{ url_for('static', filename='images/books_img/advanced-discussion.jpg') }}" alt="Advanced Discussion" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Advanced Discussion</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container u-text-center">
+        <h2>Find the Right Course for You</h2>
+        <p class="u-mt-3 u-mb-4">Achieve your English learning goals with personalized phone English courses</p>
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('main.consulting') }}" class="btn btn--primary btn--lg">Free Consultation</a>
+            <a href="{{ url_for('main.phone_english') }}" class="btn btn--outline btn--lg">View All Courses</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

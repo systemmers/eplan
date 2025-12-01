@@ -14,85 +14,133 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <!-- Header & Navigation -->
+    <!-- Header & Navigation - Floating Glass Style -->
     <header class="header">
-        <!-- Top Bar -->
-        <!-- <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-content">
-                    <div class="top-bar-left">
-                        향후 확장용
-                    </div>
-                    <div class="top-bar-right">
-                        {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('admin.dashboard') }}">Dashboard</a>
-                        <span class="divider">|</span>
-                        <a href="{{ url_for('auth.logout') }}">Logout</a>
-                        {% else %}
-                        <a href="{{ url_for('auth.login') }}">Login</a>
-                        <span class="divider">|</span>
-                        <a href="#">Signup</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div> -->
+        <nav class="floating-nav">
+            <!-- Logo -->
+            <a href="{{ url_for('main.index') }}" class="logo"
+               hx-get="{{ url_for('main.index') }}"
+               hx-target="#main-content"
+               hx-swap="innerHTML"
+               hx-push-url="true">
+                <img src="{{ url_for('static', filename='images/eplan_logo.png') }}" alt="ePLAN Logo">
+            </a>
 
-        <!-- Middle Bar -->
-        <!-- <div class="middle-bar">
-            <div class="container">
-                <div class="middle-bar-content">
-                    <a href="{{ url_for('main.index') }}" hx-get="{{ url_for('main.index') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true" class="logo">
-                        <img src="{{ url_for('static', filename='images/eplan_logo.png') }}" alt="ePlan Logo">
-                    </a>
-                    <div class="header-contact">
-                        <!-- 선택사항: 연락처 정보 -->
-                    <!-- </div>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- Bottom Bar (Navigation) -->
-        <div class="bottom-bar">
-            <div class="container">
-                <nav class="navbar">
-                    <button class="nav-toggle" aria-label="Toggle navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    
-                    <ul class="nav-menu">
-                        <li><a href="{{ url_for('main.index') }}" hx-get="{{ url_for('main.index') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Home</a></li>
-                        <li><a href="{{ url_for('main.company') }}" hx-get="{{ url_for('main.company') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">About</a></li>
-                        <li class="dropdown">
-                            <a href="{{ url_for('main.phone_english') }}" hx-get="{{ url_for('main.phone_english') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true" class="dropdown-toggle">Services</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">일반회화<br>General conversation</a></li>
-                                <li><a href="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">비즈니스<br>Business conversation</a></li>
-                                <li><a href="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">토론<br>Discussion</a></li>
-                                <li><a href="{{ url_for('main.phone_english_detail', curriculum='test-prep') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='test-prep') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">공인시험<br>TOEIC Speaking</a></li>
-                                <li><a href="{{ url_for('main.curriculum_roadmap') }}" hx-get="{{ url_for('main.curriculum_roadmap') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">커리큘럼 로드맵<br>Curriculum Roadmap</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="{{ url_for('main.corporate_programs') }}" hx-get="{{ url_for('main.corporate_programs') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true" class="dropdown-toggle">Corporate</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ url_for('main.corporate_program_detail', program='in-house') }}" hx-get="{{ url_for('main.corporate_program_detail', program='in-house') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">사내과정<br>In-house program</a></li>
-                                <li><a href="{{ url_for('main.corporate_program_detail', program='intensive') }}" hx-get="{{ url_for('main.corporate_program_detail', program='intensive') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">집중과정<br>Intensive program</a></li>
-                                <li><a href="{{ url_for('main.corporate_program_detail', program='executive') }}" hx-get="{{ url_for('main.corporate_program_detail', program='executive') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">임원코칭<br>Executive coaching</a></li>
-                                <li><a href="{{ url_for('main.corporate_program_detail', program='resident') }}" hx-get="{{ url_for('main.corporate_program_detail', program='resident') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">주재원<br>Resident employee program</a></li>
-                                <li><a href="{{ url_for('main.corporate_program_detail', program='blended') }}" hx-get="{{ url_for('main.corporate_program_detail', program='blended') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">블렌디드<br>Blended program</a></li>
-                                <li><a href="{{ url_for('main.corporate_program_detail', program='oct') }}" hx-get="{{ url_for('main.corporate_program_detail', program='oct') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">상주강사<br>OCT</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{ url_for('main.writing_correction') }}" hx-get="{{ url_for('main.writing_correction') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Writing Correction</a></li>
-                        <li><a href="{{ url_for('main.consulting') }}" hx-get="{{ url_for('main.consulting') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Consulting</a></li>
-                        <li><a href="{{ url_for('main.for_instructors') }}" hx-get="{{ url_for('main.for_instructors') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Recruitment</a></li>
+            <!-- Navigation Menu -->
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('main.company') }}" hx-get="{{ url_for('main.company') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">About</a></li>
+                <li class="dropdown">
+                    <a href="{{ url_for('main.phone_english') }}" hx-get="{{ url_for('main.phone_english') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true" class="dropdown-toggle">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('main.curriculum_roadmap') }}" hx-get="{{ url_for('main.curriculum_roadmap') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="3 11 12 2 21 11 20 11 20 21 4 21 4 11"></polygon>
+                                <line x1="12" y1="22" x2="12" y2="12"></line>
+                            </svg>
+                            Curriculum Roadmap<br>커리큘럼 로드맵</a></li>
+                        <li><a href="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            General Conversation<br>일반회화</a></li>
+                        <li><a href="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            Business Conversation<br>비즈니스 회화</a></li>
+                        <li><a href="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            Discussion<br>토론</a></li>
+                        <li><a href="{{ url_for('main.phone_english_detail', curriculum='test-prep') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='test-prep') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                <line x1="12" y1="19" x2="12" y2="23"></line>
+                                <line x1="8" y1="23" x2="16" y2="23"></line>
+                            </svg>
+                            TOEIC Speaking<br>TOEIC 스피킹</a></li>
                     </ul>
-                </nav>
-            </div>
-        </div>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ url_for('main.corporate_programs') }}" hx-get="{{ url_for('main.corporate_programs') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true" class="dropdown-toggle">Corporate</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('main.corporate_program_detail', program='intro') }}" hx-get="{{ url_for('main.corporate_program_detail', program='intro') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                            Introduction<br>소개</a></li>
+                        <li><a href="{{ url_for('main.corporate_program_detail', program='in-house') }}" hx-get="{{ url_for('main.corporate_program_detail', program='in-house') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 21h18"></path>
+                                <path d="M5 21V7l8-4v18"></path>
+                                <path d="M19 21V11l-6-4"></path>
+                                <line x1="9" y1="9" x2="9" y2="9"></line>
+                                <line x1="9" y1="12" x2="9" y2="12"></line>
+                                <line x1="9" y1="15" x2="9" y2="15"></line>
+                                <line x1="9" y1="18" x2="9" y2="18"></line>
+                            </svg>
+                            In-house Program<br>사내어학과정</a></li>
+                        <li><a href="{{ url_for('main.corporate_program_detail', program='intensive') }}" hx-get="{{ url_for('main.corporate_program_detail', program='intensive') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                            Intensive Program<br>집중과정</a></li>
+                        <li><a href="{{ url_for('main.corporate_program_detail', program='executive') }}" hx-get="{{ url_for('main.corporate_program_detail', program='executive') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Executive Coaching<br>1:1 케어</a></li>
+                        <li><a href="{{ url_for('main.corporate_program_detail', program='resident') }}" hx-get="{{ url_for('main.corporate_program_detail', program='resident') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Resident Program<br>주임 어학과정</a></li>
+                        <li><a href="{{ url_for('main.corporate_program_detail', program='blended') }}" hx-get="{{ url_for('main.corporate_program_detail', program='blended') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                            Blended Program<br>혼합과정</a></li>
+                        <li><a href="{{ url_for('main.corporate_program_detail', program='oct') }}" hx-get="{{ url_for('main.corporate_program_detail', program='oct') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">
+                            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                            OCT<br>오프라인 온라인 혼합과정</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('main.writing_correction') }}" hx-get="{{ url_for('main.writing_correction') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Writing</a></li>
+                <li><a href="{{ url_for('main.for_instructors') }}" hx-get="{{ url_for('main.for_instructors') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Recruitment</a></li>
+            </ul>
+
+            <!-- CTA Button -->
+            <a href="{{ url_for('main.consulting') }}" class="nav-cta"
+               hx-get="{{ url_for('main.consulting') }}"
+               hx-target="#main-content"
+               hx-swap="innerHTML"
+               hx-push-url="true">Contact</a>
+
+            <!-- Mobile Toggle -->
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
     </header>
 
     <!-- Flash Messages -->

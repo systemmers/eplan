@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block title %}Writing Pattern Demo - ePlan{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header page-header--writing">
+    <div class="container">
+        <h1>Writing Pattern Demo</h1>
+        <p class="tagline">JR Writing - Writing Correction Components</p>
+        <p>Quote Cards, Level Charts, Course Details, Process Flow - Reusable UI Patterns</p>
+    </div>
+</section>
+
+<!-- Section 1: Jack Welch Quote -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Inspirational Quote</h2>
+        <p class="section-subtitle">Quote Card Component</p>
+
+        <div class="quote-card">
+            <p class="quote-card__text">
+                "My mother served up the perfect excuse for my stuttering. 'It's because you're so smart. No one's tongue could keep up with a brain like yours.' I believed what she told me: that my mind worked faster than my mouth."
+            </p>
+            <p class="quote-card__text--korean">
+                "니가 말을 더듬는 이유는 생각의 속도가 너무 빨라서 그래. 생각의 속도가 너무 빠르기 때문에 입이 그 속도를 따라 주지 못해서 말을 더듬는 거야!"
+            </p>
+            <div class="quote-card__author">
+                <span>- Jack Welch, Former CEO of General Electric</span>
+            </div>
+        </div>
+
+        <div class="quote-card" style="margin-top: var(--spacing-lg);">
+            <p class="quote-card__text">
+                "When writing a first draft, you might make errors simply. However, don't worry about it. That's because you are thinking faster than you can write or type."
+            </p>
+            <p class="quote-card__text--korean">
+                용기와 열정이면 됩니다. 그리고 연습.. Practice makes perfect!!!
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2: Curriculum Map -->
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">Curriculum Map</h2>
+        <p class="section-subtitle">Level Chart Component - Writing Course Overview</p>
+
+        <div class="level-chart">
+            <h3 class="level-chart__header">Writing Course Levels</h3>
+            <div class="level-chart__grid">
+                <!-- Header Row -->
+                <div class="level-chart__label">Course</div>
+                <div class="level-chart__cell level-chart__cell--header">L1</div>
+                <div class="level-chart__cell level-chart__cell--header">L2</div>
+                <div class="level-chart__cell level-chart__cell--header">L3</div>
+                <div class="level-chart__cell level-chart__cell--header">L4</div>
+                <div class="level-chart__cell level-chart__cell--header">L5</div>
+                <div class="level-chart__cell level-chart__cell--header">L6</div>
+                <div class="level-chart__cell level-chart__cell--header">L7</div>
+                <div class="level-chart__cell level-chart__cell--header">L8</div>
+                <div class="level-chart__cell level-chart__cell--header">L9</div>
+
+                <!-- BIZ Row -->
+                <div class="level-chart__label">BIZ</div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell level-chart__cell--l4">Email</div>
+                <div class="level-chart__cell level-chart__cell--l5">Meeting</div>
+                <div class="level-chart__cell level-chart__cell--l6">Negotiation</div>
+                <div class="level-chart__cell level-chart__cell--l7">Presentation</div>
+                <div class="level-chart__cell level-chart__cell--l8"></div>
+                <div class="level-chart__cell level-chart__cell--l9"></div>
+
+                <!-- PBW Row -->
+                <div class="level-chart__label">PBW</div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell level-chart__cell--l4">Planning</div>
+                <div class="level-chart__cell level-chart__cell--l5">Management</div>
+                <div class="level-chart__cell level-chart__cell--l6">Legal/HR</div>
+                <div class="level-chart__cell level-chart__cell--l7">Finance</div>
+                <div class="level-chart__cell level-chart__cell--l8">Marketing</div>
+                <div class="level-chart__cell level-chart__cell--l9">Operations</div>
+
+                <!-- General Row -->
+                <div class="level-chart__label">General</div>
+                <div class="level-chart__cell level-chart__cell--l1">Basic</div>
+                <div class="level-chart__cell level-chart__cell--l2">Paragraph</div>
+                <div class="level-chart__cell level-chart__cell--l3">Short Essay</div>
+                <div class="level-chart__cell level-chart__cell--l4">Essay Intro</div>
+                <div class="level-chart__cell level-chart__cell--l5">Body</div>
+                <div class="level-chart__cell level-chart__cell--l6">Conclusion</div>
+                <div class="level-chart__cell level-chart__cell--l7">Advanced</div>
+                <div class="level-chart__cell level-chart__cell--l8">Creative</div>
+                <div class="level-chart__cell level-chart__cell--l9">Professional</div>
+
+                <!-- ADW Row -->
+                <div class="level-chart__label">ADW</div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell level-chart__cell--l7">TOEFL</div>
+                <div class="level-chart__cell level-chart__cell--l8">IELTS</div>
+                <div class="level-chart__cell level-chart__cell--l9">Academic</div>
+
+                <!-- Tutor Row -->
+                <div class="level-chart__label">Tutor</div>
+                <div class="level-chart__cell level-chart__cell--l1">Feedback</div>
+                <div class="level-chart__cell level-chart__cell--l2">Grammar</div>
+                <div class="level-chart__cell level-chart__cell--l3">Structure</div>
+                <div class="level-chart__cell level-chart__cell--l4">Content</div>
+                <div class="level-chart__cell level-chart__cell--l5">Style</div>
+                <div class="level-chart__cell level-chart__cell--l6">Vocabulary</div>
+                <div class="level-chart__cell level-chart__cell--l7">Advanced</div>
+                <div class="level-chart__cell level-chart__cell--l8">Creative</div>
+                <div class="level-chart__cell level-chart__cell--l9">Expert</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Course Details -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Course Details</h2>
+        <p class="section-subtitle">Course Detail Card Components</p>
+
+        <div class="course-detail-cards">
+            <!-- Business Writing -->
+            <div class="course-detail-card course-detail-card--business">
+                <div class="course-detail-card__content">
+                    <h3 class="course-detail-card__title">Business Writing</h3>
+                    <p class="course-detail-card__desc">
+                        A course designed to improve effective persuasive communication skills for English business performance in a global corporate environment.
+                        By training essential business writing skills needed for work, you will improve your ability to effectively convey your opinions to others.
+                    </p>
+                    <ul class="course-detail-card__items">
+                        <li><strong>Biz Email:</strong> Complaint, Apology, Request, Sales, Announcement, Thanks mail pattern training</li>
+                        <li><strong>Biz Meeting:</strong> Preparation pattern training for meaningful conclusions</li>
+                        <li><strong>Biz Negotiation:</strong> Win-win strategy and planning pattern training</li>
+                        <li><strong>Biz Presentation:</strong> PT planning and PPT creation pattern training through information (charts, graphs)</li>
+                    </ul>
+                </div>
+                <div class="course-detail-card__meta">
+                    <div class="course-detail-card__meta-label">Monthly</div>
+                    <div class="course-detail-card__meta-value">3 topics + 1 PBW</div>
+                </div>
+            </div>
+
+            <!-- Practical Business Writing -->
+            <div class="course-detail-card course-detail-card--practical">
+                <div class="course-detail-card__content">
+                    <h3 class="course-detail-card__title">Practical Business Writing</h3>
+                    <p class="course-detail-card__desc">
+                        A course that strengthens the ability to immediately apply to practical work by presenting various Business Forms currently used in English-speaking business sites and re-writing them to apply to learners' practical work.
+                    </p>
+                    <ul class="course-detail-card__items">
+                        <li><strong>Fields:</strong> Planning, Management, Legal, Human Resources, Finance, Accounting, Sales, Marketing, Operations, Logistics, IT, Consultants, Contractors, Credit & Collection, Real Estate</li>
+                        <li><strong>Lineup:</strong> Notices, Worksheets, Statements, Plans, Checklists, Certificates, Agreements, Emails, Letters, Scripts, Requests, Guidelines, Outlines, Proposals, Evaluations, Policies, Surveys</li>
+                    </ul>
+                    <div class="course-detail-card__meta">
+                        <div class="course-detail-card__meta-label">Monthly</div>
+                        <div class="course-detail-card__meta-value">1 field x 4 forms</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General Writing -->
+            <div class="course-detail-card course-detail-card--general">
+                <div class="course-detail-card__content">
+                    <h3 class="course-detail-card__title">General Writing</h3>
+                    <p class="course-detail-card__desc">
+                        A training course for understanding proposed topics from the basic to advanced stages of English composition and writing essays with logical and systematic structures.
+                    </p>
+                    <ul class="course-detail-card__items">
+                        <li><strong>Beginner (L1-L3):</strong> Basic stage - Understanding paragraph composition elements, basic English composition using short sentences</li>
+                        <li><strong>Intermediate (L4-L6):</strong> Intermediate stage - Learning to write arguments according to introduction, body, conclusion format, acquiring the ability to write natural essays</li>
+                        <li><strong>Advanced (L7-L9):</strong> Advanced stage - Learning solid composition and logical development, acquiring the ability to write creative essays using examples, reasons, and details</li>
+                    </ul>
+                </div>
+                <!--<div class="course-detail-card__meta">
+                    <div class="course-detail-card__meta-label">Monthly</div>
+                    <div class="course-detail-card__meta-value">3 topics + 1 PBW</div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Process Flow -->
+<section class="u-bg-teal">
+    <div class="container">
+        <h2 class="section-title">Writing Process Flow</h2>
+        <p class="section-subtitle">Process Step Components with Feedback Loop</p>
+
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-step__number">1</div>
+                <h4 class="process-step__title">Pre-Writing</h4>
+                <p class="process-step__desc">Topic selection & outline guide</p>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+                <div class="process-step__number">2</div>
+                <h4 class="process-step__title">1st Draft</h4>
+                <p class="process-step__desc">Draft writing & submission</p>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+                <div class="process-step__number">3</div>
+                <h4 class="process-step__title">G-Check & S-Check</h4>
+                <p class="process-step__desc">Grammar & structure review</p>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+                <div class="process-step__number">4</div>
+                <h4 class="process-step__title">Tutor Revision</h4>
+                <p class="process-step__desc">Expert feedback & self-revision</p>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+                <div class="process-step__number">5</div>
+                <h4 class="process-step__title">Overall Evaluation</h4>
+                <p class="process-step__desc">Comprehensive assessment</p>
+            </div>
+        </div>
+
+        <!-- Feedback Loop -->
+        <div class="feedback-loop">
+            <div class="feedback-loop__icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M23 4v6h-6"/>
+                    <path d="M1 20v-6h6"/>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                </svg>
+            </div>
+            <h4 class="feedback-loop__title">Continuous Feedback Loop</h4>
+            <p class="feedback-loop__desc">Iterative improvement through multiple revision cycles</p>
+        </div>
+
+        <!-- Process Description Table -->
+        <table class="process-table">
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pre-Writing</strong></td>
+                    <td>An optional video guide on how to study is provided</td>
+                </tr>
+                <tr>
+                    <td><strong>1st Draft</strong></td>
+                    <td>Read the given task, then write a story about what happened next. Write what comes to your mind freely.</td>
+                </tr>
+                <tr>
+                    <td><strong>G-Check & S-Check</strong></td>
+                    <td>Allows you to revise errors that the G-Editor didn't catch, such as sentence patterns or word choices.</td>
+                </tr>
+                <tr>
+                    <td><strong>Self-Revision vs Tutor</strong></td>
+                    <td>You can compare your written text with the Tutor's correction.</td>
+                </tr>
+                <tr>
+                    <td><strong>G-check & Feedback</strong></td>
+                    <td>G-check allows you to see expressions that the Tutor recommended. Check Tutor's feedback on your writing.</td>
+                </tr>
+                <tr>
+                    <td><strong>Overall Evaluation</strong></td>
+                    <td>You can check a Tutor's hand-written feedback on your writing.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container u-text-center">
+        <h2>Ready to Improve Your Writing?</h2>
+        <p class="u-mt-3 u-mb-4">JR Writing will be your dedicated trainer for your writing practice</p>
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('main.writing_correction') }}" class="btn btn--primary btn--lg">Explore Courses</a>
+            <a href="{{ url_for('main.consulting') }}" class="btn btn--outline btn--lg">Request Consultation</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -31,3 +31,154 @@
         height: 300px;
     }
 }
+
+/* ============================================
+   For Instructors Demo Pattern Components
+   - Stats Cards (통계 카드)
+   - Client Logo Grid (고객사 로고)
+   - Requirements Grid (지원 요건)
+   ============================================ */
+
+/* Stats Cards Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stats-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.stats-card__number {
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-teal-dark);
+    line-height: 1;
+    margin-bottom: var(--spacing-sm);
+}
+
+.stats-card__label {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Stats Card Variants */
+.stats-card--global .stats-card__number { color: #3b82f6; }
+.stats-card--government .stats-card__number { color: #10b981; }
+.stats-card--education .stats-card__number { color: #8b5cf6; }
+
+/* Number Stats (17+, 23+) */
+.number-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: var(--spacing-2xl);
+}
+
+@media (max-width: 640px) {
+    .number-stats {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+}
+
+.number-stat {
+    text-align: center;
+}
+
+.number-stat__value {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-teal-dark);
+}
+
+.number-stat__label {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+/* Client Logo Grid */
+.client-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-xl);
+    align-items: center;
+    justify-items: center;
+    margin-top: var(--spacing-2xl);
+}
+
+.client-logo {
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    width: 100%;
+}
+
+.client-logo:hover {
+    opacity: 1;
+    box-shadow: var(--shadow-md);
+}
+
+.client-logo img {
+    max-width: 100%;
+    max-height: 50px;
+    object-fit: contain;
+}
+
+/* Requirements Grid (4 columns) */
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .requirements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .requirements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* About Section */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--color-text);
+}

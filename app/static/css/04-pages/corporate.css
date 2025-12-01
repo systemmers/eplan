@@ -31,3 +31,216 @@
         height: 300px;
     }
 }
+
+/* ============================================
+   Corporate Program Pattern Components
+   - Level Cards (학습레벨)
+   - Goal Cards (교육목표)
+   - Detail Cards (교육세부)
+   ============================================ */
+
+/* Level Cards Grid */
+.level-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .level-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .level-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.level-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: var(--shadow-sm);
+}
+
+.level-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.level-card__badge {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--color-teal-light);
+    color: var(--color-teal-dark);
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-md);
+}
+
+.level-card__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.level-card__desc {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+/* Level Theme Colors */
+.level-card--beginner { border-color: #10b981; }
+.level-card--beginner .level-card__badge { background: #d1fae5; color: #065f46; }
+
+.level-card--elementary { border-color: #3b82f6; }
+.level-card--elementary .level-card__badge { background: #dbeafe; color: #1e40af; }
+
+.level-card--intermediate { border-color: #8b5cf6; }
+.level-card--intermediate .level-card__badge { background: #ede9fe; color: #5b21b6; }
+
+.level-card--advanced { border-color: #f59e0b; }
+.level-card--advanced .level-card__badge { background: #fef3c7; color: #92400e; }
+
+/* Goals Grid */
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 992px) {
+    .goals-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .goals-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.goal-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.goal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.goal-card__icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-lg);
+    background: var(--color-teal-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-teal-dark);
+}
+
+.goal-card__icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.goal-card__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.goal-card__desc {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+/* Details Bento Grid */
+.details-bento {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .details-bento {
+        grid-template-columns: 1fr;
+    }
+}
+
+.detail-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--color-teal-medium);
+    transition: all 0.3s ease;
+}
+
+.detail-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.detail-card__label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-teal-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-md);
+}
+
+.detail-card__content {
+    color: var(--color-text);
+}
+
+.detail-card__list {
+    list-style: disc;
+    padding-left: var(--spacing-xl);
+    color: var(--color-text);
+    margin: 0;
+}
+
+.detail-card__list li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.detail-card__list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Detail Card Variants */
+.detail-card--feature { border-left-color: #10b981; }
+.detail-card--feature .detail-card__label { color: #065f46; }
+
+.detail-card--target { border-left-color: #3b82f6; }
+.detail-card--target .detail-card__label { color: #1e40af; }
+
+.detail-card--textbook { border-left-color: #8b5cf6; }
+.detail-card--textbook .detail-card__label { color: #5b21b6; }
+
+.detail-card--course { border-left-color: #f59e0b; }
+.detail-card--course .detail-card__label { color: #92400e; }
