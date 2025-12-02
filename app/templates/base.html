@@ -7,7 +7,7 @@
     <meta name="description" content="{% block meta_description %}ePlan - 글로벌 교육의 혁신, 전화영어와 기업 어학 교육 전문{% endblock %}">
     <title>{% block title %}ePlan{% endblock %}</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&family=Outfit:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&family=Outfit:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
@@ -200,7 +200,7 @@
                     <div class="footer-column">
                         <h4>Phone English</h4>
                         <ul>
-                            <li><a href="{{ url_for('main.phone_english') }}" hx-get="{{ url_for('main.phone_english') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Phone English</a></li>
+                            <li><a href="{{ url_for('main.phone_english_demo') }}" hx-get="{{ url_for('main.phone_english_demo') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Phone English</a></li>
                             <li><a href="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">General conversation</a></li>
                             <li><a href="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Business conversation</a></li>
                             <li><a href="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" hx-get="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" hx-target="#main-content" hx-swap="innerHTML" hx-push-url="true">Discussion</a></li>

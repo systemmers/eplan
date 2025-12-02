@@ -63,7 +63,7 @@
     --line-height-relaxed: 1.8;
     
     /* ===== 레이아웃 ===== */
-    --max-width: 1200px;
+    --max-width: 1400px;
     --max-width-sm: 640px;
     --max-width-md: 768px;
     --max-width-lg: 1024px;
@@ -95,7 +95,7 @@
     /* ===== 브레이크포인트 ===== */
     --bp-mobile: 768px;
     --bp-tablet: 1024px;
-    --bp-desktop: 1200px;
+    --bp-desktop: 1400px;
 
     /* ===== 커리큘럼 전용 색상 (Curriculum-specific) ===== */
 

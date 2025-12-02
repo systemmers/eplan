@@ -22,7 +22,7 @@ const CurriculumModal = {
         this.currentTextbooks = ids;
         const displayId = initialId || ids[0];
 
-        const data = textbookData[displayId];
+        const data = curriculumTextbookData[displayId];
         if (!data) return;
 
         const modal = document.getElementById('curriculumModal');
@@ -43,7 +43,7 @@ const CurriculumModal = {
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--spacing-md);">
                         ${ids.map(id => {
-                            const tbData = textbookData[id];
+                            const tbData = curriculumTextbookData[id];
                             const isActive = id === displayId ? 'is-active' : '';
                             return `
                                 <div class="curriculum-modal-textbook-thumbnail ${isActive}"
@@ -168,7 +168,7 @@ const CurriculumTable = {
      * 실제 프로젝트에서는 서버에서 데이터를 받아 사용
      */
     populateRandomTextbooks: function() {
-        const allTextbookIds = Object.keys(textbookData);
+        const allTextbookIds = Object.keys(curriculumTextbookData);
         const cells = document.querySelectorAll('.textbook-cell');
 
         cells.forEach(cell => {
@@ -196,7 +196,7 @@ const CurriculumTable = {
 
             // 이미지 추가
             selectedIds.forEach(id => {
-                const data = textbookData[id];
+                const data = curriculumTextbookData[id];
                 if (!data) return;
 
                 const img = document.createElement('img');
@@ -230,23 +230,49 @@ const CurriculumTable = {
      * 셀 클릭 이벤트 등록 함수
      */
     attachCellClickEvents: function() {
-        const cells = document.querySelectorAll('.textbook-cell');
+        // 중복 이벤트 바인딩 방지
+        const cells = document.querySelectorAll('.textbook-cell:not([data-events-bound])');
 
         cells.forEach(cell => {
             // 기존 onclick 속성 제거
             cell.removeAttribute('onclick');
 
-            // 새 클릭 이벤트 등록
-            cell.addEventListener('click', function() {
-                const textbookIdsJson = this.getAttribute('data-textbook-ids');
-                const firstTextbook = this.getAttribute('data-first-textbook');
+            const textbookIdsJson = cell.getAttribute('data-textbook-ids');
+            if (!textbookIdsJson) return;
 
-                if (textbookIdsJson) {
-                    const ids = JSON.parse(textbookIdsJson);
-                    // 셀 클릭: 모든 교재 전달, 첫 번째 교재를 초기 표시
-                    CurriculumModal.open(ids, firstTextbook || ids[0]);
-                }
+            let ids;
+            try {
+                ids = JSON.parse(textbookIdsJson);
+            } catch (e) {
+                console.error('교재 ID 파싱 오류:', e);
+                return;
+            }
+
+            if (!ids || ids.length === 0) return;
+
+            const firstTextbook = cell.getAttribute('data-first-textbook') || ids[0];
+
+            // 셀 클릭 이벤트 등록
+            cell.addEventListener('click', function(e) {
+                // 이미지 클릭은 별도 처리하므로 무시
+                if (e.target.classList.contains('textbook-thumbnail')) return;
+                CurriculumModal.open(ids, firstTextbook);
             });
+
+            // 썸네일 이미지 클릭 이벤트 등록
+            const thumbnails = cell.querySelectorAll('.textbook-thumbnail');
+            thumbnails.forEach((img, index) => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    // 해당 이미지의 교재 ID로 모달 열기
+                    const targetId = ids[index] || ids[0];
+                    CurriculumModal.open(ids, targetId);
+                });
+            });
+
+            // 중복 바인딩 방지 마킹
+            cell.setAttribute('data-events-bound', 'true');
         });
     }
 };

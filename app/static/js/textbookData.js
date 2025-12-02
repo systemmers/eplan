@@ -1,5 +1,6 @@
-// 교재 데이터
-const textbookData = {
+// 커리큘럼 로드맵용 교재 데이터
+// 주의: main.js의 textbookData와 구분하기 위해 별도 네임스페이스 사용
+const curriculumTextbookData = {
     'sc-starter': {
         id: 'sc-starter',
         name: 'Smart Choice Starter 1~5',

@@ -6,12 +6,12 @@
    Page Header - Company
    ======================================== */
 .page-header--company {
-    background-image: url('/static/images/company.jpg');
-    background-size: cover;
-    background-position: center 50%;
+    background-image: url('/static/images/header/company_header_section.jpg');
+    background-size: auto auto;
+    background-position: top center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 400px;
+    height: 1000px;
 }
 
 /* Dark overlay for better text readability */
@@ -740,7 +740,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1.5rem;
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 
