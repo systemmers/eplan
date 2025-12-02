@@ -1,0 +1,176 @@
+/* =========================================
+   Hero Parallax Component
+   스크롤 기반 패럴랙스 애니메이션 컴포넌트
+   ========================================= */
+
+/* Hero Parallax Container */
+.hero-parallax {
+    height: auto;
+    min-height: 100vh;
+    padding: var(--spacing-4xl) 0;
+    padding-bottom: 80px; /* 고정 하단 여백 */
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    background-color: var(--color-text-dark);
+    color: white;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.hero-parallax__header {
+    max-width: 80rem;
+    position: relative;
+    margin: 0 auto;
+    padding: var(--spacing-4xl) var(--spacing-lg);
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.hero-parallax__header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+}
+
+.hero-parallax__header p {
+    max-width: 42rem;
+    font-size: 1rem;
+    margin-top: var(--spacing-xl);
+    color: #e5e5e5;
+    line-height: 1.6;
+}
+
+/* Motion Container */
+.hero-parallax__container {
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+}
+
+/* Parallax Rows */
+.parallax-row {
+    display: flex;
+    margin-bottom: var(--spacing-4xl);
+    gap: var(--spacing-4xl);
+}
+
+.parallax-row--reverse {
+    flex-direction: row-reverse;
+}
+
+.parallax-row:last-child {
+    margin-bottom: 0;
+}
+
+/* Parallax Card */
+.parallax-card {
+    height: 32rem;
+    width: 24rem;
+    min-width: 24rem;
+    position: relative;
+    flex-shrink: 0;
+    will-change: transform;
+}
+
+.parallax-card a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.parallax-card__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: var(--border-radius-md);
+}
+
+.parallax-card__overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    border-radius: var(--border-radius-md);
+}
+
+.parallax-card:hover .parallax-card__overlay {
+    opacity: 0.8;
+}
+
+.parallax-card__title {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: var(--spacing-lg);
+    opacity: 0;
+    color: white;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.parallax-card:hover .parallax-card__title {
+    opacity: 1;
+}
+
+/* =========================================
+   Responsive Breakpoints
+   ========================================= */
+
+@media (min-width: 768px) {
+    .hero-parallax__header {
+        padding: var(--spacing-4xl) var(--spacing-lg);
+    }
+
+    .hero-parallax__header h1 {
+        font-size: 4.5rem;
+    }
+
+    .hero-parallax__header p {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .parallax-card {
+        height: 22rem;
+        width: 16rem;
+        min-width: 16rem;
+    }
+
+    .parallax-row {
+        gap: var(--spacing-xl);
+    }
+}
+
+/* =========================================
+   Accessibility: Reduced Motion
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-parallax {
+        height: auto;
+    }
+
+    .hero-parallax__container {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .parallax-row,
+    .parallax-card {
+        transform: none !important;
+    }
+}

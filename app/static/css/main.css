@@ -20,6 +20,7 @@
 @import url('03-components/modals.css');
 @import url('03-components/accordion.css');
 @import url('03-components/alerts.css');
+@import url('03-components/parallax.css');
 
 /* 04 - Pages */
 @import url('04-pages/common.css');
