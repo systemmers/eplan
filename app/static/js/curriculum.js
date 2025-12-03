@@ -138,6 +138,10 @@ const CurriculumModal = {
         const modal = document.getElementById('curriculumModal');
         if (!modal) return;
 
+        // 이미 초기화되었으면 스킵 (중복 방지)
+        if (modal.dataset.eventsInitialized) return;
+        modal.dataset.eventsInitialized = 'true';
+
         // 모달 backdrop 클릭 시 닫기
         const backdrop = modal.querySelector('.modal__backdrop');
         if (backdrop) {
@@ -296,6 +300,9 @@ function initCurriculumSystem() {
 document.addEventListener('DOMContentLoaded', initCurriculumSystem);
 
 // HTMX 호환성 - 동적 콘텐츠 로드 시에도 초기화
-if (typeof htmx !== 'undefined') {
-    document.body.addEventListener('htmx:afterSwap', initCurriculumSystem);
-}
+document.body.addEventListener('htmx:afterSwap', function(event) {
+    // main-content가 업데이트되었을 때만 재초기화
+    if (event.detail.target.id === 'main-content') {
+        initCurriculumSystem();
+    }
+});
