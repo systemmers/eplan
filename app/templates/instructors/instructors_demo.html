@@ -3,12 +3,112 @@
 {% block title %}For Instructors Pattern Demo - ePlan{% endblock %}
 
 {% block content %}
-<!-- Page Header -->
-<section class="page-header page-header--instructors">
-    <div class="container">
-        <h1>For Instructors Pattern Demo</h1>
-        <p class="tagline">Instructor Recruitment Page Components</p>
-        <p>Stats, Requirements, Clients - Reusable UI Patterns</p>
+<!-- Page Header with Circular Gallery -->
+<section class="page-header page-header--instructors page-header--gallery">
+    <div class="circular-gallery circular-gallery--hero"
+         data-radius="500"
+         data-auto-rotate-speed="0.03"
+         role="region"
+         aria-label="교육 환경 갤러리">
+        <div class="circular-gallery__container">
+            <!-- Professional Teaching -->
+            <div class="circular-gallery__item" role="group" aria-label="Professional Teaching">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&auto=format&fit=crop&q=80"
+                     alt="교실에서 가르치는 강사">
+                <div class="circular-gallery__overlay">
+                    <h2>Professional Teaching</h2>
+                    <em>전문 강의</em>
+                </div>
+            </div>
+            <!-- Business Meeting -->
+            <div class="circular-gallery__item" role="group" aria-label="Business Meeting">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&q=80"
+                     alt="비즈니스 미팅 교육">
+                <div class="circular-gallery__overlay">
+                    <h2>Business Meeting</h2>
+                    <em>비즈니스 교육</em>
+                </div>
+            </div>
+            <!-- Online Teaching -->
+            <div class="circular-gallery__item" role="group" aria-label="Online Teaching">
+                <img src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=900&auto=format&fit=crop&q=80"
+                     alt="온라인 수업 진행">
+                <div class="circular-gallery__overlay">
+                    <h2>Online Teaching</h2>
+                    <em>온라인 수업</em>
+                </div>
+            </div>
+            <!-- Language Learning -->
+            <div class="circular-gallery__item" role="group" aria-label="Language Learning">
+                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=900&auto=format&fit=crop&q=80"
+                     alt="언어 학습 환경">
+                <div class="circular-gallery__overlay">
+                    <h2>Language Learning</h2>
+                    <em>언어 학습</em>
+                </div>
+            </div>
+            <!-- Presentation -->
+            <div class="circular-gallery__item" role="group" aria-label="Presentation">
+                <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=900&auto=format&fit=crop&q=80"
+                     alt="프레젠테이션 수업">
+                <div class="circular-gallery__overlay">
+                    <h2>Presentation Skills</h2>
+                    <em>프레젠테이션</em>
+                </div>
+            </div>
+            <!-- Team Collaboration -->
+            <div class="circular-gallery__item" role="group" aria-label="Team Collaboration">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&auto=format&fit=crop&q=80"
+                     alt="팀 협업 교육">
+                <div class="circular-gallery__overlay">
+                    <h2>Team Collaboration</h2>
+                    <em>팀 협업</em>
+                </div>
+            </div>
+            <!-- Study Group -->
+            <div class="circular-gallery__item" role="group" aria-label="Study Group">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=900&auto=format&fit=crop&q=80"
+                     alt="스터디 그룹">
+                <div class="circular-gallery__overlay">
+                    <h2>Study Group</h2>
+                    <em>스터디 그룹</em>
+                </div>
+            </div>
+            <!-- Corporate Training -->
+            <div class="circular-gallery__item" role="group" aria-label="Corporate Training">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&auto=format&fit=crop&q=80"
+                     alt="기업 교육">
+                <div class="circular-gallery__overlay">
+                    <h2>Corporate Training</h2>
+                    <em>기업 교육</em>
+                </div>
+            </div>
+            <!-- One-on-One Teaching -->
+            <div class="circular-gallery__item" role="group" aria-label="One-on-One Teaching">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&auto=format&fit=crop&q=80"
+                     alt="1:1 수업">
+                <div class="circular-gallery__overlay">
+                    <h2>One-on-One</h2>
+                    <em>1:1 수업</em>
+                </div>
+            </div>
+            <!-- Global Education -->
+            <div class="circular-gallery__item" role="group" aria-label="Global Education">
+                <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=900&auto=format&fit=crop&q=80"
+                     alt="글로벌 교육">
+                <div class="circular-gallery__overlay">
+                    <h2>Global Education</h2>
+                    <em>글로벌 교육</em>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-header__content">
+        <div class="container">
+            <h1>For Instructors</h1>
+            <p class="tagline">Join Our Team of Professional Educators</p>
+            <p>다양한 교육 환경에서 함께 성장할 강사를 모집합니다</p>
+        </div>
     </div>
 </section>
 

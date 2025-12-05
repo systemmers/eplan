@@ -21,6 +21,7 @@
 @import url('03-components/accordion.css');
 @import url('03-components/alerts.css');
 @import url('03-components/parallax.css');
+@import url('03-components/circular-gallery.css');
 
 /* 04 - Pages */
 @import url('04-pages/common.css');

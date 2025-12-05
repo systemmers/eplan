@@ -465,7 +465,7 @@
 /* Logo Image */
 .logo-card img {
     max-height: 50px;
-    max-width: 100px;
+    max-width: 150px;  /* 가로형 로고에 맞춰 확대 */
     object-fit: contain;
     filter: grayscale(100%) opacity(0.7);
     transition: all 0.3s ease;
