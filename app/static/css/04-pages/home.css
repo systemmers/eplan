@@ -47,6 +47,29 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
+/* Hero Main Logo */
+.hero-logo-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.hero-main-logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+@media (max-width: 768px) {
+    .hero-main-logo {
+        max-width: 280px;
+    }
+}
+
 /* Glassmorphism 네비게이션 카드 - 히어로 중앙 배치 */
 .hero-nav-cards {
     position: relative;

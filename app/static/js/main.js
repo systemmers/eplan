@@ -649,13 +649,20 @@ const textbookGalleryData = {
         description: '최상급 토론 능력을 기르기 위한 ePlan 자체 개발 교재입니다. 복잡한 주제에 대해 깊이 있는 토론을 진행합니다.',
         features: ['심층 토론 주제', '논증 기술 훈련', '프리토킹 연습', '토론 리더십']
     },
-    // phone_english_demo.html용 추가 교재 데이터
+    // phone_english_demo.html용 추가 교재 데이터 (samples 배열 포함)
     'smart-choice-1': {
         title: 'Smart Choice 1',
         level: 'L1-3',
         category: 'General Conversation',
         target: '영어 입문 ~ 초급 학습자',
         image: '/static/images/books/smartChoice1_cover.png',
+        samples: [
+            '/static/images/books/smartChoice1_cover.png',
+            '/static/images/books/smartChoice1_01.png',
+            '/static/images/books/smartChoice1_02.png',
+            '/static/images/books/smartChoice1_03.png',
+            '/static/images/books/smartChoice1_04.png'
+        ],
         description: '성인 학습자를 위한 실용적 회화 교재입니다. 일상생활에서 바로 활용할 수 있는 표현들을 중심으로 기초 문법과 어휘를 자연스럽게 학습합니다.',
         features: ['기초 문법 체계적 학습', '일상 회화 표현 중심', '발음 교정 자료 포함', 'MP3 음성 파일 제공']
     },
@@ -665,6 +672,13 @@ const textbookGalleryData = {
         category: 'General Conversation',
         target: '초중급 학습자',
         image: '/static/images/books/smartChoice2_cover.png',
+        samples: [
+            '/static/images/books/smartChoice2_cover.png',
+            '/static/images/books/smartChoice2_01.png',
+            '/static/images/books/smartChoice2_02.png',
+            '/static/images/books/smartChoice2_03.png',
+            '/static/images/books/smartChoice2_04.png'
+        ],
         description: '중급 학습자를 위한 체계적 회화 교재입니다. 다양한 상황별 대화와 토론 주제를 통해 실용적인 영어 능력을 향상시킵니다.',
         features: ['상황별 실전 대화', '토론 및 발표 연습', '리스닝 스킬 강화', '문화적 표현 학습']
     },
@@ -674,6 +688,11 @@ const textbookGalleryData = {
         category: 'General Conversation',
         target: '영어 입문자',
         image: '/static/images/books/stretchStarter_cover.png',
+        samples: [
+            '/static/images/books/stretchStarter_cover.png',
+            '/static/images/books/stretchStarter_01.png',
+            '/static/images/books/stretchStarter_02.png'
+        ],
         description: '21세기 스킬 기반의 현대적인 영어 교재입니다. 비판적 사고와 커뮤니케이션 능력을 기초부터 다집니다.',
         features: ['비판적 사고력 개발', '협업 스킬 학습', '커뮤니케이션 기초', '창의성 훈련']
     },
@@ -683,6 +702,11 @@ const textbookGalleryData = {
         category: 'General Conversation',
         target: '초급 학습자',
         image: '/static/images/books/stretch1_cover.png',
+        samples: [
+            '/static/images/books/stretch1_cover.png',
+            '/static/images/books/stretch1_01.png',
+            '/static/images/books/stretch1_02.png'
+        ],
         description: '21세기 스킬 기반 영어 학습 교재입니다. 비판적 사고, 협업, 커뮤니케이션, 창의성을 영어와 함께 발전시킵니다.',
         features: ['21세기 스킬 통합', '비판적 사고 훈련', '협업 활동 중심', '실생활 적용']
     },
@@ -692,6 +716,11 @@ const textbookGalleryData = {
         category: 'General Conversation',
         target: '초중급 학습자',
         image: '/static/images/books/stretch2_cover.png',
+        samples: [
+            '/static/images/books/stretch2_cover.png',
+            '/static/images/books/stretch2_01.png',
+            '/static/images/books/stretch2_02.png'
+        ],
         description: '협업과 창의성 중심의 영어 학습 교재입니다. 팀 프로젝트와 토론을 통해 영어 실력을 향상시킵니다.',
         features: ['팀 프로젝트 활동', '창의적 문제 해결', '토론 스킬 향상', '프레젠테이션 연습']
     },
@@ -701,6 +730,11 @@ const textbookGalleryData = {
         category: 'General Conversation',
         target: '중급 학습자',
         image: '/static/images/books/stretch3_cover.png',
+        samples: [
+            '/static/images/books/stretch3_cover.png',
+            '/static/images/books/stretch3_01.png',
+            '/static/images/books/stretch3_02.png'
+        ],
         description: '중급 커뮤니케이션 역량 강화를 위한 교재입니다. 복잡한 주제에 대한 토론과 발표 능력을 키웁니다.',
         features: ['중급 토론 스킬', '복잡한 주제 다루기', '발표 능력 향상', '논리적 표현력']
     },
@@ -710,6 +744,17 @@ const textbookGalleryData = {
         category: 'Business English',
         target: '비즈니스 영어 학습자',
         image: '/static/images/books/businessEnglishEmailPattern233_cover.png',
+        samples: [
+            '/static/images/books/businessEnglishEmailPattern233_cover.png',
+            '/static/images/books/businessEnglishEmailPattern233_01.png',
+            '/static/images/books/businessEnglishEmailPattern233_02.png',
+            '/static/images/books/businessEnglishEmailPattern233_03.png',
+            '/static/images/books/businessEnglishEmailPattern233_04.png',
+            '/static/images/books/businessEnglishEmailPattern233_05.png',
+            '/static/images/books/businessEnglishEmailPattern233_06.png',
+            '/static/images/books/businessEnglishEmailPattern233_07.png',
+            '/static/images/books/businessEnglishEmailPattern233_08.png'
+        ],
         description: '비즈니스 이메일 작성에 필요한 핵심 패턴 233개를 수록한 교재입니다. 실무에서 바로 활용 가능한 표현들을 학습합니다.',
         features: ['233개 핵심 패턴', '실무 이메일 템플릿', '상황별 예문', '비즈니스 매너']
     },
@@ -719,6 +764,13 @@ const textbookGalleryData = {
         category: 'Business English',
         target: '초급 학습자',
         image: '/static/images/books/americanEnglishFile1_cover.png',
+        samples: [
+            '/static/images/books/americanEnglishFile1_cover.png',
+            '/static/images/books/americanEnglishFile1_01.png',
+            '/static/images/books/americanEnglishFile1_02.png',
+            '/static/images/books/americanEnglishFile1_03.png',
+            '/static/images/books/americanEnglishFile1_04.png'
+        ],
         description: '실용적인 영어 회화 교재입니다. 미국식 영어를 중심으로 일상 및 비즈니스 상황에서 활용 가능한 표현을 학습합니다.',
         features: ['미국식 영어 학습', '실용적 표현 중심', '문법과 회화 통합', '멀티미디어 자료']
     },
@@ -728,6 +780,11 @@ const textbookGalleryData = {
         category: 'Business English',
         target: '중급 학습자',
         image: '/static/images/books/americanEnglishFile4_3rdEdition_cover.png',
+        samples: [
+            '/static/images/books/americanEnglishFile4_3rdEdition_cover.png',
+            '/static/images/books/americanEnglishFile4_3rdEdition_01.png',
+            '/static/images/books/americanEnglishFile4_3rdEdition_02.png'
+        ],
         description: '중급 비즈니스 영어 과정입니다. 다양한 비즈니스 상황에서 필요한 의사소통 능력을 키웁니다.',
         features: ['비즈니스 상황 대화', '프레젠테이션 스킬', '협상 표현 학습', '문화적 이해']
     },
@@ -737,6 +794,13 @@ const textbookGalleryData = {
         category: 'Business English',
         target: '고급 학습자',
         image: '/static/images/books/americanEnglishFile5_cover.png',
+        samples: [
+            '/static/images/books/americanEnglishFile5_cover.png',
+            '/static/images/books/americanEnglishFile5_01.png',
+            '/static/images/books/americanEnglishFile5_02.png',
+            '/static/images/books/americanEnglishFile5_03.png',
+            '/static/images/books/americanEnglishFile5_04.png'
+        ],
         description: '고급 비즈니스 영어 과정입니다. 전문적인 비즈니스 환경에서 필요한 고급 의사소통 능력을 완성합니다.',
         features: ['고급 비즈니스 표현', '전문 어휘 학습', '복잡한 협상 스킬', '리더십 커뮤니케이션']
     },
@@ -746,6 +810,12 @@ const textbookGalleryData = {
         category: 'Business English',
         target: '초중급 학습자',
         image: '/static/images/books/jazzEnglish1_cover.png',
+        samples: [
+            '/static/images/books/jazzEnglish1_cover.png',
+            '/static/images/books/jazzEnglish1_01.png',
+            '/static/images/books/jazzEnglish1_02.png',
+            '/static/images/books/jazzEnglish1_03.png'
+        ],
         description: '재즈 리듬으로 배우는 영어 교재입니다. 음악적 리듬을 활용하여 자연스러운 영어 발음과 억양을 익힙니다.',
         features: ['리듬 기반 학습', '발음 교정', '자연스러운 억양', '재미있는 학습법']
     },
@@ -755,6 +825,15 @@ const textbookGalleryData = {
         category: 'Test Preparation',
         target: 'TOEIC Speaking 준비자',
         image: '/static/images/books/siwonschoolToeicSpeaking10Tests_cover.png',
+        samples: [
+            '/static/images/books/siwonschoolToeicSpeaking10Tests_cover.png',
+            '/static/images/books/siwonschoolToeicSpeaking10Tests_01.png',
+            '/static/images/books/siwonschoolToeicSpeaking10Tests_02.png',
+            '/static/images/books/siwonschoolToeicSpeaking10Tests_03.png',
+            '/static/images/books/siwonschoolToeicSpeaking10Tests_04.png',
+            '/static/images/books/siwonschoolToeicSpeaking10Tests_05.png',
+            '/static/images/books/siwonschoolToeicSpeaking10Tests_06.png'
+        ],
         description: '시원스쿨 토익 스피킹 실전 10회 모의고사 교재입니다. 실전과 동일한 환경에서 연습할 수 있습니다.',
         features: ['10회 실전 모의고사', '문제 유형별 전략', '시간 관리 훈련', '모범 답안 제공']
     },
@@ -764,6 +843,13 @@ const textbookGalleryData = {
         category: 'Test Preparation',
         target: 'TOEFL Speaking 준비자',
         image: '/static/images/books/hackersToeflSpeaking_cover.png',
+        samples: [
+            '/static/images/books/hackersToeflSpeaking_cover.png',
+            '/static/images/books/hackersToeflSpeaking_01.png',
+            '/static/images/books/hackersToeflSpeaking_02.png',
+            '/static/images/books/hackersToeflSpeaking_03.png',
+            '/static/images/books/hackersToeflSpeaking_04.png'
+        ],
         description: '해커스 토플 스피킹 완벽대비 교재입니다. 토플 스피킹의 모든 유형을 체계적으로 준비할 수 있습니다.',
         features: ['문제 유형별 공략', '고득점 전략', '실전 모의고사', '피드백 시스템']
     },
@@ -773,6 +859,14 @@ const textbookGalleryData = {
         category: 'Test Preparation',
         target: 'TOEFL Speaking 준비자',
         image: '/static/images/books/siwonschoolToeflSpeaking_cover.png',
+        samples: [
+            '/static/images/books/siwonschoolToeflSpeaking_cover.png',
+            '/static/images/books/siwonschoolToeflSpeaking_01.png',
+            '/static/images/books/siwonschoolToeflSpeaking_02.png',
+            '/static/images/books/siwonschoolToeflSpeaking_03.png',
+            '/static/images/books/siwonschoolToeflSpeaking_04.png',
+            '/static/images/books/siwonschoolToeflSpeaking_05.png'
+        ],
         description: '시원스쿨 토플 스피킹 가이드입니다. 효율적인 학습 방법으로 토플 스피킹 고득점을 목표로 합니다.',
         features: ['효율적 학습법', '핵심 템플릿', '시간 관리', '실전 연습']
     },
@@ -782,6 +876,15 @@ const textbookGalleryData = {
         category: 'Test Preparation',
         target: 'OPIc 준비자',
         image: '/static/images/books/opicGod_cover.png',
+        samples: [
+            '/static/images/books/opicGod_cover.png',
+            '/static/images/books/opicGod_01.png',
+            '/static/images/books/opicGod_02.png',
+            '/static/images/books/opicGod_03.png',
+            '/static/images/books/opicGod_04.png',
+            '/static/images/books/opicGod_05.png',
+            '/static/images/books/opicGod_06.png'
+        ],
         description: 'OPIc 신 - 단기 고득점 전략 교재입니다. 효율적인 학습으로 빠르게 OPIc 고득점을 달성할 수 있습니다.',
         features: ['단기 고득점 전략', '주제별 답변 패턴', '롤플레이 연습', '시험 꿀팁']
     },
@@ -791,6 +894,13 @@ const textbookGalleryData = {
         category: 'Test Preparation',
         target: 'OPIc IH/AL 목표자',
         image: '/static/images/books/opicShortTermIhAl_cover.png',
+        samples: [
+            '/static/images/books/opicShortTermIhAl_cover.png',
+            '/static/images/books/opicShortTermIhAl_01.png',
+            '/static/images/books/opicShortTermIhAl_02.png',
+            '/static/images/books/opicShortTermIhAl_03.png',
+            '/static/images/books/opicShortTermIhAl_04.png'
+        ],
         description: 'OPIc 단기 IH/AL 공략 교재입니다. 고급 등급 취득을 위한 심화 전략을 제공합니다.',
         features: ['IH/AL 맞춤 전략', '고급 표현 학습', '복합 질문 대응', '실전 시뮬레이션']
     },
@@ -800,6 +910,13 @@ const textbookGalleryData = {
         category: 'Test Preparation',
         target: 'OPIc 고급 준비자',
         image: '/static/images/books/hackersOpicAdvanced_cover.png',
+        samples: [
+            '/static/images/books/hackersOpicAdvanced_cover.png',
+            '/static/images/books/hackersOpicAdvanced_01.png',
+            '/static/images/books/hackersOpicAdvanced_02.png',
+            '/static/images/books/hackersOpicAdvanced_03.png',
+            '/static/images/books/hackersOpicAdvanced_04.png'
+        ],
         description: '해커스 OPIc 고급 공략 교재입니다. AL 등급 취득을 위한 완벽한 준비를 도와줍니다.',
         features: ['AL 등급 전략', '고급 문장 구조', '원어민 표현', '완벽 대비']
     },
@@ -809,6 +926,12 @@ const textbookGalleryData = {
         category: 'Discussion & Debate',
         target: '중급 토론 학습자',
         image: '/static/images/books/jazzEnglish2_cover.png',
+        samples: [
+            '/static/images/books/jazzEnglish2_cover.png',
+            '/static/images/books/jazzEnglish2_01.png',
+            '/static/images/books/jazzEnglish2_02.png',
+            '/static/images/books/jazzEnglish2_03.png'
+        ],
         description: '리듬으로 배우는 영어 토론 교재입니다. 자연스러운 토론 흐름과 표현력을 음악적으로 익힙니다.',
         features: ['토론 표현 학습', '리듬감 있는 대화', '의견 표현 스킬', '상호작용 훈련']
     },
@@ -818,6 +941,11 @@ const textbookGalleryData = {
         category: 'Discussion & Debate',
         target: '실전 표현 학습자',
         image: '/static/images/books/pep900_cover.png',
+        samples: [
+            '/static/images/books/pep900_cover.png',
+            '/static/images/books/pep900_01.png',
+            '/static/images/books/pep900_02.png'
+        ],
         description: '실전 영어 표현 900 패턴 교재입니다. 다양한 상황에서 사용할 수 있는 핵심 표현들을 학습합니다.',
         features: ['900개 핵심 패턴', '상황별 표현', '실전 활용', '반복 훈련']
     },
@@ -827,6 +955,11 @@ const textbookGalleryData = {
         category: 'Discussion & Debate',
         target: '커뮤니케이션 스킬 개발자',
         image: '/static/images/books/newConnection1_cover.png',
+        samples: [
+            '/static/images/books/newConnection1_cover.png',
+            '/static/images/books/newConnection1_01.png',
+            '/static/images/books/newConnection1_02.png'
+        ],
         description: '커뮤니케이션 스킬 개발을 위한 교재입니다. 효과적인 의사소통 능력을 체계적으로 키웁니다.',
         features: ['커뮤니케이션 기초', '대화 스킬 향상', '관계 형성 표현', '실전 연습']
     }
@@ -887,8 +1020,6 @@ function openTextbookModal(bookId) {
 
     // 모달 콘텐츠 업데이트
     document.getElementById('modal-title').textContent = bookData.title;
-    document.getElementById('modal-cover').src = bookData.image;
-    document.getElementById('modal-cover').alt = bookData.title;
     document.getElementById('modal-level').textContent = bookData.level;
     document.getElementById('modal-category').textContent = bookData.category;
     document.getElementById('modal-target').textContent = bookData.target;
@@ -898,8 +1029,14 @@ function openTextbookModal(bookId) {
     const featuresContainer = document.getElementById('modal-features');
     featuresContainer.innerHTML = bookData.features.map(f => `<li>${f}</li>`).join('');
 
-    // 모달 표시
-    modal.classList.add('is-active');
+    // 이미지 슬라이더 설정 (samples 배열이 있으면 사용, 없으면 커버 이미지만)
+    const images = bookData.samples && bookData.samples.length > 0
+        ? bookData.samples
+        : [bookData.image];
+    ModalImageSlider.setImages(images);
+
+    // 모달 표시 (슬라이더 레이아웃 클래스 추가)
+    modal.classList.add('is-active', 'textbook-modal--with-slider');
     document.body.style.overflow = 'hidden';
 }
 
@@ -907,8 +1044,303 @@ function openTextbookModal(bookId) {
 function closeTextbookModal() {
     const modal = document.getElementById('textbook-modal');
     if (modal) {
-        modal.classList.remove('is-active');
+        modal.classList.remove('is-active', 'textbook-modal--with-slider');
         document.body.style.overflow = '';
     }
 }
+
+// ========================================
+// 모달 이미지 슬라이더
+// ========================================
+const ModalImageSlider = {
+    currentIndex: 0,
+    images: [],
+    track: null,
+    counter: null,
+    thumbnails: null,
+
+    init() {
+        this.track = document.getElementById('modal-slider-track');
+        this.counter = {
+            current: document.getElementById('modal-current-slide'),
+            total: document.getElementById('modal-total-slides')
+        };
+        this.thumbnails = document.getElementById('modal-thumbnails');
+
+        // 버튼 이벤트 바인딩
+        const prevBtn = document.querySelector('.textbook-modal__slider-btn--prev');
+        const nextBtn = document.querySelector('.textbook-modal__slider-btn--next');
+
+        if (prevBtn) prevBtn.addEventListener('click', () => this.prev());
+        if (nextBtn) nextBtn.addEventListener('click', () => this.next());
+
+        // 키보드 네비게이션
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('textbook-modal');
+            if (!modal || !modal.classList.contains('is-active')) return;
+
+            if (e.key === 'ArrowLeft') this.prev();
+            if (e.key === 'ArrowRight') this.next();
+        });
+    },
+
+    setImages(imageArray) {
+        this.images = imageArray || [];
+        this.currentIndex = 0;
+        this.render();
+    },
+
+    render() {
+        if (!this.track) return;
+
+        // 슬라이드 생성
+        this.track.innerHTML = this.images.map((src, idx) => `
+            <div class="textbook-modal__slide">
+                <img src="${src}" alt="교재 샘플 ${idx + 1}" class="textbook-modal__slide-image" loading="lazy">
+            </div>
+        `).join('');
+
+        // 카운터 업데이트
+        if (this.counter.current) this.counter.current.textContent = '1';
+        if (this.counter.total) this.counter.total.textContent = this.images.length;
+
+        // 썸네일 생성
+        if (this.thumbnails) {
+            this.thumbnails.innerHTML = this.images.map((src, idx) => `
+                <button class="textbook-modal__thumbnail ${idx === 0 ? 'is-active' : ''}"
+                        data-index="${idx}"
+                        aria-label="샘플 ${idx + 1}">
+                    <img src="${src}" alt="썸네일 ${idx + 1}">
+                </button>
+            `).join('');
+
+            // 썸네일 클릭 이벤트
+            this.thumbnails.querySelectorAll('.textbook-modal__thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    this.goToSlide(parseInt(thumb.dataset.index));
+                });
+            });
+        }
+
+        this.updatePosition();
+    },
+
+    prev() {
+        if (this.images.length <= 1) return;
+        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        this.updatePosition();
+    },
+
+    next() {
+        if (this.images.length <= 1) return;
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.updatePosition();
+    },
+
+    goToSlide(index) {
+        if (index < 0 || index >= this.images.length) return;
+        this.currentIndex = index;
+        this.updatePosition();
+    },
+
+    updatePosition() {
+        if (!this.track) return;
+
+        // 트랙 이동
+        this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+
+        // 카운터 업데이트
+        if (this.counter.current) {
+            this.counter.current.textContent = this.currentIndex + 1;
+        }
+
+        // 썸네일 활성 상태 업데이트
+        if (this.thumbnails) {
+            this.thumbnails.querySelectorAll('.textbook-modal__thumbnail').forEach((thumb, idx) => {
+                thumb.classList.toggle('is-active', idx === this.currentIndex);
+            });
+        }
+    }
+};
+
+// ========================================
+// 교재 캐러셀 클래스
+// ========================================
+class TextbookCarousel {
+    constructor(containerSelector) {
+        this.container = document.querySelector(containerSelector);
+        if (!this.container) return;
+
+        this.track = this.container.querySelector('.textbook-carousel__track');
+        this.cards = this.container.querySelectorAll('.textbook-card');
+        this.prevBtn = this.container.querySelector('.textbook-carousel__btn--prev');
+        this.nextBtn = this.container.querySelector('.textbook-carousel__btn--next');
+        this.indicators = this.container.parentElement?.querySelector('.textbook-carousel__indicators');
+
+        this.currentIndex = 0;
+        this.cardsPerView = this.calculateCardsPerView();
+        this.totalSlides = Math.ceil(this.cards.length / this.cardsPerView);
+
+        this.init();
+    }
+
+    init() {
+        if (!this.track || this.cards.length === 0) return;
+
+        // 버튼 이벤트
+        if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prev());
+        if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.next());
+
+        // 인디케이터 생성
+        this.createIndicators();
+
+        // 리사이즈 핸들링
+        window.addEventListener('resize', this.debounce(() => {
+            const newCardsPerView = this.calculateCardsPerView();
+            if (newCardsPerView !== this.cardsPerView) {
+                this.cardsPerView = newCardsPerView;
+                this.totalSlides = Math.ceil(this.cards.length / this.cardsPerView);
+                this.currentIndex = Math.min(this.currentIndex, this.totalSlides - 1);
+                this.createIndicators();
+                this.updatePosition();
+            }
+        }, 200));
+
+        // 터치 스와이프 지원
+        this.initTouchSupport();
+
+        // 초기 위치 설정
+        this.updatePosition();
+    }
+
+    calculateCardsPerView() {
+        const width = window.innerWidth;
+        if (width < 480) return 1;
+        if (width < 768) return 2;
+        if (width < 1024) return 3;
+        return 4;
+    }
+
+    createIndicators() {
+        if (!this.indicators) return;
+
+        this.indicators.innerHTML = '';
+        for (let i = 0; i < this.totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = `textbook-carousel__indicator ${i === this.currentIndex ? 'is-active' : ''}`;
+            dot.setAttribute('aria-label', `슬라이드 ${i + 1}`);
+            dot.addEventListener('click', () => this.goToSlide(i));
+            this.indicators.appendChild(dot);
+        }
+    }
+
+    prev() {
+        if (this.currentIndex > 0) {
+            this.currentIndex--;
+            this.updatePosition();
+        }
+    }
+
+    next() {
+        if (this.currentIndex < this.totalSlides - 1) {
+            this.currentIndex++;
+            this.updatePosition();
+        }
+    }
+
+    goToSlide(index) {
+        if (index < 0 || index >= this.totalSlides) return;
+        this.currentIndex = index;
+        this.updatePosition();
+    }
+
+    updatePosition() {
+        if (!this.track) return;
+
+        // 카드 너비 + 갭 계산
+        const card = this.cards[0];
+        if (!card) return;
+
+        const cardStyle = getComputedStyle(card);
+        const cardWidth = card.offsetWidth;
+        const gap = parseInt(getComputedStyle(this.track).gap) || 24;
+        const slideWidth = (cardWidth + gap) * this.cardsPerView;
+
+        this.track.style.transform = `translateX(-${this.currentIndex * slideWidth}px)`;
+
+        // 버튼 상태 업데이트
+        if (this.prevBtn) {
+            this.prevBtn.disabled = this.currentIndex === 0;
+            this.prevBtn.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
+        }
+        if (this.nextBtn) {
+            this.nextBtn.disabled = this.currentIndex >= this.totalSlides - 1;
+            this.nextBtn.style.opacity = this.currentIndex >= this.totalSlides - 1 ? '0.5' : '1';
+        }
+
+        // 인디케이터 업데이트
+        if (this.indicators) {
+            this.indicators.querySelectorAll('.textbook-carousel__indicator').forEach((dot, idx) => {
+                dot.classList.toggle('is-active', idx === this.currentIndex);
+            });
+        }
+    }
+
+    initTouchSupport() {
+        let startX = 0;
+        let isDragging = false;
+
+        this.container.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
+
+        this.container.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+        }, { passive: true });
+
+        this.container.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            const threshold = 50;
+
+            if (diff > threshold) this.next();
+            else if (diff < -threshold) this.prev();
+        }, { passive: true });
+    }
+
+    debounce(func, wait) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+}
+
+// ========================================
+// 초기화
+// ========================================
+function initTextbookComponents() {
+    // 캐러셀 초기화
+    const carousel = new TextbookCarousel('.textbook-carousel');
+
+    // 모달 슬라이더 초기화
+    ModalImageSlider.init();
+}
+
+// DOMContentLoaded 이벤트
+document.addEventListener('DOMContentLoaded', initTextbookComponents);
+
+// HTMX 호환성 (동적 로드 지원)
+document.body.addEventListener('htmx:afterSwap', function(event) {
+    // 교재 갤러리 섹션이 포함된 경우에만 초기화
+    if (event.detail.target.querySelector('.textbook-carousel') ||
+        event.detail.target.querySelector('.textbook-modal')) {
+        initTextbookComponents();
+    }
+});
 

@@ -244,3 +244,13 @@
 
 .detail-card--course { border-left-color: #f59e0b; }
 .detail-card--course .detail-card__label { color: #92400e; }
+
+/* ============================================
+   Section Title Variants
+   ============================================ */
+
+/* Left-aligned Section Title */
+.section-title--left {
+    justify-content: flex-start;
+    text-align: left;
+}
