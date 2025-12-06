@@ -1,12 +1,13 @@
-// 커리큘럼 시스템 - 네임스페이스 통합 모듈
-// ePlan 프로젝트 통합 버전
+// 커리큘럼 시스템 - 통합 모달 버전
+// ePlan 프로젝트 - textbook-modal 통합
 
 /**
  * 커리큘럼 모달 네임스페이스
- * 기존 Modal 클래스와 충돌 방지를 위한 독립적인 모듈
+ * textbook-modal (이미지 슬라이더 포함)을 사용하는 통합 버전
  */
 const CurriculumModal = {
     currentTextbooks: [],
+    currentIndex: 0,
 
     /**
      * 모달 열기
@@ -21,92 +22,218 @@ const CurriculumModal = {
 
         this.currentTextbooks = ids;
         const displayId = initialId || ids[0];
+        this.currentIndex = ids.indexOf(displayId);
+        if (this.currentIndex === -1) this.currentIndex = 0;
 
-        const data = curriculumTextbookData[displayId];
-        if (!data) return;
-
-        const modal = document.getElementById('curriculumModal');
-        if (!modal) return;
-
-        const modalTitle = modal.querySelector('.modal__title');
-        const modalBody = modal.querySelector('.modal__body--curriculum');
-
-        if (modalTitle) modalTitle.textContent = data.name;
-
-        // 썸네일 그리드 HTML (2개 이상인 경우만)
-        let thumbnailGridHtml = '';
-        if (ids.length > 1) {
-            thumbnailGridHtml = `
-                <div class="curriculum-modal-textbook-grid">
-                    <div class="curriculum-modal-textbook-grid-title">
-                        📚 이 셀에 포함된 교재 (${ids.length}개)
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--spacing-md);">
-                        ${ids.map(id => {
-                            const tbData = curriculumTextbookData[id];
-                            const isActive = id === displayId ? 'is-active' : '';
-                            return `
-                                <div class="curriculum-modal-textbook-thumbnail ${isActive}"
-                                     data-textbook-id="${id}"
-                                     onclick="CurriculumModal.switchContent('${id}')">
-                                    <img src="${tbData.thumbnailImage}" alt="${tbData.name}">
-                                    <span>${tbData.name}</span>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-                </div>
-            `;
+        // textbookData.textbooks에서 데이터 가져오기 (통합된 데이터 소스)
+        const data = this.getTextbookData(displayId);
+        if (!data) {
+            console.warn('교재 데이터를 찾을 수 없습니다:', displayId);
+            return;
         }
 
-        let samplesHtml = '';
-        if (data.samples && data.samples.length > 0) {
-            samplesHtml = `
-                <div class="curriculum-modal-section">
-                    <h3>📄 샘플 페이지</h3>
-                    <div class="curriculum-modal-samples">
-                        ${data.samples.map(sample => `
-                            <img src="${sample}" alt="샘플 페이지" class="curriculum-modal-sample-image" onerror="this.style.display='none'">
-                        `).join('')}
-                    </div>
-                </div>
-            `;
+        const modal = document.getElementById('textbook-modal');
+        if (!modal) {
+            console.warn('textbook-modal 요소를 찾을 수 없습니다. curriculum_modal() 매크로가 포함되었는지 확인하세요.');
+            return;
         }
 
-        if (modalBody) {
-            modalBody.innerHTML = `
-                ${thumbnailGridHtml}
-                <img src="${data.coverImage}" alt="${data.name} 표지" class="curriculum-modal-cover" onerror="this.style.display='none'">
+        // 모달 콘텐츠 업데이트
+        this.updateModalContent(data);
 
-                <div class="curriculum-modal-meta">
-                    <div class="curriculum-modal-meta-item">
-                        <span class="curriculum-modal-meta-label">출판사</span>
-                        <span class="curriculum-modal-meta-value">${data.publisher}</span>
-                    </div>
-                    <div class="curriculum-modal-meta-item">
-                        <span class="curriculum-modal-meta-label">레벨</span>
-                        <span class="curriculum-modal-meta-value">${data.levels}</span>
-                    </div>
-                </div>
+        // 다중 교재 네비게이션 렌더링
+        this.renderTextbookNav(ids, displayId);
 
-                <div class="curriculum-modal-section">
-                    <h3>📖 교재 소개</h3>
-                    <p>${data.description}</p>
-                </div>
-
-                <div class="curriculum-modal-section">
-                    <h3>🎯 학습 목표</h3>
-                    <ul class="curriculum-modal-objectives">
-                        ${data.objectives.map(obj => `<li>${obj}</li>`).join('')}
-                    </ul>
-                </div>
-
-                ${samplesHtml}
-            `;
+        // 이미지 슬라이더 초기화 보장 후 이미지 설정
+        if (typeof ModalImageSlider !== 'undefined') {
+            // 슬라이더 트랙이 없거나 DOM에 연결되지 않은 경우 재초기화
+            if (!ModalImageSlider.track || !ModalImageSlider.track.parentElement) {
+                ModalImageSlider.init();
+            }
+            // 초기화 완료 후 이미지 설정
+            const images = this.getSliderImages(data);
+            ModalImageSlider.setImages(images);
         }
 
-        modal.classList.add('is-active');
+        // 모달 표시
+        modal.classList.add('is-active', 'textbook-modal--with-slider');
         document.body.style.overflow = 'hidden';
+    },
+
+    /**
+     * 교재 데이터 가져오기 (다양한 데이터 소스 지원)
+     * @param {string} textbookId - 교재 ID
+     * @returns {object|null} 교재 데이터
+     */
+    getTextbookData: function(textbookId) {
+        // 1. 통합된 textbookData.textbooks에서 찾기
+        if (typeof textbookData !== 'undefined' && textbookData.textbooks && textbookData.textbooks[textbookId]) {
+            return textbookData.textbooks[textbookId];
+        }
+
+        // 2. 레거시 curriculumTextbookData에서 찾기 (하위 호환성)
+        if (typeof curriculumTextbookData !== 'undefined' && curriculumTextbookData[textbookId]) {
+            return curriculumTextbookData[textbookId];
+        }
+
+        // 3. main.js의 textbookGalleryData에서 찾기 (하위 호환성)
+        if (typeof textbookGalleryData !== 'undefined' && textbookGalleryData[textbookId]) {
+            const galleryData = textbookGalleryData[textbookId];
+            // 갤러리 데이터 포맷을 통합 포맷으로 변환
+            return {
+                id: textbookId,
+                name: galleryData.title,
+                publisher: galleryData.category || '출판사 미정',
+                levels: galleryData.level,
+                description: galleryData.description,
+                objectives: galleryData.features || [],
+                features: galleryData.features || [],
+                coverImage: galleryData.image,
+                samples: galleryData.samples || [],
+                target: galleryData.target
+            };
+        }
+
+        return null;
+    },
+
+    /**
+     * 이미지 경로 정규화
+     * 상대 경로를 절대 경로로 변환하고, 유효한 경로인지 확인
+     * @param {string} imagePath - 원본 이미지 경로
+     * @returns {string} 정규화된 이미지 경로
+     */
+    normalizeImagePath: function(imagePath) {
+        // 빈 경로 또는 유효하지 않은 경로 처리
+        if (!imagePath || typeof imagePath !== 'string') {
+            return '/static/images/placeholder-book.png';
+        }
+
+        // 이미 절대 경로(/로 시작)이거나 URL인 경우 그대로 반환
+        if (imagePath.startsWith('/') || imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+            return imagePath;
+        }
+
+        // 상대 경로인 경우 /static/images/books/ 기준으로 변환
+        return '/static/images/books/' + imagePath;
+    },
+
+    /**
+     * 슬라이더 이미지 배열 가져오기
+     * @param {object} data - 교재 데이터
+     * @returns {array} 이미지 URL 배열
+     */
+    getSliderImages: function(data) {
+        const images = [];
+
+        // 커버 이미지 추가 (경로 정규화 적용)
+        if (data.coverImage) {
+            images.push(this.normalizeImagePath(data.coverImage));
+        }
+
+        // 샘플 이미지 추가 (경로 정규화 및 중복 제거)
+        if (data.samples && Array.isArray(data.samples)) {
+            data.samples.forEach(sample => {
+                const normalizedPath = this.normalizeImagePath(sample);
+                // 이미 추가된 이미지와 중복되지 않으면 추가
+                if (!images.includes(normalizedPath)) {
+                    images.push(normalizedPath);
+                }
+            });
+        }
+
+        // 이미지가 없으면 기본 이미지 사용
+        if (images.length === 0) {
+            images.push('/static/images/placeholder-book.png');
+        }
+
+        return images;
+    },
+
+    /**
+     * 모달 콘텐츠 업데이트
+     * @param {object} data - 교재 데이터
+     */
+    updateModalContent: function(data) {
+        // 제목
+        const titleEl = document.getElementById('textbook-modal-title');
+        if (titleEl) titleEl.textContent = data.name || data.title || '교재명';
+
+        // 출판사
+        const publisherEl = document.getElementById('textbook-modal-publisher');
+        if (publisherEl) publisherEl.textContent = data.publisher || '출판사';
+
+        // 레벨
+        const levelEl = document.getElementById('textbook-modal-level');
+        if (levelEl) levelEl.textContent = data.levels || data.level || '레벨';
+
+        // 설명
+        const descEl = document.getElementById('textbook-modal-description');
+        if (descEl) descEl.textContent = data.description || '교재 설명이 없습니다.';
+
+        // 학습 목표
+        const objectivesEl = document.getElementById('textbook-modal-objectives');
+        if (objectivesEl) {
+            const objectives = data.objectives || [];
+            objectivesEl.innerHTML = objectives.map(obj => `<li>${obj}</li>`).join('');
+        }
+
+        // 특징
+        const featuresEl = document.getElementById('textbook-modal-features');
+        if (featuresEl) {
+            const features = data.features || [];
+            featuresEl.innerHTML = features.map(f => `<li>${f}</li>`).join('');
+        }
+    },
+
+    /**
+     * 다중 교재 네비게이션 렌더링
+     * @param {array} ids - 교재 ID 배열
+     * @param {string} activeId - 현재 활성화된 교재 ID
+     */
+    renderTextbookNav: function(ids, activeId) {
+        const navContainer = document.getElementById('textbook-modal-nav');
+        if (!navContainer) return;
+
+        // 단일 교재인 경우 네비게이션 숨김
+        if (ids.length <= 1) {
+            navContainer.style.display = 'none';
+            navContainer.innerHTML = '';
+            return;
+        }
+
+        navContainer.style.display = 'block';
+        navContainer.innerHTML = `
+            <div class="textbook-modal__nav-title">
+                📚 이 셀에 포함된 교재 (${ids.length}개)
+            </div>
+            <div class="textbook-modal__nav-grid">
+                ${ids.map(id => {
+                    const tbData = this.getTextbookData(id);
+                    if (!tbData) return '';
+                    const isActive = id === activeId ? 'is-active' : '';
+                    const coverImage = tbData.coverImage || tbData.image || '/static/images/placeholder-book.png';
+                    return `
+                        <button class="textbook-modal__nav-item ${isActive}"
+                                data-textbook-id="${id}"
+                                type="button"
+                                aria-label="${tbData.name || tbData.title}">
+                            <img src="${coverImage}" alt="${tbData.name || tbData.title}" onerror="this.style.display='none'">
+                            <span>${tbData.name || tbData.title}</span>
+                        </button>
+                    `;
+                }).join('')}
+            </div>
+        `;
+
+        // 네비게이션 버튼 클릭 이벤트
+        navContainer.querySelectorAll('.textbook-modal__nav-item').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const textbookId = btn.dataset.textbookId;
+                this.switchContent(textbookId);
+            });
+        });
     },
 
     /**
@@ -124,9 +251,9 @@ const CurriculumModal = {
      * 모달 닫기
      */
     close: function() {
-        const modal = document.getElementById('curriculumModal');
+        const modal = document.getElementById('textbook-modal');
         if (modal) {
-            modal.classList.remove('is-active');
+            modal.classList.remove('is-active', 'textbook-modal--with-slider');
             document.body.style.overflow = '';
         }
     },
@@ -135,21 +262,21 @@ const CurriculumModal = {
      * 모달 이벤트 리스너 초기화
      */
     initEvents: function() {
-        const modal = document.getElementById('curriculumModal');
+        const modal = document.getElementById('textbook-modal');
         if (!modal) return;
 
         // 이미 초기화되었으면 스킵 (중복 방지)
-        if (modal.dataset.eventsInitialized) return;
-        modal.dataset.eventsInitialized = 'true';
+        if (modal.dataset.curriculumEventsInitialized) return;
+        modal.dataset.curriculumEventsInitialized = 'true';
 
         // 모달 backdrop 클릭 시 닫기
-        const backdrop = modal.querySelector('.modal__backdrop');
+        const backdrop = modal.querySelector('.modal__backdrop, .textbook-modal__backdrop');
         if (backdrop) {
             backdrop.addEventListener('click', () => this.close());
         }
 
         // 닫기 버튼 클릭
-        const closeBtn = modal.querySelector('.modal__close');
+        const closeBtn = modal.querySelector('.modal__close, .textbook-modal__close');
         if (closeBtn) {
             closeBtn.addEventListener('click', () => this.close());
         }
@@ -172,16 +299,17 @@ const CurriculumTable = {
      * 실제 프로젝트에서는 서버에서 데이터를 받아 사용
      */
     populateRandomTextbooks: function() {
-        const allTextbookIds = Object.keys(curriculumTextbookData);
+        // 통합된 데이터 소스 사용
+        const textbooks = (typeof textbookData !== 'undefined' && textbookData.textbooks)
+            ? textbookData.textbooks
+            : (typeof curriculumTextbookData !== 'undefined' ? curriculumTextbookData : {});
+
+        const allTextbookIds = Object.keys(textbooks);
         const cells = document.querySelectorAll('.textbook-cell');
 
         cells.forEach(cell => {
-            // 셀에서 기존 콘텐츠 가져오기
             const content = cell.querySelector('.textbook-cell-content');
             if (!content) return;
-
-            const existingName = content.querySelector('.textbook-name');
-            const categoryName = existingName ? existingName.textContent : '';
 
             // 1-5개 랜덤 개수
             const count = Math.floor(Math.random() * 5) + 1;
@@ -200,12 +328,12 @@ const CurriculumTable = {
 
             // 이미지 추가
             selectedIds.forEach(id => {
-                const data = curriculumTextbookData[id];
+                const data = textbooks[id];
                 if (!data) return;
 
                 const img = document.createElement('img');
-                img.src = data.coverImage;
-                img.alt = data.name;
+                img.src = data.coverImage || data.image;
+                img.alt = data.name || data.title;
                 img.className = 'textbook-thumbnail';
                 img.onerror = function() { this.style.display = 'none'; };
 
@@ -289,11 +417,16 @@ function initCurriculumSystem() {
     // 모달 이벤트 초기화
     CurriculumModal.initEvents();
 
-    // 랜덤 교재 배치 (데모용 - 실제로는 서버 데이터 사용)
-    // CurriculumTable.populateRandomTextbooks();
-
     // 셀 클릭 이벤트 등록
     CurriculumTable.attachCellClickEvents();
+
+    // ModalImageSlider 초기화 (main.js에서 정의되어 있으면)
+    if (typeof ModalImageSlider !== 'undefined' && typeof ModalImageSlider.init === 'function') {
+        // main.js에서 이미 초기화되었을 수 있으므로 트랙 존재 확인
+        if (!ModalImageSlider.track) {
+            ModalImageSlider.init();
+        }
+    }
 }
 
 // 페이지 로드 시 초기화

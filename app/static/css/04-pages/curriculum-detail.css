@@ -90,23 +90,10 @@
     font-weight: var(--font-weight-medium);
 }
 
-/* Textbook Modal */
-.textbook-modal {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: var(--spacing-2xl);
-}
-
-.textbook-modal__image img {
-    width: 100%;
-    /* border-radius: var(--border-radius-md); */
-    /* box-shadow: var(--shadow-lg); */
-}
-
-.textbook-modal__info h3 {
-    color: var(--color-teal-dark);
-    margin-bottom: var(--spacing-sm);
-}
+/* ============================================
+   NOTE: textbook-modal 스타일은 중앙화됨
+   → 03-components/modals.css 참조
+   ============================================ */
 
 .textbook-level {
     display: inline-block;
@@ -225,10 +212,6 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    .textbook-modal {
-        grid-template-columns: 1fr;
-    }
-    
     .level-stages {
         grid-template-columns: 1fr;
     }
