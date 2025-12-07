@@ -39,7 +39,8 @@
 /* Curriculum Table */
 .curriculum-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     font-size: var(--font-size-sm);
     table-layout: fixed;
 }
@@ -124,6 +125,25 @@
     letter-spacing: 0.5px;
 }
 
+/* 헤더 내부 레벨 셀 라운딩 제거 */
+.curriculum-table thead th {
+    border-radius: 0 !important;
+}
+
+/* 레벨 클래스 라운딩 제거 */
+.curriculum-table thead th.lv1,
+.curriculum-table thead th.lv2,
+.curriculum-table thead th.lv3,
+.curriculum-table thead th.lv4,
+.curriculum-table thead th.lv5,
+.curriculum-table thead th.lv6,
+.curriculum-table thead th.lv7,
+.curriculum-table thead th.lv8,
+.curriculum-table thead th.lv9,
+.curriculum-table thead th.lv10 {
+    border-radius: 0 !important;
+}
+
 /* ===== Level Backgrounds - Gradients ===== */
 .curriculum-table .lv1 {
     background: var(--gradient-lv1);
@@ -169,9 +189,8 @@
 /* ===== Textbook Cells ===== */
 .textbook-cell {
     font-weight: var(--font-weight-medium);
-    cursor: pointer;
+    cursor: default;
     box-shadow: var(--shadow-sm);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 /* Gradient Textbook Backgrounds */
@@ -208,6 +227,40 @@
     color: var(--color-text-dark);
 }
 
+/* 추가 그라데이션 배경 (curriculum-roadmap.html용) */
+.lvbg1_4 {
+    background: linear-gradient(135deg, #ffecd2 0%, #a1c4fd 100%);
+    color: var(--color-text-dark);
+}
+.lvbg1_5 {
+    background: linear-gradient(135deg, #ffecd2 0%, #4facfe 100%);
+    color: var(--color-white);
+}
+.lvbg1_10 {
+    background: linear-gradient(135deg, #ffecd2 0%, #4facfe 100%);
+    color: var(--color-white);
+}
+.lvbg3_8 {
+    background: linear-gradient(135deg, #fbc2eb 0%, #667eea 100%);
+    color: var(--color-white);
+}
+.lvbg4_9 {
+    background: linear-gradient(135deg, #a1c4fd 0%, #f093fb 100%);
+    color: var(--color-white);
+}
+.lvbg5_7 {
+    background: linear-gradient(135deg, #4facfe 0%, #fa709a 100%);
+    color: var(--color-white);
+}
+.lvbg5_9 {
+    background: linear-gradient(135deg, #4facfe 0%, #f093fb 100%);
+    color: var(--color-white);
+}
+.lvbg6_10 {
+    background: linear-gradient(135deg, #43e97b 0%, #4facfe 100%);
+    color: var(--color-white);
+}
+
 /* Textbook Cell with Thumbnail */
 .textbook-cell-content {
     display: flex;
@@ -215,7 +268,6 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    cursor: pointer;
     padding: var(--spacing-md);
 }
 
@@ -248,16 +300,9 @@
     object-fit: cover;
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-md);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
     position: relative;
 }
 
 .textbook-thumbnail:not(:first-child) {
     margin-left: -60px;
-}
-
-.textbook-thumbnail:hover {
-    transform: scale(1.05) translateY(-5px);
-    z-index: 10;
-    box-shadow: var(--shadow-lg);
 }

@@ -240,7 +240,22 @@
         </div>
     </footer>
 
+    <!-- Data Layer -->
+    <script src="{{ url_for('static', filename='js/textbookData.js') }}"></script>
+
+    <!-- Utilities -->
+    <script src="{{ url_for('static', filename='js/utils/navigation.js') }}"></script>
+
+    <!-- Textbook Components (순서 중요: slider → accordion → modal → carousel) -->
+    <script src="{{ url_for('static', filename='js/components/slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/accordion.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/modal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components/carousel.js') }}"></script>
+
+    <!-- Main Entry Point -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <!-- Generic UI Components -->
     <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
     <script src="{{ url_for('static', filename='js/accordion.js') }}"></script>
     <script src="{{ url_for('static', filename='js/slider.js') }}"></script>

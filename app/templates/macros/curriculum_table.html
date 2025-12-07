@@ -286,8 +286,8 @@
 {# ============================================
    필수 스크립트 포함 매크로
    textbook-modal을 사용할 경우 이 매크로를 호출하세요.
+   NOTE: textbookData.js는 base.html에서 전역 로드됨
    ============================================ #}
 {% macro curriculum_scripts() %}
-<script src="{{ url_for('static', filename='js/textbookData.js') }}"></script>
 <script src="{{ url_for('static', filename='js/curriculum.js') }}"></script>
 {% endmacro %}
