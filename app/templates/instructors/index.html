@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}강사 지원 - ePlan{% endblock %}
 
@@ -13,15 +14,15 @@
 <!-- ePlan 소개 -->
  <section>
     <div class="container">
-        <h2 class="section-title">ePlan 소개</h2>
+        {{ section_title_10(title='ePlan 소개', subtitle='About ePlan') }}
         <p>ePlan은 글로벌 인재를 양성하는 강사를 찾고 있습니다.</p>
     </div>
  </section>
 
 <section>
     <div class="container">
-        <h2 class="section-title">지원 요건</h2>
-        
+        {{ section_title_10(title='지원 요건', subtitle='Application Requirements') }}
+
         <div class="grid grid--2">
             <div class="card">
                 <h4 class="card__title">✓ 학사 학위 이상</h4>
@@ -49,7 +50,7 @@
 <!-- eplan clients -->
 <section>
     <div class="container">
-        <h2 class="section-title">ePlan 고객사</h2>
+        {{ section_title_10(title='ePlan 고객사', subtitle='Our Clients') }}
         <p>ePlan의 고객사들입니다.</p>
     </div>
  </section>
@@ -150,8 +151,8 @@
 
 <section class="u-bg-white">
     <div class="container">
-        <h2 class="section-title">지원서 작성</h2>
-        
+        {{ section_title_10(title='지원서 작성', subtitle='Application Form') }}
+
         <form method="POST" class="form" style="max-width: 800px; margin: 0 auto;">
             {{ form.hidden_tag() }}
             

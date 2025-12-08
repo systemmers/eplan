@@ -1,5 +1,6 @@
 <!-- Corporate Programs Introduction -->
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}Introduction - Corporate Programs - ePlan{% endblock %}
 
@@ -26,7 +27,7 @@
 <!-- 기업교육 구조 -->
 <section>
     <div class="container">
-        <h2 class="section-title">기업교육 구조</h2>
+        {{ section_title_10(title='기업교육 구조', subtitle='Corporate Training Structure') }}
         
         <div class="grid grid--3">
             <div class="card card--hoverable">
@@ -131,7 +132,7 @@
 <!-- 전용 Site/ Reporting -->
  <section>
     <div class="container">
-        <h2 class="section-title">전용 Site/ Reporting</h2>
+        {{ section_title_10(title='전용 Site/ Reporting', subtitle='Dedicated Site & Reporting') }}
         <p>ePlan의 기업교육은 전용 Site/ Reporting을 제공합니다.</p>
         <ul>
             <li>전용 Site</li>

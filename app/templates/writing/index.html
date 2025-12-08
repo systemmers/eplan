@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}Writing 첨삭 - ePlan{% endblock %}
 
@@ -13,7 +14,7 @@
 <!--과정 소개-->
 <section>
     <div class="container">
-        <h2 class="section-title">과정 소개</h2>
+        {{ section_title_10(title='과정 소개', subtitle='Course Introduction') }}
         
         <div class="grid grid--3">
             <div class="card u-text-center">
@@ -35,7 +36,7 @@
 <!-- 과정 세부 -->
 <section>
     <div class="container">
-        <h2 class="section-title">과정 세부</h2>
+        {{ section_title_10(title='과정 세부', subtitle='Course Details') }}
         
         <div class="grid grid--3">
             <div class="card u-text-center">
@@ -110,7 +111,7 @@
 <!-- 진행 과정 프로세스 -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title">진행 과정 프로세스</h2>
+        {{ section_title_10(title='진행 과정 프로세스', subtitle='Writing Process') }}
         
         <div class="grid grid--3">
             <div class="card">

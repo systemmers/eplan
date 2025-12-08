@@ -12,6 +12,133 @@
     </div>
 </section>
 
+<!-- Section 8: Course Overview Cards - Overlay Style -->
+<section class="u-bg-teal-lightest u-py-6">
+    <div class="container">
+        <div class="section-title-3">
+            <div class="number">08</div>
+            <div class="text">
+                <h2>Course Overview</h2>
+                <p>Phone English 주요 과정 안내</p>
+            </div>
+        </div>
+
+        <div class="course-overview-cards">
+            <!-- General Conversation -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&h=400&fit=crop" alt="General Conversation">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 1-7</span>
+                    </div>
+                    <h3 class="card-curriculum__title">General Conversation</h3>
+                    <p class="card-curriculum__description">
+                        문법 기초부터 일상 회화까지. 발음 교정과 함께 자연스러운 영어 표현을 배웁니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">문법 기초</span>
+                        <span class="card-curriculum__feature">일상 회화</span>
+                        <span class="card-curriculum__feature">발음 교정</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>주 3-5회</span>
+                            <span>15-25분</span>
+                        </div>
+                        <a href="{{ url_for('main.phone_english_detail', curriculum='general-conversation') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Conversation -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=800&h=400&fit=crop" alt="Business Conversation">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 4-7</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Business Conversation</h3>
+                    <p class="card-curriculum__description">
+                        비즈니스 시나리오와 케이스 스터디를 통해 실무 영어 스킬을 향상시킵니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">비즈니스 시나리오</span>
+                        <span class="card-curriculum__feature">케이스 스터디</span>
+                        <span class="card-curriculum__feature">실무 스킬</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>주 3-5회</span>
+                            <span>15-25분</span>
+                        </div>
+                        <a href="{{ url_for('main.phone_english_detail', curriculum='business-conversation') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discussion / Debate -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=400&fit=crop" alt="Discussion and Debate">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 4-9</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Discussion / Debate</h3>
+                    <p class="card-curriculum__description">
+                        비판적 사고와 논리적 표현력을 기르며 시사 이슈에 대해 토론합니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">비판적 사고</span>
+                        <span class="card-curriculum__feature">논리적 표현</span>
+                        <span class="card-curriculum__feature">시사 이슈</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>주 3-5회</span>
+                            <span>20-30분</span>
+                        </div>
+                        <a href="{{ url_for('main.phone_english_detail', curriculum='discussion') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Preparation -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=400&fit=crop" alt="Test Preparation">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 5-8</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Test Preparation</h3>
+                    <p class="card-curriculum__description">
+                        TOEIC Speaking, OPIc 등 공인 시험 대비와 실전 모의고사를 제공합니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">TOEIC Speaking</span>
+                        <span class="card-curriculum__feature">OPIc</span>
+                        <span class="card-curriculum__feature">실전 모의고사</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>주 3-5회</span>
+                            <span>20-30분</span>
+                        </div>
+                        <a href="{{ url_for('main.phone_english_detail', curriculum='test-prep') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Section 1: Level Cards - Style 9: Split Line -->
 <section class="u-bg-teal">
     <div class="container">

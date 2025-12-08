@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}주재원파견과정 - 기업출강 - ePlan{% endblock %}
 
@@ -14,8 +15,8 @@
 <!-- 학습 레벨 -->
 <section>
     <div class="container">
-        <h2 class="section-title">학습 레벨</h2>
-        
+        {{ section_title_10(title='Learning Level', subtitle='학습 레벨') }}
+
         <div class="grid grid--2">
             <div class="card">
                 <h4 class="card__title">파견임무 수행을 위한 Biz-skill 단련</h4>
@@ -43,8 +44,8 @@
 <!-- 교육 목표 -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title">교육 목표</h2>
-        
+        {{ section_title_10(title='Learning Objectives', subtitle='교육 목표') }}
+
         <div class="curriculum-detail">
             <div class="card">
                 <div class="card__body">
@@ -76,8 +77,8 @@
 <!-- 교육 세부 -->
 <section>
     <div class="container">
-        <h2 class="section-title">교육 세부</h2>
-        
+        {{ section_title_10(title='Learning Details', subtitle='교육 세부') }}
+
         <div class="study-steps">
             <div class="card">
                 <div class="step-number">1</div>
@@ -292,8 +293,8 @@
 <!-- 교재 정보 -->
 <section>
     <div class="container">
-        <h2 class="section-title">교재 안내</h2>
-        
+        {{ section_title_10(title='Course Materials', subtitle='교재 안내') }}
+
         <div class="grid grid--4">
             <div class="card textbook-card" data-modal-target="modal-textbook-resident">
                 <div class="textbook-image">

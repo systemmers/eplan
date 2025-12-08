@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}상주강사제도 - 기업출강 - ePlan{% endblock %}
 
@@ -14,8 +15,8 @@
 <!-- 학습 레벨 -->
 <section>
     <div class="container">
-        <h2 class="section-title">학습 레벨</h2>
-        
+        {{ section_title_10(title='Learning Level', subtitle='학습 레벨') }}
+
         <div class="grid grid--2">
             <div class="card">
                 <h4 class="card__title">기업 내 상주 원어민 강사 배치</h4>
@@ -43,8 +44,8 @@
 <!-- 교육 목표   -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title">교육 목표</h2>
-        
+        {{ section_title_10(title='Learning Objectives', subtitle='교육 목표') }}
+
         <div class="grid grid--3">
             <div class="card">
                 <h4 class="card__title">실시간 지원</h4>
@@ -82,8 +83,8 @@
 <!-- 교육 세부 -->
 <section>
     <div class="container">
-        <h2 class="section-title">교육 세부</h2>
-        
+        {{ section_title_10(title='Learning Details', subtitle='교육 세부') }}
+
         <div class="study-steps">
             <div class="card">
                 <div class="step-number">1</div>
@@ -333,8 +334,8 @@
 <!-- 교재 정보 -->
 <section>
     <div class="container">
-        <h2 class="section-title">교재 및 자료</h2>
-        
+        {{ section_title_10(title='Course Materials', subtitle='교재 및 자료') }}
+
         <div class="grid grid--4">
             <div class="card textbook-card" data-modal-target="modal-textbook-oct">
                 <div class="textbook-image">

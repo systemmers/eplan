@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}공인테스트대비 - 전화영어 - ePlan{% endblock %}
 
@@ -15,7 +16,7 @@
 <!-- 학습 레벨 -->
 <section>
     <div class="container">
-        <h2 class="section-title">학습 레벨</h2>
+        {{ section_title_10(title='Learning Level', subtitle='학습 레벨') }}
         
         <div class="grid grid--4">
             <div class="card card--hoverable u-text-center">
@@ -117,7 +118,7 @@
 <!-- 학습 목표 -->
 <section>
     <div class="container">
-        <h2 class="section-title">학습 목표</h2>
+        {{ section_title_10(title='Learning Objectives', subtitle='학습 목표') }}
         
         <div class="grid grid--2">
             <div class="card">
@@ -179,7 +180,7 @@
 <!-- 커리큘럼 상세 -->
 <section>
     <div class="container">
-        <h2 class="section-title">커리큘럼 상세</h2>
+        {{ section_title_10(title='Learning Details', subtitle='커리큘럼 상세') }}
         
         <div class="curriculum-detail">
             <div class="curriculum-level">
@@ -232,7 +233,7 @@
 <!-- 교재 정보 -->
 <section>
     <div class="container">
-        <h2 class="section-title">교재 안내</h2>
+        {{ section_title_10(title='Course Materials', subtitle='교재 안내') }}
         
         <div class="grid grid--4">
             <div class="card textbook-card" data-modal-target="modal-textbook-toeic">

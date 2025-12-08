@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}회사소개 - ePlan{% endblock %}
 
@@ -14,7 +15,7 @@
 <!-- Our Mission -->
 <section class="mission-section">
     <div class="container">
-        <h2 class="section-title">Our Mission</h2>
+        {{ section_title_10(title='OUR MISSION', subtitle='Our Mission') }}
         <div class="mission-content">
             <p class="mission-tagline">Empowering Global Success Through Knowledge Partnership</p>
             <p class="mission-tagline-kr">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
@@ -27,7 +28,8 @@
 <!-- Core Values -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title">Core Values</h2>
+        {{ section_title_10(title='CORE VALUES', subtitle='Core Values & Vision') }}
+        <p class="section-subtitle">우리는 글로벌 지식 파트너로서 고객의 가치를 높이고 기회를 확대하는데 공헌합니다.</p>
 
         <div class="values-grid">
             <div class="value-card card">
@@ -166,7 +168,8 @@
 <!-- Our Service -->
 <section class="our-service-section">
     <div class="container">
-        <h2 class="section-title">Our Services</h2>
+        {{ section_title_10(title='OUR SERVICES', subtitle='Our Services & Philosophy') }}
+        <p class="section-subtitle">고객사의 교육 요구사항을 분석하고, 맞춤형 교육 프로그램을 설계합니다.</p>
 
         <div class="service-process">
             <!-- Step 1: 초기 단계 -->
@@ -258,7 +261,7 @@
             <img src="{{ url_for('static', filename='images/lang_logos.png') }}" alt="Our Services" style="width: 50%; height: auto; display: block; margin-left: auto; margin-right: auto;">
         </div>
 
-        <!-- 서비스 특징 -->
+        <!-- 서비스 특징
         <div class="service-features">
             <blockquote class="service-quote">
                 "We contribute to enhancing values and enlarging opportunities of our clients as a global knowledge partner!"
@@ -268,7 +271,7 @@
                 <p>고객사의 교육목적을 이해하고, 성과목표 달성을 위해 최고의 강사, 최적의 프로그램, 최상의 교육방식을 설계하고 운영하며, 교육 성과를 측정하고 HR에 보고하는 것이 우리의 서비스입니다.</p>
                 <p><strong>고객사 임직원의 목적별 글로벌 역량강화를 통해 고객사의 가치향상에 기여하는 것!</strong><br>그것이 우리의 서비스이고 사명입니다.</p>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 
@@ -329,7 +332,7 @@
 <!-- Our Clients - LogoCloud Style -->
 <section class="our-clients-section">
     <div class="container">
-        <h2 class="section-title">Our Clients</h2>
+        {{ section_title_10(title='OUR CLIENTS', subtitle='Our Clients & Partners') }}
         <p class="section-subtitle">2,000+ 기업 및 기관과 함께하고 있습니다</p>
 
         {% set client_names = [
@@ -351,7 +354,7 @@
             {% for i in range(65) %}
             <div class="logo-card">
                 <img src="{{ static_url('images/clients_color/client-%02d.png'|format(i + 1)) }}" alt="{{ client_names[i] }}">
-                {% if (i + 1) % 5 != 0 and i < 64 %}
+                {% if (i + 1) % 5 != 0 and i < 60 %}
                 <svg class="plus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 {% endif %}
             </div>
@@ -363,7 +366,7 @@
 <!-- Global Network -->
 <section class="network-section">
     <div class="container">
-        <h2 class="section-title">Global Network</h2>
+        {{ section_title_10(title='GLOBAL NETWORK', subtitle='Global Network') }}
         <p class="section-subtitle">전 세계 4개 지점에서 글로벌 교육 서비스를 제공합니다</p>
 
         <div class="network-cards-grid">

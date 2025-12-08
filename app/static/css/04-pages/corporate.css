@@ -254,3 +254,235 @@
     justify-content: flex-start;
     text-align: left;
 }
+
+/* ==============================================
+   SECTION: Program Overview Cards (Overlay Style)
+   Card 15 from styleguide - 1 Column Layout
+   ============================================== */
+
+/* Program Overview Card Container - 1 Column */
+.program-overview-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Base Card Horizontal */
+.card-horizontal {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.card-horizontal:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+/* Curriculum Card Base */
+.card-curriculum {
+    padding: 0;
+    overflow: hidden;
+    flex-direction: row;
+}
+
+.card-curriculum__image {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-curriculum__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-curriculum__content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-curriculum__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.card-curriculum__level {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.card-curriculum__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.75rem;
+}
+
+.card-curriculum__description {
+    font-size: 0.95rem;
+    color: #718096;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.card-curriculum__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-curriculum__feature {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    background: #edf2f7;
+    font-size: 0.85rem;
+    color: #4a5568;
+}
+
+.card-curriculum__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.card-curriculum__info {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.card-curriculum__cta {
+    padding: 0.65rem 1.5rem;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.card-curriculum__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Card 15: Curriculum Image Card - Overlay Style */
+.card-curriculum--overlay {
+    position: relative;
+    padding: 0;
+    min-height: 280px;
+    overflow: hidden;
+}
+
+.card-curriculum--overlay .card-curriculum__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-curriculum--overlay .card-curriculum__image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+.card-curriculum--overlay .card-curriculum__content {
+    position: relative;
+    z-index: 10;
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 280px;
+}
+
+.card-curriculum--overlay .card-curriculum__level {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.card-curriculum--overlay .card-curriculum__title {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.card-curriculum--overlay .card-curriculum__description {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.card-curriculum--overlay .card-curriculum__feature {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.card-curriculum--overlay .card-curriculum__footer {
+    border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-curriculum--overlay .card-curriculum__info {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.card-curriculum--overlay .card-curriculum__cta {
+    background: white;
+    color: #667eea;
+}
+
+.card-curriculum--overlay .card-curriculum__cta:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Program Overview Cards Responsive */
+@media (max-width: 768px) {
+    .card-curriculum--overlay {
+        min-height: 240px;
+    }
+
+    .card-curriculum--overlay .card-curriculum__content {
+        min-height: 240px;
+        padding: 1.5rem;
+    }
+
+    .card-curriculum--overlay .card-curriculum__title {
+        font-size: 1.25rem;
+    }
+}

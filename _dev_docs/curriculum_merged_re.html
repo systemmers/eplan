@@ -1,0 +1,1240 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>언어과정 커리큘럼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        .language-section {
+            margin-bottom: 50px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .language-header {
+            padding: 20px 30px;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .language-header .flag {
+            font-size: 1.8rem;
+        }
+
+        .lang-english .language-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .lang-japanese .language-header { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .lang-chinese .language-header { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .lang-german .language-header { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .lang-spanish .language-header { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); color: #333; }
+        .lang-french .language-header { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        .lang-vietnamese .language-header { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); color: #333; }
+        .lang-russian .language-header { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .lang-arabic .language-header { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #333; }
+        .lang-thai .language-header { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: #333; }
+        .lang-indonesian .language-header { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .lang-czech .language-header { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .lang-polish .language-header { background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%); }
+        .lang-italian .language-header { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+
+        .table-wrapper {
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+        }
+
+        thead th {
+            background: #f8f9fa;
+            padding: 10px 6px;
+            text-align: center;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            white-space: nowrap;
+        }
+
+        thead th:first-child {
+            text-align: left;
+            min-width: 50px;
+        }
+
+        thead th:nth-child(2) {
+            text-align: left;
+            min-width: 120px;
+        }
+
+        thead th.level {
+            min-width: 90px;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        tbody td {
+            padding: 8px 6px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        tbody td:first-child {
+            font-weight: 600;
+            color: #6c757d;
+            text-align: left;
+        }
+
+        tbody td:nth-child(2) {
+            font-weight: 500;
+            color: #333;
+            text-align: left;
+        }
+
+        .course-category {
+            background: #f8f9fa;
+            font-weight: 700;
+            color: #495057;
+        }
+
+        .course-category td {
+            padding: 10px 12px;
+            border-bottom: 2px solid #dee2e6;
+            text-align: left !important;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .cat-general { background: #e3f2fd; color: #1565c0; }
+        .cat-business { background: #fff3e0; color: #e65100; }
+        .cat-topic { background: #e8f5e9; color: #2e7d32; }
+        .cat-exam { background: #fce4ec; color: #c2185b; }
+
+        .textbook {
+            font-size: 0.7rem;
+            color: #555;
+            line-height: 1.4;
+            background: #fafbfc;
+            border-radius: 6px;
+            padding: 5px;
+        }
+
+        .textbook.merged {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+            border: 1px solid #d0daf0;
+        }
+
+        .empty-cell {
+            color: #ccc;
+        }
+
+        .empty-cell::before {
+            content: '-';
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .textbook-list {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            margin-top: 50px;
+        }
+
+        .textbook-list h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .textbook-list h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #495057;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .textbook-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .textbook-list li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .textbook-list li:before {
+            content: "📖 ";
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .language-header { font-size: 1.1rem; }
+            table { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 언어과정 커리큘럼</h1>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <span class="category-badge cat-general">일반회화</span>
+            </div>
+            <div class="legend-item">
+                <span class="category-badge cat-business">비즈니스</span>
+            </div>
+            <div class="legend-item">
+                <span class="category-badge cat-topic">주제토론</span>
+            </div>
+            <div class="legend-item">
+                <span class="category-badge cat-exam">시험대비</span>
+            </div>
+        </div>
+
+        <!-- 영어 섹션 -->
+        <section class="language-section lang-english">
+            <div class="language-header">
+                <span class="flag">🇺🇸</span> 영어 (English)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                            <th class="level">Lv.5</th>
+                            <th class="level">Lv.6</th>
+                            <th class="level">Lv.7</th>
+                            <th class="level">Lv.8</th>
+                            <th class="level">Lv.9</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 일반회화 -->
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>New Connection</td>
+                            <td class="textbook merged" colspan="4">New Connection 1~3</td>
+                            <td class="textbook">World English 3 with My World English</td>
+                            <td class="empty-cell" colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Smart Choice</td>
+                            <td class="textbook merged" colspan="5">Smart Choice Starter, 1~3</td>
+                            <td class="empty-cell" colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Stretch</td>
+                            <td class="textbook merged" colspan="5">Stretch Starter, 1~3</td>
+                            <td class="empty-cell" colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>여행영어</td>
+                            <td class="empty-cell"></td>
+                            <td class="textbook merged" colspan="3">여행영어 100일의 기적</td>
+                            <td class="empty-cell" colspan="5"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>핵심패턴</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="3">영어회화 핵심패턴 233 중고급편</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>패턴 900/비긴어게인</td>
+                            <td class="textbook merged" colspan="2">비긴어게인 VOL.1~2</td>
+                            <td class="textbook merged" colspan="4">PEP900</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Smart English(주니어)</td>
+                            <td class="textbook merged" colspan="7">Smart English Starter, 1~6</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Smart Phonics(주니어)</td>
+                            <td class="textbook">Smart Phonics 1-3</td>
+                            <td class="empty-cell" colspan="8"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Exploring English</td>
+                            <td class="textbook merged" colspan="5">Exploring English 1~5</td>
+                            <td class="empty-cell" colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>American English File</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="5">American English File 4~5</td>
+                            <td class="empty-cell"></td>
+                        </tr>
+
+                        <!-- 비즈니스 -->
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-business">비즈니스</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Meeting skill</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="3">English for Meetings</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Negotiation skill</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="3">English for negotiation</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Presentation skill</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="3">English for Presentations</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Socializing skill</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="3">English for Socializing</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Telephoning skill</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="3">English for Telephoning</td>
+                            <td class="empty-cell" colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>비즈니스 핵심패턴</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="2">비즈니스 영어회화&이메일 핵심패턴 233</td>
+                            <td class="empty-cell" colspan="5"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Business Conversation</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook">Business Partner A2</td>
+                            <td class="textbook merged" colspan="2">Business Partner B2+</td>
+                            <td class="textbook merged" colspan="4">Profile 1~3</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Business Conversation</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="2">Business Venture 1~2</td>
+                            <td class="textbook merged" colspan="2">Business Result_Upper-Intermediate</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+
+                        <!-- 주제토론 -->
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-topic">주제토론</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>뉴스미디어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">News Media</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>하버드비즈니스리뷰 MT Orange</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="4">HBO</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>하버드비즈니스리뷰 MT Daily</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="4">HBR</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>파워 오브 스토리텔링</td>
+                            <td class="empty-cell" colspan="4"></td>
+                            <td class="textbook merged" colspan="5">POS</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Jazz English</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook">Jazz English1</td>
+                            <td class="textbook merged" colspan="2">Jazz English2</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Hot Topic</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="2">Hot Topic1</td>
+                            <td class="textbook merged" colspan="2">Hot Topic2</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>토론영어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="3">바로 통하는 실전 토론 영어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+
+                        <!-- 시험대비 -->
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-exam">시험대비</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>토익스피킹</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="2">Hackers TOEIC SPEAKING Start</td>
+                            <td class="textbook">Hackers TOEIC SPEAKING Lv6</td>
+                            <td class="textbook">Hackers TOEIC SPEAKING Lv7,8</td>
+                            <td class="textbook">ETS 토익스피킹 기출문제집 최신개정 12회</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>오픽</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="3">OPIC의 신</td>
+                            <td class="textbook">Hackers OPIc Advanced 공략/ OPIC의 신</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>IELTS Speaking</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="4">한 권으로 끝내는 IELTS MASTER</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>토플스피킹</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="4">Siwonschool TOEFL Speaking</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SPA</td>
+                            <td class="empty-cell"></td>
+                            <td class="textbook merged" colspan="3">2주만에 정복 스파르타 SPA 초급</td>
+                            <td class="textbook merged" colspan="3">SPA 초단기트레이닝</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 일본어 섹션 -->
+        <section class="language-section lang-japanese">
+            <div class="language-header">
+                <span class="flag">🇯🇵</span> 일본어 (日本語)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                            <th class="level">Lv.5</th>
+                            <th class="level">Lv.6</th>
+                            <th class="level">Lv.7</th>
+                            <th class="level">Lv.8</th>
+                            <th class="level">Lv.9</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>New 다이나믹 일본어</td>
+                            <td class="textbook merged" colspan="6">New 다이나믹 일본어 1~4</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>다락원 일본어 마스터</td>
+                            <td class="textbook merged" colspan="6">다락원 일본어 마스터 1~5</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>스꾸스꾸 일본어</td>
+                            <td class="textbook merged" colspan="6">스꾸스꾸 일본어 1~4</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>여행일본어</td>
+                            <td class="empty-cell"></td>
+                            <td class="textbook merged" colspan="4">맛있는 여행 일본어</td>
+                            <td class="empty-cell" colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>프리토킹일본어회화 완전정복</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="5">프리토킹일본어회화 완전정복</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-business">비즈니스</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>생생체험 현지 비즈니스 일본어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">생생체험 현지 비즈니스 일본어</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>두발짝 비즈니스 일본어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">두발짝 비즈니스 일본어</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>비즈니스회화패턴</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="4">비즈니스 일본어회화&이메일 핵심패턴 233</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-topic">주제토론</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>뉴스미디어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">뉴스미디어</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>즐거운 프리토킹 일본어</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="3">즐거운프리토킹일본어40초중급</td>
+                            <td class="textbook merged" colspan="4">즐거운프리토킹일본어60중상급</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>수다프리토킹</td>
+                            <td class="empty-cell" colspan="4"></td>
+                            <td class="textbook merged" colspan="5">일본어 수다프리토킹360</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>다락원일본어독해</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="2">다락원 일본어 독해 초급</td>
+                            <td class="textbook merged" colspan="3">다락원 일본어 독해 중급</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-exam">시험대비</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SJPT L. 4-8</td>
+                            <td class="empty-cell" colspan="4"></td>
+                            <td class="textbook merged" colspan="4">SJPT중고급 L.4-8</td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SJPT</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="4">SJPT 한권으로 합격하기</td>
+                            <td class="textbook merged" colspan="2">SJPT 기출문제집</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>JPT</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="2">New JPT 한권으로 끝내기 450</td>
+                            <td class="empty-cell"></td>
+                            <td class="textbook merged" colspan="4">JPT한권으로끝내기800</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>JLPT</td>
+                            <td class="empty-cell"></td>
+                            <td class="textbook merged" colspan="2">JLPT(일본어능력시험) 한권으로 끝내기 N4</td>
+                            <td class="textbook merged" colspan="2">JLPT 일본어능력시험 한권으로 끝내기 N3</td>
+                            <td class="textbook merged" colspan="2">JLPT 한 권으로 끝내기 N2</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 중국어 섹션 -->
+        <section class="language-section lang-chinese">
+            <div class="language-header">
+                <span class="flag">🇨🇳</span> 중국어 (中文)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                            <th class="level">Lv.5</th>
+                            <th class="level">Lv.6</th>
+                            <th class="level">Lv.7</th>
+                            <th class="level">Lv.8</th>
+                            <th class="level">Lv.9</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>맛있는중국어</td>
+                            <td class="textbook merged" colspan="7">맛있는중국어 1~4</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>중국어마스터</td>
+                            <td class="textbook merged" colspan="7">중국어마스터 1~6</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>끝장중국어</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="3">끝장중국어 기초끝장내기</td>
+                            <td class="empty-cell" colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>여행중국어</td>
+                            <td class="empty-cell"></td>
+                            <td class="textbook merged" colspan="4">해커스 여행 중국어 10분의 기적</td>
+                            <td class="empty-cell" colspan="4"></td>
+                        </tr>
+
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-business">비즈니스</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>OK 비즈니스 중국어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">OK 비즈니스 중국어</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>중국어비지니스 실무중고급</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">중국어비지니스 실무중고급</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>출장중국어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">나의 겁없는 중국출장 중국어</td>
+                        </tr>
+
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-topic">주제토론</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>신문화중국어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="4">신문화중국어</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>뉴스미디어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">뉴스미디어</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>중국뉴스중국어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">나의 겁없는 중국뉴스 중국어</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>신공략중국어프리토킹</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="6">신공략중국어프리토킹</td>
+                        </tr>
+
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-exam">시험대비</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>OPIC</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="3">OPIc 중국어의 정석 IH공략</td>
+                            <td class="empty-cell" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TSC</td>
+                            <td class="textbook merged" colspan="8">통쾌하게 통과하기 TSC START~Master편</td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>BCT스피킹</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="5">초단기신BCT Speaking 공략</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 독일어 섹션 -->
+        <section class="language-section lang-german">
+            <div class="language-header">
+                <span class="flag">🇩🇪</span> 독일어 (Deutsch)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                            <th class="level">Lv.5</th>
+                            <th class="level">Lv.6</th>
+                            <th class="level">Lv.7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="9"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>일반회화</td>
+                            <td class="textbook merged" colspan="3">내게는 특별한 독일어를 부탁해 첫걸음</td>
+                            <td class="textbook merged" colspan="4">독일어 중고급의 모든 것</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 스페인어 섹션 -->
+        <section class="language-section lang-spanish">
+            <div class="language-header">
+                <span class="flag">🇪🇸</span> 스페인어 (Español)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                            <th class="level">Lv.5</th>
+                            <th class="level">Lv.6</th>
+                            <th class="level">Lv.7</th>
+                            <th class="level">Lv.8</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="10"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>일반회화</td>
+                            <td class="textbook merged" colspan="3">내게는 특별한 스페인어를 부탁해 첫걸음</td>
+                            <td class="empty-cell" colspan="5"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>NUEVO ESPANOL</td>
+                            <td class="empty-cell"></td>
+                            <td class="textbook merged" colspan="6">NUEVO ESPANOL 1~4</td>
+                            <td class="empty-cell"></td>
+                        </tr>
+                        <tr class="course-category">
+                            <td colspan="10"><span class="category-badge cat-exam">시험대비</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>FLEX UP 스페인어</td>
+                            <td class="empty-cell" colspan="3"></td>
+                            <td class="textbook merged" colspan="5">FLEX UP 스페인어</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Entorno laboral</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="2">Entorno laboral Nivel A1-B1</td>
+                            <td class="textbook merged" colspan="2">Entorno Empresarial Nivel B2</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 프랑스어 섹션 -->
+        <section class="language-section lang-french">
+            <div class="language-header">
+                <span class="flag">🇫🇷</span> 프랑스어 (Français)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                            <th class="level">Lv.5</th>
+                            <th class="level">Lv.6</th>
+                            <th class="level">Lv.7</th>
+                            <th class="level">Lv.8</th>
+                            <th class="level">Lv.9</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>일반회화</td>
+                            <td class="textbook merged" colspan="3">내게는 특별한 프랑스어를 부탁해 첫걸음</td>
+                            <td class="empty-cell" colspan="6"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>festival</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="2">festival1</td>
+                            <td class="textbook merged" colspan="2">festival2</td>
+                            <td class="textbook merged" colspan="3">festival3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 베트남어 섹션 -->
+        <section class="language-section lang-vietnamese">
+            <div class="language-header">
+                <span class="flag">🇻🇳</span> 베트남어 (Tiếng Việt)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                            <th class="level">Lv.5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="7"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>가장 쉬운 독학 베트남어 첫걸음</td>
+                            <td class="textbook merged" colspan="3">가장 쉬운 독학 베트남어 첫걸음</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>패턴의 법칙 베트남어 첫걸음</td>
+                            <td class="textbook merged" colspan="3">패턴의 법칙 베트남어 첫걸음</td>
+                            <td class="empty-cell" colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>The 바른 베트남어</td>
+                            <td class="empty-cell" colspan="2"></td>
+                            <td class="textbook merged" colspan="2">The 바른 베트남어 Step 2</td>
+                            <td class="textbook">베트남어 중고급의 모든것</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 러시아어 섹션 -->
+        <section class="language-section lang-russian">
+            <div class="language-header">
+                <span class="flag">🇷🇺</span> 러시아어 (Русский)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                            <th class="level">Lv.5</th>
+                            <th class="level">Lv.6</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="8"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>일반회화</td>
+                            <td class="textbook merged" colspan="3">내게는 특별한 러시아어를 부탁해 첫걸음</td>
+                            <td class="textbook merged" colspan="3">중급 러시아어</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 아랍어 섹션 -->
+        <section class="language-section lang-arabic">
+            <div class="language-header">
+                <span class="flag">🇸🇦</span> 아랍어 (العربية)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="6"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>일반회화</td>
+                            <td class="textbook merged" colspan="2">The 바른 아랍어 Step 1</td>
+                            <td class="textbook merged" colspan="2">The 바른 아랍어 Step 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 태국어 섹션 -->
+        <section class="language-section lang-thai">
+            <div class="language-header">
+                <span class="flag">🇹🇭</span> 태국어 (ภาษาไทย)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                            <th class="level">Lv.5</th>
+                            <th class="level">Lv.6</th>
+                            <th class="level">Lv.7</th>
+                            <th class="level">Lv.8</th>
+                            <th class="level">Lv.9</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="11"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>The 바른 태국어 첫걸음</td>
+                            <td class="textbook merged" colspan="3">The 바른 태국어 첫걸음</td>
+                            <td class="empty-cell" colspan="6"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>태국어 표준교재</td>
+                            <td class="textbook merged" colspan="9">태국어 표준교재 A0~B2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 인도네시아어 섹션 -->
+        <section class="language-section lang-indonesian">
+            <div class="language-header">
+                <span class="flag">🇮🇩</span> 인도네시아어 (Bahasa Indonesia)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="6"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>일반회화</td>
+                            <td class="textbook merged" colspan="2">The 바른 인도네시아어 Step1</td>
+                            <td class="textbook merged" colspan="2">The 바른 인도네시아어 Step2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 체코어 섹션 -->
+        <section class="language-section lang-czech">
+            <div class="language-header">
+                <span class="flag">🇨🇿</span> 체코어 (Čeština)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="5"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>The 바른 체코어</td>
+                            <td class="textbook merged" colspan="3">The 바른 체코어</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Say it in Czech</td>
+                            <td class="textbook merged" colspan="3">Say it in Czech</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Cestina-pro-cizince</td>
+                            <td class="textbook merged" colspan="3">Cestina-pro-cizince-a1-a-a2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 폴란드어 섹션 -->
+        <section class="language-section lang-polish">
+            <div class="language-header">
+                <span class="flag">🇵🇱</span> 폴란드어 (Polski)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                            <th class="level">Lv.4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="6"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>일반회화</td>
+                            <td class="textbook merged" colspan="2">The 바른 폴란드어 Step1</td>
+                            <td class="textbook merged" colspan="2">The 바른 폴란드어 Step2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 이탈리아어 섹션 -->
+        <section class="language-section lang-italian">
+            <div class="language-header">
+                <span class="flag">🇮🇹</span> 이탈리아어 (Italiano)
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>과정</th>
+                            <th>코스</th>
+                            <th class="level">Lv.1</th>
+                            <th class="level">Lv.2</th>
+                            <th class="level">Lv.3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-category">
+                            <td colspan="5"><span class="category-badge cat-general">일반회화</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>일반회화</td>
+                            <td class="textbook merged" colspan="3">이탈리아어 첫걸음의 모든 것</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+

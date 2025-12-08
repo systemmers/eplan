@@ -1,0 +1,28 @@
+{# ============================================
+   Section Title Components
+   재사용 가능한 섹션 타이틀 매크로
+   ============================================ #}
+
+{# Style 5: Center Divider - 중앙 정렬 + 구분선 #}
+{% macro section_title_5(label='', title='', subtitle='') %}
+<div class="section-title-5">
+    {% if label %}<div class="label">{{ label }}</div>{% endif %}
+    <h2>{{ title|safe }}</h2>
+    <div class="divider"></div>
+</div>
+{% if subtitle %}<p class="section-subtitle">{{ subtitle }}</p>{% endif %}
+{% endmacro %}
+
+{# Style 10: Vertical Label - 수직 라벨 + 아이콘(CSS) + 콘텐츠 #}
+{# icon_url은 CSS에서 중앙 관리 (background-image) #}
+{# vertical_label 기본값: EPLANDO #}
+{% macro section_title_10(vertical_label='EPLANDO', title='', subtitle='') %}
+<div class="section-title-10">
+    <div class="vertical-label">{{ vertical_label }}</div>
+    <div class="section-title-10__icon"></div>
+    <div class="content">
+        <h2>{{ title|safe }}</h2>
+        {% if subtitle %}<p class="section-title-10__subtitle">{{ subtitle }}</p>{% endif %}
+    </div>
+</div>
+{% endmacro %}

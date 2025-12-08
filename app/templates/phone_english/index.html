@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}전화영어 - ePlan{% endblock %}
 
@@ -25,7 +26,7 @@
 <!-- 특징 -->
 <section class="levels-section">
     <div class="container">
-        <h2 class="section-title">특징</h2>
+        {{ section_title_10(title='특징', subtitle='Features') }}
         
         <div class="levels-grid">
             <div class="level-card card">
@@ -70,7 +71,7 @@
 <!-- 커리큘럼 -->
 <section>
     <div class="container">
-        <h2 class="section-title">커리큘럼</h2>
+        {{ section_title_10(title='커리큘럼', subtitle='Curriculum') }}
         <p class="u-text-center u-mb-4">각 과정을 클릭하여 자세한 정보를 확인하세요</p>
         
         <div class="grid grid--2">

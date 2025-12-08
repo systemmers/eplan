@@ -167,7 +167,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-bottom: 2px;
+    padding: 0;
     transition: all 0.2s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     z-index: 100;
@@ -513,7 +513,6 @@
     line-height: 1.7;
     margin: 0;
 }
-
 /* Objectives & Features Lists */
 .textbook-modal__objectives,
 .textbook-modal__features {
@@ -535,6 +534,8 @@
     border-radius: var(--border-radius-sm, 6px);
     position: relative;
     line-height: 1.5;
+    display: flex;
+    align-items: center;
 }
 
 .textbook-modal__objectives li::before,
@@ -542,6 +543,8 @@
     content: '';
     position: absolute;
     left: var(--spacing-sm, 8px);
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--color-teal-medium, #14b8a6);
     font-weight: 700;
 }

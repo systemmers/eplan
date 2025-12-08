@@ -207,7 +207,7 @@
    Service Process
    ======================================== */
 .our-service-section {
-    background: var(--color-bg-light);
+    background: var(--color-white);
 }
 
 .service-process {
@@ -390,13 +390,8 @@
    Our Clients - LogoCloud Style
    ======================================== */
 .our-clients-section {
-    background: #ffffff;
+    background: var(--color-bg-light);
     padding: var(--spacing-3xl) 0;
-}
-
-.our-clients-section .section-title,
-.our-clients-section .section-subtitle {
-    color: var(--color-text-dark);
 }
 
 /* LogoCloud Grid */
@@ -525,6 +520,7 @@
    ======================================== */
 .philosophy-section {
     background: var(--color-bg-light);
+    padding: var(--spacing-3xl) 0;
 }
 
 .philosophy-grid {
@@ -736,7 +732,12 @@
 /* ========================================
    Global Network - Destination Cards
    ======================================== */
-.network-cards-grid {
+
+   .network-section {
+    background: var(--color-white);
+    padding: var(--spacing-3xl) 0;
+}
+   .network-cards-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1.5rem;

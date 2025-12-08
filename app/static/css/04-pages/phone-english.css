@@ -1143,40 +1143,7 @@
     margin: 0;
 }
 
-/* Style 5: Center Divider - Centered with divider line */
-.section-title-5 {
-    text-align: center;
-    margin-bottom: var(--spacing-md);
-}
-
-.section-title-5 .label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--color-gold);
-    margin-bottom: var(--spacing-sm);
-    display: block;
-}
-
-.section-title-5 h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 400;
-    color: var(--color-text);
-    margin: 0 0 var(--spacing-md) 0;
-}
-
-.section-title-5 h2 span {
-    font-style: italic;
-}
-
-.section-title-5 .divider {
-    width: 60px;
-    height: 2px;
-    background: var(--color-gold);
-    margin: 0 auto;
-}
+/* Style 5: Center Divider - common.css로 이동됨 */
 
 /* Style 7: Underline Accent - Gradient underline */
 .section-title-7 {
@@ -1241,50 +1208,7 @@
     color: rgba(0, 0, 0, 0.4);
 }
 
-/* Style 10: Vertical Label - Vertical text + title */
-.section-title-10 {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.section-title-10 .vertical-label {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--color-gold);
-    padding: 8px 0;
-    border-left: 2px solid var(--color-gold);
-    padding-left: 8px;
-}
-
-.section-title-10__icon {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    flex-shrink: 0;
-}
-
-.section-title-10 .content h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin: 0 0 8px 0;
-}
-
-.section-title-10 .content p {
-    font-size: 0.9rem;
-    color: var(--color-gold);
-    font-weight: 500;
-    margin: 0;
-}
+/* Style 10: Vertical Label - common.css로 이동됨 */
 
 /* Responsive Adjustments for Section Titles */
 @media (max-width: 768px) {
@@ -1304,9 +1228,7 @@
         font-size: 1.3rem;
     }
 
-    .section-title-5 h2 {
-        font-size: 1.6rem;
-    }
+    /* section-title-5 반응형 - common.css로 이동됨 */
 
     .section-title-7 h2 {
         font-size: 1.4rem;
@@ -1320,22 +1242,7 @@
         font-size: 1.2rem;
     }
 
-    .section-title-10 {
-        gap: 12px;
-    }
-
-    .section-title-10 .vertical-label {
-        font-size: 0.55rem;
-    }
-
-    .section-title-10__icon {
-        width: 64px;
-        height: 64px;
-    }
-
-    .section-title-10 .content h2 {
-        font-size: 1.4rem;
-    }
+    /* section-title-10 반응형 - common.css로 이동됨 */
 }
 
 /* ============================================
@@ -1856,7 +1763,8 @@
     content: '';
     position: absolute;
     left: 0;
-    top: 8px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 6px;
     height: 6px;
     background: var(--color-teal-dark);
@@ -1912,6 +1820,238 @@
 
     .textbook-modal__counter {
         bottom: 55px;
+    }
+}
+
+/* ==============================================
+   SECTION: Course Overview Cards (Overlay Style)
+   Card 15 from styleguide - Curriculum Image Card Overlay
+   ============================================== */
+
+/* Course Overview Card Container - 1 Column Layout */
+.course-overview-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Base Card Horizontal */
+.card-horizontal {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.card-horizontal:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+/* Curriculum Card Base */
+.card-curriculum {
+    padding: 0;
+    overflow: hidden;
+    flex-direction: row;
+}
+
+.card-curriculum__image {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-curriculum__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-curriculum__content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-curriculum__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.card-curriculum__level {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.card-curriculum__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.75rem;
+}
+
+.card-curriculum__description {
+    font-size: 0.95rem;
+    color: #718096;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.card-curriculum__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-curriculum__feature {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    background: #edf2f7;
+    font-size: 0.85rem;
+    color: #4a5568;
+}
+
+.card-curriculum__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.card-curriculum__info {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.card-curriculum__cta {
+    padding: 0.65rem 1.5rem;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.card-curriculum__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Card 15: Curriculum Image Card - Overlay Style */
+.card-curriculum--overlay {
+    position: relative;
+    padding: 0;
+    min-height: 280px;
+    overflow: hidden;
+}
+
+.card-curriculum--overlay .card-curriculum__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-curriculum--overlay .card-curriculum__image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+.card-curriculum--overlay .card-curriculum__content {
+    position: relative;
+    z-index: 10;
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 280px;
+}
+
+.card-curriculum--overlay .card-curriculum__level {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.card-curriculum--overlay .card-curriculum__title {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.card-curriculum--overlay .card-curriculum__description {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.card-curriculum--overlay .card-curriculum__feature {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.card-curriculum--overlay .card-curriculum__footer {
+    border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-curriculum--overlay .card-curriculum__info {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.card-curriculum--overlay .card-curriculum__cta {
+    background: white;
+    color: #667eea;
+}
+
+.card-curriculum--overlay .card-curriculum__cta:hover {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Course Overview Cards Responsive */
+@media (max-width: 768px) {
+    .card-curriculum--overlay {
+        min-height: 240px;
+    }
+
+    .card-curriculum--overlay .card-curriculum__content {
+        min-height: 240px;
+        padding: 1.5rem;
+    }
+
+    .card-curriculum--overlay .card-curriculum__title {
+        font-size: 1.25rem;
     }
 }
 
