@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}Phone English Pattern Demo - ePlan{% endblock %}
 
@@ -15,13 +16,7 @@
 <!-- Section 8: Course Overview Cards - Overlay Style -->
 <section class="u-bg-teal-lightest u-py-6">
     <div class="container">
-        <div class="section-title-3">
-            <div class="number">08</div>
-            <div class="text">
-                <h2>Course Overview</h2>
-                <p>Phone English 주요 과정 안내</p>
-            </div>
-        </div>
+        {{ section_title_10(title='Course Overview', subtitle='Phone English 주요 과정 안내') }}
 
         <div class="course-overview-cards">
             <!-- General Conversation -->
@@ -142,12 +137,7 @@
 <!-- Section 1: Level Cards - Style 9: Split Line -->
 <section class="u-bg-teal">
     <div class="container">
-        <div class="section-title-9">
-            <h2>LEARNING LEVELS</h2>
-            <div class="line"></div>
-            <div class="number">01</div>
-        </div>
-        <p class="section-subtitle">4-tier level system for phone English courses</p>
+        {{ section_title_10(title='LEARNING LEVELS', subtitle='4-tier level system for phone English courses') }}
 
         <div class="level-cards-grid">
             <div class="level-card level-card--beginner">
@@ -177,14 +167,7 @@
 <!-- Section 2: General Conversation - Style 10: Vertical Label -->
 <section>
     <div class="container">
-        <div class="section-title-10">
-            <div class="vertical-label">Course</div>
-            <img src="{{ url_for('static', filename='images/icon_logo.png') }}" alt="ePlan" class="section-title-10__icon">
-            <div class="content">
-                <h2>GENERAL CONVERSATION</h2>
-                <p>Foundation course for grammar and basic conversation</p>
-            </div>
-        </div>
+        {{ section_title_10(vertical_label='Course', title='GENERAL CONVERSATION', subtitle='Foundation course for grammar and basic conversation') }}
 
         <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
             <div class="goal-card">
@@ -261,11 +244,7 @@
 <!-- Section 3: Business Conversation - Style 2: Badge + Title -->
 <section class="u-bg-teal">
     <div class="container">
-        <div class="section-title-2">
-            <div class="badge">Business Skills</div>
-            <h2>Business Conversation</h2>
-        </div>
-        <p class="section-subtitle">Practical business English skills for professionals</p>
+        {{ section_title_10(title='Business Conversation', subtitle='Practical business English skills for professionals') }}
 
         <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
             <div class="goal-card">
@@ -339,13 +318,7 @@
 <!-- Section 4: Discussion - Style 3: Number Accent -->
 <section>
     <div class="container">
-        <div class="section-title-3">
-            <div class="number">04</div>
-            <div class="text">
-                <h2>Discussion / Debate</h2>
-                <p>Advanced thinking and argumentation skills</p>
-            </div>
-        </div>
+        {{ section_title_10(title='Discussion / Debate', subtitle='Advanced thinking and argumentation skills') }}
 
         <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
             <div class="goal-card">
@@ -422,12 +395,7 @@
 <!-- Section 5: Test Prep - Style 5: Center Divider -->
 <section class="u-bg-teal">
     <div class="container">
-        <div class="section-title-5">
-            <div class="label">Certification</div>
-            <h2>Test <span>Preparation</span></h2>
-            <div class="divider"></div>
-        </div>
-        <p class="section-subtitle">TOEIC Speaking / OPIc / SPA certification prep</p>
+        {{ section_title_10(title='Test Preparation', subtitle='TOEIC Speaking / OPIc / SPA certification prep') }}
 
         <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
             <div class="goal-card">
@@ -502,10 +470,7 @@
 <!-- Section 6: Textbooks Guide - Style 7: Underline Accent -->
 <section class="u-bg-teal-lightest">
     <div class="container">
-        <div class="section-title-7">
-            <h2>Textbooks</h2>
-            <p>마우스를 올리거나 클릭하여 교재를 선택하세요</p>
-        </div>
+        {{ section_title_10(title='Textbooks', subtitle='마우스를 올리거나 클릭하여 교재를 선택하세요') }}
 
         <!-- General Conversation -->
         <div class="textbook-accordion-block">
@@ -792,13 +757,7 @@
 <!-- Section 7: Textbooks Gallery - Grid View -->
 <section class="u-bg-teal">
     <div class="container">
-        <div class="section-title-3">
-            <div class="number">07</div>
-            <div class="text">
-                <h2>Textbooks Gallery</h2>
-                <p>클릭하여 교재 상세 정보를 확인하세요</p>
-            </div>
-        </div>
+        {{ section_title_10(title='Textbooks Gallery', subtitle='클릭하여 교재 상세 정보를 확인하세요') }}
 
         <!-- 교재 캐러셀 -->
         <div class="textbook-carousel">

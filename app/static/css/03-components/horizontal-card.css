@@ -1,0 +1,201 @@
+/**
+ * Horizontal Card Component
+ *
+ * Description: Reusable horizontal image-content card layout
+ * Usage: curriculum cards, corporate cards, and similar layouts
+ * Pattern: BEM naming with modifier support
+ */
+
+/* ============================================
+   Base Horizontal Card
+   Legacy aliases: .curriculum-card-horizontal, .corporate-card-horizontal
+   ============================================ */
+.card-horizontal,
+.curriculum-card-horizontal,
+.corporate-card-horizontal {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 280px;
+}
+
+.card-horizontal:hover,
+.curriculum-card-horizontal:hover,
+.corporate-card-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-horizontal img,
+.curriculum-card-horizontal img,
+.corporate-card-horizontal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-horizontal__content,
+.curriculum-card-horizontal__content,
+.corporate-card-horizontal__content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-horizontal__title,
+.curriculum-card-horizontal__title,
+.corporate-card-horizontal__title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-teal-dark);
+    margin-bottom: 4px;
+}
+
+.card-horizontal__subtitle,
+.curriculum-card-horizontal__subtitle,
+.corporate-card-horizontal__subtitle {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+}
+
+.card-horizontal__features,
+.curriculum-card-horizontal__features,
+.corporate-card-horizontal__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-horizontal__features li,
+.curriculum-card-horizontal__features li,
+.corporate-card-horizontal__features li {
+    font-size: 14px;
+    color: var(--color-text);
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.card-horizontal__features li::before,
+.curriculum-card-horizontal__features li::before,
+.corporate-card-horizontal__features li::before {
+    content: "\2713"; /* checkmark */
+    position: absolute;
+    left: 0;
+    color: var(--color-teal);
+    font-weight: bold;
+}
+
+.card-horizontal__btn,
+.curriculum-card-horizontal__btn,
+.corporate-card-horizontal__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: var(--color-teal);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    align-self: flex-start;
+}
+
+.card-horizontal__btn:hover,
+.curriculum-card-horizontal__btn:hover,
+.corporate-card-horizontal__btn:hover {
+    background: var(--color-teal-dark);
+    transform: translateX(5px);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    .card-horizontal,
+    .curriculum-card-horizontal,
+    .corporate-card-horizontal {
+        height: 260px;
+    }
+
+    .card-horizontal__content,
+    .curriculum-card-horizontal__content,
+    .corporate-card-horizontal__content {
+        padding: 20px;
+    }
+
+    .card-horizontal__title,
+    .curriculum-card-horizontal__title,
+    .corporate-card-horizontal__title {
+        font-size: 18px;
+    }
+
+    .card-horizontal__subtitle,
+    .curriculum-card-horizontal__subtitle,
+    .corporate-card-horizontal__subtitle {
+        font-size: 13px;
+    }
+
+    .card-horizontal__features li,
+    .curriculum-card-horizontal__features li,
+    .corporate-card-horizontal__features li {
+        font-size: 13px;
+        padding: 4px 0;
+    }
+}
+
+/* Mobile S: Vertical Layout */
+@media (max-width: 480px) {
+    .card-horizontal,
+    .curriculum-card-horizontal,
+    .corporate-card-horizontal {
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px auto;
+        height: auto;
+        min-height: 380px;
+    }
+
+    .card-horizontal img,
+    .curriculum-card-horizontal img,
+    .corporate-card-horizontal img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .card-horizontal__content,
+    .curriculum-card-horizontal__content,
+    .corporate-card-horizontal__content {
+        padding: 20px;
+    }
+
+    .card-horizontal__title,
+    .curriculum-card-horizontal__title,
+    .corporate-card-horizontal__title {
+        font-size: 18px;
+    }
+
+    .card-horizontal__subtitle,
+    .curriculum-card-horizontal__subtitle,
+    .corporate-card-horizontal__subtitle {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .card-horizontal__features li,
+    .curriculum-card-horizontal__features li,
+    .corporate-card-horizontal__features li {
+        font-size: 13px;
+    }
+}

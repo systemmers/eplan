@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}Writing Pattern Demo - ePlan{% endblock %}
 
@@ -15,8 +16,7 @@
 <!-- Section 1: Jack Welch Quote -->
 <section class="quote-card-section">
     <div class="container">
-        <h2 class="section-title">Inspirational Quote</h2>
-        <p class="section-subtitle">Quote Card Component</p>
+        {{ section_title_10(title='Inspirational Quote', subtitle='Quote Card Component') }}
 
         <div class="quote-card">
             <p class="quote-card__text">
@@ -44,8 +44,7 @@
 <!-- Section 2: Curriculum Map -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title">Curriculum Map</h2>
-        <p class="section-subtitle">Level Chart Component - Writing Course Overview</p>
+        {{ section_title_10(title='Curriculum Map', subtitle='Level Chart Component - Writing Course Overview') }}
 
         <div class="level-chart">
             <h3 class="level-chart__header">Writing Course Levels</h3>
@@ -129,8 +128,7 @@
 <!-- Section 3: Course Details -->
 <section>
     <div class="container">
-        <h2 class="section-title">Course Details</h2>
-        <p class="section-subtitle">Course Detail Card Components</p>
+        {{ section_title_10(title='Course Details', subtitle='Course Detail Card Components') }}
 
         <div class="course-detail-cards">
             <!-- Business Writing -->
@@ -197,8 +195,7 @@
 <!-- Section 4: Process Flow -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title">Writing Process Flow</h2>
-        <p class="section-subtitle">Process Step Components with Feedback Loop</p>
+        {{ section_title_10(title='Writing Process Flow', subtitle='Process Step Components with Feedback Loop') }}
 
         <div class="process-flow">
             <div class="process-step">

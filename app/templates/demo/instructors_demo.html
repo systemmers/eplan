@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}For Instructors Pattern Demo - ePlan{% endblock %}
 
@@ -115,7 +116,7 @@
 <!-- Section 1: About ePlan -->
 <section>
     <div class="container">
-        <h2 class="section-title">About ePlan</h2>
+        {{ section_title_10(title='About ePlan') }}
         <div class="about-content">
             <p>ePlan Inc. offers corporate in-house teaching and other educational programs for qualified instructors since 2015. We are an organization of experts in each field and a company that provides customized learning services for students and instructors. Teachers who are novice in this industry also have many opportunities to help their careers.</p>
         </div>
@@ -125,8 +126,7 @@
 <!-- Section 2: Requirements -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title">Requirements</h2>
-        <p class="section-subtitle">What we look for in our instructors</p>
+        {{ section_title_10(title='Requirements', subtitle='What we look for in our instructors') }}
 
         <div class="requirements-grid">
             <div class="goal-card">
@@ -180,8 +180,7 @@
 <!-- Section 3: ePlan Clients - Stats -->
 <section>
     <div class="container">
-        <h2 class="section-title">ePlan Clients</h2>
-        <p class="section-subtitle">Our diverse client portfolio</p>
+        {{ section_title_10(title='ePlan Clients', subtitle='Our diverse client portfolio') }}
 
         <h3 class="u-text-center u-mb-4" style="color: var(--color-text-muted); font-size: var(--font-size-base); text-transform: uppercase; letter-spacing: 0.1em;">Portion of Clients</h3>
 
@@ -216,8 +215,7 @@
 <!-- Section 4: Client Logos -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title">Our Partners</h2>
-        <p class="section-subtitle">Trusted by leading organizations</p>
+        {{ section_title_10(title='Our Partners', subtitle='Trusted by leading organizations') }}
 
         <div class="client-logo-grid">
             <div class="client-logo">
@@ -281,8 +279,7 @@
 <!-- Section 5: Job Posting (Optional) -->
 <section>
     <div class="container">
-        <h2 class="section-title">Current Openings</h2>
-        <p class="section-subtitle">Available teaching positions</p>
+        {{ section_title_10(title='Current Openings', subtitle='Available teaching positions') }}
 
         <div class="details-bento">
             <div class="detail-card detail-card--feature">

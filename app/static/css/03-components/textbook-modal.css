@@ -1,0 +1,307 @@
+/**
+ * Textbook Modal Component
+ *
+ * Description: Modal with image slider for textbook preview
+ * Used by: phone-english pages
+ * Dependencies: Requires base styles from variables.css and modals.css for base modal
+ */
+
+/* ============================================
+   Modal with Image Slider (Row Layout)
+   ============================================ */
+
+/* Expanded modal for row layout */
+.textbook-modal--with-slider .textbook-modal__content {
+    max-width: 900px;
+}
+
+.textbook-modal--with-slider .textbook-modal__body {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+}
+
+/* ============================================
+   Image Slider Area (Left)
+   ============================================ */
+.textbook-modal__slider {
+    position: relative;
+    flex: 0 0 500px;
+    background: var(--color-gray-100);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.textbook-modal__slider-viewport {
+    overflow: hidden;
+    aspect-ratio: 3/4;
+}
+
+.textbook-modal__slider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.textbook-modal__slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+}
+
+.textbook-modal__slide-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   Slider Navigation Buttons
+   ============================================ */
+.textbook-modal__slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    opacity: 0;
+    transition: all var(--transition-base);
+}
+
+.textbook-modal__slider:hover .textbook-modal__slider-btn {
+    opacity: 1;
+}
+
+.textbook-modal__slider-btn:hover {
+    background: var(--color-teal-dark);
+    color: var(--color-white);
+}
+
+.textbook-modal__slider-btn--prev {
+    left: var(--spacing-sm);
+}
+
+.textbook-modal__slider-btn--next {
+    right: var(--spacing-sm);
+}
+
+.textbook-modal__slider-btn svg {
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================
+   Slide Counter
+   ============================================ */
+.textbook-modal__counter {
+    position: absolute;
+    bottom: 60px;
+    right: var(--spacing-sm);
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--color-white);
+    padding: 4px 10px;
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+/* ============================================
+   Thumbnails
+   ============================================ */
+.textbook-modal__thumbnails {
+    display: flex;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    justify-content: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.textbook-modal__thumbnails::-webkit-scrollbar {
+    display: none;
+}
+
+.textbook-modal__thumbnail {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 53px;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all var(--transition-base);
+    opacity: 0.6;
+    padding: 0;
+    background: none;
+}
+
+.textbook-modal__thumbnail:hover {
+    opacity: 0.9;
+}
+
+.textbook-modal__thumbnail.is-active {
+    border-color: var(--color-teal-dark);
+    opacity: 1;
+}
+
+.textbook-modal__thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ============================================
+   Content Info Area (Right)
+   ============================================ */
+.textbook-modal__info {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 460px;
+}
+
+.textbook-modal__info .textbook-modal__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.textbook-modal__info .textbook-modal__meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.textbook-modal__info .textbook-modal__meta-item svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--color-teal-dark);
+    fill: none;
+    stroke-width: 2;
+}
+
+.textbook-modal__info .textbook-modal__meta-item strong {
+    color: var(--color-text-primary);
+}
+
+.textbook-modal__info .textbook-modal__section {
+    margin-bottom: var(--spacing-md);
+}
+
+.textbook-modal__info .textbook-modal__section-title {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.textbook-modal__info .textbook-modal__desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.textbook-modal__info .textbook-modal__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.textbook-modal__info .textbook-modal__features li {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    padding-left: var(--spacing-md);
+    position: relative;
+}
+
+.textbook-modal__info .textbook-modal__features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--color-teal-dark);
+    border-radius: 50%;
+}
+
+/* ============================================
+   Responsive Styles
+   ============================================ */
+@media (max-width: 900px) {
+    .textbook-modal--with-slider .textbook-modal__content {
+        max-width: 95vw;
+    }
+
+    .textbook-modal--with-slider .textbook-modal__body {
+        flex-direction: column;
+    }
+
+    .textbook-modal__slider {
+        flex: none;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .textbook-modal__slider-viewport {
+        aspect-ratio: 3/4;
+    }
+
+    .textbook-modal__info {
+        max-height: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .textbook-modal__slider {
+        max-width: 240px;
+    }
+
+    .textbook-modal__slider-viewport {
+        aspect-ratio: 3/4;
+    }
+
+    .textbook-modal__slider-btn {
+        opacity: 1;
+        width: 32px;
+        height: 32px;
+    }
+
+    .textbook-modal__thumbnail {
+        flex: 0 0 36px;
+        width: 36px;
+        height: 48px;
+    }
+
+    .textbook-modal__counter {
+        bottom: 55px;
+    }
+}

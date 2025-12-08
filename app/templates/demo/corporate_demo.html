@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}Corporate Pattern Demo - ePlan{% endblock %}
 
@@ -247,8 +248,7 @@
 <!-- Section 1: Level Cards -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title section-title--left">LEARNING LEVELS</h2>
-        <p class="section-subtitle">4-tier level system for systematic learning path</p>
+        {{ section_title_10(title='LEARNING LEVELS', subtitle='4-tier level system for systematic learning path') }}
 
         <div class="level-cards-grid">
             <div class="level-card level-card--beginner">
@@ -278,8 +278,7 @@
 <!-- Section 2: Goals Cards -->
 <section>
     <div class="container">
-        <h2 class="section-title section-title--left">EDUCATION GOALS</h2>
-        <p class="section-subtitle">In-House Program Core Objectives</p>
+        {{ section_title_10(title='EDUCATION GOALS', subtitle='In-House Program Core Objectives') }}
 
         <div class="goals-grid">
             <div class="goal-card">
@@ -321,8 +320,7 @@
 <!-- Section 3: Details Bento -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title section-title--left">EDUCATION DETAILS</h2>
-        <p class="section-subtitle">In-House Program Specifications</p>
+        {{ section_title_10(title='EDUCATION DETAILS', subtitle='In-House Program Specifications') }}
 
         <div class="details-bento">
             <div class="detail-card detail-card--feature">
@@ -360,8 +358,7 @@
 <!-- Section 4: Intensive Program Example -->
 <section>
     <div class="container">
-        <h2 class="section-title section-title--left">INTENSIVE PROGRAM</h2>
-        <p class="section-subtitle">Short-term intensive goal achievement course</p>
+        {{ section_title_10(title='INTENSIVE PROGRAM', subtitle='Short-term intensive goal achievement course') }}
 
         <div class="goals-grid" style="margin-bottom: var(--spacing-2xl);">
             <div class="goal-card">
@@ -433,13 +430,7 @@
 <!-- Section 5: Program Overview Cards - Overlay Style (1 Column) -->
 <section class="u-bg-teal-lightest u-py-6">
     <div class="container">
-        <div class="section-title-3">
-            <div class="number">05</div>
-            <div class="text">
-                <h2>Program Overview</h2>
-                <p>Corporate 주요 프로그램 안내</p>
-            </div>
-        </div>
+        {{ section_title_10(title='Program Overview', subtitle='Corporate 주요 프로그램 안내') }}
 
         <div class="program-overview-cards">
             <!-- In-house Program -->

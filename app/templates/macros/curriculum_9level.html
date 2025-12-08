@@ -905,3 +905,921 @@
 {{ language_section('polish', '폴란드어', 'Polski', '🇵🇱', 4) }}
 {{ language_section('italian', '이탈리아어', 'Italiano', '🇮🇹', 3) }}
 {% endmacro %}
+
+{# ============================================
+   9레벨 공통 테이블 시스템 (14개 언어 통합)
+   - 모든 언어가 동일한 9레벨 구조 사용
+   - 코스가 없는 레벨은 빈 셀
+   ============================================ #}
+
+{# 9레벨 언어 네비게이션 (탭 전환용) #}
+{% macro language_nav_9level() %}
+<nav class="language-nav-9level" aria-label="언어 선택">
+    <a href="#" class="language-nav-9level__item is-active" data-lang="english">
+        영어<span>English</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="japanese">
+        일본어<span>日本語</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="chinese">
+        중국어<span>中文</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="german">
+        독일어<span>Deutsch</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="spanish">
+        스페인어<span>Español</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="french">
+        프랑스어<span>Français</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="vietnamese">
+        베트남어<span>Tiếng Việt</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="russian">
+        러시아어<span>Русский</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="arabic">
+        아랍어<span>العربية</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="thai">
+        태국어<span>ภาษาไทย</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="indonesian">
+        인도네시아어<span>Bahasa</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="czech">
+        체코어<span>Čeština</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="polish">
+        폴란드어<span>Polski</span>
+    </a>
+    <a href="#" class="language-nav-9level__item" data-lang="italian">
+        이탈리아어<span>Italiano</span>
+    </a>
+</nav>
+{% endmacro %}
+
+{# 9레벨 공통 테이블 헤더 #}
+{% macro table_header_9level() %}
+<thead>
+    <tr>
+        <th rowspan="2">과정</th>
+        <th rowspan="2">코스</th>
+        <th colspan="3" class="level-group beginner">Beginner</th>
+        <th colspan="2" class="level-group pre-intermediate">Pre-Intermediate</th>
+        <th colspan="2" class="level-group intermediate">Intermediate</th>
+        <th colspan="2" class="level-group advanced">Advanced</th>
+    </tr>
+    <tr>
+        <th class="level lv1">Lv.1</th>
+        <th class="level lv2">Lv.2</th>
+        <th class="level lv3">Lv.3</th>
+        <th class="level lv4">Lv.4</th>
+        <th class="level lv5">Lv.5</th>
+        <th class="level lv6">Lv.6</th>
+        <th class="level lv7">Lv.7</th>
+        <th class="level lv8">Lv.8</th>
+        <th class="level lv9">Lv.9</th>
+    </tr>
+</thead>
+{% endmacro %}
+
+{# 9레벨용 교재 셀 (이미지 포함) #}
+{% macro textbook_cell_9level(textbook_ids, level_start, level_end, display_name) %}
+{% set colspan = level_end - level_start + 1 %}
+<td colspan="{{ colspan }}"
+    class="textbook-cell-9level lvbg9_{{ level_start }}_{{ level_end }}"
+    data-textbook-ids='{{ textbook_ids | tojson }}'>
+    <div class="textbook-cell-content-9level">
+        <span class="textbook-name-9level">{{ display_name }}</span>
+        <div class="textbook-images-9level">
+            {% for id in textbook_ids %}
+            <img src="{{ url_for('static', filename='images/books/' ~ id ~ '_cover.png') }}"
+                 alt="{{ id }}"
+                 class="textbook-thumbnail-9level"
+                 onerror="this.src='{{ url_for('static', filename='images/books/placeholder_cover.svg') }}'">
+            {% endfor %}
+        </div>
+    </div>
+</td>
+{% endmacro %}
+
+{# 빈 셀 매크로 (9레벨용) #}
+{% macro empty_cell_9level(colspan=1) %}
+<td colspan="{{ colspan }}" class="empty-cell-9level">-</td>
+{% endmacro %}
+
+{# 9레벨 범례 #}
+{% macro curriculum_legend_9level() %}
+<div class="curriculum-legend-9level">
+    <h4>레벨 범례</h4>
+    <div class="legend-grid-9level">
+        <div class="legend-item-9level">
+            <div class="legend-color-9level lv1"></div>
+            <span class="legend-label-9level">Lv.1</span>
+        </div>
+        <div class="legend-item-9level">
+            <div class="legend-color-9level lv2"></div>
+            <span class="legend-label-9level">Lv.2</span>
+        </div>
+        <div class="legend-item-9level">
+            <div class="legend-color-9level lv3"></div>
+            <span class="legend-label-9level">Lv.3</span>
+        </div>
+        <div class="legend-item-9level">
+            <div class="legend-color-9level lv4"></div>
+            <span class="legend-label-9level">Lv.4</span>
+        </div>
+        <div class="legend-item-9level">
+            <div class="legend-color-9level lv5"></div>
+            <span class="legend-label-9level">Lv.5</span>
+        </div>
+        <div class="legend-item-9level">
+            <div class="legend-color-9level lv6"></div>
+            <span class="legend-label-9level">Lv.6</span>
+        </div>
+        <div class="legend-item-9level">
+            <div class="legend-color-9level lv7"></div>
+            <span class="legend-label-9level">Lv.7</span>
+        </div>
+        <div class="legend-item-9level">
+            <div class="legend-color-9level lv8"></div>
+            <span class="legend-label-9level">Lv.8</span>
+        </div>
+        <div class="legend-item-9level">
+            <div class="legend-color-9level lv9"></div>
+            <span class="legend-label-9level">Lv.9</span>
+        </div>
+    </div>
+    <div class="category-legend-9level">
+        <div class="category-legend-item-9level">
+            <span class="category-badge-9level cat-general">일반회화</span>
+        </div>
+        <div class="category-legend-item-9level">
+            <span class="category-badge-9level cat-business">비즈니스</span>
+        </div>
+        <div class="category-legend-item-9level">
+            <span class="category-badge-9level cat-topic">주제토론</span>
+        </div>
+        <div class="category-legend-item-9level">
+            <span class="category-badge-9level cat-exam">시험대비</span>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{# ============================================
+   영어 9레벨 행 (모든 언어 공통 구조)
+   ============================================ #}
+{% macro english_9level_rows() %}
+<!-- 일반회화 -->
+<tr class="category-header-row">
+    <th rowspan="10"><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>New Connection</td>
+    {{ textbook_cell_9level(['new_connection_1'], 1, 2, 'New Connection 1') }}
+    {{ textbook_cell_9level(['new_connection_2'], 3, 3, 'New Connection 2') }}
+    {{ textbook_cell_9level(['new_connection_3'], 4, 4, 'New Connection 3') }}
+    {{ textbook_cell_9level(['world_english_3'], 5, 5, 'World English 3') }}
+    {{ empty_cell_9level(4) }}
+</tr>
+<tr>
+    <td>Smart Choice</td>
+    {{ textbook_cell_9level(['smart_choice_starter', 'smart_choice_1', 'smart_choice_2', 'smart_choice_3'], 1, 5, 'Smart Choice Starter~3') }}
+    {{ empty_cell_9level(4) }}
+</tr>
+<tr>
+    <td>Stretch</td>
+    {{ textbook_cell_9level(['stretch_starter', 'stretch_1', 'stretch_2', 'stretch_3'], 1, 5, 'Stretch Starter~3') }}
+    {{ empty_cell_9level(4) }}
+</tr>
+<tr>
+    <td>여행영어</td>
+    {{ empty_cell_9level(1) }}
+    {{ textbook_cell_9level(['travel_english_100'], 2, 4, '여행영어 100일의 기적') }}
+    {{ empty_cell_9level(5) }}
+</tr>
+<tr>
+    <td>핵심패턴</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['core_pattern_233'], 4, 6, '핵심패턴 233 중고급편') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>패턴 900</td>
+    {{ textbook_cell_9level(['begin_again_1'], 1, 1, '비긴어게인 VOL.1') }}
+    {{ textbook_cell_9level(['begin_again_2'], 2, 2, '비긴어게인 VOL.2') }}
+    {{ textbook_cell_9level(['pep_900'], 3, 6, 'PEP 900') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>Smart English (주니어)</td>
+    {{ textbook_cell_9level(['smart_english_starter'], 1, 1, 'Starter') }}
+    {{ textbook_cell_9level(['smart_english_1'], 2, 2, 'SE 1') }}
+    {{ textbook_cell_9level(['smart_english_2'], 3, 3, 'SE 2') }}
+    {{ textbook_cell_9level(['smart_english_3'], 4, 4, 'SE 3') }}
+    {{ textbook_cell_9level(['smart_english_4'], 5, 5, 'SE 4') }}
+    {{ textbook_cell_9level(['smart_english_5'], 6, 6, 'SE 5') }}
+    {{ textbook_cell_9level(['smart_english_6'], 7, 7, 'SE 6') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>Exploring English</td>
+    {{ textbook_cell_9level(['exploring_english_1'], 1, 1, 'EE 1') }}
+    {{ textbook_cell_9level(['exploring_english_2'], 2, 2, 'EE 2') }}
+    {{ textbook_cell_9level(['exploring_english_3'], 3, 3, 'EE 3') }}
+    {{ textbook_cell_9level(['exploring_english_4'], 4, 4, 'EE 4') }}
+    {{ textbook_cell_9level(['exploring_english_5'], 5, 5, 'EE 5') }}
+    {{ empty_cell_9level(4) }}
+</tr>
+<tr>
+    <td>American English File</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['american_english_file_4'], 4, 6, 'AEF 4') }}
+    {{ textbook_cell_9level(['american_english_file_5'], 7, 8, 'AEF 5') }}
+    {{ empty_cell_9level(1) }}
+</tr>
+<tr>
+    <td>Smart Phonics (주니어)</td>
+    {{ textbook_cell_9level(['smart_phonics_1', 'smart_phonics_2', 'smart_phonics_3'], 1, 1, 'SP 1-3') }}
+    {{ empty_cell_9level(8) }}
+</tr>
+
+<!-- 비즈니스 -->
+<tr class="category-header-row">
+    <th rowspan="8"><span class="category-badge-9level cat-business">비즈니스</span></th>
+    <td>Meeting Skill</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['english_for_meetings'], 4, 6, 'English for Meetings') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>Negotiation Skill</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['english_for_negotiation'], 4, 6, 'English for Negotiation') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>Presentation Skill</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['english_for_presentations'], 4, 6, 'English for Presentations') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>Socializing Skill</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['english_for_socializing'], 4, 6, 'English for Socializing') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>Telephoning Skill</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['english_for_telephoning'], 3, 5, 'English for Telephoning') }}
+    {{ empty_cell_9level(4) }}
+</tr>
+<tr>
+    <td>비즈니스 핵심패턴</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['business_pattern_233'], 3, 4, '비즈니스 핵심패턴 233') }}
+    {{ empty_cell_9level(5) }}
+</tr>
+<tr>
+    <td>Business Partner</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['business_partner_a2'], 3, 3, 'BP A2') }}
+    {{ textbook_cell_9level(['business_partner_b2'], 4, 5, 'BP B2+') }}
+    {{ textbook_cell_9level(['profile_1'], 6, 6, 'Profile 1') }}
+    {{ textbook_cell_9level(['profile_2'], 7, 7, 'Profile 2') }}
+    {{ textbook_cell_9level(['profile_3'], 8, 9, 'Profile 3') }}
+</tr>
+<tr>
+    <td>Business Venture</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['business_venture_1'], 4, 4, 'BV 1') }}
+    {{ textbook_cell_9level(['business_venture_2'], 5, 5, 'BV 2') }}
+    {{ textbook_cell_9level(['business_result_upper'], 6, 7, 'Business Result Upper') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+
+<!-- 주제토론 -->
+<tr class="category-header-row">
+    <th rowspan="7"><span class="category-badge-9level cat-topic">주제토론</span></th>
+    <td>뉴스미디어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['news_media'], 4, 9, 'News Media') }}
+</tr>
+<tr>
+    <td>하버드비즈니스리뷰 Orange</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['hbr_orange'], 4, 7, 'HBR Orange') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>하버드비즈니스리뷰 Daily</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['hbr_daily'], 4, 7, 'HBR Daily') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>파워 오브 스토리텔링</td>
+    {{ empty_cell_9level(4) }}
+    {{ textbook_cell_9level(['power_of_storytelling'], 5, 9, 'Power of Storytelling') }}
+</tr>
+<tr>
+    <td>Jazz English</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['jazz_english_1'], 4, 4, 'Jazz 1') }}
+    {{ textbook_cell_9level(['jazz_english_2'], 5, 6, 'Jazz 2') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>Hot Topic</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['hot_topic_1'], 4, 5, 'Hot Topic 1') }}
+    {{ textbook_cell_9level(['hot_topic_2'], 6, 7, 'Hot Topic 2') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>토론영어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['debate_english'], 4, 6, '실전 토론 영어') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+
+<!-- 시험대비 -->
+<tr class="category-header-row">
+    <th rowspan="5"><span class="category-badge-9level cat-exam">시험대비</span></th>
+    <td>토익스피킹</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['toeic_speaking_start'], 3, 4, 'TOEIC Speaking Start') }}
+    {{ textbook_cell_9level(['toeic_speaking_lv6'], 5, 5, 'Lv.6') }}
+    {{ textbook_cell_9level(['toeic_speaking_lv78'], 6, 6, 'Lv.7-8') }}
+    {{ textbook_cell_9level(['ets_toeic_speaking'], 7, 7, 'ETS 기출') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>오픽</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['opic_god'], 4, 6, 'OPIC의 신') }}
+    {{ textbook_cell_9level(['opic_advanced'], 7, 7, 'OPIC Advanced') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>IELTS Speaking</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['ielts_master'], 4, 7, 'IELTS MASTER') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>토플스피킹</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['toefl_speaking'], 4, 7, 'TOEFL Speaking') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>SPA</td>
+    {{ empty_cell_9level(1) }}
+    {{ textbook_cell_9level(['spa_beginner'], 2, 4, 'SPA 초급') }}
+    {{ textbook_cell_9level(['spa_training'], 5, 7, 'SPA 트레이닝') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   일본어 9레벨 행 (9레벨 공통 구조)
+   ============================================ #}
+{% macro japanese_9level_rows() %}
+<!-- 일반회화 -->
+<tr class="category-header-row">
+    <th rowspan="5"><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>New 다이나믹 일본어</td>
+    {{ textbook_cell_9level(['new_dynamic_jp_1'], 1, 1, 'N다이나믹 1') }}
+    {{ textbook_cell_9level(['new_dynamic_jp_2'], 2, 2, 'N다이나믹 2') }}
+    {{ textbook_cell_9level(['new_dynamic_jp_3'], 3, 3, 'N다이나믹 3') }}
+    {{ textbook_cell_9level(['new_dynamic_jp_4'], 4, 4, 'N다이나믹 4') }}
+    {{ textbook_cell_9level(['new_dynamic_jp_4'], 5, 6, 'N다이나믹 4') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>다락원 일본어 마스터</td>
+    {{ textbook_cell_9level(['darakwon_jp_1'], 1, 1, '마스터 1') }}
+    {{ textbook_cell_9level(['darakwon_jp_2'], 2, 2, '마스터 2') }}
+    {{ textbook_cell_9level(['darakwon_jp_3'], 3, 3, '마스터 3') }}
+    {{ textbook_cell_9level(['darakwon_jp_4'], 4, 4, '마스터 4') }}
+    {{ textbook_cell_9level(['darakwon_jp_5'], 5, 6, '마스터 5') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>스꾸스꾸 일본어</td>
+    {{ textbook_cell_9level(['sukusuku_jp_1'], 1, 1, '스꾸스꾸 1') }}
+    {{ textbook_cell_9level(['sukusuku_jp_2'], 2, 2, '스꾸스꾸 2') }}
+    {{ textbook_cell_9level(['sukusuku_jp_3'], 3, 3, '스꾸스꾸 3') }}
+    {{ textbook_cell_9level(['sukusuku_jp_4'], 4, 4, '스꾸스꾸 4') }}
+    {{ textbook_cell_9level(['sukusuku_jp_4'], 5, 6, '스꾸스꾸 4') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>여행일본어</td>
+    {{ empty_cell_9level(1) }}
+    {{ textbook_cell_9level(['travel_jp'], 2, 5, '맛있는 여행 일본어') }}
+    {{ empty_cell_9level(4) }}
+</tr>
+<tr>
+    <td>프리토킹 완전정복</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['freetalk_jp'], 3, 7, '프리토킹 일본어 완전정복') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+
+<!-- 비즈니스 -->
+<tr class="category-header-row">
+    <th rowspan="3"><span class="category-badge-9level cat-business">비즈니스</span></th>
+    <td>현지 비즈니스 일본어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['business_jp_real'], 4, 9, '생생체험 현지 비즈니스') }}
+</tr>
+<tr>
+    <td>두발짝 비즈니스</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['twostep_business_jp'], 4, 9, '두발짝 비즈니스 일본어') }}
+</tr>
+<tr>
+    <td>비즈니스 핵심패턴</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['business_jp_pattern'], 4, 7, '비즈니스 핵심패턴 233') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+
+<!-- 주제토론 -->
+<tr class="category-header-row">
+    <th rowspan="4"><span class="category-badge-9level cat-topic">주제토론</span></th>
+    <td>뉴스미디어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['news_media_jp'], 4, 9, '뉴스미디어 일본어') }}
+</tr>
+<tr>
+    <td>즐거운 프리토킹</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['fun_freetalk_jp_40'], 3, 5, '프리토킹 40 초중급') }}
+    {{ textbook_cell_9level(['fun_freetalk_jp_60'], 6, 9, '프리토킹 60 중상급') }}
+</tr>
+<tr>
+    <td>수다프리토킹</td>
+    {{ empty_cell_9level(4) }}
+    {{ textbook_cell_9level(['suda_freetalk_jp'], 5, 9, '일본어 수다프리토킹 360') }}
+</tr>
+<tr>
+    <td>다락원 일본어 독해</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['darakwon_reading_beginner'], 3, 4, '독해 초급') }}
+    {{ textbook_cell_9level(['darakwon_reading_intermediate'], 5, 7, '독해 중급') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+
+<!-- 시험대비 -->
+<tr class="category-header-row">
+    <th rowspan="4"><span class="category-badge-9level cat-exam">시험대비</span></th>
+    <td>SJPT</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['sjpt_pass'], 4, 7, 'SJPT 합격하기') }}
+    {{ textbook_cell_9level(['sjpt_past'], 8, 9, 'SJPT 기출') }}
+</tr>
+<tr>
+    <td>SJPT L.4-8</td>
+    {{ empty_cell_9level(4) }}
+    {{ textbook_cell_9level(['sjpt_intermediate'], 5, 8, 'SJPT 중고급 L.4-8') }}
+    {{ empty_cell_9level(1) }}
+</tr>
+<tr>
+    <td>JPT</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['jpt_450'], 3, 4, 'JPT 450') }}
+    {{ empty_cell_9level(1) }}
+    {{ textbook_cell_9level(['jpt_800'], 6, 9, 'JPT 800') }}
+</tr>
+<tr>
+    <td>JLPT</td>
+    {{ empty_cell_9level(1) }}
+    {{ textbook_cell_9level(['jlpt_n4'], 2, 3, 'JLPT N4') }}
+    {{ textbook_cell_9level(['jlpt_n3'], 4, 5, 'JLPT N3') }}
+    {{ textbook_cell_9level(['jlpt_n2'], 6, 7, 'JLPT N2') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   중국어 9레벨 행 (9레벨 공통 구조)
+   ============================================ #}
+{% macro chinese_9level_rows() %}
+<!-- 일반회화 -->
+<tr class="category-header-row">
+    <th rowspan="4"><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>맛있는 중국어</td>
+    {{ textbook_cell_9level(['delicious_cn_1'], 1, 1, '맛있는 1') }}
+    {{ textbook_cell_9level(['delicious_cn_2'], 2, 2, '맛있는 2') }}
+    {{ textbook_cell_9level(['delicious_cn_2'], 3, 3, '맛있는 2') }}
+    {{ textbook_cell_9level(['delicious_cn_3'], 4, 5, '맛있는 3') }}
+    {{ textbook_cell_9level(['delicious_cn_4'], 6, 7, '맛있는 4') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>중국어 마스터</td>
+    {{ textbook_cell_9level(['cn_master_1'], 1, 1, '마스터 1') }}
+    {{ textbook_cell_9level(['cn_master_2'], 2, 2, '마스터 2') }}
+    {{ textbook_cell_9level(['cn_master_3'], 3, 3, '마스터 3') }}
+    {{ textbook_cell_9level(['cn_master_4'], 4, 4, '마스터 4') }}
+    {{ textbook_cell_9level(['cn_master_5'], 5, 5, '마스터 5') }}
+    {{ textbook_cell_9level(['cn_master_6'], 6, 7, '마스터 6') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>끝장 중국어</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['finish_cn'], 3, 5, '끝장 중국어 기초') }}
+    {{ empty_cell_9level(4) }}
+</tr>
+<tr>
+    <td>여행 중국어</td>
+    {{ empty_cell_9level(1) }}
+    {{ textbook_cell_9level(['travel_cn'], 2, 5, '해커스 여행 중국어') }}
+    {{ empty_cell_9level(4) }}
+</tr>
+
+<!-- 비즈니스 -->
+<tr class="category-header-row">
+    <th rowspan="3"><span class="category-badge-9level cat-business">비즈니스</span></th>
+    <td>OK 비즈니스 중국어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['ok_business_cn'], 4, 9, 'OK 비즈니스 중국어') }}
+</tr>
+<tr>
+    <td>비즈니스 실무</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['business_cn_practice'], 4, 9, '비즈니스 실무 중고급') }}
+</tr>
+<tr>
+    <td>출장 중국어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['business_trip_cn'], 4, 9, '겁없는 중국출장') }}
+</tr>
+
+<!-- 주제토론 -->
+<tr class="category-header-row">
+    <th rowspan="4"><span class="category-badge-9level cat-topic">주제토론</span></th>
+    <td>신문화 중국어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['new_culture_cn'], 4, 7, '신문화 중국어') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr>
+    <td>뉴스미디어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['news_media_cn'], 4, 9, '뉴스미디어 중국어') }}
+</tr>
+<tr>
+    <td>중국뉴스 중국어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['china_news_cn'], 4, 9, '겁없는 중국뉴스') }}
+</tr>
+<tr>
+    <td>프리토킹</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['freetalk_cn'], 4, 9, '신공략 프리토킹') }}
+</tr>
+
+<!-- 시험대비 -->
+<tr class="category-header-row">
+    <th rowspan="3"><span class="category-badge-9level cat-exam">시험대비</span></th>
+    <td>OPIC</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['opic_cn'], 4, 6, 'OPIc 중국어 IH공략') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+<tr>
+    <td>TSC</td>
+    {{ textbook_cell_9level(['tsc_start'], 1, 1, 'TSC START') }}
+    {{ textbook_cell_9level(['tsc_basic'], 2, 3, 'TSC BASIC') }}
+    {{ textbook_cell_9level(['tsc_booster'], 4, 4, 'TSC Booster') }}
+    {{ textbook_cell_9level(['tsc_higher'], 5, 6, 'TSC Higher') }}
+    {{ textbook_cell_9level(['tsc_master'], 7, 8, 'TSC Master') }}
+    {{ empty_cell_9level(1) }}
+</tr>
+<tr>
+    <td>BCT 스피킹</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['bct_speaking'], 3, 7, 'BCT Speaking 공략') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   독일어 9레벨 행 (1-7 사용, 8-9 빈 셀)
+   ============================================ #}
+{% macro german_9level_rows() %}
+<tr class="category-header-row">
+    <th><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>일반회화</td>
+    {{ textbook_cell_9level(['german_beginner'], 1, 3, '독일어 첫걸음') }}
+    {{ textbook_cell_9level(['german_intermediate'], 4, 7, '독일어 중고급') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   스페인어 9레벨 행 (1-8 사용, 9 빈 셀)
+   ============================================ #}
+{% macro spanish_9level_rows() %}
+<tr class="category-header-row">
+    <th rowspan="2"><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>일반회화</td>
+    {{ textbook_cell_9level(['spanish_beginner'], 1, 3, '스페인어 첫걸음') }}
+    {{ empty_cell_9level(6) }}
+</tr>
+<tr>
+    <td>NUEVO ESPANOL</td>
+    {{ empty_cell_9level(1) }}
+    {{ textbook_cell_9level(['nuevo_espanol_1'], 2, 2, 'NUEVO 1') }}
+    {{ textbook_cell_9level(['nuevo_espanol_2'], 3, 3, 'NUEVO 2') }}
+    {{ textbook_cell_9level(['nuevo_espanol_3'], 4, 5, 'NUEVO 3') }}
+    {{ textbook_cell_9level(['nuevo_espanol_4'], 6, 7, 'NUEVO 4') }}
+    {{ empty_cell_9level(2) }}
+</tr>
+<tr class="category-header-row">
+    <th rowspan="2"><span class="category-badge-9level cat-exam">시험대비</span></th>
+    <td>FLEX UP 스페인어</td>
+    {{ empty_cell_9level(3) }}
+    {{ textbook_cell_9level(['flex_spanish'], 4, 8, 'FLEX UP 스페인어') }}
+    {{ empty_cell_9level(1) }}
+</tr>
+<tr>
+    <td>Entorno laboral</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['entorno_a1_b1'], 3, 4, 'Entorno A1-B1') }}
+    {{ textbook_cell_9level(['entorno_b2'], 5, 6, 'Entorno B2') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   프랑스어 9레벨 행
+   ============================================ #}
+{% macro french_9level_rows() %}
+<tr class="category-header-row">
+    <th rowspan="2"><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>일반회화</td>
+    {{ textbook_cell_9level(['french_beginner'], 1, 3, '프랑스어 첫걸음') }}
+    {{ empty_cell_9level(6) }}
+</tr>
+<tr>
+    <td>Festival</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['festival_1'], 3, 4, 'Festival 1') }}
+    {{ textbook_cell_9level(['festival_2'], 5, 6, 'Festival 2') }}
+    {{ textbook_cell_9level(['festival_3'], 7, 9, 'Festival 3') }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   베트남어 9레벨 행 (1-5 사용, 6-9 빈 셀)
+   ============================================ #}
+{% macro vietnamese_9level_rows() %}
+<tr class="category-header-row">
+    <th rowspan="3"><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>가장 쉬운 독학</td>
+    {{ textbook_cell_9level(['vietnamese_easiest'], 1, 3, '독학 베트남어 첫걸음') }}
+    {{ empty_cell_9level(6) }}
+</tr>
+<tr>
+    <td>패턴의 법칙</td>
+    {{ textbook_cell_9level(['vietnamese_pattern'], 1, 3, '패턴 베트남어 첫걸음') }}
+    {{ empty_cell_9level(6) }}
+</tr>
+<tr>
+    <td>The 바른 베트남어</td>
+    {{ empty_cell_9level(2) }}
+    {{ textbook_cell_9level(['barun_vietnamese_2'], 3, 4, 'The 바른 Step 2') }}
+    {{ textbook_cell_9level(['vietnamese_intermediate'], 5, 5, '중고급') }}
+    {{ empty_cell_9level(4) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   러시아어 9레벨 행 (1-6 사용, 7-9 빈 셀)
+   ============================================ #}
+{% macro russian_9level_rows() %}
+<tr class="category-header-row">
+    <th><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>일반회화</td>
+    {{ textbook_cell_9level(['russian_beginner'], 1, 3, '러시아어 첫걸음') }}
+    {{ textbook_cell_9level(['russian_intermediate'], 4, 6, '중급 러시아어') }}
+    {{ empty_cell_9level(3) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   아랍어 9레벨 행 (1-4 사용, 5-9 빈 셀)
+   ============================================ #}
+{% macro arabic_9level_rows() %}
+<tr class="category-header-row">
+    <th><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>The 바른 아랍어</td>
+    {{ textbook_cell_9level(['barun_arabic_1'], 1, 2, 'The 바른 Step 1') }}
+    {{ textbook_cell_9level(['barun_arabic_2'], 3, 4, 'The 바른 Step 2') }}
+    {{ empty_cell_9level(5) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   태국어 9레벨 행
+   ============================================ #}
+{% macro thai_9level_rows() %}
+<tr class="category-header-row">
+    <th rowspan="2"><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>The 바른 태국어</td>
+    {{ textbook_cell_9level(['barun_thai'], 1, 3, 'The 바른 태국어 첫걸음') }}
+    {{ empty_cell_9level(6) }}
+</tr>
+<tr>
+    <td>태국어 표준교재</td>
+    {{ textbook_cell_9level(['thai_standard_a0'], 1, 1, 'A0') }}
+    {{ textbook_cell_9level(['thai_standard_a1'], 2, 3, 'A1') }}
+    {{ textbook_cell_9level(['thai_standard_a1a2'], 4, 4, 'A1-A2') }}
+    {{ textbook_cell_9level(['thai_standard_a2'], 5, 5, 'A2') }}
+    {{ textbook_cell_9level(['thai_standard_b1'], 6, 7, 'B1') }}
+    {{ textbook_cell_9level(['thai_standard_b2'], 8, 9, 'B2') }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   인도네시아어 9레벨 행 (1-4 사용, 5-9 빈 셀)
+   ============================================ #}
+{% macro indonesian_9level_rows() %}
+<tr class="category-header-row">
+    <th><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>The 바른 인도네시아어</td>
+    {{ textbook_cell_9level(['barun_indonesian_1'], 1, 2, 'The 바른 Step 1') }}
+    {{ textbook_cell_9level(['barun_indonesian_2'], 3, 4, 'The 바른 Step 2') }}
+    {{ empty_cell_9level(5) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   체코어 9레벨 행 (1-3 사용, 4-9 빈 셀)
+   ============================================ #}
+{% macro czech_9level_rows() %}
+<tr class="category-header-row">
+    <th rowspan="3"><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>The 바른 체코어</td>
+    {{ textbook_cell_9level(['barun_czech'], 1, 3, 'The 바른 체코어') }}
+    {{ empty_cell_9level(6) }}
+</tr>
+<tr>
+    <td>Say it in Czech</td>
+    {{ textbook_cell_9level(['say_it_czech'], 1, 3, 'Say it in Czech') }}
+    {{ empty_cell_9level(6) }}
+</tr>
+<tr>
+    <td>Cestina pro cizince</td>
+    {{ textbook_cell_9level(['cestina_cizince'], 1, 3, 'Cestina A1-A2') }}
+    {{ empty_cell_9level(6) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   폴란드어 9레벨 행 (1-4 사용, 5-9 빈 셀)
+   ============================================ #}
+{% macro polish_9level_rows() %}
+<tr class="category-header-row">
+    <th><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>The 바른 폴란드어</td>
+    {{ textbook_cell_9level(['barun_polish_1'], 1, 2, 'The 바른 Step 1') }}
+    {{ textbook_cell_9level(['barun_polish_2'], 3, 4, 'The 바른 Step 2') }}
+    {{ empty_cell_9level(5) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   이탈리아어 9레벨 행 (1-3 사용, 4-9 빈 셀)
+   ============================================ #}
+{% macro italian_9level_rows() %}
+<tr class="category-header-row">
+    <th><span class="category-badge-9level cat-general">일반회화</span></th>
+    <td>이탈리아어 첫걸음</td>
+    {{ textbook_cell_9level(['italian_beginner'], 1, 3, '이탈리아어 첫걸음') }}
+    {{ empty_cell_9level(6) }}
+</tr>
+{% endmacro %}
+
+{# ============================================
+   9레벨 공통 테이블 래퍼 (개별 언어용)
+   ============================================ #}
+{% macro curriculum_table_9level(language, show_legend=true) %}
+<div class="curriculum-table-wrapper-9level">
+    <div class="scroll-notice-9level">
+        좌우로 스크롤하여 전체 커리큘럼을 확인하세요
+    </div>
+    <div class="curriculum-table-scroll-9level">
+        <table class="curriculum-table-9level">
+            {{ table_header_9level() }}
+            <tbody>
+                {% if language == 'english' %}
+                    {{ english_9level_rows() }}
+                {% elif language == 'japanese' %}
+                    {{ japanese_9level_rows() }}
+                {% elif language == 'chinese' %}
+                    {{ chinese_9level_rows() }}
+                {% elif language == 'german' %}
+                    {{ german_9level_rows() }}
+                {% elif language == 'spanish' %}
+                    {{ spanish_9level_rows() }}
+                {% elif language == 'french' %}
+                    {{ french_9level_rows() }}
+                {% elif language == 'vietnamese' %}
+                    {{ vietnamese_9level_rows() }}
+                {% elif language == 'russian' %}
+                    {{ russian_9level_rows() }}
+                {% elif language == 'arabic' %}
+                    {{ arabic_9level_rows() }}
+                {% elif language == 'thai' %}
+                    {{ thai_9level_rows() }}
+                {% elif language == 'indonesian' %}
+                    {{ indonesian_9level_rows() }}
+                {% elif language == 'czech' %}
+                    {{ czech_9level_rows() }}
+                {% elif language == 'polish' %}
+                    {{ polish_9level_rows() }}
+                {% elif language == 'italian' %}
+                    {{ italian_9level_rows() }}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    {% if show_legend %}
+    {{ curriculum_legend_9level() }}
+    {% endif %}
+</div>
+{% endmacro %}
+
+{# ============================================
+   전체 언어 렌더링 (9레벨 공통 시스템)
+   - 탭 전환 지원
+   - 모든 언어가 9레벨 공통 구조 사용
+   ============================================ #}
+{% macro all_languages_9level() %}
+<div id="lang-english" class="language-section-9level" style="display: block;">
+    <h3>영어 (English)</h3>
+    {{ curriculum_table_9level('english', show_legend=true) }}
+</div>
+<div id="lang-japanese" class="language-section-9level" style="display: none;">
+    <h3>일본어 (日本語)</h3>
+    {{ curriculum_table_9level('japanese', show_legend=false) }}
+</div>
+<div id="lang-chinese" class="language-section-9level" style="display: none;">
+    <h3>중국어 (中文)</h3>
+    {{ curriculum_table_9level('chinese', show_legend=false) }}
+</div>
+<div id="lang-german" class="language-section-9level" style="display: none;">
+    <h3>독일어 (Deutsch)</h3>
+    {{ curriculum_table_9level('german', show_legend=false) }}
+</div>
+<div id="lang-spanish" class="language-section-9level" style="display: none;">
+    <h3>스페인어 (Español)</h3>
+    {{ curriculum_table_9level('spanish', show_legend=false) }}
+</div>
+<div id="lang-french" class="language-section-9level" style="display: none;">
+    <h3>프랑스어 (Français)</h3>
+    {{ curriculum_table_9level('french', show_legend=false) }}
+</div>
+<div id="lang-vietnamese" class="language-section-9level" style="display: none;">
+    <h3>베트남어 (Tiếng Việt)</h3>
+    {{ curriculum_table_9level('vietnamese', show_legend=false) }}
+</div>
+<div id="lang-russian" class="language-section-9level" style="display: none;">
+    <h3>러시아어 (Русский)</h3>
+    {{ curriculum_table_9level('russian', show_legend=false) }}
+</div>
+<div id="lang-arabic" class="language-section-9level" style="display: none;">
+    <h3>아랍어 (العربية)</h3>
+    {{ curriculum_table_9level('arabic', show_legend=false) }}
+</div>
+<div id="lang-thai" class="language-section-9level" style="display: none;">
+    <h3>태국어 (ภาษาไทย)</h3>
+    {{ curriculum_table_9level('thai', show_legend=false) }}
+</div>
+<div id="lang-indonesian" class="language-section-9level" style="display: none;">
+    <h3>인도네시아어 (Bahasa Indonesia)</h3>
+    {{ curriculum_table_9level('indonesian', show_legend=false) }}
+</div>
+<div id="lang-czech" class="language-section-9level" style="display: none;">
+    <h3>체코어 (Čeština)</h3>
+    {{ curriculum_table_9level('czech', show_legend=false) }}
+</div>
+<div id="lang-polish" class="language-section-9level" style="display: none;">
+    <h3>폴란드어 (Polski)</h3>
+    {{ curriculum_table_9level('polish', show_legend=false) }}
+</div>
+<div id="lang-italian" class="language-section-9level" style="display: none;">
+    <h3>이탈리아어 (Italiano)</h3>
+    {{ curriculum_table_9level('italian', show_legend=false) }}
+</div>
+{% endmacro %}

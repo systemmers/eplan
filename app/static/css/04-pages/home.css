@@ -1,12 +1,19 @@
-/* Home Page Specific Styles */
+/**
+ * Home Page Specific Styles
+ *
+ * Description: Page-specific styles for the homepage
+ * Components: Uses horizontal-card, service-card-overlay, stats-circle,
+ *             news-top-card, clients-slider from 03-components/
+ */
 
-/* Hero Video Background */
+/* ============================================
+   Hero Video Background
+   ============================================ */
 .hero-video {
     position: relative;
     overflow: hidden;
 }
 
-/* 히어로 섹션 높이 조정 */
 .hero-section.hero-video {
     min-height: 100vh;
     display: flex;
@@ -33,7 +40,6 @@
     z-index: 1;
 }
 
-/* 히어로 콘텐츠 상단 배치 */
 .hero-content {
     position: relative;
     z-index: 10;
@@ -47,7 +53,9 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Hero Main Logo */
+/* ============================================
+   Hero Main Logo
+   ============================================ */
 .hero-logo-container {
     position: relative;
     z-index: 10;
@@ -64,13 +72,9 @@
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
 
-@media (max-width: 768px) {
-    .hero-main-logo {
-        max-width: 280px;
-    }
-}
-
-/* Glassmorphism 네비게이션 카드 - 히어로 중앙 배치 */
+/* ============================================
+   Glassmorphism Navigation Cards
+   ============================================ */
 .hero-nav-cards {
     position: relative;
     z-index: 10;
@@ -88,19 +92,6 @@
     gap: 1rem;
     max-width: 64rem;
     margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-    .hero-nav-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .hero-nav-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
 }
 
 .hero-nav-card {
@@ -124,14 +115,6 @@
     text-align: center;
 }
 
-@media (min-width: 768px) {
-    .hero-nav-card {
-        padding: 1.5rem;
-        min-height: 10rem;
-        gap: 0.75rem;
-    }
-}
-
 .hero-nav-card:hover {
     background: rgba(255, 255, 255, 0.08);
     transform: translateY(-2px);
@@ -142,13 +125,6 @@
     height: 36px;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: var(--spacing-sm);
-}
-
-@media (min-width: 768px) {
-    .hero-nav-icon {
-        width: 42px;
-        height: 42px;
-    }
 }
 
 .hero-nav-icon svg {
@@ -173,7 +149,9 @@
     color: #d4d4d4;
 }
 
-/* Services Section */
+/* ============================================
+   Services Section
+   ============================================ */
 .services-section {
     background: var(--color-white);
 }
@@ -185,136 +163,9 @@
     margin-top: var(--spacing-xl);
 }
 
-/* Image Overlay Card Styles */
-.service-card-overlay {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    height: 480px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-    display: block;
-}
-
-.service-card-overlay:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-.service-card-overlay img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.service-card-overlay__gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(0, 0, 0, 0.3) 50%,
-        rgba(0, 0, 0, 0.85) 100%
-    );
-    z-index: 1;
-}
-
-.service-card-overlay__content {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 24px;
-    color: white;
-    z-index: 2;
-}
-
-.service-card-overlay__title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: white;
-}
-
-.service-card-overlay__subtitle {
-    font-size: 16px;
-    margin-bottom: 8px;
-    opacity: 0.95;
-    color: white;
-}
-
-.service-card-overlay__desc {
-    font-size: 14px;
-    margin-bottom: 16px;
-    opacity: 0.9;
-    color: white;
-    line-height: 1.5;
-}
-
-.service-card-overlay__tags {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.service-card-overlay__tags .tag {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    color: white;
-}
-
-.service-card-overlay__btn {
-    background: white;
-    color: #1a1a1a;
-    border: none;
-    border-radius: 24px;
-    padding: 14px 32px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 14px;
-    align-self: flex-start;
-}
-
-.service-card-overlay__btn:hover {
-    background: #f0f0f0;
-    transform: scale(1.02);
-}
-
-/* Legacy service card styles (kept for compatibility) */
-.service-card {
-    text-align: center;
-}
-
-.service-icon {
-    margin-bottom: var(--spacing-md);
-    display: inline-flex;
-    color: #6B7280;
-}
-
-.service-icon svg {
-    width: 48px;
-    height: 48px;
-}
-
-.service-desc {
-    color: var(--color-text-muted);
-    margin-bottom: var(--spacing-md);
-}
-
-/* Strengths Section */
+/* ============================================
+   Strengths Section
+   ============================================ */
 .strengths-section {
     background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80');
     background-size: cover;
@@ -357,93 +208,9 @@
     margin-bottom: var(--spacing-sm);
 }
 
-/* ========================================
-   Company Strengths - Circle Progress Style
-======================================== */
-
-.stats-circle-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-xl);
-}
-
-@media (max-width: 1024px) {
-    .stats-circle-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .stats-circle-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Stat Circle Card */
-.stat-circle {
-    background: var(--color-white);
-    border-radius: 20px;
-    padding: 36px;
-    text-align: center;
-    border: 1px solid var(--color-border);
-    transition: box-shadow var(--transition-base), transform var(--transition-base);
-}
-
-.stat-circle:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-}
-
-/* Circle Progress */
-.stat-circle .circle {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: conic-gradient(
-        var(--color-teal-dark) 0deg var(--progress, 270deg),
-        var(--color-gray-light) var(--progress, 270deg) 360deg
-    );
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 24px;
-    position: relative;
-}
-
-.stat-circle .circle::before {
-    content: '';
-    position: absolute;
-    width: 96px;
-    height: 96px;
-    background: var(--color-white);
-    border-radius: 50%;
-}
-
-.stat-circle .circle-value {
-    position: relative;
-    z-index: 1;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--color-text-dark);
-}
-
-/* Labels */
-.stat-circle .stat-label {
-    font-family: var(--font-family-heading);
-    font-size: 0.9rem;
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text-dark);
-}
-
-.stat-circle .stat-sublabel {
-    font-family: var(--font-family-base);
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
-    margin-top: 4px;
-}
-
-/* Curriculum Section */
+/* ============================================
+   Curriculum Section
+   ============================================ */
 .curriculum-section {
     background: var(--color-white);
 }
@@ -465,96 +232,9 @@
     margin: var(--spacing-md) 0;
 }
 
-/* Curriculum Horizontal Cards */
-.curriculum-card-horizontal {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    height: 280px;
-}
-
-.curriculum-card-horizontal:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.curriculum-card-horizontal img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.curriculum-card-horizontal__content {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.curriculum-card-horizontal__title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--color-teal-dark);
-    margin-bottom: 4px;
-}
-
-.curriculum-card-horizontal__subtitle {
-    font-size: 14px;
-    color: var(--color-text-muted);
-    margin-bottom: 12px;
-}
-
-.curriculum-card-horizontal__features {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.curriculum-card-horizontal__features li {
-    font-size: 14px;
-    color: var(--color-text);
-    padding: 6px 0;
-    padding-left: 20px;
-    position: relative;
-}
-
-.curriculum-card-horizontal__features li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--color-teal);
-    font-weight: bold;
-}
-
-.curriculum-card-horizontal__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    background: var(--color-teal);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    align-self: flex-start;
-}
-
-.curriculum-card-horizontal__btn:hover {
-    background: var(--color-teal-dark);
-    transform: translateX(5px);
-}
-
-/* Corporate Training Section */
+/* ============================================
+   Corporate Training Section
+   ============================================ */
 .corporate-section {
     background: var(--color-bg-white);
 }
@@ -576,468 +256,73 @@
     margin: var(--spacing-md) 0;
 }
 
-/* Corporate Horizontal Cards */
-.corporate-card-horizontal {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    height: 280px;
-}
-
-.corporate-card-horizontal:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.corporate-card-horizontal img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.corporate-card-horizontal__content {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.corporate-card-horizontal__title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--color-teal-dark);
-    margin-bottom: 4px;
-}
-
-.corporate-card-horizontal__subtitle {
-    font-size: 14px;
-    color: var(--color-text-muted);
-    margin-bottom: 12px;
-}
-
-.corporate-card-horizontal__features {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.corporate-card-horizontal__features li {
-    font-size: 14px;
-    color: var(--color-text);
-    padding: 6px 0;
-    padding-left: 20px;
-    position: relative;
-}
-
-.corporate-card-horizontal__features li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--color-teal);
-    font-weight: bold;
-}
-
-.corporate-card-horizontal__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    background: var(--color-teal);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    align-self: flex-start;
-}
-
-.corporate-card-horizontal__btn:hover {
-    background: var(--color-teal-dark);
-    transform: translateX(5px);
-}
-
-/* Clients Section */
+/* ============================================
+   Clients Section
+   ============================================ */
 .clients-section {
     background: var(--color-white);
     padding-bottom: 0;
 }
 
-/* 클라이언트 롤링 슬라이더 - 전체 너비 */
-.clients-slider-container {
-    overflow: hidden;
-    position: relative;
-    padding: var(--spacing-2xl) 0;
-    width: 100vw; /* 전체 뷰포트 너비 */
-    margin-left: calc(-50vw + 50%); /* 컨테이너 밖으로 확장 */
-    background: var(--color-white);
-}
-
-.clients-slider {
-    display: flex;
-    gap: 8rem; /* 128px = var(--spacing-3xl) × 2 */
-    animation: scroll-infinite 40s linear infinite;
-    width: fit-content;
-}
-
-/* 이미지 기반 클라이언트 로고 */
-.client-logo {
-    height: 60px;  /* 가로형 로고에 맞춰 조정 */
-    width: auto;
-    object-fit: contain;
-    filter: opacity(0.8);  /* 이미 그레이스케일 이미지 */
-    transition: all var(--transition-base);
-}
-
-.client-logo:hover {
-    filter: opacity(1);
-    transform: scale(1.05);
-}
-
-@keyframes scroll-infinite {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .strengths-section {
-        background-attachment: scroll;
-    }
-
-    .client-logo {
-        height: 45px; /* 가로형 로고 모바일 대응 */
-    }
-
-    .clients-slider {
-        gap: 4rem; /* 64px = var(--spacing-xl) × 2 */
-    }
-}
-
-/* 접근성: 모션 민감도 */
-@media (prefers-reduced-motion: reduce) {
-    .clients-slider {
-        animation: none;
-    }
-}
-
-/* News Section */
+/* ============================================
+   News Section
+   ============================================ */
 .news-section {
     background: var(--color-bg-white);
 }
 
-/* Top Image Card News Section */
-.news-top-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-    margin-top: var(--spacing-2xl);
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (min-width: 768px) {
+    .hero-nav-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .hero-nav-card {
+        padding: 1.5rem;
+        min-height: 10rem;
+        gap: 0.75rem;
+    }
+
+    .hero-nav-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .hero-main-logo {
+        max-width: 400px;
+    }
 }
 
-.news-top-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
+@media (min-width: 1024px) {
+    .hero-nav-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
-.news-top-card:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    transform: translateY(-4px);
-}
-
-.news-top-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-}
-
-.news-top-card__content {
-    padding: 24px;
-}
-
-.news-top-card__badge {
-    display: inline-block;
-    color: white;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.news-top-card__badge--important {
-    background: #f56565;
-}
-
-.news-top-card__badge--latest {
-    background: #4299e1;
-}
-
-.news-top-card__badge--learning {
-    background: #48bb78;
-}
-
-.news-top-card__title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: #2d3748;
-}
-
-.news-top-card__desc {
-    color: #718096;
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-.news-top-card__footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1rem;
-    border-top: 1px solid #e2e8f0;
-}
-
-.news-top-card__meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #718096;
-    font-size: 0.9rem;
-}
-
-.news-top-card__link {
-    color: var(--color-teal-dark);
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-}
-
-.news-top-card:hover .news-top-card__link {
-    color: var(--color-teal-medium);
-    transform: translateX(4px);
-}
-
-/* Legacy Flip Card Styles (kept for compatibility) */
-.news-flip-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-xl);
-    margin-top: var(--spacing-2xl);
-}
-
-.news-flip-card {
-    perspective: 1000px;
-    height: 280px;
-}
-
-.news-flip-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.news-flip-card:hover .news-flip-inner {
-    transform: rotateY(180deg);
-}
-
-.news-flip-front, .news-flip-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: var(--spacing-2xl);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.news-flip-front {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.news-flip-back {
-    background: white;
-    color: var(--color-text-dark);
-    transform: rotateY(180deg);
-}
-
-.flip-icon {
-    font-size: 4rem;
-    margin-bottom: var(--spacing-md);
-}
-
-.flip-title {
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-sm);
-}
-
-.flip-count {
-    font-size: var(--font-size-lg);
-    opacity: 0.95;
-}
-
-.news-flip-back h4 {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-md);
-    color: var(--color-teal-dark);
-}
-
-.news-flip-back p {
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-text-muted);
-}
-
-.flip-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: var(--spacing-sm) var(--spacing-xl);
-    border-radius: var(--border-radius-full);
-    text-decoration: none;
-    font-weight: var(--font-weight-medium);
-    transition: all var(--transition-base);
-}
-
-.flip-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
+    .hero-main-logo {
+        max-width: 280px;
+    }
+
+    .strengths-section {
+        background-attachment: scroll;
+    }
+
     .services-grid,
     .curriculum-grid,
+    .corporate-grid,
     .strengths-grid {
         grid-template-columns: 1fr;
     }
 
-    /* Image Overlay Cards 모바일 조정 */
-    .service-card-overlay {
-        height: 400px;
-    }
-
-    .service-card-overlay__title {
-        font-size: 24px;
-    }
-
-    .service-card-overlay__subtitle {
-        font-size: 14px;
-    }
-
-    .service-card-overlay__desc {
-        font-size: 13px;
-    }
-
-    .service-card-overlay__tags .tag {
-        font-size: 11px;
-        padding: 5px 12px;
-    }
-
-    .service-card-overlay__btn {
-        padding: 12px 24px;
-        font-size: 13px;
-    }
-
-    /* Horizontal Cards 태블릿 조정 */
-    .curriculum-grid,
-    .corporate-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .curriculum-card-horizontal,
-    .corporate-card-horizontal {
-        height: 260px;
-    }
-
-    .curriculum-card-horizontal__content,
-    .corporate-card-horizontal__content {
-        padding: 20px;
-    }
-
-    .curriculum-card-horizontal__title,
-    .corporate-card-horizontal__title {
-        font-size: 18px;
-    }
-
-    .curriculum-card-horizontal__subtitle,
-    .corporate-card-horizontal__subtitle {
-        font-size: 13px;
-    }
-
-    .curriculum-card-horizontal__features li,
-    .corporate-card-horizontal__features li {
-        font-size: 13px;
-        padding: 4px 0;
-    }
-
-    /* Top Image Cards 모바일 조정 */
-    .news-top-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-md);
-    }
-
-    .news-top-card img {
-        height: 160px;
-    }
-
-    .news-top-card__content {
-        padding: 16px;
-    }
-
-    .news-top-card__title {
-        font-size: 1.2rem;
-    }
-
-    .news-top-card__desc {
-        font-size: 0.85rem;
-    }
-
-    /* Legacy Flip Cards */
-    .news-flip-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .news-flip-card {
-        height: 240px;
-    }
-
-    /* 모바일에서 히어로 섹션 조정 */
     .hero-section.hero-video {
         min-height: 100vh;
         padding: var(--spacing-xl) 0;
     }
 
-    /* 모바일에서 비디오 숨김 */
     .hero-video__background {
         display: none;
     }
@@ -1047,73 +332,17 @@
     }
 }
 
-/* 더 작은 화면 (모바일 S) */
 @media (max-width: 480px) {
-    .service-card-overlay {
-        height: 360px;
-    }
-
     .services-grid {
         gap: 1.5rem;
     }
-
-    /* Horizontal Cards → Vertical 변환 (모바일) */
-    .curriculum-card-horizontal,
-    .corporate-card-horizontal {
-        grid-template-columns: 1fr;
-        grid-template-rows: 200px auto;
-        height: auto;
-        min-height: 380px;
-    }
-
-    .curriculum-card-horizontal img,
-    .corporate-card-horizontal img {
-        width: 100%;
-        height: 200px;
-    }
-
-    .curriculum-card-horizontal__content,
-    .corporate-card-horizontal__content {
-        padding: 20px;
-    }
-
-    .curriculum-card-horizontal__title,
-    .corporate-card-horizontal__title {
-        font-size: 18px;
-    }
-
-    .curriculum-card-horizontal__subtitle,
-    .corporate-card-horizontal__subtitle {
-        font-size: 13px;
-        margin-bottom: 10px;
-    }
-
-    .curriculum-card-horizontal__features li,
-    .corporate-card-horizontal__features li {
-        font-size: 13px;
-    }
-
-    /* Top Image Cards 모바일 S */
-    .news-top-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .news-top-card img {
-        height: 180px;
-    }
-
-    .news-top-card__footer {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: flex-start;
-    }
 }
 
-/* 애니메이션 감소 설정 존중 */
+/* ============================================
+   Accessibility: Reduced Motion
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
     .hero-video__background {
         display: none;
     }
 }
-

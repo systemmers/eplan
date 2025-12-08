@@ -1,0 +1,116 @@
+/**
+ * Clients Slider Component
+ *
+ * Description: Infinite scrolling logo slider for client/partner showcase
+ * Usage: Client logos, partner brands, certification badges
+ * Pattern: CSS animation with duplicated content for seamless loop
+ */
+
+/* ============================================
+   Slider Container
+   ============================================ */
+.clients-slider-container {
+    overflow: hidden;
+    position: relative;
+    padding: var(--spacing-2xl) 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: var(--color-white);
+}
+
+/* ============================================
+   Slider Track
+   ============================================ */
+.clients-slider {
+    display: flex;
+    gap: 8rem;
+    animation: scroll-infinite 40s linear infinite;
+    width: fit-content;
+}
+
+/* Pause animation on hover */
+.clients-slider-container:hover .clients-slider {
+    animation-play-state: paused;
+}
+
+/* ============================================
+   Client Logo
+   ============================================ */
+.client-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: opacity(0.8);
+    transition: all var(--transition-base);
+}
+
+.client-logo:hover {
+    filter: opacity(1);
+    transform: scale(1.05);
+}
+
+/* ============================================
+   Animation
+   ============================================ */
+@keyframes scroll-infinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    .client-logo {
+        height: 45px;
+    }
+
+    .clients-slider {
+        gap: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .client-logo {
+        height: 36px;
+    }
+
+    .clients-slider {
+        gap: 3rem;
+        animation-duration: 30s;
+    }
+}
+
+/* ============================================
+   Accessibility: Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .clients-slider {
+        animation: none;
+    }
+}
+
+/* ============================================
+   Modifier: Slow Animation
+   ============================================ */
+.clients-slider--slow {
+    animation-duration: 60s;
+}
+
+/* ============================================
+   Modifier: Fast Animation
+   ============================================ */
+.clients-slider--fast {
+    animation-duration: 20s;
+}
+
+/* ============================================
+   Modifier: Reverse Direction
+   ============================================ */
+.clients-slider--reverse {
+    animation-direction: reverse;
+}

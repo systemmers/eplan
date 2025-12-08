@@ -1,0 +1,176 @@
+/**
+ * News Top Card Component
+ *
+ * Description: Top-image card with badge, title, description, and meta footer
+ * Usage: News articles, blog posts, announcements
+ * Pattern: BEM naming with badge color modifiers
+ */
+
+/* ============================================
+   News Top Grid
+   ============================================ */
+.news-top-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+/* ============================================
+   News Top Card
+   ============================================ */
+.news-top-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.news-top-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+}
+
+.news-top-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ============================================
+   Content Area
+   ============================================ */
+.news-top-card__content {
+    padding: 24px;
+}
+
+/* ============================================
+   Badge Variants
+   ============================================ */
+.news-top-card__badge {
+    display: inline-block;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.news-top-card__badge--important {
+    background: #f56565;
+}
+
+.news-top-card__badge--latest {
+    background: #4299e1;
+}
+
+.news-top-card__badge--learning {
+    background: #48bb78;
+}
+
+.news-top-card__badge--notice {
+    background: #ed8936;
+}
+
+.news-top-card__badge--event {
+    background: #9f7aea;
+}
+
+/* ============================================
+   Title & Description
+   ============================================ */
+.news-top-card__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
+}
+
+.news-top-card__desc {
+    color: #718096;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.news-top-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.news-top-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.news-top-card__link {
+    color: var(--color-teal-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.news-top-card:hover .news-top-card__link {
+    color: var(--color-teal-medium);
+    transform: translateX(4px);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    .news-top-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .news-top-card img {
+        height: 160px;
+    }
+
+    .news-top-card__content {
+        padding: 16px;
+    }
+
+    .news-top-card__title {
+        font-size: 1.2rem;
+    }
+
+    .news-top-card__desc {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-top-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .news-top-card img {
+        height: 180px;
+    }
+
+    .news-top-card__footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+}

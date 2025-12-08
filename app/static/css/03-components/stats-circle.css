@@ -1,0 +1,108 @@
+/**
+ * Stats Circle Component
+ *
+ * Description: Circular progress indicator with statistics display
+ * Usage: Company strengths, achievement metrics, KPIs
+ * Pattern: CSS conic-gradient for progress visualization
+ */
+
+/* ============================================
+   Stats Circle Grid
+   ============================================ */
+.stats-circle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+}
+
+@media (max-width: 1024px) {
+    .stats-circle-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .stats-circle-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   Stat Circle Card
+   ============================================ */
+.stat-circle {
+    background: var(--color-white);
+    border-radius: 20px;
+    padding: 36px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.stat-circle:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+/* ============================================
+   Circle Progress Indicator
+   ============================================ */
+.stat-circle .circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--color-teal-dark) 0deg var(--progress, 270deg),
+        var(--color-gray-light) var(--progress, 270deg) 360deg
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    position: relative;
+}
+
+.stat-circle .circle::before {
+    content: '';
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    background: var(--color-white);
+    border-radius: 50%;
+}
+
+.stat-circle .circle-value {
+    position: relative;
+    z-index: 1;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+/* ============================================
+   Labels
+   ============================================ */
+.stat-circle .stat-label {
+    font-family: var(--font-family-heading);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-dark);
+}
+
+.stat-circle .stat-sublabel {
+    font-family: var(--font-family-base);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: 4px;
+}
+
+/* ============================================
+   Progress Value Presets
+   ============================================ */
+.stat-circle--25 .circle { --progress: 90deg; }
+.stat-circle--50 .circle { --progress: 180deg; }
+.stat-circle--75 .circle { --progress: 270deg; }
+.stat-circle--100 .circle { --progress: 360deg; }
+
+/* Custom progress via inline style: style="--progress: 288deg" */

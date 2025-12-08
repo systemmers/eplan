@@ -70,7 +70,7 @@ def curriculum_roadmap():
 @main.route('/phone-english/curriculum-roadmap/demo')
 def curriculum_roadmap_demo():
     """전화영어 커리큘럼 로드맵 스타일 데모 페이지"""
-    return render_template('phone_english/curriculum-roadmap-demo.html')
+    return render_template('demo/curriculum-roadmap-demo.html')
 
 
 @main.route('/corporate-programs')
@@ -81,7 +81,7 @@ def corporate_programs():
 @main.route('/corporate-programs/<program>')
 def corporate_program_detail(program):
     """기업출강 프로그램 상세 페이지"""
-    valid_programs = ['intro', 'in-house', 'intensive', 'executive', 'resident', 'blended', 'oct']
+    valid_programs = ['in-house', 'intensive', 'executive', 'resident', 'blended', 'oct']
     if program not in valid_programs:
         from flask import abort
         abort(404)
@@ -91,13 +91,13 @@ def corporate_program_detail(program):
 @main.route('/corporate-programs/demo')
 def corporate_demo():
     """기업출강 패턴 데모 페이지"""
-    return render_template('corporate/corporate_demo.html')
+    return render_template('demo/corporate_demo.html')
 
 
 @main.route('/phone-english/demo')
 def phone_english_demo():
     """전화영어 패턴 데모 페이지"""
-    return render_template('phone_english/phone_english_demo.html')
+    return render_template('demo/phone_english_demo.html')
 
 
 @main.route('/writing-correction')
@@ -157,19 +157,19 @@ def for_instructors():
 @main.route('/for-instructors/demo')
 def instructors_demo():
     """강사 채용 패턴 데모 페이지"""
-    return render_template('instructors/instructors_demo.html')
+    return render_template('demo/instructors_demo.html')
 
 
 @main.route('/consulting/demo')
 def consulting_demo():
     """컨설팅 문의 패턴 데모 페이지"""
-    return render_template('consulting/consulting_demo.html')
+    return render_template('demo/consulting_demo.html')
 
 
 @main.route('/writing-correction/demo')
 def writing_demo():
     """Writing 첨삭 패턴 데모 페이지"""
-    return render_template('writing/writing_demo.html')
+    return render_template('demo/writing_demo.html')
 
 
 @main.route('/board/<category>')

@@ -1,170 +1,636 @@
-/* Curriculum Roadmap Page Styles */
-/* 커리큘럼 로드맵 페이지 전용 스타일 */
+/**
+ * ============================================================================
+ * Curriculum Roadmap Page Styles
+ * ============================================================================
+ *
+ * 파일: curriculum-roadmap.css
+ * 용도: 커리큘럼 로드맵 페이지 전용 스타일
+ * 주요 구성요소:
+ *   - 9레벨 커리큘럼 테이블
+ *   - 언어 네비게이션 탭
+ *   - 레벨별 그라디언트 색상
+ *   - 교재 썸네일 및 셀 스타일
+ *   - 레전드 컴포넌트
+ *
+ * 의존성: common.css (CSS 변수 및 기본 스타일)
+ * ============================================================================
+ */
+/* ============================================================================
+   1. CSS Variables - 9-Level System
+   ============================================================================ */
 
-/* Page Header */
-.page-header--curriculum {
-    background: var(--gradient-header);
-    color: var(--color-white);
-    padding: var(--spacing-3xl) var(--spacing-lg);
+:root {
+    /* 9-Level Color Palette */
+    --color-9lv1: #E8F8F5;
+    --color-9lv2: #D1F2EB;
+    --color-9lv3: #A3E4D7;
+    --color-9lv4: #D4E6F1;
+    --color-9lv5: #AED6F1;
+    --color-9lv6: #E8DAEF;
+    --color-9lv7: #D7BDE2;
+    --color-9lv8: #FADBD8;
+    --color-9lv9: #F5B7B1;
+}
+
+
+/* ============================================================================
+   2. 9-Level Section Container
+   ============================================================================ */
+
+.curriculum-9level-section {
+    padding: 80px 0;
+    background-color: var(--color-bg-light, #fafafa);
+}
+
+
+/* ============================================================================
+   3. 9-Level Table Wrapper
+   ============================================================================ */
+
+.curriculum-table-wrapper-9level {
+    overflow-x: auto;
+    margin-top: 30px;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* ============================================================================
+   4. 9-Level Table Base Styles
+   ============================================================================ */
+
+.curriculum-table-9level {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.curriculum-table-9level th,
+.curriculum-table-9level td {
+    padding: 12px 8px;
     text-align: center;
-    margin-bottom: var(--spacing-2xl);
-    border-radius: var(--border-radius-lg);
+    border: 1px solid #e0e0e0;
+    vertical-align: middle;
 }
 
-.page-header--curriculum h1 {
-    font-family: var(--font-family-heading);
-    font-size: var(--font-size-4xl);
-    font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-md);
+.curriculum-table-9level thead {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
 }
 
-.page-header--curriculum p {
-    font-size: var(--font-size-lg);
-    opacity: 0.9;
+.curriculum-table-9level thead th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Legend */
+
+/* ============================================================================
+   5. Level Group Headers
+   ============================================================================ */
+
+.curriculum-table-9level .level-group-9 {
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.curriculum-table-9level .level-group-9.beginner-9 {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+
+.curriculum-table-9level .level-group-9.pre-intermediate-9 {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.curriculum-table-9level .level-group-9.intermediate-9 {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.curriculum-table-9level .level-group-9.advanced-9 {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.curriculum-table-9level .level-col-9 {
+    font-size: 12px;
+    min-width: 70px;
+}
+
+
+/* ============================================================================
+   6. Category Column Styles
+   ============================================================================ */
+
+.curriculum-table-9level .category-col-9 {
+    font-weight: 600;
+    background: #f8f9fa;
+    min-width: 80px;
+}
+
+.curriculum-table-9level .course-col-9 {
+    font-size: 13px;
+    background: #fdfdfd;
+    min-width: 100px;
+    text-align: left;
+    padding-left: 12px;
+}
+
+
+/* ============================================================================
+   7. Textbook Cell Styles
+   ============================================================================ */
+
+.textbook-cell-9level {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 80px;
+}
+
+.textbook-cell-9level:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.textbook-cell-content-9level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.textbook-name-9level {
+    font-size: 11px;
+    font-weight: 500;
+    color: #2c3e50;
+    line-height: 1.3;
+    max-width: 100%;
+    word-break: keep-all;
+}
+
+.textbook-images-9level {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.textbook-thumbnail-9level {
+    width: 40px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.textbook-thumbnail-9level:hover {
+    transform: scale(1.1);
+}
+
+/* Placeholder t�� ��| */
+.textbook-thumbnail-9level[src*="placeholder"] {
+    opacity: 0.7;
+    filter: grayscale(30%);
+}
+
+
+/* ============================================================================
+   8. Empty Cell Styles
+   ============================================================================ */
+
+.empty-cell-9level {
+    background: #f5f5f5;
+    color: #bbb;
+    font-size: 12px;
+}
+
+
+/* ============================================================================
+   9. Level Gradient Background Classes
+   ============================================================================ */
+
+/* Single Level */
+.lvbg9_1_1 { background: var(--color-9lv1); }
+.lvbg9_2_2 { background: var(--color-9lv2); }
+.lvbg9_3_3 { background: var(--color-9lv3); }
+.lvbg9_4_4 { background: var(--color-9lv4); }
+.lvbg9_5_5 { background: var(--color-9lv5); }
+.lvbg9_6_6 { background: var(--color-9lv6); }
+.lvbg9_7_7 { background: var(--color-9lv7); }
+.lvbg9_8_8 { background: var(--color-9lv8); }
+.lvbg9_9_9 { background: var(--color-9lv9); }
+
+/* Level Ranges - Beginner (1-3) */
+.lvbg9_1_2 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv2)); }
+.lvbg9_1_3 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv3)); }
+.lvbg9_2_3 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv3)); }
+
+/* Level Ranges - Pre-Intermediate (4-5) */
+.lvbg9_4_5 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv5)); }
+
+/* Level Ranges - Intermediate (6-7) */
+.lvbg9_6_7 { background: linear-gradient(135deg, var(--color-9lv6), var(--color-9lv7)); }
+
+/* Level Ranges - Advanced (8-9) */
+.lvbg9_8_9 { background: linear-gradient(135deg, var(--color-9lv8), var(--color-9lv9)); }
+
+/* Cross-Group Ranges */
+.lvbg9_1_4 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv4)); }
+.lvbg9_1_5 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv5)); }
+.lvbg9_1_6 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv6)); }
+.lvbg9_1_7 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv7)); }
+.lvbg9_1_8 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv8)); }
+.lvbg9_1_9 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv9)); }
+
+.lvbg9_2_4 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv4)); }
+.lvbg9_2_5 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv5)); }
+.lvbg9_2_6 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv6)); }
+.lvbg9_2_7 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv7)); }
+.lvbg9_2_8 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv8)); }
+.lvbg9_2_9 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv9)); }
+
+.lvbg9_3_4 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv4)); }
+.lvbg9_3_5 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv5)); }
+.lvbg9_3_6 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv6)); }
+.lvbg9_3_7 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv7)); }
+.lvbg9_3_8 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv8)); }
+.lvbg9_3_9 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv9)); }
+
+.lvbg9_4_6 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv6)); }
+.lvbg9_4_7 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv7)); }
+.lvbg9_4_8 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv8)); }
+.lvbg9_4_9 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv9)); }
+
+.lvbg9_5_6 { background: linear-gradient(135deg, var(--color-9lv5), var(--color-9lv6)); }
+.lvbg9_5_7 { background: linear-gradient(135deg, var(--color-9lv5), var(--color-9lv7)); }
+.lvbg9_5_8 { background: linear-gradient(135deg, var(--color-9lv5), var(--color-9lv8)); }
+.lvbg9_5_9 { background: linear-gradient(135deg, var(--color-9lv5), var(--color-9lv9)); }
+
+.lvbg9_6_8 { background: linear-gradient(135deg, var(--color-9lv6), var(--color-9lv8)); }
+.lvbg9_6_9 { background: linear-gradient(135deg, var(--color-9lv6), var(--color-9lv9)); }
+
+.lvbg9_7_8 { background: linear-gradient(135deg, var(--color-9lv7), var(--color-9lv8)); }
+.lvbg9_7_9 { background: linear-gradient(135deg, var(--color-9lv7), var(--color-9lv9)); }
+
+
+/* ============================================================================
+   10. Language Navigation Styles
+   ============================================================================ */
+
+.language-nav-9level {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.language-nav-9level__item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.language-nav-9level__item:hover {
+    background: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.language-nav-9level__item.is-active {
+    background: var(--color-primary, #3498db);
+    color: white;
+    border-color: var(--color-primary, #3498db);
+}
+
+.language-nav-9level__flag {
+    font-size: 18px;
+}
+
+.language-nav-9level__name {
+    font-weight: 500;
+}
+
+.language-nav-9level__native {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+
+/* ============================================================================
+   11. Language Section Container
+   ============================================================================ */
+
+.language-section-9level {
+    margin-bottom: 40px;
+}
+
+.language-section-9level__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.language-section-9level__flag {
+    font-size: 28px;
+}
+
+
+/* ============================================================================
+   12. Legend Styles
+   ============================================================================ */
+
+.curriculum-legend-9level {
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.curriculum-legend-9level__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.curriculum-legend-9level__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.curriculum-legend-9level__row:last-child {
+    margin-bottom: 0;
+}
+
+.curriculum-legend-9level__group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.curriculum-legend-9level__label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.curriculum-legend-9level__levels {
+    display: flex;
+    gap: 4px;
+}
+
+.curriculum-legend-9level__level {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    color: #2c3e50;
+}
+
+
+/* ============================================================================
+   13. Category Badge Styles
+   ============================================================================ */
+
+.category-badge-9level {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.category-badge-9level--general {
+    background: #d4edda;
+    color: #155724;
+}
+
+.category-badge-9level--business {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.category-badge-9level--discussion {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.category-badge-9level--test {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+
+/* ============================================================================
+   14. Responsive Styles
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+    .language-nav-9level {
+        justify-content: center;
+    }
+
+    .curriculum-table-9level {
+        font-size: 13px;
+    }
+
+    .textbook-thumbnail-9level {
+        width: 35px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    .curriculum-9level-section {
+        padding: 50px 0;
+    }
+
+    .language-nav-9level {
+        gap: 6px;
+        padding: 15px;
+    }
+
+    .language-nav-9level__item {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .language-nav-9level__native {
+        display: none;
+    }
+
+    .curriculum-table-9level {
+        font-size: 12px;
+    }
+
+    .curriculum-table-9level th,
+    .curriculum-table-9level td {
+        padding: 8px 4px;
+    }
+
+    .textbook-name-9level {
+        font-size: 10px;
+    }
+
+    .textbook-thumbnail-9level {
+        width: 30px;
+        height: 40px;
+    }
+
+    .curriculum-legend-9level__row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-nav-9level__item {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .language-nav-9level__flag {
+        font-size: 16px;
+    }
+
+    .curriculum-table-9level {
+        min-width: 700px;
+    }
+
+    .textbook-images-9level {
+        display: none;
+    }
+}
+
+
+/* ============================================================================
+   LEGACY: 10-Level Curriculum Legend Styles
+   ============================================================================
+   기존 10레벨 커리큘럼 테이블의 레전드 스타일
+   curriculum_table.html 매크로에서 사용
+   ============================================================================ */
+
+/* Legend Container */
 .curriculum-legend {
-    background: var(--color-white);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    padding: var(--spacing-2xl);
-    margin-top: var(--spacing-2xl);
+    background: var(--color-white, #fff);
+    border-radius: var(--border-radius-lg, 12px);
+    box-shadow: var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.1));
+    padding: var(--spacing-2xl, 2rem);
+    margin-top: var(--spacing-2xl, 2rem);
 }
 
 .curriculum-legend h2 {
-    font-family: var(--font-family-heading);
-    font-size: var(--font-size-2xl);
-    font-weight: var(--font-weight-bold);
-    background: var(--gradient-header);
+    font-family: var(--font-family-heading, 'Poppins', sans-serif);
+    font-size: var(--font-size-2xl, 1.5rem);
+    font-weight: var(--font-weight-bold, 700);
+    background: var(--gradient-header, linear-gradient(135deg, #667eea, #764ba2));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg, 1.5rem);
 }
 
 .curriculum-legend-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-md);
+    gap: var(--spacing-md, 1rem);
 }
 
 .curriculum-legend-item {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-sm, 0.5rem);
 }
 
 .curriculum-legend-color {
     width: 50px;
     height: 35px;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--border-radius-md, 8px);
+    box-shadow: var(--shadow-sm, 0 2px 4px rgba(0, 0, 0, 0.05));
     flex-shrink: 0;
 }
 
 .curriculum-legend-label {
-    font-size: var(--font-size-sm);
-    color: var(--color-text-muted);
-    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-text-muted, #6b7280);
+    font-weight: var(--font-weight-medium, 500);
 }
 
-/* Legend 색상 가이드용 레벨 색상 */
+/* Legend Level Colors - 10-Level System */
 .curriculum-legend-color.lv1 {
-    background: var(--gradient-lv1);
+    background: var(--gradient-lv1, linear-gradient(135deg, #a8edea, #fed6e3));
 }
 .curriculum-legend-color.lv2 {
-    background: var(--gradient-lv2);
+    background: var(--gradient-lv2, linear-gradient(135deg, #d299c2, #fef9d7));
 }
 .curriculum-legend-color.lv3 {
-    background: var(--gradient-lv3);
+    background: var(--gradient-lv3, linear-gradient(135deg, #89f7fe, #66a6ff));
 }
 .curriculum-legend-color.lv4 {
-    background: var(--gradient-lv4);
+    background: var(--gradient-lv4, linear-gradient(135deg, #a1c4fd, #c2e9fb));
 }
 .curriculum-legend-color.lv5 {
-    background: var(--gradient-lv5);
+    background: var(--gradient-lv5, linear-gradient(135deg, #f5af19, #f12711));
 }
 .curriculum-legend-color.lv6 {
-    background: var(--gradient-lv6);
+    background: var(--gradient-lv6, linear-gradient(135deg, #667eea, #764ba2));
 }
 .curriculum-legend-color.lv7 {
-    background: var(--gradient-lv7);
+    background: var(--gradient-lv7, linear-gradient(135deg, #f093fb, #f5576c));
 }
 .curriculum-legend-color.lv8 {
-    background: var(--gradient-lv8);
+    background: var(--gradient-lv8, linear-gradient(135deg, #4facfe, #00f2fe));
 }
 .curriculum-legend-color.lv9 {
-    background: var(--gradient-lv9);
+    background: var(--gradient-lv9, linear-gradient(135deg, #43e97b, #38f9d7));
 }
 .curriculum-legend-color.lv10 {
-    background: var(--gradient-lv10);
+    background: var(--gradient-lv10, linear-gradient(135deg, #fa709a, #fee140));
 }
 
-/* ===== Responsive Design ===== */
-
-@media (max-width: 768px) {
-    .page-header--curriculum {
-        padding: var(--spacing-2xl) var(--spacing-md);
-    }
-
-    .page-header--curriculum h1 {
-        font-size: var(--font-size-3xl);
-    }
-
-    .page-header--curriculum p {
-        font-size: var(--font-size-md);
-    }
-
-    .curriculum-legend {
-        padding: var(--spacing-lg);
-    }
-
-    .curriculum-legend h2 {
-        font-size: var(--font-size-xl);
-    }
-
-    .curriculum-table {
-        font-size: var(--font-size-xs);
-    }
-
-    .curriculum-table th,
-    .curriculum-table td {
-        padding: var(--spacing-sm);
-    }
-
-    .textbook-thumbnail {
-        width: 67.5px;
-        height: 90px;
-    }
-
-    .textbook-cell-content {
-        font-size: var(--font-size-xs);
-        padding: var(--spacing-xs);
-    }
-
-    /* 모달 반응형 */
-    .modal__content--curriculum {
-        width: 95%;
-        max-height: 95vh;
-        padding: var(--spacing-lg);
-    }
-
-    .modal__header {
-        margin-bottom: var(--spacing-md);
-    }
-
-    .modal__title {
-        font-size: var(--font-size-xl);
-    }
-
-    .modal__body {
-        padding: 0;
-    }
-}
-
+/* Responsive - Legacy Legend */
 @media (max-width: 1024px) {
     .curriculum-legend-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .curriculum-legend {
+        padding: var(--spacing-lg, 1.5rem);
+    }
+
+    .curriculum-legend h2 {
+        font-size: var(--font-size-xl, 1.25rem);
     }
 }

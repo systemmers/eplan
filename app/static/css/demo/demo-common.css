@@ -1,0 +1,147 @@
+/**
+ * Demo Common Styles
+ *
+ * Description: Demo page specific styles shared across all demo pages
+ * Dependencies: Requires base styles from main.css
+ */
+
+/* ============================================
+   Demo Page Header
+   ============================================ */
+.demo-header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    color: var(--color-white);
+}
+
+.demo-header__title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.demo-header__subtitle {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+}
+
+/* ============================================
+   Demo Section Titles
+   ============================================ */
+.demo-section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.demo-section-title h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.demo-section-title p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+}
+
+/* ============================================
+   Demo Pattern Label
+   ============================================ */
+.demo-pattern-label {
+    display: inline-block;
+    background-color: var(--color-gray-100);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-2xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-md);
+    font-family: var(--font-family-mono);
+}
+
+/* ============================================
+   Demo Navigation (Pattern List)
+   ============================================ */
+.demo-nav {
+    background-color: var(--color-gray-50);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: var(--z-index-sticky);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.demo-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.demo-nav__link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+    font-size: var(--font-size-sm);
+}
+
+.demo-nav__link:hover,
+.demo-nav__link.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* ============================================
+   Demo Code Preview
+   ============================================ */
+.demo-code-preview {
+    background-color: var(--color-gray-900);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    overflow-x: auto;
+}
+
+.demo-code-preview code {
+    color: var(--color-gray-100);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+/* ============================================
+   Demo Section Divider
+   ============================================ */
+.demo-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: var(--spacing-2xl) 0;
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+@media (max-width: 768px) {
+    .demo-header {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .demo-header__title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .demo-nav__list {
+        gap: var(--spacing-xs);
+    }
+
+    .demo-nav__link {
+        padding: var(--spacing-2xs) var(--spacing-sm);
+        font-size: var(--font-size-xs);
+    }
+}

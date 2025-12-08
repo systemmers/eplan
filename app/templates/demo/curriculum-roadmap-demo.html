@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}Curriculum Roadmap Style Demo - ePlan{% endblock %}
 
@@ -15,8 +16,7 @@
 <!-- Style Selector -->
 <section>
     <div class="container">
-        <h2 class="section-title">Style Selector</h2>
-        <p class="section-subtitle">Click to jump to each style demo section</p>
+        {{ section_title_10(title='Style Selector', subtitle='Click to jump to each style demo section') }}
 
         <div class="style-selector">
             <a href="#style-default" class="style-selector__btn active">ePlan Default</a>
