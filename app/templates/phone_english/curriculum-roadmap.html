@@ -48,49 +48,67 @@
         {{ all_languages_9level() }}
     </div>
 </section>
-{% endblock %}
 
-{% block extra_js %}
+<!-- 9레벨 커리큘럼 탭 전환 스크립트 (HTMX 호환) -->
 <script>
-/**
- * 9레벨 커리큘럼 언어 탭 전환 스크립트
- */
-document.addEventListener('DOMContentLoaded', function() {
-    const languageNavItems = document.querySelectorAll('.language-nav-9level__item');
-    const languageSections = document.querySelectorAll('.language-section-9level');
+(function() {
+    /**
+     * 9레벨 커리큘럼 언어 탭 전환 초기화
+     * HTMX 페이지 전환 시에도 동작하도록 IIFE로 즉시 실행
+     */
+    function initCurriculum9LevelTabs() {
+        const languageNavItems = document.querySelectorAll('.language-nav-9level__item');
+        const languageSections = document.querySelectorAll('.language-section-9level');
 
-    languageNavItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetLang = this.dataset.lang;
+        // 이미 초기화된 경우 스킵 (이벤트 중복 방지)
+        if (languageNavItems.length === 0) return;
+        if (languageNavItems[0].dataset.initialized === 'true') return;
 
-            // 활성 탭 변경
-            languageNavItems.forEach(navItem => {
-                navItem.classList.remove('is-active');
+        languageNavItems.forEach(item => {
+            item.dataset.initialized = 'true';
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const targetLang = this.dataset.lang;
+
+                // 활성 탭 변경
+                languageNavItems.forEach(navItem => {
+                    navItem.classList.remove('is-active');
+                });
+                this.classList.add('is-active');
+
+                // 언어 섹션 전환
+                languageSections.forEach(section => {
+                    if (section.id === 'lang-' + targetLang) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
             });
-            this.classList.add('is-active');
+        });
 
-            // 언어 섹션 전환
-            languageSections.forEach(section => {
-                if (section.id === 'lang-' + targetLang) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'none';
+        // 교재 셀 클릭 시 모달 열기 (기존 모달 시스템 연동)
+        const textbookCells = document.querySelectorAll('.textbook-cell-9level[data-textbook-ids]');
+        textbookCells.forEach(cell => {
+            if (cell.dataset.initialized === 'true') return;
+            cell.dataset.initialized = 'true';
+            cell.addEventListener('click', function() {
+                const textbookIds = JSON.parse(this.dataset.textbookIds || '[]');
+                if (textbookIds.length > 0 && typeof openTextbookModal === 'function') {
+                    openTextbookModal(textbookIds[0]);
                 }
             });
         });
-    });
+    }
 
-    // 교재 셀 클릭 시 모달 열기 (기존 모달 시스템 연동)
-    const textbookCells = document.querySelectorAll('.textbook-cell-9level[data-textbook-ids]');
-    textbookCells.forEach(cell => {
-        cell.addEventListener('click', function() {
-            const textbookIds = JSON.parse(this.dataset.textbookIds || '[]');
-            if (textbookIds.length > 0 && typeof openTextbookModal === 'function') {
-                openTextbookModal(textbookIds[0]);
-            }
-        });
-    });
-});
+    // 즉시 실행 (HTMX 콘텐츠 교체 후 스크립트 실행 시)
+    initCurriculum9LevelTabs();
+
+    // DOMContentLoaded 시에도 실행 (일반 페이지 로드 시)
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCurriculum9LevelTabs);
+    }
+})();
 </script>
 {% endblock %}

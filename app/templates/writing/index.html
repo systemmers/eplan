@@ -1,215 +1,295 @@
 {% extends "base.html" %}
 {% from 'macros/section_titles.html' import section_title_10 %}
 
-{% block title %}Writing 첨삭 - ePlan{% endblock %}
+{% block title %}Writing 첨삭 서비스 - ePlan{% endblock %}
 
 {% block content %}
+<!-- Page Header -->
 <section class="page-header page-header--writing">
     <div class="container">
-        <h1>Writing 첨삭 서비스</h1>
-        <p>전문가의 1:1 맞춤 첨삭으로 글쓰기 실력을 향상시키세요</p>
+        <h1>WRITING CORRECTION</h1>
+        <p class="tagline">JR Writing - Professional Writing Correction Service</p>
+        <p>Professional Writing Correction Service</p>
     </div>
 </section>
 
-<!--과정 소개-->
-<section>
+<!-- Section 1: Jack Welch Quote -->
+<section class="quote-card-section">
     <div class="container">
-        {{ section_title_10(title='과정 소개', subtitle='Course Introduction') }}
-        
-        <div class="grid grid--3">
-            <div class="card u-text-center">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-                        <path d="M2 2l7.586 7.586"/>
-                        <circle cx="11" cy="11" r="2"/>
-                    </svg>
-                </div>
-                <h4>1:1 맞춤 첨삭</h4>
-                <p class="text-muted">개인별 맞춤형 피드백</p>
+        {{ section_title_10(title='INSPIRATIONAL QUOTE', subtitle='Writing begins with thinking') }}
+
+        <div class="quote-card">
+            <p class="quote-card__text">
+                "My mother served up the perfect excuse for my stuttering. 'It's because you're so smart. No one's tongue could keep up with a brain like yours.' I believed what she told me: that my mind worked faster than my mouth."
+            </p>
+            <p class="quote-card__text--korean">
+                "니가 말을 더듬는 이유는 생각의 속도가 너무 빨라서 그래. 생각의 속도가 너무 빠르기 때문에 입이 그 속도를 따라 주지 못해서 말을 더듬는 거야!"
+            </p>
+            <div class="quote-card__author">
+                <span>Jack Welch, Former CEO of General Electric</span>
             </div>
+        </div>
+
+        <div class="quote-card">
+            <p class="quote-card__text">
+                PRACTICE makes PERFECT!
+            </p>
+        </div>
+
+        <div class="quote-card" style="margin-top: var(--spacing-lg);">
+            <p class="quote-card__text">
+                "When writing a first draft, you might make errors simply. However, don't worry about it. That's because you are thinking faster than you can write or type."
+            </p>
+            <p class="quote-card__text--korean">
+                용기와 열정이면 됩니다. 그리고 연습...
+            </p>
         </div>
     </div>
 </section>
 
-<!-- 과정 세부 -->
-<section>
-    <div class="container">
-        {{ section_title_10(title='과정 세부', subtitle='Course Details') }}
-        
-        <div class="grid grid--3">
-            <div class="card u-text-center">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-                        <path d="M2 2l7.586 7.586"/>
-                        <circle cx="11" cy="11" r="2"/>
-                    </svg>
-                </div>
-                <h4>1:1 맞춤 첨삭</h4>
-                <p class="text-muted">개인별 맞춤형 피드백</p>
-            </div>
-            
-            <div class="card u-text-center">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                    </svg>
-                </div>
-                <h4>24시간 내 피드백</h4>
-                <p class="text-muted">빠른 피드백 제공</p>
-            </div>
-            
-            <div class="card u-text-center">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                    </svg>
-                </div>
-                <h4>다양한 분야 지원</h4>
-                <p class="text-muted">비즈니스, 학술, 일반 writing</p>
-            </div>
-            
-            <div class="card u-text-center">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.35-4.35"/>
-                    </svg>
-                </div>
-                <h4>종합적 첨삭</h4>
-                <p class="text-muted">문법, 어휘, 구조, 내용</p>
-            </div>
-            
-            <div class="card u-text-center">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                    </svg>
-                </div>
-                <h4>자연스러운 표현</h4>
-                <p class="text-muted">원어민 수준의 표현 제안</p>
-            </div>
-            
-            <div class="card u-text-center">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                        <polyline points="17 6 23 6 23 12"/>
-                    </svg>
-                </div>
-                <h4>실력 향상</h4>
-                <p class="text-muted">체계적인 학습 관리</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 진행 과정 프로세스 -->
+<!-- Section 2: Curriculum Map -->
 <section class="u-bg-teal">
     <div class="container">
-        {{ section_title_10(title='진행 과정 프로세스', subtitle='Writing Process') }}
-        
-        <div class="grid grid--3">
-            <div class="card">
-                <div class="step-number">1</div>
-                <h4>Pre-Writing</h4>
-                <p>주제 선정 및 개요 작성 가이드</p>
-            </div>
-            
-            <div class="card">
-                <div class="step-number">2</div>
-                <h4>1st Draft</h4>
-                <p>초안 작성 및 제출</p>
-            </div>
-            
-            <div class="card">
-                <div class="step-number">3</div>
-                <h4>G-Check & S-Check</h4>
-                <p>문법 및 문장 구조 검토</p>
-            </div>
-            
-            <div class="card">
-                <div class="step-number">4</div>
-                <h4>Tutor Revision</h4>
-                <p>전문 튜터의 첨삭 및 자가 수정</p>
-            </div>
-            
-            <div class="card">
-                <div class="step-number">5</div>
-                <h4>Overall Evaluation</h4>
-                <p>종합 평가 및 개선 방향 제시</p>
+        {{ section_title_10(title='CURRICULUM MAP', subtitle='Writing Course Level Overview') }}
+
+        <div class="level-chart">
+            <h3 class="level-chart__header">Writing Course Levels</h3>
+            <div class="level-chart__grid">
+                <!-- Header Row -->
+                <div class="level-chart__label">Course</div>
+                <div class="level-chart__cell level-chart__cell--header">L1</div>
+                <div class="level-chart__cell level-chart__cell--header">L2</div>
+                <div class="level-chart__cell level-chart__cell--header">L3</div>
+                <div class="level-chart__cell level-chart__cell--header">L4</div>
+                <div class="level-chart__cell level-chart__cell--header">L5</div>
+                <div class="level-chart__cell level-chart__cell--header">L6</div>
+                <div class="level-chart__cell level-chart__cell--header">L7</div>
+                <div class="level-chart__cell level-chart__cell--header">L8</div>
+                <div class="level-chart__cell level-chart__cell--header">L9</div>
+
+                <!-- BIZ Row -->
+                <div class="level-chart__label">BIZ</div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell level-chart__cell--l4">Email</div>
+                <div class="level-chart__cell level-chart__cell--l5">Meeting</div>
+                <div class="level-chart__cell level-chart__cell--l6">Negotiation</div>
+                <div class="level-chart__cell level-chart__cell--l7">Presentation</div>
+                <div class="level-chart__cell level-chart__cell--l8"></div>
+                <div class="level-chart__cell level-chart__cell--l9"></div>
+
+                <!-- PBW Row -->
+                <div class="level-chart__label">PBW</div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell level-chart__cell--l4">Planning</div>
+                <div class="level-chart__cell level-chart__cell--l5">Management</div>
+                <div class="level-chart__cell level-chart__cell--l6">Legal/HR</div>
+                <div class="level-chart__cell level-chart__cell--l7">Finance</div>
+                <div class="level-chart__cell level-chart__cell--l8">Marketing</div>
+                <div class="level-chart__cell level-chart__cell--l9">Operations</div>
+
+                <!-- General Row -->
+                <div class="level-chart__label">General</div>
+                <div class="level-chart__cell level-chart__cell--l1">Basic</div>
+                <div class="level-chart__cell level-chart__cell--l2">Paragraph</div>
+                <div class="level-chart__cell level-chart__cell--l3">Short Essay</div>
+                <div class="level-chart__cell level-chart__cell--l4">Essay Intro</div>
+                <div class="level-chart__cell level-chart__cell--l5">Body</div>
+                <div class="level-chart__cell level-chart__cell--l6">Conclusion</div>
+                <div class="level-chart__cell level-chart__cell--l7">Advanced</div>
+                <div class="level-chart__cell level-chart__cell--l8">Creative</div>
+                <div class="level-chart__cell level-chart__cell--l9">Professional</div>
+
+                <!-- ADW Row -->
+                <div class="level-chart__label">ADW</div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell"></div>
+                <div class="level-chart__cell level-chart__cell--l7">TOEFL</div>
+                <div class="level-chart__cell level-chart__cell--l8">IELTS</div>
+                <div class="level-chart__cell level-chart__cell--l9">Academic</div>
+
+                <!-- Tutor Row -->
+                <div class="level-chart__label">Tutor</div>
+                <div class="level-chart__cell level-chart__cell--l1">Feedback</div>
+                <div class="level-chart__cell level-chart__cell--l2">Grammar</div>
+                <div class="level-chart__cell level-chart__cell--l3">Structure</div>
+                <div class="level-chart__cell level-chart__cell--l4">Content</div>
+                <div class="level-chart__cell level-chart__cell--l5">Style</div>
+                <div class="level-chart__cell level-chart__cell--l6">Vocabulary</div>
+                <div class="level-chart__cell level-chart__cell--l7">Advanced</div>
+                <div class="level-chart__cell level-chart__cell--l8">Creative</div>
+                <div class="level-chart__cell level-chart__cell--l9">Expert</div>
             </div>
         </div>
     </div>
 </section>
 
-<!--
+<!-- Section 3: Course Details -->
 <section>
     <div class="container">
-        <h2 class="section-title">과정 안내</h2>
-        
-        <div class="accordion" data-single>
-            <div class="accordion__item">
-                <div class="accordion__header">
-                    <h3 class="accordion__title">Business Writing</h3>
-                    <span class="accordion__icon">▼</span>
+        {{ section_title_10(title='COURSE DETAILS', subtitle='Writing Course Programs') }}
+
+        <div class="course-detail-cards">
+            <!-- Business Writing -->
+            <div class="course-detail-card course-detail-card--business">
+                <div class="course-detail-card__content">
+                    <h3 class="course-detail-card__title">Business Writing</h3>
+                    <p class="course-detail-card__desc">
+                        A course designed to improve effective persuasive communication skills for English business performance in a global corporate environment.
+                        By training essential business writing skills needed for work, you will improve your ability to effectively convey your opinions to others.
+                    </p>
+                    <ul class="course-detail-card__items">
+                        <li><strong>Biz Email:</strong> Complaint, Apology, Request, Sales, Announcement, Thanks mail pattern training</li>
+                        <li><strong>Biz Meeting:</strong> Preparation pattern training for meaningful conclusions</li>
+                        <li><strong>Biz Negotiation:</strong> Win-win strategy and planning pattern training</li>
+                        <li><strong>Biz Presentation:</strong> PT planning and PPT creation pattern training through information (charts, graphs)</li>
+                    </ul>
                 </div>
-                <div class="accordion__content">
-                    <div class="accordion__body">
-                        <ul>
-                            <li>이메일, 보고서, 제안서 등 비즈니스 문서 작성</li>
-                            <li>분야별 전문 용어 및 표현 학습</li>
-                            <li>실무에 바로 적용 가능한 템플릿 제공</li>
-                        </ul>
-                    </div>
+                <!--<div class="course-detail-card__meta">
+                    <div class="course-detail-card__meta-label">Monthly</div>
+                    <div class="course-detail-card__meta-value">3 topics + 1 PBW</div>
+                </div>-->
+            </div>
+
+            <!-- Practical Business Writing -->
+            <div class="course-detail-card course-detail-card--practical">
+                <div class="course-detail-card__content">
+                    <h3 class="course-detail-card__title">Practical Business Writing</h3>
+                    <p class="course-detail-card__desc">
+                        A course that strengthens the ability to immediately apply to practical work by presenting various Business Forms currently used in English-speaking business sites and re-writing them to apply to learners' practical work.
+                    </p>
+                    <ul class="course-detail-card__items">
+                        <li><strong>Fields:</strong> Planning, Management, Legal, Human Resources, Finance, Accounting, Sales, Marketing, Operations, Logistics, IT, Consultants, Contractors, Credit & Collection, Real Estate</li>
+                        <li><strong>Lineup:</strong> Notices, Worksheets, Statements, Plans, Checklists, Certificates, Agreements, Emails, Letters, Scripts, Requests, Guidelines, Outlines, Proposals, Evaluations, Policies, Surveys</li>
+                    </ul>
+                    <!--<div class="course-detail-card__meta">
+                        <div class="course-detail-card__meta-label">Monthly</div>
+                        <div class="course-detail-card__meta-value">1 field x 4 forms</div>
+                    </div>-->
                 </div>
             </div>
-            
-            <div class="accordion__item">
-                <div class="accordion__header">
-                    <h3 class="accordion__title">Practical Business Writing</h3>
-                    <span class="accordion__icon">▼</span>
-                </div>
-                <div class="accordion__content">
-                    <div class="accordion__body">
-                        <ul>
-                            <li>실무 중심의 문서 작성 과정</li>
-                            <li>케이스 스터디를 통한 실전 연습</li>
-                            <li>업무 상황별 글쓰기 전략</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="accordion__item">
-                <div class="accordion__header">
-                    <h3 class="accordion__title">General Writing</h3>
-                    <span class="accordion__icon">▼</span>
-                </div>
-                <div class="accordion__content">
-                    <div class="accordion__body">
-                        <ul>
-                            <li>에세이, 블로그 포스트 등 일반적인 글쓰기</li>
-                            <li>창의적 표현과 구조 개선에 중점</li>
-                            <li>다양한 장르의 글쓰기 연습</li>
-                        </ul>
-                    </div>
+
+            <!-- General Writing -->
+            <div class="course-detail-card course-detail-card--general">
+                <div class="course-detail-card__content">
+                    <h3 class="course-detail-card__title">General Writing</h3>
+                    <p class="course-detail-card__desc">
+                        A training course for understanding proposed topics from the basic to advanced stages of English composition and writing essays with logical and systematic structures.
+                    </p>
+                    <ul class="course-detail-card__items">
+                        <li><strong>Beginner (L1-L3):</strong> Basic stage - Understanding paragraph composition elements, basic English composition using short sentences</li>
+                        <li><strong>Intermediate (L4-L6):</strong> Intermediate stage - Learning to write arguments according to introduction, body, conclusion format, acquiring the ability to write natural essays</li>
+                        <li><strong>Advanced (L7-L9):</strong> Advanced stage - Learning solid composition and logical development, acquiring the ability to write creative essays using examples, reasons, and details</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-</section> -->
+</section>
 
-<section class="u-bg-white">
+<!-- Section 4: Process Flow -->
+<section class="u-bg-teal">
+    <div class="container">
+        {{ section_title_10(title='WRITING PROCESS', subtitle='5-Step Writing Correction Flow') }}
+
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-step__number">1</div>
+                <h4 class="process-step__title">Pre-Writing</h4>
+                <p class="process-step__desc">Topic selection & outline guide</p>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+                <div class="process-step__number">2</div>
+                <h4 class="process-step__title">1st Draft</h4>
+                <p class="process-step__desc">Draft writing & submission</p>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+                <div class="process-step__number">3</div>
+                <h4 class="process-step__title">G-Check & S-Check</h4>
+                <p class="process-step__desc">Grammar & structure review</p>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+                <div class="process-step__number">4</div>
+                <h4 class="process-step__title">Tutor Revision</h4>
+                <p class="process-step__desc">Expert feedback & self-revision</p>
+            </div>
+            <div class="process-arrow">→</div>
+            <div class="process-step">
+                <div class="process-step__number">5</div>
+                <h4 class="process-step__title">Overall Evaluation</h4>
+                <p class="process-step__desc">Comprehensive assessment</p>
+            </div>
+        </div>
+
+        <!-- Feedback Loop -->
+        <div class="feedback-loop">
+            <div class="feedback-loop__icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M23 4v6h-6"/>
+                    <path d="M1 20v-6h6"/>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                </svg>
+            </div>
+            <h4 class="feedback-loop__title">Continuous Feedback Loop</h4>
+            <p class="feedback-loop__desc">Iterative improvement through multiple revision cycles</p>
+        </div>
+
+        <!-- Process Description Table -->
+        <table class="process-table">
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pre-Writing</strong></td>
+                    <td>An optional video guide on how to study is provided</td>
+                </tr>
+                <tr>
+                    <td><strong>1st Draft</strong></td>
+                    <td>Read the given task, then write a story about what happened next. Write what comes to your mind freely.</td>
+                </tr>
+                <tr>
+                    <td><strong>G-Check & S-Check</strong></td>
+                    <td>Allows you to revise errors that the G-Editor didn't catch, such as sentence patterns or word choices.</td>
+                </tr>
+                <tr>
+                    <td><strong>Self-Revision vs Tutor</strong></td>
+                    <td>You can compare your written text with the Tutor's correction.</td>
+                </tr>
+                <tr>
+                    <td><strong>G-check & Feedback</strong></td>
+                    <td>G-check allows you to see expressions that the Tutor recommended. Check Tutor's feedback on your writing.</td>
+                </tr>
+                <tr>
+                    <td><strong>Overall Evaluation</strong></td>
+                    <td>You can check a Tutor's hand-written feedback on your writing.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
     <div class="container u-text-center">
-        <h2>지금 바로 첨삭 서비스를 시작하세요</h2>
-        <p class="u-mb-4">전문가의 꼼꼼한 첨삭으로 글쓰기 실력을 향상시켜보세요</p>
-        <a href="{{ url_for('main.consulting') }}" class="btn btn--primary btn--lg">상담 신청하기</a>
+        <h2>Ready to Improve Your Writing?</h2>
+        <p class="u-mt-3 u-mb-4">JR Writing will be your dedicated trainer for your writing practice</p>
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('main.consulting') }}" class="btn btn--primary btn--lg">Request Consultation</a>
+        </div>
     </div>
 </section>
 {% endblock %}
-

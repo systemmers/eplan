@@ -4,216 +4,395 @@
 {% block title %}강사 지원 - ePlan{% endblock %}
 
 {% block content %}
-<section class="page-header page-header--instructors">
-    <div class="container">
-        <h1>강사 지원</h1>
-        <p>ePlan과 함께 글로벌 인재를 양성하는 강사가 되어주세요</p>
+<!-- Page Header with Circular Gallery -->
+<section class="page-header page-header--instructors page-header--gallery">
+    <div class="circular-gallery circular-gallery--hero"
+         data-radius="500"
+         data-auto-rotate-speed="0.03"
+         role="region"
+         aria-label="교육 환경 갤러리">
+        <div class="circular-gallery__container">
+            <!-- Professional Teaching -->
+            <div class="circular-gallery__item" role="group" aria-label="Professional Teaching">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&auto=format&fit=crop&q=80"
+                     alt="교실에서 가르치는 강사">
+                <div class="circular-gallery__overlay">
+                    <h2>Professional Teaching</h2>
+                    <em>전문 강의</em>
+                </div>
+            </div>
+            <!-- Business Meeting -->
+            <div class="circular-gallery__item" role="group" aria-label="Business Meeting">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&q=80"
+                     alt="비즈니스 미팅 교육">
+                <div class="circular-gallery__overlay">
+                    <h2>Business Meeting</h2>
+                    <em>비즈니스 교육</em>
+                </div>
+            </div>
+            <!-- Online Teaching -->
+            <div class="circular-gallery__item" role="group" aria-label="Online Teaching">
+                <img src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=900&auto=format&fit=crop&q=80"
+                     alt="온라인 수업 진행">
+                <div class="circular-gallery__overlay">
+                    <h2>Online Teaching</h2>
+                    <em>온라인 수업</em>
+                </div>
+            </div>
+            <!-- Language Learning -->
+            <div class="circular-gallery__item" role="group" aria-label="Language Learning">
+                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=900&auto=format&fit=crop&q=80"
+                     alt="언어 학습 환경">
+                <div class="circular-gallery__overlay">
+                    <h2>Language Learning</h2>
+                    <em>언어 학습</em>
+                </div>
+            </div>
+            <!-- Presentation -->
+            <div class="circular-gallery__item" role="group" aria-label="Presentation">
+                <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=900&auto=format&fit=crop&q=80"
+                     alt="프레젠테이션 수업">
+                <div class="circular-gallery__overlay">
+                    <h2>Presentation Skills</h2>
+                    <em>프레젠테이션</em>
+                </div>
+            </div>
+            <!-- Team Collaboration -->
+            <div class="circular-gallery__item" role="group" aria-label="Team Collaboration">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&auto=format&fit=crop&q=80"
+                     alt="팀 협업 교육">
+                <div class="circular-gallery__overlay">
+                    <h2>Team Collaboration</h2>
+                    <em>팀 협업</em>
+                </div>
+            </div>
+            <!-- Study Group -->
+            <div class="circular-gallery__item" role="group" aria-label="Study Group">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=900&auto=format&fit=crop&q=80"
+                     alt="스터디 그룹">
+                <div class="circular-gallery__overlay">
+                    <h2>Study Group</h2>
+                    <em>스터디 그룹</em>
+                </div>
+            </div>
+            <!-- Corporate Training -->
+            <div class="circular-gallery__item" role="group" aria-label="Corporate Training">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&auto=format&fit=crop&q=80"
+                     alt="기업 교육">
+                <div class="circular-gallery__overlay">
+                    <h2>Corporate Training</h2>
+                    <em>기업 교육</em>
+                </div>
+            </div>
+            <!-- One-on-One Teaching -->
+            <div class="circular-gallery__item" role="group" aria-label="One-on-One Teaching">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&auto=format&fit=crop&q=80"
+                     alt="1:1 수업">
+                <div class="circular-gallery__overlay">
+                    <h2>One-on-One</h2>
+                    <em>1:1 수업</em>
+                </div>
+            </div>
+            <!-- Global Education -->
+            <div class="circular-gallery__item" role="group" aria-label="Global Education">
+                <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=900&auto=format&fit=crop&q=80"
+                     alt="글로벌 교육">
+                <div class="circular-gallery__overlay">
+                    <h2>Global Education</h2>
+                    <em>글로벌 교육</em>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
-
-<!-- ePlan 소개 -->
- <section>
-    <div class="container">
-        {{ section_title_10(title='ePlan 소개', subtitle='About ePlan') }}
-        <p>ePlan은 글로벌 인재를 양성하는 강사를 찾고 있습니다.</p>
-    </div>
- </section>
-
-<section>
-    <div class="container">
-        {{ section_title_10(title='지원 요건', subtitle='Application Requirements') }}
-
-        <div class="grid grid--2">
-            <div class="card">
-                <h4 class="card__title">✓ 학사 학위 이상</h4>
-                <p>관련 분야 학사 학위 이상 소지자</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">✓ 언어 구사력</h4>
-                <p>원어민 또는 원어민에 준하는 언어 구사력</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">✓ 교육 자격증</h4>
-                <p>TESOL, TEFL 등 교육 관련 자격증 소지자 우대</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">✓ 합법적 취업 자격</h4>
-                <p>한국에서 합법적으로 일할 수 있는 자격 보유</p>
-            </div>
+    <div class="page-header__content">
+        <div class="container">
+            <h1>강사 지원</h1>
+            <p class="tagline">Join Our Team of Professional Educators</p>
+            <p>ePlan과 함께 글로벌 인재를 양성하는 강사가 되어주세요</p>
         </div>
     </div>
 </section>
 
-<!-- eplan clients -->
+<!-- Section 1: About ePlan -->
 <section>
     <div class="container">
-        {{ section_title_10(title='ePlan 고객사', subtitle='Our Clients') }}
-        <p>ePlan의 고객사들입니다.</p>
+        {{ section_title_10(title='ABOUT EPLAN', subtitle='Professional Language Education Since 2015') }}
+        <div class="about-content">
+            <p>ePlan Inc. offers corporate in-house teaching and other educational programs for qualified instructors since 2015. We are an organization of experts in each field and a company that provides customized learning services for students and instructors. Teachers who are novice in this industry also have many opportunities to help their careers.</p>
+        </div>
     </div>
- </section>
+</section>
 
-<!-- 지원 절차
+<!-- Section 2: Requirements -->
 <section class="u-bg-teal">
     <div class="container">
-        <h2 class="section-title">지원 절차</h2>
-        
-        <div class="study-steps">
-            <div class="card">
-                <div class="step-number">1</div>
-                <h4>온라인 지원서 제출</h4>
-                <p>아래 양식을 통해 지원서 제출</p>
+        {{ section_title_10(title='REQUIREMENTS', subtitle='What we look for in our instructors') }}
+
+        <div class="requirements-grid">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Bachelor's Degree</h3>
+                <p class="goal-card__desc">From a 4-year accredited university</p>
             </div>
-            
-            <div class="card">
-                <div class="step-number">2</div>
-                <h4>서류 심사</h4>
-                <p>제출하신 서류 검토</p>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Native / Fluent Speaker</h3>
+                <p class="goal-card__desc">Of the language to be taught</p>
             </div>
-            
-            <div class="card">
-                <div class="step-number">3</div>
-                <h4>온라인 인터뷰</h4>
-                <p>화상 인터뷰 진행</p>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Legal Work Status</h3>
+                <p class="goal-card__desc">Legally allowed to stay and work in Korea</p>
             </div>
-            
-            <div class="card">
-                <div class="step-number">4</div>
-                <h4>모의 수업 평가</h4>
-                <p>강의 능력 평가</p>
-            </div>
-            
-            <div class="card">
-                <div class="step-number">5</div>
-                <h4>최종 합격 및 계약</h4>
-                <p>근무 조건 협의 및 계약</p>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="7"/>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Teaching Certificate</h3>
+                <p class="goal-card__desc">TESOL, TEFL, or equivalent preferred</p>
             </div>
         </div>
     </div>
 </section>
--->
 
-<!-- 강사 혜택
+<!-- Section 3: ePlan Clients - Stats -->
 <section>
     <div class="container">
-        <h2 class="section-title">강사 혜택</h2>
-        
-        <div class="grid grid--2">
-            <div class="card">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="1" x2="12" y2="23"/>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                </div>
-                <h4>경쟁력 있는 급여</h4>
-                <p>업계 최고 수준의 급여 제공</p>
+        {{ section_title_10(title='EPLAN CLIENTS', subtitle='Our diverse client portfolio') }}
+
+        <h3 class="u-text-center u-mb-4" style="color: var(--color-text-muted); font-size: var(--font-size-base); text-transform: uppercase; letter-spacing: 0.1em;">Portion of Clients</h3>
+
+        <div class="stats-grid">
+            <div class="stats-card stats-card--global">
+                <div class="stats-card__number">58%</div>
+                <div class="stats-card__label">Global Companies</div>
             </div>
-            
-            <div class="card">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                    </svg>
-                </div>
-                <h4>전문성 개발</h4>
-                <p>정기적인 워크샵 및 세미나 기회</p>
+            <div class="stats-card stats-card--government">
+                <div class="stats-card__number">20%</div>
+                <div class="stats-card__label">Government Agencies</div>
             </div>
-            
-            <div class="card">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                </div>
-                <h4>유연한 근무 시간</h4>
-                <p>라이프스타일에 맞는 근무 시간 조정</p>
+            <div class="stats-card stats-card--education">
+                <div class="stats-card__number">23%</div>
+                <div class="stats-card__label">Education Agencies</div>
             </div>
-            
-            <div class="card">
-                <div class="service-icon">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                        <polyline points="17 6 23 6 23 12"/>
-                    </svg>
-                </div>
-                <h4>경력 개발 지원</h4>
-                <p>체계적인 경력 관리 프로그램</p>
+        </div>
+
+        <div class="number-stats">
+            <div class="number-stat">
+                <div class="number-stat__value">17+</div>
+                <div class="number-stat__label">Government Agencies</div>
+            </div>
+            <div class="number-stat">
+                <div class="number-stat__value">23+</div>
+                <div class="number-stat__label">Global Leading Companies</div>
             </div>
         </div>
     </div>
-</section> -->
+</section>
 
-
-<section class="u-bg-white">
+<!-- Section 4: Client Logos -->
+<section class="u-bg-teal">
     <div class="container">
-        {{ section_title_10(title='지원서 작성', subtitle='Application Form') }}
+        {{ section_title_10(title='OUR PARTNERS', subtitle='Trusted by leading organizations') }}
 
-        <form method="POST" class="form" style="max-width: 800px; margin: 0 auto;">
+        <div class="client-logo-grid">
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Samsung</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">LG</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Korean Air</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">SK Telecom</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Huvis</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Ministry of Justice</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">MOHW</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Seongnam City</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Hongik Univ.</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Yonsei Medical</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Hyundai Motor</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Korea University</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Posco</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Hanwha</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Lotte</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">CJ Group</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Doosan</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">GS Caltex</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 5: Current Openings -->
+<section>
+    <div class="container">
+        {{ section_title_10(title='CURRENT OPENINGS', subtitle='Available teaching positions') }}
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">English Instructor</h4>
+                <ul class="detail-card__list">
+                    <li>Full-time corporate in-house position</li>
+                    <li>Business English focus</li>
+                    <li>Seoul/Bundang area</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Phone English Instructor</h4>
+                <ul class="detail-card__list">
+                    <li>Part-time remote position</li>
+                    <li>Flexible hours</li>
+                    <li>Work from home available</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Japanese Instructor</h4>
+                <ul class="detail-card__list">
+                    <li>Corporate training position</li>
+                    <li>Business Japanese focus</li>
+                    <li>Experience preferred</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Chinese Instructor</h4>
+                <ul class="detail-card__list">
+                    <li>Part-time / Full-time available</li>
+                    <li>Mandarin Chinese</li>
+                    <li>Native speakers only</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 6: Application Form -->
+<section class="u-bg-teal">
+    <div class="container">
+        {{ section_title_10(title='APPLICATION FORM', subtitle='Submit your application to join our team') }}
+
+        <form method="POST" class="form" style="max-width: 800px; margin: 0 auto; background: var(--color-white); padding: var(--spacing-2xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);">
             {{ form.hidden_tag() }}
-            
+
             <div class="form__group">
                 {{ form.name.label(class="form__label") }}
-                {{ form.name(class="form__input") }}
+                {{ form.name(class="form__input", placeholder="이름을 입력하세요") }}
                 {% if form.name.errors %}
                 <div class="form__error">{{ form.name.errors[0] }}</div>
                 {% endif %}
             </div>
-            
+
             <div class="form__group">
                 {{ form.email.label(class="form__label") }}
-                {{ form.email(class="form__input", type="email") }}
+                {{ form.email(class="form__input", type="email", placeholder="email@example.com") }}
                 {% if form.email.errors %}
                 <div class="form__error">{{ form.email.errors[0] }}</div>
                 {% endif %}
             </div>
-            
+
             <div class="form__group">
                 {{ form.phone.label(class="form__label") }}
-                {{ form.phone(class="form__input") }}
+                {{ form.phone(class="form__input", placeholder="010-0000-0000") }}
                 {% if form.phone.errors %}
                 <div class="form__error">{{ form.phone.errors[0] }}</div>
                 {% endif %}
             </div>
-            
+
             <div class="form__group">
                 {{ form.education.label(class="form__label") }}
-                {{ form.education(class="form__textarea", rows="4") }}
+                {{ form.education(class="form__input form__textarea", rows="3", placeholder="학력 사항을 입력하세요") }}
                 {% if form.education.errors %}
                 <div class="form__error">{{ form.education.errors[0] }}</div>
                 {% endif %}
             </div>
-            
+
             <div class="form__group">
                 {{ form.experience.label(class="form__label") }}
-                {{ form.experience(class="form__textarea", rows="4") }}
+                {{ form.experience(class="form__input form__textarea", rows="3", placeholder="경력 사항을 입력하세요") }}
                 {% if form.experience.errors %}
                 <div class="form__error">{{ form.experience.errors[0] }}</div>
                 {% endif %}
             </div>
-            
+
             <div class="form__group">
                 {{ form.certificates.label(class="form__label") }}
-                {{ form.certificates(class="form__textarea", rows="3") }}
+                {{ form.certificates(class="form__input form__textarea", rows="2", placeholder="보유 자격증을 입력하세요 (TESOL, TEFL 등)") }}
             </div>
-            
+
             <div class="form__group">
                 {{ form.motivation.label(class="form__label") }}
-                {{ form.motivation(class="form__textarea", rows="5") }}
+                {{ form.motivation(class="form__input form__textarea", rows="4", placeholder="지원 동기를 입력하세요") }}
                 {% if form.motivation.errors %}
                 <div class="form__error">{{ form.motivation.errors[0] }}</div>
                 {% endif %}
             </div>
-            
-            <div class="form__actions">
-                {{ form.submit(class="btn btn--primary btn--lg") }}
-            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg" style="width: 100%;">지원하기</button>
         </form>
     </div>
 </section>
-{% endblock %}
 
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container u-text-center">
+        <h2>Questions About Applying?</h2>
+        <p class="u-mt-3 u-mb-4">궁금한 점이 있으시면 언제든지 문의해주세요</p>
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('main.consulting') }}" class="btn btn--primary btn--lg">문의하기</a>
+            <a href="{{ url_for('main.phone_english') }}" class="btn btn--outline btn--lg">프로그램 보기</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

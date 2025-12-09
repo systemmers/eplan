@@ -4,10 +4,10 @@
 .page-header--writing {
     background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1920&q=80');
     background-size: cover;
-    background-position: center 50%;
+    background-position: top center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 400px;
+    height: 500px;
 }
 
 /* Dark overlay for better text readability */
@@ -43,7 +43,8 @@
 /* Quote Card */
 
 .quote-card-section {
-    background-image: url('/static/images/header/jackW2.jpg');
+    /*background-image: url('/static/images/header/jackW2.jpg');*/
+    background-color: #828385;
     background-size: auto auto;
     background-position: top center;
     background-repeat: no-repeat;

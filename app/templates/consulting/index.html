@@ -1,24 +1,71 @@
 {% extends "base.html" %}
+{% from 'macros/section_titles.html' import section_title_10 %}
 
 {% block title %}컨설팅 문의 - ePlan{% endblock %}
 
 {% block content %}
+<!-- Page Header -->
 <section class="page-header page-header--consulting">
     <div class="container">
         <h1>컨설팅 문의</h1>
+        <p class="tagline">Your success is just around the corner.</p>
         <p>귀사에 맞는 최적의 교육 프로그램을 제안해드립니다</p>
     </div>
 </section>
 
+<!-- Section 1: Contact Information -->
 <section>
     <div class="container">
-        <div class="grid" style="grid-template-columns: 2fr 1fr; gap: 4rem;">
+        {{ section_title_10(title='CONTACT INFORMATION', subtitle='Get in touch with our team') }}
+
+        <div class="contact-cards">
+            <div class="contact-card contact-card--email">
+                <div class="contact-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </div>
+                <div class="contact-card__label">Email</div>
+                <div class="contact-card__value">
+                    <a href="mailto:kevinhwang@eplando.com">kevinhwang@eplando.com</a>
+                </div>
+            </div>
+            <div class="contact-card contact-card--phone">
+                <div class="contact-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+                <div class="contact-card__label">Phone</div>
+                <div class="contact-card__value">
+                    <a href="tel:031-8039-7705">031-8039-7705</a>
+                </div>
+            </div>
+            <div class="contact-card contact-card--address">
+                <div class="contact-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <div class="contact-card__label">Address</div>
+                <div class="contact-card__value">14, 48beongil, Jangmi-ro<br>Bundang-gu, Seongnam-si</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 2: Consultation Form -->
+<section class="u-bg-teal">
+    <div class="container">
+        {{ section_title_10(title='CONSULTATION REQUEST', subtitle="Fill out the form below and we'll get back to you") }}
+
+        <div class="form-layout">
             <div>
-                <h2 class="u-mb-4">문의 양식</h2>
-                
-                <form method="POST" class="form">
+                <form method="POST" class="form" style="background: var(--color-white); padding: var(--spacing-2xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);">
                     {{ form.hidden_tag() }}
-                    
+
                     <div class="form__group">
                         {{ form.company_name.label(class="form__label") }}
                         {{ form.company_name(class="form__input", placeholder="회사명을 입력하세요") }}
@@ -28,7 +75,7 @@
                         </div>
                         {% endif %}
                     </div>
-                    
+
                     <div class="form__group">
                         {{ form.name.label(class="form__label") }}
                         {{ form.name(class="form__input", placeholder="담당자 이름을 입력하세요") }}
@@ -38,7 +85,7 @@
                         </div>
                         {% endif %}
                     </div>
-                    
+
                     <div class="form__group">
                         {{ form.email.label(class="form__label") }}
                         {{ form.email(class="form__input", type="email", placeholder="email@example.com") }}
@@ -48,7 +95,7 @@
                         </div>
                         {% endif %}
                     </div>
-                    
+
                     <div class="form__group">
                         {{ form.phone.label(class="form__label") }}
                         {{ form.phone(class="form__input", placeholder="010-0000-0000") }}
@@ -58,41 +105,42 @@
                         </div>
                         {% endif %}
                     </div>
-                    
+
                     <div class="form__group">
                         {{ form.interested_courses.label(class="form__label") }}
-                        {{ form.interested_courses(class="form__input", placeholder="예: 전화영어, 기업출강") }}
+                        {{ form.interested_courses(class="form__input", placeholder="예: 전화영어, 기업출강, Writing 첨삭") }}
                     </div>
-                    
+
                     <div class="form__group">
                         {{ form.message.label(class="form__label") }}
-                        {{ form.message(class="form__textarea", rows="5", placeholder="기타 요청사항을 입력하세요") }}
+                        {{ form.message(class="form__input form__textarea", rows="4", placeholder="교육 관련 요청사항을 자유롭게 입력해주세요") }}
                     </div>
-                    
-                    <div class="form__actions">
-                        {{ form.submit(class="btn btn--primary") }}
-                    </div>
+
+                    <button type="submit" class="btn btn--primary btn--lg" style="width: 100%;">문의하기</button>
                 </form>
             </div>
-            
+
             <div>
-                <div class="card">
-                    <h3 class="card__title">연락처 정보</h3>
-                    <div class="card__body">
-                        <p><strong>이메일</strong><br>kevinhwang@eplando.com</p>
-                        <p class="u-mt-3"><strong>대표번호</strong><br>031-8039-7705</p>
-                        <p class="u-mt-3"><strong>주소</strong><br>
-                        14, 48beongil, Jangmi-ro<br>
-                        Bundang-gu, Seongnam-si,<br>
-                        Gyunggi-do</p>
+                <div class="hours-card">
+                    <h3 class="hours-card__title">Business Hours</h3>
+                    <div class="hours-card__content">
+                        <strong>Monday - Friday</strong>
+                        <p>9:00 AM - 6:00 PM</p>
+                        <br>
+                        <strong>Saturday</strong>
+                        <p>10:00 AM - 2:00 PM</p>
+                        <br>
+                        <strong>Sunday & Holidays</strong>
+                        <p>Closed</p>
                     </div>
                 </div>
-                
-                <div class="card u-mt-4">
-                    <h4 class="card__title">상담 시간</h4>
-                    <div class="card__body">
-                        <p>평일: 09:00 - 18:00<br>
-                        주말 및 공휴일 휴무</p>
+
+                <div style="margin-top: var(--spacing-xl);">
+                    <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-md); color: var(--color-teal-dark);">Quick Contact</h3>
+                    <p style="margin-bottom: var(--spacing-md);">급한 문의는 전화 또는 이메일로 연락주세요.</p>
+                    <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                        <a href="tel:031-8039-7705" class="btn btn--primary">전화 문의</a>
+                        <a href="mailto:kevinhwang@eplando.com" class="btn btn--outline">이메일 문의</a>
                     </div>
                 </div>
             </div>
@@ -100,5 +148,40 @@
     </div>
 </section>
 
-{% endblock %}
+<!-- Section 3: Location Map -->
+<section>
+    <div class="container">
+        {{ section_title_10(title='OUR LOCATION', subtitle='Visit us at our office in Bundang') }}
 
+        <div class="map-container">
+            <div class="map-placeholder">
+                <div style="text-align: center;">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <p style="margin-top: var(--spacing-md); font-weight: var(--font-weight-medium);">Map Integration</p>
+                    <p style="font-size: var(--font-size-sm);">Google Maps or Naver Maps embed goes here</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: var(--spacing-xl); text-align: center;">
+            <p><strong>Address:</strong> 14, 48beongil, Jangmi-ro, Bundang-gu, Seongnam-si, Gyeonggi-do</p>
+            <p style="margin-top: var(--spacing-sm); color: var(--color-text-muted);">Nearby Seolleung Station (Line 2, Bundang Line)</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container u-text-center">
+        <h2>Ready to Get Started?</h2>
+        <p class="u-mt-3 u-mb-4">지금 바로 교육 프로그램을 확인하세요</p>
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('main.phone_english') }}" class="btn btn--primary btn--lg">전화영어 보기</a>
+            <a href="{{ url_for('main.corporate_programs') }}" class="btn btn--outline btn--lg">기업출강 보기</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

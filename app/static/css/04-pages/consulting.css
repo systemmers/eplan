@@ -3,11 +3,11 @@
 /* Page Header Modifier - Consulting */
 .page-header--consulting {
     background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1920&q=80');
-    background-size: cover;
-    background-position: center 50%;
+    background-size: auto auto;
+    background-position: top center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 400px;
+    height: 1000px;
 }
 
 /* Dark overlay for better text readability */

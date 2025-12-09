@@ -1,918 +1,26 @@
 {#
-  9레벨 언어별 커리큘럼 테이블 매크로
+  9레벨 커리큘럼 테이블 매크로
   ===================================
-  curriculum_merged.html 기반 14개 언어 지원
-  L/H 서브레벨 제거, 9레벨 단일 열 시스템
+  14개 언어 지원 9레벨 커리큘럼 시스템
 
   사용법:
-    {% from 'macros/curriculum_9level.html' import language_section, language_nav, all_languages %}
+    {% from 'macros/curriculum_9level.html' import all_languages_9level, language_nav_9level %}
 
-    언어 네비게이션:
-      {{ language_nav() }}
+    언어 네비게이션 (탭 전환용):
+      {{ language_nav_9level() }}
 
-    전체 언어:
-      {{ all_languages() }}
+    전체 언어 테이블 (탭 콘텐츠):
+      {{ all_languages_9level() }}
 
-    특정 언어만:
-      {{ language_section('english', '영어', 'English', '🇺🇸') }}
+  Note:
+    - 모든 언어가 동일한 9레벨 구조 사용
+    - 코스가 없는 레벨은 빈 셀로 표시
+    - 교재 이미지 없을 시 placeholder_cover.svg 사용
 #}
 
 {# ============================================
-   언어 네비게이션 매크로
+   9레벨 언어 네비게이션 (탭 전환용)
    ============================================ #}
-{% macro language_nav() %}
-<nav class="language-nav" aria-label="언어 선택">
-    <a href="#lang-english" class="language-nav__item">
-        <span class="flag">🇺🇸</span> 영어
-    </a>
-    <a href="#lang-japanese" class="language-nav__item">
-        <span class="flag">🇯🇵</span> 일본어
-    </a>
-    <a href="#lang-chinese" class="language-nav__item">
-        <span class="flag">🇨🇳</span> 중국어
-    </a>
-    <a href="#lang-german" class="language-nav__item">
-        <span class="flag">🇩🇪</span> 독일어
-    </a>
-    <a href="#lang-spanish" class="language-nav__item">
-        <span class="flag">🇪🇸</span> 스페인어
-    </a>
-    <a href="#lang-french" class="language-nav__item">
-        <span class="flag">🇫🇷</span> 프랑스어
-    </a>
-    <a href="#lang-vietnamese" class="language-nav__item">
-        <span class="flag">🇻🇳</span> 베트남어
-    </a>
-    <a href="#lang-russian" class="language-nav__item">
-        <span class="flag">🇷🇺</span> 러시아어
-    </a>
-    <a href="#lang-arabic" class="language-nav__item">
-        <span class="flag">🇸🇦</span> 아랍어
-    </a>
-    <a href="#lang-thai" class="language-nav__item">
-        <span class="flag">🇹🇭</span> 태국어
-    </a>
-    <a href="#lang-indonesian" class="language-nav__item">
-        <span class="flag">🇮🇩</span> 인도네시아어
-    </a>
-    <a href="#lang-czech" class="language-nav__item">
-        <span class="flag">🇨🇿</span> 체코어
-    </a>
-    <a href="#lang-polish" class="language-nav__item">
-        <span class="flag">🇵🇱</span> 폴란드어
-    </a>
-    <a href="#lang-italian" class="language-nav__item">
-        <span class="flag">🇮🇹</span> 이탈리아어
-    </a>
-</nav>
-{% endmacro %}
-
-{# ============================================
-   레전드 매크로 (카테고리 설명)
-   ============================================ #}
-{% macro curriculum_legend() %}
-<div class="curriculum-legend-9">
-    <div class="legend-item">
-        <span class="category-badge cat-general">일반회화</span>
-    </div>
-    <div class="legend-item">
-        <span class="category-badge cat-business">비즈니스</span>
-    </div>
-    <div class="legend-item">
-        <span class="category-badge cat-topic">주제토론</span>
-    </div>
-    <div class="legend-item">
-        <span class="category-badge cat-exam">시험대비</span>
-    </div>
-</div>
-{% endmacro %}
-
-{# ============================================
-   테이블 헤더 매크로 (9레벨)
-   level_count: 레벨 수 (기본 9, 일부 언어는 더 적음)
-   ============================================ #}
-{% macro table_header(level_count=9) %}
-<thead>
-    <tr>
-        <th>과정</th>
-        <th>코스</th>
-        {% for i in range(1, level_count + 1) %}
-        <th class="level">Lv.{{ i }}</th>
-        {% endfor %}
-    </tr>
-</thead>
-{% endmacro %}
-
-{# ============================================
-   카테고리 행 매크로
-   ============================================ #}
-{% macro category_row(category_name, category_class, colspan) %}
-<tr class="course-category-9">
-    <td colspan="{{ colspan }}"><span class="category-badge {{ category_class }}">{{ category_name }}</span></td>
-</tr>
-{% endmacro %}
-
-{# ============================================
-   교재 셀 매크로 (9레벨용, 단순화)
-   ============================================ #}
-{% macro textbook_cell(name, colspan=1, merged=false) %}
-<td class="textbook-9{% if merged %} merged{% endif %}"{% if colspan > 1 %} colspan="{{ colspan }}"{% endif %}>{{ name }}</td>
-{% endmacro %}
-
-{# 빈 셀 매크로 #}
-{% macro empty_cell(colspan=1) %}
-<td class="empty-cell-9"{% if colspan > 1 %} colspan="{{ colspan }}"{% endif %}></td>
-{% endmacro %}
-
-{# ============================================
-   영어 커리큘럼 (English)
-   ============================================ #}
-{% macro english_rows() %}
-<!-- 일반회화 -->
-{{ category_row('일반회화', 'cat-general', 11) }}
-<tr>
-    <td></td>
-    <td>New Connection</td>
-    {{ textbook_cell('New Connection 1', 2, true) }}
-    {{ textbook_cell('New Connection 2') }}
-    {{ textbook_cell('New Connection 3') }}
-    {{ textbook_cell('World English 3 with My World English') }}
-    {{ empty_cell(4) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Smart Choice</td>
-    {{ textbook_cell('Smart Choice Starter, 1~3', 5, true) }}
-    {{ empty_cell(4) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Stretch</td>
-    {{ textbook_cell('Stretch Starter, 1~3', 5, true) }}
-    {{ empty_cell(4) }}
-</tr>
-<tr>
-    <td></td>
-    <td>여행영어</td>
-    {{ empty_cell() }}
-    {{ textbook_cell('여행영어 100일의 기적', 3, true) }}
-    {{ empty_cell(5) }}
-</tr>
-<tr>
-    <td></td>
-    <td>핵심패턴</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('영어회화 핵심패턴 233 중고급편', 3, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>패턴 900/비긴어게인</td>
-    {{ textbook_cell('비긴어게인 VOL.1') }}
-    {{ textbook_cell('비긴어게인 VOL.2') }}
-    {{ textbook_cell('PEP900', 4, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Smart English(주니어)</td>
-    {{ textbook_cell('Smart English Starter') }}
-    {{ textbook_cell('Smart English 1') }}
-    {{ textbook_cell('Smart English 2') }}
-    {{ textbook_cell('Smart English 3') }}
-    {{ textbook_cell('Smart English 4') }}
-    {{ textbook_cell('Smart English 5') }}
-    {{ textbook_cell('Smart English 6') }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Smart Phonics(주니어)</td>
-    {{ textbook_cell('Smart Phonics 1-3') }}
-    {{ empty_cell(8) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Exploring English</td>
-    {{ textbook_cell('Exploring English 1') }}
-    {{ textbook_cell('Exploring English 2') }}
-    {{ textbook_cell('Exploring English 3') }}
-    {{ textbook_cell('Exploring English 4') }}
-    {{ textbook_cell('Exploring English 5') }}
-    {{ empty_cell(4) }}
-</tr>
-<tr>
-    <td></td>
-    <td>American English File</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('American English File4', 3, true) }}
-    {{ textbook_cell('American English File5', 2, true) }}
-    {{ empty_cell() }}
-</tr>
-
-<!-- 비즈니스 -->
-{{ category_row('비즈니스', 'cat-business', 11) }}
-<tr>
-    <td></td>
-    <td>Meeting skill</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('English for Meetings', 3, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Negotiation skill</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('English for negotiation', 3, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Presentation skill</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('English for Presentations', 3, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Socializing skill</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('English for Socializing', 3, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Telephoning skill</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('English for Telephoning', 3, true) }}
-    {{ empty_cell(4) }}
-</tr>
-<tr>
-    <td></td>
-    <td>비즈니스 핵심패턴</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('비즈니스 영어회화&이메일 핵심패턴 233', 2, true) }}
-    {{ empty_cell(5) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Business Conversation</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('Business Partner A2') }}
-    {{ textbook_cell('Business Partner B2+', 2, true) }}
-    {{ textbook_cell('Profile 1') }}
-    {{ textbook_cell('Profile 2') }}
-    {{ textbook_cell('Profile 3', 2, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Business Conversation</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('Business Venture 1') }}
-    {{ textbook_cell('Business Venture 2') }}
-    {{ textbook_cell('Business Result_Upper-Intermediate', 2, true) }}
-    {{ empty_cell(2) }}
-</tr>
-
-<!-- 주제토론 -->
-{{ category_row('주제토론', 'cat-topic', 11) }}
-<tr>
-    <td></td>
-    <td>뉴스미디어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('News Media', 6, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>하버드비즈니스리뷰 MT Orange</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('HBO', 4, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>하버드비즈니스리뷰 MT Daily</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('HBR', 4, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>파워 오브 스토리텔링</td>
-    {{ empty_cell(4) }}
-    {{ textbook_cell('POS', 5, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Jazz English</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('Jazz English1') }}
-    {{ textbook_cell('Jazz English2', 2, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Hot Topic</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('Hot Topic1', 2, true) }}
-    {{ textbook_cell('Hot Topic2', 2, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>토론영어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('바로 통하는 실전 토론 영어', 3, true) }}
-    {{ empty_cell(3) }}
-</tr>
-
-<!-- 시험대비 -->
-{{ category_row('시험대비', 'cat-exam', 11) }}
-<tr>
-    <td></td>
-    <td>토익스피킹</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('Hackers TOEIC SPEAKING Start', 2, true) }}
-    {{ textbook_cell('Hackers TOEIC SPEAKING Lv6') }}
-    {{ textbook_cell('Hackers TOEIC SPEAKING Lv7,8') }}
-    {{ textbook_cell('ETS 토익스피킹 기출문제집 최신개정 12회') }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>오픽</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('OPIC의 신', 3, true) }}
-    {{ textbook_cell('Hackers OPIc Advanced 공략/ OPIC의 신') }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>IELTS Speaking</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('한 권으로 끝내는 IELTS MASTER', 4, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>토플스피킹</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('Siwonschool TOEFL Speaking', 4, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>SPA</td>
-    {{ empty_cell() }}
-    {{ textbook_cell('2주만에 정복 스파르타 SPA 초급', 3, true) }}
-    {{ textbook_cell('SPA 초단기트레이닝', 3, true) }}
-    {{ empty_cell(2) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   일본어 커리큘럼 (Japanese)
-   ============================================ #}
-{% macro japanese_rows() %}
-<!-- 일반회화 -->
-{{ category_row('일반회화', 'cat-general', 11) }}
-<tr>
-    <td></td>
-    <td>New 다이나믹 일본어</td>
-    {{ textbook_cell('New 다이나믹 일본어 1') }}
-    {{ textbook_cell('New 다이나믹 일본어 1-2') }}
-    {{ textbook_cell('New 다이나믹 일본어 2-3') }}
-    {{ textbook_cell('New 다이나믹 일본어 3-4') }}
-    {{ textbook_cell('New 다이나믹 일본어 4', 2, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>다락원 일본어 마스터</td>
-    {{ textbook_cell('다락원 일본어 마스터 1') }}
-    {{ textbook_cell('다락원 일본어 마스터 2') }}
-    {{ textbook_cell('다락원 일본어 마스터 3') }}
-    {{ textbook_cell('다락원 일본어 마스터 4') }}
-    {{ textbook_cell('다락원 일본어 마스터 5', 2, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>스꾸스꾸 일본어</td>
-    {{ textbook_cell('스꾸스꾸 일본어 1') }}
-    {{ textbook_cell('스꾸스꾸 일본어 1-2') }}
-    {{ textbook_cell('스꾸스꾸 일본어 2-3') }}
-    {{ textbook_cell('스꾸스꾸 일본어 3-4') }}
-    {{ textbook_cell('스꾸스꾸 일본어 4', 2, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>여행일본어</td>
-    {{ empty_cell() }}
-    {{ textbook_cell('맛있는 여행 일본어', 4, true) }}
-    {{ empty_cell(4) }}
-</tr>
-<tr>
-    <td></td>
-    <td>프리토킹일본어회화 완전정복</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('프리토킹일본어회화 완전정복', 5, true) }}
-    {{ empty_cell(2) }}
-</tr>
-
-<!-- 비즈니스 -->
-{{ category_row('비즈니스', 'cat-business', 11) }}
-<tr>
-    <td></td>
-    <td>생생체험 현지 비즈니스 일본어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('생생체험 현지 비즈니스 일본어', 6, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>두발짝 비즈니스 일본어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('두발짝 비즈니스 일본어', 6, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>비즈니스회화패턴</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('비즈니스 일본어회화&이메일 핵심패턴 233', 4, true) }}
-    {{ empty_cell(2) }}
-</tr>
-
-<!-- 주제토론 -->
-{{ category_row('주제토론', 'cat-topic', 11) }}
-<tr>
-    <td></td>
-    <td>뉴스미디어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('뉴스미디어', 6, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>즐거운 프리토킹 일본어</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('즐거운프리토킹일본어40초중급', 3, true) }}
-    {{ textbook_cell('즐거운프리토킹일본어60중상급', 4, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>수다프리토킹</td>
-    {{ empty_cell(4) }}
-    {{ textbook_cell('일본어 수다프리토킹360', 5, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>다락원일본어독해</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('다락원 일본어 독해 초급', 2, true) }}
-    {{ textbook_cell('다락원 일본어 독해 중급', 3, true) }}
-    {{ empty_cell(2) }}
-</tr>
-
-<!-- 시험대비 -->
-{{ category_row('시험대비', 'cat-exam', 11) }}
-<tr>
-    <td></td>
-    <td>SJPT L. 4-8</td>
-    {{ empty_cell(4) }}
-    {{ textbook_cell('SJPT중고급 L.4-8', 4, true) }}
-    {{ empty_cell() }}
-</tr>
-<tr>
-    <td></td>
-    <td>SJPT</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('SJPT 한권으로 합격하기', 4, true) }}
-    {{ textbook_cell('SJPT 기출문제집', 2, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>JPT</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('New JPT 한권으로 끝내기 450', 2, true) }}
-    {{ empty_cell() }}
-    {{ textbook_cell('JPT한권으로끝내기800', 4, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>JLPT</td>
-    {{ empty_cell() }}
-    {{ textbook_cell('JLPT(일본어능력시험) 한권으로 끝내기 N4', 2, true) }}
-    {{ textbook_cell('JLPT 일본어능력시험 한권으로 끝내기 N3', 2, true) }}
-    {{ textbook_cell('JLPT 한 권으로 끝내기 N2', 2, true) }}
-    {{ empty_cell(2) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   중국어 커리큘럼 (Chinese)
-   ============================================ #}
-{% macro chinese_rows() %}
-<!-- 일반회화 -->
-{{ category_row('일반회화', 'cat-general', 11) }}
-<tr>
-    <td></td>
-    <td>맛있는중국어</td>
-    {{ textbook_cell('맛있는중국어 1') }}
-    {{ textbook_cell('맛있는중국어 1-2') }}
-    {{ textbook_cell('맛있는중국어 2') }}
-    {{ textbook_cell('맛있는중국어 3', 2, true) }}
-    {{ textbook_cell('맛있는중국어 4', 2, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>중국어마스터</td>
-    {{ textbook_cell('중국어마스터 1') }}
-    {{ textbook_cell('중국어마스터 1-2') }}
-    {{ textbook_cell('중국어마스터 2-3') }}
-    {{ textbook_cell('중국어마스터 3-4') }}
-    {{ textbook_cell('중국어마스터 5') }}
-    {{ textbook_cell('중국어마스터 6', 2, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>끝장중국어</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('끝장중국어 기초끝장내기', 3, true) }}
-    {{ empty_cell(4) }}
-</tr>
-<tr>
-    <td></td>
-    <td>여행중국어</td>
-    {{ empty_cell() }}
-    {{ textbook_cell('해커스 여행 중국어 10분의 기적', 4, true) }}
-    {{ empty_cell(4) }}
-</tr>
-
-<!-- 비즈니스 -->
-{{ category_row('비즈니스', 'cat-business', 11) }}
-<tr>
-    <td></td>
-    <td>OK 비즈니스 중국어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('OK 비즈니스 중국어', 6, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>중국어비지니스 실무중고급</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('중국어비지니스 실무중고급', 6, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>출장중국어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('나의 겁없는 중국출장 중국어', 6, true) }}
-</tr>
-
-<!-- 주제토론 -->
-{{ category_row('주제토론', 'cat-topic', 11) }}
-<tr>
-    <td></td>
-    <td>신문화중국어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('신문화중국어', 4, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>뉴스미디어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('뉴스미디어', 6, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>중국뉴스중국어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('나의 겁없는 중국뉴스 중국어', 6, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>신공략중국어프리토킹</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('신공략중국어프리토킹', 6, true) }}
-</tr>
-
-<!-- 시험대비 -->
-{{ category_row('시험대비', 'cat-exam', 11) }}
-<tr>
-    <td></td>
-    <td>OPIC</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('OPIc 중국어의 정석 IH공략', 3, true) }}
-    {{ empty_cell(3) }}
-</tr>
-<tr>
-    <td></td>
-    <td>TSC</td>
-    {{ textbook_cell('통쾌하게 통과하기 TSC START편') }}
-    {{ textbook_cell('통쾌하게 통과하기 TSC BASIC편', 2, true) }}
-    {{ textbook_cell('통쾌하게 통과하기 TSC Booster편') }}
-    {{ textbook_cell('통쾌하게 통과하기 TSC Higher편', 2, true) }}
-    {{ textbook_cell('통쾌하게 통과하기 TSC Master편', 2, true) }}
-    {{ empty_cell() }}
-</tr>
-<tr>
-    <td></td>
-    <td>BCT스피킹</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('초단기신BCT Speaking 공략', 5, true) }}
-    {{ empty_cell(2) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   독일어 커리큘럼 (German) - 7레벨
-   ============================================ #}
-{% macro german_rows() %}
-{{ category_row('일반회화', 'cat-general', 9) }}
-<tr>
-    <td></td>
-    <td>일반회화</td>
-    {{ textbook_cell('내게는 특별한 독일어를 부탁해 첫걸음', 3, true) }}
-    {{ textbook_cell('독일어 중고급의 모든 것', 4, true) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   스페인어 커리큘럼 (Spanish) - 8레벨
-   ============================================ #}
-{% macro spanish_rows() %}
-{{ category_row('일반회화', 'cat-general', 10) }}
-<tr>
-    <td></td>
-    <td>일반회화</td>
-    {{ textbook_cell('내게는 특별한 스페인어를 부탁해 첫걸음', 3, true) }}
-    {{ empty_cell(5) }}
-</tr>
-<tr>
-    <td></td>
-    <td>NUEVO ESPANOL</td>
-    {{ empty_cell() }}
-    {{ textbook_cell('NUEVO ESPANOL1') }}
-    {{ textbook_cell('NUEVO ESPANOL2') }}
-    {{ textbook_cell('NUEVO ESPANOL3', 2, true) }}
-    {{ textbook_cell('NUEVO ESPANOL4', 2, true) }}
-    {{ empty_cell() }}
-</tr>
-{{ category_row('시험대비', 'cat-exam', 10) }}
-<tr>
-    <td></td>
-    <td>FLEX UP 스페인어</td>
-    {{ empty_cell(3) }}
-    {{ textbook_cell('FLEX UP 스페인어', 5, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Entorno laboral</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('Entorno laboral Nivel A1-B1', 2, true) }}
-    {{ textbook_cell('Entorno Empresarial Nivel B2', 2, true) }}
-    {{ empty_cell(2) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   프랑스어 커리큘럼 (French)
-   ============================================ #}
-{% macro french_rows() %}
-{{ category_row('일반회화', 'cat-general', 11) }}
-<tr>
-    <td></td>
-    <td>일반회화</td>
-    {{ textbook_cell('내게는 특별한 프랑스어를 부탁해 첫걸음', 3, true) }}
-    {{ empty_cell(6) }}
-</tr>
-<tr>
-    <td></td>
-    <td>festival</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('festival1', 2, true) }}
-    {{ textbook_cell('festival2', 2, true) }}
-    {{ textbook_cell('festival3', 3, true) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   베트남어 커리큘럼 (Vietnamese) - 5레벨
-   ============================================ #}
-{% macro vietnamese_rows() %}
-{{ category_row('일반회화', 'cat-general', 7) }}
-<tr>
-    <td></td>
-    <td>가장 쉬운 독학 베트남어 첫걸음</td>
-    {{ textbook_cell('가장 쉬운 독학 베트남어 첫걸음', 3, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>패턴의 법칙 베트남어 첫걸음</td>
-    {{ textbook_cell('패턴의 법칙 베트남어 첫걸음', 3, true) }}
-    {{ empty_cell(2) }}
-</tr>
-<tr>
-    <td></td>
-    <td>The 바른 베트남어</td>
-    {{ empty_cell(2) }}
-    {{ textbook_cell('The 바른 베트남어 Step 2', 2, true) }}
-    {{ textbook_cell('베트남어 중고급의 모든것') }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   러시아어 커리큘럼 (Russian) - 6레벨
-   ============================================ #}
-{% macro russian_rows() %}
-{{ category_row('일반회화', 'cat-general', 8) }}
-<tr>
-    <td></td>
-    <td>일반회화</td>
-    {{ textbook_cell('내게는 특별한 러시아어를 부탁해 첫걸음', 3, true) }}
-    {{ textbook_cell('중급 러시아어', 3, true) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   아랍어 커리큘럼 (Arabic) - 4레벨
-   ============================================ #}
-{% macro arabic_rows() %}
-{{ category_row('일반회화', 'cat-general', 6) }}
-<tr>
-    <td></td>
-    <td>일반회화</td>
-    {{ textbook_cell('The 바른 아랍어 Step 1', 2, true) }}
-    {{ textbook_cell('The 바른 아랍어 Step 2', 2, true) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   태국어 커리큘럼 (Thai)
-   ============================================ #}
-{% macro thai_rows() %}
-{{ category_row('일반회화', 'cat-general', 11) }}
-<tr>
-    <td></td>
-    <td>The 바른 태국어 첫걸음</td>
-    {{ textbook_cell('The 바른 태국어 첫걸음', 3, true) }}
-    {{ empty_cell(6) }}
-</tr>
-<tr>
-    <td></td>
-    <td>태국어 표준교재</td>
-    {{ textbook_cell('태국어 표준교재A0') }}
-    {{ textbook_cell('태국어 표준교재A1', 2, true) }}
-    {{ textbook_cell('태국어 표준교재A1~A2') }}
-    {{ textbook_cell('태국어 표준교재A2') }}
-    {{ textbook_cell('태국어 표준교재B1', 2, true) }}
-    {{ textbook_cell('태국어 표준교재B2', 2, true) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   인도네시아어 커리큘럼 (Indonesian) - 4레벨
-   ============================================ #}
-{% macro indonesian_rows() %}
-{{ category_row('일반회화', 'cat-general', 6) }}
-<tr>
-    <td></td>
-    <td>일반회화</td>
-    {{ textbook_cell('The 바른 인도네시아어 Step1', 2, true) }}
-    {{ textbook_cell('The 바른 인도네시아어 Step2', 2, true) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   체코어 커리큘럼 (Czech) - 3레벨
-   ============================================ #}
-{% macro czech_rows() %}
-{{ category_row('일반회화', 'cat-general', 5) }}
-<tr>
-    <td></td>
-    <td>The 바른 체코어</td>
-    {{ textbook_cell('The 바른 체코어', 3, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Say it in Czech</td>
-    {{ textbook_cell('Say it in Czech', 3, true) }}
-</tr>
-<tr>
-    <td></td>
-    <td>Cestina-pro-cizince</td>
-    {{ textbook_cell('Cestina-pro-cizince-a1-a-a2', 3, true) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   폴란드어 커리큘럼 (Polish) - 4레벨
-   ============================================ #}
-{% macro polish_rows() %}
-{{ category_row('일반회화', 'cat-general', 6) }}
-<tr>
-    <td></td>
-    <td>일반회화</td>
-    {{ textbook_cell('The 바른 폴란드어 Step1', 2, true) }}
-    {{ textbook_cell('The 바른 폴란드어 Step2', 2, true) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   이탈리아어 커리큘럼 (Italian) - 3레벨
-   ============================================ #}
-{% macro italian_rows() %}
-{{ category_row('일반회화', 'cat-general', 5) }}
-<tr>
-    <td></td>
-    <td>일반회화</td>
-    {{ textbook_cell('이탈리아어 첫걸음의 모든 것', 3, true) }}
-</tr>
-{% endmacro %}
-
-{# ============================================
-   언어 섹션 래퍼 매크로
-   lang_code: 언어 코드 (english, japanese 등)
-   lang_name_ko: 한국어 언어명
-   lang_name_native: 원어 언어명
-   flag: 국기 이모지
-   level_count: 레벨 수 (기본 9)
-   ============================================ #}
-{% macro language_section(lang_code, lang_name_ko, lang_name_native, flag, level_count=9) %}
-<section class="language-section lang-{{ lang_code }}" id="lang-{{ lang_code }}">
-    <div class="language-header">
-        <span class="flag">{{ flag }}</span> {{ lang_name_ko }} ({{ lang_name_native }})
-    </div>
-    <div class="table-wrapper">
-        <table class="curriculum-table-9level">
-            {{ table_header(level_count) }}
-            <tbody>
-                {% if lang_code == 'english' %}
-                    {{ english_rows() }}
-                {% elif lang_code == 'japanese' %}
-                    {{ japanese_rows() }}
-                {% elif lang_code == 'chinese' %}
-                    {{ chinese_rows() }}
-                {% elif lang_code == 'german' %}
-                    {{ german_rows() }}
-                {% elif lang_code == 'spanish' %}
-                    {{ spanish_rows() }}
-                {% elif lang_code == 'french' %}
-                    {{ french_rows() }}
-                {% elif lang_code == 'vietnamese' %}
-                    {{ vietnamese_rows() }}
-                {% elif lang_code == 'russian' %}
-                    {{ russian_rows() }}
-                {% elif lang_code == 'arabic' %}
-                    {{ arabic_rows() }}
-                {% elif lang_code == 'thai' %}
-                    {{ thai_rows() }}
-                {% elif lang_code == 'indonesian' %}
-                    {{ indonesian_rows() }}
-                {% elif lang_code == 'czech' %}
-                    {{ czech_rows() }}
-                {% elif lang_code == 'polish' %}
-                    {{ polish_rows() }}
-                {% elif lang_code == 'italian' %}
-                    {{ italian_rows() }}
-                {% endif %}
-            </tbody>
-        </table>
-    </div>
-</section>
-{% endmacro %}
-
-{# ============================================
-   전체 언어 렌더링 매크로
-   ============================================ #}
-{% macro all_languages() %}
-{{ language_section('english', '영어', 'English', '🇺🇸', 9) }}
-{{ language_section('japanese', '일본어', '日本語', '🇯🇵', 9) }}
-{{ language_section('chinese', '중국어', '中文', '🇨🇳', 9) }}
-{{ language_section('german', '독일어', 'Deutsch', '🇩🇪', 7) }}
-{{ language_section('spanish', '스페인어', 'Español', '🇪🇸', 8) }}
-{{ language_section('french', '프랑스어', 'Français', '🇫🇷', 9) }}
-{{ language_section('vietnamese', '베트남어', 'Tiếng Việt', '🇻🇳', 5) }}
-{{ language_section('russian', '러시아어', 'Русский', '🇷🇺', 6) }}
-{{ language_section('arabic', '아랍어', 'العربية', '🇸🇦', 4) }}
-{{ language_section('thai', '태국어', 'ภาษาไทย', '🇹🇭', 9) }}
-{{ language_section('indonesian', '인도네시아어', 'Bahasa Indonesia', '🇮🇩', 4) }}
-{{ language_section('czech', '체코어', 'Čeština', '🇨🇿', 3) }}
-{{ language_section('polish', '폴란드어', 'Polski', '🇵🇱', 4) }}
-{{ language_section('italian', '이탈리아어', 'Italiano', '🇮🇹', 3) }}
-{% endmacro %}
-
-{# ============================================
-   9레벨 공통 테이블 시스템 (14개 언어 통합)
-   - 모든 언어가 동일한 9레벨 구조 사용
-   - 코스가 없는 레벨은 빈 셀
-   ============================================ #}
-
-{# 9레벨 언어 네비게이션 (탭 전환용) #}
 {% macro language_nav_9level() %}
 <nav class="language-nav-9level" aria-label="언어 선택">
     <a href="#" class="language-nav-9level__item is-active" data-lang="english">
@@ -988,7 +96,9 @@
 </nav>
 {% endmacro %}
 
-{# 9레벨 공통 테이블 헤더 #}
+{# ============================================
+   9레벨 공통 테이블 헤더
+   ============================================ #}
 {% macro table_header_9level() %}
 <thead>
     <tr>
@@ -1013,7 +123,9 @@
 </thead>
 {% endmacro %}
 
-{# 9레벨용 교재 셀 (이미지 포함) #}
+{# ============================================
+   9레벨용 교재 셀 (이미지 포함)
+   ============================================ #}
 {% macro textbook_cell_9level(textbook_ids, level_start, level_end, display_name) %}
 {% set colspan = level_end - level_start + 1 %}
 <td colspan="{{ colspan }}"
@@ -1038,7 +150,9 @@
 <td colspan="{{ colspan }}" class="empty-cell-9level">-</td>
 {% endmacro %}
 
-{# 9레벨 범례 #}
+{# ============================================
+   9레벨 범례
+   ============================================ #}
 {% macro curriculum_legend_9level() %}
 <div class="curriculum-legend-9level">
     <h4>레벨 범례</h4>
@@ -1098,7 +212,7 @@
 {% endmacro %}
 
 {# ============================================
-   영어 9레벨 행 (모든 언어 공통 구조)
+   영어 9레벨 행
    ============================================ #}
 {% macro english_9level_rows() %}
 <!-- 일반회화 -->
@@ -1295,8 +409,7 @@
 {% endmacro %}
 
 {# ============================================
-   일본어 9레벨 행 (9레벨 공통 구조)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   일본어 9레벨 행
    ============================================ #}
 {% macro japanese_9level_rows() %}
 <!-- 일반회화 -->
@@ -1399,8 +512,7 @@
 {% endmacro %}
 
 {# ============================================
-   중국어 9레벨 행 (9레벨 공통 구조)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   중국어 9레벨 행
    ============================================ #}
 {% macro chinese_9level_rows() %}
 <!-- 일반회화 -->
@@ -1492,8 +604,7 @@
 {% endmacro %}
 
 {# ============================================
-   독일어 9레벨 행 (1-7 사용, 8-9 빈 셀)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   독일어 9레벨 행
    ============================================ #}
 {% macro german_9level_rows() %}
 <tr class="category-header-row">
@@ -1505,8 +616,7 @@
 {% endmacro %}
 
 {# ============================================
-   스페인어 9레벨 행 (1-8 사용, 9 빈 셀)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   스페인어 9레벨 행
    ============================================ #}
 {% macro spanish_9level_rows() %}
 <tr class="category-header-row">
@@ -1538,7 +648,6 @@
 
 {# ============================================
    프랑스어 9레벨 행
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
    ============================================ #}
 {% macro french_9level_rows() %}
 <tr class="category-header-row">
@@ -1555,8 +664,7 @@
 {% endmacro %}
 
 {# ============================================
-   베트남어 9레벨 행 (1-5 사용, 6-9 빈 셀)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   베트남어 9레벨 행
    ============================================ #}
 {% macro vietnamese_9level_rows() %}
 <tr class="category-header-row">
@@ -1579,8 +687,7 @@
 {% endmacro %}
 
 {# ============================================
-   러시아어 9레벨 행 (1-6 사용, 7-9 빈 셀)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   러시아어 9레벨 행
    ============================================ #}
 {% macro russian_9level_rows() %}
 <tr class="category-header-row">
@@ -1592,8 +699,7 @@
 {% endmacro %}
 
 {# ============================================
-   아랍어 9레벨 행 (1-4 사용, 5-9 빈 셀)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   아랍어 9레벨 행
    ============================================ #}
 {% macro arabic_9level_rows() %}
 <tr class="category-header-row">
@@ -1606,7 +712,6 @@
 
 {# ============================================
    태국어 9레벨 행
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
    ============================================ #}
 {% macro thai_9level_rows() %}
 <tr class="category-header-row">
@@ -1622,8 +727,7 @@
 {% endmacro %}
 
 {# ============================================
-   인도네시아어 9레벨 행 (1-4 사용, 5-9 빈 셀)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   인도네시아어 9레벨 행
    ============================================ #}
 {% macro indonesian_9level_rows() %}
 <tr class="category-header-row">
@@ -1635,8 +739,7 @@
 {% endmacro %}
 
 {# ============================================
-   체코어 9레벨 행 (1-3 사용, 4-9 빈 셀)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   체코어 9레벨 행
    ============================================ #}
 {% macro czech_9level_rows() %}
 <tr class="category-header-row">
@@ -1648,8 +751,7 @@
 {% endmacro %}
 
 {# ============================================
-   폴란드어 9레벨 행 (1-4 사용, 5-9 빈 셀)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   폴란드어 9레벨 행
    ============================================ #}
 {% macro polish_9level_rows() %}
 <tr class="category-header-row">
@@ -1661,8 +763,7 @@
 {% endmacro %}
 
 {# ============================================
-   이탈리아어 9레벨 행 (1-3 사용, 4-9 빈 셀)
-   - 영어 테이블 스타일과 동일한 시리즈 통합 방식 적용
+   이탈리아어 9레벨 행
    ============================================ #}
 {% macro italian_9level_rows() %}
 <tr class="category-header-row">
