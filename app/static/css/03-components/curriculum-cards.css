@@ -14,32 +14,32 @@
 .course-overview-cards {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: var(--spacing-lg, 1.5rem);
+    margin-top: var(--spacing-xl, 2rem);
 }
 
 /* Program Overview Card Container - 1 Column */
 .program-overview-cards {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: var(--spacing-lg, 1.5rem);
+    margin-top: var(--spacing-xl, 2rem);
 }
 
 /* ============================================
    Base Card Horizontal
    ============================================ */
 .card-horizontal {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: var(--color-white, white);
+    border-radius: var(--border-radius-lg, 12px);
+    box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.08));
     display: flex;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: var(--transition-base, all 0.3s ease);
 }
 
 .card-horizontal:hover {
-    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    box-shadow: var(--shadow-lg, 0 8px 16px rgba(0,0,0,0.12));
     transform: translateY(-2px);
 }
 
@@ -56,7 +56,7 @@
     width: 200px;
     height: 200px;
     flex-shrink: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-header, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,7 +71,7 @@
 
 .card-curriculum__content {
     flex: 1;
-    padding: 1.5rem;
+    padding: var(--spacing-lg, 1.5rem);
     display: flex;
     flex-direction: column;
 }
@@ -80,77 +80,77 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-md, 1rem);
 }
 
 .card-curriculum__level {
     display: inline-block;
     padding: 0.35rem 0.85rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    border-radius: var(--border-radius-full, 20px);
+    font-size: var(--font-size-sm, 0.8rem);
+    font-weight: var(--font-weight-semibold, 600);
+    background: var(--gradient-header, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+    color: var(--color-white, white);
 }
 
 .card-curriculum__title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #2d3748;
-    margin-bottom: 0.75rem;
+    font-size: var(--font-size-xl, 1.3rem);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--color-text-dark, #2d3748);
+    margin-bottom: var(--spacing-sm, 0.75rem);
 }
 
 .card-curriculum__description {
-    font-size: 0.95rem;
-    color: #718096;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    font-size: var(--font-size-base, 0.95rem);
+    color: var(--color-text-muted, #718096);
+    line-height: var(--line-height-relaxed, 1.6);
+    margin-bottom: var(--spacing-md, 1rem);
     flex: 1;
 }
 
 .card-curriculum__features {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: var(--spacing-xs, 0.5rem);
+    margin-bottom: var(--spacing-md, 1rem);
 }
 
 .card-curriculum__feature {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    background: #edf2f7;
-    font-size: 0.85rem;
-    color: #4a5568;
+    gap: var(--spacing-2xs, 0.25rem);
+    padding: var(--spacing-2xs, 0.25rem) var(--spacing-sm, 0.75rem);
+    border-radius: var(--border-radius-md, 12px);
+    background: var(--color-bg-light, #edf2f7);
+    font-size: var(--font-size-sm, 0.85rem);
+    color: var(--color-text-secondary, #4a5568);
 }
 
 .card-curriculum__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 1rem;
-    border-top: 1px solid #e2e8f0;
+    padding-top: var(--spacing-md, 1rem);
+    border-top: 1px solid var(--color-border, #e2e8f0);
 }
 
 .card-curriculum__info {
     display: flex;
-    gap: 1.5rem;
-    font-size: 0.9rem;
-    color: #718096;
+    gap: var(--spacing-lg, 1.5rem);
+    font-size: var(--font-size-sm, 0.9rem);
+    color: var(--color-text-muted, #718096);
 }
 
 .card-curriculum__cta {
-    padding: 0.65rem 1.5rem;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    padding: 0.65rem var(--spacing-lg, 1.5rem);
+    border-radius: var(--border-radius-md, 8px);
+    background: var(--gradient-header, linear-gradient(135deg, #667eea 0%, #764ba2 100%));
+    color: var(--color-white, white);
     border: none;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold, 600);
     cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.9rem;
+    transition: var(--transition-base, all 0.3s);
+    font-size: var(--font-size-sm, 0.9rem);
     text-decoration: none;
 }
 
@@ -200,8 +200,8 @@
     position: relative;
     z-index: 10;
     width: 100%;
-    color: white;
-    padding: 2rem;
+    color: var(--color-white, white);
+    padding: var(--spacing-xl, 2rem);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -217,8 +217,8 @@
 
 .card-horizontal.card-curriculum--overlay .card-curriculum__title,
 .card-curriculum--overlay .card-curriculum__title {
-    color: white;
-    font-size: 1.5rem;
+    color: var(--color-white, white);
+    font-size: var(--font-size-2xl, 1.5rem);
 }
 
 .card-horizontal.card-curriculum--overlay .card-curriculum__description,
@@ -229,7 +229,7 @@
 .card-horizontal.card-curriculum--overlay .card-curriculum__feature,
 .card-curriculum--overlay .card-curriculum__feature {
     background: rgba(255, 255, 255, 0.2);
-    color: white;
+    color: var(--color-white, white);
     backdrop-filter: blur(10px);
 }
 
@@ -245,8 +245,8 @@
 
 .card-horizontal.card-curriculum--overlay .card-curriculum__cta,
 .card-curriculum--overlay .card-curriculum__cta {
-    background: white;
-    color: #667eea;
+    background: var(--color-white, white);
+    color: var(--color-primary, #667eea);
 }
 
 .card-horizontal.card-curriculum--overlay .card-curriculum__cta:hover,
@@ -266,11 +266,11 @@
     .card-horizontal.card-curriculum--overlay .card-curriculum__content,
     .card-curriculum--overlay .card-curriculum__content {
         min-height: 240px;
-        padding: 1.5rem;
+        padding: var(--spacing-lg, 1.5rem);
     }
 
     .card-horizontal.card-curriculum--overlay .card-curriculum__title,
     .card-curriculum--overlay .card-curriculum__title {
-        font-size: 1.25rem;
+        font-size: var(--font-size-xl, 1.25rem);
     }
 }

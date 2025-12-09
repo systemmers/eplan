@@ -1,0 +1,276 @@
+/**
+ * ============================================================================
+ * Curriculum Demo Macros
+ * ============================================================================
+ *
+ * File: curriculum_demo.html
+ * Purpose: Reusable macros for curriculum roadmap demo page
+ * Components:
+ *   - demo_table_header: Common 10-level table header
+ *   - demo_table_body: Common table body with curriculum data
+ *   - demo_legend: Level color legend component
+ *   - demo_style_section: Complete style demo section wrapper
+ *
+ * Dependencies: None (standalone macros)
+ * ============================================================================
+ */
+
+{# ============================================================================
+   Demo Table Header Macro
+   - Renders the common 10-level curriculum table header
+   ============================================================================ #}
+{% macro demo_table_header() %}
+<thead>
+    <tr>
+        <th rowspan="2">Category</th>
+        <th colspan="3" class="level-group">Beginner</th>
+        <th colspan="4" class="level-group">Intermediate</th>
+        <th colspan="3" class="level-group">Advanced</th>
+    </tr>
+    <tr>
+        {% for i in range(1, 11) %}
+        <th class="lv{{ i }}">L{{ i }}</th>
+        {% endfor %}
+    </tr>
+</thead>
+{% endmacro %}
+
+
+{# ============================================================================
+   Demo Textbook Cell Macro
+   - Renders a single textbook cell with optional images
+   Parameters:
+     - colspan: Number of columns to span
+     - level_class: CSS class for level background (e.g., 'lvbg2_7')
+     - name: Textbook name/series name
+     - images: Optional list of image filenames (for default style with images)
+   ============================================================================ #}
+{% macro demo_textbook_cell(colspan, level_class, name, images=none) %}
+<td colspan="{{ colspan }}" class="textbook-cell {{ level_class }}">
+    {% if images %}
+    <div class="textbook-cell-content">
+        <span class="textbook-name">{{ name }}</span>
+        <div class="textbook-images">
+            {% for img in images %}
+            <img src="{{ url_for('static', filename='images/books_img/' ~ img) }}"
+                 alt="{{ name }}"
+                 class="textbook-thumbnail"
+                 onerror="this.src='{{ url_for('static', filename='images/books/placeholder_cover.svg') }}'">
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    {{ name }}
+    {% endif %}
+</td>
+{% endmacro %}
+
+
+{# ============================================================================
+   Demo Table Body Macro (with images - for Default style)
+   - Renders complete table body with images
+   ============================================================================ #}
+{% macro demo_table_body_with_images() %}
+<tbody>
+    <tr>
+        <th rowspan="2">General English</th>
+        {{ demo_textbook_cell(5, 'lvbg2_7', 'Smart Choice Starter 1~5', ['sc-starter.jpg', 'sc-main.jpg']) }}
+        {{ demo_textbook_cell(5, 'lvbg6_9', 'Smart Choice 1~5', ['sc-main.jpg', 'sbs-1-3.jpg']) }}
+    </tr>
+    <tr>
+        {{ demo_textbook_cell(3, 'lvbg1_3', 'Side by Side 1~3', ['sbs-1-3.jpg', 'sc-starter.jpg']) }}
+        {{ demo_textbook_cell(4, 'lvbg4_7', 'Side by Side 4~7', ['sbs-4-7.jpg', 'touchstone-5-7.jpg']) }}
+        {{ demo_textbook_cell(3, 'lvbg8_10', 'Side by Side Plus', ['sbs-plus.jpg']) }}
+    </tr>
+    <tr>
+        <th>Pre-Talking</th>
+        {{ demo_textbook_cell(5, 'lvbg3_5', 'Speak Up Starter~3', ['touchstone-1-4.jpg', 'interchange-intro.jpg']) }}
+        {{ demo_textbook_cell(5, 'lvbg6_9', 'Speak Up 1~5', ['touchstone-5-7.jpg', 'interchange-2-3.jpg']) }}
+    </tr>
+    <tr>
+        <th>Business</th>
+        {{ demo_textbook_cell(4, 'lvbg3_5', 'Business Venture 1~2', ['business-venture-1-2.jpg', 'business-venture-3.jpg']) }}
+        {{ demo_textbook_cell(3, 'lvbg5_8', 'Business Venture 3', ['business-venture-plus.jpg']) }}
+        {{ demo_textbook_cell(3, 'lvbg8_10', 'Business Venture Plus', ['business-venture-plus.jpg']) }}
+    </tr>
+</tbody>
+{% endmacro %}
+
+
+{# ============================================================================
+   Demo Table Body Macro (text only - for Borderless/Pastel styles)
+   - Renders complete table body without images
+   ============================================================================ #}
+{% macro demo_table_body_text_only() %}
+<tbody>
+    <tr>
+        <th rowspan="2">General English</th>
+        {{ demo_textbook_cell(5, 'lvbg2_7', 'Smart Choice Starter 1~5') }}
+        {{ demo_textbook_cell(5, 'lvbg6_9', 'Smart Choice 1~5') }}
+    </tr>
+    <tr>
+        {{ demo_textbook_cell(3, 'lvbg1_3', 'Side by Side 1~3') }}
+        {{ demo_textbook_cell(4, 'lvbg4_7', 'Side by Side 4~7') }}
+        {{ demo_textbook_cell(3, 'lvbg8_10', 'Side by Side Plus') }}
+    </tr>
+    <tr>
+        <th>Pre-Talking</th>
+        {{ demo_textbook_cell(5, 'lvbg3_5', 'Speak Up Starter~3') }}
+        {{ demo_textbook_cell(5, 'lvbg6_9', 'Speak Up 1~5') }}
+    </tr>
+    <tr>
+        <th>Business</th>
+        {{ demo_textbook_cell(4, 'lvbg3_5', 'Business Venture 1~2') }}
+        {{ demo_textbook_cell(3, 'lvbg5_8', 'Business Venture 3') }}
+        {{ demo_textbook_cell(3, 'lvbg8_10', 'Business Venture Plus') }}
+    </tr>
+</tbody>
+{% endmacro %}
+
+
+{# ============================================================================
+   Demo Legend Macro
+   - Renders level color guide legend
+   Parameters:
+     - style_type: 'default', 'borderless', or 'pastel'
+   ============================================================================ #}
+{% macro demo_legend(style_type='default') %}
+<div class="demo-legend">
+    <h3>Level Color Guide</h3>
+    <div class="demo-legend-grid">
+        {% if style_type == 'default' %}
+            {{ _legend_item('#D1F2EB', 'L1 - Entry') }}
+            {{ _legend_item('#A3E4D7', 'L2 - Beginner I') }}
+            {{ _legend_item('#76D7C4', 'L3 - Beginner II') }}
+            {{ _legend_item('#AED6F1', 'L4 - Intermediate I') }}
+            {{ _legend_item('#85C1E2', 'L5 - Intermediate II') }}
+            {{ _legend_item('#5DADE2', 'L6 - Intermediate III') }}
+            {{ _legend_item('#D7BDE2', 'L7 - Intermediate IV') }}
+            {{ _legend_item('#C39BD3', 'L8 - Advanced I') }}
+            {{ _legend_item('#AF7AC5', 'L9 - Advanced II') }}
+            {{ _legend_item('#9B59B6', 'L10 - Advanced III') }}
+        {% elif style_type == 'borderless' %}
+            {{ _legend_item('rgba(2, 148, 136, 0.05)', 'L1 - 5% Teal') }}
+            {{ _legend_item('rgba(2, 148, 136, 0.09)', 'L3 - 9% Teal') }}
+            {{ _legend_item('rgba(2, 148, 136, 0.13)', 'L5 - 13% Teal') }}
+            {{ _legend_item('rgba(2, 148, 136, 0.17)', 'L7 - 17% Teal') }}
+            {{ _legend_item('rgba(2, 148, 136, 0.23)', 'L10 - 23% Teal') }}
+        {% elif style_type == 'pastel' %}
+            {{ _legend_item('#FFE5E5', 'L1 - Pastel Pink') }}
+            {{ _legend_item('#FFE5D9', 'L2 - Pastel Peach') }}
+            {{ _legend_item('#FFF4DB', 'L3 - Pastel Yellow') }}
+            {{ _legend_item('#E8F5E9', 'L4 - Pastel Mint') }}
+            {{ _legend_item('#E5F0FF', 'L5 - Pastel Sky') }}
+            {{ _legend_item('#F3E5F5', 'L6 - Pastel Lavender') }}
+            {{ _legend_item('#FCE4EC', 'L7 - Pastel Rose') }}
+            {{ _legend_item('#E1BEE7', 'L8 - Light Purple') }}
+            {{ _legend_item('#D1C4E9', 'L9 - Light Violet') }}
+            {{ _legend_item('#C5CAE9', 'L10 - Light Indigo') }}
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
+
+{# Private helper macro for legend items #}
+{% macro _legend_item(color, label) %}
+<div class="demo-legend-item">
+    <div class="demo-legend-color" style="background: {{ color }};"></div>
+    <span class="demo-legend-label">{{ label }}</span>
+</div>
+{% endmacro %}
+
+
+{# ============================================================================
+   Demo Style Section Macro
+   - Complete style demo section with table and legend
+   Parameters:
+     - style_id: Section ID (e.g., 'style-default')
+     - style_name: Display name (e.g., 'ePlan Default')
+     - style_num: Style number (1, 2, or 3)
+     - description: Style description text
+     - style_class: Additional CSS class for section
+     - with_images: Whether to include textbook images
+     - legend_type: Legend style type ('default', 'borderless', 'pastel')
+   ============================================================================ #}
+{% macro demo_style_section(style_id, style_name, style_num, description, style_class='', with_images=false, legend_type='default') %}
+<section id="{{ style_id }}" class="style-demo-section curriculum-style--{{ style_id.replace('style-', '') }} {{ style_class }}">
+    <div class="container">
+        <h2>Style {{ style_num }}: {{ style_name }}</h2>
+        <p class="style-desc">{{ description }}</p>
+
+        <div class="demo-table-wrapper">
+            <div class="demo-table-scroll">
+                <table class="curriculum-demo-table">
+                    {{ demo_table_header() }}
+                    {% if with_images %}
+                        {{ demo_table_body_with_images() }}
+                    {% else %}
+                        {{ demo_table_body_text_only() }}
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+
+        {{ demo_legend(legend_type) }}
+    </div>
+</section>
+{% endmacro %}
+
+
+{# ============================================================================
+   Style Comparison Table Macro
+   - Renders the style comparison summary table
+   ============================================================================ #}
+{% macro style_comparison_table() %}
+<div class="style-comparison">
+    <h2>Style Comparison Summary</h2>
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>ePlan Default</th>
+                <th>Borderless Clean</th>
+                <th>Pastel Soft</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Color Approach</strong></td>
+                <td>Gradient (teal to purple)</td>
+                <td>Single teal with opacity</td>
+                <td>Diverse pastel colors</td>
+            </tr>
+            <tr>
+                <td><strong>Borders</strong></td>
+                <td>Solid borders</td>
+                <td>No borders</td>
+                <td>No borders</td>
+            </tr>
+            <tr>
+                <td><strong>Cell Spacing</strong></td>
+                <td>Collapsed</td>
+                <td>8px gap</td>
+                <td>8px gap</td>
+            </tr>
+            <tr>
+                <td><strong>Shadow</strong></td>
+                <td>Box shadow</td>
+                <td>None</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td><strong>Hover Effect</strong></td>
+                <td>Lift + shadow</td>
+                <td>Darker teal overlay</td>
+                <td>Brightness filter</td>
+            </tr>
+            <tr>
+                <td><strong>Best For</strong></td>
+                <td>Professional / Corporate</td>
+                <td>Minimal / Clean design</td>
+                <td>Friendly / Soft feel</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endmacro %}

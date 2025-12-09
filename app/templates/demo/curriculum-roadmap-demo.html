@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% from 'macros/section_titles.html' import section_title_10 %}
+{% from 'macros/curriculum_demo.html' import demo_style_section, style_comparison_table %}
 
 {% block title %}Curriculum Roadmap Style Demo - ePlan{% endblock %}
 
@@ -27,431 +28,40 @@
 </section>
 
 <!-- Style 1: ePlan Default (Gradient) -->
-<section id="style-default" class="style-demo-section curriculum-style--default">
-    <div class="container">
-        <h2>Style 1: ePlan Default</h2>
-        <p class="style-desc">Gradient backgrounds with borders and shadows - Professional and modern look</p>
-
-        <div class="demo-table-wrapper">
-            <div class="demo-table-scroll">
-                <table class="curriculum-demo-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">Category</th>
-                            <th colspan="3" class="level-group">Beginner</th>
-                            <th colspan="4" class="level-group">Intermediate</th>
-                            <th colspan="3" class="level-group">Advanced</th>
-                        </tr>
-                        <tr>
-                            <th class="lv1">L1</th>
-                            <th class="lv2">L2</th>
-                            <th class="lv3">L3</th>
-                            <th class="lv4">L4</th>
-                            <th class="lv5">L5</th>
-                            <th class="lv6">L6</th>
-                            <th class="lv7">L7</th>
-                            <th class="lv8">L8</th>
-                            <th class="lv9">L9</th>
-                            <th class="lv10">L10</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th rowspan="2">General English</th>
-                            <td colspan="5" class="textbook-cell lvbg2_7">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Smart Choice Starter 1~5</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/sc-starter.jpg') }}" alt="Smart Choice Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                        <img src="{{ url_for('static', filename='images/books_img/sc-main.jpg') }}" alt="Smart Choice" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                            <td colspan="5" class="textbook-cell lvbg6_9">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Smart Choice 1~5</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/sc-main.jpg') }}" alt="Smart Choice 1" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                        <img src="{{ url_for('static', filename='images/books_img/sbs-1-3.jpg') }}" alt="Smart Choice 2" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" class="textbook-cell lvbg1_3">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Side by Side 1~3</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/sbs-1-3.jpg') }}" alt="Side by Side 1" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                        <img src="{{ url_for('static', filename='images/books_img/sc-starter.jpg') }}" alt="Side by Side 2" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                            <td colspan="4" class="textbook-cell lvbg4_7">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Side by Side 4~7</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/sbs-4-7.jpg') }}" alt="Side by Side 4" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-5-7.jpg') }}" alt="Side by Side 5" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                            <td colspan="3" class="textbook-cell lvbg8_10">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Side by Side Plus</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/sbs-plus.jpg') }}" alt="Side by Side Plus" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Pre-Talking</th>
-                            <td colspan="5" class="textbook-cell lvbg3_5">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Speak Up Starter~3</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-1-4.jpg') }}" alt="Speak Up Starter" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                        <img src="{{ url_for('static', filename='images/books_img/interchange-intro.jpg') }}" alt="Speak Up 1" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                            <td colspan="5" class="textbook-cell lvbg6_9">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Speak Up 1~5</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/touchstone-5-7.jpg') }}" alt="Speak Up 1" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                        <img src="{{ url_for('static', filename='images/books_img/interchange-2-3.jpg') }}" alt="Speak Up 2" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Business</th>
-                            <td colspan="4" class="textbook-cell lvbg3_5">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Business Venture 1~2</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-1-2.jpg') }}" alt="Business Venture 1" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-3.jpg') }}" alt="Business Venture 2" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                            <td colspan="3" class="textbook-cell lvbg5_8">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Business Venture 3</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-plus.jpg') }}" alt="Business Venture 3" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                            <td colspan="3" class="textbook-cell lvbg8_10">
-                                <div class="textbook-cell-content">
-                                    <span class="textbook-name">Business Venture Plus</span>
-                                    <div class="textbook-images">
-                                        <img src="{{ url_for('static', filename='images/books_img/business-venture-plus.jpg') }}" alt="Business Venture Plus" class="textbook-thumbnail" onerror="this.style.display='none'">
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Legend -->
-        <div class="demo-legend">
-            <h3>Level Color Guide</h3>
-            <div class="demo-legend-grid">
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #D1F2EB;"></div>
-                    <span class="demo-legend-label">L1 - Entry</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #A3E4D7;"></div>
-                    <span class="demo-legend-label">L2 - Beginner I</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #76D7C4;"></div>
-                    <span class="demo-legend-label">L3 - Beginner II</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #AED6F1;"></div>
-                    <span class="demo-legend-label">L4 - Intermediate I</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #85C1E2;"></div>
-                    <span class="demo-legend-label">L5 - Intermediate II</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #5DADE2;"></div>
-                    <span class="demo-legend-label">L6 - Intermediate III</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #D7BDE2;"></div>
-                    <span class="demo-legend-label">L7 - Intermediate IV</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #C39BD3;"></div>
-                    <span class="demo-legend-label">L8 - Advanced I</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #AF7AC5;"></div>
-                    <span class="demo-legend-label">L9 - Advanced II</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #9B59B6;"></div>
-                    <span class="demo-legend-label">L10 - Advanced III</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{{ demo_style_section(
+    style_id='style-default',
+    style_name='ePlan Default',
+    style_num=1,
+    description='Gradient backgrounds with borders and shadows - Professional and modern look',
+    with_images=true,
+    legend_type='default'
+) }}
 
 <!-- Style 2: Borderless Clean -->
-<section id="style-borderless" class="style-demo-section curriculum-style--borderless u-bg-teal">
-    <div class="container">
-        <h2>Style 2: Borderless Clean</h2>
-        <p class="style-desc">No borders, subtle teal transparency progression - Clean and minimal look</p>
-
-        <div class="demo-table-wrapper">
-            <div class="demo-table-scroll">
-                <table class="curriculum-demo-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">Category</th>
-                            <th colspan="3" class="level-group">Beginner</th>
-                            <th colspan="4" class="level-group">Intermediate</th>
-                            <th colspan="3" class="level-group">Advanced</th>
-                        </tr>
-                        <tr>
-                            <th class="lv1">L1</th>
-                            <th class="lv2">L2</th>
-                            <th class="lv3">L3</th>
-                            <th class="lv4">L4</th>
-                            <th class="lv5">L5</th>
-                            <th class="lv6">L6</th>
-                            <th class="lv7">L7</th>
-                            <th class="lv8">L8</th>
-                            <th class="lv9">L9</th>
-                            <th class="lv10">L10</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th rowspan="2">General English</th>
-                            <td colspan="5" class="textbook-cell lvbg2_7">Smart Choice Starter 1~5</td>
-                            <td colspan="5" class="textbook-cell lvbg6_9">Smart Choice 1~5</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" class="textbook-cell lvbg1_3">Side by Side 1~3</td>
-                            <td colspan="4" class="textbook-cell lvbg4_7">Side by Side 4~7</td>
-                            <td colspan="3" class="textbook-cell lvbg8_10">Side by Side Plus</td>
-                        </tr>
-                        <tr>
-                            <th>Pre-Talking</th>
-                            <td colspan="5" class="textbook-cell lvbg3_5">Speak Up Starter~3</td>
-                            <td colspan="5" class="textbook-cell lvbg6_9">Speak Up 1~5</td>
-                        </tr>
-                        <tr>
-                            <th>Business</th>
-                            <td colspan="4" class="textbook-cell lvbg3_5">Business Venture 1~2</td>
-                            <td colspan="3" class="textbook-cell lvbg5_8">Business Venture 3</td>
-                            <td colspan="3" class="textbook-cell lvbg8_10">Business Venture Plus</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Legend -->
-        <div class="demo-legend">
-            <h3>Level Color Guide</h3>
-            <div class="demo-legend-grid">
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: rgba(2, 148, 136, 0.05);"></div>
-                    <span class="demo-legend-label">L1 - 5% Teal</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: rgba(2, 148, 136, 0.09);"></div>
-                    <span class="demo-legend-label">L3 - 9% Teal</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: rgba(2, 148, 136, 0.13);"></div>
-                    <span class="demo-legend-label">L5 - 13% Teal</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: rgba(2, 148, 136, 0.17);"></div>
-                    <span class="demo-legend-label">L7 - 17% Teal</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: rgba(2, 148, 136, 0.23);"></div>
-                    <span class="demo-legend-label">L10 - 23% Teal</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{{ demo_style_section(
+    style_id='style-borderless',
+    style_name='Borderless Clean',
+    style_num=2,
+    description='No borders, subtle teal transparency progression - Clean and minimal look',
+    style_class='u-bg-teal',
+    with_images=false,
+    legend_type='borderless'
+) }}
 
 <!-- Style 3: Pastel Soft -->
-<section id="style-pastel" class="style-demo-section curriculum-style--pastel">
-    <div class="container">
-        <h2>Style 3: Pastel Soft</h2>
-        <p class="style-desc">Soft pastel colors with rounded corners - Warm and friendly look</p>
-
-        <div class="demo-table-wrapper">
-            <div class="demo-table-scroll">
-                <table class="curriculum-demo-table">
-                    <thead>
-                        <tr>
-                            <th rowspan="2">Category</th>
-                            <th colspan="3" class="level-group">Beginner</th>
-                            <th colspan="4" class="level-group">Intermediate</th>
-                            <th colspan="3" class="level-group">Advanced</th>
-                        </tr>
-                        <tr>
-                            <th class="lv1">L1</th>
-                            <th class="lv2">L2</th>
-                            <th class="lv3">L3</th>
-                            <th class="lv4">L4</th>
-                            <th class="lv5">L5</th>
-                            <th class="lv6">L6</th>
-                            <th class="lv7">L7</th>
-                            <th class="lv8">L8</th>
-                            <th class="lv9">L9</th>
-                            <th class="lv10">L10</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th rowspan="2">General English</th>
-                            <td colspan="5" class="textbook-cell lvbg2_7">Smart Choice Starter 1~5</td>
-                            <td colspan="5" class="textbook-cell lvbg6_9">Smart Choice 1~5</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" class="textbook-cell lvbg1_3">Side by Side 1~3</td>
-                            <td colspan="4" class="textbook-cell lvbg4_7">Side by Side 4~7</td>
-                            <td colspan="3" class="textbook-cell lvbg8_10">Side by Side Plus</td>
-                        </tr>
-                        <tr>
-                            <th>Pre-Talking</th>
-                            <td colspan="5" class="textbook-cell lvbg3_5">Speak Up Starter~3</td>
-                            <td colspan="5" class="textbook-cell lvbg6_9">Speak Up 1~5</td>
-                        </tr>
-                        <tr>
-                            <th>Business</th>
-                            <td colspan="4" class="textbook-cell lvbg3_5">Business Venture 1~2</td>
-                            <td colspan="3" class="textbook-cell lvbg5_8">Business Venture 3</td>
-                            <td colspan="3" class="textbook-cell lvbg8_10">Business Venture Plus</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Legend -->
-        <div class="demo-legend">
-            <h3>Level Color Guide</h3>
-            <div class="demo-legend-grid">
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #FFE5E5;"></div>
-                    <span class="demo-legend-label">L1 - Pastel Pink</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #FFE5D9;"></div>
-                    <span class="demo-legend-label">L2 - Pastel Peach</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #FFF4DB;"></div>
-                    <span class="demo-legend-label">L3 - Pastel Yellow</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #E8F5E9;"></div>
-                    <span class="demo-legend-label">L4 - Pastel Mint</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #E5F0FF;"></div>
-                    <span class="demo-legend-label">L5 - Pastel Sky</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #F3E5F5;"></div>
-                    <span class="demo-legend-label">L6 - Pastel Lavender</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #FCE4EC;"></div>
-                    <span class="demo-legend-label">L7 - Pastel Rose</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #E1BEE7;"></div>
-                    <span class="demo-legend-label">L8 - Light Purple</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #D1C4E9;"></div>
-                    <span class="demo-legend-label">L9 - Light Violet</span>
-                </div>
-                <div class="demo-legend-item">
-                    <div class="demo-legend-color" style="background: #C5CAE9;"></div>
-                    <span class="demo-legend-label">L10 - Light Indigo</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{{ demo_style_section(
+    style_id='style-pastel',
+    style_name='Pastel Soft',
+    style_num=3,
+    description='Soft pastel colors with rounded corners - Warm and friendly look',
+    with_images=false,
+    legend_type='pastel'
+) }}
 
 <!-- Style Comparison -->
 <section class="u-bg-teal">
     <div class="container">
-        <div class="style-comparison">
-            <h2>Style Comparison Summary</h2>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Feature</th>
-                        <th>ePlan Default</th>
-                        <th>Borderless Clean</th>
-                        <th>Pastel Soft</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Color Approach</strong></td>
-                        <td>Gradient (teal to purple)</td>
-                        <td>Single teal with opacity</td>
-                        <td>Diverse pastel colors</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Borders</strong></td>
-                        <td>Solid borders</td>
-                        <td>No borders</td>
-                        <td>No borders</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Cell Spacing</strong></td>
-                        <td>Collapsed</td>
-                        <td>8px gap</td>
-                        <td>8px gap</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Shadow</strong></td>
-                        <td>Box shadow</td>
-                        <td>None</td>
-                        <td>None</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Hover Effect</strong></td>
-                        <td>Lift + shadow</td>
-                        <td>Darker teal overlay</td>
-                        <td>Brightness filter</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Best For</strong></td>
-                        <td>Professional / Corporate</td>
-                        <td>Minimal / Clean design</td>
-                        <td>Friendly / Soft feel</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        {{ style_comparison_table() }}
     </div>
 </section>
 
@@ -466,16 +76,8 @@
         </div>
     </div>
 </section>
+{% endblock %}
 
-<script>
-// Smooth scroll for style selector links
-document.querySelectorAll('.style-selector__btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        // Remove active class from all
-        document.querySelectorAll('.style-selector__btn').forEach(b => b.classList.remove('active'));
-        // Add active to clicked
-        this.classList.add('active');
-    });
-});
-</script>
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/curriculum-demo.js') }}"></script>
 {% endblock %}

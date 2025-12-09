@@ -1,6 +1,42 @@
 /* Curriculum Table Component */
 /* 테이블 구조 및 레벨 시스템 스타일 */
 
+/* ============================================================================
+   Unified Textbook Thumbnail Variables
+   ============================================================================
+   10레벨/9레벨 테이블 공통 썸네일 크기 변수
+   ============================================================================ */
+:root {
+    /* 10-Level Thumbnail Sizes (Larger) */
+    --textbook-thumb-width-lg: 90px;
+    --textbook-thumb-height-lg: 120px;
+    --textbook-overlap-lg: -60px;
+
+    /* 9-Level Thumbnail Sizes (Medium) - defined in curriculum-roadmap.css */
+    /* --textbook-thumb-width: 80px; */
+    /* --textbook-thumb-height: 104px; */
+    /* --textbook-overlap: -50px; */
+
+    /* Tablet Sizes */
+    --textbook-thumb-width-tablet: 65px;
+    --textbook-thumb-height-tablet: 85px;
+    --textbook-overlap-tablet: -40px;
+
+    /* Mobile Sizes */
+    --textbook-thumb-width-mobile: 50px;
+    --textbook-thumb-height-mobile: 65px;
+    --textbook-overlap-mobile: -30px;
+
+    /* Extra Small (480px and below) */
+    --textbook-thumb-width-xs: 30px;
+    --textbook-thumb-height-xs: 40px;
+
+    /* Container Heights */
+    --textbook-images-min-height-lg: 130px;
+    --textbook-images-min-height-md: 110px;
+    --textbook-images-min-height-sm: 70px;
+}
+
 /* Table Wrapper */
 .curriculum-table-wrapper {
     background: var(--color-white);
@@ -289,14 +325,14 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
-    min-height: 120px;
+    min-height: var(--textbook-images-min-height-lg);
     width: 100%;
     padding-left: var(--spacing-sm);
 }
 
 .textbook-thumbnail {
-    width: 90px;
-    height: 120px;
+    width: var(--textbook-thumb-width-lg);
+    height: var(--textbook-thumb-height-lg);
     object-fit: cover;
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-md);
@@ -304,5 +340,135 @@
 }
 
 .textbook-thumbnail:not(:first-child) {
-    margin-left: -60px;
+    margin-left: var(--textbook-overlap-lg);
+}
+
+/* Responsive - 10-Level Thumbnails */
+@media (max-width: 1024px) {
+    .textbook-images {
+        min-height: var(--textbook-images-min-height-md);
+    }
+    .textbook-thumbnail {
+        width: var(--textbook-thumb-width-tablet);
+        height: var(--textbook-thumb-height-tablet);
+    }
+    .textbook-thumbnail:not(:first-child) {
+        margin-left: var(--textbook-overlap-tablet);
+    }
+}
+
+@media (max-width: 768px) {
+    .textbook-images {
+        min-height: var(--textbook-images-min-height-sm);
+    }
+    .textbook-thumbnail {
+        width: var(--textbook-thumb-width-mobile);
+        height: var(--textbook-thumb-height-mobile);
+    }
+    .textbook-thumbnail:not(:first-child) {
+        margin-left: var(--textbook-overlap-mobile);
+    }
+}
+
+
+/* ============================================================================
+   10-Level Curriculum Legend Styles
+   ============================================================================
+   10레벨 커리큘럼 테이블의 레전드 컴포넌트
+   curriculum_table.html 매크로에서 사용
+   ============================================================================ */
+
+/* Legend Container */
+.curriculum-legend {
+    background: var(--color-white, #fff);
+    border-radius: var(--border-radius-lg, 12px);
+    box-shadow: var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.1));
+    padding: var(--spacing-2xl, 2rem);
+    margin-top: var(--spacing-2xl, 2rem);
+}
+
+.curriculum-legend h2 {
+    font-family: var(--font-family-heading, 'Poppins', sans-serif);
+    font-size: var(--font-size-2xl, 1.5rem);
+    font-weight: var(--font-weight-bold, 700);
+    background: var(--gradient-header, linear-gradient(135deg, #667eea, #764ba2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-lg, 1.5rem);
+}
+
+.curriculum-legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md, 1rem);
+}
+
+.curriculum-legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm, 0.5rem);
+}
+
+.curriculum-legend-color {
+    width: 50px;
+    height: 35px;
+    border-radius: var(--border-radius-md, 8px);
+    box-shadow: var(--shadow-sm, 0 2px 4px rgba(0, 0, 0, 0.05));
+    flex-shrink: 0;
+}
+
+.curriculum-legend-label {
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-text-muted, #6b7280);
+    font-weight: var(--font-weight-medium, 500);
+}
+
+/* Legend Level Colors - 10-Level System */
+.curriculum-legend-color.lv1 {
+    background: var(--gradient-lv1, linear-gradient(135deg, #a8edea, #fed6e3));
+}
+.curriculum-legend-color.lv2 {
+    background: var(--gradient-lv2, linear-gradient(135deg, #d299c2, #fef9d7));
+}
+.curriculum-legend-color.lv3 {
+    background: var(--gradient-lv3, linear-gradient(135deg, #89f7fe, #66a6ff));
+}
+.curriculum-legend-color.lv4 {
+    background: var(--gradient-lv4, linear-gradient(135deg, #a1c4fd, #c2e9fb));
+}
+.curriculum-legend-color.lv5 {
+    background: var(--gradient-lv5, linear-gradient(135deg, #f5af19, #f12711));
+}
+.curriculum-legend-color.lv6 {
+    background: var(--gradient-lv6, linear-gradient(135deg, #667eea, #764ba2));
+}
+.curriculum-legend-color.lv7 {
+    background: var(--gradient-lv7, linear-gradient(135deg, #f093fb, #f5576c));
+}
+.curriculum-legend-color.lv8 {
+    background: var(--gradient-lv8, linear-gradient(135deg, #4facfe, #00f2fe));
+}
+.curriculum-legend-color.lv9 {
+    background: var(--gradient-lv9, linear-gradient(135deg, #43e97b, #38f9d7));
+}
+.curriculum-legend-color.lv10 {
+    background: var(--gradient-lv10, linear-gradient(135deg, #fa709a, #fee140));
+}
+
+/* Responsive - Legend */
+@media (max-width: 1024px) {
+    .curriculum-legend-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .curriculum-legend {
+        padding: var(--spacing-lg, 1.5rem);
+    }
+
+    .curriculum-legend h2 {
+        font-size: var(--font-size-xl, 1.25rem);
+    }
 }
