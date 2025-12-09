@@ -1,14 +1,14 @@
 /**
  * ============================================================================
- * Curriculum Roadmap Page Styles
+ * Curriculum Roadmap Page Styles - Pastel Soft Theme
  * ============================================================================
  *
  * 파일: curriculum-roadmap.css
- * 용도: 커리큘럼 로드맵 페이지 전용 스타일
+ * 용도: 커리큘럼 로드맵 페이지 전용 스타일 (Pastel Soft 테마)
  * 주요 구성요소:
- *   - 9레벨 커리큘럼 테이블
+ *   - 9레벨 커리큘럼 테이블 (파스텔 단색, 테두리 없음, 8px 간격)
  *   - 언어 네비게이션 탭
- *   - 레벨별 그라디언트 색상
+ *   - 레벨별 파스텔 색상
  *   - 교재 썸네일 및 셀 스타일
  *   - 레전드 컴포넌트
  *
@@ -16,7 +16,7 @@
  * ============================================================================
  */
 /* ============================================================================
-   1. CSS Variables - 9-Level System
+   1. CSS Variables - 9-Level System (Pastel Soft)
    ============================================================================ */
 
 :root {
@@ -53,23 +53,29 @@
     --textbook-images-min-height-mobile: 70px;
 
     /* =============================================
-       9-Level Color Palette
+       9-Level Pastel Color Palette
        ============================================= */
-    --color-9lv1: #E8F8F5;
-    --color-9lv2: #D1F2EB;
-    --color-9lv3: #A3E4D7;
-    --color-9lv4: #D4E6F1;
-    --color-9lv5: #AED6F1;
-    --color-9lv6: #E8DAEF;
-    --color-9lv7: #D7BDE2;
-    --color-9lv8: #FADBD8;
-    --color-9lv9: #F5B7B1;
+    --color-9lv1: #FFE5E5;  /* Pastel Pink */
+    --color-9lv2: #FFE5D9;  /* Pastel Peach */
+    --color-9lv3: #FFF4DB;  /* Pastel Yellow */
+    --color-9lv4: #E8F5E9;  /* Pastel Mint */
+    --color-9lv5: #E5F0FF;  /* Pastel Sky */
+    --color-9lv6: #F3E5F5;  /* Pastel Lavender */
+    --color-9lv7: #FCE4EC;  /* Pastel Rose */
+    --color-9lv8: #E1BEE7;  /* Light Purple */
+    --color-9lv9: #D1C4E9;  /* Light Violet */
+
+    /* Category/Header Colors */
+    --color-9level-category: #FFF8E1;  /* Pastel Cream */
+    --color-9level-header: #F3E5F5;    /* Pastel Lavender */
+    --color-9level-empty: #FAFAFA;     /* Light Gray */
 
     /* =============================================
        Transition & Animation
        ============================================= */
     --curriculum-transition: all 0.2s ease;
-    --curriculum-hover-scale: 1.02;
+    --curriculum-hover-brightness: 0.93;
+    --curriculum-hover-scale: 1.01;
     --curriculum-thumb-hover-scale: 1.15;
 }
 
@@ -91,69 +97,80 @@
 .curriculum-table-wrapper-9level {
     overflow-x: auto;
     margin-top: 30px;
+    padding: var(--spacing-md, 16px);
     -webkit-overflow-scrolling: touch;
 }
 
 
 /* ============================================================================
-   4. 9-Level Table Base Styles
+   4. 9-Level Table Base Styles - Pastel Soft
    ============================================================================ */
 
 .curriculum-table-9level {
     width: 100%;
     min-width: var(--curriculum-table-min-width);
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 8px;
     table-layout: fixed;
     font-size: 14px;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
-    overflow: hidden;
+    background: transparent;
 }
 
 .curriculum-table-9level th,
 .curriculum-table-9level td {
     padding: 12px 8px;
     text-align: center;
-    border: 1px solid #e0e0e0;
+    border: none;
+    border-radius: var(--border-radius-sm, 6px);
     vertical-align: middle;
+    color: var(--color-text, #2c3e50);
 }
 
 .curriculum-table-9level thead {
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: white;
+    background: transparent;
 }
 
 .curriculum-table-9level thead th {
     font-weight: 600;
     letter-spacing: 0.5px;
-    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text, #2c3e50);
 }
 
 
 /* ============================================================================
-   5. Level Group Headers
+   5. Level Group Headers - Pastel Soft
    ============================================================================ */
 
-.curriculum-table-9level .level-group-9 {
+/* thead 첫 번째/두 번째 컬럼 헤더 (과정, 코스) */
+.curriculum-table-9level thead th:first-child,
+.curriculum-table-9level thead th:nth-child(2) {
+    background: var(--color-9level-header);
+    color: var(--color-text, #2c3e50);
+    font-weight: 600;
+}
+
+/* Level Group 헤더 - HTML 클래스: level-group beginner/pre-intermediate/intermediate/advanced */
+.curriculum-table-9level .level-group {
     font-size: 13px;
     text-transform: uppercase;
+    background: var(--color-9level-header);
+    color: var(--color-text, #2c3e50);
 }
 
-.curriculum-table-9level .level-group-9.beginner-9 {
-    background: linear-gradient(135deg, #1abc9c, #16a085);
+.curriculum-table-9level .level-group.beginner {
+    background: var(--color-9level-header);
 }
 
-.curriculum-table-9level .level-group-9.pre-intermediate-9 {
-    background: linear-gradient(135deg, #3498db, #2980b9);
+.curriculum-table-9level .level-group.pre-intermediate {
+    background: var(--color-9level-header);
 }
 
-.curriculum-table-9level .level-group-9.intermediate-9 {
-    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+.curriculum-table-9level .level-group.intermediate {
+    background: var(--color-9level-header);
 }
 
-.curriculum-table-9level .level-group-9.advanced-9 {
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
+.curriculum-table-9level .level-group.advanced {
+    background: var(--color-9level-header);
 }
 
 .curriculum-table-9level .level-col-9 {
@@ -161,28 +178,63 @@
     width: calc((100% - 170px) / 9);
 }
 
+/* Individual Level Column Colors in Header - HTML 클래스: level lv1~lv9 */
+.curriculum-table-9level thead th.lv1 { background: var(--color-9lv1); }
+.curriculum-table-9level thead th.lv2 { background: var(--color-9lv2); }
+.curriculum-table-9level thead th.lv3 { background: var(--color-9lv3); }
+.curriculum-table-9level thead th.lv4 { background: var(--color-9lv4); }
+.curriculum-table-9level thead th.lv5 { background: var(--color-9lv5); }
+.curriculum-table-9level thead th.lv6 { background: var(--color-9lv6); }
+.curriculum-table-9level thead th.lv7 { background: var(--color-9lv7); }
+.curriculum-table-9level thead th.lv8 { background: var(--color-9lv8); }
+.curriculum-table-9level thead th.lv9 { background: var(--color-9lv9); }
+
 
 /* ============================================================================
-   6. Category Column Styles
+   6. Category Column Styles - Pastel Soft
    ============================================================================ */
 
 .curriculum-table-9level .category-col-9 {
     font-weight: 600;
-    background: #f8f9fa;
+    background: var(--color-9level-category);
     width: var(--curriculum-category-col-width);
+    color: var(--color-text, #2c3e50);
 }
 
 .curriculum-table-9level .course-col-9 {
     font-size: 13px;
-    background: #fdfdfd;
+    background: var(--color-9level-category);
     width: var(--curriculum-course-col-width);
     text-align: left;
     padding-left: 12px;
+    color: var(--color-text, #2c3e50);
+}
+
+/* tbody 첫 번째/두 번째 컬럼 - 클래스 없는 td에도 배경색 적용 */
+.curriculum-table-9level tbody td:first-child {
+    background: var(--color-9level-category);
+    font-weight: 600;
+    color: var(--color-text, #2c3e50);
+}
+
+.curriculum-table-9level tbody td:nth-child(2) {
+    background: var(--color-9level-category);
+    font-size: 13px;
+    text-align: left;
+    padding-left: 12px;
+    color: var(--color-text, #2c3e50);
+}
+
+/* tbody rowheader (th) - 카테고리명에 배경색 적용 */
+.curriculum-table-9level tbody th {
+    background: var(--color-9level-category);
+    font-weight: 600;
+    color: var(--color-text, #2c3e50);
 }
 
 
 /* ============================================================================
-   7. Textbook Cell Styles
+   7. Textbook Cell Styles - Pastel Soft Hover
    ============================================================================ */
 
 .textbook-cell-9level {
@@ -190,11 +242,12 @@
     cursor: pointer;
     transition: var(--curriculum-transition);
     min-height: 80px;
+    font-weight: var(--font-weight-medium, 500);
 }
 
 .textbook-cell-9level:hover {
+    filter: brightness(var(--curriculum-hover-brightness));
     transform: scale(var(--curriculum-hover-scale));
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     z-index: 10;
 }
 
@@ -208,7 +261,7 @@
 .textbook-name-9level {
     font-size: 11px;
     font-weight: 500;
-    color: #2c3e50;
+    color: var(--color-text, #2c3e50);
     line-height: 1.3;
     max-width: 100%;
     word-break: keep-all;
@@ -232,7 +285,7 @@
     position: relative;
 }
 
-/* 이미지 겹침 효과 - 10레벨 테이블 패턴 적용 (placeholder 포함) */
+/* 이미지 겹침 효과 */
 .textbook-thumbnail-9level:not(:first-child) {
     margin-left: var(--textbook-overlap);
 }
@@ -264,82 +317,83 @@
 
 
 /* ============================================================================
-   8. Empty Cell Styles
+   8. Empty Cell Styles - Pastel Soft
    ============================================================================ */
 
 .empty-cell-9level {
-    background: #f5f5f5;
+    background: var(--color-9level-empty);
     color: #bbb;
     font-size: 12px;
+    border-radius: var(--border-radius-sm, 6px);
 }
 
 
 /* ============================================================================
-   9. Level Gradient Background Classes
+   9. Level Background Classes - Pastel Solid Colors
    ============================================================================ */
 
-/* Single Level */
-.lvbg9_1_1 { background: var(--color-9lv1); }
-.lvbg9_2_2 { background: var(--color-9lv2); }
-.lvbg9_3_3 { background: var(--color-9lv3); }
-.lvbg9_4_4 { background: var(--color-9lv4); }
-.lvbg9_5_5 { background: var(--color-9lv5); }
-.lvbg9_6_6 { background: var(--color-9lv6); }
-.lvbg9_7_7 { background: var(--color-9lv7); }
-.lvbg9_8_8 { background: var(--color-9lv8); }
-.lvbg9_9_9 { background: var(--color-9lv9); }
+/* Single Level - Pastel Solid */
+.lvbg9_1_1 { background: var(--color-9lv1); color: var(--color-text, #2c3e50); }
+.lvbg9_2_2 { background: var(--color-9lv2); color: var(--color-text, #2c3e50); }
+.lvbg9_3_3 { background: var(--color-9lv3); color: var(--color-text, #2c3e50); }
+.lvbg9_4_4 { background: var(--color-9lv4); color: var(--color-text, #2c3e50); }
+.lvbg9_5_5 { background: var(--color-9lv5); color: var(--color-text, #2c3e50); }
+.lvbg9_6_6 { background: var(--color-9lv6); color: var(--color-text, #2c3e50); }
+.lvbg9_7_7 { background: var(--color-9lv7); color: var(--color-text, #2c3e50); }
+.lvbg9_8_8 { background: var(--color-9lv8); color: var(--color-text, #2c3e50); }
+.lvbg9_9_9 { background: var(--color-9lv9); color: var(--color-text, #2c3e50); }
 
-/* Level Ranges - Beginner (1-3) */
-.lvbg9_1_2 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv2)); }
-.lvbg9_1_3 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv3)); }
-.lvbg9_2_3 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv3)); }
+/* Level Ranges - Beginner (1-3) - Use start level color */
+.lvbg9_1_2 { background: var(--color-9lv1); color: var(--color-text, #2c3e50); }
+.lvbg9_1_3 { background: var(--color-9lv1); color: var(--color-text, #2c3e50); }
+.lvbg9_2_3 { background: var(--color-9lv2); color: var(--color-text, #2c3e50); }
 
 /* Level Ranges - Pre-Intermediate (4-5) */
-.lvbg9_4_5 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv5)); }
+.lvbg9_4_5 { background: var(--color-9lv4); color: var(--color-text, #2c3e50); }
 
 /* Level Ranges - Intermediate (6-7) */
-.lvbg9_6_7 { background: linear-gradient(135deg, var(--color-9lv6), var(--color-9lv7)); }
+.lvbg9_6_7 { background: var(--color-9lv6); color: var(--color-text, #2c3e50); }
 
 /* Level Ranges - Advanced (8-9) */
-.lvbg9_8_9 { background: linear-gradient(135deg, var(--color-9lv8), var(--color-9lv9)); }
+.lvbg9_8_9 { background: var(--color-9lv8); color: var(--color-text, #2c3e50); }
 
-/* Cross-Group Ranges */
-.lvbg9_1_4 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv4)); }
-.lvbg9_1_5 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv5)); }
-.lvbg9_1_6 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv6)); }
-.lvbg9_1_7 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv7)); }
-.lvbg9_1_8 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv8)); }
-.lvbg9_1_9 { background: linear-gradient(135deg, var(--color-9lv1), var(--color-9lv9)); }
+/* Cross-Group Ranges - Use start level color */
+.lvbg9_1_4 { background: var(--color-9lv1); color: var(--color-text, #2c3e50); }
+.lvbg9_1_5 { background: var(--color-9lv1); color: var(--color-text, #2c3e50); }
+.lvbg9_1_6 { background: var(--color-9lv1); color: var(--color-text, #2c3e50); }
+.lvbg9_1_7 { background: var(--color-9lv1); color: var(--color-text, #2c3e50); }
+.lvbg9_1_8 { background: var(--color-9lv1); color: var(--color-text, #2c3e50); }
+.lvbg9_1_9 { background: var(--color-9lv1); color: var(--color-text, #2c3e50); }
 
-.lvbg9_2_4 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv4)); }
-.lvbg9_2_5 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv5)); }
-.lvbg9_2_6 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv6)); }
-.lvbg9_2_7 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv7)); }
-.lvbg9_2_8 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv8)); }
-.lvbg9_2_9 { background: linear-gradient(135deg, var(--color-9lv2), var(--color-9lv9)); }
+.lvbg9_2_4 { background: var(--color-9lv2); color: var(--color-text, #2c3e50); }
+.lvbg9_2_5 { background: var(--color-9lv2); color: var(--color-text, #2c3e50); }
+.lvbg9_2_6 { background: var(--color-9lv2); color: var(--color-text, #2c3e50); }
+.lvbg9_2_7 { background: var(--color-9lv2); color: var(--color-text, #2c3e50); }
+.lvbg9_2_8 { background: var(--color-9lv2); color: var(--color-text, #2c3e50); }
+.lvbg9_2_9 { background: var(--color-9lv2); color: var(--color-text, #2c3e50); }
 
-.lvbg9_3_4 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv4)); }
-.lvbg9_3_5 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv5)); }
-.lvbg9_3_6 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv6)); }
-.lvbg9_3_7 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv7)); }
-.lvbg9_3_8 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv8)); }
-.lvbg9_3_9 { background: linear-gradient(135deg, var(--color-9lv3), var(--color-9lv9)); }
+.lvbg9_3_4 { background: var(--color-9lv3); color: var(--color-text, #2c3e50); }
+.lvbg9_3_5 { background: var(--color-9lv3); color: var(--color-text, #2c3e50); }
+.lvbg9_3_6 { background: var(--color-9lv3); color: var(--color-text, #2c3e50); }
+.lvbg9_3_7 { background: var(--color-9lv3); color: var(--color-text, #2c3e50); }
+.lvbg9_3_8 { background: var(--color-9lv3); color: var(--color-text, #2c3e50); }
+.lvbg9_3_9 { background: var(--color-9lv3); color: var(--color-text, #2c3e50); }
 
-.lvbg9_4_6 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv6)); }
-.lvbg9_4_7 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv7)); }
-.lvbg9_4_8 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv8)); }
-.lvbg9_4_9 { background: linear-gradient(135deg, var(--color-9lv4), var(--color-9lv9)); }
+.lvbg9_4_6 { background: var(--color-9lv4); color: var(--color-text, #2c3e50); }
+.lvbg9_4_7 { background: var(--color-9lv4); color: var(--color-text, #2c3e50); }
+.lvbg9_4_8 { background: var(--color-9lv4); color: var(--color-text, #2c3e50); }
+.lvbg9_4_9 { background: var(--color-9lv4); color: var(--color-text, #2c3e50); }
 
-.lvbg9_5_6 { background: linear-gradient(135deg, var(--color-9lv5), var(--color-9lv6)); }
-.lvbg9_5_7 { background: linear-gradient(135deg, var(--color-9lv5), var(--color-9lv7)); }
-.lvbg9_5_8 { background: linear-gradient(135deg, var(--color-9lv5), var(--color-9lv8)); }
-.lvbg9_5_9 { background: linear-gradient(135deg, var(--color-9lv5), var(--color-9lv9)); }
+.lvbg9_5_6 { background: var(--color-9lv5); color: var(--color-text, #2c3e50); }
+.lvbg9_5_7 { background: var(--color-9lv5); color: var(--color-text, #2c3e50); }
+.lvbg9_5_8 { background: var(--color-9lv5); color: var(--color-text, #2c3e50); }
+.lvbg9_5_9 { background: var(--color-9lv5); color: var(--color-text, #2c3e50); }
 
-.lvbg9_6_8 { background: linear-gradient(135deg, var(--color-9lv6), var(--color-9lv8)); }
-.lvbg9_6_9 { background: linear-gradient(135deg, var(--color-9lv6), var(--color-9lv9)); }
+.lvbg9_6_8 { background: var(--color-9lv6); color: var(--color-text, #2c3e50); }
+.lvbg9_6_9 { background: var(--color-9lv6); color: var(--color-text, #2c3e50); }
 
-.lvbg9_7_8 { background: linear-gradient(135deg, var(--color-9lv7), var(--color-9lv8)); }
-.lvbg9_7_9 { background: linear-gradient(135deg, var(--color-9lv7), var(--color-9lv9)); }
+.lvbg9_7_8 { background: var(--color-9lv7); color: var(--color-text, #2c3e50); }
+.lvbg9_7_9 { background: var(--color-9lv7); color: var(--color-text, #2c3e50); }
 
 
 /* ============================================================================
@@ -422,7 +476,7 @@
 
 
 /* ============================================================================
-   12. Legend Styles
+   12. Legend Styles - Pastel Soft
    ============================================================================ */
 
 .curriculum-legend-9level {
@@ -476,9 +530,58 @@
     justify-content: center;
     font-size: 11px;
     font-weight: 600;
-    border-radius: 4px;
-    color: #2c3e50;
+    border-radius: var(--border-radius-sm, 6px);
+    color: var(--color-text, #2c3e50);
 }
+
+/* Legend Level Colors - Pastel */
+.curriculum-legend-9level__level.lv1 { background: var(--color-9lv1); }
+.curriculum-legend-9level__level.lv2 { background: var(--color-9lv2); }
+.curriculum-legend-9level__level.lv3 { background: var(--color-9lv3); }
+.curriculum-legend-9level__level.lv4 { background: var(--color-9lv4); }
+.curriculum-legend-9level__level.lv5 { background: var(--color-9lv5); }
+.curriculum-legend-9level__level.lv6 { background: var(--color-9lv6); }
+.curriculum-legend-9level__level.lv7 { background: var(--color-9lv7); }
+.curriculum-legend-9level__level.lv8 { background: var(--color-9lv8); }
+.curriculum-legend-9level__level.lv9 { background: var(--color-9lv9); }
+
+/* Legend Grid - 9 Level (HTML 클래스: legend-*-9level) */
+.legend-grid-9level {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.legend-item-9level {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-color-9level {
+    width: 32px;
+    height: 24px;
+    border-radius: var(--border-radius-sm, 6px);
+    flex-shrink: 0;
+}
+
+.legend-label-9level {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted, #6b7280);
+}
+
+/* Legend Level Colors - 9 Level Pastel */
+.legend-color-9level.lv1 { background: var(--color-9lv1); }
+.legend-color-9level.lv2 { background: var(--color-9lv2); }
+.legend-color-9level.lv3 { background: var(--color-9lv3); }
+.legend-color-9level.lv4 { background: var(--color-9lv4); }
+.legend-color-9level.lv5 { background: var(--color-9lv5); }
+.legend-color-9level.lv6 { background: var(--color-9lv6); }
+.legend-color-9level.lv7 { background: var(--color-9lv7); }
+.legend-color-9level.lv8 { background: var(--color-9lv8); }
+.legend-color-9level.lv9 { background: var(--color-9lv9); }
 
 
 /* ============================================================================
@@ -516,7 +619,7 @@
 
 
 /* ============================================================================
-   14. Responsive Styles
+   14. Responsive Styles - Pastel Soft
    ============================================================================ */
 
 @media (max-width: 1024px) {
@@ -545,6 +648,10 @@
 @media (max-width: 768px) {
     .curriculum-9level-section {
         padding: var(--curriculum-section-padding-mobile) 0;
+    }
+
+    .curriculum-table-9level {
+        border-spacing: 4px;  /* 8px -> 4px for mobile */
     }
 
     .language-nav-9level {
