@@ -13,101 +13,109 @@
 </section>
 
 <!-- 학습 레벨 -->
-<section>
-    <div class="container">
-        {{ section_title_10(title='Learning Level', subtitle='학습 레벨') }}
-
-        <div class="grid grid--2">
-            <div class="card">
-                <h4 class="card__title">기업 내 상주 원어민 강사 배치</h4>
-                <p>귀사 사무실에 전문 원어민 강사가 상주하며 실시간 어학 지원을 제공합니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">실시간 어학 지원 및 교육</h4>
-                <p>업무 중 필요한 순간에 즉각적인 영어 지원과 교육이 가능합니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">즉각적인 피드백</h4>
-                <p>이메일, 문서, 프레젠테이션 등을 실시간으로 검토하고 피드백을 제공합니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">현장 맞춤형 교육</h4>
-                <p>귀사의 업무 환경과 니즈에 완벽하게 맞춘 현장 밀착형 교육을 진행합니다.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 교육 목표   -->
 <section class="u-bg-teal">
     <div class="container">
-        {{ section_title_10(title='Learning Objectives', subtitle='교육 목표') }}
+        {{ section_title_10(title='LEARNING LEVEL', subtitle='On-site support for all employee levels') }}
 
-        <div class="grid grid--3">
-            <div class="card">
-                <h4 class="card__title">실시간 지원</h4>
-                <ul>
-                    <li>이메일 작성 및 교정</li>
-                    <li>문서 번역 및 감수</li>
-                    <li>프레젠테이션 리뷰</li>
-                    <li>전화/회의 통역 지원</li>
-                </ul>
+        <div class="level-cards-grid">
+            <div class="level-card level-card--beginner">
+                <span class="level-card__badge">Level 1-3</span>
+                <h3 class="level-card__title">Basic</h3>
+                <p class="level-card__desc">영어 학습 입문자</p>
             </div>
-            
-            <div class="card">
-                <h4 class="card__title">정규 교육</h4>
-                <ul>
-                    <li>레벨별 정규 수업</li>
-                    <li>1:1 맞춤 지도</li>
-                    <li>그룹 스터디 운영</li>
-                    <li>워크숍 및 세미나</li>
-                </ul>
+            <div class="level-card level-card--elementary">
+                <span class="level-card__badge">Level 4-5</span>
+                <h3 class="level-card__title">Elementary</h3>
+                <p class="level-card__desc">기초 회화 가능자</p>
             </div>
-            
-            <div class="card">
-                <h4 class="card__title">컨설팅</h4>
-                <ul>
-                    <li>영어 학습 전략 상담</li>
-                    <li>진로 및 승진 지원</li>
-                    <li>해외 파견 준비</li>
-                    <li>공인 시험 대비</li>
-                </ul>
+            <div class="level-card level-card--intermediate">
+                <span class="level-card__badge">Level 6</span>
+                <h3 class="level-card__title">Intermediate</h3>
+                <p class="level-card__desc">업무 영어 구사자</p>
+            </div>
+            <div class="level-card level-card--advanced">
+                <span class="level-card__badge">Level 7</span>
+                <h3 class="level-card__title">Advanced</h3>
+                <p class="level-card__desc">고급 영어 구사자</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 교육 세부 -->
+<!-- 학습 목표 -->
 <section>
     <div class="container">
-        {{ section_title_10(title='Learning Details', subtitle='교육 세부') }}
+        {{ section_title_10(title='LEARNING OBJECTIVES', subtitle='OCT Program Core Objectives') }}
 
-        <div class="study-steps">
-            <div class="card">
-                <div class="step-number">1</div>
-                <h4>Needs Assessment</h4>
-                <p>기업의 니즈 분석 및 목표 설정</p>
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9,22 9,12 15,12 15,22"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">On-site Language Support</h3>
+                <p class="goal-card__desc">Dedicated native instructor stationed at your company premises</p>
             </div>
-            
-            <div class="card">
-                <div class="step-number">2</div>
-                <h4>강사 배치</h4>
-                <p>전문 원어민 강사 선발 및 배치</p>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12,6 12,12 16,14"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Real-time Assistance</h3>
+                <p class="goal-card__desc">Instant language support whenever needed during work hours</p>
             </div>
-            
-            <div class="card">
-                <div class="step-number">3</div>
-                <h4>프로그램 운영</h4>
-                <p">정규 교육 및 실시간 지원</p>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Immediate Feedback</h3>
+                <p class="goal-card__desc">Quick review and correction of emails, documents, and presentations</p>
             </div>
-            
-            <div class="card">
-                <div class="step-number">4</div>
-                <h4>성과 관리</h4>
-                <p>정기 평가 및 피드백</p>
+        </div>
+    </div>
+</section>
+
+<!-- 학습 세부 내용 -->
+<section class="u-bg-teal">
+    <div class="container">
+        {{ section_title_10(title='LEARNING DETAILS', subtitle='OCT Program Specifications') }}
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Features</h4>
+                <ul class="detail-card__list">
+                    <li>On-site native instructor placement</li>
+                    <li>Regular classes + Real-time support</li>
+                    <li>Customized to company needs</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <p class="detail-card__content">Level 1-7 All Employees</p>
+                <p class="detail-card__content" style="margin-top: var(--spacing-sm); color: var(--color-text-muted); font-size: var(--font-size-sm);">Company-wide language support system</p>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>Speak Now</li>
+                    <li>Smart Choice</li>
+                    <li>American English File</li>
+                    <li>Talk Time</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Service/Module</h4>
+                <ul class="detail-card__list">
+                    <li>Regular Level-based Classes</li>
+                    <li>Real-time Support Services</li>
+                    <li>Document Review & Coaching</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -117,112 +125,103 @@
 <!-- 교재 정보 -->
 <section>
     <div class="container">
-        {{ section_title_10(title='Course Materials', subtitle='교재 및 자료') }}
+        {{ section_title_10(title='COURSE MATERIALS', subtitle='Customized materials for on-site classes') }}
 
         <div class="grid grid--4">
             <div class="card textbook-card" data-modal-target="modal-textbook-oct">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b09.jpg') }}" alt="On-site Resources" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/smartChoice1_cover.png') }}" alt="Speak Now" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>상주강사 자료 패키지</h4>
-                    <p>업무 맞춤형 즉시 활용 자료</p>
+                    <h4>Speak Now</h4>
+                    <p>상주강사 기본 교재</p>
                 </div>
             </div>
-            
+
             <div class="card textbook-card" data-modal-target="modal-textbook-oct-business">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b23.jpg') }}" alt="Business Skills" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/smartChoice2_cover.png') }}" alt="Smart Choice" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>비즈니스 스킬 교재</h4>
+                    <h4>Smart Choice</h4>
                     <p>실무 중심 학습 자료</p>
                 </div>
             </div>
-            
+
             <div class="card textbook-card" data-modal-target="modal-textbook-oct-custom">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b36.jpg') }}" alt="Custom Materials" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/americanEnglishFile1_cover.png') }}" alt="American English File" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>맞춤형 자료</h4>
-                    <p>기업별 특화 컨텐츠</p>
+                    <h4>American English File</h4>
+                    <p>종합 영어 학습</p>
                 </div>
             </div>
-            
+
             <div class="card textbook-card" data-modal-target="modal-textbook-oct-assessment">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b17.jpg') }}" alt="Assessment Tools" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/placeholder_cover.svg') }}" alt="Talk Time" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>평가 도구</h4>
-                    <p>학습 진도 관리 시스템</p>
+                    <h4>Talk Time</h4>
+                    <p>회화 집중 학습</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 교재 모달: On-site Resources -->
+<!-- 교재 모달: Speak Now -->
 <div id="modal-textbook-oct" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
-        
+
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b09.jpg') }}" alt="On-site Resources" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/smartChoice1_cover.png') }}" alt="Speak Now" class="textbook-modal-img">
             </div>
-            
+
             <div class="textbook-modal__info">
-                <h3>상주강사 자료 패키지</h3>
-                <p class="textbook-level">Customized Materials</p>
-                
+                <h3>Speak Now</h3>
+                <p class="textbook-level">Level 1-3 | Oxford University Press</p>
+
                 <div class="textbook-description">
-                    <p>기업의 실제 업무와 니즈에 맞춘 맞춤형 자료입니다. 상주 강사가 현장에서 직접 개발하고 지속적으로 업데이트합니다.</p>
+                    <p>상주강사 프로그램의 기본 교재로, 회화 중심의 실용적인 영어 학습을 제공합니다. 일상 업무에서 바로 활용 가능한 표현들을 학습합니다.</p>
                 </div>
-                
+
                 <div class="textbook-toc">
-                    <h4>제공 자료</h4>
+                    <h4>주요 학습 내용</h4>
                     <ul>
-                        <li><strong>Document Templates</strong></li>
-                        <li>• Business Email Templates</li>
-                        <li>• Report Writing Formats</li>
-                        <li>• Presentation Structures</li>
-                        <li>• Meeting Agendas</li>
-                        <li class="u-mt-2"><strong>Industry-Specific Materials</strong></li>
-                        <li>• Technical Vocabulary Lists</li>
-                        <li>• Industry News & Articles</li>
-                        <li>• Case Studies</li>
-                        <li class="u-mt-2"><strong>Quick Reference Guides</strong></li>
-                        <li>• Common Phrases Handbook</li>
-                        <li>• Grammar Quick Tips</li>
-                        <li>• Cultural Do's and Don'ts</li>
+                        <li><strong>Communication Focus</strong></li>
+                        <li>- Daily Office Conversations</li>
+                        <li>- Phone English</li>
+                        <li>- Email Expressions</li>
+                        <li class="u-mt-2"><strong>On-site Support</strong></li>
+                        <li>- Document Review</li>
+                        <li>- Presentation Coaching</li>
+                        <li>- Meeting Preparation</li>
                     </ul>
                 </div>
-                
+
                 <div class="textbook-sample">
-                    <h4>맞춤형 서비스</h4>
+                    <h4>교재 특징</h4>
                     <div class="sample-content">
-                        <p><strong>상주강사 제공 서비스:</strong></p>
-                        <p>• 실시간 문서 검토 및 수정<br>
-                        • 프레젠테이션 코칭<br>
-                        • 미팅 준비 지원<br>
-                        • 전화/이메일 통역 지원<br>
-                        • 임직원 1:1 코칭<br>
-                        • 업무 관련 영어 자료 제작</p>
+                        <p><strong>Practical Focus:</strong> 실무 즉시 적용 가능</p>
+                        <p class="u-mt-2"><strong>On-site Integration:</strong> 상주강사 수업 최적화</p>
+                        <p class="u-mt-2"><strong>Customizable:</strong> 기업별 맞춤 활용</p>
                     </div>
                 </div>
             </div>
@@ -230,28 +229,28 @@
     </div>
 </div>
 
-<!-- 교재 모달: Business Skills -->
+<!-- 교재 모달: Smart Choice -->
 <div id="modal-textbook-oct-business" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b23.jpg') }}" alt="Business Skills" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/smartChoice2_cover.png') }}" alt="Smart Choice" class="textbook-modal-img">
             </div>
             <div class="textbook-modal__info">
-                <h3>비즈니스 스킬 교재</h3>
-                <p class="textbook-level">실무 중심 학습 자료</p>
+                <h3>Smart Choice</h3>
+                <p class="textbook-level">Level 4-5 | Oxford University Press</p>
                 <div class="textbook-description">
-                    <p>업무에 바로 적용 가능한 실무 비즈니스 영어 교재입니다. 강사가 현장에서 직접 활용하여 즉각적인 학습 효과를 제공합니다.</p>
+                    <p>업무에 바로 적용 가능한 실무 비즈니스 영어 교재입니다. 상주강사가 현장에서 직접 활용하여 즉각적인 학습 효과를 제공합니다.</p>
                 </div>
                 <div class="textbook-toc">
                     <h4>주요 학습 내용</h4>
                     <ul>
-                        <li>회의 영어</li>
-                        <li>프레젠테이션</li>
-                        <li>이메일 작성</li>
-                        <li>협상 및 설득</li>
+                        <li>Meeting English</li>
+                        <li>Presentation Skills</li>
+                        <li>Email Writing</li>
+                        <li>Negotiation & Persuasion</li>
                     </ul>
                 </div>
             </div>
@@ -259,28 +258,28 @@
     </div>
 </div>
 
-<!-- 교재 모달: Custom Materials -->
+<!-- 교재 모달: American English File -->
 <div id="modal-textbook-oct-custom" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b36.jpg') }}" alt="Custom Materials" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/americanEnglishFile1_cover.png') }}" alt="American English File" class="textbook-modal-img">
             </div>
             <div class="textbook-modal__info">
-                <h3>맞춤형 자료</h3>
-                <p class="textbook-level">기업별 특화 컨텐츠</p>
+                <h3>American English File</h3>
+                <p class="textbook-level">Level 4-7 | Oxford University Press</p>
                 <div class="textbook-description">
-                    <p>귀사의 업종과 업무 특성에 맞게 개발된 맞춤형 학습 자료입니다. 실제 업무 문서와 상황을 활용하여 실용성을 극대화합니다.</p>
+                    <p>종합 영어 학습을 위한 체계적인 교재입니다. 상주강사 프로그램에서 중급 이상 학습자를 위해 활용됩니다.</p>
                 </div>
                 <div class="textbook-toc">
-                    <h4>맞춤 제작 가능 자료</h4>
+                    <h4>주요 학습 내용</h4>
                     <ul>
-                        <li>업종별 전문 용어집</li>
-                        <li>사내 문서 템플릿</li>
-                        <li>실제 업무 시나리오</li>
-                        <li>프로젝트별 자료</li>
+                        <li>Comprehensive Grammar</li>
+                        <li>Advanced Vocabulary</li>
+                        <li>Professional Communication</li>
+                        <li>Business Writing Skills</li>
                     </ul>
                 </div>
             </div>
@@ -288,28 +287,28 @@
     </div>
 </div>
 
-<!-- 교재 모달: Assessment Tools -->
+<!-- 교재 모달: Talk Time -->
 <div id="modal-textbook-oct-assessment" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b17.jpg') }}" alt="Assessment Tools" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/placeholder_cover.svg') }}" alt="Talk Time" class="textbook-modal-img">
             </div>
             <div class="textbook-modal__info">
-                <h3>평가 도구</h3>
-                <p class="textbook-level">학습 진도 관리 시스템</p>
+                <h3>Talk Time</h3>
+                <p class="textbook-level">Level 1-5 | Oxford University Press</p>
                 <div class="textbook-description">
-                    <p>체계적인 학습 관리를 위한 평가 도구와 진도 추적 시스템입니다. 개인별, 부서별 학습 현황을 실시간으로 모니터링할 수 있습니다.</p>
+                    <p>회화 집중 학습을 위한 교재입니다. 상주강사와 함께 다양한 상황별 회화 연습을 통해 영어 말하기 능력을 향상시킵니다.</p>
                 </div>
                 <div class="textbook-toc">
-                    <h4>평가 시스템</h4>
+                    <h4>주요 학습 내용</h4>
                     <ul>
-                        <li>레벨 테스트</li>
-                        <li>진도 리포트</li>
-                        <li>학습 성취도 분석</li>
-                        <li>개인별 피드백</li>
+                        <li>Conversation Practice</li>
+                        <li>Situational Dialogues</li>
+                        <li>Pronunciation Training</li>
+                        <li>Fluency Development</li>
                     </ul>
                 </div>
             </div>

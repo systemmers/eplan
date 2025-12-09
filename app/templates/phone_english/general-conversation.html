@@ -14,400 +14,388 @@
 </section>
 
 <!-- 학습 레벨 -->
-<section>
+<section class="u-bg-teal">
     <div class="container">
-        {{ section_title_10(title='LEARNING LEVEL', subtitle='4-tier level system for systematic learning path') }}
-        
-        <div class="grid grid--4">
-            <div class="card card--hoverable u-text-center">
-                <h3 class="card__title">Beginner</h3>
-                <span class="level-badge">Level 1-3</span>
-                <p>영어 학습을 시작하는 분들을 위한 기초 과정</p>
+        {{ section_title_10(title='LEARNING LEVELS', subtitle='4-tier level system for systematic learning path') }}
+
+        <div class="level-cards-grid">
+            <div class="level-card level-card--beginner">
+                <span class="level-card__badge">Level 1-3</span>
+                <h3 class="level-card__title">Beginner</h3>
+                <p class="level-card__desc">L1, H1, L2, H2, L3, H3</p>
             </div>
-            
-            <div class="card card--hoverable u-text-center">
-                <h3 class="card__title">Pre-intermediate</h3>
-                <span class="level-badge">Level 4-6</span>
-                <p>기본 문법을 활용한 일상 대화 연습</p>
+            <div class="level-card level-card--elementary">
+                <span class="level-card__badge">Level 4-6</span>
+                <h3 class="level-card__title">Pre-intermediate</h3>
+                <p class="level-card__desc">기본 문법 활용 일상 대화</p>
             </div>
-            
-            <div class="card card--hoverable u-text-center">
-                <h3 class="card__title">Intermediate</h3>
-                <span class="level-badge">Level 7-8</span>
-                <p>다양한 주제로 자유롭게 대화하는 단계</p>
+            <div class="level-card level-card--intermediate">
+                <span class="level-card__badge">Level 7-8</span>
+                <h3 class="level-card__title">Intermediate</h3>
+                <p class="level-card__desc">다양한 주제 자유 대화</p>
             </div>
-            
-            <div class="card card--hoverable u-text-center">
-                <h3 class="card__title">Advanced</h3>
-                <span class="level-badge">Level 9</span>
-                <p>원어민 수준의 유창한 회화 능력 개발</p>
+            <div class="level-card level-card--advanced">
+                <span class="level-card__badge">Level 9</span>
+                <h3 class="level-card__title">Advanced</h3>
+                <p class="level-card__desc">원어민 수준 유창성</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- 학습 목표 -->
-<section class="u-bg-teal">
-    <div class="container">
-        {{ section_title_10(title='LEARNING OBJECTIVES', subtitle='Learning objectives for each level') }}
-        
-        <div class="grid grid--2">
-            <div class="card">
-                <h4 class="card__title">실생활 영어 구사력</h4>
-                <p>일상생활에서 자주 사용되는 표현과 어휘를 습득하여 실제 상황에서 자연스럽게 영어로 대화할 수 있습니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">발음 및 억양 교정</h4>
-                <p>원어민 강사의 1:1 피드백을 통해 정확한 발음과 자연스러운 억양을 익힐 수 있습니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">어휘력 확장</h4>
-                <p>다양한 주제를 다루며 실용적인 어휘와 표현을 체계적으로 학습합니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">자신감 향상</h4>
-                <p>매일 정기적인 대화 연습을 통해 영어로 말하는 것에 대한 두려움을 없애고 자신감을 키웁니다.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 학습 세부 (커리큘럼) -->
 <section>
     <div class="container">
-        {{ section_title_10(title='LEARNING DETAILS', subtitle='Learning details for each level') }}
-        
-        <div class="curriculum-detail">
-            <div class="curriculum-level">
-                <h3>Beginner Level (1-3)</h3>
-                <div class="card">
-                    <div class="card__body">
-                        <h4>주요 학습 내용</h4>
-                        <ul>
-                            <li>인사, 자기소개, 기본적인 질문과 답변</li>
-                            <li>날씨, 취미, 가족 등 일상적인 주제</li>
-                            <li>기초 문법 패턴 연습</li>
-                            <li>기본 어휘 300-500개 습득</li>
-                        </ul>
-                        
-                        <h4 class="u-mt-4">학습 방법</h4>
-                        <ul>
-                            <li>단순하고 명확한 문장 구조 연습</li>
-                            <li>반복 학습을 통한 패턴 익히기</li>
-                            <li>그림과 상황을 활용한 학습</li>
-                        </ul>
-                    </div>
+        {{ section_title_10(title='LEARNING OBJECTIVES', subtitle='Foundation course for grammar and basic conversation') }}
+
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
                 </div>
+                <h3 class="goal-card__title">Grammar Foundation</h3>
+                <p class="goal-card__desc">기초 문법과 회화 프레임워크 구축</p>
             </div>
-            
-            <div class="curriculum-level u-mt-4">
-                <h3>Intermediate Level (4-8)</h3>
-                <div class="card">
-                    <div class="card__body">
-                        <h4>주요 학습 내용</h4>
-                        <ul>
-                            <li>여행, 쇼핑, 건강, 문화 등 다양한 주제</li>
-                            <li>의견 표현 및 토론 기초</li>
-                            <li>관용 표현 및 숙어 학습</li>
-                            <li>실전 상황별 대화 연습</li>
-                        </ul>
-                        
-                        <h4 class="u-mt-4">학습 방법</h4>
-                        <ul>
-                            <li>Role-play를 통한 실전 연습</li>
-                            <li>뉴스 기사, 영상 자료 활용</li>
-                            <li>자유 주제 토론 및 의견 교환</li>
-                        </ul>
-                    </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                        <line x1="9" y1="9" x2="9.01" y2="9"/>
+                        <line x1="15" y1="9" x2="15.01" y2="9"/>
+                    </svg>
                 </div>
+                <h3 class="goal-card__title">Basic Conversation</h3>
+                <p class="goal-card__desc">기본 회화 능력 향상</p>
             </div>
-            
-            <div class="curriculum-level u-mt-4">
-                <h3>Advanced Level (9)</h3>
-                <div class="card">
-                    <div class="card__body">
-                        <h4>주요 학습 내용</h4>
-                        <ul>
-                            <li>복잡한 주제에 대한 심화 토론</li>
-                            <li>원어민 수준의 표현 및 뉘앙스 학습</li>
-                            <li>문화적 맥락을 고려한 대화</li>
-                            <li>고급 어휘 및 전문 용어</li>
-                        </ul>
-                        
-                        <h4 class="u-mt-4">학습 방법</h4>
-                        <ul>
-                            <li>시사, 문화, 철학 등 깊이 있는 주제 다루기</li>
-                            <li>프레젠테이션 및 설득 기술</li>
-                            <li>원어민과의 자연스러운 대화 유지</li>
-                        </ul>
-                    </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
                 </div>
+                <h3 class="goal-card__title">Pronunciation</h3>
+                <p class="goal-card__desc">기본 발음 교정</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 교재 정보 -->
+<!-- 학습 세부 내용 -->
 <section class="u-bg-teal">
     <div class="container">
-        {{ section_title_10(title='COURSE MATERIALS', subtitle='Course materials for each level') }}
-        
-        <div class="grid grid--4">
-            <div class="card textbook-card" data-modal-target="modal-textbook-beginner">
-                <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b02.jpg') }}" alt="Beginner Level" class="textbook-img">
-                    <div class="textbook-overlay">
-                        <span class="textbook-preview-btn">미리보기</span>
-                    </div>
-                </div>
-                <div class="card__body">
-                    <h4>기초 회화 교재</h4>
-                    <p>Level 1-3 기초 과정</p>
-                </div>
+        {{ section_title_10(title='LEARNING DETAILS', subtitle='General Conversation Program Specifications') }}
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <p class="detail-card__content">Level 1-7</p>
+                <ul class="detail-card__list" style="margin-top: var(--spacing-sm);">
+                    <li>영어 학습을 시작하는 분들을 위한 기초 과정</li>
+                    <li>일반 대중과 사무직 직원</li>
+                </ul>
             </div>
-            
-            <div class="card textbook-card" data-modal-target="modal-textbook-preintermediate">
-                <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b08.jpg') }}" alt="Pre-Intermediate Level" class="textbook-img">
-                    <div class="textbook-overlay">
-                        <span class="textbook-preview-btn">미리보기</span>
-                    </div>
-                </div>
-                <div class="card__body">
-                    <h4>중급 준비 교재</h4>
-                    <p>Level 4-6 중급 준비</p>
-                </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>Smart Choice 1-2</li>
+                    <li>Stretch Series (Starter - 3)</li>
+                    <li>American English File</li>
+                </ul>
             </div>
-            
-            <div class="card textbook-card" data-modal-target="modal-textbook-intermediate">
-                <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b16.jpg') }}" alt="Intermediate Level" class="textbook-img">
-                    <div class="textbook-overlay">
-                        <span class="textbook-preview-btn">미리보기</span>
-                    </div>
-                </div>
-                <div class="card__body">
-                    <h4>중급 회화 교재</h4>
-                    <p>Level 7-8 실전 회화</p>
-                </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Learning Process</h4>
+                <ul class="detail-card__list">
+                    <li>매일 10분 1:1 수업 (원어민 강사와)</li>
+                    <li>자가학습 + 심화학습 (30분/일)</li>
+                    <li>주간: 교재 4회 + 특별 주제 1회</li>
+                </ul>
             </div>
-            
-            <div class="card textbook-card" data-modal-target="modal-textbook-advanced">
-                <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b29.jpg') }}" alt="Advanced Level" class="textbook-img">
-                    <div class="textbook-overlay">
-                        <span class="textbook-preview-btn">미리보기</span>
-                    </div>
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Features</h4>
+                <ul class="detail-card__list">
+                    <li>패턴 반복 학습 시스템</li>
+                    <li>MP3 녹음 파일 복습</li>
+                    <li>원어민 1:1 피드백</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 교재 가이드 - Accordion Style -->
+<section class="u-bg-teal-lightest">
+    <div class="container">
+        {{ section_title_10(title='TEXTBOOKS', subtitle='Select a textbook to view details') }}
+
+        <!-- General Conversation -->
+        <div class="textbook-accordion-block">
+            <h3 class="textbook-category__title">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                General Conversation
+            </h3>
+            <div class="textbook-accordion-wrapper">
+                <div class="book-detail-panel" id="detail-general">
+                    <!-- 동적으로 업데이트 -->
                 </div>
-                <div class="card__body">
-                    <h4>고급 회화 교재</h4>
-                    <p>Level 9-10 심화 과정</p>
+                <div class="book-accordion" data-category="general">
+                    <div class="book-accordion-item active" data-index="0">
+                        <img src="{{ url_for('static', filename='images/books/smartChoice1_cover.png') }}" alt="Smart Choice 1" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Smart Choice 1</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="1">
+                        <img src="{{ url_for('static', filename='images/books/smartChoice2_cover.png') }}" alt="Smart Choice 2" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Smart Choice 2</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="2">
+                        <img src="{{ url_for('static', filename='images/books/stretchStarter_cover.png') }}" alt="Stretch Starter" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Stretch Starter</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="3">
+                        <img src="{{ url_for('static', filename='images/books/stretch1_cover.png') }}" alt="Stretch 1" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Stretch 1</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="4">
+                        <img src="{{ url_for('static', filename='images/books/stretch2_cover.png') }}" alt="Stretch 2" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Stretch 2</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
+                    <div class="book-accordion-item" data-index="5">
+                        <img src="{{ url_for('static', filename='images/books/stretch3_cover.png') }}" alt="Stretch 3" class="book-accordion-item__bg">
+                        <div class="book-accordion-item__overlay"></div>
+                        <div class="book-accordion-item__icon">
+                            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <span class="book-accordion-item__caption">Stretch 3</span>
+                        <div class="book-accordion-item__indicator">
+                            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 교재 모달: Beginner -->
-<div id="modal-textbook-beginner" class="modal">
-    <div class="modal__backdrop"></div>
-    <div class="modal__content modal__content--large">
-        <button class="modal__close">&times;</button>
-        
-        <div class="textbook-modal">
-            <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b02.jpg') }}" alt="Beginner Level" class="textbook-modal-img">
-            </div>
-            
-            <div class="textbook-modal__info">
-                <h3>기초 회화 교재</h3>
-                <p class="textbook-level">Level 1-3</p>
-                
-                <div class="textbook-description">
-                    <p>영어 학습을 처음 시작하는 분들을 위한 체계적인 기초 과정입니다. 일상생활에서 자주 사용되는 기본 표현과 문법 패턴을 중심으로 학습합니다.</p>
-                </div>
-                
-                <div class="textbook-toc">
-                    <h4>목차</h4>
-                    <ul>
-                        <li>Unit 1: Greetings & Introductions (인사 및 자기소개)</li>
-                        <li>Unit 2: Daily Routines (일상 생활)</li>
-                        <li>Unit 3: Hobbies & Interests (취미와 관심사)</li>
-                        <li>Unit 4: Family & Friends (가족과 친구)</li>
-                        <li>Unit 5: Food & Dining (음식과 식사)</li>
-                        <li>Unit 6: Shopping (쇼핑)</li>
-                        <li>Unit 7: Weather & Seasons (날씨와 계절)</li>
-                        <li>Unit 8: Travel Basics (여행 기초)</li>
-                    </ul>
-                </div>
-                
-                <div class="textbook-sample">
-                    <h4>샘플 대화</h4>
-                    <div class="sample-content">
-                        <p><strong>Dialog Example:</strong></p>
-                        <p>A: Hi, nice to meet you! I'm Sarah.<br>
-                        B: Nice to meet you too, Sarah. I'm Mike.<br>
-                        A: Where are you from, Mike?<br>
-                        B: I'm from Seoul. How about you?<br>
-                        A: I'm from Busan.</p>
+<!-- 교재 갤러리 - Carousel -->
+<section class="u-bg-teal">
+    <div class="container">
+        {{ section_title_10(title='TEXTBOOKS GALLERY', subtitle='Click to view textbook details') }}
+
+        <!-- 교재 캐러셀 -->
+        <div class="textbook-carousel">
+            <button class="textbook-carousel__btn textbook-carousel__btn--prev" aria-label="이전">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+
+            <div class="textbook-carousel__viewport">
+                <div class="textbook-carousel__track">
+                    <!-- General Conversation -->
+                    <div class="textbook-card" data-book="smart-choice-1">
+                        <div class="textbook-card__image">
+                            <img src="{{ url_for('static', filename='images/books/smartChoice1_cover.png') }}" alt="Smart Choice 1">
+                            <span class="textbook-card__level">L1-3</span>
+                            <span class="textbook-card__category">General</span>
+                        </div>
+                        <div class="textbook-card__content">
+                            <h4 class="textbook-card__title">Smart Choice 1</h4>
+                            <p class="textbook-card__desc">성인 학습자를 위한 실용적 회화 교재</p>
+                        </div>
                     </div>
+                    <div class="textbook-card" data-book="smart-choice-2">
+                        <div class="textbook-card__image">
+                            <img src="{{ url_for('static', filename='images/books/smartChoice2_cover.png') }}" alt="Smart Choice 2">
+                            <span class="textbook-card__level">L3-5</span>
+                            <span class="textbook-card__category">General</span>
+                        </div>
+                        <div class="textbook-card__content">
+                            <h4 class="textbook-card__title">Smart Choice 2</h4>
+                            <p class="textbook-card__desc">중급 학습자를 위한 체계적 회화 교재</p>
+                        </div>
+                    </div>
+                    <div class="textbook-card" data-book="stretch-starter">
+                        <div class="textbook-card__image">
+                            <img src="{{ url_for('static', filename='images/books/stretchStarter_cover.png') }}" alt="Stretch Starter">
+                            <span class="textbook-card__level">A1</span>
+                            <span class="textbook-card__category">General</span>
+                        </div>
+                        <div class="textbook-card__content">
+                            <h4 class="textbook-card__title">Stretch Starter</h4>
+                            <p class="textbook-card__desc">비판적 사고와 커뮤니케이션 기초</p>
+                        </div>
+                    </div>
+                    <div class="textbook-card" data-book="stretch-1">
+                        <div class="textbook-card__image">
+                            <img src="{{ url_for('static', filename='images/books/stretch1_cover.png') }}" alt="Stretch 1">
+                            <span class="textbook-card__level">A1-A2</span>
+                            <span class="textbook-card__category">General</span>
+                        </div>
+                        <div class="textbook-card__content">
+                            <h4 class="textbook-card__title">Stretch 1</h4>
+                            <p class="textbook-card__desc">21세기 스킬 기반 영어 학습</p>
+                        </div>
+                    </div>
+                    <div class="textbook-card" data-book="stretch-2">
+                        <div class="textbook-card__image">
+                            <img src="{{ url_for('static', filename='images/books/stretch2_cover.png') }}" alt="Stretch 2">
+                            <span class="textbook-card__level">A2-B1</span>
+                            <span class="textbook-card__category">General</span>
+                        </div>
+                        <div class="textbook-card__content">
+                            <h4 class="textbook-card__title">Stretch 2</h4>
+                            <p class="textbook-card__desc">협업과 창의성 중심 학습</p>
+                        </div>
+                    </div>
+                    <div class="textbook-card" data-book="stretch-3">
+                        <div class="textbook-card__image">
+                            <img src="{{ url_for('static', filename='images/books/stretch3_cover.png') }}" alt="Stretch 3">
+                            <span class="textbook-card__level">B1</span>
+                            <span class="textbook-card__category">General</span>
+                        </div>
+                        <div class="textbook-card__content">
+                            <h4 class="textbook-card__title">Stretch 3</h4>
+                            <p class="textbook-card__desc">중급 커뮤니케이션 역량 강화</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="textbook-carousel__btn textbook-carousel__btn--next" aria-label="다음">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- 캐러셀 인디케이터 -->
+        <div class="textbook-carousel__indicators"></div>
+    </div>
+</section>
+
+<!-- Textbook Modal with Image Slider -->
+<div class="textbook-modal" id="textbook-modal">
+    <div class="textbook-modal__backdrop"></div>
+    <div class="textbook-modal__content">
+        <div class="textbook-modal__header">
+            <h3 class="textbook-modal__title" id="modal-title">교재 이름</h3>
+            <button class="textbook-modal__close" aria-label="닫기">&times;</button>
+        </div>
+        <div class="textbook-modal__body">
+            <!-- 왼쪽: 이미지 슬라이더 -->
+            <div class="textbook-modal__slider">
+                <button class="textbook-modal__slider-btn textbook-modal__slider-btn--prev" aria-label="이전 이미지">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+
+                <div class="textbook-modal__slider-viewport">
+                    <div class="textbook-modal__slider-track" id="modal-slider-track">
+                        <!-- JS로 동적 생성 -->
+                    </div>
+                </div>
+
+                <button class="textbook-modal__slider-btn textbook-modal__slider-btn--next" aria-label="다음 이미지">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </button>
+
+                <div class="textbook-modal__counter">
+                    <span id="modal-current-slide">1</span> / <span id="modal-total-slides">5</span>
+                </div>
+
+                <div class="textbook-modal__thumbnails" id="modal-thumbnails">
+                    <!-- JS로 동적 생성 -->
+                </div>
+            </div>
+
+            <!-- 오른쪽: 컨텐츠 정보 -->
+            <div class="textbook-modal__info">
+                <div class="textbook-modal__meta">
+                    <div class="textbook-modal__meta-item">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <strong>레벨:</strong> <span id="modal-level">L1-3</span>
+                    </div>
+                    <div class="textbook-modal__meta-item">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                        <strong>카테고리:</strong> <span id="modal-category">General</span>
+                    </div>
+                    <div class="textbook-modal__meta-item">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <strong>대상:</strong> <span id="modal-target">성인 학습자</span>
+                    </div>
+                </div>
+
+                <div class="textbook-modal__section">
+                    <h4 class="textbook-modal__section-title">교재 소개</h4>
+                    <p class="textbook-modal__desc" id="modal-desc">교재에 대한 상세 설명이 여기에 표시됩니다.</p>
+                </div>
+
+                <div class="textbook-modal__section">
+                    <h4 class="textbook-modal__section-title">주요 특징</h4>
+                    <ul class="textbook-modal__features" id="modal-features">
+                        <li>특징 1</li>
+                        <li>특징 2</li>
+                        <li>특징 3</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- 교재 모달: Pre-Intermediate -->
-<div id="modal-textbook-preintermediate" class="modal">
-    <div class="modal__backdrop"></div>
-    <div class="modal__content modal__content--large">
-        <button class="modal__close">&times;</button>
-        
-        <div class="textbook-modal">
-            <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b08.jpg') }}" alt="Pre-Intermediate Level" class="textbook-modal-img">
-            </div>
-            
-            <div class="textbook-modal__info">
-                <h3>중급 준비 교재</h3>
-                <p class="textbook-level">Level 4-6</p>
-                
-                <div class="textbook-description">
-                    <p>기초 과정을 마친 학습자를 위한 중급 준비 교재입니다. 일상 대화 능력을 강화하고 다양한 주제로 대화 범위를 확장합니다.</p>
-                </div>
-                
-                <div class="textbook-toc">
-                    <h4>목차</h4>
-                    <ul>
-                        <li>Unit 1: Making Plans (계획 세우기)</li>
-                        <li>Unit 2: Entertainment & Leisure (여가 활동)</li>
-                        <li>Unit 3: Expressing Opinions (의견 표현하기)</li>
-                        <li>Unit 4: Past Experiences (과거 경험 공유)</li>
-                        <li>Unit 5: Future Plans (미래 계획)</li>
-                        <li>Unit 6: Problem Solving (문제 해결)</li>
-                        <li>Unit 7: Cultural Topics (문화적 주제)</li>
-                        <li>Unit 8: Basic Debates (기초 토론)</li>
-                    </ul>
-                </div>
-                
-                <div class="textbook-sample">
-                    <h4>샘플 대화</h4>
-                    <div class="sample-content">
-                        <p><strong>Dialog Example:</strong></p>
-                        <p>A: What do you usually do in your free time?<br>
-                        B: I enjoy reading and watching movies. Last weekend, I watched a really interesting documentary.<br>
-                        A: Oh really? What was it about?<br>
-                        B: It was about climate change and its impact on wildlife. It made me think about our environment.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 교재 모달: Intermediate -->
-<div id="modal-textbook-intermediate" class="modal">
-    <div class="modal__backdrop"></div>
-    <div class="modal__content modal__content--large">
-        <button class="modal__close">&times;</button>
-        
-        <div class="textbook-modal">
-            <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b16.jpg') }}" alt="Intermediate Level" class="textbook-modal-img">
-            </div>
-            
-            <div class="textbook-modal__info">
-                <h3>중급 회화 교재</h3>
-                <p class="textbook-level">Level 7-8</p>
-                
-                <div class="textbook-description">
-                    <p>다양한 실생활 주제를 다루며 자연스러운 대화 능력을 키우는 중급 과정입니다. 관용 표현과 실전 대화 패턴을 집중적으로 학습합니다.</p>
-                </div>
-                
-                <div class="textbook-toc">
-                    <h4>목차</h4>
-                    <ul>
-                        <li>Unit 1: Travel & Tourism (여행과 관광)</li>
-                        <li>Unit 2: Health & Fitness (건강과 운동)</li>
-                        <li>Unit 3: Technology & Social Media (기술과 SNS)</li>
-                        <li>Unit 4: Work & Career (직장과 경력)</li>
-                        <li>Unit 5: Entertainment & Culture (엔터테인먼트와 문화)</li>
-                        <li>Unit 6: Environment & Society (환경과 사회)</li>
-                        <li>Unit 7: Education & Learning (교육과 학습)</li>
-                        <li>Unit 8: Current Events (시사)</li>
-                    </ul>
-                </div>
-                
-                <div class="textbook-sample">
-                    <h4>샘플 대화</h4>
-                    <div class="sample-content">
-                        <p><strong>Dialog Example:</strong></p>
-                        <p>A: Have you been keeping up with your fitness routine?<br>
-                        B: Actually, I've been trying to, but my work schedule has been pretty hectic lately.<br>
-                        A: I know what you mean. It's hard to stay consistent when you're busy.<br>
-                        B: Exactly. I'm thinking about joining a gym closer to my office so I can work out during lunch breaks.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 교재 모달: Advanced -->
-<div id="modal-textbook-advanced" class="modal">
-    <div class="modal__backdrop"></div>
-    <div class="modal__content modal__content--large">
-        <button class="modal__close">&times;</button>
-        
-        <div class="textbook-modal">
-            <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b29.jpg') }}" alt="Advanced Level" class="textbook-modal-img">
-            </div>
-            
-            <div class="textbook-modal__info">
-                <h3>고급 회화 교재</h3>
-                <p class="textbook-level">Level 9-10</p>
-                
-                <div class="textbook-description">
-                    <p>원어민 수준의 유창한 영어 구사력을 목표로 하는 고급 과정입니다. 복잡한 주제에 대한 심화 토론과 문화적 뉘앙스까지 다룹니다.</p>
-                </div>
-                
-                <div class="textbook-toc">
-                    <h4>목차</h4>
-                    <ul>
-                        <li>Unit 1: Global Economics & Finance (국제 경제와 금융)</li>
-                        <li>Unit 2: Philosophy & Ethics (철학과 윤리)</li>
-                        <li>Unit 3: Politics & International Relations (정치와 국제 관계)</li>
-                        <li>Unit 4: Science & Innovation (과학과 혁신)</li>
-                        <li>Unit 5: Arts & Literature (예술과 문학)</li>
-                        <li>Unit 6: Social Issues & Debates (사회 이슈와 토론)</li>
-                        <li>Unit 7: Psychology & Human Behavior (심리학과 인간 행동)</li>
-                        <li>Unit 8: Future Trends & Predictions (미래 트렌드와 예측)</li>
-                    </ul>
-                </div>
-                
-                <div class="textbook-sample">
-                    <h4>샘플 토론 주제</h4>
-                    <div class="sample-content">
-                        <p><strong>Discussion Topic:</strong></p>
-                        <p>"The impact of artificial intelligence on future employment: Should we embrace or regulate AI development?"</p>
-                        <p class="u-mt-3"><strong>Key Arguments:</strong></p>
-                        <p>• Economic efficiency vs. job displacement<br>
-                        • Innovation benefits vs. ethical concerns<br>
-                        • Global competitiveness vs. social stability</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!-- CTA Section -->
-<section class="cta-section u-bg-teal">
+<section class="cta-section">
     <div class="container u-text-center">
         <h2>지금 바로 시작하세요</h2>
         <p class="u-mt-3 u-mb-4">무료 레벨테스트와 상담을 통해 맞춤형 학습 계획을 제공합니다</p>
@@ -418,4 +406,3 @@
     </div>
 </section>
 {% endblock %}
-

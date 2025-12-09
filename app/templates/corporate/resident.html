@@ -13,95 +13,113 @@
 </section>
 
 <!-- 학습 레벨 -->
-<section>
-    <div class="container">
-        {{ section_title_10(title='Learning Level', subtitle='학습 레벨') }}
-
-        <div class="grid grid--2">
-            <div class="card">
-                <h4 class="card__title">파견임무 수행을 위한 Biz-skill 단련</h4>
-                <p>해외 현지에서 필요한 실무 영어와 비즈니스 스킬을 집중적으로 훈련합니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">Global Culture 이해</h4>
-                <p>파견 국가의 문화, 비즈니스 관습, 에티켓을 체계적으로 학습합니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">실무 중심 교육</h4>
-                <p>실제 해외 업무 상황을 시뮬레이션하여 실전에 바로 적용 가능합니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">문화적응 프로그램</h4>
-                <p>언어뿐만 아니라 현지 생활 적응을 위한 종합적인 지원을 제공합니다.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 교육 목표 -->
 <section class="u-bg-teal">
     <div class="container">
-        {{ section_title_10(title='Learning Objectives', subtitle='교육 목표') }}
+        {{ section_title_10(title='LEARNING LEVEL', subtitle='Comprehensive preparation for overseas assignment') }}
 
-        <div class="curriculum-detail">
-            <div class="card">
-                <div class="card__body">
-                    <h4>업무 수행 능력</h4>
-                    <ul>
-                        <li>현지 직원과의 원활한 커뮤니케이션</li>
-                        <li>현지 고객 및 파트너사 응대</li>
-                        <li>영어로 업무 지시 및 보고</li>
-                        <li>회의 주재 및 프레젠테이션</li>
-                    </ul>
-                </div>
+        <div class="level-cards-grid">
+            <div class="level-card level-card--beginner">
+                <span class="level-card__badge">Level 1-3</span>
+                <h3 class="level-card__title">Basic</h3>
+                <p class="level-card__desc">영어 학습 입문자</p>
             </div>
-            
-            <div class="card u-mt-4">
-                <div class="card__body">
-                    <h4>문화 적응 능력</h4>
-                    <ul>
-                        <li>현지 비즈니스 문화 이해</li>
-                        <li>문화 차이로 인한 갈등 해결</li>
-                        <li>현지 생활 영어 (은행, 병원, 쇼핑 등)</li>
-                        <li>가족 적응 지원</li>
-                    </ul>
-                </div>
+            <div class="level-card level-card--elementary">
+                <span class="level-card__badge">Level 4-5</span>
+                <h3 class="level-card__title">Elementary</h3>
+                <p class="level-card__desc">기초 회화 가능자</p>
+            </div>
+            <div class="level-card level-card--intermediate">
+                <span class="level-card__badge">Level 6</span>
+                <h3 class="level-card__title">Intermediate</h3>
+                <p class="level-card__desc">업무 영어 구사자</p>
+            </div>
+            <div class="level-card level-card--advanced">
+                <span class="level-card__badge">Level 7</span>
+                <h3 class="level-card__title">Advanced</h3>
+                <p class="level-card__desc">고급 영어 구사자</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 교육 세부 -->
+<!-- 학습 목표 -->
 <section>
     <div class="container">
-        {{ section_title_10(title='Learning Details', subtitle='교육 세부') }}
+        {{ section_title_10(title='LEARNING OBJECTIVES', subtitle='Resident Employee Program Core Objectives') }}
 
-        <div class="study-steps">
-            <div class="card">
-                <div class="step-number">1</div>
-                <h4>사전 준비 (1-2개월)</h4>
-                <p>기초 영어 능력 향상 및 파견 국가 문화 학습</p>
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Mission Readiness</h3>
+                <p class="goal-card__desc">Prepare for successful overseas assignment execution</p>
             </div>
-            
-            <div class="card">
-                <div class="step-number">2</div>
-                <h4>집중 교육 (2-3개월)</h4>
-                <p>업무 영어, 프레젠테이션, 협상 등 실무 스킬</p>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Global Culture Understanding</h3>
+                <p class="goal-card__desc">Deep understanding of local business culture and customs</p>
             </div>
-            
-            <div class="card">
-                <div class="step-number">3</div>
-                <h4>현지 적응 (1개월)</h4>
-                <p>생활 영어, 문화 이해, 실전 시뮬레이션</p>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Business Skill Training</h3>
+                <p class="goal-card__desc">Develop essential business skills for overseas operations</p>
             </div>
-            
-            <div class="card">
-                <div class="step-number">4</div>
-                <h4>Follow-up</h4>
-                <p>파견 후 온라인 지원 및 코칭</p>
+        </div>
+    </div>
+</section>
+
+<!-- 학습 세부 내용 -->
+<section class="u-bg-teal">
+    <div class="container">
+        {{ section_title_10(title='LEARNING DETAILS', subtitle='Resident Employee Program Specifications') }}
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Features</h4>
+                <ul class="detail-card__list">
+                    <li>Comprehensive expatriate preparation</li>
+                    <li>Intensive language + culture training</li>
+                    <li>Local environment adaptation program</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <p class="detail-card__content">Level 1-7 Employees</p>
+                <p class="detail-card__content" style="margin-top: var(--spacing-sm); color: var(--color-text-muted); font-size: var(--font-size-sm);">Personnel scheduled for overseas assignment</p>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>Interchange</li>
+                    <li>Let's Go Series</li>
+                    <li>Side by Side</li>
+                    <li>American English File</li>
+                </ul>
+            </div>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Course/Module</h4>
+                <ul class="detail-card__list">
+                    <li>Intensive Business English</li>
+                    <li>Daily Life English</li>
+                    <li>Cultural Adaptation Program</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -114,108 +132,103 @@
 <!-- 교재 정보 -->
 <section>
     <div class="container">
-        {{ section_title_10(title='Course Materials', subtitle='교재 안내') }}
+        {{ section_title_10(title='COURSE MATERIALS', subtitle='Comprehensive guides for overseas assignment') }}
 
         <div class="grid grid--4">
             <div class="card textbook-card" data-modal-target="modal-textbook-resident">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b07.jpg') }}" alt="Expatriate Guide" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/placeholder_cover.svg') }}" alt="Interchange" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>주재원 준비 가이드</h4>
-                    <p>해외 파견 완벽 준비를 위한 종합 가이드</p>
+                    <h4>Interchange</h4>
+                    <p>해외 파견 종합 준비 교재</p>
                 </div>
             </div>
-            
+
             <div class="card textbook-card" data-modal-target="modal-textbook-resident-culture">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b21.jpg') }}" alt="Cultural Adaptation" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/placeholder_cover.svg') }}" alt="Let's Go Series" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>문화 적응 교재</h4>
-                    <p>현지 문화와 비즈니스 관습 이해</p>
+                    <h4>Let's Go Series</h4>
+                    <p>현지 문화와 생활 적응</p>
                 </div>
             </div>
-            
+
             <div class="card textbook-card" data-modal-target="modal-textbook-resident-practical">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b34.jpg') }}" alt="Practical Skills" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/placeholder_cover.svg') }}" alt="Side by Side" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>실무 영어 교재</h4>
-                    <p>현지 업무 수행 영어</p>
+                    <h4>Side by Side</h4>
+                    <p>실무 영어 기초</p>
                 </div>
             </div>
-            
+
             <div class="card textbook-card" data-modal-target="modal-textbook-resident-family">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b31.jpg') }}" alt="Family Support" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/americanEnglishFile4_3rdEdition_cover.png') }}" alt="American English File" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>가족 지원 가이드</h4>
-                    <p>가족 동반 해외 생활 준비</p>
+                    <h4>American English File</h4>
+                    <p>종합 영어 학습</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 교재 모달: Expatriate Guide -->
+<!-- 교재 모달: Interchange -->
 <div id="modal-textbook-resident" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
-        
+
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b07.jpg') }}" alt="Expatriate Guide" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/placeholder_cover.svg') }}" alt="Interchange" class="textbook-modal-img">
             </div>
-            
+
             <div class="textbook-modal__info">
-                <h3>주재원 준비 가이드</h3>
-                <p class="textbook-level">Comprehensive</p>
-                
+                <h3>Interchange</h3>
+                <p class="textbook-level">Level 1-7 | Cambridge University Press</p>
+
                 <div class="textbook-description">
-                    <p>해외 파견 성공을 위한 종합 가이드입니다. 업무 영어, 현지 문화, 일상생활까지 주재원 생활에 필요한 모든 내용을 다룹니다.</p>
+                    <p>해외 파견 성공을 위한 종합 영어 교재입니다. 업무 영어, 현지 문화, 일상생활까지 주재원 생활에 필요한 모든 내용을 다룹니다.</p>
                 </div>
-                
+
                 <div class="textbook-toc">
                     <h4>학습 영역</h4>
                     <ul>
                         <li><strong>Part 1: Business Communication</strong></li>
-                        <li>• Office Communication & Meetings</li>
-                        <li>• Local Business Etiquette</li>
-                        <li>• Industry-Specific Vocabulary</li>
+                        <li>- Office Communication & Meetings</li>
+                        <li>- Local Business Etiquette</li>
+                        <li>- Industry-Specific Vocabulary</li>
                         <li class="u-mt-2"><strong>Part 2: Daily Life</strong></li>
-                        <li>• Housing & Utilities</li>
-                        <li>• Banking & Finance</li>
-                        <li>• Healthcare & Education</li>
-                        <li class="u-mt-2"><strong>Part 3: Cultural Adaptation</strong></li>
-                        <li>• Social Customs & Manners</li>
-                        <li>• Dining & Entertainment</li>
-                        <li>• Emergency Situations</li>
+                        <li>- Housing & Utilities</li>
+                        <li>- Banking & Finance</li>
+                        <li>- Healthcare & Education</li>
                     </ul>
                 </div>
-                
+
                 <div class="textbook-sample">
-                    <h4>국가별 맞춤 컨텐츠</h4>
+                    <h4>교재 특징</h4>
                     <div class="sample-content">
-                        <p>각 파견 국가별로 특화된 컨텐츠를 제공합니다:</p>
-                        <p>• <strong>미국:</strong> 미국식 비즈니스 문화, 법인 관리<br>
-                        • <strong>중국:</strong> 관시(關係) 문화, 협상 스타일<br>
-                        • <strong>유럽:</strong> 다문화 팀 관리, EU 비즈니스 환경</p>
+                        <p><strong>Comprehensive Coverage:</strong> 비즈니스 + 일상 통합</p>
+                        <p class="u-mt-2"><strong>Regional Focus:</strong> 파견 국가별 맞춤 콘텐츠</p>
+                        <p class="u-mt-2"><strong>Practical Application:</strong> 실전 상황 시뮬레이션</p>
                     </div>
                 </div>
             </div>
@@ -223,29 +236,29 @@
     </div>
 </div>
 
-<!-- 교재 모달: Cultural Adaptation -->
+<!-- 교재 모달: Let's Go Series -->
 <div id="modal-textbook-resident-culture" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b21.jpg') }}" alt="Cultural Adaptation" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/placeholder_cover.svg') }}" alt="Let's Go Series" class="textbook-modal-img">
             </div>
             <div class="textbook-modal__info">
-                <h3>문화 적응 교재</h3>
-                <p class="textbook-level">현지 문화와 비즈니스 관습 이해</p>
+                <h3>Let's Go Series</h3>
+                <p class="textbook-level">Level 1-5 | Oxford University Press</p>
                 <div class="textbook-description">
                     <p>현지 문화를 이해하고 적응하는 방법을 학습합니다. 문화적 차이를 극복하고 효과적으로 소통하는 능력을 배양합니다.</p>
                 </div>
                 <div class="textbook-toc">
                     <h4>주요 학습 내용</h4>
                     <ul>
-                        <li>비즈니스 문화 이해</li>
-                        <li>소통 스타일 차이</li>
-                        <li>사회적 관습과 에티켓</li>
-                        <li>협상 문화</li>
-                        <li>시간 관리 차이</li>
+                        <li>Business Culture Understanding</li>
+                        <li>Communication Style Differences</li>
+                        <li>Social Customs & Etiquette</li>
+                        <li>Negotiation Culture</li>
+                        <li>Time Management Differences</li>
                     </ul>
                 </div>
             </div>
@@ -253,29 +266,29 @@
     </div>
 </div>
 
-<!-- 교재 모달: Practical Skills -->
+<!-- 교재 모달: Side by Side -->
 <div id="modal-textbook-resident-practical" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b34.jpg') }}" alt="Practical Skills" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/placeholder_cover.svg') }}" alt="Side by Side" class="textbook-modal-img">
             </div>
             <div class="textbook-modal__info">
-                <h3>실무 영어 교재</h3>
-                <p class="textbook-level">현지 업무 수행 영어</p>
+                <h3>Side by Side</h3>
+                <p class="textbook-level">Level 1-5 | Pearson</p>
                 <div class="textbook-description">
                     <p>현지 업무 환경에서 실제로 사용되는 실무 영어를 학습합니다. 일상 업무부터 전문적인 비즈니스 상황까지 다룹니다.</p>
                 </div>
                 <div class="textbook-toc">
                     <h4>주요 학습 내용</h4>
                     <ul>
-                        <li>현지 법인 관리 영어</li>
-                        <li>보고서 작성</li>
-                        <li>회의 진행</li>
-                        <li>현지 직원 관리</li>
-                        <li>비즈니스 협상</li>
+                        <li>Local Office Management</li>
+                        <li>Report Writing</li>
+                        <li>Meeting Facilitation</li>
+                        <li>Local Staff Management</li>
+                        <li>Business Negotiation</li>
                     </ul>
                 </div>
             </div>
@@ -283,29 +296,29 @@
     </div>
 </div>
 
-<!-- 교재 모달: Family Support -->
+<!-- 교재 모달: American English File -->
 <div id="modal-textbook-resident-family" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b31.jpg') }}" alt="Family Support" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/americanEnglishFile4_3rdEdition_cover.png') }}" alt="American English File" class="textbook-modal-img">
             </div>
             <div class="textbook-modal__info">
-                <h3>가족 지원 가이드</h3>
-                <p class="textbook-level">가족 동반 해외 생활 준비</p>
+                <h3>American English File</h3>
+                <p class="textbook-level">Level 6-7 | Oxford University Press</p>
                 <div class="textbook-description">
-                    <p>가족과 함께하는 해외 생활을 위한 종합 가이드입니다. 자녀 교육, 배우자 지원, 생활 적응 등을 다룹니다.</p>
+                    <p>고급 영어 학습을 위한 종합 교재입니다. 주재원과 가족 모두를 위한 영어 능력 향상을 지원합니다.</p>
                 </div>
                 <div class="textbook-toc">
                     <h4>주요 학습 내용</h4>
                     <ul>
-                        <li>자녀 교육 시스템</li>
-                        <li>의료 및 보험</li>
-                        <li>주거 및 생활 정보</li>
-                        <li>가족 영어 교육</li>
-                        <li>커뮤니티 참여</li>
+                        <li>Advanced Communication Skills</li>
+                        <li>Cultural Integration</li>
+                        <li>Daily Life Management</li>
+                        <li>Family English Education</li>
+                        <li>Community Engagement</li>
                     </ul>
                 </div>
             </div>

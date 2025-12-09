@@ -13,122 +13,111 @@
 </section>
 
 <!-- 학습 레벨 -->
-<section>
-    <div class="container">
-        {{ section_title_10(title='Learning Level', subtitle='학습 레벨') }}
-
-        <div class="grid grid--2">
-            <div class="card">
-                <h4 class="card__title">온/오프라인 통합 학습</h4>
-                <p>대면 수업과 온라인 학습의 장점을 결합하여 최적의 학습 효과를 제공합니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">자기주도적 학습 능력 향상</h4>
-                <p>온라인 플랫폼을 통한 자율 학습으로 자기주도적 학습 습관을 기릅니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">유연한 학습 환경</h4>
-                <p>시간과 장소의 제약 없이 언제 어디서나 학습할 수 있습니다.</p>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">다양한 학습 도구 활용</h4>
-                <p>LMS, 모바일 앱, 화상 회의 등 최신 에듀테크를 활용합니다.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 교육 목표 -->
 <section class="u-bg-teal">
     <div class="container">
-        {{ section_title_10(title='Learning Objectives', subtitle='교육 목표') }}
+        {{ section_title_10(title='LEARNING LEVEL', subtitle='Comprehensive level coverage for all employees') }}
 
-        <div class="grid grid--3">
-            <div class="card">
-                <h3 class="card__title">Flipped Learning</h3>
-                <div class="card__body">
-                    <p class="u-mb-3">거꾸로 학습 모델</p>
-                    <ul>
-                        <li>온라인: 사전 학습 (이론, 어휘)</li>
-                        <li>오프라인: 실전 연습 (회화, 토론)</li>
-                        <li>효율적인 시간 활용</li>
-                    </ul>
-                </div>
+        <div class="level-cards-grid">
+            <div class="level-card level-card--beginner">
+                <span class="level-card__badge">Level 1-3</span>
+                <h3 class="level-card__title">Basic</h3>
+                <p class="level-card__desc">영어 학습 입문자</p>
             </div>
-            
-            <div class="card">
-                <h3 class="card__title">Supplementary Model</h3>
-                <div class="card__body">
-                    <p class="u-mb-3">보충 학습 모델</p>
-                    <ul>
-                        <li>오프라인: 핵심 학습</li>
-                        <li>온라인: 복습 및 확장 학습</li>
-                        <li>학습 효과 극대화</li>
-                    </ul>
-                </div>
+            <div class="level-card level-card--elementary">
+                <span class="level-card__badge">Level 4-5</span>
+                <h3 class="level-card__title">Elementary</h3>
+                <p class="level-card__desc">기초 회화 가능자</p>
             </div>
-            
-            <div class="card">
-                <h3 class="card__title">Flexible Model</h3>
-                <div class="card__body">
-                    <p class="u-mb-3">유연 학습 모델</p>
-                    <ul>
-                        <li>상황에 따라 온/오프 선택</li>
-                        <li>개인별 맞춤 학습</li>
-                        <li>최대 유연성</li>
-                    </ul>
-                </div>
+            <div class="level-card level-card--intermediate">
+                <span class="level-card__badge">Level 6</span>
+                <h3 class="level-card__title">Intermediate</h3>
+                <p class="level-card__desc">업무 영어 구사자</p>
+            </div>
+            <div class="level-card level-card--advanced">
+                <span class="level-card__badge">Level 7</span>
+                <h3 class="level-card__title">Advanced</h3>
+                <p class="level-card__desc">고급 영어 구사자</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 교육 세부 -->
+<!-- 학습 목표 -->
 <section>
     <div class="container">
-        {{ section_title_10(title='Learning Details', subtitle='교육 세부') }}
+        {{ section_title_10(title='LEARNING OBJECTIVES', subtitle='Blended Program Core Objectives') }}
 
-        <div class="grid grid--2">
-            <div class="card">
-                <h4 class="card__title">LMS (Learning Management System)</h4>
-                <ul>
-                    <li>강의 동영상 및 학습 자료</li>
-                    <li>진도 관리 및 학습 분석</li>
-                    <li>과제 제출 및 피드백</li>
-                    <li>온라인 퀴즈 및 테스트</li>
+        <div class="goals-grid">
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Hybrid Learning</h3>
+                <p class="goal-card__desc">Combining in-person training with phone English for optimal flexibility</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Complementary Learning</h3>
+                <p class="goal-card__desc">Each method reinforces and enhances the other for deeper understanding</p>
+            </div>
+            <div class="goal-card">
+                <div class="goal-card__icon">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="12" y1="20" x2="12" y2="10"/>
+                        <line x1="18" y1="20" x2="18" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="16"/>
+                    </svg>
+                </div>
+                <h3 class="goal-card__title">Enhanced Efficiency</h3>
+                <p class="goal-card__desc">Maximize learning effectiveness through combined approach</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 학습 세부 내용 -->
+<section class="u-bg-teal">
+    <div class="container">
+        {{ section_title_10(title='LEARNING DETAILS', subtitle='Blended Program Specifications') }}
+
+        <div class="details-bento">
+            <div class="detail-card detail-card--feature">
+                <h4 class="detail-card__label">Features</h4>
+                <ul class="detail-card__list">
+                    <li>In-person training + Phone English combination</li>
+                    <li>Flexible scheduling options</li>
+                    <li>Seamless learning experience</li>
                 </ul>
             </div>
-            
-            <div class="card">
-                <h4 class="card__title">모바일 앱</h4>
-                <ul>
-                    <li>언제 어디서나 학습 가능</li>
-                    <li>일일 학습 알림</li>
-                    <li>단어 암기 및 복습</li>
-                    <li>음성 인식 발음 연습</li>
+            <div class="detail-card detail-card--target">
+                <h4 class="detail-card__label">Target Audience</h4>
+                <p class="detail-card__content">Level 1-7 Employees</p>
+                <p class="detail-card__content" style="margin-top: var(--spacing-sm); color: var(--color-text-muted); font-size: var(--font-size-sm);">All levels seeking flexible learning options</p>
+            </div>
+            <div class="detail-card detail-card--textbook">
+                <h4 class="detail-card__label">Textbooks</h4>
+                <ul class="detail-card__list">
+                    <li>Speak Now</li>
+                    <li>Smart Choice</li>
+                    <li>American English File</li>
+                    <li>Talk Time</li>
                 </ul>
             </div>
-            
-            <div class="card">
-                <h4 class="card__title">화상 수업</h4>
-                <ul>
-                    <li>실시간 1:1 또는 그룹 수업</li>
-                    <li>화면 공유 및 자료 활용</li>
-                    <li>녹화 기능 (복습 가능)</li>
-                    <li>채팅 및 Q&A</li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <h4 class="card__title">학습 커뮤니티</h4>
-                <ul>
-                    <li>학습자 간 소통 및 협력</li>
-                    <li>스터디 그룹 형성</li>
-                    <li>Q&A 게시판</li>
-                    <li>학습 경험 공유</li>
+            <div class="detail-card detail-card--course">
+                <h4 class="detail-card__label">Course/Module</h4>
+                <ul class="detail-card__list">
+                    <li>General Conversation</li>
+                    <li>Business Communication</li>
+                    <li>Combined Curriculum Operation</li>
                 </ul>
             </div>
         </div>
@@ -138,57 +127,57 @@
 <!-- 교재 정보 -->
 <section>
     <div class="container">
-        {{ section_title_10(title='Course Materials', subtitle='교재 안내') }}
+        {{ section_title_10(title='COURSE MATERIALS', subtitle='Recommended textbooks for blended learning') }}
 
         <div class="grid grid--4">
             <div class="card textbook-card" data-modal-target="modal-textbook-blended">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b08.jpg') }}" alt="Blended Learning" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/smartChoice1_cover.png') }}" alt="Smart Choice 1" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>블렌디드 학습 교재</h4>
-                    <p>온·오프라인 통합 학습 시스템</p>
+                    <h4>Smart Choice 1</h4>
+                    <p>온·오프라인 통합 학습</p>
                 </div>
             </div>
-            
+
             <div class="card textbook-card" data-modal-target="modal-textbook-blended-online">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b22.jpg') }}" alt="Online Module" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/smartChoice2_cover.png') }}" alt="Smart Choice 2" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>온라인 모듈 교재</h4>
+                    <h4>Smart Choice 2</h4>
                     <p>디지털 학습 콘텐츠</p>
                 </div>
             </div>
-            
+
             <div class="card textbook-card" data-modal-target="modal-textbook-blended-offline">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b35.jpg') }}" alt="Offline Workshop" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/americanEnglishFile1_cover.png') }}" alt="American English File 1" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>오프라인 워크샵 교재</h4>
+                    <h4>American English File 1</h4>
                     <p>대면 집중 훈련 자료</p>
                 </div>
             </div>
-            
+
             <div class="card textbook-card" data-modal-target="modal-textbook-blended-project">
                 <div class="textbook-image">
-                    <img src="{{ static_url('images/books/b25.jpg') }}" alt="Project Guide" class="textbook-img">
+                    <img src="{{ url_for('static', filename='images/books/americanEnglishFile4_3rdEdition_cover.png') }}" alt="American English File 4" class="textbook-img">
                     <div class="textbook-overlay">
                         <span class="textbook-preview-btn">미리보기</span>
                     </div>
                 </div>
                 <div class="card__body">
-                    <h4>프로젝트 가이드</h4>
+                    <h4>American English File 4</h4>
                     <p>실습 프로젝트 매뉴얼</p>
                 </div>
             </div>
@@ -196,50 +185,45 @@
     </div>
 </section>
 
-<!-- 교재 모달: Blended Learning -->
+<!-- 교재 모달: Smart Choice 1 -->
 <div id="modal-textbook-blended" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
-        
+
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b08.jpg') }}" alt="Blended Learning" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/smartChoice1_cover.png') }}" alt="Smart Choice 1" class="textbook-modal-img">
             </div>
-            
+
             <div class="textbook-modal__info">
-                <h3>블렌디드 학습 교재</h3>
-                <p class="textbook-level">Hybrid System</p>
-                
+                <h3>Smart Choice 1</h3>
+                <p class="textbook-level">Level 1-3 | Oxford University Press</p>
+
                 <div class="textbook-description">
-                    <p>온라인과 오프라인 학습의 장점을 결합한 통합 학습 시스템입니다. 온라인 플랫폼을 통한 자기주도 학습과 강사와의 실시간 수업을 병행합니다.</p>
+                    <p>실용적인 회화 중심의 통합 영어 교재입니다. 온·오프라인 학습에 모두 적합하며, 일상 생활에서 바로 사용할 수 있는 표현들을 학습합니다.</p>
                 </div>
-                
+
                 <div class="textbook-toc">
-                    <h4>학습 구성</h4>
+                    <h4>주요 학습 내용</h4>
                     <ul>
-                        <li><strong>온라인 학습 (주 3회)</strong></li>
-                        <li>• Interactive Video Lessons</li>
-                        <li>• Vocabulary & Grammar Exercises</li>
-                        <li>• Self-Assessment Tests</li>
-                        <li>• Discussion Forum</li>
-                        <li class="u-mt-2"><strong>오프라인 수업 (주 2회)</strong></li>
-                        <li>• Conversation Practice</li>
-                        <li>• Role-play & Simulations</li>
-                        <li>• Presentation & Feedback</li>
-                        <li>• Q&A Sessions</li>
+                        <li><strong>Communication Focus</strong></li>
+                        <li>- Daily Conversations</li>
+                        <li>- Practical Vocabulary</li>
+                        <li>- Grammar in Context</li>
+                        <li class="u-mt-2"><strong>Blended Features</strong></li>
+                        <li>- Online Practice Activities</li>
+                        <li>- Video-based Learning</li>
+                        <li>- Interactive Exercises</li>
                     </ul>
                 </div>
-                
+
                 <div class="textbook-sample">
-                    <h4>학습 플랫폼 기능</h4>
+                    <h4>교재 특징</h4>
                     <div class="sample-content">
-                        <p><strong>온라인 LMS 포함:</strong></p>
-                        <p>• 학습 진도 트래킹<br>
-                        • 과제 제출 및 피드백<br>
-                        • 녹화 강의 무제한 재생<br>
-                        • 모바일 앱 지원<br>
-                        • AI 발음 분석</p>
+                        <p><strong>Integrated Approach:</strong> 온·오프라인 연계 학습</p>
+                        <p class="u-mt-2"><strong>Practical Focus:</strong> 실생활 적용 가능한 표현</p>
+                        <p class="u-mt-2"><strong>Self-Study Support:</strong> 자기주도 학습 지원</p>
                     </div>
                 </div>
             </div>
@@ -247,28 +231,28 @@
     </div>
 </div>
 
-<!-- 교재 모달: Online Module -->
+<!-- 교재 모달: Smart Choice 2 -->
 <div id="modal-textbook-blended-online" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b22.jpg') }}" alt="Online Module" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/smartChoice2_cover.png') }}" alt="Smart Choice 2" class="textbook-modal-img">
             </div>
             <div class="textbook-modal__info">
-                <h3>온라인 모듈 교재</h3>
-                <p class="textbook-level">디지털 학습 콘텐츠</p>
+                <h3>Smart Choice 2</h3>
+                <p class="textbook-level">Level 4-5 | Oxford University Press</p>
                 <div class="textbook-description">
-                    <p>언제 어디서나 학습 가능한 온라인 모듈입니다. 인터랙티브 콘텐츠와 실시간 피드백으로 효과적인 자기주도 학습이 가능합니다.</p>
+                    <p>Smart Choice 시리즈의 중급 단계로, 더 깊이 있는 회화와 문법을 학습합니다. 온라인 리소스와 연계하여 효과적인 복합 학습이 가능합니다.</p>
                 </div>
                 <div class="textbook-toc">
-                    <h4>온라인 학습 콘텐츠</h4>
+                    <h4>주요 학습 내용</h4>
                     <ul>
-                        <li>HD 비디오 강의</li>
-                        <li>인터랙티브 퀴즈</li>
-                        <li>AI 발음 교정</li>
-                        <li>Progress Tracking</li>
+                        <li>Intermediate Conversations</li>
+                        <li>Expanded Vocabulary</li>
+                        <li>Complex Grammar Structures</li>
+                        <li>Online Practice Integration</li>
                     </ul>
                 </div>
             </div>
@@ -276,28 +260,28 @@
     </div>
 </div>
 
-<!-- 교재 모달: Offline Workshop -->
+<!-- 교재 모달: American English File 1 -->
 <div id="modal-textbook-blended-offline" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b35.jpg') }}" alt="Offline Workshop" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/americanEnglishFile1_cover.png') }}" alt="American English File 1" class="textbook-modal-img">
             </div>
             <div class="textbook-modal__info">
-                <h3>오프라인 워크샵 교재</h3>
-                <p class="textbook-level">대면 집중 훈련 자료</p>
+                <h3>American English File 1</h3>
+                <p class="textbook-level">Level 4-5 | Oxford University Press</p>
                 <div class="textbook-description">
-                    <p>온라인 학습을 보완하는 집중 워크샵 교재입니다. 실전 연습과 피드백을 통해 학습 효과를 극대화합니다.</p>
+                    <p>대면 수업에 최적화된 종합 영어 교재입니다. 체계적인 4-skill 통합 학습과 풍부한 활동으로 효과적인 오프라인 학습을 지원합니다.</p>
                 </div>
                 <div class="textbook-toc">
-                    <h4>워크샵 활동</h4>
+                    <h4>오프라인 학습 활동</h4>
                     <ul>
-                        <li>그룹 토론</li>
-                        <li>롤플레이</li>
-                        <li>프레젠테이션 실습</li>
-                        <li>1:1 코칭</li>
+                        <li>Group Discussions</li>
+                        <li>Role-play Activities</li>
+                        <li>Presentation Practice</li>
+                        <li>1:1 Coaching Sessions</li>
                     </ul>
                 </div>
             </div>
@@ -305,28 +289,28 @@
     </div>
 </div>
 
-<!-- 교재 모달: Project Guide -->
+<!-- 교재 모달: American English File 4 -->
 <div id="modal-textbook-blended-project" class="modal">
     <div class="modal__backdrop"></div>
     <div class="modal__content modal__content--large">
         <button class="modal__close">&times;</button>
         <div class="textbook-modal">
             <div class="textbook-modal__image">
-                <img src="{{ static_url('images/books/b25.jpg') }}" alt="Project Guide" class="textbook-modal-img">
+                <img src="{{ url_for('static', filename='images/books/americanEnglishFile4_3rdEdition_cover.png') }}" alt="American English File 4" class="textbook-modal-img">
             </div>
             <div class="textbook-modal__info">
-                <h3>프로젝트 가이드</h3>
-                <p class="textbook-level">실습 프로젝트 매뉴얼</p>
+                <h3>American English File 4</h3>
+                <p class="textbook-level">Level 6-7 | Oxford University Press</p>
                 <div class="textbook-description">
-                    <p>학습한 내용을 실제 프로젝트에 적용하는 가이드입니다. 실무 시나리오를 기반으로 한 종합적인 실습을 진행합니다.</p>
+                    <p>고급 레벨 학습자를 위한 종합 교재입니다. 프로젝트 기반 학습과 실무 시나리오를 통해 고급 영어 능력을 완성합니다.</p>
                 </div>
                 <div class="textbook-toc">
-                    <h4>프로젝트 주제</h4>
+                    <h4>프로젝트 학습 주제</h4>
                     <ul>
-                        <li>비즈니스 프레젠테이션</li>
-                        <li>제안서 작성</li>
-                        <li>협상 시뮬레이션</li>
-                        <li>팀 프로젝트</li>
+                        <li>Business Presentations</li>
+                        <li>Proposal Writing</li>
+                        <li>Negotiation Simulations</li>
+                        <li>Team Projects</li>
                     </ul>
                 </div>
             </div>

@@ -910,7 +910,11 @@ const galleryIdMapping = {
     // Test Preparation - TOEIC/TOEFL
     'toeic-speaking-10tests': 'siwonschoolToeicSpeaking10Tests',
     'hackers-toefl': 'hackersToeflSpeaking',
-    'siwon-toefl': 'siwonschoolToeflSpeaking'
+    'siwon-toefl': 'siwonschoolToeflSpeaking',
+
+    // Test Preparation - IELTS
+    'hackers-ielts-speaking': 'hackersIeltsSpeaking',
+    'ielts-master': 'ieltsMasterComplete'
 };
 
 /**

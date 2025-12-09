@@ -23,183 +23,221 @@
     </div>
 </section>
 
-<!-- Programs Grid -->
-<section>
+<!-- Program Overview Cards -->
+<section class="u-bg-teal-lightest u-py-6">
     <div class="container">
-        {{ section_title_10(title='프로그램 종류', subtitle='Program Types') }}
-        
-        <div class="grid grid--3">
-            <div class="card card--hoverable">
-                <div class="card__body">
-                    <h3 class="card__title">In-House Program</h3>
-                    <h4>사내어학과정</h4>
-                    <ul class="u-mt-3">
-                        <li>연간 어학지원 과정</li>
-                        <li>Global 인재 pool 형성</li>
-                        <li>레벨별 맞춤 수업</li>
-                        <li>정기적인 성과 측정</li>
-                    </ul>
+        {{ section_title_10(title='PROGRAM OVERVIEW', subtitle='Corporate language education programs') }}
+
+        <div class="program-overview-cards">
+            <!-- In-house Program -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=400&fit=crop" alt="In-house Program">
                 </div>
-                <div class="card__footer">
-                    <a href="{{ url_for('main.corporate_program_detail', program='in-house') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
-                </div>
-            </div>
-            
-            <div class="card card--hoverable">
-                <div class="card__body">
-                    <h3 class="card__title">Intensive Program</h3>
-                    <h4>집중과정</h4>
-                    <ul class="u-mt-3">
-                        <li>단기 집중 목표달성 과정</li>
-                        <li>Business Skill 단기 master</li>
-                        <li>4주/8주/12주 과정</li>
-                        <li>실전 중심 학습</li>
-                    </ul>
-                </div>
-                <div class="card__footer">
-                    <a href="{{ url_for('main.corporate_program_detail', program='intensive') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 1-7</span>
+                    </div>
+                    <h3 class="card-curriculum__title">In-house Program</h3>
+                    <p class="card-curriculum__description">
+                        전문 강사가 기업에 직접 방문하여 맞춤형 어학 교육을 제공합니다. 사내 어학 학습 문화를 조성하고 체계적인 학습 관리 시스템을 운영합니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">사내 출강</span>
+                        <span class="card-curriculum__feature">맞춤 커리큘럼</span>
+                        <span class="card-curriculum__feature">학습 관리</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>연간 프로그램</span>
+                            <span>주 2-5회</span>
+                        </div>
+                        <a href="{{ url_for('main.corporate_program_detail', program='in-house') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="card card--hoverable">
-                <div class="card__body">
-                    <h3 class="card__title">1:1 Executive Coaching</h3>
-                    <h4>1:1 임원과정</h4>
-                    <ul class="u-mt-3">
-                        <li>바쁜 스케줄에 맞는 맞춤형 영어 개발</li>
-                        <li>High-level의 customizing 과정 운영</li>
-                        <li>완전 맞춤형 1:1 수업</li>
-                        <li>비즈니스 케이스 스터디</li>
-                    </ul>
+
+            <!-- Intensive Program -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=400&fit=crop" alt="Intensive Program">
                 </div>
-                <div class="card__footer">
-                    <a href="{{ url_for('main.corporate_program_detail', program='executive') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
-                </div>
-            </div>
-            
-            <div class="card card--hoverable">
-                <div class="card__body">
-                    <h3 class="card__title">Resident Employee Programs</h3>
-                    <h4>주재원파견 과정</h4>
-                    <ul class="u-mt-3">
-                        <li>파견임무 수행을 위한 biz-skill 단련</li>
-                        <li>Global Culture 이해</li>
-                        <li>실무 중심 교육</li>
-                        <li>문화적응 프로그램</li>
-                    </ul>
-                </div>
-                <div class="card__footer">
-                    <a href="{{ url_for('main.corporate_program_detail', program='resident') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 1-7</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Intensive Program</h3>
+                    <p class="card-curriculum__description">
+                        4/8/12주 단기 집중 과정으로 빠른 목표 달성을 지원합니다. 비즈니스 스킬 마스터와 시험 점수 목표 달성을 위한 효율적인 학습 설계를 제공합니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">단기 집중</span>
+                        <span class="card-curriculum__feature">목표 달성</span>
+                        <span class="card-curriculum__feature">비즈니스 스킬</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>4-12주</span>
+                            <span>주 3-5회</span>
+                        </div>
+                        <a href="{{ url_for('main.corporate_program_detail', program='intensive') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="card card--hoverable">
-                <div class="card__body">
-                    <h3 class="card__title">Blended Program</h3>
-                    <h4>융합과정</h4>
-                    <ul class="u-mt-3">
-                        <li>온/오프라인 통합 학습</li>
-                        <li>자기주도적 학습 능력 향상</li>
-                        <li>유연한 학습 환경</li>
-                        <li>다양한 학습 도구 활용</li>
-                    </ul>
+
+            <!-- Executive Coaching -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1560264280-88b68371db39?w=1200&h=400&fit=crop" alt="Executive Coaching">
                 </div>
-                <div class="card__footer">
-                    <a href="{{ url_for('main.corporate_program_detail', program='blended') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 5-9</span>
+                    </div>
+                    <h3 class="card-curriculum__title">1:1 Executive Coaching</h3>
+                    <p class="card-curriculum__description">
+                        임원 및 고위 관리자를 위한 맞춤형 1:1 코칭 프로그램입니다. 글로벌 리더십 커뮤니케이션과 전략적 비즈니스 영어 역량을 강화합니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">1:1 코칭</span>
+                        <span class="card-curriculum__feature">리더십</span>
+                        <span class="card-curriculum__feature">전략 커뮤니케이션</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>맞춤 일정</span>
+                            <span>1:1 집중</span>
+                        </div>
+                        <a href="{{ url_for('main.corporate_program_detail', program='executive') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="card card--hoverable">
-                <div class="card__body">
-                    <h3 class="card__title">OCT</h3>
-                    <h4>상주강사제도</h4>
-                    <ul class="u-mt-3">
-                        <li>기업 내 상주 원어민 강사 배치</li>
-                        <li>실시간 어학 지원 및 교육</li>
-                        <li>즉각적인 피드백</li>
-                        <li>현장 맞춤형 교육</li>
-                    </ul>
+
+            <!-- Resident Employee Program -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1200&h=400&fit=crop" alt="Resident Employee Program">
                 </div>
-                <div class="card__footer">
-                    <a href="{{ url_for('main.corporate_program_detail', program='oct') }}" class="btn btn--secondary btn--sm">자세히 보기</a>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 4-8</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Resident Employee Program</h3>
+                    <p class="card-curriculum__description">
+                        해외 주재원 파견 예정자를 위한 집중 교육 프로그램입니다. 현지 비즈니스 문화와 실무 커뮤니케이션 역량을 체계적으로 준비합니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">주재원 준비</span>
+                        <span class="card-curriculum__feature">현지 문화</span>
+                        <span class="card-curriculum__feature">실무 영어</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>파견 전 집중</span>
+                            <span>8-16주</span>
+                        </div>
+                        <a href="{{ url_for('main.corporate_program_detail', program='resident') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blended Program -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=400&fit=crop" alt="Blended Program">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 1-7</span>
+                    </div>
+                    <h3 class="card-curriculum__title">Blended Program</h3>
+                    <p class="card-curriculum__description">
+                        온라인과 오프라인을 결합한 하이브리드 학습 모델입니다. 유연한 학습 환경과 체계적인 관리를 통해 효율적인 어학 교육을 제공합니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">온/오프라인</span>
+                        <span class="card-curriculum__feature">유연한 학습</span>
+                        <span class="card-curriculum__feature">LMS 관리</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>하이브리드</span>
+                            <span>맞춤 설계</span>
+                        </div>
+                        <a href="{{ url_for('main.corporate_program_detail', program='blended') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OCT (On-site Corporate Training) -->
+            <div class="card-horizontal card-curriculum card-curriculum--overlay">
+                <div class="card-curriculum__image">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=400&fit=crop" alt="OCT Program">
+                </div>
+                <div class="card-curriculum__content">
+                    <div class="card-curriculum__header">
+                        <span class="card-curriculum__level">Level 3-7</span>
+                    </div>
+                    <h3 class="card-curriculum__title">OCT (On-site Corporate Training)</h3>
+                    <p class="card-curriculum__description">
+                        기업 내 상주 원어민 강사를 배치하여 실시간 어학 지원과 교육을 제공합니다. 즉각적인 피드백과 현장 맞춤형 교육으로 효과를 극대화합니다.
+                    </p>
+                    <div class="card-curriculum__features">
+                        <span class="card-curriculum__feature">상주 강사</span>
+                        <span class="card-curriculum__feature">실시간 지원</span>
+                        <span class="card-curriculum__feature">현장 교육</span>
+                    </div>
+                    <div class="card-curriculum__footer">
+                        <div class="card-curriculum__info">
+                            <span>Half/Full Day</span>
+                            <span>상시 운영</span>
+                        </div>
+                        <a href="{{ url_for('main.corporate_program_detail', program='oct') }}" class="card-curriculum__cta">자세히 보기</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- 전용 Site/Reporting -->
-<section>
+<!-- Dedicated Services -->
+<section class="u-bg-teal">
     <div class="container">
-        {{ section_title_10(title='전용 Site/Reporting', subtitle='Dedicated Site & Reporting') }}
+        {{ section_title_10(title='DEDICATED SERVICES', subtitle='Exclusive support for corporate clients') }}
 
-        <div class="grid grid--2">
-            <div class="card">
-                <div class="card__body">
-                    <h3 class="card__title">전용 Site</h3>
-                    <p>귀사 전용 학습 관리 시스템을 제공합니다.</p>
-                    <ul class="u-mt-3">
-                        <li>수강생 등록 및 관리</li>
-                        <li>수업 스케줄 확인</li>
-                        <li>학습 자료 다운로드</li>
-                        <li>온라인 과제 제출</li>
-                    </ul>
-                </div>
+        <div class="level-cards-grid">
+            <div class="level-card level-card--beginner">
+                <span class="level-card__badge">LMS</span>
+                <h3 class="level-card__title">Dedicated Site</h3>
+                <p class="level-card__desc">귀사 전용 학습 관리 시스템</p>
             </div>
-
-            <div class="card">
-                <div class="card__body">
-                    <h3 class="card__title">전용 Reporting</h3>
-                    <p>체계적인 학습 성과 보고서를 제공합니다.</p>
-                    <ul class="u-mt-3">
-                        <li>월별/분기별 학습 현황</li>
-                        <li>개인별 성취도 분석</li>
-                        <li>출석률 및 참여도 통계</li>
-                        <li>레벨 테스트 결과 리포트</li>
-                    </ul>
-                </div>
+            <div class="level-card level-card--elementary">
+                <span class="level-card__badge">Report</span>
+                <h3 class="level-card__title">Dedicated Reporting</h3>
+                <p class="level-card__desc">체계적인 학습 성과 보고서</p>
+            </div>
+            <div class="level-card level-card--intermediate">
+                <span class="level-card__badge">Support</span>
+                <h3 class="level-card__title">Dedicated Manager</h3>
+                <p class="level-card__desc">전담 매니저 운영 및 관리</p>
+            </div>
+            <div class="level-card level-card--advanced">
+                <span class="level-card__badge">Custom</span>
+                <h3 class="level-card__title">Customized Curriculum</h3>
+                <p class="level-card__desc">기업 맞춤형 커리큘럼 설계</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- CTA Section -->
-<section class="u-bg-teal">
+<section class="cta-section">
     <div class="container u-text-center">
-        <h2>지금 바로 상담을 신청하세요</h2>
-        <p class="u-mb-4">귀사에 맞는 최적의 교육 프로그램을 제안해드립니다</p>
-        <a href="{{ url_for('main.consulting') }}" class="btn btn--primary btn--lg">상담 신청하기</a>
+        <h2>Find the Right Program for Your Company</h2>
+        <p class="u-mt-3 u-mb-4">귀사에 맞는 최적의 교육 프로그램을 제안해드립니다</p>
+        <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('main.consulting') }}" class="btn btn--primary btn--lg">무료 상담 신청</a>
+        </div>
     </div>
 </section>
-
-<!-- Modals (여기서는 간단한 모달 1개만 예시로 추가, 나머지는 동일 패턴) -->
-<div id="modal-inhouse" class="modal">
-    <div class="modal__backdrop"></div>
-    <div class="modal__content">
-        <div class="modal__header">
-            <h3 class="modal__title">In-House Program 상세</h3>
-            <button class="modal__close">&times;</button>
-        </div>
-        <div class="modal__body">
-            <h4>교육목표</h4>
-            <p>연간 어학지원을 통한 글로벌 인재 양성</p>
-            
-            <h4 class="u-mt-4">교육특징</h4>
-            <ul>
-                <li>레벨별 맞춤 수업</li>
-                <li>정기적인 성과 측정</li>
-                <li>체계적인 커리큘럼</li>
-            </ul>
-            
-            <h4 class="u-mt-4">추천 대상</h4>
-            <p>전 직원 대상 어학 능력 향상이 필요한 기업</p>
-        </div>
-        <div class="modal__footer">
-            <button class="btn btn--secondary modal__close">닫기</button>
-            <a href="{{ url_for('main.consulting') }}" class="btn btn--primary">상담 신청</a>
-        </div>
-    </div>
-</div>
 {% endblock %}
-
