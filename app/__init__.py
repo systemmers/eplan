@@ -1,34 +1,23 @@
+"""
+ePlan Application Factory
+Flask 애플리케이션 생성 및 설정
+"""
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
-from flask_migrate import Migrate
+from flask_mail import Mail
 from config import config
 
-db = SQLAlchemy()
-login_manager = LoginManager()
-migrate = Migrate()
+mail = Mail()
 
 
 def create_app(config_name='default'):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
-    
-    db.init_app(app)
-    login_manager.init_app(app)
-    migrate.init_app(app, db)
-    
-    login_manager.login_view = 'auth.login'
-    login_manager.login_message = '로그인이 필요합니다.'
-    
+
+    mail.init_app(app)
+
     # Blueprints 등록
     from app.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
-    
-    from app.auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint, url_prefix='/auth')
-    
-    from app.admin import admin as admin_blueprint
-    app.register_blueprint(admin_blueprint, url_prefix='/admin')
 
     # 템플릿 컨텍스트 프로세서
     @app.context_processor
@@ -54,4 +43,3 @@ def create_app(config_name='default'):
         return dict(static_url=static_url)
 
     return app
-
