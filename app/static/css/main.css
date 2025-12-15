@@ -49,6 +49,7 @@
 
 /* Demo Pages */
 @import url('demo/demo-common.css');
+@import url('demo/curriculum-demo.css');
 
 /* 05 - Utilities */
 @import url('05-utilities/utilities.css');

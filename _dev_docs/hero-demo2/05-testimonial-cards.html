@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Testimonial Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 05: Hero + Testimonial Cards
+    - 고객 후기 카드
+    - 신뢰도 구축
+    - 소셜 프루프 강조
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #00635C 0%, #004d47 50%, #1a1a2e 100%);
+    color: white;
+    overflow: hidden;
+">
+    <!-- Background Pattern -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+        background-size: 40px 40px;
+        opacity: 0.5;
+    "></div>
+
+    <!-- Hero Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 5rem 2rem 3rem;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 2rem;
+        ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        ">What Our <span style="color: #FFB74D;">Students</span> Say</h1>
+        <p style="
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        ">Join thousands of satisfied learners on their global success journey</p>
+    </div>
+
+    <!-- Testimonial Cards -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        padding: 2rem 2rem 5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    ">
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        ">
+            <!-- Testimonial Card 1 -->
+            <div style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem;
+                color: #263238;
+            ">
+                <div style="
+                    display: flex;
+                    margin-bottom: 1.5rem;
+                ">
+                    <span style="color: #FFB74D; font-size: 1.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                </div>
+                <p style="
+                    font-size: 1rem;
+                    line-height: 1.8;
+                    margin-bottom: 2rem;
+                    color: #607D8B;
+                ">"ePlan's phone English program transformed my business communication skills. The native instructors are incredibly professional."</p>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                ">
+                    <div style="
+                        width: 50px;
+                        height: 50px;
+                        background: linear-gradient(135deg, #00635C, #63A19B);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: 700;
+                    ">KJ</div>
+                    <div>
+                        <p style="
+                            font-weight: 600;
+                            margin: 0;
+                            color: #263238;
+                        ">Kim Jihoon</p>
+                        <p style="
+                            font-size: 0.875rem;
+                            color: #90A4AE;
+                            margin: 0;
+                        ">Samsung Electronics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial Card 2 -->
+            <div style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem;
+                color: #263238;
+            ">
+                <div style="
+                    display: flex;
+                    margin-bottom: 1.5rem;
+                ">
+                    <span style="color: #FFB74D; font-size: 1.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                </div>
+                <p style="
+                    font-size: 1rem;
+                    line-height: 1.8;
+                    margin-bottom: 2rem;
+                    color: #607D8B;
+                ">"The corporate training program was exactly what our team needed. Highly customized and effective for our industry."</p>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                ">
+                    <div style="
+                        width: 50px;
+                        height: 50px;
+                        background: linear-gradient(135deg, #FFB74D, #FFA726);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: 700;
+                    ">PS</div>
+                    <div>
+                        <p style="
+                            font-weight: 600;
+                            margin: 0;
+                            color: #263238;
+                        ">Park Soyeon</p>
+                        <p style="
+                            font-size: 0.875rem;
+                            color: #90A4AE;
+                            margin: 0;
+                        ">LG CNS HR Manager</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial Card 3 -->
+            <div style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem;
+                color: #263238;
+            ">
+                <div style="
+                    display: flex;
+                    margin-bottom: 1.5rem;
+                ">
+                    <span style="color: #FFB74D; font-size: 1.5rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                </div>
+                <p style="
+                    font-size: 1rem;
+                    line-height: 1.8;
+                    margin-bottom: 2rem;
+                    color: #607D8B;
+                ">"Writing correction service helped me publish my research paper in an international journal. Truly exceptional quality."</p>
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                ">
+                    <div style="
+                        width: 50px;
+                        height: 50px;
+                        background: linear-gradient(135deg, #63A19B, #00635C);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: 700;
+                    ">LM</div>
+                    <div>
+                        <p style="
+                            font-weight: 600;
+                            margin: 0;
+                            color: #263238;
+                        ">Lee Minjun</p>
+                        <p style="
+                            font-size: 0.875rem;
+                            color: #90A4AE;
+                            margin: 0;
+                        ">Seoul National University</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Badge -->
+        <div style="
+            text-align: center;
+            margin-top: 3rem;
+        ">
+            <p style="
+                font-size: 1rem;
+                opacity: 0.9;
+            ">Trusted by <span style="color: #FFB74D; font-weight: 700;">2,000+</span> corporate clients worldwide</p>
+        </div>
+    </div>
+</section>
+</body>
+</html>

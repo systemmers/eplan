@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style Demo Index - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: #00635C;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            color: #90A4AE;
+        }
+        header .count {
+            display: inline-block;
+            background: #00635C;
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #263238;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid #00635C;
+        }
+        .section-title span {
+            color: #00635C;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .card-preview {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-preview iframe {
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: top left;
+            border: none;
+            pointer-events: none;
+        }
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card-number {
+            display: inline-block;
+            background: #00635C;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            margin-bottom: 0.75rem;
+        }
+        .card-number.new {
+            background: #FFB74D;
+            color: #00635C;
+        }
+        .card-number.video {
+            background: #E91E63;
+            color: white;
+        }
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #263238;
+            margin-bottom: 0.5rem;
+        }
+        .card-desc {
+            font-size: 0.9rem;
+            color: #90A4AE;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .tag {
+            background: #f0f0f0;
+            color: #607D8B;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+        }
+        .tag.video {
+            background: #FCE4EC;
+            color: #C2185B;
+        }
+        .card-link {
+            display: inline-block;
+            background: #00635C;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .card-link:hover {
+            background: #004d47;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hero Style Demo</h1>
+            <p>ePlan 웹사이트에 적용 가능한 Hero 섹션 스타일 제안</p>
+            <span class="count">총 26개 스타일</span>
+        </header>
+
+        <!-- Section 1: Static Background -->
+        <h2 class="section-title"><span>SECTION 1</span> - Static Background (16개)</h2>
+
+        <div class="grid">
+            <!-- Style 01 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="01-classic-centered.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number">01</span>
+                    <h3 class="card-title">Classic Centered</h3>
+                    <p class="card-desc">중앙 정렬 그라데이션 배경. 대형 타이틀과 태그라인 강조.</p>
+                    <div class="card-tags">
+                        <span class="tag">메인 페이지</span>
+                        <span class="tag">회사소개</span>
+                    </div>
+                    <a href="01-classic-centered.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 03 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="03-gradient-overlay.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number">03</span>
+                    <h3 class="card-title">Gradient Overlay</h3>
+                    <p class="card-desc">배경 이미지 + 그라데이션 오버레이. 하단 정렬 텍스트.</p>
+                    <div class="card-tags">
+                        <span class="tag">기업출강</span>
+                        <span class="tag">컨설팅</span>
+                    </div>
+                    <a href="03-gradient-overlay.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 04 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="04-minimal-text.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number">04</span>
+                    <h3 class="card-title">Minimal Text</h3>
+                    <p class="card-desc">미니멀 디자인. 넉넉한 여백과 타이포그래피 강조.</p>
+                    <div class="card-tags">
+                        <span class="tag">Writing 첨삭</span>
+                        <span class="tag">프리미엄</span>
+                    </div>
+                    <a href="04-minimal-text.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 05 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="05-bold-typography.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number">05</span>
+                    <h3 class="card-title">Bold Typography</h3>
+                    <p class="card-desc">대담한 타이포그래피. 배경 레이어드 텍스트.</p>
+                    <div class="card-tags">
+                        <span class="tag">브랜드 강조</span>
+                        <span class="tag">캠페인</span>
+                    </div>
+                    <a href="05-bold-typography.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 06 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="06-card-based.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number">06</span>
+                    <h3 class="card-title">Card-based Hero</h3>
+                    <p class="card-desc">카드 기반 레이아웃. 서비스 하이라이트 통합.</p>
+                    <div class="card-tags">
+                        <span class="tag">메인 페이지</span>
+                        <span class="tag">서비스 개요</span>
+                    </div>
+                    <a href="06-card-based.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 07 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="07-animated-gradient.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number">07</span>
+                    <h3 class="card-title">Animated Gradient</h3>
+                    <p class="card-desc">애니메이션 그라데이션 배경. 동적인 느낌.</p>
+                    <div class="card-tags">
+                        <span class="tag">이벤트</span>
+                        <span class="tag">프로모션</span>
+                    </div>
+                    <a href="07-animated-gradient.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 09 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="09-glassmorphism.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">09</span>
+                    <h3 class="card-title">Glassmorphism</h3>
+                    <p class="card-desc">유리 효과 (블러 + 투명도). 배경 블롭 애니메이션.</p>
+                    <div class="card-tags">
+                        <span class="tag">메인 페이지</span>
+                        <span class="tag">프리미엄</span>
+                    </div>
+                    <a href="09-glassmorphism.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 10 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="10-wave-background.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">10</span>
+                    <h3 class="card-title">Wave Background</h3>
+                    <p class="card-desc">하단 웨이브 SVG 배경. 부드럽고 유기적인 느낌.</p>
+                    <div class="card-tags">
+                        <span class="tag">메인 페이지</span>
+                        <span class="tag">서비스 소개</span>
+                    </div>
+                    <a href="10-wave-background.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 11 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="11-spotlight.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">11</span>
+                    <h3 class="card-title">Spotlight</h3>
+                    <p class="card-desc">스포트라이트/하이라이트 효과. 드라마틱한 시각 효과.</p>
+                    <div class="card-tags">
+                        <span class="tag">런칭 페이지</span>
+                        <span class="tag">특별 프로모션</span>
+                    </div>
+                    <a href="11-spotlight.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 12 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="12-layered-gradient.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">12</span>
+                    <h3 class="card-title">Layered Gradient</h3>
+                    <p class="card-desc">다중 레이어 그라데이션. 깊이감 있는 배경.</p>
+                    <div class="card-tags">
+                        <span class="tag">브랜드 페이지</span>
+                        <span class="tag">메인 페이지</span>
+                    </div>
+                    <a href="12-layered-gradient.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 13 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="13-geometric-pattern.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">13</span>
+                    <h3 class="card-title">Geometric Pattern</h3>
+                    <p class="card-desc">기하학적 패턴 배경. 구조적이고 전문적인 느낌.</p>
+                    <div class="card-tags">
+                        <span class="tag">기업 서비스</span>
+                        <span class="tag">B2B 페이지</span>
+                    </div>
+                    <a href="13-geometric-pattern.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 14 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="14-duotone.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">14</span>
+                    <h3 class="card-title">Duotone</h3>
+                    <p class="card-desc">듀오톤 (2색 조합) 효과. 세련되고 현대적인 느낌.</p>
+                    <div class="card-tags">
+                        <span class="tag">크리에이티브</span>
+                        <span class="tag">브랜딩</span>
+                    </div>
+                    <a href="14-duotone.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 15 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="15-text-focus.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">15</span>
+                    <h3 class="card-title">Text Focus</h3>
+                    <p class="card-desc">텍스트 중심 디자인. 대형 타이포그래피 강조.</p>
+                    <div class="card-tags">
+                        <span class="tag">미션/비전</span>
+                        <span class="tag">브랜드 스토리</span>
+                    </div>
+                    <a href="15-text-focus.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 16 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="16-floating-elements.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">16</span>
+                    <h3 class="card-title">Floating Elements</h3>
+                    <p class="card-desc">플로팅 장식 요소. 동적이고 활기찬 느낌.</p>
+                    <div class="card-tags">
+                        <span class="tag">교육 서비스</span>
+                        <span class="tag">젊은 타겟층</span>
+                    </div>
+                    <a href="16-floating-elements.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 17 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="17-gradient-border.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">17</span>
+                    <h3 class="card-title">Gradient Border</h3>
+                    <p class="card-desc">그라데이션 보더 프레임. 고급스럽고 세련된 느낌.</p>
+                    <div class="card-tags">
+                        <span class="tag">프리미엄 서비스</span>
+                        <span class="tag">VIP 페이지</span>
+                    </div>
+                    <a href="17-gradient-border.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 18 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="18-neon-accent.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number new">18</span>
+                    <h3 class="card-title">Neon Accent</h3>
+                    <p class="card-desc">네온 글로우 효과. 다크 배경 + 발광 텍스트.</p>
+                    <div class="card-tags">
+                        <span class="tag">이벤트</span>
+                        <span class="tag">런칭 프로모션</span>
+                    </div>
+                    <a href="18-neon-accent.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Video Background -->
+        <h2 class="section-title"><span>SECTION 2</span> - Video Background (10개)</h2>
+
+        <div class="grid">
+            <!-- Style 19 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="19-video-classic.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">19 VIDEO</span>
+                    <h3 class="card-title">Video Classic</h3>
+                    <p class="card-desc">비디오 백그라운드 + 클래식 중앙 정렬. 로고 이미지 강조.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">메인 페이지</span>
+                    </div>
+                    <a href="19-video-classic.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 20 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="20-video-gradient-overlay.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">20 VIDEO</span>
+                    <h3 class="card-title">Video Gradient Overlay</h3>
+                    <p class="card-desc">비디오 + 브랜드 컬러 그라데이션 오버레이.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">서비스 소개</span>
+                    </div>
+                    <a href="20-video-gradient-overlay.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 21 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="21-video-logo-focus.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">21 VIDEO</span>
+                    <h3 class="card-title">Video Logo Focus</h3>
+                    <p class="card-desc">비디오 + 대형 로고 중심. 브랜드 아이덴티티 강조.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">브랜드 페이지</span>
+                    </div>
+                    <a href="21-video-logo-focus.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 22 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="22-video-glass-card.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">22 VIDEO</span>
+                    <h3 class="card-title">Video Glass Card</h3>
+                    <p class="card-desc">비디오 + 글래스모피즘 카드. 프리미엄 느낌.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">프리미엄</span>
+                    </div>
+                    <a href="22-video-glass-card.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 23 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="23-video-bold-text.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">23 VIDEO</span>
+                    <h3 class="card-title">Video Bold Text</h3>
+                    <p class="card-desc">비디오 + 대담한 타이포그래피. 초대형 폰트 크기.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">캠페인</span>
+                    </div>
+                    <a href="23-video-bold-text.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 24 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="24-video-split-content.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">24 VIDEO</span>
+                    <h3 class="card-title">Video Split Content</h3>
+                    <p class="card-desc">비디오 + 상하 분리 콘텐츠. 다중 로고 활용.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">회사소개</span>
+                    </div>
+                    <a href="24-video-split-content.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 25 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="25-video-minimal-elegant.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">25 VIDEO</span>
+                    <h3 class="card-title">Video Minimal Elegant</h3>
+                    <p class="card-desc">비디오 + 미니멀 디자인. 세리프 폰트 믹스.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">VIP 페이지</span>
+                    </div>
+                    <a href="25-video-minimal-elegant.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 26 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="26-video-stats-highlight.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">26 VIDEO</span>
+                    <h3 class="card-title">Video Stats Highlight</h3>
+                    <p class="card-desc">비디오 + 통계 강조. 숫자 하이라이트.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">신뢰도 페이지</span>
+                    </div>
+                    <a href="26-video-stats-highlight.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 27 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="27-video-color-accent.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">27 VIDEO</span>
+                    <h3 class="card-title">Video Color Accent</h3>
+                    <p class="card-desc">비디오 + 컬러 악센트 바. 브랜드 컬러 강조.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">서비스 페이지</span>
+                    </div>
+                    <a href="27-video-color-accent.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 28 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="28-video-bottom-bar.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">28 VIDEO</span>
+                    <h3 class="card-title">Video Bottom Bar</h3>
+                    <p class="card-desc">비디오 + 하단 정보 바. 프로페셔널 느낌.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">B2B</span>
+                    </div>
+                    <a href="28-video-bottom-bar.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 29 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="29-video-dynamic-text.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">29 VIDEO</span>
+                    <h3 class="card-title">Video Dynamic Text</h3>
+                    <p class="card-desc">비디오 + 애니메이션 텍스트. 순차적 등장 효과.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">런칭</span>
+                    </div>
+                    <a href="29-video-dynamic-text.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+
+            <!-- Style 30 -->
+            <div class="card">
+                <div class="card-preview">
+                    <iframe src="30-video-framed.html"></iframe>
+                </div>
+                <div class="card-content">
+                    <span class="card-number video">30 VIDEO</span>
+                    <h3 class="card-title">Video Framed</h3>
+                    <p class="card-desc">비디오 + 프레임 디자인. 보더 프레임으로 콘텐츠 강조.</p>
+                    <div class="card-tags">
+                        <span class="tag video">Video BG</span>
+                        <span class="tag">특별 이벤트</span>
+                    </div>
+                    <a href="30-video-framed.html" class="card-link" target="_blank">전체 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

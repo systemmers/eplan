@@ -106,7 +106,7 @@
     </div>
     <div class="page-header__content">
         <div class="container">
-            <h1>강사 지원</h1>
+            <h1>FOR Instructors</h1>
             <p class="tagline">Join Our Team of Professional Educators</p>
             <p>ePlan과 함께 글로벌 인재를 양성하는 강사가 되어주세요</p>
         </div>
@@ -234,7 +234,7 @@
                 <span style="color: var(--color-text-muted); font-weight: 600;">Huvis</span>
             </div>
             <div class="client-logo">
-                <span style="color: var(--color-text-muted); font-weight: 600;">Ministry of Justice</span>
+                <span style="color: var(--color-text-muted); font-weight: 600;">LG Electronics</span>
             </div>
             <div class="client-logo">
                 <span style="color: var(--color-text-muted); font-weight: 600;">MOHW</span>
@@ -271,6 +271,15 @@
             </div>
             <div class="client-logo">
                 <span style="color: var(--color-text-muted); font-weight: 600;">GS Caltex</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Korea Post</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Korea Railways</span>
+            </div>
+            <div class="client-logo">
+                <span style="color: var(--color-text-muted); font-weight: 600;">Korea Gas</span>
             </div>
         </div>
     </div>
@@ -323,63 +332,71 @@
     <div class="container">
         {{ section_title_10(title='APPLICATION FORM', subtitle='Submit your application to join our team') }}
 
-        <form method="POST" class="form" style="max-width: 800px; margin: 0 auto; background: var(--color-white); padding: var(--spacing-2xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);">
+        <form method="POST" class="form application-form" style="width: 100%; background: var(--color-white); padding: var(--spacing-2xl); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md);">
             {{ form.hidden_tag() }}
 
-            <div class="form__group">
-                {{ form.name.label(class="form__label") }}
-                {{ form.name(class="form__input", placeholder="이름을 입력하세요") }}
-                {% if form.name.errors %}
-                <div class="form__error">{{ form.name.errors[0] }}</div>
-                {% endif %}
-            </div>
+            <div class="application-form-content">
+                <div class="application-form-image">
+                    <img src="{{ url_for('static', filename='images/instructors/applicationform.png') }}" alt="Application Form">
+                </div>
 
-            <div class="form__group">
-                {{ form.email.label(class="form__label") }}
-                {{ form.email(class="form__input", type="email", placeholder="email@example.com") }}
-                {% if form.email.errors %}
-                <div class="form__error">{{ form.email.errors[0] }}</div>
-                {% endif %}
-            </div>
+                <div class="application-form-fields">
+                    <div class="form__group">
+                        {{ form.name.label(class="form__label") }}
+                        {{ form.name(class="form__input", placeholder="이름을 입력하세요") }}
+                        {% if form.name.errors %}
+                        <div class="form__error">{{ form.name.errors[0] }}</div>
+                        {% endif %}
+                    </div>
 
-            <div class="form__group">
-                {{ form.phone.label(class="form__label") }}
-                {{ form.phone(class="form__input", placeholder="010-0000-0000") }}
-                {% if form.phone.errors %}
-                <div class="form__error">{{ form.phone.errors[0] }}</div>
-                {% endif %}
-            </div>
+                    <div class="form__group">
+                        {{ form.email.label(class="form__label") }}
+                        {{ form.email(class="form__input", type="email", placeholder="email@example.com") }}
+                        {% if form.email.errors %}
+                        <div class="form__error">{{ form.email.errors[0] }}</div>
+                        {% endif %}
+                    </div>
 
-            <div class="form__group">
-                {{ form.education.label(class="form__label") }}
-                {{ form.education(class="form__input form__textarea", rows="3", placeholder="학력 사항을 입력하세요") }}
-                {% if form.education.errors %}
-                <div class="form__error">{{ form.education.errors[0] }}</div>
-                {% endif %}
-            </div>
+                    <div class="form__group">
+                        {{ form.phone.label(class="form__label") }}
+                        {{ form.phone(class="form__input", placeholder="010-0000-0000") }}
+                        {% if form.phone.errors %}
+                        <div class="form__error">{{ form.phone.errors[0] }}</div>
+                        {% endif %}
+                    </div>
 
-            <div class="form__group">
-                {{ form.experience.label(class="form__label") }}
-                {{ form.experience(class="form__input form__textarea", rows="3", placeholder="경력 사항을 입력하세요") }}
-                {% if form.experience.errors %}
-                <div class="form__error">{{ form.experience.errors[0] }}</div>
-                {% endif %}
-            </div>
+                    <div class="form__group">
+                        {{ form.education.label(class="form__label") }}
+                        {{ form.education(class="form__input form__textarea", rows="3", placeholder="학력 사항을 입력하세요") }}
+                        {% if form.education.errors %}
+                        <div class="form__error">{{ form.education.errors[0] }}</div>
+                        {% endif %}
+                    </div>
 
-            <div class="form__group">
-                {{ form.certificates.label(class="form__label") }}
-                {{ form.certificates(class="form__input form__textarea", rows="2", placeholder="보유 자격증을 입력하세요 (TESOL, TEFL 등)") }}
-            </div>
+                    <div class="form__group">
+                        {{ form.experience.label(class="form__label") }}
+                        {{ form.experience(class="form__input form__textarea", rows="3", placeholder="경력 사항을 입력하세요") }}
+                        {% if form.experience.errors %}
+                        <div class="form__error">{{ form.experience.errors[0] }}</div>
+                        {% endif %}
+                    </div>
 
-            <div class="form__group">
-                {{ form.motivation.label(class="form__label") }}
-                {{ form.motivation(class="form__input form__textarea", rows="4", placeholder="지원 동기를 입력하세요") }}
-                {% if form.motivation.errors %}
-                <div class="form__error">{{ form.motivation.errors[0] }}</div>
-                {% endif %}
-            </div>
+                    <div class="form__group">
+                        {{ form.certificates.label(class="form__label") }}
+                        {{ form.certificates(class="form__input form__textarea", rows="2", placeholder="보유 자격증을 입력하세요 (TESOL, TEFL 등)") }}
+                    </div>
 
-            <button type="submit" class="btn btn--primary btn--lg" style="width: 100%;">지원하기</button>
+                    <div class="form__group">
+                        {{ form.motivation.label(class="form__label") }}
+                        {{ form.motivation(class="form__input form__textarea", rows="4", placeholder="지원 동기를 입력하세요") }}
+                        {% if form.motivation.errors %}
+                        <div class="form__error">{{ form.motivation.errors[0] }}</div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn--primary btn--lg" style="width: 100%;">지원하기</button>
+                </div>
+            </div>
         </form>
     </div>
 </section>

@@ -76,7 +76,9 @@
     --font-size-3xl: 1.875rem;  /* 30px */
     --font-size-4xl: 2.25rem;   /* 36px */
     --font-size-5xl: 3rem;      /* 48px */
-    
+    --font-size-6xl: 4.5rem;    /* 72px - hero tagline */
+    --font-size-6xl-mobile: 2.5rem; /* 40px - hero tagline mobile */
+
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;

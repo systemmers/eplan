@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 27: Video Color Accent - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 27: Video Color Accent
+    - 비디오 백그라운드 + 컬러 악센트 바
+    - 브랜드 컬러 강조
+    - 모던 레이아웃
+
+    적용 대상: 서비스 페이지, 이벤트
+    비디오: ../../app/static/videos/main.mp4
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        object-fit: cover;
+    ">
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Dark Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: -1;
+    "></div>
+
+    <!-- Color Accent Bar -->
+    <div style="
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        background: linear-gradient(180deg, #00635C 0%, #FFB74D 50%, #63A19B 100%);
+        z-index: 1;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding: 4rem;
+        padding-left: 5rem;
+    ">
+        <div style="max-width: 800px;">
+            <!-- Logo -->
+            <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+                height: 55px;
+                margin-bottom: 2rem;
+            ">
+
+            <p style="
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                color: #FFB74D;
+                margin-bottom: 1rem;
+            ">Global Education Innovation</p>
+
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(2.5rem, 6vw, 5rem);
+                font-weight: 700;
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+            ">글로벌 교육의<br>혁신</h1>
+
+            <p style="
+                font-size: clamp(1.125rem, 2vw, 1.5rem);
+                opacity: 0.9;
+                margin-bottom: 1.5rem;
+                line-height: 1.7;
+                max-width: 550px;
+            ">지식 파트너십을 통한 글로벌 성공 역량 강화<br>
+            Empowering Global Success Through Knowledge Partnership</p>
+
+            <div style="
+                display: inline-block;
+                background: rgba(255, 183, 77, 0.2);
+                border-left: 4px solid #FFB74D;
+                padding: 1rem 2rem;
+                margin: 1.5rem 0;
+            ">
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: clamp(1.25rem, 3vw, 2rem);
+                    font-style: italic;
+                    font-weight: 600;
+                    margin: 0;
+                ">Practice Makes Perfect!</p>
+            </div>
+
+            <p style="
+                font-size: 1rem;
+                opacity: 0.7;
+                margin-top: 1.5rem;
+            ">Your success is just around the corner.</p>
+
+            <button style="
+                background: #00635C;
+                color: white;
+                padding: 1rem 2.5rem;
+                border: none;
+                border-radius: 4px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+                margin-top: 2rem;
+            ">시작하기</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -13,14 +13,14 @@
     
     <!-- Hero Content -->
     <div class="container hero-content">
-        <h1 class="hero-title">글로벌 교육의 혁신, ePLAN</h1>
+        <h1 class="hero-title">글로벌 교육의 혁신, <img src="{{ static_url('images/eplan_logo_white.png') }}" alt="ePlan" class="hero-logo-inline" style="height: 1.2em; vertical-align: baseline; margin: 0 0.2em; position: relative; top: 0.1em; display: inline-block;"></h1>
         <p class="hero-subtitle">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
         <p class="hero-tagline">Practice Makes Perfect!</p>
     </div>
 
     <!-- Hero Main Logo -->
     <div class="container hero-logo-container">
-        <img src="{{ static_url('images/main.png') }}" alt="ePlan 종로영어" class="hero-main-logo">
+        <img src="{{ static_url('images/jrenglish_bi_korean.png') }}" alt="ePlan 종로영어" class="hero-main-logo">
     </div>
 
     <!-- Hero Navigation Cards -->
@@ -137,68 +137,6 @@
                     <button class="service-card-overlay__btn">자세히 보기</button>
                 </div>
             </a>
-            <!--news
-            <a href="{{ url_for('main.board_list', category='news') }}"
-               class="service-card-overlay"
-               hx-get="{{ url_for('main.board_list', category='news') }}"
-               hx-target="#main-content"
-               hx-swap="innerHTML"
-               hx-push-url="true">
-                <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&h=800&fit=crop" alt="News - 다양한 학습 콘텐츠">
-                <div class="service-card-overlay__gradient"></div>
-                <div class="service-card-overlay__content">
-                    <h3 class="service-card-overlay__title">News</h3>
-                    <p class="service-card-overlay__subtitle">다양한 학습 콘텐츠</p>
-                    <p class="service-card-overlay__desc">교재, 동영상, 학습 팁 등 풍부한 자료</p>
-                    <div class="service-card-overlay__tags">
-                        <span class="tag">무료 자료</span>
-                        <span class="tag">정기 업데이트</span>
-                    </div>
-                    <button class="service-card-overlay__btn">자세히 보기</button>
-                </div>
-            </a>
-            -->
-            <!--notice
-            <a href="{{ url_for('main.board_list', category='notice') }}"
-               class="service-card-overlay"
-               hx-get="{{ url_for('main.board_list', category='notice') }}"
-               hx-target="#main-content"
-               hx-swap="innerHTML"
-               hx-push-url="true">
-                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=800&fit=crop" alt="Notice - 다양한 학습 콘텐츠">
-                <div class="service-card-overlay__gradient"></div>
-                <div class="service-card-overlay__content">
-                    <h3 class="service-card-overlay__title">Notice</h3>
-                    <p class="service-card-overlay__subtitle">다양한 학습 콘텐츠</p>
-                    <p class="service-card-overlay__desc">교재, 동영상, 학습 팁 등 풍부한 자료</p>
-                    <div class="service-card-overlay__tags">
-                        <span class="tag">무료 자료</span>
-                        <span class="tag">정기 업데이트</span>
-                    </div>
-                    <button class="service-card-overlay__btn">자세히 보기</button>
-                </div>
-            </a>
-            -->
-            <!--english
-            <a href="{{ url_for('main.board_list', category='english') }}"
-               class="service-card-overlay"
-               hx-get="{{ url_for('main.board_list', category='english') }}"
-               hx-target="#main-content"
-               hx-swap="innerHTML"
-               hx-push-url="true">
-                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&h=800&fit=crop" alt="English - 다양한 학습 콘텐츠">
-                <div class="service-card-overlay__gradient"></div>
-                <div class="service-card-overlay__content">
-                    <h3 class="service-card-overlay__title">English</h3>
-                    <p class="service-card-overlay__subtitle">다양한 학습 콘텐츠</p>
-                    <p class="service-card-overlay__desc">교재, 동영상, 학습 팁 등 풍부한 자료</p>
-                    <div class="service-card-overlay__tags">
-                        <span class="tag">무료 자료</span>
-                        <span class="tag">정기 업데이트</span>
-                    </div>
-                    <button class="service-card-overlay__btn">자세히 보기</button>
-                </div>
-            </a> -->
         </div>
     </div>
     
@@ -509,111 +447,6 @@
         </div>
     </div>
 </section>
-<!--
-&lt;!&ndash; Latest News with Top Image Cards &ndash;&gt;
-<section class="news-section">
-    <div class="container">
-        <h2 class="section-title">Latest News</h2>
-        <p class="section-subtitle">Check the latest news on the board</p>
 
-        <div class="news-top-grid">
-            &lt;!&ndash; Notice (공지사항) &ndash;&gt;
-            <a href="{{ url_for('main.board_list', category='notice') }}"
-               class="news-top-card"
-               hx-get="{{ url_for('main.board_list', category='notice') }}"
-               hx-target="#main-content"
-               hx-swap="innerHTML"
-               hx-push-url="true">
-                <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=400&h=250&fit=crop" alt="Notice">
-                <div class="news-top-card__content">
-                    <span class="news-top-card__badge news-top-card__badge--important">IMPORTANT</span>
-                    <h3 class="news-top-card__title">Notice</h3>
-                    <p class="news-top-card__desc">Check important notices and updates</p>
-                    <div class="news-top-card__footer">
-                        <div class="news-top-card__meta">📄 {{ notice_count }} posts</div>
-                        <span class="news-top-card__link">Go to Board →</span>
-                    </div>
-                </div>
-            </a>
-
-            &lt;!&ndash; News (뉴스) &ndash;&gt;
-            <a href="{{ url_for('main.board_list', category='news') }}"
-               class="news-top-card"
-               hx-get="{{ url_for('main.board_list', category='news') }}"
-               hx-target="#main-content"
-               hx-swap="innerHTML"
-               hx-push-url="true">
-                <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=250&fit=crop" alt="News">
-                <div class="news-top-card__content">
-                    <span class="news-top-card__badge news-top-card__badge--latest">LATEST</span>
-                    <h3 class="news-top-card__title">News</h3>
-                    <p class="news-top-card__desc">Latest news and achievements</p>
-                    <div class="news-top-card__footer">
-                        <div class="news-top-card__meta">📄 {{ news_count }} posts</div>
-                        <span class="news-top-card__link">Go to Board →</span>
-                    </div>
-                </div>
-            </a>
-
-            &lt;!&ndash; English (영어) &ndash;&gt;
-            <a href="{{ url_for('main.board_list', category='english') }}"
-               class="news-top-card"
-               hx-get="{{ url_for('main.board_list', category='english') }}"
-               hx-target="#main-content"
-               hx-swap="innerHTML"
-               hx-push-url="true">
-                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=250&fit=crop" alt="English Learning">
-                <div class="news-top-card__content">
-                    <span class="news-top-card__badge news-top-card__badge--learning">LEARNING</span>
-                    <h3 class="news-top-card__title">English</h3>
-                    <p class="news-top-card__desc">Useful English learning tips and materials</p>
-                    <div class="news-top-card__footer">
-                        <div class="news-top-card__meta">📄 {{ english_count }} posts</div>
-                        <span class="news-top-card__link">Go to Board →</span>
-                    </div>
-                </div>
-            </a>
-
-            &lt;!&ndash; Japanese (일본어) &ndash;&gt;
-            <a href="{{ url_for('main.board_list', category='japanese') }}"
-               class="news-top-card"
-               hx-get="{{ url_for('main.board_list', category='japanese') }}"
-               hx-target="#main-content"
-               hx-swap="innerHTML"
-               hx-push-url="true">
-                <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=400&h=250&fit=crop" alt="Japanese Learning">
-                <div class="news-top-card__content">
-                    <span class="news-top-card__badge news-top-card__badge--learning">LEARNING</span>
-                    <h3 class="news-top-card__title">Japanese</h3>
-                    <p class="news-top-card__desc">Helpful information for Japanese learning</p>
-                    <div class="news-top-card__footer">
-                        <div class="news-top-card__meta">📄 {{ japanese_count }} posts</div>
-                        <span class="news-top-card__link">Go to Board →</span>
-                    </div>
-                </div>
-            </a>
-
-            &lt;!&ndash; Chinese (중국어) &ndash;&gt;
-            <a href="{{ url_for('main.board_list', category='chinese') }}"
-               class="news-top-card"
-               hx-get="{{ url_for('main.board_list', category='chinese') }}"
-               hx-target="#main-content"
-               hx-swap="innerHTML"
-               hx-push-url="true">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop" alt="Chinese Learning">
-                <div class="news-top-card__content">
-                    <span class="news-top-card__badge news-top-card__badge--learning">LEARNING</span>
-                    <h3 class="news-top-card__title">Chinese</h3>
-                    <p class="news-top-card__desc">Chinese learning tips and materials</p>
-                    <div class="news-top-card__footer">
-                        <div class="news-top-card__meta">📄 {{ chinese_count }} posts</div>
-                        <span class="news-top-card__link">Go to Board →</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
--->
 {% endblock %}
 

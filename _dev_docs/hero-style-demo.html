@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Content Style Demo - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; }
+        .demo-section { margin-bottom: 2rem; border-bottom: 4px solid #00635C; }
+        .demo-label { background: #00635C; color: white; padding: 1rem 2rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     STYLE 1: Classic Centered (현재 사용 중)
+     - 중앙 정렬, 그라데이션 배경
+     - 대형 타이틀 + 서브타이틀 + 태그라인
+     ============================================ -->
+<div class="demo-section">
+    <div class="demo-label">Style 1: Classic Centered (현재 메인 페이지)</div>
+    <section style="
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #00635C 0%, #63A19B 100%);
+        color: white;
+        text-align: center;
+        padding: 2rem;
+    ">
+        <div style="max-width: 900px;">
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(2.5rem, 5vw, 3.5rem);
+                font-weight: 700;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+            ">글로벌 교육의 혁신, ePlan</h1>
+            <p style="
+                font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+                margin-bottom: 0.75rem;
+                opacity: 0.95;
+            ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p style="
+                font-size: clamp(2.5rem, 6vw, 4.5rem);
+                font-style: italic;
+                font-weight: 700;
+                margin-top: 1.5rem;
+            ">Practice Makes Perfect!</p>
+        </div>
+    </section>
+</div>
+
+<!-- ============================================
+     STYLE 2: Split Hero (좌우 분할)
+     - 왼쪽 텍스트 + 오른쪽 이미지/그래픽
+     - 비대칭 레이아웃
+     ============================================ -->
+<div class="demo-section">
+    <div class="demo-label">Style 2: Split Hero (좌우 분할)</div>
+    <section style="
+        position: relative;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: #FAFAFA;
+    ">
+        <!-- Left: Content -->
+        <div style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            background: white;
+        ">
+            <span style="
+                display: inline-block;
+                background: #FFB74D;
+                color: #00635C;
+                padding: 0.5rem 1.5rem;
+                border-radius: 50px;
+                font-size: 0.875rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 1.5rem;
+                width: fit-content;
+            ">Global Education</span>
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(2rem, 4vw, 3.5rem);
+                font-weight: 800;
+                color: #263238;
+                line-height: 1.1;
+                margin-bottom: 1.5rem;
+            ">Transform Your<br><span style="color: #00635C;">English Skills</span></h1>
+            <p style="
+                font-size: 1.125rem;
+                color: #90A4AE;
+                line-height: 1.8;
+                margin-bottom: 2rem;
+                max-width: 500px;
+            ">1:1 맞춤형 전화영어로 실력을 향상시키세요.
+            글로벌 인재로 성장하는 첫 걸음을 ePlan과 함께하세요.</p>
+            <div style="display: flex; gap: 1rem;">
+                <button style="
+                    background: #00635C;
+                    color: white;
+                    padding: 1rem 2rem;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                ">무료 상담 신청</button>
+                <button style="
+                    background: transparent;
+                    color: #00635C;
+                    padding: 1rem 2rem;
+                    border: 2px solid #00635C;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                ">프로그램 보기</button>
+            </div>
+        </div>
+        <!-- Right: Visual -->
+        <div style="
+            background: linear-gradient(135deg, #00635C 0%, #63A19B 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        ">
+            <div style="
+                width: 300px;
+                height: 300px;
+                background: rgba(255,255,255,0.1);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            ">
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 4rem;
+                    font-weight: 800;
+                    color: white;
+                    opacity: 0.9;
+                ">ePlan</span>
+            </div>
+            <!-- Decorative circles -->
+            <div style="position: absolute; top: 10%; right: 10%; width: 100px; height: 100px; border: 3px solid rgba(255,255,255,0.2); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: 15%; left: 15%; width: 150px; height: 150px; border: 3px solid rgba(255,255,255,0.15); border-radius: 50%;"></div>
+        </div>
+    </section>
+</div>
+
+<!-- ============================================
+     STYLE 3: Gradient Overlay with Image
+     - 배경 이미지 + 그라데이션 오버레이
+     - 하단 정렬 텍스트
+     ============================================ -->
+<div class="demo-section">
+    <div class="demo-label">Style 3: Gradient Overlay (이미지 배경)</div>
+    <section style="
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: flex-end;
+        background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920') center/cover no-repeat;
+    ">
+        <!-- Gradient Overlay -->
+        <div style="
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0, 99, 92, 0.95) 0%,
+                rgba(0, 99, 92, 0.7) 40%,
+                rgba(0, 99, 92, 0.3) 70%,
+                transparent 100%
+            );
+        "></div>
+        <!-- Content -->
+        <div style="
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 4rem;
+            color: white;
+        ">
+            <div style="max-width: 800px;">
+                <p style="
+                    font-size: 0.875rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.2em;
+                    margin-bottom: 1rem;
+                    opacity: 0.8;
+                ">Since 2015</p>
+                <h1 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: clamp(2.5rem, 6vw, 4rem);
+                    font-weight: 700;
+                    line-height: 1.15;
+                    margin-bottom: 1.5rem;
+                    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                ">Empowering Global Success<br>Through Education</h1>
+                <p style="
+                    font-size: 1.25rem;
+                    opacity: 0.9;
+                    max-width: 600px;
+                    line-height: 1.7;
+                ">기업 맞춤형 어학 교육으로 글로벌 인재를 양성합니다.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ============================================
+     STYLE 4: Minimal Text Hero
+     - 미니멀한 디자인, 단순한 텍스트
+     - 넉넉한 여백과 타이포그래피 강조
+     ============================================ -->
+<div class="demo-section">
+    <div class="demo-label">Style 4: Minimal Text (미니멀)</div>
+    <section style="
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #FAFAFA;
+        padding: 2rem;
+    ">
+        <div style="text-align: center; max-width: 1000px;">
+            <p style="
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 0.3em;
+                color: #FFB74D;
+                font-weight: 600;
+                margin-bottom: 2rem;
+            ">Professional Language Education</p>
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(3rem, 8vw, 6rem);
+                font-weight: 300;
+                color: #263238;
+                line-height: 1;
+                margin-bottom: 2rem;
+            ">Learn.<br><span style="font-weight: 700; color: #00635C;">Practice.</span><br>Succeed.</h1>
+            <div style="
+                width: 60px;
+                height: 4px;
+                background: #00635C;
+                margin: 0 auto 2rem;
+            "></div>
+            <p style="
+                font-size: 1.125rem;
+                color: #90A4AE;
+                max-width: 500px;
+                margin: 0 auto;
+                line-height: 1.8;
+            ">Practice Makes Perfect. ePlan과 함께라면 가능합니다.</p>
+        </div>
+    </section>
+</div>
+
+<!-- ============================================
+     STYLE 5: Bold Typography Hero
+     - 대담한 타이포그래피
+     - 색상 대비와 레이어드 텍스트
+     ============================================ -->
+<div class="demo-section">
+    <div class="demo-label">Style 5: Bold Typography (대담한 타이포)</div>
+    <section style="
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        background: #00635C;
+        overflow: hidden;
+    ">
+        <!-- Background Text -->
+        <div style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(10rem, 30vw, 25rem);
+            font-weight: 900;
+            color: rgba(255,255,255,0.05);
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+        ">ePlan</div>
+
+        <!-- Content -->
+        <div style="
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 4rem;
+            color: white;
+        ">
+            <div style="max-width: 900px;">
+                <h1 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: clamp(3rem, 10vw, 7rem);
+                    font-weight: 800;
+                    line-height: 0.95;
+                    margin-bottom: 2rem;
+                ">
+                    <span style="display: block; color: #FFB74D;">GLOBAL</span>
+                    <span style="display: block;">EDUCATION</span>
+                    <span style="display: block; font-weight: 300; font-style: italic;">Innovation</span>
+                </h1>
+                <p style="
+                    font-size: clamp(1rem, 2vw, 1.5rem);
+                    opacity: 0.8;
+                    max-width: 500px;
+                    line-height: 1.6;
+                    border-left: 4px solid #FFB74D;
+                    padding-left: 1.5rem;
+                ">지식 파트너십을 통한<br>글로벌 성공 역량 강화</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ============================================
+     STYLE 6: Card-based Hero
+     - 카드 기반 레이아웃
+     - 서비스 하이라이트 통합
+     ============================================ -->
+<div class="demo-section">
+    <div class="demo-label">Style 6: Card-based Hero (카드 통합)</div>
+    <section style="
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: linear-gradient(180deg, #00635C 0%, #004d47 100%);
+        padding: 4rem 2rem;
+    ">
+        <!-- Header -->
+        <div style="text-align: center; color: white; margin-bottom: 4rem;">
+            <p style="
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                margin-bottom: 1rem;
+                color: #FFB74D;
+            ">ePlan Education Platform</p>
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(2rem, 5vw, 3.5rem);
+                font-weight: 700;
+                margin-bottom: 1rem;
+            ">Your Path to <span style="color: #FFB74D;">Global Success</span></h1>
+            <p style="
+                font-size: 1.125rem;
+                opacity: 0.85;
+                max-width: 600px;
+                margin: 0 auto;
+            ">전문적인 어학 교육으로 글로벌 역량을 키우세요</p>
+        </div>
+
+        <!-- Service Cards -->
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        ">
+            <!-- Card 1 -->
+            <div style="
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 16px;
+                padding: 2rem;
+                color: white;
+                transition: transform 0.3s;
+            ">
+                <div style="
+                    width: 50px;
+                    height: 50px;
+                    background: #FFB74D;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                    font-size: 1.5rem;
+                ">📱</div>
+                <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">Phone English</h3>
+                <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.6;">1:1 맞춤형 전화영어로 실시간 피드백을 받으세요</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div style="
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 16px;
+                padding: 2rem;
+                color: white;
+            ">
+                <div style="
+                    width: 50px;
+                    height: 50px;
+                    background: #FFB74D;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                    font-size: 1.5rem;
+                ">🏢</div>
+                <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">Corporate</h3>
+                <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.6;">기업 맞춤형 출강 프로그램으로 조직 역량을 강화하세요</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div style="
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 16px;
+                padding: 2rem;
+                color: white;
+            ">
+                <div style="
+                    width: 50px;
+                    height: 50px;
+                    background: #FFB74D;
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                    font-size: 1.5rem;
+                ">✍️</div>
+                <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">Writing</h3>
+                <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.6;">전문가의 Writing 첨삭으로 문서 작성 능력을 향상시키세요</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ============================================
+     STYLE 7: Animated Gradient Hero
+     - 애니메이션 그라데이션 배경
+     - 동적인 느낌
+     ============================================ -->
+<div class="demo-section">
+    <div class="demo-label">Style 7: Animated Gradient (애니메이션)</div>
+    <section style="
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(-45deg, #00635C, #63A19B, #FFB74D, #FF8A65);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        text-align: center;
+        color: white;
+    ">
+        <style>
+            @keyframes gradientBG {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+        </style>
+        <div style="max-width: 800px; padding: 2rem;">
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(2.5rem, 7vw, 5rem);
+                font-weight: 800;
+                margin-bottom: 1.5rem;
+                text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            ">Transform Your Future</h1>
+            <p style="
+                font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+                opacity: 0.95;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            ">글로벌 시대, 영어는 선택이 아닌 필수입니다.<br>ePlan과 함께 새로운 가능성을 열어보세요.</p>
+            <button style="
+                background: white;
+                color: #00635C;
+                padding: 1rem 2.5rem;
+                border: none;
+                border-radius: 50px;
+                font-size: 1.125rem;
+                font-weight: 600;
+                cursor: pointer;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            ">시작하기</button>
+        </div>
+    </section>
+</div>
+
+<!-- ============================================
+     STYLE 8: Asymmetric Layout
+     - 비대칭 레이아웃
+     - 독특한 시각적 균형
+     ============================================ -->
+<div class="demo-section">
+    <div class="demo-label">Style 8: Asymmetric Layout (비대칭)</div>
+    <section style="
+        position: relative;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        background: #263238;
+    ">
+        <!-- Left: Large content area -->
+        <div style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem;
+            color: white;
+        ">
+            <div style="
+                display: inline-flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 2rem;
+            ">
+                <span style="
+                    width: 40px;
+                    height: 2px;
+                    background: #FFB74D;
+                "></span>
+                <span style="
+                    font-size: 0.875rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.15em;
+                    color: #FFB74D;
+                ">ePlan Education</span>
+            </div>
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(3rem, 6vw, 5rem);
+                font-weight: 700;
+                line-height: 1.1;
+                margin-bottom: 2rem;
+            ">Beyond<br>Language<br><span style="color: #00635C;">Learning</span></h1>
+            <p style="
+                font-size: 1.25rem;
+                color: #90A4AE;
+                max-width: 500px;
+                line-height: 1.8;
+            ">단순한 어학 학습을 넘어, 글로벌 커뮤니케이션 역량을 키워드립니다.</p>
+        </div>
+
+        <!-- Right: Accent column -->
+        <div style="
+            background: #00635C;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3rem;
+            color: white;
+        ">
+            <div style="margin-bottom: 3rem;">
+                <p style="
+                    font-size: 4rem;
+                    font-weight: 800;
+                    font-family: 'Poppins', sans-serif;
+                    margin-bottom: 0.5rem;
+                ">10+</p>
+                <p style="opacity: 0.8;">Years of Experience</p>
+            </div>
+            <div style="margin-bottom: 3rem;">
+                <p style="
+                    font-size: 4rem;
+                    font-weight: 800;
+                    font-family: 'Poppins', sans-serif;
+                    margin-bottom: 0.5rem;
+                ">500+</p>
+                <p style="opacity: 0.8;">Corporate Clients</p>
+            </div>
+            <div>
+                <p style="
+                    font-size: 4rem;
+                    font-weight: 800;
+                    font-family: 'Poppins', sans-serif;
+                    margin-bottom: 0.5rem;
+                ">98%</p>
+                <p style="opacity: 0.8;">Satisfaction Rate</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

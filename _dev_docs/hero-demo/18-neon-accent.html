@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 18: Neon Accent - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes neonPulse {
+            0%, 100% { text-shadow: 0 0 10px #00635C, 0 0 20px #00635C, 0 0 40px #00635C; }
+            50% { text-shadow: 0 0 20px #00635C, 0 0 40px #00635C, 0 0 60px #00635C, 0 0 80px #00635C; }
+        }
+        @keyframes neonPulseGold {
+            0%, 100% { text-shadow: 0 0 10px #FFB74D, 0 0 20px #FFB74D, 0 0 40px #FFB74D; }
+            50% { text-shadow: 0 0 20px #FFB74D, 0 0 40px #FFB74D, 0 0 60px #FFB74D; }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 18: Neon Accent Hero
+    - 네온 글로우 효과
+    - 다크 배경 + 발광 텍스트
+    - 모던하고 트렌디한 느낌
+
+    적용 대상: 이벤트, 특별 프로모션, 런칭
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0a;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+">
+    <!-- Grid Background -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(0, 99, 92, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 99, 92, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.5;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+    ">
+        <!-- Logo -->
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 2rem;
+        ">
+        <p style="
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #63A19B;
+            margin-bottom: 2rem;
+        ">Global Education Innovation</p>
+
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            color: #00635C;
+            animation: neonPulse 3s ease-in-out infinite;
+        ">글로벌 교육의<br>혁신</h1>
+
+        <h2 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #FFB74D;
+            animation: neonPulseGold 3s ease-in-out infinite;
+            animation-delay: 0.5s;
+        ">ePlan</h2>
+
+        <p style="
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+
+        <p style="
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 3rem;
+        ">Empowering Global Success Through Knowledge Partnership</p>
+
+        <div style="
+            border: 1px solid rgba(0, 99, 92, 0.3);
+            padding: 2rem 3rem;
+            margin: 2rem 0;
+            display: inline-block;
+            background: rgba(0, 99, 92, 0.05);
+        ">
+            <p style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+                font-style: italic;
+                font-weight: 600;
+                margin: 0;
+                color: white;
+            ">Practice Makes Perfect!</p>
+        </div>
+
+        <p style="
+            font-size: 1.25rem;
+            color: #555;
+            margin: 2rem 0;
+        ">Your success is just around the corner.</p>
+
+        <button style="
+            background: transparent;
+            color: #00635C;
+            padding: 1.25rem 3rem;
+            border: 2px solid #00635C;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 99, 92, 0.3), inset 0 0 20px rgba(0, 99, 92, 0.1);
+        ">시작하기</button>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-Level Curriculum System Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+         * 9-Level Curriculum System Demo
+         * ================================
+         * - 14개 언어 지원
+         * - 9레벨 커리큘럼 테이블
+         * - 교재 썸네일 이미지
+         * - Pastel Soft 테마
+         */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            color: #1a1a2e;
+        }
+
+        /* Section Container */
+        .curriculum-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00635C, #63A19B);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title span {
+            color: #00635C;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Language Navigation */
+        .language-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .language-nav__item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #1a1a2e;
+        }
+
+        .language-nav__item:hover {
+            background: #e9ecef;
+            border-color: #00635C;
+        }
+
+        .language-nav__item.is-active {
+            background: linear-gradient(135deg, #00635C, #63A19B);
+            color: white;
+            border-color: #00635C;
+        }
+
+        .language-nav__flag {
+            font-size: 1.25rem;
+        }
+
+        .language-nav__name {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .language-nav__native {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        /* Table Wrapper */
+        .curriculum-table-wrapper {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-notice {
+            background: linear-gradient(135deg, #00635C, #63A19B);
+            color: white;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            padding: 1rem;
+        }
+
+        /* Curriculum Table */
+        .curriculum-table {
+            width: 100%;
+            min-width: 1200px;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .curriculum-table thead tr:first-child th {
+            background: #1a1a2e;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            padding: 1rem 0.75rem;
+        }
+
+        .curriculum-table thead tr:nth-child(2) th {
+            background: #2d2d44;
+            color: white;
+            padding: 0.75rem 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Level Group Headers */
+        .level-group {
+            text-align: center;
+        }
+
+        .level-group.beginner {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9) !important;
+            color: #2e7d32 !important;
+        }
+
+        .level-group.pre-intermediate {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2) !important;
+            color: #e65100 !important;
+        }
+
+        .level-group.intermediate {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb) !important;
+            color: #1565c0 !important;
+        }
+
+        .level-group.advanced {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd9) !important;
+            color: #c2185b !important;
+        }
+
+        /* Level Cells */
+        .curriculum-table th.level {
+            min-width: 80px;
+            font-size: 0.8rem;
+        }
+
+        .curriculum-table th.lv1, .curriculum-table th.lv2, .curriculum-table th.lv3 {
+            background: linear-gradient(135deg, #a5d6a7, #81c784) !important;
+        }
+
+        .curriculum-table th.lv4, .curriculum-table th.lv5 {
+            background: linear-gradient(135deg, #ffcc80, #ffb74d) !important;
+        }
+
+        .curriculum-table th.lv6, .curriculum-table th.lv7 {
+            background: linear-gradient(135deg, #90caf9, #64b5f6) !important;
+        }
+
+        .curriculum-table th.lv8, .curriculum-table th.lv9 {
+            background: linear-gradient(135deg, #f48fb1, #f06292) !important;
+        }
+
+        /* Table Body */
+        .curriculum-table tbody tr {
+            border-bottom: 1px solid #e9ecef;
+            transition: background 0.2s ease;
+        }
+
+        .curriculum-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .curriculum-table tbody th,
+        .curriculum-table tbody td {
+            padding: 0.75rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .curriculum-table tbody th {
+            background: #f8f9fa;
+            font-weight: 600;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        /* Category Badges */
+        .category-badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .cat-general {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            color: #2e7d32;
+        }
+
+        .cat-business {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1565c0;
+        }
+
+        .cat-topic {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            color: #e65100;
+        }
+
+        .cat-exam {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+            color: #c2185b;
+        }
+
+        /* Textbook Cell */
+        .textbook-cell {
+            background: linear-gradient(135deg, rgba(0,99,92,0.05), rgba(99,161,155,0.1));
+            border-radius: 8px;
+            padding: 0.5rem !important;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .textbook-cell:hover {
+            background: linear-gradient(135deg, rgba(0,99,92,0.15), rgba(99,161,155,0.2));
+            transform: scale(1.02);
+        }
+
+        .textbook-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .textbook-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .textbook-images {
+            display: flex;
+            gap: 0.25rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .textbook-thumbnail {
+            width: 72px;
+            height: 96px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease;
+        }
+
+        .textbook-thumbnail:hover {
+            transform: scale(1.1);
+        }
+
+        /* Placeholder Book Cover */
+        .placeholder-cover {
+            width: 72px;
+            height: 96px;
+            background: linear-gradient(135deg, #00635C, #63A19B);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .placeholder-cover svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        /* Level Background Colors */
+        .lvbg_1_1 { background: linear-gradient(135deg, rgba(165,214,167,0.3), rgba(129,199,132,0.2)) !important; }
+        .lvbg_1_2 { background: linear-gradient(135deg, rgba(165,214,167,0.3), rgba(129,199,132,0.2)) !important; }
+        .lvbg_1_3 { background: linear-gradient(135deg, rgba(165,214,167,0.3), rgba(129,199,132,0.2)) !important; }
+        .lvbg_1_4 { background: linear-gradient(135deg, rgba(165,214,167,0.3), rgba(255,204,128,0.2)) !important; }
+        .lvbg_1_5 { background: linear-gradient(135deg, rgba(165,214,167,0.3), rgba(255,183,77,0.2)) !important; }
+        .lvbg_1_6 { background: linear-gradient(135deg, rgba(165,214,167,0.2), rgba(144,202,249,0.2)) !important; }
+        .lvbg_1_7 { background: linear-gradient(135deg, rgba(165,214,167,0.2), rgba(100,181,246,0.2)) !important; }
+        .lvbg_2_4 { background: linear-gradient(135deg, rgba(165,214,167,0.2), rgba(255,204,128,0.3)) !important; }
+        .lvbg_2_5 { background: linear-gradient(135deg, rgba(165,214,167,0.2), rgba(255,183,77,0.3)) !important; }
+        .lvbg_3_4 { background: linear-gradient(135deg, rgba(129,199,132,0.2), rgba(255,204,128,0.3)) !important; }
+        .lvbg_3_5 { background: linear-gradient(135deg, rgba(129,199,132,0.2), rgba(255,183,77,0.3)) !important; }
+        .lvbg_3_6 { background: linear-gradient(135deg, rgba(129,199,132,0.2), rgba(144,202,249,0.3)) !important; }
+        .lvbg_3_7 { background: linear-gradient(135deg, rgba(129,199,132,0.2), rgba(100,181,246,0.3)) !important; }
+        .lvbg_3_9 { background: linear-gradient(135deg, rgba(129,199,132,0.2), rgba(244,143,177,0.3)) !important; }
+        .lvbg_4_5 { background: linear-gradient(135deg, rgba(255,204,128,0.3), rgba(255,183,77,0.3)) !important; }
+        .lvbg_4_6 { background: linear-gradient(135deg, rgba(255,204,128,0.3), rgba(144,202,249,0.3)) !important; }
+        .lvbg_4_7 { background: linear-gradient(135deg, rgba(255,204,128,0.2), rgba(100,181,246,0.3)) !important; }
+        .lvbg_4_8 { background: linear-gradient(135deg, rgba(255,204,128,0.2), rgba(244,143,177,0.3)) !important; }
+        .lvbg_4_9 { background: linear-gradient(135deg, rgba(255,204,128,0.2), rgba(240,98,146,0.3)) !important; }
+        .lvbg_5_5 { background: linear-gradient(135deg, rgba(255,183,77,0.3), rgba(255,183,77,0.2)) !important; }
+        .lvbg_5_7 { background: linear-gradient(135deg, rgba(255,183,77,0.2), rgba(100,181,246,0.3)) !important; }
+        .lvbg_5_8 { background: linear-gradient(135deg, rgba(255,183,77,0.2), rgba(244,143,177,0.3)) !important; }
+        .lvbg_5_9 { background: linear-gradient(135deg, rgba(255,183,77,0.2), rgba(240,98,146,0.3)) !important; }
+        .lvbg_6_6 { background: linear-gradient(135deg, rgba(144,202,249,0.3), rgba(144,202,249,0.2)) !important; }
+        .lvbg_6_7 { background: linear-gradient(135deg, rgba(144,202,249,0.3), rgba(100,181,246,0.3)) !important; }
+        .lvbg_6_9 { background: linear-gradient(135deg, rgba(144,202,249,0.2), rgba(240,98,146,0.3)) !important; }
+        .lvbg_7_7 { background: linear-gradient(135deg, rgba(100,181,246,0.3), rgba(100,181,246,0.2)) !important; }
+
+        /* Empty Cell */
+        .empty-cell {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Legend */
+        .curriculum-legend {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .legend-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+        }
+
+        .legend-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+        }
+
+        .legend-color.lv1 { background: linear-gradient(135deg, #a5d6a7, #81c784); }
+        .legend-color.lv2 { background: linear-gradient(135deg, #c8e6c9, #a5d6a7); }
+        .legend-color.lv3 { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+        .legend-color.lv4 { background: linear-gradient(135deg, #ffe0b2, #ffcc80); }
+        .legend-color.lv5 { background: linear-gradient(135deg, #ffcc80, #ffb74d); }
+        .legend-color.lv6 { background: linear-gradient(135deg, #bbdefb, #90caf9); }
+        .legend-color.lv7 { background: linear-gradient(135deg, #90caf9, #64b5f6); }
+        .legend-color.lv8 { background: linear-gradient(135deg, #f8bbd9, #f48fb1); }
+        .legend-color.lv9 { background: linear-gradient(135deg, #f48fb1, #f06292); }
+
+        .legend-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .category-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        /* Language Section */
+        .language-section {
+            display: none;
+        }
+
+        .language-section.is-active {
+            display: block;
+        }
+
+        .language-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #00635C;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 4px solid #00635C;
+        }
+
+        /* Category Header Row */
+        .category-header-row th:first-child {
+            background: white !important;
+            border-right: 2px solid #e9ecef;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .curriculum-section {
+                padding: 2rem 1rem;
+            }
+
+            .language-nav__item {
+                padding: 0.4rem 0.75rem;
+            }
+
+            .language-nav__name {
+                font-size: 0.75rem;
+            }
+
+            .language-nav__native {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<!--
+    9-LEVEL CURRICULUM SYSTEM DEMO
+    ==============================
+    - 14개 언어 네비게이션
+    - 9레벨 커리큘럼 테이블
+    - 교재 썸네일 이미지
+    - Pastel Soft 테마
+-->
+<section class="curriculum-section">
+    <!-- Section Header -->
+    <div class="section-header">
+        <span class="section-badge">CURRICULUM</span>
+        <h2 class="section-title">9레벨 <span>커리큘럼</span> 시스템</h2>
+        <p class="section-subtitle">14개 언어 지원 | 체계적인 레벨별 학습 과정</p>
+    </div>
+
+    <!-- Language Navigation -->
+    <nav class="language-nav" aria-label="언어 선택">
+        <a href="#" class="language-nav__item is-active" data-lang="english">
+            <span class="language-nav__flag">🇺🇸</span>
+            <span class="language-nav__name">영어</span>
+            <span class="language-nav__native">English</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="japanese">
+            <span class="language-nav__flag">🇯🇵</span>
+            <span class="language-nav__name">일본어</span>
+            <span class="language-nav__native">日本語</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="chinese">
+            <span class="language-nav__flag">🇨🇳</span>
+            <span class="language-nav__name">중국어</span>
+            <span class="language-nav__native">中文</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="german">
+            <span class="language-nav__flag">🇩🇪</span>
+            <span class="language-nav__name">독일어</span>
+            <span class="language-nav__native">Deutsch</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="spanish">
+            <span class="language-nav__flag">🇪🇸</span>
+            <span class="language-nav__name">스페인어</span>
+            <span class="language-nav__native">Español</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="french">
+            <span class="language-nav__flag">🇫🇷</span>
+            <span class="language-nav__name">프랑스어</span>
+            <span class="language-nav__native">Français</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="vietnamese">
+            <span class="language-nav__flag">🇻🇳</span>
+            <span class="language-nav__name">베트남어</span>
+            <span class="language-nav__native">Tiếng Việt</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="russian">
+            <span class="language-nav__flag">🇷🇺</span>
+            <span class="language-nav__name">러시아어</span>
+            <span class="language-nav__native">Русский</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="arabic">
+            <span class="language-nav__flag">🇸🇦</span>
+            <span class="language-nav__name">아랍어</span>
+            <span class="language-nav__native">العربية</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="thai">
+            <span class="language-nav__flag">🇹🇭</span>
+            <span class="language-nav__name">태국어</span>
+            <span class="language-nav__native">ภาษาไทย</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="indonesian">
+            <span class="language-nav__flag">🇮🇩</span>
+            <span class="language-nav__name">인도네시아어</span>
+            <span class="language-nav__native">Bahasa</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="czech">
+            <span class="language-nav__flag">🇨🇿</span>
+            <span class="language-nav__name">체코어</span>
+            <span class="language-nav__native">Čeština</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="polish">
+            <span class="language-nav__flag">🇵🇱</span>
+            <span class="language-nav__name">폴란드어</span>
+            <span class="language-nav__native">Polski</span>
+        </a>
+        <a href="#" class="language-nav__item" data-lang="italian">
+            <span class="language-nav__flag">🇮🇹</span>
+            <span class="language-nav__name">이탈리아어</span>
+            <span class="language-nav__native">Italiano</span>
+        </a>
+    </nav>
+
+    <!-- English Section -->
+    <div id="lang-english" class="language-section is-active">
+        <h3>영어 (English)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">좌우로 스크롤하여 전체 커리큘럼을 확인하세요</div>
+            <div class="table-scroll">
+                <table class="curriculum-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">과정</th>
+                            <th rowspan="2">코스</th>
+                            <th colspan="3" class="level-group beginner">Beginner</th>
+                            <th colspan="2" class="level-group pre-intermediate">Pre-Intermediate</th>
+                            <th colspan="2" class="level-group intermediate">Intermediate</th>
+                            <th colspan="2" class="level-group advanced">Advanced</th>
+                        </tr>
+                        <tr>
+                            <th class="level lv1">Lv.1</th>
+                            <th class="level lv2">Lv.2</th>
+                            <th class="level lv3">Lv.3</th>
+                            <th class="level lv4">Lv.4</th>
+                            <th class="level lv5">Lv.5</th>
+                            <th class="level lv6">Lv.6</th>
+                            <th class="level lv7">Lv.7</th>
+                            <th class="level lv8">Lv.8</th>
+                            <th class="level lv9">Lv.9</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 일반회화 -->
+                        <tr class="category-header-row">
+                            <th rowspan="5"><span class="category-badge cat-general">일반회화</span></th>
+                            <td>New Connection</td>
+                            <td colspan="4" class="textbook-cell lvbg_1_4">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">New Connection 1~3</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/newConnection1_cover.png" alt="New Connection 1" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/newConnection2_cover.png" alt="New Connection 2" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/newConnection3_cover.png" alt="New Connection 3" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="1" class="textbook-cell lvbg_5_5">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">World English 3</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="World English 3" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="4" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>Smart Choice</td>
+                            <td colspan="5" class="textbook-cell lvbg_1_5">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">Smart Choice Starter, 1~3</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/smartChoice1_cover.png" alt="Smart Choice 1" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/smartChoice2_cover.png" alt="Smart Choice 2" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="4" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>여행영어</td>
+                            <td colspan="1" class="empty-cell">-</td>
+                            <td colspan="3" class="textbook-cell lvbg_2_4">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">여행영어 100일의 기적</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/travelEnglish100DaysMiracle_cover.png" alt="여행영어 100일의 기적" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="5" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>핵심패턴</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="3" class="textbook-cell lvbg_4_6">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">영어회화 핵심패턴 233</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="영어회화 핵심패턴 233" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="3" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>American English File</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="5" class="textbook-cell lvbg_4_8">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">American English File 4~5</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/americanEnglishFile4_3rdEdition_cover.png" alt="American English File 4" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/americanEnglishFile5_cover.png" alt="American English File 5" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="1" class="empty-cell">-</td>
+                        </tr>
+
+                        <!-- 비즈니스 -->
+                        <tr class="category-header-row">
+                            <th rowspan="4"><span class="category-badge cat-business">비즈니스</span></th>
+                            <td>Meeting Skill</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="3" class="textbook-cell lvbg_4_6">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">English for Meetings</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="English for Meetings" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="3" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>Presentation Skill</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="3" class="textbook-cell lvbg_4_6">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">English for Presentations</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="English for Presentations" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="3" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>비즈니스 핵심패턴</td>
+                            <td colspan="2" class="empty-cell">-</td>
+                            <td colspan="2" class="textbook-cell lvbg_3_4">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">비즈니스 영어회화 핵심패턴 233</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/businessEnglishEmailPattern233_cover.png" alt="비즈니스 영어회화 핵심패턴 233" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="5" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>Business Conversation</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="2" class="textbook-cell lvbg_4_5">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">Business Venture 1~2</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="Business Venture 1" class="textbook-thumbnail">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="Business Venture 2" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="4" class="textbook-cell lvbg_6_9">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">Profile 1~3</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="Profile 1" class="textbook-thumbnail">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="Profile 2" class="textbook-thumbnail">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="Profile 3" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- 주제토론 -->
+                        <tr class="category-header-row">
+                            <th rowspan="3"><span class="category-badge cat-topic">주제토론</span></th>
+                            <td>뉴스미디어</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="6" class="textbook-cell lvbg_4_9">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">News Media</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="News Media" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>하버드비즈니스리뷰</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="4" class="textbook-cell lvbg_4_7">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">Harvard Business Review</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="Harvard Business Review" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>파워 오브 스토리텔링</td>
+                            <td colspan="4" class="empty-cell">-</td>
+                            <td colspan="5" class="textbook-cell lvbg_5_9">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">Power of Storytelling</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="Power of Storytelling" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- 시험대비 -->
+                        <tr class="category-header-row">
+                            <th rowspan="3"><span class="category-badge cat-exam">시험대비</span></th>
+                            <td>토익스피킹</td>
+                            <td colspan="2" class="empty-cell">-</td>
+                            <td colspan="2" class="textbook-cell lvbg_3_4">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">TOEIC Speaking Start</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/hackersToeflSpeaking_cover.png" alt="TOEIC Speaking Start" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="1" class="textbook-cell lvbg_5_5">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">Lv.6</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="TOEIC Speaking Lv.6" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="1" class="textbook-cell lvbg_6_6">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">Lv.7-8</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="TOEIC Speaking Lv.7-8" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="1" class="textbook-cell lvbg_7_7">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">기출</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="TOEIC Speaking 기출" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>오픽</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="3" class="textbook-cell lvbg_4_6">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">OPIC의 신</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/opicGod_cover.png" alt="OPIC의 신" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="1" class="textbook-cell lvbg_7_7">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">Advanced</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/hackersOpicAdvanced_cover.png" alt="OPIC Advanced" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>IELTS Speaking</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="4" class="textbook-cell lvbg_4_7">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">IELTS MASTER</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/ieltsMasterComplete_cover.png" alt="IELTS MASTER" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/hackersIeltsSpeaking_cover.png" alt="Hackers IELTS Speaking" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2" class="empty-cell">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="curriculum-legend">
+            <h4 class="legend-title">레벨 범례</h4>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-color lv1"></div>
+                    <span class="legend-label">Lv.1</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv2"></div>
+                    <span class="legend-label">Lv.2</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv3"></div>
+                    <span class="legend-label">Lv.3</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv4"></div>
+                    <span class="legend-label">Lv.4</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv5"></div>
+                    <span class="legend-label">Lv.5</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv6"></div>
+                    <span class="legend-label">Lv.6</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv7"></div>
+                    <span class="legend-label">Lv.7</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv8"></div>
+                    <span class="legend-label">Lv.8</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color lv9"></div>
+                    <span class="legend-label">Lv.9</span>
+                </div>
+            </div>
+            <div class="category-legend">
+                <span class="category-badge cat-general">일반회화</span>
+                <span class="category-badge cat-business">비즈니스</span>
+                <span class="category-badge cat-topic">주제토론</span>
+                <span class="category-badge cat-exam">시험대비</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Japanese Section (Sample) -->
+    <div id="lang-japanese" class="language-section">
+        <h3>일본어 (日本語)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">좌우로 스크롤하여 전체 커리큘럼을 확인하세요</div>
+            <div class="table-scroll">
+                <table class="curriculum-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">과정</th>
+                            <th rowspan="2">코스</th>
+                            <th colspan="3" class="level-group beginner">Beginner</th>
+                            <th colspan="2" class="level-group pre-intermediate">Pre-Intermediate</th>
+                            <th colspan="2" class="level-group intermediate">Intermediate</th>
+                            <th colspan="2" class="level-group advanced">Advanced</th>
+                        </tr>
+                        <tr>
+                            <th class="level lv1">Lv.1</th>
+                            <th class="level lv2">Lv.2</th>
+                            <th class="level lv3">Lv.3</th>
+                            <th class="level lv4">Lv.4</th>
+                            <th class="level lv5">Lv.5</th>
+                            <th class="level lv6">Lv.6</th>
+                            <th class="level lv7">Lv.7</th>
+                            <th class="level lv8">Lv.8</th>
+                            <th class="level lv9">Lv.9</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="category-header-row">
+                            <th rowspan="3"><span class="category-badge cat-general">일반회화</span></th>
+                            <td>New 다이나믹 일본어</td>
+                            <td colspan="6" class="textbook-cell lvbg_1_6">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">New 다이나믹 일본어 1~4</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/newDynamicJapanese1_cover.png" alt="New 다이나믹 일본어 1" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/newDynamicJapanese2_cover.png" alt="New 다이나믹 일본어 2" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/newDynamicJapanese3_cover.png" alt="New 다이나믹 일본어 3" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/newDynamicJapanese4_cover.png" alt="New 다이나믹 일본어 4" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="3" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>여행일본어</td>
+                            <td colspan="1" class="empty-cell">-</td>
+                            <td colspan="4" class="textbook-cell lvbg_2_5">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">맛있는 여행 일본어</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/deliciousTravelJapanese_cover.png" alt="맛있는 여행 일본어" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="4" class="empty-cell">-</td>
+                        </tr>
+                        <tr>
+                            <td>프리토킹 완전정복</td>
+                            <td colspan="2" class="empty-cell">-</td>
+                            <td colspan="5" class="textbook-cell lvbg_3_7">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">프리토킹 일본어회화 완전정복</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/freeTalkingJapaneseMastery_cover.png" alt="프리토킹 일본어회화 완전정복" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2" class="empty-cell">-</td>
+                        </tr>
+                        <tr class="category-header-row">
+                            <th rowspan="2"><span class="category-badge cat-business">비즈니스</span></th>
+                            <td>현지 비즈니스 일본어</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="6" class="textbook-cell lvbg_4_9">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">생생체험 현지 비즈니스 일본어</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/liveLocalBusinessJapanese_cover.png" alt="생생체험 현지 비즈니스 일본어" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>비즈니스 핵심패턴</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="4" class="textbook-cell lvbg_4_7">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">비즈니스 일본어회화 핵심패턴 233</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/businessJapaneseEmailPattern200_cover.png" alt="비즈니스 일본어회화 핵심패턴 233" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2" class="empty-cell">-</td>
+                        </tr>
+                        <tr class="category-header-row">
+                            <th rowspan="2"><span class="category-badge cat-exam">시험대비</span></th>
+                            <td>SJPT</td>
+                            <td colspan="3" class="empty-cell">-</td>
+                            <td colspan="6" class="textbook-cell lvbg_4_9">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">SJPT 한권으로 합격하기</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="SJPT 한권으로 합격하기" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>JLPT</td>
+                            <td colspan="1" class="empty-cell">-</td>
+                            <td colspan="6" class="textbook-cell lvbg_2_7">
+                                <div class="textbook-content">
+                                    <span class="textbook-name">JLPT N4~N2</span>
+                                    <div class="textbook-images">
+                                        <img src="../../app/static/images/books/jlptN4Complete_cover.png" alt="JLPT N4" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/jlptN3Complete_cover.png" alt="JLPT N3" class="textbook-thumbnail" onerror="this.src='../../app/static/images/books/placeholder_cover.svg'">
+                                        <img src="../../app/static/images/books/placeholder_cover.svg" alt="JLPT N2" class="textbook-thumbnail">
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2" class="empty-cell">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Language Sections (Placeholder) -->
+    <div id="lang-chinese" class="language-section">
+        <h3>중국어 (中文)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">중국어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>중국어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-german" class="language-section">
+        <h3>독일어 (Deutsch)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">독일어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>독일어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-spanish" class="language-section">
+        <h3>스페인어 (Español)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">스페인어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>스페인어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-french" class="language-section">
+        <h3>프랑스어 (Français)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">프랑스어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>프랑스어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-vietnamese" class="language-section">
+        <h3>베트남어 (Tiếng Việt)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">베트남어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>베트남어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-russian" class="language-section">
+        <h3>러시아어 (Русский)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">러시아어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>러시아어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-arabic" class="language-section">
+        <h3>아랍어 (العربية)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">아랍어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>아랍어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-thai" class="language-section">
+        <h3>태국어 (ภาษาไทย)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">태국어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>태국어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-indonesian" class="language-section">
+        <h3>인도네시아어 (Bahasa Indonesia)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">인도네시아어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>인도네시아어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-czech" class="language-section">
+        <h3>체코어 (Čeština)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">체코어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>체코어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-polish" class="language-section">
+        <h3>폴란드어 (Polski)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">폴란드어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>폴란드어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lang-italian" class="language-section">
+        <h3>이탈리아어 (Italiano)</h3>
+        <div class="curriculum-table-wrapper">
+            <div class="scroll-notice">이탈리아어 커리큘럼 - 데모 페이지</div>
+            <div style="padding: 3rem; text-align: center; color: #666;">
+                <p>이탈리아어 커리큘럼 데이터가 여기에 표시됩니다.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Language Tab Navigation
+    document.querySelectorAll('.language-nav__item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Remove active from all tabs
+            document.querySelectorAll('.language-nav__item').forEach(tab => {
+                tab.classList.remove('is-active');
+            });
+
+            // Hide all sections
+            document.querySelectorAll('.language-section').forEach(section => {
+                section.classList.remove('is-active');
+            });
+
+            // Activate clicked tab
+            this.classList.add('is-active');
+
+            // Show corresponding section
+            const lang = this.getAttribute('data-lang');
+            document.getElementById('lang-' + lang).classList.add('is-active');
+        });
+    });
+
+    // Textbook Cell Click (for future modal integration)
+    document.querySelectorAll('.textbook-cell').forEach(cell => {
+        cell.addEventListener('click', function() {
+            const textbookName = this.querySelector('.textbook-name')?.textContent || '';
+            console.log('Selected textbook:', textbookName);
+            // Future: Open modal with textbook details
+        });
+    });
+</script>
+</body>
+</html>

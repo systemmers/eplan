@@ -6,12 +6,7 @@
 ---
 
 # plan
-
-- 5번째 섹션 타이틀 메인 만적용
-- section. textgallery : 모달창, books, 내부 컨텐츠 이미지 연결, 슬라이드 컴포넌트 추가
-- 슬라이드 컴포넌트 = curriculum roadmap 의 겹친 이미지로 클릭하면, 이미지출력 기본세팅이미지 커버이미지
-- textbook gallery 케러셀을 섹션 전체로 하여 자동으로 흐르게 하고 선택할 수 있게
-
+- eplan-projekt-15
 
 ---
 
@@ -30,129 +25,52 @@
 
 --clean-lagacy
 ---
+dependency
+
+before after
+
+Changelog - 전후 사항 기록
+
+
+
+
+----
+
+
+
+# 15. 
+- writing, recruitment, contact 해당 페이지를 기존 데모 페이지로 대체
+- 의존성확인 파일을 변경하고 라우터 연결 
+- 기존 데모는 라우터로 연결되어 있기 때문에 페이지 경로와 변경만 하면 됨
+- 변경하고 내부 연결되 의존코드를 다시 검토해서 수정
+
+
+
 
 
 
 
 
 # 11. 
+- 레벨에서 같은 시리즈 내 교재일 경우 통합하여 , 교재 풀네임을 적고 1~3 등올 표시한다. 
+예를 들어 Smart Choice Starter 일경우 4권이다. "Smart Choice Starter, Smart Choice Starter 1~3" 으로 표시 하고 통합된 셀에 4개의 이미지를 포함한다. 
+\이미지는 10레멜 테이블과 같은 방식으로 겹쳐 같은 사이즈로 한다.
 
 
+# 12.
+- 데모 페이지 기준으로 페이지 업데이트
+- 제공된 문서의 각 코스, 프로그램 섹션, 기존 템플릿에 적용하여 업데이트
+- 각 프로그램별로 Hero, Learning Level, Learning Objectives, Learning Details, Textbooks 섹션이 정의
 
 
+# 13. 
+- 기본적으로 섹션 Learning Level, Learning Objectives, Learning Details 패턴을 따르고 있는지 체크
+- 타이틀 명명 규칙 체크
+- discussion, test-prep 은 아코디언, 텍스트북 섹션 버그 및 오류 발생.
 
 
-# 1. page. phone-english-demo
-section. textgallery : 모달창, books, 내부 컨텐츠 이미지 연결, 슬라이드 컴포넌트 추가
-모달 레이아웃 구조 수정 ;이미지공간제약으로  슬라이드, 컨텐츠 설명 행배열, 이미지 높이 400px
-
-# 2. 
-모달 닫기 아이콘 X 중앙 배치 수정
-갤러리 이미지 파일 체크하여 관련 이미지 재조정, 모두 일괄적으로 03까지 되어 있음 실제 이미지 파일수가 틀림, 실제 파일참조
-
-# 3.
--- 섹션타이들 앞 icon_logo, 두번째 셕션 타이틀 course와 타이틀 사이에 배치, 서브 타이틀 노란색(황금색)
-
-# 4. 
-- 테이블 코드를 재사용가능 할 수 있게 구조 변경
-- 스타일 유지
-- 커리큘럼 테이블을 과정에 맞는 카테고리 파트를 가져옴 "general english" 
-- 모달은 textbook gallery sectin 을 적용
-- 그리고 향후 코스별로 분할 한다면 공통 코드로 설계 방향을 제안하여라. 
-
-# 5. 
-- 첨부한 새커리큘럼을 분석하여 코스와 레벨을 로드맵에 적용하여라.
-- L/H 는 제거, 9Level로 새 커리큘럼을 따른다.
-- 썸내일 이미지 맵핑도 셀과 교재 맴핑을 검토하고 변환에 적용한다.  
-- 교재 이미지가 없는 교재는 웹 플레이싀 홀더로 임시처리 한다.
-- 언어별로 별도 테이블로 한다. 모두 9레벨 구조로 한다.
-- 스타일 일관성을 유지한다.
-
-
-# 6. 
-- 두번째 섹션 타이틀을 공통 컴포넌트에 적용
-- 다섯번째 섹션타이틀 랜딩페이지에 적용
-
-# 7.
-- 각 타이틀명은 영어로 Learning Level, Learning Objectives, Learning Details 
-- icon_logo 이미지 css 
-- 세로 글 EPLANDO로 통일
-- 서브타이틀은 코드 분리
-- 일반화 및 중앙화
-
-
-
-# 8.
-
-구성 템플릿 + contents
-
-카테고리 
-- phone-english , 전체 5페이지(소개 1 + 코스 4)
-- corporate, 전체 7페이지(소개 1 + 코드 6)
-
-
-교육 소개 페이지 (분석 제안)
-    교육 소개 카드
-    기타 콘텐츠
-
-교육 코드 페이지 섹션 (5개  섹션)
-    hero 섹션
-    Learning Level
-    - 교육 코드, 로드맵 테이블
-    Learning Objectives
-    Learning Details 
-    Textbooks - 교재 소개및 이미지 클릭시 모달 
-
-
-# 9. 
-
-
-
-공통 템플릿
-
-[교재명]
-
-기본 정보
-- **레벨**: [레벨 정보]
-- **출판사**: [출판사명]
-- **저자**: [저자명]
-- **CEFR**: [해당시]
-- **페이지**: [페이지 수]
-
-특징 (Features)
-- [주요 특징 1]
-- [주요 특징 2]
-- [주요 특징 3]
-
-구성 (Contents)
-- [구성 요소 1]
-- [구성 요소 2]
-- [디지털 자료 등]
-
-목차 (Index)
-Part/Unit 1: [제목]
-- Lesson 1: [내용]
-- Lesson 2: [내용]
-
-Part/Unit 2: [제목]
-- Lesson 1: [내용]
-- Lesson 2: [내용]
-
-학습 목표
-- [목표 1]
-- [목표 2]
-
-참고 링크
-- [출판사 링크]
-- [구매 링크]
-
-
-# 10
-- 기존테이블은 유지하고 아래 새로운 섹션으로 생성
-- 테이블 9레벨 공통
-- l/h 행 삭제
-- 썸네일 이미지 연결 및 노출
-- 이미지가 없는 것은 웹 place hold 로 대체
-- 기존 테이블 내 이미지가 구현이 유지되는지 확인인
-
-
+# 14. 
+- corporate 와 비교하여.
+- 기본적으로 섹션 Learning Level, Learning Objectives, Learning Details 패턴을 따르고 있는지 체크, 규칙적이지 않음
+- 타이틀 명명 규칙 체크
+- corporate index 수정

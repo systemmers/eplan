@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 20: Video Gradient Overlay - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 20: Video Gradient Overlay
+    - 비디오 백그라운드 + 브랜드 컬러 그라데이션 오버레이
+    - 하단 정렬 콘텐츠
+    - 로고 + 언어 로고 활용
+
+    적용 대상: 메인 페이지, 서비스 소개
+    비디오: ../../app/static/videos/main.mp4
+    로고: ../../app/static/images/eplan_logo_white.png, ../../app/static/images/lang_logos.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    color: white;
+">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        object-fit: cover;
+    ">
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Gradient Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(0, 99, 92, 0.95) 0%,
+            rgba(0, 99, 92, 0.7) 30%,
+            rgba(0, 99, 92, 0.3) 60%,
+            transparent 100%
+        );
+        z-index: -1;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding: 4rem;
+    ">
+        <div style="max-width: 900px;">
+            <!-- Logo -->
+            <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+                height: 60px;
+                margin-bottom: 1.5rem;
+            ">
+
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(2.5rem, 6vw, 4rem);
+                font-weight: 700;
+                line-height: 1.15;
+                margin-bottom: 1rem;
+            ">글로벌 교육의 혁신, ePlan</h1>
+
+            <p style="
+                font-size: clamp(1.125rem, 2vw, 1.5rem);
+                opacity: 0.9;
+                margin-bottom: 1.5rem;
+                line-height: 1.7;
+                max-width: 600px;
+            ">지식 파트너십을 통한 글로벌 성공 역량 강화<br>
+            Empowering Global Success Through Knowledge Partnership</p>
+
+            <p style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(1.5rem, 3vw, 2.5rem);
+                font-style: italic;
+                font-weight: 600;
+                color: #FFB74D;
+                margin-bottom: 1.5rem;
+            ">Practice Makes Perfect!</p>
+
+            <!-- Language Logos -->
+            <div style="
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 2rem;
+            ">
+                <span style="font-size: 0.875rem; opacity: 0.7;">지원 언어:</span>
+                <img src="../../app/static/images/lang_logos.png" alt="Languages" style="
+                    height: 30px;
+                    opacity: 0.9;
+                ">
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

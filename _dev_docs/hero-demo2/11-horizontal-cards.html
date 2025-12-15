@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Horizontal Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 11: Hero + Horizontal Cards
+    - 가로형 이미지+텍스트 카드
+    - 커리큘럼/프로그램 소개
+    - 정보 밀도가 높은 레이아웃
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #00635C 0%, #004d47 40%, #1a1a2e 100%);
+    color: white;
+">
+    <!-- Hero Content -->
+    <div style="
+        text-align: center;
+        padding: 4rem 2rem 2rem;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 55px;
+            margin-bottom: 1.5rem;
+        ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        ">Phone English <span style="color: #FFB74D;">Curriculum</span></h1>
+        <p style="
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        ">Customized programs for every learning goal</p>
+    </div>
+
+    <!-- Horizontal Cards -->
+    <div style="
+        padding: 2rem 2rem 4rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    ">
+        <div style="
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        ">
+            <!-- Card 1 -->
+            <div style="
+                display: flex;
+                background: white;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            ">
+                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=300&h=200&fit=crop"
+                     alt="General Conversation"
+                     style="width: 280px; height: 180px; object-fit: cover;">
+                <div style="
+                    flex: 1;
+                    padding: 1.5rem 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                ">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                        <span style="
+                            background: #00635C;
+                            color: white;
+                            padding: 0.25rem 0.75rem;
+                            border-radius: 20px;
+                            font-size: 0.7rem;
+                            font-weight: 600;
+                        ">LEVEL 1-9</span>
+                    </div>
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        color: #263238;
+                        margin-bottom: 0.5rem;
+                    ">General Conversation</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #607D8B;
+                        line-height: 1.6;
+                        margin-bottom: 1rem;
+                    ">Daily conversation skills with pronunciation and vocabulary improvement</p>
+                    <a href="#" style="
+                        color: #00635C;
+                        font-weight: 600;
+                        font-size: 0.875rem;
+                        text-decoration: none;
+                    ">Learn more &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div style="
+                display: flex;
+                background: white;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            ">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=300&h=200&fit=crop"
+                     alt="Business Conversation"
+                     style="width: 280px; height: 180px; object-fit: cover;">
+                <div style="
+                    flex: 1;
+                    padding: 1.5rem 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                ">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                        <span style="
+                            background: #FFB74D;
+                            color: #1a1a1a;
+                            padding: 0.25rem 0.75rem;
+                            border-radius: 20px;
+                            font-size: 0.7rem;
+                            font-weight: 600;
+                        ">POPULAR</span>
+                    </div>
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        color: #263238;
+                        margin-bottom: 0.5rem;
+                    ">Business Conversation</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #607D8B;
+                        line-height: 1.6;
+                        margin-bottom: 1rem;
+                    ">Professional communication for meetings, emails, and presentations</p>
+                    <a href="#" style="
+                        color: #00635C;
+                        font-weight: 600;
+                        font-size: 0.875rem;
+                        text-decoration: none;
+                    ">Learn more &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div style="
+                display: flex;
+                background: white;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            ">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=300&h=200&fit=crop"
+                     alt="Test Preparation"
+                     style="width: 280px; height: 180px; object-fit: cover;">
+                <div style="
+                    flex: 1;
+                    padding: 1.5rem 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                ">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem;">
+                        <span style="
+                            background: #63A19B;
+                            color: white;
+                            padding: 0.25rem 0.75rem;
+                            border-radius: 20px;
+                            font-size: 0.7rem;
+                            font-weight: 600;
+                        ">CERTIFICATION</span>
+                    </div>
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        color: #263238;
+                        margin-bottom: 0.5rem;
+                    ">TOEIC Speaking</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #607D8B;
+                        line-height: 1.6;
+                        margin-bottom: 1rem;
+                    ">Strategic preparation for official English certification tests</p>
+                    <a href="#" style="
+                        color: #00635C;
+                        font-weight: 600;
+                        font-size: 0.875rem;
+                        text-decoration: none;
+                    ">Learn more &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

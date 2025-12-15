@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate - Training Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .option-card {
+            transition: all 0.3s ease;
+        }
+        .option-card:hover {
+            transform: translateY(-8px);
+        }
+        .option-card.featured {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    CORPORATE - SECTION 07: Training Options
+    - 교육 옵션 비교 카드
+    - 가격/패키지 형태
+    - 추천 옵션 강조
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 4rem 2rem;
+">
+    <!-- Section Header -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <span style="
+            display: inline-block;
+            background: linear-gradient(135deg, #00635C, #63A19B);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        ">TRAINING OPTIONS</span>
+        <h2 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin: 0 0 1rem;
+        ">교육 <span style="color: #FFB74D;">옵션</span> 선택</h2>
+        <p style="
+            font-size: 1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        ">기업에 최적화된 교육 패키지를 선택하세요</p>
+    </div>
+
+    <!-- Options Grid -->
+    <div style="
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        align-items: center;
+    ">
+        <!-- Basic Option -->
+        <div class="option-card" style="
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 2rem;
+        ">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span style="
+                    display: inline-block;
+                    background: rgba(59,130,246,0.2);
+                    color: #3b82f6;
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">BASIC</span>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem;">기본 패키지</h3>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin: 0;">소규모 기업 추천</p>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span style="font-size: 0.9rem; opacity: 0.7;">월</span>
+                <span style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700;">문의</span>
+            </div>
+
+            <ul style="margin: 0 0 2rem; padding: 0; list-style: none; font-size: 0.9rem;">
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>그룹 수업 (주 2회)</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>기본 교재 제공</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>월간 리포트</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; opacity: 0.4;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <span>1:1 수업</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; opacity: 0.4;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <span>전담 매니저</span>
+                </li>
+            </ul>
+
+            <button style="
+                width: 100%;
+                background: transparent;
+                color: white;
+                border: 2px solid rgba(255,255,255,0.3);
+                padding: 1rem;
+                border-radius: 12px;
+                font-weight: 600;
+                cursor: pointer;
+            ">상담 신청</button>
+        </div>
+
+        <!-- Professional Option (Featured) -->
+        <div class="option-card featured" style="
+            background: linear-gradient(180deg, rgba(0,99,92,0.3) 0%, rgba(0,99,92,0.1) 100%);
+            border: 2px solid #00635C;
+            border-radius: 24px;
+            padding: 2rem;
+            position: relative;
+        ">
+            <div style="
+                position: absolute;
+                top: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #FFB74D, #FFA726);
+                color: #1a1a1a;
+                padding: 0.25rem 1rem;
+                border-radius: 20px;
+                font-size: 0.75rem;
+                font-weight: 700;
+            ">RECOMMENDED</div>
+
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span style="
+                    display: inline-block;
+                    background: rgba(0,99,92,0.3);
+                    color: #63A19B;
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">PROFESSIONAL</span>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem;">프로 패키지</h3>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin: 0;">중견기업 추천</p>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span style="font-size: 0.9rem; opacity: 0.7;">월</span>
+                <span style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: #FFB74D;">문의</span>
+            </div>
+
+            <ul style="margin: 0 0 2rem; padding: 0; list-style: none; font-size: 0.9rem;">
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>그룹 수업 (주 3회)</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>1:1 수업 (임원진)</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>맞춤 교재 제작</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>전담 매니저 배정</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>LMS 시스템 제공</span>
+                </li>
+            </ul>
+
+            <button style="
+                width: 100%;
+                background: linear-gradient(135deg, #FFB74D, #FFA726);
+                color: #1a1a1a;
+                border: none;
+                padding: 1rem;
+                border-radius: 12px;
+                font-weight: 700;
+                cursor: pointer;
+            ">상담 신청</button>
+        </div>
+
+        <!-- Enterprise Option -->
+        <div class="option-card" style="
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 2rem;
+        ">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span style="
+                    display: inline-block;
+                    background: rgba(139,92,246,0.2);
+                    color: #8b5cf6;
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">ENTERPRISE</span>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem;">엔터프라이즈</h3>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin: 0;">대기업 추천</p>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span style="font-size: 0.9rem; opacity: 0.7;">월</span>
+                <span style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700;">맞춤</span>
+            </div>
+
+            <ul style="margin: 0 0 2rem; padding: 0; list-style: none; font-size: 0.9rem;">
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>무제한 그룹/1:1 수업</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>상주 강사 배치</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>전용 LMS 구축</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>임원 전담 코칭</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 0.75rem;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>해외 연수 프로그램</span>
+                </li>
+            </ul>
+
+            <button style="
+                width: 100%;
+                background: transparent;
+                color: white;
+                border: 2px solid rgba(255,255,255,0.3);
+                padding: 1rem;
+                border-radius: 12px;
+                font-weight: 600;
+                cursor: pointer;
+            ">상담 신청</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone English - Textbook Modal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .book-thumb {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .book-thumb:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    PHONE ENGLISH - SECTION 06: Textbook Modal
+    - 교재 썸네일 그리드
+    - 클릭시 모달 팝업
+    - 상세 정보 및 미리보기
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: #f8f9fa;
+    padding: 4rem 2rem;
+">
+    <!-- Section Header -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <span style="
+            display: inline-block;
+            background: #00635C;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        ">TEXTBOOK GALLERY</span>
+        <h2 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 1rem;
+        ">교재 <span style="color: #00635C;">갤러리</span></h2>
+        <p style="
+            font-size: 1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        ">교재를 클릭하여 상세 내용을 확인하세요</p>
+    </div>
+
+    <!-- Textbook Grid -->
+    <div style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    ">
+        <!-- Book 1 -->
+        <div class="book-thumb" onclick="openModal('modal1')" style="
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                width: 120px;
+                height: 160px;
+                background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+                border-radius: 8px;
+                margin: 0 auto 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 8px 20px rgba(59,130,246,0.3);
+            ">
+                <span style="color: white; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.8rem; text-align: center;">Daily<br>Basics</span>
+            </div>
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; color: #1a1a1a; margin: 0 0 0.25rem;">Daily Basics</h4>
+            <span style="font-size: 0.75rem; color: #666;">Level 1-3</span>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="book-thumb" onclick="openModal('modal2')" style="
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                width: 120px;
+                height: 160px;
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                border-radius: 8px;
+                margin: 0 auto 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 8px 20px rgba(16,185,129,0.3);
+            ">
+                <span style="color: white; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.8rem; text-align: center;">Conver<br>sation</span>
+            </div>
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; color: #1a1a1a; margin: 0 0 0.25rem;">Conversation</h4>
+            <span style="font-size: 0.75rem; color: #666;">Level 2-4</span>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="book-thumb" onclick="openModal('modal3')" style="
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                width: 120px;
+                height: 160px;
+                background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                border-radius: 8px;
+                margin: 0 auto 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 8px 20px rgba(245,158,11,0.3);
+            ">
+                <span style="color: white; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.8rem; text-align: center;">Business<br>Essential</span>
+            </div>
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; color: #1a1a1a; margin: 0 0 0.25rem;">Business</h4>
+            <span style="font-size: 0.75rem; color: #666;">Level 4-6</span>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="book-thumb" onclick="openModal('modal4')" style="
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                width: 120px;
+                height: 160px;
+                background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                border-radius: 8px;
+                margin: 0 auto 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 8px 20px rgba(139,92,246,0.3);
+            ">
+                <span style="color: white; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.8rem; text-align: center;">Discussion<br>Topics</span>
+            </div>
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; color: #1a1a1a; margin: 0 0 0.25rem;">Discussion</h4>
+            <span style="font-size: 0.75rem; color: #666;">Level 5-7</span>
+        </div>
+
+        <!-- Book 5 -->
+        <div class="book-thumb" onclick="openModal('modal5')" style="
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                width: 120px;
+                height: 160px;
+                background: linear-gradient(135deg, #1a202c 0%, #4a5568 100%);
+                border-radius: 8px;
+                margin: 0 auto 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 8px 20px rgba(26,32,44,0.3);
+            ">
+                <span style="color: #FFB74D; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.8rem; text-align: center;">Master<br>Series</span>
+            </div>
+            <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; color: #1a1a1a; margin: 0 0 0.25rem;">Master</h4>
+            <span style="font-size: 0.75rem; color: #666;">Level 8-9</span>
+        </div>
+    </div>
+</section>
+
+<!-- Modal 1 -->
+<div class="modal" id="modal1" onclick="closeModal('modal1')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+            <div style="
+                background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+                padding: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 24px 0 0 24px;
+            ">
+                <div style="
+                    width: 150px;
+                    height: 200px;
+                    background: white;
+                    border-radius: 8px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <span style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #3b82f6; text-align: center;">Daily<br>Basics</span>
+                </div>
+            </div>
+            <div style="padding: 2rem;">
+                <button onclick="closeModal('modal1')" style="
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                    color: #666;
+                ">X</button>
+                <span style="
+                    display: inline-block;
+                    background: #E8F5F4;
+                    color: #00635C;
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">Level 1-3</span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin: 0 0 1rem;">Daily English Basics</h2>
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.7; margin: 0 0 1.5rem;">일상생활에 필요한 기초 영어 표현과 문법을 체계적으로 학습하는 교재입니다. 인사, 자기소개, 일상 대화 등 기본적인 커뮤니케이션 능력을 기릅니다.</p>
+
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; color: #1a1a1a; margin: 0 0 0.75rem;">교재 구성</h4>
+                <ul style="margin: 0 0 1.5rem; padding-left: 1.25rem; color: #666; font-size: 0.9rem; line-height: 1.8;">
+                    <li>20개의 유닛 구성</li>
+                    <li>각 유닛별 핵심 표현 및 문법</li>
+                    <li>상황별 대화 예시</li>
+                    <li>연습 문제 및 복습 퀴즈</li>
+                    <li>오디오 학습 자료 제공</li>
+                </ul>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button style="
+                        background: #00635C;
+                        color: white;
+                        border: none;
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        cursor: pointer;
+                    ">샘플 보기</button>
+                    <button style="
+                        background: white;
+                        color: #00635C;
+                        border: 2px solid #00635C;
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        cursor: pointer;
+                    ">수강 신청</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal" id="modal2" onclick="closeModal('modal2')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+            <div style="
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                padding: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 24px 0 0 24px;
+            ">
+                <div style="
+                    width: 150px;
+                    height: 200px;
+                    background: white;
+                    border-radius: 8px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <span style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #10b981; text-align: center;">Conver<br>sation</span>
+                </div>
+            </div>
+            <div style="padding: 2rem; position: relative;">
+                <button onclick="closeModal('modal2')" style="
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                    color: #666;
+                ">X</button>
+                <span style="
+                    display: inline-block;
+                    background: #E8F5F4;
+                    color: #00635C;
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">Level 2-4</span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin: 0 0 1rem;">Conversation Starter</h2>
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.7; margin: 0 0 1.5rem;">다양한 상황에서 자연스럽게 대화를 이어갈 수 있는 능력을 키우는 교재입니다. 실용적인 대화 패턴과 표현을 중심으로 학습합니다.</p>
+
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; color: #1a1a1a; margin: 0 0 0.75rem;">학습 내용</h4>
+                <ul style="margin: 0 0 1.5rem; padding-left: 1.25rem; color: #666; font-size: 0.9rem; line-height: 1.8;">
+                    <li>15개 유닛의 상황별 대화</li>
+                    <li>롤플레이 연습</li>
+                    <li>비디오 학습 자료</li>
+                    <li>발음 및 억양 가이드</li>
+                </ul>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button style="
+                        background: #00635C;
+                        color: white;
+                        border: none;
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        cursor: pointer;
+                    ">샘플 보기</button>
+                    <button style="
+                        background: white;
+                        color: #00635C;
+                        border: 2px solid #00635C;
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        cursor: pointer;
+                    ">수강 신청</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3, 4, 5 similar structure -->
+<div class="modal" id="modal3" onclick="closeModal('modal3')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div style="padding: 3rem; text-align: center;">
+            <h2 style="font-family: 'Poppins', sans-serif;">Business Essential</h2>
+            <p>비즈니스 영어 교재 상세 정보</p>
+            <button onclick="closeModal('modal3')" style="margin-top: 1rem; padding: 0.5rem 1rem; cursor: pointer;">닫기</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal4" onclick="closeModal('modal4')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div style="padding: 3rem; text-align: center;">
+            <h2 style="font-family: 'Poppins', sans-serif;">Discussion Topics</h2>
+            <p>토론 영어 교재 상세 정보</p>
+            <button onclick="closeModal('modal4')" style="margin-top: 1rem; padding: 0.5rem 1rem; cursor: pointer;">닫기</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal5" onclick="closeModal('modal5')">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div style="padding: 3rem; text-align: center;">
+            <h2 style="font-family: 'Poppins', sans-serif;">Master Series</h2>
+            <p>마스터 시리즈 교재 상세 정보</p>
+            <button onclick="closeModal('modal5')" style="margin-top: 1rem; padding: 0.5rem 1rem; cursor: pointer;">닫기</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+</script>
+</body>
+</html>

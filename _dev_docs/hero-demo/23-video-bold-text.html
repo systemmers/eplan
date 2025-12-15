@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 23: Video Bold Text - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 23: Video Bold Text
+    - 비디오 백그라운드 + 대담한 타이포그래피
+    - 초대형 폰트 크기
+    - 강렬한 시각적 임팩트
+
+    적용 대상: 캠페인, 런칭, 브랜드 강조
+    비디오: ../../app/static/videos/main.mp4
+    로고: ../../app/static/images/icon_logo.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        object-fit: cover;
+    ">
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Dark Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: -1;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding: 4rem;
+    ">
+        <div style="max-width: 1000px;">
+            <!-- Icon Logo -->
+            <img src="../../app/static/images/icon_logo.png" alt="ePlan" style="
+                height: 60px;
+                margin-bottom: 2rem;
+            ">
+
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(4rem, 12vw, 10rem);
+                font-weight: 900;
+                line-height: 0.9;
+                margin-bottom: 1.5rem;
+                text-transform: uppercase;
+            ">
+                <span style="display: block; color: white;">Global</span>
+                <span style="display: block; color: #FFB74D;">Education</span>
+            </h1>
+
+            <p style="
+                font-size: clamp(1.25rem, 2.5vw, 2rem);
+                font-weight: 300;
+                opacity: 0.9;
+                margin-bottom: 1rem;
+                max-width: 600px;
+            ">글로벌 교육의 혁신, 지식 파트너십을 통한 성공 역량 강화</p>
+
+            <div style="
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 2rem;
+            ">
+                <span style="
+                    width: 60px;
+                    height: 4px;
+                    background: #FFB74D;
+                "></span>
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: clamp(1.25rem, 3vw, 2rem);
+                    font-style: italic;
+                    font-weight: 600;
+                    margin: 0;
+                ">Practice Makes Perfect!</p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

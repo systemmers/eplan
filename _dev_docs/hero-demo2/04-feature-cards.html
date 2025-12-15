@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Feature Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 04: Hero + Feature Cards
+    - 아이콘 기반 기능 카드
+    - 핵심 특징 강조
+    - 깔끔한 그리드 레이아웃
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+">
+    <!-- Hero Content -->
+    <div style="
+        text-align: center;
+        padding: 5rem 2rem 3rem;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 2rem;
+        ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        ">Why Choose <span style="color: #63A19B;">ePlan</span>?</h1>
+        <p style="
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        ">Practice Makes Perfect - Your Success is Just Around the Corner</p>
+    </div>
+
+    <!-- Feature Cards Grid -->
+    <div style="
+        padding: 2rem 2rem 5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    ">
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        ">
+            <!-- Feature Card 1 -->
+            <div style="
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2.5rem;
+                transition: all 0.3s ease;
+            ">
+                <div style="
+                    width: 70px;
+                    height: 70px;
+                    background: linear-gradient(135deg, #00635C, #63A19B);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">1:1 Personalized</h3>
+                <p style="
+                    font-size: 0.95rem;
+                    opacity: 0.8;
+                    line-height: 1.7;
+                ">Individual attention from native speaker instructors tailored to your learning pace and goals.</p>
+            </div>
+
+            <!-- Feature Card 2 -->
+            <div style="
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2.5rem;
+                transition: all 0.3s ease;
+            ">
+                <div style="
+                    width: 70px;
+                    height: 70px;
+                    background: linear-gradient(135deg, #FFB74D, #FFA726);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">Flexible Schedule</h3>
+                <p style="
+                    font-size: 0.95rem;
+                    opacity: 0.8;
+                    line-height: 1.7;
+                ">Learn at your convenience with flexible scheduling options that fit your busy lifestyle.</p>
+            </div>
+
+            <!-- Feature Card 3 -->
+            <div style="
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2.5rem;
+                transition: all 0.3s ease;
+            ">
+                <div style="
+                    width: 70px;
+                    height: 70px;
+                    background: linear-gradient(135deg, #63A19B, #00635C);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">Proven Results</h3>
+                <p style="
+                    font-size: 0.95rem;
+                    opacity: 0.8;
+                    line-height: 1.7;
+                ">98% satisfaction rate with measurable improvements in language proficiency.</p>
+            </div>
+
+            <!-- Feature Card 4 -->
+            <div style="
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2.5rem;
+                transition: all 0.3s ease;
+            ">
+                <div style="
+                    width: 70px;
+                    height: 70px;
+                    background: linear-gradient(135deg, #00635C, #004d47);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">Expert Instructors</h3>
+                <p style="
+                    font-size: 0.95rem;
+                    opacity: 0.8;
+                    line-height: 1.7;
+                ">500+ qualified native speakers with professional teaching experience.</p>
+            </div>
+
+            <!-- Feature Card 5 -->
+            <div style="
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2.5rem;
+                transition: all 0.3s ease;
+            ">
+                <div style="
+                    width: 70px;
+                    height: 70px;
+                    background: linear-gradient(135deg, #FFB74D, #FF9800);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">15+ Years Legacy</h3>
+                <p style="
+                    font-size: 0.95rem;
+                    opacity: 0.8;
+                    line-height: 1.7;
+                ">Trusted education partner since 2015 with established industry reputation.</p>
+            </div>
+
+            <!-- Feature Card 6 -->
+            <div style="
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2.5rem;
+                transition: all 0.3s ease;
+            ">
+                <div style="
+                    width: 70px;
+                    height: 70px;
+                    background: linear-gradient(135deg, #63A19B, #00635C);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                ">Corporate Solutions</h3>
+                <p style="
+                    font-size: 0.95rem;
+                    opacity: 0.8;
+                    line-height: 1.7;
+                ">Customized programs for 2,000+ enterprise clients and corporate teams.</p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

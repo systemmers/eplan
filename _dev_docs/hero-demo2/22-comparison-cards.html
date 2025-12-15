@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Comparison Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 22: Hero + Comparison Cards
+    - 프로그램 간 기능 비교
+    - 체크마크 기반 피처 비교
+    - 선택 유도 디자인
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #00635C 0%, #004d47 100%);
+    color: white;
+">
+    <!-- Hero Content -->
+    <div style="
+        text-align: center;
+        padding: 4rem 2rem 2rem;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 50px;
+            margin-bottom: 1.5rem;
+        ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        ">Compare Our <span style="color: #FFB74D;">Programs</span></h1>
+        <p style="
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        ">Choose the perfect learning path for your goals</p>
+    </div>
+
+    <!-- Comparison Cards -->
+    <div style="
+        padding: 2rem 2rem 4rem;
+        max-width: 1100px;
+        margin: 0 auto;
+    ">
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        ">
+            <!-- Phone English -->
+            <div style="
+                background: white;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            ">
+                <div style="
+                    background: linear-gradient(135deg, #00635C, #63A19B);
+                    padding: 2rem;
+                    text-align: center;
+                ">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <rect x="5" y="2" width="14" height="20" rx="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    </svg>
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        margin-top: 1rem;
+                    ">Phone English</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">1:1 Native Lessons</p>
+                </div>
+                <div style="padding: 1.5rem; color: #263238;">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00635C" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>10-30 min sessions</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00635C" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Native speakers</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00635C" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Flexible schedule</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00635C" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>9 level curriculum</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            <span style="color: #9E9E9E;">On-site training</span>
+                        </li>
+                    </ul>
+                    <button style="
+                        width: 100%;
+                        background: #00635C;
+                        color: white;
+                        border: none;
+                        padding: 1rem;
+                        border-radius: 10px;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        margin-top: 1.5rem;
+                    ">Get Started</button>
+                </div>
+            </div>
+
+            <!-- Corporate - Featured -->
+            <div style="
+                background: white;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+                transform: scale(1.05);
+                position: relative;
+                z-index: 2;
+            ">
+                <div style="
+                    background: #FFB74D;
+                    color: #1a1a1a;
+                    text-align: center;
+                    padding: 0.5rem;
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                ">Most Popular</div>
+                <div style="
+                    background: linear-gradient(135deg, #FFB74D, #FFA726);
+                    padding: 2rem;
+                    text-align: center;
+                    color: #1a1a1a;
+                ">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5">
+                        <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                        <path d="M9 22v-4h6v4"></path>
+                    </svg>
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        margin-top: 1rem;
+                    ">Corporate</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Enterprise Solutions</p>
+                </div>
+                <div style="padding: 1.5rem; color: #263238;">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F57C00" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Customized programs</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F57C00" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>On-site training</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F57C00" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Group sessions</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F57C00" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Progress reports</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F57C00" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Dedicated manager</span>
+                        </li>
+                    </ul>
+                    <button style="
+                        width: 100%;
+                        background: #FFB74D;
+                        color: #1a1a1a;
+                        border: none;
+                        padding: 1rem;
+                        border-radius: 10px;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        cursor: pointer;
+                        margin-top: 1.5rem;
+                    ">Contact Sales</button>
+                </div>
+            </div>
+
+            <!-- Writing -->
+            <div style="
+                background: white;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            ">
+                <div style="
+                    background: linear-gradient(135deg, #63A19B, #00635C);
+                    padding: 2rem;
+                    text-align: center;
+                ">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    </svg>
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        margin-top: 1rem;
+                    ">Writing</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Professional Editing</p>
+                </div>
+                <div style="padding: 1.5rem; color: #263238;">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00635C" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Business documents</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00635C" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Academic papers</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00635C" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Native proofreading</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #E0E0E0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            <span style="color: #9E9E9E;">Live sessions</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            <span style="color: #9E9E9E;">On-site training</span>
+                        </li>
+                    </ul>
+                    <button style="
+                        width: 100%;
+                        background: #00635C;
+                        color: white;
+                        border: none;
+                        padding: 1rem;
+                        border-radius: 10px;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        margin-top: 1.5rem;
+                    ">Get Quote</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

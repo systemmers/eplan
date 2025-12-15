@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Stats Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stat-card { animation: countUp 0.6s ease-out forwards; }
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 03: Hero + Stats Cards
+    - 통계/성과 강조 카드
+    - 숫자 애니메이션 효과
+    - 신뢰도 구축
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+">
+    <!-- Hero Content -->
+    <div style="
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 2rem 2rem;
+    ">
+        <img src="../../app/static/images/eplan_logo.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 2rem;
+        ">
+        <p style="
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #00635C;
+            margin-bottom: 1rem;
+        ">Since 2015</p>
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            color: #263238;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        ">Trusted by<br><span style="color: #00635C;">Thousands</span></h1>
+        <p style="
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #607D8B;
+            max-width: 600px;
+            line-height: 1.7;
+        ">Empowering Global Success Through Knowledge Partnership</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div style="
+        padding: 2rem 2rem 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+    ">
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        ">
+            <!-- Stat Card 1 -->
+            <div class="stat-card" style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                opacity: 0;
+            ">
+                <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: linear-gradient(135deg, #00635C, #63A19B);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <span style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: white;
+                    ">15+</span>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: #00635C;
+                    margin-bottom: 0.5rem;
+                ">15+</h3>
+                <p style="
+                    font-size: 1rem;
+                    color: #607D8B;
+                    font-weight: 600;
+                ">Years Experience</p>
+                <p style="
+                    font-size: 0.875rem;
+                    color: #90A4AE;
+                    margin-top: 0.5rem;
+                ">Industry Expertise</p>
+            </div>
+
+            <!-- Stat Card 2 -->
+            <div class="stat-card" style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                opacity: 0;
+            ">
+                <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: linear-gradient(135deg, #FFB74D, #FFA726);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <span style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: white;
+                    ">2K+</span>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: #FFB74D;
+                    margin-bottom: 0.5rem;
+                ">2,000+</h3>
+                <p style="
+                    font-size: 1rem;
+                    color: #607D8B;
+                    font-weight: 600;
+                ">Corporate Clients</p>
+                <p style="
+                    font-size: 0.875rem;
+                    color: #90A4AE;
+                    margin-top: 0.5rem;
+                ">Partner Companies</p>
+            </div>
+
+            <!-- Stat Card 3 -->
+            <div class="stat-card" style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                opacity: 0;
+            ">
+                <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: linear-gradient(135deg, #63A19B, #00635C);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <span style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: white;
+                    ">500+</span>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: #63A19B;
+                    margin-bottom: 0.5rem;
+                ">500+</h3>
+                <p style="
+                    font-size: 1rem;
+                    color: #607D8B;
+                    font-weight: 600;
+                ">Expert Instructors</p>
+                <p style="
+                    font-size: 0.875rem;
+                    color: #90A4AE;
+                    margin-top: 0.5rem;
+                ">Native Speakers</p>
+            </div>
+
+            <!-- Stat Card 4 -->
+            <div class="stat-card" style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem 2rem;
+                text-align: center;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                opacity: 0;
+            ">
+                <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: linear-gradient(135deg, #00635C, #004d47);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <span style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: white;
+                    ">98%</span>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    color: #00635C;
+                    margin-bottom: 0.5rem;
+                ">98%</h3>
+                <p style="
+                    font-size: 1rem;
+                    color: #607D8B;
+                    font-weight: 600;
+                ">Satisfaction Rate</p>
+                <p style="
+                    font-size: 0.875rem;
+                    color: #90A4AE;
+                    margin-top: 0.5rem;
+                ">Student Reviews</p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

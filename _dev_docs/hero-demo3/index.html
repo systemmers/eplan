@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePlan Hero Demo 3 - Section Designs Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 99, 92, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #FFB74D;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 span {
+            color: #FFB74D;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFB74D;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-tab {
+            padding: 0.75rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover,
+        .nav-tab.active {
+            background: #00635C;
+            border-color: #00635C;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-badge {
+            background: linear-gradient(135deg, #00635C, #63A19B);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .section-count {
+            margin-left: auto;
+            background: rgba(255, 183, 77, 0.2);
+            color: #FFB74D;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Demo Grid */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Demo Card */
+        .demo-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            border-color: #00635C;
+            box-shadow: 0 20px 40px rgba(0, 99, 92, 0.2);
+        }
+
+        .demo-preview {
+            position: relative;
+            height: 280px;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .demo-preview iframe {
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: top left;
+            border: none;
+            pointer-events: none;
+        }
+
+        .demo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .demo-card:hover .demo-overlay {
+            opacity: 1;
+        }
+
+        .demo-btn {
+            background: linear-gradient(135deg, #FFB74D, #FFA726);
+            color: #1a1a1a;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease;
+        }
+
+        .demo-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .demo-info {
+            padding: 1.25rem;
+        }
+
+        .demo-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #00635C;
+            background: rgba(0, 99, 92, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-desc {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #63A19B;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #FFB74D;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>ePlan <span>Hero Demo 3</span></h1>
+        <p>Section Component Designs - Phone English & Corporate Programs</p>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">21</div>
+            <div class="stat-label">Total Demos</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">10</div>
+            <div class="stat-label">Phone English</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">10</div>
+            <div class="stat-label">Corporate</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Curriculum</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">7+</div>
+            <div class="stat-label">UI Patterns</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <a href="#phone-english" class="nav-tab active">Phone English</a>
+        <a href="#corporate" class="nav-tab">Corporate</a>
+        <a href="#curriculum" class="nav-tab">Curriculum</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Phone English Section -->
+        <section id="phone-english" class="section">
+            <div class="section-header">
+                <span class="section-badge">PHONE ENGLISH</span>
+                <h2 class="section-title">Section Designs</h2>
+                <span class="section-count">10 Demos</span>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Phone Demo 01 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-01-learning-levels.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-01-learning-levels.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-01</span>
+                        <h3 class="demo-title">Learning Levels</h3>
+                        <p class="demo-desc">9-Level curriculum card grid with unique gradients per level</p>
+                    </div>
+                </div>
+
+                <!-- Phone Demo 02 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-02-learning-objectives.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-02-learning-objectives.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-02</span>
+                        <h3 class="demo-title">Learning Objectives</h3>
+                        <p class="demo-desc">6 objective cards with icons (Speaking, Listening, Business, etc.)</p>
+                    </div>
+                </div>
+
+                <!-- Phone Demo 03 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-03-learning-details.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-03-learning-details.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-03</span>
+                        <h3 class="demo-title">Learning Details</h3>
+                        <p class="demo-desc">Bento grid layout with lesson info, schedule, instructors</p>
+                    </div>
+                </div>
+
+                <!-- Phone Demo 04 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-04-textbook-accordion.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-04-textbook-accordion.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-04</span>
+                        <h3 class="demo-title">Textbook Accordion</h3>
+                        <p class="demo-desc">Expandable accordion for textbooks by level range</p>
+                    </div>
+                </div>
+
+                <!-- Phone Demo 05 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-05-textbook-carousel.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-05-textbook-carousel.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-05</span>
+                        <h3 class="demo-title">Textbook Carousel</h3>
+                        <p class="demo-desc">Horizontal slider with book cards and navigation</p>
+                    </div>
+                </div>
+
+                <!-- Phone Demo 06 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-06-textbook-modal.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-06-textbook-modal.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-06</span>
+                        <h3 class="demo-title">Textbook Modal</h3>
+                        <p class="demo-desc">Thumbnail grid with modal popups for textbook details</p>
+                    </div>
+                </div>
+
+                <!-- Phone Demo 07 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-07-curriculum-roadmap.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-07-curriculum-roadmap.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-07</span>
+                        <h3 class="demo-title">Curriculum Roadmap</h3>
+                        <p class="demo-desc">Vertical timeline with 6 learning process steps</p>
+                    </div>
+                </div>
+
+                <!-- Phone Demo 08 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-08-course-overview.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-08-course-overview.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-08</span>
+                        <h3 class="demo-title">Course Overview</h3>
+                        <p class="demo-desc">4 course cards (General, Business, Discussion, Test Prep)</p>
+                    </div>
+                </div>
+
+                <!-- Phone Demo 09 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-09-program-navigation.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-09-program-navigation.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-09</span>
+                        <h3 class="demo-title">Program Navigation</h3>
+                        <p class="demo-desc">4-tab navigation with content panels for each program</p>
+                    </div>
+                </div>
+
+                <!-- Phone Demo 10 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="phone-10-cta-consultation.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="phone-10-cta-consultation.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">PHONE-10</span>
+                        <h3 class="demo-title">CTA Consultation</h3>
+                        <p class="demo-desc">Split layout with features list and consultation form</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corporate Section -->
+        <section id="corporate" class="section">
+            <div class="section-header">
+                <span class="section-badge">CORPORATE</span>
+                <h2 class="section-title">Section Designs</h2>
+                <span class="section-count">10 Demos</span>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Corp Demo 01 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-01-program-grid.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-01-program-grid.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-01</span>
+                        <h3 class="demo-title">Program Grid</h3>
+                        <p class="demo-desc">6 program cards (In-house, Intensive, Executive, etc.)</p>
+                    </div>
+                </div>
+
+                <!-- Corp Demo 02 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-02-service-cards.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-02-service-cards.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-02</span>
+                        <h3 class="demo-title">Service Cards</h3>
+                        <p class="demo-desc">6 service feature cards with icons and descriptions</p>
+                    </div>
+                </div>
+
+                <!-- Corp Demo 03 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-03-course-materials.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-03-course-materials.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-03</span>
+                        <h3 class="demo-title">Course Materials</h3>
+                        <p class="demo-desc">4 material types (Textbook, Audio, Video, Workbook)</p>
+                    </div>
+                </div>
+
+                <!-- Corp Demo 04 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-04-learning-level.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-04-learning-level.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-04</span>
+                        <h3 class="demo-title">Learning Level</h3>
+                        <p class="demo-desc">L1-L7 corporate level table with goals and courses</p>
+                    </div>
+                </div>
+
+                <!-- Corp Demo 05 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-05-learning-objectives.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-05-learning-objectives.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-05</span>
+                        <h3 class="demo-title">Learning Objectives</h3>
+                        <p class="demo-desc">6 business skill objective cards with numbering</p>
+                    </div>
+                </div>
+
+                <!-- Corp Demo 06 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-06-program-details.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-06-program-details.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-06</span>
+                        <h3 class="demo-title">Program Details</h3>
+                        <p class="demo-desc">Tab interface for detailed program information</p>
+                    </div>
+                </div>
+
+                <!-- Corp Demo 07 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-07-training-options.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-07-training-options.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-07</span>
+                        <h3 class="demo-title">Training Options</h3>
+                        <p class="demo-desc">3-tier pricing cards (Basic, Pro, Enterprise)</p>
+                    </div>
+                </div>
+
+                <!-- Corp Demo 08 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-08-client-benefits.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-08-client-benefits.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-08</span>
+                        <h3 class="demo-title">Client Benefits</h3>
+                        <p class="demo-desc">Stats section with 6 benefit cards</p>
+                    </div>
+                </div>
+
+                <!-- Corp Demo 09 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-09-process-timeline.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-09-process-timeline.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-09</span>
+                        <h3 class="demo-title">Process Timeline</h3>
+                        <p class="demo-desc">Horizontal 5-step onboarding process timeline</p>
+                    </div>
+                </div>
+
+                <!-- Corp Demo 10 -->
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <iframe src="corp-10-contact-cta.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="corp-10-contact-cta.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CORP-10</span>
+                        <h3 class="demo-title">Contact CTA</h3>
+                        <p class="demo-desc">Corporate contact form with company info fields</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curriculum Section -->
+        <section id="curriculum" class="section">
+            <div class="section-header">
+                <span class="section-badge">CURRICULUM</span>
+                <h2 class="section-title">9-Level System</h2>
+                <span class="section-count">1 Demo</span>
+            </div>
+
+            <div class="demo-grid">
+                <!-- Curriculum Demo -->
+                <div class="demo-card" style="grid-column: span 2;">
+                    <div class="demo-preview" style="height: 400px;">
+                        <iframe src="curriculum-9level-demo.html" loading="lazy"></iframe>
+                        <div class="demo-overlay">
+                            <a href="curriculum-9level-demo.html" class="demo-btn" target="_blank">View Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-number">CURRICULUM</span>
+                        <h3 class="demo-title">9-Level Curriculum System</h3>
+                        <p class="demo-desc">14 languages support, 9-level curriculum table with textbook thumbnails, language tab navigation, category badges, level color coding</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="../hero-demo/index.html">Hero Demo 1</a>
+            <a href="../hero-demo2/index.html">Hero Demo 2</a>
+            <a href="index.html">Hero Demo 3</a>
+        </div>
+        <p class="footer-text">ePlan Section Designs - Phone English & Corporate Programs</p>
+    </footer>
+
+    <script>
+        // Simple tab navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const target = this.getAttribute('href').substring(1);
+                document.getElementById(target).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

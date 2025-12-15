@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 16: Floating Elements - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes float2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes float3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 16: Floating Elements Hero
+    - 플로팅 장식 요소
+    - 동적이고 활기찬 느낌
+    - 시각적 재미 요소
+
+    적용 대상: 교육 서비스, 젊은 타겟층
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #00635C 0%, #004d47 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+">
+    <!-- Floating Elements -->
+    <div style="
+        position: absolute;
+        top: 15%;
+        left: 10%;
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 183, 77, 0.2);
+        border-radius: 20px;
+        animation: float1 4s ease-in-out infinite;
+    "></div>
+    <div style="
+        position: absolute;
+        top: 25%;
+        right: 12%;
+        width: 60px;
+        height: 60px;
+        background: rgba(99, 161, 155, 0.3);
+        border-radius: 50%;
+        animation: float2 5s ease-in-out infinite;
+    "></div>
+    <div style="
+        position: absolute;
+        bottom: 20%;
+        left: 15%;
+        width: 100px;
+        height: 100px;
+        border: 3px solid rgba(255, 255, 255, 0.15);
+        border-radius: 30px;
+        animation: float3 6s ease-in-out infinite;
+    "></div>
+    <div style="
+        position: absolute;
+        bottom: 30%;
+        right: 8%;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 183, 77, 0.15);
+        border-radius: 15px;
+        transform: rotate(45deg);
+        animation: float1 5s ease-in-out infinite;
+    "></div>
+    <div style="
+        position: absolute;
+        top: 60%;
+        left: 5%;
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(99, 161, 155, 0.3);
+        border-radius: 50%;
+        animation: float2 4s ease-in-out infinite;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+    ">
+        <!-- Logo -->
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 70px;
+            margin-bottom: 2rem;
+        ">
+        <div style="
+            display: inline-block;
+            background: rgba(255, 183, 77, 0.2);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+        ">
+            <span style="
+                font-size: 0.875rem;
+                color: #FFB74D;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+            ">GLOBAL EDUCATION</span>
+        </div>
+
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        ">글로벌 교육의 혁신,<br><span style="color: #63A19B;">ePlan</span></h1>
+
+        <p style="
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+
+        <p style="
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        ">Empowering Global Success Through Knowledge Partnership</p>
+
+        <div style="
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem 3rem;
+            margin: 2rem 0;
+            display: inline-block;
+        ">
+            <p style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(1.75rem, 4vw, 3rem);
+                font-style: italic;
+                font-weight: 700;
+                margin: 0;
+                color: #FFB74D;
+            ">Practice Makes Perfect!</p>
+        </div>
+
+        <p style="
+            font-size: 1.25rem;
+            opacity: 0.85;
+            margin-bottom: 2rem;
+        ">Your success is just around the corner.</p>
+
+        <button style="
+            background: #FFB74D;
+            color: #00635C;
+            padding: 1.25rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 183, 77, 0.3);
+        ">지금 시작하기</button>
+    </div>
+</section>
+</body>
+</html>

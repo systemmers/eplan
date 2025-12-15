@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone English - Program Navigation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .nav-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-card:hover {
+            transform: scale(1.02);
+        }
+        .nav-card.active {
+            border-color: #00635C !important;
+            background: linear-gradient(135deg, rgba(0,99,92,0.1), rgba(99,161,155,0.1)) !important;
+        }
+        .content-panel {
+            display: none;
+        }
+        .content-panel.active {
+            display: block;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    PHONE ENGLISH - SECTION 09: Program Navigation
+    - 프로그램 네비게이션 카드
+    - 선택시 콘텐츠 변경
+    - 탭 스타일 인터페이스
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #00635C 0%, #004d47 100%);
+    color: white;
+    padding: 4rem 2rem;
+">
+    <!-- Section Header -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <span style="
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        ">PROGRAMS</span>
+        <h2 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin: 0 0 1rem;
+        ">프로그램 <span style="color: #FFB74D;">선택</span></h2>
+        <p style="
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        ">원하는 프로그램을 선택하여 상세 내용을 확인하세요</p>
+    </div>
+
+    <!-- Navigation & Content Container -->
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <!-- Navigation Cards -->
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        ">
+            <div class="nav-card active" onclick="showPanel(0)" style="
+                background: rgba(255,255,255,0.1);
+                border: 2px solid rgba(255,255,255,0.2);
+                border-radius: 16px;
+                padding: 1.25rem;
+                text-align: center;
+            ">
+                <div style="
+                    width: 48px;
+                    height: 48px;
+                    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 0.75rem;
+                ">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; margin: 0 0 0.25rem;">일반회화</h4>
+                <span style="font-size: 0.7rem; opacity: 0.7;">L1-L7</span>
+            </div>
+
+            <div class="nav-card" onclick="showPanel(1)" style="
+                background: rgba(255,255,255,0.1);
+                border: 2px solid rgba(255,255,255,0.2);
+                border-radius: 16px;
+                padding: 1.25rem;
+                text-align: center;
+            ">
+                <div style="
+                    width: 48px;
+                    height: 48px;
+                    background: linear-gradient(135deg, #00635C, #63A19B);
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 0.75rem;
+                ">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                </div>
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; margin: 0 0 0.25rem;">비즈니스</h4>
+                <span style="font-size: 0.7rem; opacity: 0.7;">L4-L7</span>
+            </div>
+
+            <div class="nav-card" onclick="showPanel(2)" style="
+                background: rgba(255,255,255,0.1);
+                border: 2px solid rgba(255,255,255,0.2);
+                border-radius: 16px;
+                padding: 1.25rem;
+                text-align: center;
+            ">
+                <div style="
+                    width: 48px;
+                    height: 48px;
+                    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 0.75rem;
+                ">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; margin: 0 0 0.25rem;">토론영어</h4>
+                <span style="font-size: 0.7rem; opacity: 0.7;">L4-L9</span>
+            </div>
+
+            <div class="nav-card" onclick="showPanel(3)" style="
+                background: rgba(255,255,255,0.1);
+                border: 2px solid rgba(255,255,255,0.2);
+                border-radius: 16px;
+                padding: 1.25rem;
+                text-align: center;
+            ">
+                <div style="
+                    width: 48px;
+                    height: 48px;
+                    background: linear-gradient(135deg, #f59e0b, #d97706);
+                    border-radius: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 0.75rem;
+                ">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                </div>
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; margin: 0 0 0.25rem;">시험대비</h4>
+                <span style="font-size: 0.7rem; opacity: 0.7;">L5-L8</span>
+            </div>
+        </div>
+
+        <!-- Content Panels -->
+        <div style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 24px;
+            padding: 2rem;
+        ">
+            <!-- Panel 0: General Conversation -->
+            <div class="content-panel active" id="panel0">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 1rem;">일반회화 과정</h3>
+                        <p style="font-size: 0.95rem; opacity: 0.9; line-height: 1.7; margin: 0 0 1.5rem;">일상생활에서 영어로 자연스럽게 소통할 수 있도록 기초부터 고급까지 체계적인 커리큘럼을 제공합니다.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span style="background: rgba(59,130,246,0.3); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem;">일상 대화</span>
+                            <span style="background: rgba(59,130,246,0.3); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem;">여행 영어</span>
+                            <span style="background: rgba(59,130,246,0.3); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem;">상황별 표현</span>
+                        </div>
+                        <button style="
+                            background: #FFB74D;
+                            color: #1a1a1a;
+                            border: none;
+                            padding: 1rem 2rem;
+                            border-radius: 10px;
+                            font-weight: 600;
+                            cursor: pointer;
+                        ">상담 신청하기</button>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">L1-L3</span>
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.9rem;">입문/기초</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;">기초 표현 및 문법</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">L4-L5</span>
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.9rem;">중급</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;">다양한 상황 대응</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">L6-L7</span>
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.9rem;">고급</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;">원어민급 유창성</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 1: Business -->
+            <div class="content-panel" id="panel1">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 1rem;">비즈니스회화 과정</h3>
+                        <p style="font-size: 0.95rem; opacity: 0.9; line-height: 1.7; margin: 0 0 1.5rem;">비즈니스 환경에서 필요한 전문 영어 커뮤니케이션 능력을 집중적으로 학습합니다.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span style="background: rgba(0,99,92,0.3); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem;">미팅/협상</span>
+                            <span style="background: rgba(0,99,92,0.3); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem;">프레젠테이션</span>
+                            <span style="background: rgba(0,99,92,0.3); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem;">이메일</span>
+                        </div>
+                        <button style="
+                            background: #FFB74D;
+                            color: #1a1a1a;
+                            border: none;
+                            padding: 1rem 2rem;
+                            border-radius: 10px;
+                            font-weight: 600;
+                            cursor: pointer;
+                        ">상담 신청하기</button>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">L4</span>
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.9rem;">비즈니스 기초</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;">기본 비즈니스 표현</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">L5-L6</span>
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.9rem;">실무 영어</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;">미팅/협상 스킬</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">L7</span>
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.9rem;">고급 비즈니스</div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;">리더십/전략 영어</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 2: Discussion -->
+            <div class="content-panel" id="panel2">
+                <div style="text-align: center; padding: 2rem;">
+                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 1rem;">토론영어 과정</h3>
+                    <p style="opacity: 0.9;">다양한 시사 주제에 대해 깊이 있는 토론을 진행하는 고급 과정입니다.</p>
+                </div>
+            </div>
+
+            <!-- Panel 3: Test Prep -->
+            <div class="content-panel" id="panel3">
+                <div style="text-align: center; padding: 2rem;">
+                    <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 1rem;">시험대비 과정</h3>
+                    <p style="opacity: 0.9;">TOEIC Speaking, OPIc 등 공인 영어 말하기 시험에 특화된 과정입니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPanel(index) {
+            // Remove active from all cards and panels
+            document.querySelectorAll('.nav-card').forEach((card, i) => {
+                card.classList.remove('active');
+            });
+            document.querySelectorAll('.content-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            // Add active to selected
+            document.querySelectorAll('.nav-card')[index].classList.add('active');
+            document.getElementById('panel' + index).classList.add('active');
+        }
+    </script>
+</section>
+</body>
+</html>

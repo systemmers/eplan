@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 26: Video Stats Highlight - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 26: Video Stats Highlight
+    - 비디오 백그라운드 + 통계 강조
+    - 숫자 하이라이트
+    - 신뢰도/실적 강조
+
+    적용 대상: 회사소개, 신뢰도 페이지
+    비디오: ../../app/static/videos/main.mp4
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        object-fit: cover;
+    ">
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Dark Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 50, 46, 0.75);
+        z-index: -1;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        max-width: 1100px;
+        padding: 2rem;
+        width: 100%;
+    ">
+        <!-- Logo & Title -->
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 1.5rem;
+        ">
+
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        ">글로벌 교육의 혁신, ePlan</h1>
+
+        <p style="
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+
+        <!-- Stats Grid -->
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        ">
+            <div style="
+                padding: 1.5rem;
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 12px;
+                background: rgba(255,255,255,0.05);
+            ">
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: clamp(2rem, 4vw, 3.5rem);
+                    font-weight: 800;
+                    color: #FFB74D;
+                    margin-bottom: 0.5rem;
+                ">10+</p>
+                <p style="font-size: 0.875rem; opacity: 0.8;">Years</p>
+            </div>
+            <div style="
+                padding: 1.5rem;
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 12px;
+                background: rgba(255,255,255,0.05);
+            ">
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: clamp(2rem, 4vw, 3.5rem);
+                    font-weight: 800;
+                    color: #FFB74D;
+                    margin-bottom: 0.5rem;
+                ">500+</p>
+                <p style="font-size: 0.875rem; opacity: 0.8;">Clients</p>
+            </div>
+            <div style="
+                padding: 1.5rem;
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 12px;
+                background: rgba(255,255,255,0.05);
+            ">
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: clamp(2rem, 4vw, 3.5rem);
+                    font-weight: 800;
+                    color: #FFB74D;
+                    margin-bottom: 0.5rem;
+                ">98%</p>
+                <p style="font-size: 0.875rem; opacity: 0.8;">Satisfaction</p>
+            </div>
+            <div style="
+                padding: 1.5rem;
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 12px;
+                background: rgba(255,255,255,0.05);
+            ">
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: clamp(2rem, 4vw, 3.5rem);
+                    font-weight: 800;
+                    color: #FFB74D;
+                    margin-bottom: 0.5rem;
+                ">24/7</p>
+                <p style="font-size: 0.875rem; opacity: 0.8;">Support</p>
+            </div>
+        </div>
+
+        <!-- Tagline -->
+        <p style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-style: italic;
+            font-weight: 600;
+        ">Practice Makes Perfect!</p>
+
+        <p style="
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-top: 1rem;
+        ">Your success is just around the corner.</p>
+    </div>
+</section>
+</body>
+</html>

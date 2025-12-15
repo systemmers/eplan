@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 24: Video Split Content - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 24: Video Split Content
+    - 비디오 백그라운드 + 상하 분리 콘텐츠
+    - 상단: 로고 + 태그라인
+    - 하단: 메인 메시지
+
+    적용 대상: 메인 페이지, 회사소개
+    비디오: ../../app/static/videos/main.mp4
+    로고: ../../app/static/images/eplan_logo_white.png, ../../app/static/images/jrenglish_bi_korean.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: white;
+    padding: 3rem;
+">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        object-fit: cover;
+    ">
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Gradient Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 99, 92, 0.8) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
+        z-index: -1;
+    "></div>
+
+    <!-- Top Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 50px;
+        ">
+        <p style="
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.8;
+        ">Global Education Innovation</p>
+    </div>
+
+    <!-- Center Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+    ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        ">글로벌 교육의 혁신</h1>
+
+        <p style="
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+
+        <p style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-style: italic;
+            font-weight: 700;
+            color: #FFB74D;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        ">Practice Makes Perfect!</p>
+    </div>
+
+    <!-- Bottom Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    ">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <img src="../../app/static/images/jrenglish_bi_korean.png" alt="JR English" style="
+                height: 35px;
+                opacity: 0.9;
+            ">
+        </div>
+        <p style="
+            font-size: 1rem;
+            opacity: 0.8;
+        ">Your success is just around the corner.</p>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone English - Course Overview Cards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .course-card {
+            transition: all 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .course-card:hover .course-badge {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    PHONE ENGLISH - SECTION 08: Course Overview Cards
+    - 과정별 개요 카드
+    - 특징 및 레벨 범위
+    - CTA 버튼 포함
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: #f8f9fa;
+    padding: 4rem 2rem;
+">
+    <!-- Section Header -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <span style="
+            display: inline-block;
+            background: #00635C;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        ">PHONE ENGLISH COURSES</span>
+        <h2 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 1rem;
+        ">전화영어 <span style="color: #00635C;">과정</span> 소개</h2>
+        <p style="
+            font-size: 1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        ">목적과 레벨에 맞는 최적의 과정을 선택하세요</p>
+    </div>
+
+    <!-- Course Cards Grid -->
+    <div style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    ">
+        <!-- General Conversation -->
+        <div class="course-card" style="
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+                padding: 2rem;
+                position: relative;
+            ">
+                <div class="course-badge" style="
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    color: white;
+                    transition: transform 0.3s ease;
+                ">L1 - L7</div>
+                <div style="
+                    width: 64px;
+                    height: 64px;
+                    background: rgba(255,255,255,0.2);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; margin: 0;">일반회화</h3>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0.5rem 0 0;">General Conversation</p>
+            </div>
+            <div style="padding: 1.5rem;">
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.7; margin: 0 0 1.5rem;">일상생활에서 자연스럽게 영어로 대화할 수 있는 능력을 키웁니다. 기초부터 고급까지 체계적인 학습이 가능합니다.</p>
+                <ul style="margin: 0 0 1.5rem; padding-left: 1.25rem; font-size: 0.875rem; color: #666; line-height: 2;">
+                    <li>일상 대화 및 상황별 표현</li>
+                    <li>기초 문법부터 고급 표현까지</li>
+                    <li>자연스러운 발음과 억양 연습</li>
+                </ul>
+                <button style="
+                    width: 100%;
+                    background: #3b82f6;
+                    color: white;
+                    border: none;
+                    padding: 1rem;
+                    border-radius: 12px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                ">자세히 보기</button>
+            </div>
+        </div>
+
+        <!-- Business Conversation -->
+        <div class="course-card" style="
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                background: linear-gradient(135deg, #00635C 0%, #004d47 100%);
+                padding: 2rem;
+                position: relative;
+            ">
+                <div class="course-badge" style="
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    color: white;
+                    transition: transform 0.3s ease;
+                ">L4 - L7</div>
+                <div style="
+                    width: 64px;
+                    height: 64px;
+                    background: rgba(255,255,255,0.2);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                </div>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; margin: 0;">비즈니스회화</h3>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0.5rem 0 0;">Business Conversation</p>
+            </div>
+            <div style="padding: 1.5rem;">
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.7; margin: 0 0 1.5rem;">비즈니스 환경에서 전문적인 커뮤니케이션이 가능하도록 실무 중심의 영어를 학습합니다.</p>
+                <ul style="margin: 0 0 1.5rem; padding-left: 1.25rem; font-size: 0.875rem; color: #666; line-height: 2;">
+                    <li>미팅, 협상, 프레젠테이션</li>
+                    <li>이메일 및 보고서 작성</li>
+                    <li>비즈니스 매너 및 에티켓</li>
+                </ul>
+                <button style="
+                    width: 100%;
+                    background: #00635C;
+                    color: white;
+                    border: none;
+                    padding: 1rem;
+                    border-radius: 12px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                ">자세히 보기</button>
+            </div>
+        </div>
+
+        <!-- Discussion -->
+        <div class="course-card" style="
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                padding: 2rem;
+                position: relative;
+            ">
+                <div class="course-badge" style="
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    color: white;
+                    transition: transform 0.3s ease;
+                ">L4 - L9</div>
+                <div style="
+                    width: 64px;
+                    height: 64px;
+                    background: rgba(255,255,255,0.2);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; margin: 0;">토론영어</h3>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0.5rem 0 0;">Discussion English</p>
+            </div>
+            <div style="padding: 1.5rem;">
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.7; margin: 0 0 1.5rem;">다양한 주제에 대해 영어로 깊이 있는 토론을 하고 논리적으로 의견을 표현하는 능력을 기릅니다.</p>
+                <ul style="margin: 0 0 1.5rem; padding-left: 1.25rem; font-size: 0.875rem; color: #666; line-height: 2;">
+                    <li>시사, 경제, 사회 이슈 토론</li>
+                    <li>논리적 의견 표현 및 반박</li>
+                    <li>비판적 사고력 향상</li>
+                </ul>
+                <button style="
+                    width: 100%;
+                    background: #8b5cf6;
+                    color: white;
+                    border: none;
+                    padding: 1rem;
+                    border-radius: 12px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                ">자세히 보기</button>
+            </div>
+        </div>
+
+        <!-- Test Preparation -->
+        <div class="course-card" style="
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                padding: 2rem;
+                position: relative;
+            ">
+                <div class="course-badge" style="
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    color: white;
+                    transition: transform 0.3s ease;
+                ">L5 - L8</div>
+                <div style="
+                    width: 64px;
+                    height: 64px;
+                    background: rgba(255,255,255,0.2);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; margin: 0;">시험대비</h3>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0.5rem 0 0;">Test Preparation</p>
+            </div>
+            <div style="padding: 1.5rem;">
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.7; margin: 0 0 1.5rem;">TOEIC Speaking, OPIc 등 공인 영어 말하기 시험에 대비한 전략적 학습을 제공합니다.</p>
+                <ul style="margin: 0 0 1.5rem; padding-left: 1.25rem; font-size: 0.875rem; color: #666; line-height: 2;">
+                    <li>TOEIC Speaking / OPIc 대비</li>
+                    <li>실전 모의고사 및 피드백</li>
+                    <li>고득점 전략 및 팁 제공</li>
+                </ul>
+                <button style="
+                    width: 100%;
+                    background: #f59e0b;
+                    color: white;
+                    border: none;
+                    padding: 1rem;
+                    border-radius: 12px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                ">자세히 보기</button>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

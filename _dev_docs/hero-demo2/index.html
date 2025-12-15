@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePlan Hero + Card Demos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, #00635C 0%, #004d47 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        header img {
+            height: 50px;
+            margin-bottom: 1.5rem;
+        }
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFB74D;
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #263238;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #00635C;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .demo-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        .demo-card iframe {
+            width: 100%;
+            height: 280px;
+            border: none;
+            pointer-events: none;
+        }
+        .demo-info {
+            padding: 1.5rem;
+        }
+        .demo-number {
+            display: inline-block;
+            background: #00635C;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 32px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: 0.75rem;
+        }
+        .demo-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #263238;
+            display: inline;
+        }
+        .demo-desc {
+            font-size: 0.875rem;
+            color: #607D8B;
+            margin-top: 0.75rem;
+            line-height: 1.6;
+        }
+        .demo-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .demo-tag {
+            background: #E8F5E9;
+            color: #00635C;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .demo-tag.gold {
+            background: #FFF8E1;
+            color: #F57C00;
+        }
+        .demo-tag.blue {
+            background: #E3F2FD;
+            color: #1976D2;
+        }
+        .demo-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f0f0f0;
+        }
+        .demo-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .demo-btn-primary {
+            background: #00635C;
+            color: white;
+            border: none;
+        }
+        .demo-btn-primary:hover {
+            background: #004d47;
+        }
+        .demo-btn-secondary {
+            background: white;
+            color: #00635C;
+            border: 2px solid #00635C;
+        }
+        .demo-btn-secondary:hover {
+            background: #E8F5E9;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        footer p {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan">
+        <h1>Hero + Card Design Demos</h1>
+        <p>Card-integrated Hero section design styles for ePlan</p>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">30</div>
+                <div class="stat-label">Card Styles</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">15+</div>
+                <div class="stat-label">Card Types</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Customizable</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Card-Integrated Hero Styles (30 Designs)</h2>
+
+        <div class="demo-grid">
+            <!-- Demo 1: Nav Cards -->
+            <div class="demo-card">
+                <iframe src="01-nav-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">01</span>
+                    <h3 class="demo-title">Navigation Cards</h3>
+                    <p class="demo-desc">Video background with navigation card grid. Quick access to services.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Video BG</span>
+                        <span class="demo-tag">Glass Effect</span>
+                        <span class="demo-tag gold">Main Page</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="01-nav-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('01-nav-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 2: Service Cards -->
+            <div class="demo-card">
+                <iframe src="02-service-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">02</span>
+                    <h3 class="demo-title">Service Cards</h3>
+                    <p class="demo-desc">Image overlay service cards with hover effects and gradient overlays.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Image Overlay</span>
+                        <span class="demo-tag">Hover Effect</span>
+                        <span class="demo-tag gold">Services</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="02-service-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('02-service-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 3: Stats Cards -->
+            <div class="demo-card">
+                <iframe src="03-stats-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">03</span>
+                    <h3 class="demo-title">Stats Cards</h3>
+                    <p class="demo-desc">Statistics highlight cards with animated counters for trust building.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Animation</span>
+                        <span class="demo-tag">Statistics</span>
+                        <span class="demo-tag gold">Trust</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="03-stats-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('03-stats-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 4: Feature Cards -->
+            <div class="demo-card">
+                <iframe src="04-feature-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">04</span>
+                    <h3 class="demo-title">Feature Cards</h3>
+                    <p class="demo-desc">Icon-based feature cards highlighting key benefits with clean grid.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Icons</span>
+                        <span class="demo-tag">Grid Layout</span>
+                        <span class="demo-tag gold">Features</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="04-feature-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('04-feature-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 5: Testimonial Cards -->
+            <div class="demo-card">
+                <iframe src="05-testimonial-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">05</span>
+                    <h3 class="demo-title">Testimonial Cards</h3>
+                    <p class="demo-desc">Customer testimonial cards with star ratings for social proof.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Reviews</span>
+                        <span class="demo-tag">Social Proof</span>
+                        <span class="demo-tag gold">Trust</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="05-testimonial-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('05-testimonial-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 6: Pricing Cards -->
+            <div class="demo-card">
+                <iframe src="06-pricing-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">06</span>
+                    <h3 class="demo-title">Pricing Cards</h3>
+                    <p class="demo-desc">Pricing comparison with featured plan highlight and clear CTAs.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Pricing</span>
+                        <span class="demo-tag">Comparison</span>
+                        <span class="demo-tag gold">Conversion</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="06-pricing-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('06-pricing-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 7: Glass Cards -->
+            <div class="demo-card">
+                <iframe src="07-glass-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">07</span>
+                    <h3 class="demo-title">Glass Cards</h3>
+                    <p class="demo-desc">Glassmorphism cards over video background with blur effects.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Video BG</span>
+                        <span class="demo-tag">Glassmorphism</span>
+                        <span class="demo-tag gold">Modern</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="07-glass-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('07-glass-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 8: CTA Cards -->
+            <div class="demo-card">
+                <iframe src="08-cta-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">08</span>
+                    <h3 class="demo-title">CTA Cards</h3>
+                    <p class="demo-desc">Call-to-action focused cards with strong conversion elements.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">CTA</span>
+                        <span class="demo-tag">Conversion</span>
+                        <span class="demo-tag gold">Action</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="08-cta-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('08-cta-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 9: Timeline Cards -->
+            <div class="demo-card">
+                <iframe src="09-timeline-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">09</span>
+                    <h3 class="demo-title">Timeline Cards</h3>
+                    <p class="demo-desc">Process/journey visualization with connected step cards.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Timeline</span>
+                        <span class="demo-tag">Process</span>
+                        <span class="demo-tag gold">Journey</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="09-timeline-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('09-timeline-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 10: Floating Cards -->
+            <div class="demo-card">
+                <iframe src="10-floating-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">10</span>
+                    <h3 class="demo-title">Floating Cards</h3>
+                    <p class="demo-desc">Animated floating cards with asymmetric layout and depth.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Animation</span>
+                        <span class="demo-tag">Asymmetric</span>
+                        <span class="demo-tag gold">Dynamic</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="10-floating-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('10-floating-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 11: Horizontal Cards -->
+            <div class="demo-card">
+                <iframe src="11-horizontal-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">11</span>
+                    <h3 class="demo-title">Horizontal Cards</h3>
+                    <p class="demo-desc">Horizontal image+text cards for curriculum/program showcase.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Horizontal</span>
+                        <span class="demo-tag">Image+Text</span>
+                        <span class="demo-tag blue">Curriculum</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="11-horizontal-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('11-horizontal-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 12: Gradient Cards -->
+            <div class="demo-card">
+                <iframe src="12-gradient-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">12</span>
+                    <h3 class="demo-title">Gradient Cards</h3>
+                    <p class="demo-desc">Gradient background cards with unique colors per card.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Gradient</span>
+                        <span class="demo-tag">Colorful</span>
+                        <span class="demo-tag blue">Programs</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="12-gradient-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('12-gradient-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 13: Team Cards -->
+            <div class="demo-card">
+                <iframe src="13-team-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">13</span>
+                    <h3 class="demo-title">Team Cards</h3>
+                    <p class="demo-desc">Instructor/team profile cards with images and credentials.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Profile</span>
+                        <span class="demo-tag">Team</span>
+                        <span class="demo-tag blue">Instructors</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="13-team-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('13-team-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 14: Course Cards -->
+            <div class="demo-card">
+                <iframe src="14-course-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">14</span>
+                    <h3 class="demo-title">Course Cards</h3>
+                    <p class="demo-desc">Course/lesson cards with ratings, prices, and enrollment CTAs.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Courses</span>
+                        <span class="demo-tag">Ratings</span>
+                        <span class="demo-tag blue">Enrollment</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="14-course-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('14-course-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 15: Blog Cards -->
+            <div class="demo-card">
+                <iframe src="15-blog-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">15</span>
+                    <h3 class="demo-title">Blog Cards</h3>
+                    <p class="demo-desc">Blog/news cards with featured article layout and categories.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Blog</span>
+                        <span class="demo-tag">News</span>
+                        <span class="demo-tag blue">Content</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="15-blog-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('15-blog-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 16: Minimal Cards -->
+            <div class="demo-card">
+                <iframe src="16-minimal-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">16</span>
+                    <h3 class="demo-title">Minimal Cards</h3>
+                    <p class="demo-desc">Clean minimal design with elegant lines and whitespace.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Minimal</span>
+                        <span class="demo-tag">Clean</span>
+                        <span class="demo-tag blue">Elegant</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="16-minimal-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('16-minimal-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 17: Contact Cards -->
+            <div class="demo-card">
+                <iframe src="17-contact-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">17</span>
+                    <h3 class="demo-title">Contact Cards</h3>
+                    <p class="demo-desc">Contact information cards with multiple contact methods.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Contact</span>
+                        <span class="demo-tag">Form</span>
+                        <span class="demo-tag blue">Support</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="17-contact-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('17-contact-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 18: Split Cards -->
+            <div class="demo-card">
+                <iframe src="18-split-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">18</span>
+                    <h3 class="demo-title">Split Cards</h3>
+                    <p class="demo-desc">Split layout with hero text and horizontal service cards.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Split Layout</span>
+                        <span class="demo-tag">Asymmetric</span>
+                        <span class="demo-tag blue">Services</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="18-split-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('18-split-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 19: Stacked Cards -->
+            <div class="demo-card">
+                <iframe src="19-stacked-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">19</span>
+                    <h3 class="demo-title">Stacked Cards</h3>
+                    <p class="demo-desc">Stacked/overlapping cards with depth and hover interactions.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Stacked</span>
+                        <span class="demo-tag">3D Effect</span>
+                        <span class="demo-tag blue">Interactive</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="19-stacked-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('19-stacked-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 20: Icon Grid Cards -->
+            <div class="demo-card">
+                <iframe src="20-icon-grid-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">20</span>
+                    <h3 class="demo-title">Icon Grid Cards</h3>
+                    <p class="demo-desc">Compact icon-centered grid cards for quick feature overview.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Icon Grid</span>
+                        <span class="demo-tag">Compact</span>
+                        <span class="demo-tag blue">Overview</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="20-icon-grid-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('20-icon-grid-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 21: Level Gradient Cards -->
+            <div class="demo-card">
+                <iframe src="21-level-gradient-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">21</span>
+                    <h3 class="demo-title">Level Gradient Cards</h3>
+                    <p class="demo-desc">9-level curriculum system with unique gradient for each level.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">9 Levels</span>
+                        <span class="demo-tag">Gradient</span>
+                        <span class="demo-tag gold">Curriculum</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="21-level-gradient-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('21-level-gradient-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 22: Comparison Cards -->
+            <div class="demo-card">
+                <iframe src="22-comparison-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">22</span>
+                    <h3 class="demo-title">Comparison Cards</h3>
+                    <p class="demo-desc">Program comparison with feature checklist and highlighted option.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Comparison</span>
+                        <span class="demo-tag">Features</span>
+                        <span class="demo-tag gold">Decision</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="22-comparison-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('22-comparison-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 23: Achievement Cards -->
+            <div class="demo-card">
+                <iframe src="23-achievement-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">23</span>
+                    <h3 class="demo-title">Achievement Cards</h3>
+                    <p class="demo-desc">Gamification badges with progress tracking and milestones.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Badges</span>
+                        <span class="demo-tag">Gamification</span>
+                        <span class="demo-tag gold">Progress</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="23-achievement-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('23-achievement-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 24: Accordion Cards -->
+            <div class="demo-card">
+                <iframe src="24-accordion-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">24</span>
+                    <h3 class="demo-title">Accordion Cards</h3>
+                    <p class="demo-desc">Expandable cards with toggle interaction for detailed info.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Accordion</span>
+                        <span class="demo-tag">Toggle</span>
+                        <span class="demo-tag blue">Interactive</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="24-accordion-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('24-accordion-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 25: Progress Journey Cards -->
+            <div class="demo-card">
+                <iframe src="25-progress-journey-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">25</span>
+                    <h3 class="demo-title">Progress Journey Cards</h3>
+                    <p class="demo-desc">Learning journey visualization with progress tracking steps.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Journey</span>
+                        <span class="demo-tag">Progress</span>
+                        <span class="demo-tag blue">Tracking</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="25-progress-journey-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('25-progress-journey-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 26: Client Logo Cards -->
+            <div class="demo-card">
+                <iframe src="26-client-logo-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">26</span>
+                    <h3 class="demo-title">Client Logo Cards</h3>
+                    <p class="demo-desc">Corporate client logos grid with industry categories.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Clients</span>
+                        <span class="demo-tag">Logo Grid</span>
+                        <span class="demo-tag blue">Trust</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="26-client-logo-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('26-client-logo-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 27: FAQ Cards -->
+            <div class="demo-card">
+                <iframe src="27-faq-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">27</span>
+                    <h3 class="demo-title">FAQ Cards</h3>
+                    <p class="demo-desc">Frequently asked questions with expandable answers by category.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">FAQ</span>
+                        <span class="demo-tag">Expandable</span>
+                        <span class="demo-tag blue">Support</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="27-faq-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('27-faq-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 28: Video Embed Cards -->
+            <div class="demo-card">
+                <iframe src="28-video-embed-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">28</span>
+                    <h3 class="demo-title">Video Embed Cards</h3>
+                    <p class="demo-desc">Video thumbnail cards with play buttons and featured video.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Video</span>
+                        <span class="demo-tag">Thumbnails</span>
+                        <span class="demo-tag blue">Media</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="28-video-embed-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('28-video-embed-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 29: Notification Cards -->
+            <div class="demo-card">
+                <iframe src="29-notification-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">29</span>
+                    <h3 class="demo-title">Notification Cards</h3>
+                    <p class="demo-desc">Alert and notification banners with status color coding.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Alerts</span>
+                        <span class="demo-tag">Banners</span>
+                        <span class="demo-tag blue">Status</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="29-notification-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('29-notification-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 30: Tabbed Cards -->
+            <div class="demo-card">
+                <iframe src="30-tabbed-cards.html" loading="lazy"></iframe>
+                <div class="demo-info">
+                    <span class="demo-number">30</span>
+                    <h3 class="demo-title">Tabbed Cards</h3>
+                    <p class="demo-desc">Tab-based content switching with program details per tab.</p>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Tabs</span>
+                        <span class="demo-tag">Interactive</span>
+                        <span class="demo-tag blue">Navigation</span>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="30-tabbed-cards.html" target="_blank" class="demo-btn demo-btn-primary">View Full</a>
+                        <button class="demo-btn demo-btn-secondary" onclick="copyCode('30-tabbed-cards.html')">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>ePlan Hero + Card Design Demos - 30 Styles - Global Education Innovation</p>
+    </footer>
+
+    <script>
+        function copyCode(filename) {
+            fetch(filename)
+                .then(response => response.text())
+                .then(text => {
+                    navigator.clipboard.writeText(text);
+                    alert('Code copied to clipboard!');
+                })
+                .catch(err => {
+                    console.error('Failed to copy:', err);
+                    alert('Failed to copy code. Please try again.');
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 05: Bold Typography - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 5: Bold Typography Hero
+    - 대담한 타이포그래피
+    - 색상 대비와 레이어드 텍스트
+    - 강렬한 시각적 임팩트
+
+    적용 대상: 브랜드 강조, 마케팅 캠페인
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    background: #00635C;
+    overflow: hidden;
+">
+    <!-- Background Text -->
+    <div style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(10rem, 30vw, 25rem);
+        font-weight: 900;
+        color: rgba(255,255,255,0.05);
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+    ">ePlan</div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding: 4rem;
+        color: white;
+    ">
+        <div style="max-width: 900px;">
+            <!-- Logo -->
+            <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+                height: 60px;
+                margin-bottom: 2rem;
+            ">
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(3rem, 10vw, 7rem);
+                font-weight: 800;
+                line-height: 0.95;
+                margin-bottom: 2rem;
+            ">
+                <span style="display: block; color: #FFB74D;">GLOBAL</span>
+                <span style="display: block;">EDUCATION</span>
+                <span style="display: block; font-weight: 300; font-style: italic;">Innovation</span>
+            </h1>
+            <p style="
+                font-size: clamp(1rem, 2vw, 1.5rem);
+                opacity: 0.8;
+                max-width: 500px;
+                line-height: 1.6;
+                border-left: 4px solid #FFB74D;
+                padding-left: 1.5rem;
+            ">지식 파트너십을 통한<br>글로벌 성공 역량 강화</p>
+        </div>
+    </div>
+</section>
+</body>
+</html>

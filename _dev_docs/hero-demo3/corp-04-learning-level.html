@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate - Learning Level</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .level-row {
+            transition: all 0.3s ease;
+        }
+        .level-row:hover {
+            transform: translateX(10px);
+            background: rgba(0,99,92,0.1) !important;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    CORPORATE - SECTION 04: Learning Level
+    - 기업 교육 레벨 체계
+    - 레벨별 목표 및 내용
+    - 테이블/리스트 형태
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 4rem 2rem;
+">
+    <!-- Section Header -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <span style="
+            display: inline-block;
+            background: linear-gradient(135deg, #00635C, #63A19B);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        ">LEVEL SYSTEM</span>
+        <h2 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin: 0 0 1rem;
+        ">기업 교육 <span style="color: #FFB74D;">레벨 체계</span></h2>
+        <p style="
+            font-size: 1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        ">직원들의 영어 실력에 맞춘 체계적인 레벨 시스템</p>
+    </div>
+
+    <!-- Level Table -->
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <!-- Table Header -->
+        <div style="
+            display: grid;
+            grid-template-columns: 100px 1fr 2fr 150px;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(0,99,92,0.3);
+            border-radius: 12px 12px 0 0;
+            font-weight: 600;
+            font-size: 0.9rem;
+        ">
+            <div>레벨</div>
+            <div>단계</div>
+            <div>학습 목표</div>
+            <div>권장 과정</div>
+        </div>
+
+        <!-- Level Rows -->
+        <div class="level-row" style="
+            display: grid;
+            grid-template-columns: 100px 1fr 2fr 150px;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: center;
+        ">
+            <div style="
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(135deg, #1a365d, #2c5282);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+            ">L1</div>
+            <div>
+                <div style="font-weight: 600;">Beginner</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">입문</div>
+            </div>
+            <div style="font-size: 0.9rem; opacity: 0.85;">기초 인사, 자기소개, 간단한 업무 요청</div>
+            <div><span style="font-size: 0.75rem; background: rgba(59,130,246,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">기초과정</span></div>
+        </div>
+
+        <div class="level-row" style="
+            display: grid;
+            grid-template-columns: 100px 1fr 2fr 150px;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: center;
+        ">
+            <div style="
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(135deg, #234e52, #2f855a);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+            ">L2</div>
+            <div>
+                <div style="font-weight: 600;">Elementary</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">기초</div>
+            </div>
+            <div style="font-size: 0.9rem; opacity: 0.85;">일상 업무 대화, 간단한 이메일 작성</div>
+            <div><span style="font-size: 0.75rem; background: rgba(59,130,246,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">기초과정</span></div>
+        </div>
+
+        <div class="level-row" style="
+            display: grid;
+            grid-template-columns: 100px 1fr 2fr 150px;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: center;
+        ">
+            <div style="
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(135deg, #285e61, #319795);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+            ">L3</div>
+            <div>
+                <div style="font-weight: 600;">Pre-Intermediate</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">초중급</div>
+            </div>
+            <div style="font-size: 0.9rem; opacity: 0.85;">업무 지시 이해, 회의 참여, 보고서 이해</div>
+            <div><span style="font-size: 0.75rem; background: rgba(0,99,92,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">실무과정</span></div>
+        </div>
+
+        <div class="level-row" style="
+            display: grid;
+            grid-template-columns: 100px 1fr 2fr 150px;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: center;
+        ">
+            <div style="
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(135deg, #00635C, #63A19B);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+            ">L4</div>
+            <div>
+                <div style="font-weight: 600;">Intermediate</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">중급</div>
+            </div>
+            <div style="font-size: 0.9rem; opacity: 0.85;">비즈니스 미팅 참여, 프레젠테이션 기초</div>
+            <div><span style="font-size: 0.75rem; background: rgba(0,99,92,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">실무과정</span></div>
+        </div>
+
+        <div class="level-row" style="
+            display: grid;
+            grid-template-columns: 100px 1fr 2fr 150px;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: center;
+        ">
+            <div style="
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(135deg, #744210, #d69e2e);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+            ">L5</div>
+            <div>
+                <div style="font-weight: 600;">Upper-Intermediate</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">중상급</div>
+            </div>
+            <div style="font-size: 0.9rem; opacity: 0.85;">협상, 고객 응대, 복잡한 비즈니스 커뮤니케이션</div>
+            <div><span style="font-size: 0.75rem; background: rgba(245,158,11,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">심화과정</span></div>
+        </div>
+
+        <div class="level-row" style="
+            display: grid;
+            grid-template-columns: 100px 1fr 2fr 150px;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: center;
+        ">
+            <div style="
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(135deg, #9c4221, #ed8936);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+            ">L6</div>
+            <div>
+                <div style="font-weight: 600;">Pre-Advanced</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">준고급</div>
+            </div>
+            <div style="font-size: 0.9rem; opacity: 0.85;">고급 프레젠테이션, 국제 회의 진행, 전략적 소통</div>
+            <div><span style="font-size: 0.75rem; background: rgba(245,158,11,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">심화과정</span></div>
+        </div>
+
+        <div class="level-row" style="
+            display: grid;
+            grid-template-columns: 100px 1fr 2fr 150px;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 0 0 12px 12px;
+            align-items: center;
+        ">
+            <div style="
+                width: 48px;
+                height: 48px;
+                background: linear-gradient(135deg, #1a202c, #4a5568);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            ">
+                <span style="font-family: 'Poppins', sans-serif; font-weight: 700; color: #FFB74D;">L7</span>
+            </div>
+            <div>
+                <div style="font-weight: 600;">Advanced</div>
+                <div style="font-size: 0.8rem; opacity: 0.7;">고급</div>
+            </div>
+            <div style="font-size: 0.9rem; opacity: 0.85;">원어민급 비즈니스 커뮤니케이션, 글로벌 리더십</div>
+            <div><span style="font-size: 0.75rem; background: linear-gradient(135deg, rgba(255,183,77,0.3), rgba(255,167,38,0.3)); padding: 0.25rem 0.5rem; border-radius: 4px;">임원과정</span></div>
+        </div>
+    </div>
+
+    <!-- Level Test CTA -->
+    <div style="
+        max-width: 600px;
+        margin: 3rem auto 0;
+        text-align: center;
+        background: rgba(255,255,255,0.1);
+        border-radius: 16px;
+        padding: 2rem;
+    ">
+        <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 0.75rem;">직원 레벨 테스트</h4>
+        <p style="font-size: 0.9rem; opacity: 0.8; margin: 0 0 1.5rem;">무료 레벨 테스트로 직원들의 현재 영어 실력을 파악하세요</p>
+        <button style="
+            background: #FFB74D;
+            color: #1a1a1a;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        ">레벨 테스트 신청</button>
+    </div>
+</section>
+</body>
+</html>

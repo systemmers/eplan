@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 03: Gradient Overlay - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 3: Gradient Overlay with Image
+    - 배경 이미지 + 그라데이션 오버레이
+    - 하단 정렬 텍스트 (신문 스타일)
+    - 시각적 임팩트 강조
+
+    적용 대상: 기업출강, 컨설팅, 고객 사례
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: flex-end;
+    background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920') center/cover no-repeat;
+">
+    <!-- Gradient Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(0, 99, 92, 0.95) 0%,
+            rgba(0, 99, 92, 0.7) 40%,
+            rgba(0, 99, 92, 0.3) 70%,
+            transparent 100%
+        );
+    "></div>
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding: 4rem;
+        color: white;
+    ">
+        <div style="max-width: 800px;">
+            <!-- Logo -->
+            <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+                height: 60px;
+                margin-bottom: 1.5rem;
+            ">
+            <p style="
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                margin-bottom: 1rem;
+                opacity: 0.8;
+            ">Since 2015</p>
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(2.5rem, 6vw, 4rem);
+                font-weight: 700;
+                line-height: 1.15;
+                margin-bottom: 1.5rem;
+                text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            ">Empowering Global Success<br>Through Education</h1>
+            <p style="
+                font-size: 1.25rem;
+                opacity: 0.9;
+                max-width: 600px;
+                line-height: 1.7;
+            ">기업 맞춤형 어학 교육으로 글로벌 인재를 양성합니다.</p>
+        </div>
+    </div>
+</section>
+</body>
+</html>

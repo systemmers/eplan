@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 17: Gradient Border - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 17: Gradient Border Hero
+    - 그라데이션 보더 프레임
+    - 고급스럽고 세련된 느낌
+    - 콘텐츠 프레이밍 효과
+
+    적용 대상: 프리미엄 서비스, VIP 페이지
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a2e;
+    padding: 3rem;
+">
+    <!-- Gradient Border Frame -->
+    <div style="
+        position: relative;
+        padding: 4px;
+        background: linear-gradient(135deg, #00635C, #63A19B, #FFB74D, #00635C);
+        background-size: 300% 300%;
+        animation: borderGradient 8s ease infinite;
+    ">
+        <style>
+            @keyframes borderGradient {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+        </style>
+        <!-- Inner Content -->
+        <div style="
+            background: #1a1a2e;
+            padding: 5rem 4rem;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+        ">
+            <!-- Logo -->
+            <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+                height: 60px;
+                margin-bottom: 2rem;
+            ">
+            <div style="
+                display: inline-flex;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: 2rem;
+            ">
+                <span style="width: 30px; height: 1px; background: #FFB74D;"></span>
+                <span style="
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.3em;
+                    color: #FFB74D;
+                ">ePlan Education</span>
+                <span style="width: 30px; height: 1px; background: #FFB74D;"></span>
+            </div>
+
+            <h1 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                font-weight: 700;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            ">글로벌 교육의 혁신,<br><span style="color: #63A19B;">ePlan</span></h1>
+
+            <p style="
+                font-size: clamp(1rem, 2vw, 1.25rem);
+                color: #90A4AE;
+                margin-bottom: 1rem;
+                line-height: 1.8;
+            ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+
+            <p style="
+                font-size: 0.95rem;
+                color: #607D8B;
+                margin-bottom: 2.5rem;
+            ">Empowering Global Success Through Knowledge Partnership</p>
+
+            <div style="
+                border-top: 1px solid rgba(255,255,255,0.1);
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding: 2rem 0;
+                margin: 2rem 0;
+            ">
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: clamp(1.75rem, 4vw, 3rem);
+                    font-style: italic;
+                    font-weight: 600;
+                    margin: 0;
+                    background: linear-gradient(90deg, #00635C, #FFB74D);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                ">Practice Makes Perfect!</p>
+            </div>
+
+            <p style="
+                font-size: 1.125rem;
+                color: #90A4AE;
+                margin-bottom: 2.5rem;
+            ">Your success is just around the corner.</p>
+
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button style="
+                    background: linear-gradient(135deg, #00635C, #63A19B);
+                    color: white;
+                    padding: 1rem 2.5rem;
+                    border: none;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                ">무료 상담</button>
+                <button style="
+                    background: transparent;
+                    color: #63A19B;
+                    padding: 1rem 2.5rem;
+                    border: 1px solid #63A19B;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                ">자세히 보기</button>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

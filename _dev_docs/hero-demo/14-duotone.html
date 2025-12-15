@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 14: Duotone - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 14: Duotone Hero
+    - 듀오톤 (2색 조합) 효과
+    - 대비가 강한 두 색상
+    - 세련되고 현대적인 느낌
+
+    적용 대상: 크리에이티브 서비스, 브랜딩
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #00635C 50%, #FFB74D 50%);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+">
+    <!-- Overlay for readability -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+    ">
+        <!-- Logo -->
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 1.5rem;
+        ">
+        <p style="
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        ">Since 2015</p>
+
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: 0.95;
+            margin-bottom: 2rem;
+        ">
+            <span style="display: block;">글로벌</span>
+            <span style="display: block; color: #FFB74D;">교육의</span>
+            <span style="display: block;">혁신</span>
+        </h1>
+
+        <div style="
+            width: 100px;
+            height: 4px;
+            background: white;
+            margin: 2rem auto;
+        "></div>
+
+        <p style="
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        ">지식 파트너십을 통한<br>글로벌 성공 역량 강화</p>
+
+        <p style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-style: italic;
+            font-weight: 600;
+            margin: 2rem 0;
+        ">Practice Makes Perfect!</p>
+
+        <p style="
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+        ">Your success is just around the corner.</p>
+
+        <div style="
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: white;
+            color: #00635C;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+        ">
+            <span>ePlan</span>
+            <span style="font-weight: 400;">과 함께 시작하기</span>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 29: Video Dynamic Text - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-1 { animation: fadeInUp 0.8s ease forwards; animation-delay: 0.2s; opacity: 0; }
+        .animate-2 { animation: fadeInUp 0.8s ease forwards; animation-delay: 0.4s; opacity: 0; }
+        .animate-3 { animation: fadeInUp 0.8s ease forwards; animation-delay: 0.6s; opacity: 0; }
+        .animate-4 { animation: fadeInUp 0.8s ease forwards; animation-delay: 0.8s; opacity: 0; }
+        .animate-5 { animation: fadeInUp 0.8s ease forwards; animation-delay: 1s; opacity: 0; }
+        .pulse { animation: pulse 3s ease-in-out infinite; }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 29: Video Dynamic Text
+    - 비디오 백그라운드 + 애니메이션 텍스트
+    - 순차적 등장 효과
+    - 동적이고 현대적인 느낌
+
+    적용 대상: 이벤트, 프로모션, 런칭
+    비디오: ../../app/static/videos/main.mp4
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        object-fit: cover;
+    ">
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 50, 46, 0.7);
+        z-index: -1;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        padding: 2rem;
+    ">
+        <!-- Logo -->
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" class="animate-1" style="
+            height: 60px;
+            margin-bottom: 2rem;
+        ">
+
+        <p class="animate-2" style="
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #FFB74D;
+            margin-bottom: 1.5rem;
+        ">Global Education Innovation</p>
+
+        <h1 class="animate-3" style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        ">
+            <span style="display: block;">글로벌 교육의</span>
+            <span style="display: block; color: #FFB74D;">혁신</span>
+        </h1>
+
+        <p class="animate-4" style="
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+
+        <div class="animate-5">
+            <p class="pulse" style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(1.5rem, 4vw, 3rem);
+                font-style: italic;
+                font-weight: 600;
+                margin-bottom: 1rem;
+            ">Practice Makes Perfect!</p>
+
+            <p style="
+                font-size: 1rem;
+                opacity: 0.7;
+            ">Your success is just around the corner.</p>
+        </div>
+
+        <button class="animate-5" style="
+            background: #FFB74D;
+            color: #00635C;
+            padding: 1.25rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 2rem;
+        ">지금 시작하기</button>
+    </div>
+</section>
+</body>
+</html>

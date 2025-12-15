@@ -59,3 +59,8 @@ styleguide/*.html
 styleguide/**/*.html
 !styleguide/README.md
 
+
+# Backup files
+*.backup
+*.old
+*.bak

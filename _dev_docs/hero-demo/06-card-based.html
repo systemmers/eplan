@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 06: Card-based Hero - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 6: Card-based Hero
+    - 카드 기반 레이아웃
+    - 서비스 하이라이트 통합
+    - 정보 전달력 강조
+
+    적용 대상: 메인 페이지, 서비스 개요
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(180deg, #00635C 0%, #004d47 100%);
+    padding: 4rem 2rem;
+">
+    <!-- Header -->
+    <div style="text-align: center; color: white; margin-bottom: 4rem;">
+        <!-- Logo -->
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 1.5rem;
+        ">
+        <p style="
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            color: #FFB74D;
+        ">ePlan Education Platform</p>
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        ">Your Path to <span style="color: #FFB74D;">Global Success</span></h1>
+        <p style="
+            font-size: 1.125rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+        ">전문적인 어학 교육으로 글로벌 역량을 키우세요</p>
+    </div>
+
+    <!-- Service Cards -->
+    <div style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    ">
+        <!-- Card 1 -->
+        <div style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+        ">
+            <div style="
+                width: 50px;
+                height: 50px;
+                background: #FFB74D;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+                font-size: 1.5rem;
+            ">T</div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">Phone English</h3>
+            <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.6;">1:1 맞춤형 전화영어로 실시간 피드백을 받으세요</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+        ">
+            <div style="
+                width: 50px;
+                height: 50px;
+                background: #FFB74D;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+                font-size: 1.5rem;
+            ">C</div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">Corporate</h3>
+            <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.6;">기업 맞춤형 출강 프로그램으로 조직 역량을 강화하세요</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+        ">
+            <div style="
+                width: 50px;
+                height: 50px;
+                background: #FFB74D;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+                font-size: 1.5rem;
+            ">W</div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">Writing</h3>
+            <p style="font-size: 0.95rem; opacity: 0.8; line-height: 1.6;">전문가의 Writing 첨삭으로 문서 작성 능력을 향상시키세요</p>
+        </div>
+    </div>
+</section>
+</body>
+</html>

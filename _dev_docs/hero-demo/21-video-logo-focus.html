@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 21: Video Logo Focus - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 21: Video Logo Focus
+    - 비디오 백그라운드 + 대형 로고 중심
+    - 미니멀 텍스트
+    - 브랜드 아이덴티티 강조
+
+    적용 대상: 브랜드 페이지, 메인 랜딩
+    비디오: ../../app/static/videos/main.mp4
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        object-fit: cover;
+    ">
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Dark Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: -1;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        padding: 2rem;
+    ">
+        <!-- Large Logo -->
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: clamp(100px, 15vw, 150px);
+            margin-bottom: 3rem;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        ">
+
+        <p style="
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        ">Global Education Innovation Since 2015</p>
+
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+        ">지식 파트너십을 통한<br>글로벌 성공 역량 강화</h1>
+
+        <div style="
+            width: 60px;
+            height: 3px;
+            background: #FFB74D;
+            margin: 0 auto 2rem;
+        "></div>
+
+        <p style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-style: italic;
+            font-weight: 700;
+            color: #FFB74D;
+            text-shadow: 0 4px 20px rgba(255, 183, 77, 0.3);
+        ">Practice Makes Perfect!</p>
+    </div>
+</section>
+</body>
+</html>

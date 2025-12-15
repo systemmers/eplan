@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 12: Layered Gradient - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 12: Layered Gradient Hero
+    - 다중 레이어 그라데이션
+    - 깊이감 있는 배경
+    - 풍부한 색감
+
+    적용 대상: 브랜드 페이지, 메인 페이지
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(135deg, rgba(0, 99, 92, 0.9) 0%, transparent 50%),
+        linear-gradient(225deg, rgba(255, 183, 77, 0.4) 0%, transparent 50%),
+        linear-gradient(315deg, rgba(99, 161, 155, 0.6) 0%, transparent 50%),
+        linear-gradient(45deg, rgba(0, 77, 71, 1) 0%, rgba(0, 99, 92, 1) 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+">
+    <!-- Decorative Elements -->
+    <div style="
+        position: absolute;
+        top: 15%;
+        left: 10%;
+        width: 150px;
+        height: 150px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+    "></div>
+    <div style="
+        position: absolute;
+        bottom: 20%;
+        right: 15%;
+        width: 100px;
+        height: 100px;
+        border: 2px solid rgba(255, 183, 77, 0.2);
+        border-radius: 50%;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+    ">
+        <!-- Logo -->
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 70px;
+            margin-bottom: 2rem;
+        ">
+        <div style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        ">
+            <span style="width: 50px; height: 1px; background: #FFB74D;"></span>
+            <span style="
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                color: #FFB74D;
+            ">ePlan Education</span>
+            <span style="width: 50px; height: 1px; background: #FFB74D;"></span>
+        </div>
+
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        ">글로벌 교육의 혁신,<br>ePlan</h1>
+
+        <p style="
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+
+        <p style="
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        ">Empowering Global Success Through Knowledge Partnership</p>
+
+        <div style="
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        ">
+            <p style="
+                font-family: 'Poppins', sans-serif;
+                font-size: clamp(2rem, 5vw, 3.5rem);
+                font-style: italic;
+                font-weight: 700;
+                margin: 0;
+            ">Practice Makes Perfect!</p>
+        </div>
+
+        <p style="
+            font-size: 1.25rem;
+            opacity: 0.85;
+        ">Your success is just around the corner.</p>
+
+        <div style="margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center;">
+            <button style="
+                background: #FFB74D;
+                color: #00635C;
+                padding: 1rem 2.5rem;
+                border: none;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 700;
+                cursor: pointer;
+            ">무료 상담</button>
+            <button style="
+                background: transparent;
+                color: white;
+                padding: 1rem 2.5rem;
+                border: 2px solid rgba(255,255,255,0.5);
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+            ">프로그램 보기</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

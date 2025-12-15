@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate - Course Materials</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .material-card {
+            transition: all 0.3s ease;
+        }
+        .material-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    CORPORATE - SECTION 03: Course Materials
+    - 기업 교재 및 학습자료 소개
+    - 자료 유형별 카드
+    - 다운로드/미리보기 기능
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: #f8f9fa;
+    padding: 4rem 2rem;
+">
+    <!-- Section Header -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <span style="
+            display: inline-block;
+            background: #00635C;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        ">LEARNING MATERIALS</span>
+        <h2 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 1rem;
+        ">기업 교육 <span style="color: #00635C;">학습 자료</span></h2>
+        <p style="
+            font-size: 1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        ">실무에 바로 적용 가능한 비즈니스 영어 학습 자료</p>
+    </div>
+
+    <!-- Materials Grid -->
+    <div style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    ">
+        <!-- Business English Textbook -->
+        <div class="material-card" style="
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                height: 180px;
+                background: linear-gradient(135deg, #00635C 0%, #63A19B 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            ">
+                <div style="
+                    width: 100px;
+                    height: 140px;
+                    background: white;
+                    border-radius: 8px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00635C" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    <span style="font-size: 0.7rem; color: #00635C; font-weight: 600; margin-top: 0.5rem;">TEXTBOOK</span>
+                </div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                    <span style="font-size: 0.75rem; background: #E8F5F4; color: #00635C; padding: 0.25rem 0.5rem; border-radius: 4px;">교재</span>
+                    <span style="font-size: 0.75rem; background: #FEF3E2; color: #d97706; padding: 0.25rem 0.5rem; border-radius: 4px;">인기</span>
+                </div>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.125rem; font-weight: 700; color: #1a1a1a; margin: 0 0 0.5rem;">Business English Essential</h3>
+                <p style="font-size: 0.85rem; color: #666; line-height: 1.6; margin: 0 0 1rem;">비즈니스 상황별 필수 표현과 실무 어휘를 담은 기업 전용 교재</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.8rem; color: #999;">PDF 120페이지</span>
+                    <button style="
+                        background: #00635C;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        border-radius: 8px;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                    ">미리보기</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audio Materials -->
+        <div class="material-card" style="
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                height: 180px;
+                background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            ">
+                <div style="
+                    width: 100px;
+                    height: 100px;
+                    background: white;
+                    border-radius: 50%;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                </div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                    <span style="font-size: 0.75rem; background: #EBF5FF; color: #3b82f6; padding: 0.25rem 0.5rem; border-radius: 4px;">오디오</span>
+                </div>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.125rem; font-weight: 700; color: #1a1a1a; margin: 0 0 0.5rem;">Listening Practice</h3>
+                <p style="font-size: 0.85rem; color: #666; line-height: 1.6; margin: 0 0 1rem;">비즈니스 미팅, 전화, 프레젠테이션 청취 연습 자료</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.8rem; color: #999;">MP3 50트랙</span>
+                    <button style="
+                        background: #3b82f6;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        border-radius: 8px;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                    ">재생</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Lessons -->
+        <div class="material-card" style="
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                height: 180px;
+                background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            ">
+                <div style="
+                    width: 140px;
+                    height: 100px;
+                    background: #1a1a1a;
+                    border-radius: 8px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                ">
+                    <div style="
+                        width: 50px;
+                        height: 50px;
+                        background: rgba(255,255,255,0.2);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                    <span style="font-size: 0.75rem; background: #F3E8FF; color: #8b5cf6; padding: 0.25rem 0.5rem; border-radius: 4px;">비디오</span>
+                    <span style="font-size: 0.75rem; background: #FCE7F3; color: #ec4899; padding: 0.25rem 0.5rem; border-radius: 4px;">NEW</span>
+                </div>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.125rem; font-weight: 700; color: #1a1a1a; margin: 0 0 0.5rem;">Video Lessons</h3>
+                <p style="font-size: 0.85rem; color: #666; line-height: 1.6; margin: 0 0 1rem;">실제 비즈니스 상황을 재현한 영상 교육 콘텐츠</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.8rem; color: #999;">30개 강의</span>
+                    <button style="
+                        background: #8b5cf6;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        border-radius: 8px;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                    ">시청</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workbook -->
+        <div class="material-card" style="
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+            <div style="
+                height: 180px;
+                background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            ">
+                <div style="
+                    width: 100px;
+                    height: 140px;
+                    background: white;
+                    border-radius: 8px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                ">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                    <span style="font-size: 0.7rem; color: #f59e0b; font-weight: 600; margin-top: 0.5rem;">WORKBOOK</span>
+                </div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                    <span style="font-size: 0.75rem; background: #FEF3E2; color: #d97706; padding: 0.25rem 0.5rem; border-radius: 4px;">워크북</span>
+                </div>
+                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.125rem; font-weight: 700; color: #1a1a1a; margin: 0 0 0.5rem;">Practice Workbook</h3>
+                <p style="font-size: 0.85rem; color: #666; line-height: 1.6; margin: 0 0 1rem;">수업 내용 복습 및 자기 학습을 위한 연습 문제집</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.8rem; color: #999;">PDF 80페이지</span>
+                    <button style="
+                        background: #f59e0b;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        border-radius: 8px;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                    ">다운로드</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 25: Video Minimal Elegant - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 25: Video Minimal Elegant
+    - 비디오 백그라운드 + 미니멀 디자인
+    - 세리프 폰트 믹스 (Playfair Display)
+    - 우아하고 고급스러운 느낌
+
+    적용 대상: 프리미엄 서비스, VIP 페이지
+    비디오: ../../app/static/videos/main.mp4
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        object-fit: cover;
+        filter: brightness(0.7);
+    ">
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Subtle Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: -1;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        padding: 2rem;
+    ">
+        <!-- Logo -->
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 50px;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        ">
+
+        <p style="
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        ">Since 2015</p>
+
+        <h1 style="
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        ">글로벌 교육의<br><em style="font-style: italic;">혁신</em></h1>
+
+        <div style="
+            width: 1px;
+            height: 60px;
+            background: rgba(255,255,255,0.5);
+            margin: 2rem auto;
+        "></div>
+
+        <p style="
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+
+        <p style="
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-style: italic;
+            color: #FFB74D;
+            margin-top: 2rem;
+        ">Practice Makes Perfect</p>
+    </div>
+</section>
+</body>
+</html>

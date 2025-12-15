@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate - Service Cards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: scale(1.02);
+            background: rgba(255,255,255,0.15) !important;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    CORPORATE - SECTION 02: Service Cards
+    - 기업 서비스 특징 카드
+    - 아이콘 중심 디자인
+    - 서비스 설명 및 장점
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #00635C 0%, #004d47 100%);
+    color: white;
+    padding: 4rem 2rem;
+">
+    <!-- Section Header -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <span style="
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        ">WHY EPLAN CORPORATE</span>
+        <h2 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin: 0 0 1rem;
+        ">기업교육 <span style="color: #FFB74D;">서비스</span> 특징</h2>
+        <p style="
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        ">ePlan만의 차별화된 기업 맞춤 서비스</p>
+    </div>
+
+    <!-- Service Cards Grid -->
+    <div style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    ">
+        <!-- Service 1: Customized Curriculum -->
+        <div class="service-card" style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        ">
+            <div style="
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, #FFB74D, #FFA726);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            ">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+            </div>
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 0.75rem;">맞춤형 커리큘럼</h3>
+            <p style="font-size: 0.9rem; opacity: 0.85; line-height: 1.7; margin: 0;">기업의 업종, 직무, 목표에 맞춘 100% 맞춤형 교육 프로그램을 설계합니다.</p>
+        </div>
+
+        <!-- Service 2: Professional Instructors -->
+        <div class="service-card" style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        ">
+            <div style="
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, #3b82f6, #2563eb);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            ">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 0.75rem;">전문 비즈니스 강사</h3>
+            <p style="font-size: 0.9rem; opacity: 0.85; line-height: 1.7; margin: 0;">비즈니스 영어 전문 원어민 강사가 실무에 바로 적용할 수 있는 영어를 가르칩니다.</p>
+        </div>
+
+        <!-- Service 3: LMS Support -->
+        <div class="service-card" style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        ">
+            <div style="
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            ">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </div>
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 0.75rem;">LMS 학습관리</h3>
+            <p style="font-size: 0.9rem; opacity: 0.85; line-height: 1.7; margin: 0;">전용 학습관리시스템으로 출결, 진도, 성과를 실시간으로 모니터링합니다.</p>
+        </div>
+
+        <!-- Service 4: Progress Report -->
+        <div class="service-card" style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        ">
+            <div style="
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, #10b981, #059669);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            ">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+            </div>
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 0.75rem;">월간 리포트</h3>
+            <p style="font-size: 0.9rem; opacity: 0.85; line-height: 1.7; margin: 0;">매월 상세한 학습 리포트를 HR 담당자에게 제공하여 투명한 교육 성과를 공유합니다.</p>
+        </div>
+
+        <!-- Service 5: Flexible Schedule -->
+        <div class="service-card" style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        ">
+            <div style="
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, #f59e0b, #d97706);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            ">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+            </div>
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 0.75rem;">유연한 스케줄</h3>
+            <p style="font-size: 0.9rem; opacity: 0.85; line-height: 1.7; margin: 0;">출근 전, 점심, 퇴근 후 등 직원들의 일정에 맞춘 유연한 수업 시간을 운영합니다.</p>
+        </div>
+
+        <!-- Service 6: Dedicated Manager -->
+        <div class="service-card" style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+        ">
+            <div style="
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, #ec4899, #db2777);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            ">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                </svg>
+            </div>
+            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 0.75rem;">전담 매니저</h3>
+            <p style="font-size: 0.9rem; opacity: 0.85; line-height: 1.7; margin: 0;">기업별 전담 매니저가 배정되어 교육 운영 전반을 체계적으로 관리합니다.</p>
+        </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div style="text-align: center; margin-top: 3rem;">
+        <button style="
+            background: #FFB74D;
+            color: #1a1a1a;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+        ">기업 교육 상담 받기</button>
+    </div>
+</section>
+</body>
+</html>

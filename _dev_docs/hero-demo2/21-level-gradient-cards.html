@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Level Gradient Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .level-card {
+            transition: all 0.3s ease;
+        }
+        .level-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 21: Hero + Level Gradient Cards
+    - 9레벨 커리큘럼 시각화
+    - 각 레벨별 고유 그라데이션
+    - 진행 단계 표시
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%);
+    color: white;
+">
+    <!-- Hero Content -->
+    <div style="
+        text-align: center;
+        padding: 4rem 2rem 2rem;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 50px;
+            margin-bottom: 1.5rem;
+        ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        ">9 Level <span style="color: #FFB74D;">Curriculum</span> System</h1>
+        <p style="
+            font-size: 1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        ">Structured learning path from beginner to advanced</p>
+    </div>
+
+    <!-- Level Gradient Cards -->
+    <div style="
+        padding: 2rem 2rem 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    ">
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        ">
+            <!-- Level 1 -->
+            <div class="level-card" style="
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                border-radius: 16px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                "></div>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">BEGINNER</span>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 1rem 0 0.5rem;
+                ">Level 1</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Basic Conversation</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Greetings</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Self-intro</span>
+                </div>
+            </div>
+
+            <!-- Level 2 -->
+            <div class="level-card" style="
+                background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                border-radius: 16px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                "></div>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">BEGINNER</span>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 1rem 0 0.5rem;
+                ">Level 2</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Daily Expressions</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Shopping</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Directions</span>
+                </div>
+            </div>
+
+            <!-- Level 3 -->
+            <div class="level-card" style="
+                background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                border-radius: 16px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                "></div>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">ELEMENTARY</span>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 1rem 0 0.5rem;
+                ">Level 3</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Practical Situations</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Travel</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Restaurant</span>
+                </div>
+            </div>
+
+            <!-- Level 4 -->
+            <div class="level-card" style="
+                background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                border-radius: 16px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                "></div>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">INTERMEDIATE</span>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 1rem 0 0.5rem;
+                ">Level 4</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Opinion Expression</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Discussion</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Debate</span>
+                </div>
+            </div>
+
+            <!-- Level 5 -->
+            <div class="level-card" style="
+                background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+                border-radius: 16px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                "></div>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">INTERMEDIATE</span>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 1rem 0 0.5rem;
+                ">Level 5</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Business Basics</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Meetings</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Emails</span>
+                </div>
+            </div>
+
+            <!-- Level 6 -->
+            <div class="level-card" style="
+                background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+                border-radius: 16px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                "></div>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">UPPER-INT</span>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 1rem 0 0.5rem;
+                ">Level 6</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Professional Skills</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Presentation</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Negotiation</span>
+                </div>
+            </div>
+
+            <!-- Level 7 -->
+            <div class="level-card" style="
+                background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+                border-radius: 16px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                "></div>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">ADVANCED</span>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 1rem 0 0.5rem;
+                ">Level 7</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Complex Topics</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Analysis</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Critical</span>
+                </div>
+            </div>
+
+            <!-- Level 8 -->
+            <div class="level-card" style="
+                background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+                border-radius: 16px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                "></div>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">ADVANCED</span>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 1rem 0 0.5rem;
+                ">Level 8</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Expert Communication</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Leadership</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Strategy</span>
+                </div>
+            </div>
+
+            <!-- Level 9 -->
+            <div class="level-card" style="
+                background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%);
+                border-radius: 16px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            ">
+                <div style="
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                "></div>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">MASTERY</span>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 800;
+                    margin: 1rem 0 0.5rem;
+                ">Level 9</h3>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1rem;">Native Fluency</p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Executive</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.25rem 0.5rem; border-radius: 4px;">Global</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align: center; margin-top: 3rem;">
+            <button style="
+                background: #FFB74D;
+                color: #1a1a1a;
+                border: none;
+                padding: 1rem 2.5rem;
+                border-radius: 12px;
+                font-size: 1rem;
+                font-weight: 700;
+                cursor: pointer;
+            ">Find Your Level</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

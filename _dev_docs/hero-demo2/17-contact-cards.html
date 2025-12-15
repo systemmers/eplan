@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Contact Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 17: Hero + Contact Cards
+    - 연락처/문의 카드
+    - 다양한 연락 방법
+    - 접근성 강조
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #00635C 0%, #004d47 100%);
+    color: white;
+">
+    <!-- Hero Content -->
+    <div style="
+        text-align: center;
+        padding: 5rem 2rem 3rem;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 2rem;
+        ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        ">Get In <span style="color: #FFB74D;">Touch</span></h1>
+        <p style="
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        ">We're here to help you achieve your English learning goals</p>
+    </div>
+
+    <!-- Contact Cards -->
+    <div style="
+        padding: 2rem 2rem 5rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    ">
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        ">
+            <!-- Contact Card 1: Phone -->
+            <div style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem;
+                text-align: center;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            ">
+                <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: linear-gradient(135deg, #00635C, #63A19B);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    color: #263238;
+                    margin-bottom: 0.75rem;
+                ">Call Us</h3>
+                <p style="
+                    font-size: 0.9rem;
+                    color: #607D8B;
+                    margin-bottom: 1rem;
+                ">Mon-Fri, 9AM-6PM KST</p>
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    color: #00635C;
+                ">02-1234-5678</p>
+            </div>
+
+            <!-- Contact Card 2: Email -->
+            <div style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem;
+                text-align: center;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            ">
+                <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: linear-gradient(135deg, #FFB74D, #FFA726);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    color: #263238;
+                    margin-bottom: 0.75rem;
+                ">Email Us</h3>
+                <p style="
+                    font-size: 0.9rem;
+                    color: #607D8B;
+                    margin-bottom: 1rem;
+                ">Response within 24 hours</p>
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.125rem;
+                    font-weight: 700;
+                    color: #F57C00;
+                ">contact@eplan.kr</p>
+            </div>
+
+            <!-- Contact Card 3: Visit -->
+            <div style="
+                background: white;
+                border-radius: 20px;
+                padding: 2.5rem;
+                text-align: center;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            ">
+                <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: linear-gradient(135deg, #63A19B, #00635C);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    color: #263238;
+                    margin-bottom: 0.75rem;
+                ">Visit Us</h3>
+                <p style="
+                    font-size: 0.9rem;
+                    color: #607D8B;
+                    margin-bottom: 1rem;
+                ">Jongno-gu, Seoul</p>
+                <p style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: #00635C;
+                ">View on Map &rarr;</p>
+            </div>
+        </div>
+
+        <!-- Quick Form Card -->
+        <div style="
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+        ">
+            <h3 style="
+                font-family: 'Poppins', sans-serif;
+                font-size: 1.5rem;
+                font-weight: 600;
+                text-align: center;
+                margin-bottom: 2rem;
+            ">Request Free Consultation</h3>
+            <div style="
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            ">
+                <input type="text" placeholder="Your Name" style="
+                    padding: 1rem;
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 1rem;
+                ">
+                <input type="email" placeholder="Email Address" style="
+                    padding: 1rem;
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 1rem;
+                ">
+                <button style="
+                    background: #FFB74D;
+                    color: #1a1a1a;
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    cursor: pointer;
+                ">Get Started</button>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

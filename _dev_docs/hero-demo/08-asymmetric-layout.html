@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 08: Asymmetric Layout - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 8: Asymmetric Layout
+    - 비대칭 레이아웃 (2:1 비율)
+    - 독특한 시각적 균형
+    - 통계 데이터 강조
+
+    적용 대상: 회사소개, 신뢰도 강조, 실적 페이지
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background: #263238;
+">
+    <!-- Left: Large content area -->
+    <div style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 6rem;
+        color: white;
+    ">
+        <div style="
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        ">
+            <span style="
+                width: 40px;
+                height: 2px;
+                background: #FFB74D;
+            "></span>
+            <span style="
+                font-size: 0.875rem;
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                color: #FFB74D;
+            ">ePlan Education</span>
+        </div>
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        ">Beyond<br>Language<br><span style="color: #00635C;">Learning</span></h1>
+        <p style="
+            font-size: 1.25rem;
+            color: #90A4AE;
+            max-width: 500px;
+            line-height: 1.8;
+        ">단순한 어학 학습을 넘어, 글로벌 커뮤니케이션 역량을 키워드립니다.</p>
+    </div>
+
+    <!-- Right: Accent column -->
+    <div style="
+        background: #00635C;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 3rem;
+        color: white;
+    ">
+        <div style="margin-bottom: 3rem;">
+            <p style="
+                font-size: 4rem;
+                font-weight: 800;
+                font-family: 'Poppins', sans-serif;
+                margin-bottom: 0.5rem;
+            ">10+</p>
+            <p style="opacity: 0.8;">Years of Experience</p>
+        </div>
+        <div style="margin-bottom: 3rem;">
+            <p style="
+                font-size: 4rem;
+                font-weight: 800;
+                font-family: 'Poppins', sans-serif;
+                margin-bottom: 0.5rem;
+            ">500+</p>
+            <p style="opacity: 0.8;">Corporate Clients</p>
+        </div>
+        <div>
+            <p style="
+                font-size: 4rem;
+                font-weight: 800;
+                font-family: 'Poppins', sans-serif;
+                margin-bottom: 0.5rem;
+            ">98%</p>
+            <p style="opacity: 0.8;">Satisfaction Rate</p>
+        </div>
+    </div>
+</section>
+</body>
+</html>

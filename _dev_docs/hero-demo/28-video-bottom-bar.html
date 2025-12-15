@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Style 28: Video Bottom Bar - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 28: Video Bottom Bar
+    - 비디오 백그라운드 + 하단 정보 바
+    - 클라이언트 로고 표시
+    - 프로페셔널 느낌
+
+    적용 대상: B2B, 기업 서비스
+    비디오: ../../app/static/videos/main.mp4
+    로고: ../../app/static/images/eplan_logo_white.png
+-->
+<section style="
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: white;
+">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        z-index: -2;
+        object-fit: cover;
+    ">
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Gradient Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.3) 60%,
+            rgba(0, 99, 92, 0.95) 100%
+        );
+        z-index: -1;
+    "></div>
+
+    <!-- Main Content -->
+    <div style="
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 70px;
+            margin-bottom: 2rem;
+        ">
+
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        ">글로벌 교육의 혁신</h1>
+
+        <p style="
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        ">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+
+        <p style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-style: italic;
+            font-weight: 600;
+            color: #FFB74D;
+        ">Practice Makes Perfect!</p>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="
+        background: rgba(0, 99, 92, 0.95);
+        padding: 1.5rem 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+    ">
+        <div style="display: flex; align-items: center; gap: 2rem;">
+            <span style="
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                opacity: 0.7;
+            ">Trusted by</span>
+            <div style="display: flex; gap: 1.5rem; opacity: 0.8;">
+                <!-- Placeholder for client logos -->
+                <span style="
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                ">500+ 기업</span>
+                <span style="
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                ">10+ 년</span>
+                <span style="
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                ">98% 만족도</span>
+            </div>
+        </div>
+        <p style="
+            font-size: 0.875rem;
+            opacity: 0.9;
+        ">Your success is just around the corner.</p>
+    </div>
+</section>
+</body>
+</html>
