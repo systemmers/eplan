@@ -31,7 +31,28 @@
     --color-error: #F44336;
     --color-warning: #FF9800;
     --color-info: #2196F3;
-    
+
+    /* 레벨별 강조 칼라 (Level Accent Colors) */
+    /* Emerald (Beginner) */
+    --color-emerald: #10b981;
+    --color-emerald-light: #d1fae5;
+    --color-emerald-dark: #065f46;
+
+    /* Blue (Elementary) */
+    --color-blue: #3b82f6;
+    --color-blue-light: #dbeafe;
+    --color-blue-dark: #1e40af;
+
+    /* Purple (Intermediate) */
+    --color-purple: #8b5cf6;
+    --color-purple-light: #ede9fe;
+    --color-purple-dark: #5b21b6;
+
+    /* Amber (Advanced) */
+    --color-amber: #f59e0b;
+    --color-amber-light: #fef3c7;
+    --color-amber-dark: #92400e;
+
     /* ===== 간격 시스템 ===== */
     --spacing-xs: 0.25rem;    /* 4px */
     --spacing-sm: 0.5rem;     /* 8px */
@@ -57,7 +78,8 @@
     --font-size-5xl: 3rem;      /* 48px */
     
     --font-weight-normal: 400;
-    --font-weight-medium: 600;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
     --font-weight-bold: 700;
     
     --line-height-tight: 1.2;

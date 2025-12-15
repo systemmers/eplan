@@ -8,35 +8,11 @@
 
 /* ============================================
    Page Header Modifier
+   - Uses common .page-header--image for overlay, shadow, responsive styles
    ============================================ */
 .page-header--corporate {
     background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1000&fit=crop');
     background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 1000px;
-}
-
-/* Dark overlay for better text readability */
-.page-header--corporate::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 0;
-}
-
-.page-header--corporate h1,
-.page-header--corporate p {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-@media (max-width: 768px) {
-    .page-header--corporate {
-        background-attachment: scroll;
-        height: 300px;
-    }
 }
 
 /* ============================================
@@ -44,20 +20,10 @@
    ============================================ */
 .level-cards-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-}
-
-@media (max-width: 1024px) {
-    .level-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .level-cards-grid {
-        grid-template-columns: 1fr;
-    }
+    /* 최대 4열, 4개 이하는 한 줄 유지 */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+    max-width: 100%;
 }
 
 .level-card {
@@ -100,17 +66,17 @@
 }
 
 /* Level Theme Colors */
-.level-card--beginner { border-color: #10b981; }
-.level-card--beginner .level-card__badge { background: #d1fae5; color: #065f46; }
+.level-card--beginner { border-color: var(--color-emerald); }
+.level-card--beginner .level-card__badge { background: var(--color-emerald-light); color: var(--color-emerald-dark); }
 
-.level-card--elementary { border-color: #3b82f6; }
-.level-card--elementary .level-card__badge { background: #dbeafe; color: #1e40af; }
+.level-card--elementary { border-color: var(--color-blue); }
+.level-card--elementary .level-card__badge { background: var(--color-blue-light); color: var(--color-blue-dark); }
 
-.level-card--intermediate { border-color: #8b5cf6; }
-.level-card--intermediate .level-card__badge { background: #ede9fe; color: #5b21b6; }
+.level-card--intermediate { border-color: var(--color-purple); }
+.level-card--intermediate .level-card__badge { background: var(--color-purple-light); color: var(--color-purple-dark); }
 
-.level-card--advanced { border-color: #f59e0b; }
-.level-card--advanced .level-card__badge { background: #fef3c7; color: #92400e; }
+.level-card--advanced { border-color: var(--color-amber); }
+.level-card--advanced .level-card__badge { background: var(--color-amber-light); color: var(--color-amber-dark); }
 
 /* ============================================
    Goals Grid
@@ -239,17 +205,17 @@
 }
 
 /* Detail Card Variants */
-.detail-card--feature { border-left-color: #10b981; }
-.detail-card--feature .detail-card__label { color: #065f46; }
+.detail-card--feature { border-left-color: var(--color-emerald); }
+.detail-card--feature .detail-card__label { color: var(--color-emerald-dark); }
 
-.detail-card--target { border-left-color: #3b82f6; }
-.detail-card--target .detail-card__label { color: #1e40af; }
+.detail-card--target { border-left-color: var(--color-blue); }
+.detail-card--target .detail-card__label { color: var(--color-blue-dark); }
 
-.detail-card--textbook { border-left-color: #8b5cf6; }
-.detail-card--textbook .detail-card__label { color: #5b21b6; }
+.detail-card--textbook { border-left-color: var(--color-purple); }
+.detail-card--textbook .detail-card__label { color: var(--color-purple-dark); }
 
-.detail-card--course { border-left-color: #f59e0b; }
-.detail-card--course .detail-card__label { color: #92400e; }
+.detail-card--course { border-left-color: var(--color-amber); }
+.detail-card--course .detail-card__label { color: var(--color-amber-dark); }
 
 /* ============================================
    Section Title Variants

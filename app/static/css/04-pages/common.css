@@ -67,6 +67,35 @@ section {
     color: var(--color-white);
 }
 
+/* Page Header - Background Image Modifier (with overlay) */
+.page-header--image {
+    background-size: auto auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 1000px;
+}
+
+.page-header--image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+.page-header--image h1,
+.page-header--image p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .page-header--image {
+        background-attachment: scroll;
+        height: 300px;
+    }
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;
