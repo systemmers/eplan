@@ -173,61 +173,40 @@
 {% endmacro %}
 
 {# ============================================
-   9레벨 범례
+   9레벨 범례 - Level Colors Only
    ============================================ #}
 {% macro curriculum_legend_9level() %}
 <div class="curriculum-legend-9level">
-    <h4>레벨 범례</h4>
-    <div class="legend-grid-9level">
-        <div class="legend-item-9level">
-            <div class="legend-color-9level lv1"></div>
-            <span class="legend-label-9level">Lv.1</span>
+    <div class="curriculum-legend-9level__title">Level Guide</div>
+    <div class="curriculum-legend-9level__groups">
+        <div class="curriculum-legend-9level__group red">
+            <div class="curriculum-legend-9level__levels">
+                <div class="curriculum-legend-9level__level lv1">Lv.1</div>
+                <div class="curriculum-legend-9level__level lv2">Lv.2</div>
+            </div>
+            <div class="curriculum-legend-9level__group-label">Beginner</div>
         </div>
-        <div class="legend-item-9level">
-            <div class="legend-color-9level lv2"></div>
-            <span class="legend-label-9level">Lv.2</span>
+        <div class="curriculum-legend-9level__group yellow">
+            <div class="curriculum-legend-9level__levels">
+                <div class="curriculum-legend-9level__level lv3">Lv.3</div>
+                <div class="curriculum-legend-9level__level lv4">Lv.4</div>
+            </div>
+            <div class="curriculum-legend-9level__group-label">Pre-Intermediate</div>
         </div>
-        <div class="legend-item-9level">
-            <div class="legend-color-9level lv3"></div>
-            <span class="legend-label-9level">Lv.3</span>
+        <div class="curriculum-legend-9level__group green">
+            <div class="curriculum-legend-9level__levels">
+                <div class="curriculum-legend-9level__level lv5">Lv.5</div>
+                <div class="curriculum-legend-9level__level lv6">Lv.6</div>
+            </div>
+            <div class="curriculum-legend-9level__group-label">Intermediate</div>
         </div>
-        <div class="legend-item-9level">
-            <div class="legend-color-9level lv4"></div>
-            <span class="legend-label-9level">Lv.4</span>
-        </div>
-        <div class="legend-item-9level">
-            <div class="legend-color-9level lv5"></div>
-            <span class="legend-label-9level">Lv.5</span>
-        </div>
-        <div class="legend-item-9level">
-            <div class="legend-color-9level lv6"></div>
-            <span class="legend-label-9level">Lv.6</span>
-        </div>
-        <div class="legend-item-9level">
-            <div class="legend-color-9level lv7"></div>
-            <span class="legend-label-9level">Lv.7</span>
-        </div>
-        <div class="legend-item-9level">
-            <div class="legend-color-9level lv8"></div>
-            <span class="legend-label-9level">Lv.8</span>
-        </div>
-        <div class="legend-item-9level">
-            <div class="legend-color-9level lv9"></div>
-            <span class="legend-label-9level">Lv.9</span>
-        </div>
-    </div>
-    <div class="category-legend-9level">
-        <div class="category-legend-item-9level">
-            <span class="category-badge-9level cat-general">일반회화</span>
-        </div>
-        <div class="category-legend-item-9level">
-            <span class="category-badge-9level cat-business">비즈니스</span>
-        </div>
-        <div class="category-legend-item-9level">
-            <span class="category-badge-9level cat-topic">주제토론</span>
-        </div>
-        <div class="category-legend-item-9level">
-            <span class="category-badge-9level cat-exam">시험대비</span>
+        <div class="curriculum-legend-9level__group blue">
+            <div class="curriculum-legend-9level__levels">
+                <div class="curriculum-legend-9level__level lv7">Lv.7</div>
+                <div class="curriculum-legend-9level__level lv8">Lv.8</div>
+                <div class="curriculum-legend-9level__level lv9">Lv.9</div>
+            </div>
+            <div class="curriculum-legend-9level__group-label">Advanced</div>
         </div>
     </div>
 </div>
