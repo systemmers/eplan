@@ -304,11 +304,15 @@
 - 원어민과 자연스러운 대화 연습
 
 #### Textbooks (교재)
-| 레벨 | 교재명 |
-|------|--------|
-| Level 1-3 | Speak Now 1-2 |
-| Level 4-5 | Smart Choice 1-3 |
-| Level 6-7 | American English File 1-3 |
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| New Connection | Level 1-5 | New Connection 1-3, World English 3 |
+| Smart Choice | Level 1-5 | Smart Choice Starter ~ Smart Choice 3 |
+| Stretch | Level 1-5 | Stretch Starter ~ Stretch 3 |
+| 핵심패턴 | Level 4-6 | 영어회화 핵심패턴 233 중고급편 |
+| 패턴 900/비긴어게인 | Level 1-6 | 비긴어게인 VOL.1-2, PEP900 |
+| Exploring English | Level 1-5 | Exploring English 1-5 |
+| American English File | Level 4-9 | American English File 4-5 |
 
 ---
 
@@ -365,11 +369,15 @@
 | Writing | 비즈니스 이메일, 보고서 작성 |
 
 #### Textbooks (교재)
-| 레벨 | 교재명 |
-|------|--------|
-| Level 4-5 | Best Practice 1-3 |
-| Level 5-6 | Business Result (Elementary-Intermediate) |
-| Level 6-7 | Business Result (Upper-Intermediate-Advanced) |
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| Meeting skill | Level 4-6 | English for Meetings |
+| Negotiation skill | Level 4-6 | English for negotiation |
+| Presentation skill | Level 4-6 | English for Presentations |
+| Socializing skill | Level 4-6 | English for Socializing |
+| Telephoning skill | Level 3-5 | English for Telephoning |
+| 비즈니스 핵심패턴 | Level 3-4 | 비즈니스 영어회화&이메일 핵심패턴 233 |
+| Business Conversation | Level 3-9 | Business Partner A2/B2+, Profile 1-3, Business Venture 1-2, Business Result Upper-Intermediate |
 
 ---
 
@@ -430,11 +438,16 @@
 | 평가 | Monthly Evaluation, 진도 확인 |
 
 #### Textbooks (교재)
-| 레벨 | 교재명 |
-|------|--------|
-| Level 4-5 | Communication Strategy 1-2 |
-| Level 6-7 | Communication Strategy 3-4 |
-| Level 8-9 | TED Talks / CNN News 자료 |
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 뉴스미디어 | Level 4-9 | News Media |
+| 하버드비즈니스리뷰 MT Orange | Level 4-7 | HBO |
+| 하버드비즈니스리뷰 MT Orange 2 | Level 6-9 | HBO2 |
+| 하버드비즈니스리뷰 MT Daily | Level 4-7 | HBR |
+| 파워 오브 스토리텔링 | Level 5-9 | POS |
+| Jazz English | Level 4-6 | Jazz English 1-2 |
+| Hot Topic | Level 4-7 | Hot Topic 1-2 |
+| 토론영어 | Level 4-6 | 바로 통하는 실전 토론 영어 |
 
 ---
 
@@ -484,11 +497,13 @@
 - 시간 내 답변 구조화
 
 #### Textbooks (교재)
-| 테스트 | 교재명 |
-|--------|--------|
-| TOEIC Speaking | TOEIC Speaking 공식실전 |
-| OPIc | New OPIc SOS |
-| SPA | 스파르타 SPA |
+| 시험 | 레벨 범위 | 교재 목록 |
+|------|----------|----------|
+| 토익스피킹 | Level 3-8 | Hackers TOEIC SPEAKING Start/Lv6/Lv7,8, ETS 토익스피킹 기출문제집, 토익스피킹 벼락치기 7일완성, 토스핵심패턴233, 해커스토익스피킹 실전모의고사 |
+| 오픽 | Level 4-8 | OPIC의 신, OPIc All in One Package, OPIc 필수패턴, OPIc 초단기 완성 IH-AL, Hackers OPIc Advanced |
+| IELTS Speaking | Level 4-7 | 한 권으로 끝내는 IELTS MASTER, IELTS 18 General Training, Hackers IELTS SPEAKING |
+| 토플스피킹 | Level 4-7 | Siwonschool TOEFL Speaking, 해커스토플스피킹 |
+| SPA | Level 2-6 | 2주만에 정복 스파르타 SPA, SPA트레이너단기완성20일, SPA 초단기트레이닝, 시원스쿨 SPA, 바로 통하는 SPA |
 
 ---
 
@@ -801,14 +816,148 @@
 
 ---
 
-## 8. 변경 이력
+## 8. 타 언어 교재 목록 (curri.xlsx 기준)
+
+### 8.1 일본어 교재
+
+#### 일반회화
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| New 다이나믹 일본어 | Level 1-6 | New 다이나믹 일본어 1-4 |
+| 다락원 일본어 마스터 | Level 1-6 | 다락원 일본어 마스터 1-5 |
+| 스꾸스꾸 일본어 | Level 1-6 | 스꾸스꾸 일본어 1-4 |
+| 여행일본어 | Level 2-5 | 맛있는 여행 일본어 |
+| 프리토킹일본어회화 | Level 3-8 | 프리토킹일본어회화 완전정복 |
+
+#### 비즈니스
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 생생체험 현지 비즈니스 일본어 | Level 4-9 | 생생체험 현지 비즈니스 일본어 |
+| 두발짝 비즈니스 일본어 | Level 4-9 | 두발짝 비즈니스 일본어 |
+| 비즈니스회화패턴 | Level 4-7 | 비즈니스 일본어회화&이메일 핵심패턴 233 |
+
+#### 주제토론
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 뉴스미디어 | Level 4-9 | 뉴스미디어 |
+| 즐거운 프리토킹 일본어 | Level 3-9 | 즐거운프리토킹일본어 40초중급, 60중상급 |
+| 수다프리토킹 | Level 5-9 | 일본어 수다프리토킹360 |
+| theme study 일본어 | Level 4-6 | theme study 일본어 중급 점프 Reading |
+| 다락원일본어독해 | Level 3-7 | 다락원 일본어 독해 초급/중급 |
+
+#### 시험대비
+| 시험 | 레벨 범위 | 교재 목록 |
+|------|----------|----------|
+| SJPT | Level 5-9 | SJPT중고급 L.4-8, SJPT실전모의고사, SJPT 한권으로 합격하기, SJPT 기출문제집 |
+| JPT | Level 3-9 | New JPT 한권으로 끝내기 450/800 |
+| JLPT | Level 2-7 | JLPT 한권으로 끝내기 N4/N3/N2 |
+
+---
+
+### 8.2 중국어 교재
+
+#### 일반회화
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 맛있는중국어 | Level 1-7 | 맛있는중국어 1-4 |
+| 중국어마스터 | Level 1-7 | 중국어마스터 1-6 |
+| 끝장중국어 | Level 3-5 | 끝장중국어 기초끝장내기, 생활회화 끝장내기 |
+| 여행중국어 | Level 2-5 | 해커스 여행 중국어 10분의 기적 |
+
+#### 비즈니스
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| OK 비즈니스 중국어 | Level 4-9 | OK 비즈니스 중국어 |
+| 중국어비지니스 실무중고급 | Level 4-9 | 중국어비지니스 실무중고급 |
+| 출장중국어 | Level 4-9 | 나의 겁없는 중국출장 중국어 |
+
+#### 주제토론
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 신문화중국어 | Level 4-7 | 신문화중국어 |
+| 뉴스미디어 | Level 4-9 | 뉴스미디어 |
+| 중국뉴스중국어 | Level 4-9 | 나의 겁없는 중국뉴스 중국어 |
+| 신공략중국어프리토킹 | Level 4-9 | 신공략중국어프리토킹 |
+
+#### 시험대비
+| 시험 | 레벨 범위 | 교재 목록 |
+|------|----------|----------|
+| OPIc 중국어 | Level 4-6 | OPIc 중국어의 정석 IH공략 |
+| 신HSK | Level 2-7 | 신HSK모의고사 2급/4급/5급, 중국어뱅크 신 HSK 6급 실전모의고사 |
+| TSC | Level 1-9 | 다락원 TSC 마스터, 통쾌하게 통과하기 TSC START/BASIC/Booster/Higher/Master편, 한달에끝내는TSC첫걸음4급공략 |
+| BCT스피킹 | Level 4-8 | 초단기신BCT Speaking 공략 |
+
+---
+
+### 8.3 기타 언어 교재
+
+#### 독일어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-7 | 내게는 특별한 독일어를 부탁해 첫걸음, 독일어 중고급의 모든 것 |
+
+#### 스페인어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-7 | 내게는 특별한 스페인어를 부탁해 첫걸음, NUEVO ESPANOL 1-4 |
+| 시험대비 | Level 3-9 | FLEX UP 스페인어, Entorno laboral/Empresarial, Preparacion al DELE |
+
+#### 프랑스어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-9 | 내게는 특별한 프랑스어를 부탁해 첫걸음, festival 1-3 |
+
+#### 베트남어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-6 | 가장 쉬운 독학 베트남어 첫걸음, 패턴의 법칙 베트남어 첫걸음, The 바른 베트남어 Step 2, 베트남어 중고급의 모든것 |
+
+#### 러시아어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-6 | 내게는 특별한 러시아어를 부탁해 첫걸음, 중급 러시아어 |
+
+#### 아랍어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-4 | The 바른 아랍어 Step 1-2 |
+
+#### 태국어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-9 | The 바른 태국어 첫걸음, 태국어 표준교재 A0~B2 |
+
+#### 인도네시아어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-4 | The 바른 인도네시아어 Step 1-2 |
+
+#### 체코어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-3 | The 바른 체코어, Say it in Czech, Cestina-pro-cizince |
+
+#### 폴란드어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-2 | The 바른 폴란드어 Step1 |
+
+#### 이탈리아어
+| 교재 시리즈 | 레벨 범위 | 상세 교재 |
+|------------|----------|----------|
+| 일반회화 | Level 1-3 | 이탈리아어 첫걸음의 모든 것 |
+
+---
+
+## 9. 변경 이력
 
 | 버전 | 날짜 | 변경 내용 |
 |------|------|----------|
 | 1.0 | 2025-12-08 | 최초 작성 |
 | 1.1 | 2025-12-08 | 검증 결과 반영: 레벨 범위 수정, 누락 콘텐츠 추가 |
+| 1.2 | 2025-12-15 | curri.xlsx 기준 교재 목록 전체 교체 및 타 언어 교재 추가 |
 
-**검증 후 수정 사항**:
+**v1.1 검증 후 수정 사항**:
 - 일반회화: Level 1-9 → Level 1-7 수정 (원본 문서 기준)
 - 사내어학과정: Advanced Level 8-9 → Level 7 수정
 - 공인테스트대비: 학습 목표 2개 추가 (3개월 레벨업, 실무 영어 병행)
@@ -816,7 +965,14 @@
 - 토론과정: 학습진행 프로세스 추가 (주3회/주5회 구성)
 - 집중과정: Vocational Skill 직무별 세부 분야 추가
 
+**v1.2 curri.xlsx 기준 교재 목록 반영**:
+- 일반회화 Textbooks: curri.xlsx 기준 7개 교재 시리즈로 교체 (New Connection, Smart Choice, Stretch 등)
+- 비즈니스회화 Textbooks: curri.xlsx 기준 7개 교재 시리즈로 교체 (Biz Skill별 교재 + Business Conversation)
+- 토론과정 Textbooks: curri.xlsx 기준 8개 교재 시리즈로 교체 (News Media, HBO, HBR, POS 등)
+- 공인테스트대비 Textbooks: curri.xlsx 기준 5개 시험별 교재로 교체 (토익스피킹, 오픽, IELTS, 토플, SPA)
+- 섹션 8 추가: 일본어, 중국어, 기타 언어(독일어, 스페인어, 프랑스어, 베트남어, 러시아어, 아랍어, 태국어, 인도네시아어, 체코어, 폴란드어, 이탈리아어) 교재 목록
+
 ---
 
 *문서 작성: Claude Code*
-*최종 업데이트: 2025-12-08 (v1.1)*
+*최종 업데이트: 2025-12-15 (v1.2)*

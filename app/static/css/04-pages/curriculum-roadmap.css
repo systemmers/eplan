@@ -301,6 +301,39 @@
     filter: grayscale(30%);
 }
 
+/* ============================================================================
+   Landscape Textbook Thumbnail Styles
+   ============================================================================
+   가로형 이미지 (뉴스미디어 등) 전용 스타일
+   세로 높이 기준으로 가로 너비를 비율에 맞게 확장
+   ============================================================================ */
+.textbook-thumbnail-9level--landscape {
+    width: auto;
+    height: var(--textbook-thumb-height);
+    max-width: 100%;
+    aspect-ratio: auto;
+}
+
+/* 가로형 이미지 컨테이너 */
+.textbook-images-9level--landscape {
+    justify-content: center;
+    width: 100%;
+}
+
+/* 반응형 - 태블릿 */
+@media (max-width: 1024px) {
+    .textbook-thumbnail-9level--landscape {
+        height: var(--textbook-thumb-height-tablet);
+    }
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 768px) {
+    .textbook-thumbnail-9level--landscape {
+        height: var(--textbook-thumb-height-mobile);
+    }
+}
+
 /* 반응형 - 모바일 */
 @media (max-width: 768px) {
     .textbook-thumbnail-9level {
