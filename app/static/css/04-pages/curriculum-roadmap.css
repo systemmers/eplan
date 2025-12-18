@@ -50,10 +50,11 @@
     --textbook-thumb-width-xs: 30px;
     --textbook-thumb-height-xs: 40px;
 
-    /* Image Stack Overlap */
-    --textbook-overlap: -50px;
-    --textbook-overlap-tablet: -40px;
-    --textbook-overlap-mobile: -30px;
+    /* Image Gap & Overlap (썸네일 간격/겹침) */
+    --textbook-gap: 8px;
+    --textbook-overlap-tablet: -30px;
+    --textbook-overlap-mobile: -25px;
+    --textbook-overlap-xs: -15px;
 
     /* Image Container Heights */
     --textbook-images-min-height: 110px;
@@ -328,7 +329,8 @@
     align-items: center;
     justify-content: center;
     min-height: var(--textbook-images-min-height);
-    gap: 0;
+    gap: var(--textbook-gap);
+    flex-wrap: wrap;
 }
 
 .textbook-thumbnail-9level {
@@ -339,12 +341,14 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
     transition: transform 0.2s ease;
     position: relative;
+    cursor: pointer;
 }
 
-/* 이미지 겹침 효과 */
-.textbook-thumbnail-9level:not(:first-child) {
-    margin-left: var(--textbook-overlap);
+.textbook-thumbnail-9level:focus {
+    outline: 2px solid var(--brand-blue);
+    outline-offset: 2px;
 }
+
 
 .textbook-thumbnail-9level:hover {
     transform: scale(var(--curriculum-thumb-hover-scale));
@@ -383,24 +387,24 @@
     }
 }
 
-/* 반응형 - 모바일 */
+/* 반응형 - 모바일 (썸네일) */
 @media (max-width: 768px) {
     .textbook-thumbnail-9level--landscape {
         height: var(--textbook-thumb-height-mobile);
     }
-}
 
-/* 반응형 - 모바일 */
-@media (max-width: 768px) {
     .textbook-thumbnail-9level {
         width: var(--textbook-thumb-width-mobile);
         height: var(--textbook-thumb-height-mobile);
     }
-    .textbook-thumbnail-9level:not(:first-child) {
-        margin-left: var(--textbook-overlap-mobile);
-    }
+
     .textbook-images-9level {
         min-height: var(--textbook-images-min-height-mobile);
+        gap: 0;
+    }
+
+    .textbook-thumbnail-9level:not(:first-child) {
+        margin-left: var(--textbook-overlap-mobile);
     }
 }
 
@@ -416,16 +420,6 @@
     border-radius: var(--border-radius-sm, 6px);
     border: none;
     position: relative;
-}
-
-.empty-cell-9level::after {
-    content: '-';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #c8a8b8;
-    font-size: 16px;
 }
 
 
@@ -815,12 +809,13 @@
         height: var(--textbook-thumb-height-tablet);
     }
 
-    .textbook-thumbnail-9level:not(:first-child) {
-        margin-left: var(--textbook-overlap-tablet);
-    }
-
     .textbook-images-9level {
         min-height: var(--textbook-images-min-height-tablet);
+        gap: 0;
+    }
+
+    .textbook-thumbnail-9level:not(:first-child) {
+        margin-left: var(--textbook-overlap-tablet);
     }
 }
 
@@ -831,6 +826,7 @@
 
     .curriculum-table-9level {
         border-spacing: 4px;  /* 8px -> 4px for mobile */
+        font-size: 12px;
     }
 
     .language-nav-9level {
@@ -847,10 +843,6 @@
         display: none;
     }
 
-    .curriculum-table-9level {
-        font-size: 12px;
-    }
-
     .curriculum-table-9level th,
     .curriculum-table-9level td {
         padding: 8px 4px;
@@ -858,11 +850,24 @@
 
     .textbook-name-9level {
         font-size: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%;
     }
 
-    .textbook-thumbnail-9level {
-        width: var(--textbook-thumb-width-xs);
-        height: var(--textbook-thumb-height-xs);
+    .textbook-cell-content-9level {
+        overflow: hidden;
+    }
+
+    /* 카테고리/코스 컬럼 텍스트 오버플로우 방지 */
+    .category-col-9,
+    .course-col-9,
+    .curriculum-table-9level tbody th,
+    .curriculum-table-9level tbody td:first-of-type {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .curriculum-legend-9level__row {
@@ -885,7 +890,195 @@
         min-width: var(--curriculum-table-min-width-mobile);
     }
 
-    .textbook-images-9level {
-        display: none;
+    /* 초소형에서도 썸네일 표시, 모바일 크기 유지 + 강한 겹침 */
+    .textbook-thumbnail-9level {
+        width: var(--textbook-thumb-width-mobile);
+        height: var(--textbook-thumb-height-mobile);
+    }
+
+    .textbook-thumbnail-9level:not(:first-child) {
+        margin-left: var(--textbook-overlap-xs);
+    }
+
+    /* 텍스트 오버플로우 방지 */
+    .textbook-name-9level {
+        font-size: 9px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%;
+    }
+
+    .textbook-cell-content-9level {
+        overflow: hidden;
+    }
+
+    /* 카테고리/코스 컬럼 텍스트 오버플로우 방지 */
+    .category-col-9,
+    .course-col-9,
+    .curriculum-table-9level tbody th,
+    .curriculum-table-9level tbody td:first-of-type {
+        font-size: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* 레벨 헤더 축소 */
+    .curriculum-table-9level thead th {
+        font-size: 10px;
+        padding: 6px 2px;
+    }
+}
+
+
+/* ============================================================================
+   15. Sticky Header Styles (과정별 페이지용)
+   ============================================================================ */
+
+.curriculum-table-9level--sticky-header thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.curriculum-table-9level--sticky-header thead th {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 과정별 페이지 테이블 래퍼 (전체 표시, 페이지 스크롤) */
+.curriculum-table-wrapper-9level--by-language .curriculum-table-scroll-9level {
+    /* 내부 스크롤 제거 - 페이지 스크롤로 전체 표시 */
+    max-height: none;
+    overflow-y: visible;
+}
+
+
+/* ============================================================================
+   16. Language Badge Styles (과정별 페이지용)
+   ============================================================================ */
+
+.language-badge-9level {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+/* 언어별 색상 - 각 언어 고유 색상 */
+.language-badge-9level.lang-english {
+    background: #E8F0FE;
+    color: #1967D2;
+    border-color: #4285F4;
+}
+
+.language-badge-9level.lang-japanese {
+    background: #FCE8E6;
+    color: #C5221F;
+    border-color: #EA4335;
+}
+
+.language-badge-9level.lang-chinese {
+    background: #FEF7E0;
+    color: #EA8600;
+    border-color: #FBBC05;
+}
+
+.language-badge-9level.lang-german {
+    background: #F0F0F0;
+    color: #333333;
+    border-color: #666666;
+}
+
+.language-badge-9level.lang-spanish {
+    background: #FFF3E0;
+    color: #E65100;
+    border-color: #FF9800;
+}
+
+.language-badge-9level.lang-french {
+    background: #E8EAF6;
+    color: #283593;
+    border-color: #3F51B5;
+}
+
+.language-badge-9level.lang-vietnamese {
+    background: #FFEBEE;
+    color: #B71C1C;
+    border-color: #D32F2F;
+}
+
+.language-badge-9level.lang-russian {
+    background: #E3F2FD;
+    color: #0D47A1;
+    border-color: #1976D2;
+}
+
+.language-badge-9level.lang-arabic {
+    background: #E8F5E9;
+    color: #1B5E20;
+    border-color: #388E3C;
+}
+
+.language-badge-9level.lang-thai {
+    background: #F3E5F5;
+    color: #6A1B9A;
+    border-color: #8E24AA;
+}
+
+.language-badge-9level.lang-indonesian {
+    background: #FFECB3;
+    color: #FF6F00;
+    border-color: #FFA000;
+}
+
+.language-badge-9level.lang-czech {
+    background: #E1F5FE;
+    color: #01579B;
+    border-color: #0288D1;
+}
+
+.language-badge-9level.lang-polish {
+    background: #FCE4EC;
+    color: #880E4F;
+    border-color: #C2185B;
+}
+
+.language-badge-9level.lang-italian {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border-color: #43A047;
+}
+
+/* 언어 헤더 행 스타일 */
+.language-header-row th {
+    background: linear-gradient(135deg, var(--color-9level-category) 0%, var(--color-9level-category-dark) 100%);
+    vertical-align: middle;
+}
+
+/* 언어 구분선 - 각 언어 그룹 첫 행에 상단 테두리 추가 */
+.language-header-row td:first-of-type {
+    position: relative;
+}
+
+/* 반응형 - 언어 뱃지 */
+@media (max-width: 768px) {
+    .language-badge-9level {
+        padding: 4px 8px;
+        font-size: 10px;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-badge-9level {
+        padding: 3px 6px;
+        font-size: 9px;
+        border-width: 1px;
     }
 }

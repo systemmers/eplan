@@ -15,9 +15,10 @@ function initPageComponents() {
         initTextbookAccordions();
     }
 
-    // 갤러리 모달 초기화 (components/modal.js)
-    if (typeof initTextbookGalleryModal === 'function') {
-        initTextbookGalleryModal();
+    // 교재 모달 초기화 - 통합 함수 (components/textbook-modal.js)
+    // 카드, 9레벨 테이블 썸네일/셀 등 모든 트리거 처리
+    if (typeof initTextbookModal === 'function') {
+        initTextbookModal();
     }
 }
 

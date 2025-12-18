@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% from 'macros/section_titles.html' import section_title_10 %}
+{% from 'macros/curriculum_9level.html' import curriculum_table_by_category %}
 
 {% block title %}공인테스트대비 - 전화영어 - ePlan{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/04-pages/curriculum-roadmap.css') }}">
+{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
@@ -40,6 +45,14 @@
                 <p class="level-card__desc">최고 등급 달성</p>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- 9레벨 커리큘럼 테이블 -->
+<section class="curriculum-9level-section">
+    <div class="container">
+        {{ section_title_10(title='9-LEVEL CURRICULUM', subtitle='Test preparation courses (English, Japanese, Chinese, Spanish)') }}
+        {{ curriculum_table_by_category('exam') }}
     </div>
 </section>
 
