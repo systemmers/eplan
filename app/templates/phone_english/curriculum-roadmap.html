@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% from 'macros/curriculum_table.html' import curriculum_table %}
 {% from 'macros/curriculum_9level.html' import all_languages_9level, language_nav_9level %}
 
 {% block title %}커리큘럼 로드맵 - 전화영어 - ePlan{% endblock %}
@@ -17,21 +16,7 @@
     </div>
 </section>
 
-<!-- Existing 10-Level Curriculum Table Section -->
-<section>
-    <div class="container">
-        <div class="section-title-5">
-            <div class="label">Curriculum</div>
-            <h2>LEVEL <span>CURRICULUM</span></h2>
-            <div class="divider"></div>
-        </div>
-        <p class="section-subtitle">전화영어 레벨별 교재 구성 및 학습 경로</p>
-
-        {{ curriculum_table(['general-english', 'test-prep', 'business'], show_legend=true, show_scroll_notice=true) }}
-    </div>
-</section>
-
-<!-- New 9-Level Curriculum Section -->
+<!-- 9-Level Curriculum Section -->
 <section class="curriculum-9level-section">
     <div class="container">
         <div class="section-title-5">
