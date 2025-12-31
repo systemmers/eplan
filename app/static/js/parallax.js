@@ -5,8 +5,16 @@
  * 스프링 물리 기반 스크롤 패럴랙스 효과
  */
 
-// 스프링 물리 클래스
-class SpringValue {
+// HTMX 페이지 전환 시 스크립트 재실행으로 인한 클래스 재선언 방지
+(function() {
+    'use strict';
+
+    // 이미 로드된 경우 스킵
+    if (window.__parallaxModuleLoaded) return;
+    window.__parallaxModuleLoaded = true;
+
+    // 스프링 물리 클래스
+    class SpringValue {
     constructor(initialValue = 0, config = {}) {
         this.value = initialValue;
         this.target = initialValue;
@@ -66,6 +74,7 @@ const HeroParallax = {
     boundResizeHandler: null,
     boundVisibilityHandler: null,
     boundHeightHandler: null,
+    animationFrameId: null, // requestAnimationFrame ID 저장
     FIXED_BOTTOM_MARGIN: 80, // 고정 하단 여백 (px)
 
     /**
@@ -259,7 +268,7 @@ const HeroParallax = {
      * 애니메이션 루프
      */
     animate: function() {
-        if (!this.isAnimating) return;
+        if (!this.isAnimating || !this.motionContainer) return;
 
         const currentTime = performance.now();
         const deltaTime = (currentTime - this.lastTime) / 1000;
@@ -294,7 +303,7 @@ const HeroParallax = {
             });
         });
 
-        requestAnimationFrame(() => this.animate());
+        this.animationFrameId = requestAnimationFrame(() => this.animate());
     },
 
     /**
@@ -314,8 +323,16 @@ const HeroParallax = {
      * 정리 (이벤트 리스너 제거)
      */
     destroy: function() {
+        // 먼저 애니메이션 중지
         this.isAnimating = false;
 
+        // requestAnimationFrame 콜백 취소
+        if (this.animationFrameId) {
+            cancelAnimationFrame(this.animationFrameId);
+            this.animationFrameId = null;
+        }
+
+        // 이벤트 리스너 제거
         if (this.boundScrollHandler) {
             window.removeEventListener('scroll', this.boundScrollHandler);
         }
@@ -326,6 +343,8 @@ const HeroParallax = {
             document.removeEventListener('visibilitychange', this.boundVisibilityHandler);
         }
 
+        // 객체 정리
+        this.springs = {};
         this.container = null;
         this.motionContainer = null;
         this.rows = [];
@@ -336,22 +355,48 @@ const HeroParallax = {
     }
 };
 
-/**
- * Hero Parallax 초기화 함수
- */
-function initHeroParallax() {
-    if (document.getElementById('heroParallax')) {
-        HeroParallax.init('heroParallax');
+    /**
+     * Hero Parallax 초기화 함수
+     */
+    function initHeroParallax() {
+        if (document.getElementById('heroParallax')) {
+            HeroParallax.init('heroParallax');
+        }
     }
-}
 
-// 페이지 로드 시 초기화
-document.addEventListener('DOMContentLoaded', initHeroParallax);
+    // 페이지 로드 시 초기화
+    document.addEventListener('DOMContentLoaded', initHeroParallax);
 
-// HTMX 호환성 - 동적 콘텐츠 로드 시 재초기화
-if (typeof htmx !== 'undefined') {
-    document.body.addEventListener('htmx:afterSwap', function() {
-        HeroParallax.destroy();
-        initHeroParallax();
-    });
-}
+    // HeroParallax를 전역으로 노출 (HTMX 이벤트 핸들러에서 접근 필요)
+    window.HeroParallax = HeroParallax;
+
+    // HTMX 호환성 - 동적 콘텐츠 로드 시 재초기화
+    // HTMX 이벤트 리스너 중복 등록 방지
+    if (!window.__parallaxHtmxInit) {
+        window.__parallaxHtmxInit = true;
+
+        // 콘텐츠 교체 전 정리
+        document.body.addEventListener('htmx:beforeSwap', function(e) {
+            // 현재 페이지에 hero-parallax가 있으면 정리
+            if (document.getElementById('heroParallax')) {
+                window.HeroParallax.destroy();
+            }
+        });
+
+        // 콘텐츠 교체 및 DOM 안정화 후 초기화
+        document.body.addEventListener('htmx:afterSettle', function(e) {
+            // 새 콘텐츠에 hero-parallax가 있으면 초기화
+            const heroParallax = document.getElementById('heroParallax');
+            if (heroParallax) {
+                // 페이지 최상단으로 스크롤 (CSS 초기 상태와 일치)
+                window.scrollTo(0, 0);
+
+                // DOM 렌더링 후 초기화
+                requestAnimationFrame(function() {
+                    window.HeroParallax.init('heroParallax');
+                });
+            }
+        });
+    }
+
+})(); // IIFE 종료

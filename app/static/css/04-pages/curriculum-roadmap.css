@@ -126,7 +126,8 @@
 
 /* Hero parallax 바로 다음에 오는 경우 상단 여백 제거 */
 .hero-parallax + .curriculum-9level-section {
-    padding-top: 0;
+    padding-top: 200px;
+    padding-bottom: 80px;
 }
 
 

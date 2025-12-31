@@ -4,23 +4,27 @@
 {% block title %}ePlan - 글로벌 교육의 혁신{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
+<!-- Hero Section - Spotlight Style with Video -->
 <section class="hero-section hero-video">
+    <!-- Video Background -->
     <video class="hero-video__background" autoplay muted loop playsinline>
         <source src="{{ static_url('videos/main.mp4') }}" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
-    
-    <!-- Hero Content -->
-    <div class="container hero-content">
-        <h1 class="hero-title">글로벌 교육의 혁신, <img src="{{ static_url('images/eplan_logo_white.png') }}" alt="ePlan" class="hero-logo-inline" style="height: 1.2em; vertical-align: baseline; margin: 0 0.2em; position: relative; top: 0.1em; display: inline-block;"></h1>
-        <p class="hero-subtitle">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
-        <p class="hero-tagline">Practice Makes Perfect!</p>
-    </div>
 
-    <!-- Hero Main Logo -->
-    <div class="container hero-logo-container">
-        <img src="{{ static_url('images/jrenglish_bi_korean.png') }}" alt="ePlan 종로영어" class="hero-main-logo">
+    <!-- Spotlight Effects -->
+    <div class="hero-spotlight-top"></div>
+    <div class="hero-spotlight-center"></div>
+
+    <!-- Hero Content -->
+    <div class="container hero-content hero-content--spotlight">
+        <p class="hero-subheader-spotlight hero-animate" style="animation-delay: 0.1s;">Empowering Global Success</p>
+        <h1 class="hero-title-spotlight hero-animate" style="animation-delay: 0.2s;">글로벌 교육의 혁신</h1>
+        <!--<img src="{{ static_url('images/eplan_logo_white.png') }}" alt="ePlan" class="hero-logo-spotlight hero-animate" style="animation-delay: 0.3s;">-->  
+        <div class="hero-divider-spotlight hero-animate" style="animation-delay: 0.4s;"></div>
+        <p class="hero-subtitle-spotlight hero-animate" style="animation-delay: 0.5s;">지식 파트너십을 통한<br>글로벌 성공 역량 강화</p>
+        <p class="hero-tagline-spotlight hero-animate" style="animation-delay: 0.6s;">Practice Makes Perfect!</p>
+        <p class="hero-bottom-spotlight hero-animate" style="animation-delay: 0.7s;">Your success is just around the corner.</p>
     </div>
 
     <!-- Hero Navigation Cards -->

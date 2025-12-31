@@ -411,6 +411,7 @@ section {
 
 /* 어두운 배경 섹션에서 타이틀 흰색 처리 (세로 라벨, 서브타이틀 제외) */
 .strengths-section .section-title-10 .content h2,
+.corporate-section .section-title-10 .content h2,
 .u-bg-teal .section-title-10 .content h2 {
     color: var(--color-white);
 }

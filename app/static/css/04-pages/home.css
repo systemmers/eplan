@@ -131,7 +131,7 @@
 /* Spotlight Subtitle */
 .hero-subtitle-spotlight {
     font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    color: #999;
+    color: #ffffff;
     margin-bottom: 1rem;
     line-height: 1.7;
     text-shadow: none;
@@ -154,7 +154,7 @@
 /* Spotlight Bottom Text */
 .hero-bottom-spotlight {
     font-size: 1.125rem;
-    color: #666;
+    color: #ffffff;
     letter-spacing: 0.1em;
     text-shadow: none;
 }
@@ -315,6 +315,7 @@
    ============================================ */
 .services-section {
     background: var(--color-white);
+    height: 1000px;
 }
 
 .services-grid {
@@ -328,11 +329,17 @@
    Strengths Section
    ============================================ */
 .strengths-section {
-    background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80');
+    background-image: url('/static/images/main_strengths.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
+    height: 1000px;
+
+    /* 세로 중앙 정렬을 위한 Flexbox 추가 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .strengths-section::before {
@@ -346,6 +353,11 @@
 .strengths-section .container {
     position: relative;
     z-index: 1;
+    /* 자식 중앙정렬 지원 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .strengths-section .section-title {
@@ -374,6 +386,7 @@
    ============================================ */
 .curriculum-section {
     background: var(--color-white);
+    height: 1000px;
 }
 
 .curriculum-grid {
@@ -397,7 +410,28 @@
    Corporate Training Section
    ============================================ */
 .corporate-section {
-    background: var(--color-bg-white);
+    background-image: url('/static/images/main_corp2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.corporate-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+.corporate-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.corporate-section .section-title {
+    color: var(--color-white);
 }
 
 .corporate-grid {
@@ -423,6 +457,7 @@
 .clients-section {
     background: var(--color-white);
     padding-bottom: 0;
+    height: 500px;
 }
 
 /* ============================================
