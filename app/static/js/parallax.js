@@ -114,7 +114,61 @@ const HeroParallax = {
         // 동적 높이 계산 및 초기 업데이트
         this.calculateAndSetHeight();
         this.updateSpringTargets();
+
+        // 초기 상태 즉시 적용 (애니메이션 시작 전에 현재 스크롤 위치 반영)
+        this.applyInitialState();
+
         this.animate();
+    },
+
+    /**
+     * 초기 상태 즉시 적용
+     * 스크롤 위치에 맞게 초기 transform 값을 즉시 설정
+     */
+    applyInitialState: function() {
+        if (!this.motionContainer) return;
+
+        const progress = this.getScrollProgress();
+
+        // 스프링 값을 타겟으로 즉시 설정 (애니메이션 없이)
+        const translateX = parallaxTransform(progress, [0, 1], [0, 1000]);
+        const translateXReverse = parallaxTransform(progress, [0, 1], [0, -1000]);
+        const rotateX = parallaxTransform(progress, [0, 0.2], [15, 0]);
+        const rotateZ = parallaxTransform(progress, [0, 0.2], [20, 0]);
+        const translateY = parallaxTransform(progress, [0, 0.2], [-700, 500]);
+        const opacity = parallaxTransform(progress, [0, 0.2], [0.2, 1]);
+
+        // 스프링 현재값도 타겟값으로 설정 (점프 방지)
+        this.springs.translateX.value = translateX;
+        this.springs.translateX.target = translateX;
+        this.springs.translateXReverse.value = translateXReverse;
+        this.springs.translateXReverse.target = translateXReverse;
+        this.springs.rotateX.value = rotateX;
+        this.springs.rotateX.target = rotateX;
+        this.springs.rotateZ.value = rotateZ;
+        this.springs.rotateZ.target = rotateZ;
+        this.springs.translateY.value = translateY;
+        this.springs.translateY.target = translateY;
+        this.springs.opacity.value = opacity;
+        this.springs.opacity.target = opacity;
+
+        // 즉시 적용
+        this.motionContainer.style.transform = `
+            rotateX(${rotateX}deg)
+            rotateZ(${rotateZ}deg)
+            translateY(${translateY}px)
+        `;
+        this.motionContainer.style.opacity = opacity;
+
+        // 각 행에도 즉시 적용
+        this.rows.forEach((row, index) => {
+            if (!row) return;
+            const cards = row.querySelectorAll('.parallax-card');
+            const tx = (index === 1) ? translateXReverse : translateX;
+            cards.forEach(card => {
+                card.style.transform = `translateX(${tx}px)`;
+            });
+        });
     },
 
     /**

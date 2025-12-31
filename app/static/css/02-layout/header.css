@@ -13,7 +13,11 @@
     pointer-events: none; /* Allow clicks through to content below */
 }
 
-/* Floating Glass Navigation */
+/* ============================================
+   Dynamic Island Navigation - Fade Slide Style
+   ============================================ */
+
+/* Floating Glass Navigation - Compact State (Default) */
 .floating-nav {
     position: relative;
     left: 50%;
@@ -23,26 +27,119 @@
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50px;
-    padding: 8px 8px 8px 24px;
+    padding: 8px 16px 8px 24px; /* top right bottom left - 로고 좌측 여백 유지, 우측 축소 */
     display: inline-flex;
     align-items: center;
-    gap: 24px;
+    justify-content: center;
+    gap: 0;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
     pointer-events: all;
+    /* Dynamic Island: Compact - 로고 크기에 맞춤 */
+    width: auto;
+    min-width: auto;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Logo */
+/* CTA Button - Base Style (must be before compact state) */
+.floating-nav .nav-cta {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.floating-nav .nav-cta:hover {
+    background: var(--color-teal-dark, #029488);
+    transform: translateY(-1px);
+}
+
+/* Dynamic Island: Hidden elements in compact state */
+.floating-nav .nav-menu {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    filter: blur(8px);
+    margin-left: 0;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.floating-nav .nav-cta {
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    white-space: nowrap;
+    filter: blur(8px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+
+/* Dynamic Island: Expanded State */
+.floating-nav.is-expanded {
+    width: auto;
+    max-width: 90vw;
+    padding: 8px 8px 8px 24px;
+    gap: 24px;
+    justify-content: flex-start;
+}
+
+.floating-nav.is-expanded .nav-menu {
+    width: auto;
+    opacity: 1;
+    overflow: visible; /* 드롭다운 메뉴 표시를 위해 필수 */
+    filter: blur(0);
+    margin-left: 8px;
+}
+
+.floating-nav.is-expanded .nav-cta {
+    width: auto;
+    opacity: 1;
+    padding: 10px 20px;
+    filter: blur(0);
+}
+
+/* Keyboard Accessibility: Focus-within expansion */
+.floating-nav:focus-within {
+    width: auto;
+    max-width: 90vw;
+    padding: 8px 8px 8px 24px;
+    gap: 24px;
+    justify-content: flex-start;
+}
+
+.floating-nav:focus-within .nav-menu {
+    width: auto;
+    opacity: 1;
+    overflow: visible; /* 드롭다운 메뉴 표시를 위해 필수 */
+    filter: blur(0);
+    margin-left: 8px;
+}
+
+.floating-nav:focus-within .nav-cta {
+    width: auto;
+    opacity: 1;
+    padding: 10px 20px;
+    filter: blur(0);
+}
+
+/* Logo - 항상 원래 크기 유지 */
 .floating-nav .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .floating-nav .logo img {
     height: 36px;
     width: auto;
     object-fit: contain;
-    transition: opacity 0.2s;
+    transition: opacity 0.3s ease;
 }
 
 .floating-nav .logo:hover img {
@@ -179,24 +276,6 @@
     display: block;
 }
 
-/* CTA Button */
-.floating-nav .nav-cta {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-    white-space: nowrap;
-}
-
-.floating-nav .nav-cta:hover {
-    background: var(--color-teal-dark, #029488);
-    transform: translateY(-1px);
-}
-
 /* Mobile Navigation Toggle */
 .nav-toggle {
     display: none;
@@ -240,20 +319,25 @@
 
 /* ============================================
    Mobile Navigation (< 1024px)
+   Dynamic Island 효과 비활성화
    ============================================ */
 @media (max-width: 1024px) {
     .header {
         padding: 12px;
     }
 
+    /* Dynamic Island 비활성화 - 모바일에서는 전체 너비 사용 */
     .floating-nav {
         width: calc(100% - 24px);
         max-width: none;
         padding: 8px 12px 8px 16px;
         justify-content: space-between;
         border-radius: 20px;
+        /* Dynamic Island transition 비활성화 */
+        transition: none;
     }
 
+    /* 모바일에서 blur 효과 비활성화 */
     .floating-nav .nav-menu {
         display: none;
         position: absolute;
@@ -269,6 +353,28 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
         flex-direction: column;
         gap: 4px;
+        /* Dynamic Island 효과 리셋 */
+        width: auto;
+        opacity: 1;
+        overflow: visible;
+        filter: none;
+        margin-left: 0;
+        transition: none;
+    }
+
+    .floating-nav .nav-cta {
+        /* 모바일에서 CTA 숨김 - 기존 동작 유지 */
+        filter: none;
+        transition: none;
+    }
+
+    /* is-expanded 클래스 효과 무시 */
+    .floating-nav.is-expanded,
+    .floating-nav:focus-within {
+        width: calc(100% - 24px);
+        max-width: none;
+        padding: 8px 12px 8px 16px;
+        gap: 0;
     }
 
     .floating-nav .nav-menu.active {

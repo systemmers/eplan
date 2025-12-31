@@ -50,6 +50,9 @@
 .hero-parallax__container {
     transform-style: preserve-3d;
     will-change: transform, opacity;
+    /* 초기 상태: 3D 원근감 + 반투명 (JS가 스크롤에 따라 업데이트) */
+    transform: rotateX(15deg) rotateZ(20deg) translateY(-700px);
+    opacity: 0.2;
 }
 
 /* Parallax Rows */

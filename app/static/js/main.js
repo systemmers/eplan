@@ -84,6 +84,11 @@ document.body.addEventListener('htmx:afterSwap', function(event) {
         // 페이지 컴포넌트 재초기화
         initPageComponents();
 
+        // 히어로 카드 애니메이션 재초기화 (홈페이지 복귀 시)
+        if (typeof initHeroCardAnimation === 'function') {
+            initHeroCardAnimation();
+        }
+
         // 스크롤 애니메이션 재초기화
         if (typeof ScrollAnimations !== 'undefined') {
             ScrollAnimations.reinit();
