@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-2026 트렌드 카드 디자인 (가로형)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', 'Outfit', sans-serif;
+            background: #0a0a0f;
+            min-height: 100vh;
+            padding: 60px 20px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .page-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f15bb5 0%, #fee440 25%, #00bbf9 50%, #00f5d4 75%, #9b5de5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+        }
+        
+        .page-subtitle {
+            color: rgba(255,255,255,0.5);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        
+        .trend-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #00f5d4, #00bbf9);
+            color: #0a0a0f;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .style-section {
+            margin-bottom: 70px;
+        }
+        
+        .style-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .style-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f15bb5, #fee440);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        
+        .style-info h2 {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .style-info p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        /* ========================================
+           STYLE 1: Bento Horizontal
+        ======================================== */
+        .card-h-bento {
+            display: grid;
+            grid-template-columns: 200px 1fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 12px;
+            background: #18181b;
+            border-radius: 28px;
+            padding: 20px;
+        }
+        
+        .card-h-bento .img-cell {
+            grid-row: 1 / -1;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card-h-bento .img-cell img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+        
+        .card-h-bento .title-cell {
+            grid-column: 2 / -1;
+            padding: 10px 15px;
+        }
+        
+        .card-h-bento .title-cell h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .card-h-bento .title-cell p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+        
+        .card-h-bento .info-cell {
+            background: #27272a;
+            border-radius: 14px;
+            padding: 15px;
+        }
+        
+        .card-h-bento .info-cell .label {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .card-h-bento .info-cell .value {
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* ========================================
+           STYLE 2: Claymorphism Horizontal
+        ======================================== */
+        .card-h-clay {
+            display: flex;
+            background: linear-gradient(145deg, #e8e8e8, #ffffff);
+            border-radius: 35px;
+            padding: 25px;
+            box-shadow: 
+                25px 25px 50px #d1d1d1,
+                -25px -25px 50px #ffffff;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .card-h-clay .book-wrap {
+            background: linear-gradient(145deg, #a8edea, #fed6e3);
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 
+                inset 5px 5px 10px rgba(255,255,255,0.5),
+                inset -5px -5px 10px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
+        
+        .card-h-clay .book-wrap img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-h-clay .content {
+            flex: 1;
+        }
+        
+        .card-h-clay .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 18px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            box-shadow: 0 6px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .card-h-clay h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #2d3436;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-clay .meta {
+            font-size: 0.85rem;
+            color: #636e72;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-clay .desc {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 3: Aurora Horizontal
+        ======================================== */
+        .card-h-aurora {
+            display: flex;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            min-height: 180px;
+        }
+        
+        .card-h-aurora .aurora-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 10% 50%, rgba(120, 0, 255, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 30%, rgba(0, 200, 255, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 90%, rgba(255, 0, 128, 0.4) 0%, transparent 50%),
+                #0f0f1a;
+            animation: auroraShift 10s ease-in-out infinite;
+        }
+        
+        @keyframes auroraShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(40deg); }
+        }
+        
+        .card-h-aurora .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            width: 100%;
+        }
+        
+        .card-h-aurora .book-img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+        }
+        
+        .card-h-aurora .info {
+            flex: 1;
+            color: #fff;
+        }
+        
+        .card-h-aurora .tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-aurora .tag {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 5px 14px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .card-h-aurora h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-aurora .meta {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-aurora .desc {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 4: Brutalism Horizontal
+        ======================================== */
+        .card-h-brutal {
+            display: flex;
+            background: #fff;
+            border: 4px solid #000;
+            box-shadow: 10px 10px 0 #000;
+        }
+        
+        .card-h-brutal .sidebar {
+            background: #00ff88;
+            border-right: 4px solid #000;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-h-brutal .sidebar img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0 #000;
+        }
+        
+        .card-h-brutal .main {
+            flex: 1;
+            padding: 25px 30px;
+        }
+        
+        .card-h-brutal .lang {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+        
+        .card-h-brutal h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .card-h-brutal .meta {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-family: monospace;
+        }
+        
+        .card-h-brutal .btn {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 10px 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        /* ========================================
+           STYLE 5: Neon Horizontal
+        ======================================== */
+        .card-h-neon {
+            display: flex;
+            background: #0a0a0f;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 0, 128, 0.3);
+            box-shadow: 
+                0 0 40px rgba(255, 0, 128, 0.1),
+                inset 0 0 40px rgba(255, 0, 128, 0.03);
+            overflow: hidden;
+        }
+        
+        .card-h-neon .glow-side {
+            width: 180px;
+            background: linear-gradient(180deg, rgba(255,0,128,0.1) 0%, rgba(0,200,255,0.1) 100%);
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid rgba(255,0,128,0.2);
+        }
+        
+        .card-h-neon .glow-side img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 0, 128, 0.5);
+            box-shadow: 0 0 30px rgba(255, 0, 128, 0.3);
+        }
+        
+        .card-h-neon .content {
+            flex: 1;
+            padding: 25px 30px;
+        }
+        
+        .card-h-neon .neon-badge {
+            display: inline-block;
+            color: #ff0080;
+            padding: 5px 14px;
+            border: 1px solid #ff0080;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-shadow: 0 0 10px #ff0080;
+            box-shadow: 0 0 15px rgba(255, 0, 128, 0.2);
+            margin-bottom: 12px;
+        }
+        
+        .card-h-neon h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-neon .meta {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-neon .desc {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 6: Holographic Horizontal
+        ======================================== */
+        .card-h-holo {
+            display: flex;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-h-holo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                #ff0080 0%,
+                #ff8c00 20%,
+                #40e0d0 40%,
+                #7b68ee 60%,
+                #ff0080 80%,
+                #ff8c00 100%
+            );
+            background-size: 200% 100%;
+            animation: holoWave 3s linear infinite;
+            border-radius: 20px;
+        }
+        
+        @keyframes holoWave {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .card-h-holo .inner {
+            display: flex;
+            background: #1a1a2e;
+            border-radius: 16px;
+            width: 100%;
+            padding: 25px;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-h-holo .book-img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            flex-shrink: 0;
+        }
+        
+        .card-h-holo .info {
+            flex: 1;
+            color: #fff;
+        }
+        
+        .card-h-holo h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-holo .tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-holo .tag {
+            background: linear-gradient(135deg, rgba(255,0,128,0.2), rgba(64,224,208,0.2));
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+        
+        .card-h-holo .desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 7: Layered Horizontal
+        ======================================== */
+        .card-h-layered {
+            position: relative;
+            height: 200px;
+        }
+        
+        .card-h-layered .layer {
+            position: absolute;
+            border-radius: 20px;
+            height: 100%;
+        }
+        
+        .card-h-layered .layer-3 {
+            background: #8b5cf6;
+            width: calc(100% - 10px);
+            top: 15px;
+            left: 15px;
+        }
+        
+        .card-h-layered .layer-2 {
+            background: #3b82f6;
+            width: calc(100% - 5px);
+            top: 8px;
+            left: 8px;
+        }
+        
+        .card-h-layered .layer-1 {
+            background: #18181b;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            padding: 25px;
+            gap: 25px;
+        }
+        
+        .card-h-layered .book-img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            flex-shrink: 0;
+        }
+        
+        .card-h-layered .info {
+            flex: 1;
+            color: #fff;
+        }
+        
+        .card-h-layered .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            padding: 5px 14px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-layered h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-layered .meta {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-layered .desc {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           STYLE 8: Wire Horizontal
+        ======================================== */
+        .card-h-wire {
+            display: flex;
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 25px;
+            gap: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .card-h-wire:hover {
+            border-color: #00f5d4;
+            background: rgba(0, 245, 212, 0.03);
+        }
+        
+        .card-h-wire .book-frame {
+            width: 110px;
+            height: 150px;
+            border: 2px dashed rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .card-h-wire .book-frame img {
+            width: 85px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        
+        .card-h-wire .info {
+            flex: 1;
+        }
+        
+        .card-h-wire .outline-badge {
+            display: inline-block;
+            color: #00f5d4;
+            border: 1px solid #00f5d4;
+            padding: 5px 14px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-wire h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-wire .meta {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-wire .desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 9: Gradient Text Horizontal
+        ======================================== */
+        .card-h-gradtext {
+            display: flex;
+            background: #0f0f0f;
+            border-radius: 24px;
+            padding: 30px;
+            gap: 30px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        
+        .card-h-gradtext .visual {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border-radius: 18px;
+            padding: 20px;
+            flex-shrink: 0;
+        }
+        
+        .card-h-gradtext .visual img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        
+        .card-h-gradtext .info {
+            flex: 1;
+        }
+        
+        .card-h-gradtext h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f15bb5 0%, #fee440 50%, #00bbf9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .card-h-gradtext .meta {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card-h-gradtext .meta svg {
+            width: 16px;
+            height: 16px;
+            fill: #f15bb5;
+        }
+        
+        .card-h-gradtext .desc {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .card-h-gradtext .tags {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .card-h-gradtext .tag {
+            background: rgba(241, 91, 181, 0.15);
+            color: #f15bb5;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+        }
+
+        /* ========================================
+           STYLE 10: Blob Horizontal
+        ======================================== */
+        .card-h-blob {
+            display: flex;
+            background: #fff;
+            border-radius: 28px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+            gap: 30px;
+        }
+        
+        .card-h-blob .blob-1 {
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            opacity: 0.5;
+            animation: blobFloat 8s ease-in-out infinite;
+        }
+        
+        .card-h-blob .blob-2 {
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            opacity: 0.25;
+            animation: blobFloat 6s ease-in-out infinite reverse;
+        }
+        
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(10px, -10px) rotate(5deg); }
+        }
+        
+        .card-h-blob .content {
+            display: flex;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .card-h-blob .book-img {
+            width: 110px;
+            height: 155px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            flex-shrink: 0;
+        }
+        
+        .card-h-blob .info {
+            flex: 1;
+        }
+        
+        .card-h-blob .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 18px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-blob h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-blob .meta {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-blob .desc {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 11: Retro Futurism Horizontal
+        ======================================== */
+        .card-h-retro {
+            display: flex;
+            background: linear-gradient(135deg, #1a0a2e 0%, #0a0a14 100%);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 0, 128, 0.25);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-h-retro .grid-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(90deg, rgba(255,0,128,0.05) 1px, transparent 1px),
+                linear-gradient(rgba(255,0,128,0.05) 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
+        
+        .card-h-retro .sun {
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,0,128,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .card-h-retro .content {
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .card-h-retro .book-img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 
+                0 0 30px rgba(255, 0, 128, 0.3),
+                0 15px 35px rgba(0,0,0,0.4);
+            flex-shrink: 0;
+        }
+        
+        .card-h-retro .info {
+            flex: 1;
+            color: #fff;
+        }
+        
+        .card-h-retro .retro-badge {
+            display: inline-block;
+            color: #ff0080;
+            border: 1px solid #ff0080;
+            padding: 5px 14px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px #ff0080;
+        }
+        
+        .card-h-retro h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+        
+        .card-h-retro .meta {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-retro .desc {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 12: Mono Accent Horizontal
+        ======================================== */
+        .card-h-mono {
+            display: flex;
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        }
+        
+        .card-h-mono .accent-side {
+            width: 8px;
+            background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+        }
+        
+        .card-h-mono .main {
+            display: flex;
+            flex: 1;
+            padding: 25px;
+            gap: 25px;
+        }
+        
+        .card-h-mono .img-wrap {
+            background: #f5f5f5;
+            border-radius: 14px;
+            padding: 15px;
+            flex-shrink: 0;
+        }
+        
+        .card-h-mono .img-wrap img {
+            width: 90px;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 8px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+        
+        .card-h-mono:hover .img-wrap img {
+            filter: grayscale(0%);
+        }
+        
+        .card-h-mono .info {
+            flex: 1;
+        }
+        
+        .card-h-mono .accent-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-mono h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+        
+        .card-h-mono .meta {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-mono .desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 13: Asymmetric Horizontal
+        ======================================== */
+        .card-h-asym {
+            position: relative;
+            min-height: 180px;
+        }
+        
+        .card-h-asym .bg-shape {
+            position: absolute;
+            top: 15px;
+            right: 0;
+            width: 70%;
+            height: calc(100% - 15px);
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 20px;
+        }
+        
+        .card-h-asym .content-box {
+            position: relative;
+            display: flex;
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            margin-right: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            z-index: 1;
+            gap: 25px;
+        }
+        
+        .card-h-asym .book-img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+        }
+        
+        .card-h-asym .info {
+            flex: 1;
+        }
+        
+        .card-h-asym .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-asym h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+        
+        .card-h-asym .meta {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-asym .desc {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 14: Frosted Glass Horizontal
+        ======================================== */
+        .card-h-frost-wrap {
+            background: 
+                linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 50%, rgba(241, 91, 181, 0.7) 100%),
+                url('https://picsum.photos/1200/300?random=414') center/cover;
+            border-radius: 24px;
+            padding: 25px;
+        }
+        
+        .card-h-frost {
+            display: flex;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 18px;
+            padding: 25px;
+            gap: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+        
+        .card-h-frost .book-img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            flex-shrink: 0;
+        }
+        
+        .card-h-frost .info {
+            flex: 1;
+        }
+        
+        .card-h-frost .tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-frost .tag {
+            background: rgba(255,255,255,0.15);
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+        
+        .card-h-frost h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-frost .meta {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-frost .desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 15: Animated Border Horizontal
+        ======================================== */
+        .card-h-animBorder {
+            display: flex;
+            position: relative;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(90deg, #00f5d4, #00bbf9, #9b5de5, #f15bb5, #fee440, #00f5d4);
+            background-size: 300% 100%;
+            animation: borderSlide 4s linear infinite;
+        }
+        
+        @keyframes borderSlide {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 300% 50%; }
+        }
+        
+        .card-h-animBorder .inner {
+            display: flex;
+            background: #0a0a0f;
+            border-radius: 17px;
+            width: 100%;
+            padding: 25px;
+            gap: 25px;
+        }
+        
+        .card-h-animBorder .book-img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            flex-shrink: 0;
+        }
+        
+        .card-h-animBorder .info {
+            flex: 1;
+            color: #fff;
+        }
+        
+        .card-h-animBorder h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-animBorder .meta {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-animBorder .tags {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .card-h-animBorder .tag {
+            background: rgba(155, 93, 229, 0.2);
+            color: #9b5de5;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        /* ========================================
+           STYLE 16: Minimal Float Horizontal
+        ======================================== */
+        .card-h-minFloat {
+            display: flex;
+            background: #fff;
+            border-radius: 22px;
+            padding: 30px;
+            gap: 30px;
+            box-shadow: 
+                0 50px 100px rgba(0,0,0,0.07),
+                0 15px 35px rgba(0,0,0,0.04);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card-h-minFloat:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 60px 120px rgba(0,0,0,0.1),
+                0 25px 50px rgba(0,0,0,0.08);
+        }
+        
+        .card-h-minFloat .book-img {
+            width: 120px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 14px;
+            flex-shrink: 0;
+        }
+        
+        .card-h-minFloat .info {
+            flex: 1;
+        }
+        
+        .card-h-minFloat .lang {
+            font-size: 0.7rem;
+            color: #9b5de5;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-minFloat h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .card-h-minFloat .meta {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-minFloat .desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 17: Glow Ring Horizontal
+        ======================================== */
+        .card-h-glowRing {
+            display: flex;
+            background: #18181b;
+            border-radius: 24px;
+            padding: 30px;
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-h-glowRing .glow {
+            position: absolute;
+            left: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, transparent 70%);
+            filter: blur(25px);
+        }
+        
+        .card-h-glowRing .content {
+            display: flex;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .card-h-glowRing .book-img {
+            width: 110px;
+            height: 155px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.25);
+            flex-shrink: 0;
+        }
+        
+        .card-h-glowRing .info {
+            flex: 1;
+            color: #fff;
+        }
+        
+        .card-h-glowRing .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            padding: 7px 16px;
+            border-radius: 18px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .card-h-glowRing .badge svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+        
+        .card-h-glowRing h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-glowRing .meta {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-glowRing .desc {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 18: Split Tone Horizontal
+        ======================================== */
+        .card-h-splitTone {
+            display: flex;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+        
+        .card-h-splitTone .dark-side {
+            width: 220px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-h-splitTone .dark-side img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            margin-bottom: 15px;
+        }
+        
+        .card-h-splitTone .dark-side .lang {
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .card-h-splitTone .light-side {
+            flex: 1;
+            background: #fff;
+            padding: 30px;
+        }
+        
+        .card-h-splitTone .tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-splitTone .tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+        
+        .card-h-splitTone .tag.accent {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: #fff;
+        }
+        
+        .card-h-splitTone h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-splitTone .meta {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-splitTone .desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 19: 3D Perspective Horizontal
+        ======================================== */
+        .card-h-3d-wrap {
+            perspective: 1000px;
+        }
+        
+        .card-h-3d {
+            display: flex;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border-radius: 22px;
+            padding: 30px;
+            gap: 30px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+        }
+        
+        .card-h-3d-wrap:hover .card-h-3d {
+            transform: rotateY(-5deg) rotateX(3deg);
+        }
+        
+        .card-h-3d .floating-img {
+            width: 110px;
+            height: 155px;
+            object-fit: cover;
+            border-radius: 14px;
+            transform: translateZ(40px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+            flex-shrink: 0;
+        }
+        
+        .card-h-3d .info {
+            flex: 1;
+            color: #fff;
+            transform: translateZ(20px);
+        }
+        
+        .card-h-3d .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 18px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .card-h-3d h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .card-h-3d .meta {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            margin-bottom: 12px;
+        }
+        
+        .card-h-3d .desc {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           STYLE 20: AI/Tech Horizontal
+        ======================================== */
+        .card-h-aitech {
+            display: flex;
+            background: #0a0a0f;
+            border-radius: 22px;
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-h-aitech .circuit {
+            position: absolute;
+            inset: 0;
+            opacity: 0.08;
+            background-image: 
+                linear-gradient(90deg, #3b82f6 1px, transparent 1px),
+                linear-gradient(#3b82f6 1px, transparent 1px);
+            background-size: 35px 35px;
+        }
+        
+        .card-h-aitech .content {
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .card-h-aitech .visual {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            flex-shrink: 0;
+        }
+        
+        .card-h-aitech .visual img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15);
+        }
+        
+        .card-h-aitech .info {
+            flex: 1;
+            color: #fff;
+        }
+        
+        .card-h-aitech .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+            color: #60a5fa;
+            padding: 7px 16px;
+            border-radius: 18px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .card-h-aitech .ai-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        
+        .card-h-aitech h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card-h-aitech .meta {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card-h-aitech .meta svg {
+            width: 14px;
+            height: 14px;
+            fill: #60a5fa;
+        }
+        
+        .card-h-aitech .features {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .card-h-aitech .feature {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+        
+        .card-h-aitech .feature svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <span class="trend-tag">2025-2026 TREND</span>
+            <h1 class="page-title">Horizontal Card Designs</h1>
+            <p class="page-subtitle">20 Cutting-Edge UI Styles for Language Textbook Catalog</p>
+        </div>
+
+        <!-- STYLE 1 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">01</div>
+                <div class="style-info">
+                    <h2>Bento Box</h2>
+                    <p>Apple 스타일 그리드 레이아웃</p>
+                </div>
+            </div>
+            <div class="card-h-bento">
+                <div class="img-cell">
+                    <img src="https://picsum.photos/100/140?random=301" alt="Book">
+                </div>
+                <div class="title-cell">
+                    <h3>스피킹 매트릭스 1분 영어 말하기</h3>
+                    <p>길벗이지톡 · 김태윤</p>
+                </div>
+                <div class="info-cell">
+                    <div class="label">언어</div>
+                    <div class="value">영어</div>
+                </div>
+                <div class="info-cell">
+                    <div class="label">레벨</div>
+                    <div class="value">초중급</div>
+                </div>
+                <div class="info-cell">
+                    <div class="label">특징</div>
+                    <div class="value">30일 완성</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 2 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">02</div>
+                <div class="style-info">
+                    <h2>Claymorphism</h2>
+                    <p>부드러운 3D 클레이 질감</p>
+                </div>
+            </div>
+            <div class="card-h-clay">
+                <div class="book-wrap">
+                    <img src="https://picsum.photos/100/140?random=302" alt="Book">
+                </div>
+                <div class="content">
+                    <span class="badge">일본어 · N1</span>
+                    <h3>JLPT 한권으로 끝내기 N1</h3>
+                    <p class="meta">다락원 · 언어지식/독해/청해 종합</p>
+                    <p class="desc">JLPT N1 종합 대비서. 유형분석과 실전 모의고사 3회분 수록</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 3 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">03</div>
+                <div class="style-info">
+                    <h2>Aurora Mesh</h2>
+                    <p>오로라 그라데이션 배경</p>
+                </div>
+            </div>
+            <div class="card-h-aurora">
+                <div class="aurora-bg"></div>
+                <div class="content">
+                    <img class="book-img" src="https://picsum.photos/100/140?random=303" alt="Book">
+                    <div class="info">
+                        <div class="tags">
+                            <span class="tag">중국어</span>
+                            <span class="tag">HSK 5급</span>
+                        </div>
+                        <h3>HSK 한권으로 끝내기 5급</h3>
+                        <p class="meta">다락원 · 남미숙</p>
+                        <p class="desc">HSK 5급 종합 대비. 듣기/독해/쓰기 영역별 전략 수록</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 4 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">04</div>
+                <div class="style-info">
+                    <h2>Brutalism</h2>
+                    <p>대담한 타이포와 하드 엣지</p>
+                </div>
+            </div>
+            <div class="card-h-brutal">
+                <div class="sidebar">
+                    <img src="https://picsum.photos/100/140?random=304" alt="Book">
+                </div>
+                <div class="main">
+                    <span class="lang">ENGLISH · TOEIC</span>
+                    <h3>ETS 토익 정기시험 기출문제집 1000</h3>
+                    <p class="meta">YBM / ETS 공식 / LC+RC 10회분</p>
+                    <button class="btn">자세히 보기 →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 5 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">05</div>
+                <div class="style-info">
+                    <h2>Neon Glow</h2>
+                    <p>사이버펑크 네온 효과</p>
+                </div>
+            </div>
+            <div class="card-h-neon">
+                <div class="glow-side">
+                    <img src="https://picsum.photos/100/140?random=305" alt="Book">
+                </div>
+                <div class="content">
+                    <span class="neon-badge">독일어 · A2</span>
+                    <h3>GO! 독학 독일어 첫걸음</h3>
+                    <p class="meta">시원스쿨 · 입문~A2</p>
+                    <p class="desc">알파벳부터 기초문법, 일상회화까지 독일어 입문 완성</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 6 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">06</div>
+                <div class="style-info">
+                    <h2>Holographic</h2>
+                    <p>홀로그래픽 무지개빛 테두리</p>
+                </div>
+            </div>
+            <div class="card-h-holo">
+                <div class="inner">
+                    <img class="book-img" src="https://picsum.photos/100/140?random=306" alt="Book">
+                    <div class="info">
+                        <h3>Grammar in Use Intermediate</h3>
+                        <div class="tags">
+                            <span class="tag">Cambridge</span>
+                            <span class="tag">영문법</span>
+                        </div>
+                        <p class="desc">전 세계 3,500만부 판매 영문법 베스트셀러. 중급 문법 완성</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 7 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">07</div>
+                <div class="style-info">
+                    <h2>Layered Depth</h2>
+                    <p>멀티 레이어 깊이감</p>
+                </div>
+            </div>
+            <div class="card-h-layered">
+                <div class="layer layer-3"></div>
+                <div class="layer layer-2"></div>
+                <div class="layer layer-1">
+                    <img class="book-img" src="https://picsum.photos/100/140?random=307" alt="Book">
+                    <div class="info">
+                        <span class="badge">스페인어 · DELE B2</span>
+                        <h3>DELE 시험 대비 B2</h3>
+                        <p class="meta">스페인어 공인시험 종합 대비</p>
+                        <p class="desc">영역별 전략과 실전 모의고사 포함</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 8 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">08</div>
+                <div class="style-info">
+                    <h2>Outlined Wire</h2>
+                    <p>와이어프레임 아웃라인</p>
+                </div>
+            </div>
+            <div class="card-h-wire">
+                <div class="book-frame">
+                    <img src="https://picsum.photos/85/120?random=308" alt="Book">
+                </div>
+                <div class="info">
+                    <span class="outline-badge">프랑스어 · DELF A2</span>
+                    <h3>GO! 독학 프랑스어 첫걸음</h3>
+                    <p class="meta">시원스쿨 · 입문~A2</p>
+                    <p class="desc">발음→기초문법→일상회화 단계별 학습</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 9 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">09</div>
+                <div class="style-info">
+                    <h2>Gradient Text</h2>
+                    <p>그라데이션 타이틀 텍스트</p>
+                </div>
+            </div>
+            <div class="card-h-gradtext">
+                <div class="visual">
+                    <img src="https://picsum.photos/100/140?random=309" alt="Book">
+                </div>
+                <div class="info">
+                    <h3>맛있는 베트남어 첫걸음</h3>
+                    <p class="meta">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                        JRC북스 · 베트남어 입문
+                    </p>
+                    <p class="desc">성조/발음 체계적 학습, 기초회화 완성. 무료 동영상 강의 제공</p>
+                    <div class="tags">
+                        <span class="tag">동영상</span>
+                        <span class="tag">워크북</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 10 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">10</div>
+                <div class="style-info">
+                    <h2>Blob Shape</h2>
+                    <p>유기적 블롭 형태 배경</p>
+                </div>
+            </div>
+            <div class="card-h-blob">
+                <div class="blob-1"></div>
+                <div class="blob-2"></div>
+                <div class="content">
+                    <img class="book-img" src="https://picsum.photos/110/155?random=310" alt="Book">
+                    <div class="info">
+                        <span class="badge">러시아어 · 입문</span>
+                        <h3>GO! 독학 러시아어 첫걸음</h3>
+                        <p class="meta">시원스쿨 · 키릴문자부터 시작</p>
+                        <p class="desc">발음→기초문법→회화 단계별 학습, 무료 동영상 연계</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 11 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">11</div>
+                <div class="style-info">
+                    <h2>Retro Futurism</h2>
+                    <p>80년대 레트로 + 미래 감성</p>
+                </div>
+            </div>
+            <div class="card-h-retro">
+                <div class="grid-bg"></div>
+                <div class="sun"></div>
+                <div class="content">
+                    <img class="book-img" src="https://picsum.photos/100/140?random=311" alt="Book">
+                    <div class="info">
+                        <span class="retro-badge">TOEFL · 100+</span>
+                        <h3>해커스 토플 액츄얼 테스트</h3>
+                        <p class="meta">해커스 · 4회분 실전테스트</p>
+                        <p class="desc">고난도 문제 구성, 최신 기출경향 반영</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 12 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">12</div>
+                <div class="style-info">
+                    <h2>Mono + Accent</h2>
+                    <p>모노크롬 + 포인트 컬러</p>
+                </div>
+            </div>
+            <div class="card-h-mono">
+                <div class="accent-side"></div>
+                <div class="main">
+                    <div class="img-wrap">
+                        <img src="https://picsum.photos/90/125?random=312" alt="Book">
+                    </div>
+                    <div class="info">
+                        <span class="accent-badge">IELTS · 7.0+</span>
+                        <h3>해커스 아이엘츠 라이팅</h3>
+                        <p class="meta">해커스 · Task 1/2 유형별 훈련</p>
+                        <p class="desc">유형별 템플릿과 모범답안 50개 수록</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 13 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">13</div>
+                <div class="style-info">
+                    <h2>Asymmetric</h2>
+                    <p>비대칭 레이아웃 디자인</p>
+                </div>
+            </div>
+            <div class="card-h-asym">
+                <div class="bg-shape"></div>
+                <div class="content-box">
+                    <img class="book-img" src="https://picsum.photos/100/140?random=313" alt="Book">
+                    <div class="info">
+                        <span class="badge">태국어 · 입문</span>
+                        <h3>GO! 독학 태국어 첫걸음</h3>
+                        <p class="meta">시원스쿨 · 문자/발음/성조 기초</p>
+                        <p class="desc">태국 문자부터 기초회화까지 완성</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 14 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">14</div>
+                <div class="style-info">
+                    <h2>Frosted Glass 2.0</h2>
+                    <p>진화된 블러 글래스 효과</p>
+                </div>
+            </div>
+            <div class="card-h-frost-wrap">
+                <div class="card-h-frost">
+                    <img class="book-img" src="https://picsum.photos/100/140?random=314" alt="Book">
+                    <div class="info">
+                        <div class="tags">
+                            <span class="tag">Cambridge</span>
+                            <span class="tag">IELTS</span>
+                        </div>
+                        <h3>Cambridge IELTS 18 Academic</h3>
+                        <p class="meta">공식 기출문제집 · 4회분</p>
+                        <p class="desc">캠브리지 공식 기출, 정답/해설 및 샘플 답안 포함</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 15 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">15</div>
+                <div class="style-info">
+                    <h2>Animated Border</h2>
+                    <p>움직이는 그라데이션 테두리</p>
+                </div>
+            </div>
+            <div class="card-h-animBorder">
+                <div class="inner">
+                    <img class="book-img" src="https://picsum.photos/100/140?random=315" alt="Book">
+                    <div class="info">
+                        <h3>영어회화 100일의 기적</h3>
+                        <p class="meta">넥서스 · 문성현</p>
+                        <div class="tags">
+                            <span class="tag">100일 완성</span>
+                            <span class="tag">MP3</span>
+                            <span class="tag">5문장/일</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 16 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">16</div>
+                <div class="style-info">
+                    <h2>Minimal Floating</h2>
+                    <p>미니멀 플로팅 호버 효과</p>
+                </div>
+            </div>
+            <div class="card-h-minFloat">
+                <img class="book-img" src="https://picsum.photos/120/170?random=316" alt="Book">
+                <div class="info">
+                    <p class="lang">아랍어</p>
+                    <h3>GO! 독학 아랍어 첫걸음</h3>
+                    <p class="meta">시원스쿨 · 아랍 문자부터 시작</p>
+                    <p class="desc">아랍 문자→발음→기초문법→일상회화 단계별 독학 완성</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 17 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">17</div>
+                <div class="style-info">
+                    <h2>Glow Ring</h2>
+                    <p>글로우 링 효과</p>
+                </div>
+            </div>
+            <div class="card-h-glowRing">
+                <div class="glow"></div>
+                <div class="content">
+                    <img class="book-img" src="https://picsum.photos/110/155?random=317" alt="Book">
+                    <div class="info">
+                        <div class="badge">
+                            <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                            베스트셀러
+                        </div>
+                        <h3>영어는 3단어로</h3>
+                        <p class="meta">웨일북 · 구슬쌤</p>
+                        <p class="desc">복잡한 문장을 3단어로 간결하게 표현하는 실용 영어 200만 구독 유튜버</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 18 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">18</div>
+                <div class="style-info">
+                    <h2>Split Tone</h2>
+                    <p>다크/라이트 톤 분할</p>
+                </div>
+            </div>
+            <div class="card-h-splitTone">
+                <div class="dark-side">
+                    <img src="https://picsum.photos/100/140?random=318" alt="Book">
+                    <span class="lang">비즈니스 영어</span>
+                </div>
+                <div class="light-side">
+                    <div class="tags">
+                        <span class="tag accent">Oxford</span>
+                        <span class="tag">Upper-Int</span>
+                    </div>
+                    <h3>Business Result Upper-Intermediate</h3>
+                    <p class="meta">John Hughes · 비즈니스 영어 중고급</p>
+                    <p class="desc">실무 비즈니스 영어 코스북. 동영상 강의와 워크북 제공</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 19 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">19</div>
+                <div class="style-info">
+                    <h2>3D Perspective</h2>
+                    <p>마우스 호버 3D 회전</p>
+                </div>
+            </div>
+            <div class="card-h-3d-wrap">
+                <div class="card-h-3d">
+                    <img class="floating-img" src="https://picsum.photos/110/155?random=319" alt="Book">
+                    <div class="info">
+                        <span class="badge">이탈리아어 · 입문</span>
+                        <h3>GO! 독학 이탈리아어 첫걸음</h3>
+                        <p class="meta">시원스쿨 · 알파벳부터 시작</p>
+                        <p class="desc">발음→기초문법→회화 단계별 독학 완성</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STYLE 20 -->
+        <section class="style-section">
+            <div class="style-header">
+                <div class="style-number">20</div>
+                <div class="style-info">
+                    <h2>AI/Tech Card</h2>
+                    <p>AI/테크 감성 디자인</p>
+                </div>
+            </div>
+            <div class="card-h-aitech">
+                <div class="circuit"></div>
+                <div class="content">
+                    <div class="visual">
+                        <img src="https://picsum.photos/100/140?random=320" alt="Book">
+                    </div>
+                    <div class="info">
+                        <div class="ai-badge">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                            AI 학습 연계
+                        </div>
+                        <h3>The Official Guide to the TOEFL iBT 7th</h3>
+                        <p class="meta">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+                            ETS 공식 가이드북
+                        </p>
+                        <div class="features">
+                            <div class="feature">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                4회 모의고사
+                            </div>
+                            <div class="feature">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                온라인 테스트
+                            </div>
+                            <div class="feature">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                Writer's Handbook
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

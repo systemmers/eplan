@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스냅스크롤 + 배경 전환 10종</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(20px);
+            padding: 8px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 95vw;
+        }
+
+        .nav a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 11px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .nav a:hover { color: #fff; }
+        .nav a.active {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Demo Container */
+        .demo {
+            display: none;
+            height: 100vh;
+        }
+        .demo.active { display: block; }
+
+        /* Snap Container */
+        .snap-wrap {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .snap-wrap::-webkit-scrollbar { display: none; }
+
+        /* Section Base */
+        .section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .section h2 {
+            font-size: clamp(36px, 7vw, 64px);
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -2px;
+        }
+
+        .section p {
+            font-size: 16px;
+            opacity: 0.5;
+            max-width: 400px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .num {
+            position: absolute;
+            top: 100px;
+            left: 40px;
+            font-size: 13px;
+            font-family: 'SF Mono', Monaco, monospace;
+            opacity: 0.25;
+        }
+
+        /* Scroll Indicator */
+        .scroll-ind {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.3;
+        }
+
+        .scroll-ind svg {
+            width: 24px;
+            height: 24px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Badge */
+        .badge {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 100;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 20px 28px;
+        }
+
+        .badge h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .badge p {
+            font-size: 12px;
+            opacity: 0.4;
+            margin-bottom: 12px;
+        }
+
+        .badge code {
+            display: block;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            font-size: 11px;
+            font-family: 'SF Mono', Monaco, monospace;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ====================================================
+           1. SOLID - 단색 페이드
+           ==================================================== */
+        #d1 .section { transition: background-color 0.8s ease; }
+        #d1 .s1 { background: #0a0a0a; }
+        #d1 .s2 { background: #1a1a2e; }
+        #d1 .s3 { background: #2d1b4e; }
+        #d1 .s4 { background: #1e3a5f; }
+        #d1 .s5 { background: #0d4d4d; }
+
+        /* ====================================================
+           2. GRADIENT - 그라데이션 전환
+           ==================================================== */
+        #d2 .snap-wrap {
+            transition: background 1.2s ease;
+        }
+        #d2 .section { background: transparent; }
+        #d2.state-1 .snap-wrap { background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%); }
+        #d2.state-2 .snap-wrap { background: linear-gradient(180deg, #1a1a2e 0%, #3d1a5c 100%); }
+        #d2.state-3 .snap-wrap { background: linear-gradient(180deg, #3d1a5c 0%, #1e3a5f 100%); }
+        #d2.state-4 .snap-wrap { background: linear-gradient(180deg, #1e3a5f 0%, #0d4d4d 100%); }
+        #d2.state-5 .snap-wrap { background: linear-gradient(180deg, #0d4d4d 0%, #0a0a0a 100%); }
+
+        /* ====================================================
+           3. RGB LERP - RGB 실시간 보간
+           ==================================================== */
+        #d3 .snap-wrap {
+            background: rgb(10, 10, 10);
+            transition: background-color 0.1s linear;
+        }
+        #d3 .section { background: transparent; }
+
+        /* ====================================================
+           4. HUE ROTATE - 색상환 회전
+           ==================================================== */
+        #d4 .snap-wrap {
+            background: hsl(240, 30%, 12%);
+            transition: background-color 0.6s ease;
+        }
+        #d4 .section { background: transparent; }
+
+        /* ====================================================
+           5. AURORA - 오로라 레이어
+           ==================================================== */
+        #d5 .snap-wrap {
+            position: relative;
+            background: #050508;
+        }
+        #d5 .aurora {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+        #d5 .aurora.active { opacity: 1; }
+        #d5 .a1 {
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 30%, rgba(100,100,220,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 70%, rgba(180,100,200,0.25) 0%, transparent 60%);
+        }
+        #d5 .a2 {
+            background: 
+                radial-gradient(ellipse 70% 50% at 70% 20%, rgba(100,200,180,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 30% 80%, rgba(80,180,220,0.25) 0%, transparent 60%);
+        }
+        #d5 .a3 {
+            background: 
+                radial-gradient(ellipse 60% 60% at 50% 40%, rgba(220,100,150,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 30% at 20% 70%, rgba(200,80,180,0.25) 0%, transparent 60%);
+        }
+        #d5 .a4 {
+            background: 
+                radial-gradient(ellipse 80% 40% at 80% 30%, rgba(100,220,200,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 10% 60%, rgba(80,200,180,0.25) 0%, transparent 60%);
+        }
+        #d5 .a5 {
+            background: 
+                radial-gradient(ellipse 60% 50% at 40% 50%, rgba(150,150,220,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 40% at 60% 80%, rgba(120,100,200,0.25) 0%, transparent 60%);
+        }
+        #d5 .section { background: transparent; position: relative; z-index: 1; }
+
+        /* ====================================================
+           6. MESH - 메시 Hue 필터
+           ==================================================== */
+        #d6 .snap-wrap {
+            position: relative;
+            background: #08080c;
+        }
+        #d6 .mesh {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            background: 
+                radial-gradient(at 0% 0%, rgba(120,80,200,0.4) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(200,80,150,0.3) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(80,150,200,0.3) 0px, transparent 50%);
+            transition: filter 1s ease;
+        }
+        #d6 .section { background: transparent; position: relative; z-index: 1; }
+
+        /* ====================================================
+           7. SPLIT - 좌우 분할 전환
+           ==================================================== */
+        #d7 .snap-wrap { position: relative; }
+        #d7 .split-left,
+        #d7 .split-right {
+            position: fixed;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            transition: background-color 0.8s ease;
+            pointer-events: none;
+        }
+        #d7 .split-left { left: 0; }
+        #d7 .split-right { right: 0; }
+        #d7 .section { background: transparent; position: relative; z-index: 1; }
+
+        /* ====================================================
+           8. DIAGONAL - 대각선 와이프
+           ==================================================== */
+        #d8 .snap-wrap {
+            position: relative;
+            background: #0a0a0a;
+        }
+        #d8 .diag-layer {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%);
+            transition: clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.8s ease;
+        }
+        #d8 .section { background: transparent; position: relative; z-index: 1; }
+
+        /* ====================================================
+           9. CIRCLES - 원형 확장
+           ==================================================== */
+        #d9 .snap-wrap {
+            position: relative;
+            background: #0a0a0a;
+        }
+        #d9 .circle-bg {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0; height: 0;
+            border-radius: 50%;
+            transition: width 1s ease, height 1s ease, background-color 0.8s ease;
+            pointer-events: none;
+        }
+        #d9 .circle-bg.expand {
+            width: 250vmax;
+            height: 250vmax;
+        }
+        #d9 .section { background: transparent; position: relative; z-index: 1; }
+
+        /* ====================================================
+           10. NOISE - 노이즈 오버레이 전환
+           ==================================================== */
+        #d10 .snap-wrap {
+            position: relative;
+            transition: background-color 0.8s ease;
+        }
+        #d10 .noise {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        #d10 .section { background: transparent; position: relative; z-index: 1; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav { top: 10px; padding: 6px; }
+            .nav a { font-size: 9px; padding: 8px 12px; }
+            .badge { left: 15px; bottom: 15px; padding: 16px 20px; }
+            .badge code { font-size: 10px; }
+            .num { top: 80px; left: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="active" data-id="1">단색</a>
+        <a href="#" data-id="2">그라데이션</a>
+        <a href="#" data-id="3">RGB보간</a>
+        <a href="#" data-id="4">Hue회전</a>
+        <a href="#" data-id="5">오로라</a>
+        <a href="#" data-id="6">메시</a>
+        <a href="#" data-id="7">좌우분할</a>
+        <a href="#" data-id="8">대각선</a>
+        <a href="#" data-id="9">원형확장</a>
+        <a href="#" data-id="10">노이즈</a>
+    </nav>
+
+    <!-- 1. SOLID -->
+    <div class="demo active" id="d1">
+        <div class="snap-wrap">
+            <section class="section s1"><span class="num">01</span><h2>Solid Color</h2><p>각 섹션마다 단색 배경이 부드럽게 전환됩니다</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section s2"><span class="num">02</span><h2>Deep Purple</h2><p>transition: background-color 0.8s ease</p></section>
+            <section class="section s3"><span class="num">03</span><h2>Rich Violet</h2><p>가장 간단하고 성능이 좋은 방식</p></section>
+            <section class="section s4"><span class="num">04</span><h2>Ocean Blue</h2><p>브랜드 컬러에 맞춰 커스터마이즈</p></section>
+            <section class="section s5"><span class="num">05</span><h2>Teal Night</h2><p>CSS만으로 완벽하게 구현 가능</p></section>
+        </div>
+        <div class="badge"><h4>1. Solid Color</h4><p>CSS Only</p><code>transition: background-color 0.8s</code></div>
+    </div>
+
+    <!-- 2. GRADIENT -->
+    <div class="demo state-1" id="d2">
+        <div class="snap-wrap">
+            <section class="section" data-state="1"><span class="num">01</span><h2>Gradient Morph</h2><p>그라데이션이 부드럽게 변형됩니다</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section" data-state="2"><span class="num">02</span><h2>Purple Flow</h2><p>컨테이너 전체에 그라데이션 적용</p></section>
+            <section class="section" data-state="3"><span class="num">03</span><h2>Blue Shift</h2><p>섹션은 투명하게 유지</p></section>
+            <section class="section" data-state="4"><span class="num">04</span><h2>Teal Wave</h2><p>고급스러운 현대적 느낌</p></section>
+            <section class="section" data-state="5"><span class="num">05</span><h2>Dark Return</h2><p>자연스러운 순환 효과</p></section>
+        </div>
+        <div class="badge"><h4>2. Gradient Morph</h4><p>CSS + JS Observer</p><code>linear-gradient + transition</code></div>
+    </div>
+
+    <!-- 3. RGB LERP -->
+    <div class="demo" id="d3">
+        <div class="snap-wrap">
+            <section class="section" data-r="10" data-g="10" data-b="10"><span class="num">01</span><h2>RGB Interpolation</h2><p>스크롤 위치에 따라 RGB가 실시간 보간</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section" data-r="26" data-g="26" data-b="46"><span class="num">02</span><h2>Smooth Blend</h2><p>중간 지점에서 두 색상이 혼합</p></section>
+            <section class="section" data-r="61" data-g="26" data-b="92"><span class="num">03</span><h2>Purple Zone</h2><p>가장 자연스러운 전환 방식</p></section>
+            <section class="section" data-r="30" data-g="58" data-b="95"><span class="num">04</span><h2>Blue Depth</h2><p>선형 보간으로 부드러운 흐름</p></section>
+            <section class="section" data-r="13" data-g="77" data-b="77"><span class="num">05</span><h2>Teal End</h2><p>스크롤 이벤트로 실시간 계산</p></section>
+        </div>
+        <div class="badge"><h4>3. RGB Interpolation</h4><p>JavaScript Scroll Event</p><code>lerp(colorA, colorB, progress)</code></div>
+    </div>
+
+    <!-- 4. HUE ROTATE -->
+    <div class="demo" id="d4">
+        <div class="snap-wrap">
+            <section class="section" data-hue="240"><span class="num">01</span><h2>Hue Rotation</h2><p>HSL 색상환을 따라 색상이 회전</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section" data-hue="280"><span class="num">02</span><h2>Violet Shift</h2><p>채도와 명도는 유지, Hue만 변경</p></section>
+            <section class="section" data-hue="320"><span class="num">03</span><h2>Pink Tone</h2><p>무지개 스펙트럼 따라 전환</p></section>
+            <section class="section" data-hue="180"><span class="num">04</span><h2>Cyan Wave</h2><p>색상환의 보색 관계 활용</p></section>
+            <section class="section" data-hue="140"><span class="num">05</span><h2>Green End</h2><p>브랜딩 색상 다양성 표현</p></section>
+        </div>
+        <div class="badge"><h4>4. Hue Rotation</h4><p>JavaScript + HSL</p><code>hsl(hue, 30%, 12%)</code></div>
+    </div>
+
+    <!-- 5. AURORA -->
+    <div class="demo" id="d5">
+        <div class="snap-wrap">
+            <div class="aurora a1 active"></div>
+            <div class="aurora a2"></div>
+            <div class="aurora a3"></div>
+            <div class="aurora a4"></div>
+            <div class="aurora a5"></div>
+            <section class="section" data-aurora="1"><span class="num">01</span><h2>Aurora Blend</h2><p>오로라처럼 레이어가 블렌딩</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section" data-aurora="2"><span class="num">02</span><h2>Teal Glow</h2><p>각 레이어 opacity 조절로 블렌딩</p></section>
+            <section class="section" data-aurora="3"><span class="num">03</span><h2>Pink Flow</h2><p>radial-gradient 겹침으로 깊이감</p></section>
+            <section class="section" data-aurora="4"><span class="num">04</span><h2>Cyan Light</h2><p>몽환적이고 프리미엄한 느낌</p></section>
+            <section class="section" data-aurora="5"><span class="num">05</span><h2>Violet End</h2><p>SaaS, 테크 랜딩에 적합</p></section>
+        </div>
+        <div class="badge"><h4>5. Aurora Blend</h4><p>CSS Layers + JS Observer</p><code>radial-gradient + opacity</code></div>
+    </div>
+
+    <!-- 6. MESH -->
+    <div class="demo" id="d6">
+        <div class="snap-wrap">
+            <div class="mesh"></div>
+            <section class="section" data-hue="0"><span class="num">01</span><h2>Mesh Gradient</h2><p>메시 그라데이션이 Hue 필터로 변형</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section" data-hue="40"><span class="num">02</span><h2>Warm Shift</h2><p>filter: hue-rotate()로 전체 색조 변경</p></section>
+            <section class="section" data-hue="120"><span class="num">03</span><h2>Green Tone</h2><p>하나의 메시로 다양한 분위기</p></section>
+            <section class="section" data-hue="200"><span class="num">04</span><h2>Cool Blue</h2><p>성능 효율적인 방식</p></section>
+            <section class="section" data-hue="280"><span class="num">05</span><h2>Purple End</h2><p>2024-2025 트렌드 메시</p></section>
+        </div>
+        <div class="badge"><h4>6. Mesh Gradient</h4><p>CSS Filter + JS</p><code>filter: hue-rotate(deg)</code></div>
+    </div>
+
+    <!-- 7. SPLIT -->
+    <div class="demo" id="d7">
+        <div class="snap-wrap">
+            <div class="split-left"></div>
+            <div class="split-right"></div>
+            <section class="section" data-left="#0a0a0a" data-right="#1a1a2e"><span class="num">01</span><h2>Split Transition</h2><p>좌우가 각각 다른 색으로 전환</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section" data-left="#1a1a2e" data-right="#3d1a5c"><span class="num">02</span><h2>Dual Tone</h2><p>분할 화면 디자인에 효과적</p></section>
+            <section class="section" data-left="#3d1a5c" data-right="#1e3a5f"><span class="num">03</span><h2>Contrast</h2><p>좌우 독립적인 전환</p></section>
+            <section class="section" data-left="#1e3a5f" data-right="#0d4d4d"><span class="num">04</span><h2>Ocean Split</h2><p>비대칭 레이아웃에 적합</p></section>
+            <section class="section" data-left="#0d4d4d" data-right="#0a0a0a"><span class="num">05</span><h2>Return</h2><p>포트폴리오, 에이전시 사이트</p></section>
+        </div>
+        <div class="badge"><h4>7. Split Transition</h4><p>CSS + JS Observer</p><code>50% left + 50% right</code></div>
+    </div>
+
+    <!-- 8. DIAGONAL -->
+    <div class="demo" id="d8">
+        <div class="snap-wrap">
+            <div class="diag-layer"></div>
+            <section class="section" data-color="#1a1a2e" data-clip="0"><span class="num">01</span><h2>Diagonal Wipe</h2><p>대각선으로 색상이 와이프</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section" data-color="#3d1a5c" data-clip="25"><span class="num">02</span><h2>Purple Wave</h2><p>clip-path로 대각선 마스크</p></section>
+            <section class="section" data-color="#1e3a5f" data-clip="50"><span class="num">03</span><h2>Blue Reveal</h2><p>시네마틱한 전환 효과</p></section>
+            <section class="section" data-color="#0d4d4d" data-clip="75"><span class="num">04</span><h2>Teal Sweep</h2><p>역동적인 페이지 전환</p></section>
+            <section class="section" data-color="#2a2a2a" data-clip="100"><span class="num">05</span><h2>Full Cover</h2><p>크리에이티브 사이트에 적합</p></section>
+        </div>
+        <div class="badge"><h4>8. Diagonal Wipe</h4><p>CSS clip-path + JS</p><code>clip-path: polygon()</code></div>
+    </div>
+
+    <!-- 9. CIRCLES -->
+    <div class="demo" id="d9">
+        <div class="snap-wrap">
+            <div class="circle-bg"></div>
+            <section class="section" data-color="#1a1a2e"><span class="num">01</span><h2>Circle Expand</h2><p>중앙에서 원형으로 색상 확장</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section" data-color="#3d1a5c"><span class="num">02</span><h2>Purple Grow</h2><p>원형이 화면 전체를 채움</p></section>
+            <section class="section" data-color="#1e3a5f"><span class="num">03</span><h2>Blue Sphere</h2><p>유기적이고 부드러운 전환</p></section>
+            <section class="section" data-color="#0d4d4d"><span class="num">04</span><h2>Teal Circle</h2><p>인터랙티브한 느낌</p></section>
+            <section class="section" data-color="#1a1a1a"><span class="num">05</span><h2>Dark Return</h2><p>앱 소개, 제품 랜딩에 적합</p></section>
+        </div>
+        <div class="badge"><h4>9. Circle Expand</h4><p>CSS Transform + JS</p><code>border-radius: 50% + scale</code></div>
+    </div>
+
+    <!-- 10. NOISE -->
+    <div class="demo" id="d10">
+        <div class="snap-wrap">
+            <div class="noise"></div>
+            <section class="section" data-bg="#0a0a0a"><span class="num">01</span><h2>Noise Overlay</h2><p>노이즈 텍스처와 함께 색상 전환</p><div class="scroll-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></section>
+            <section class="section" data-bg="#1a1a2e"><span class="num">02</span><h2>Grainy Purple</h2><p>빈티지하고 아날로그한 느낌</p></section>
+            <section class="section" data-bg="#2d1b4e"><span class="num">03</span><h2>Film Grain</h2><p>SVG feTurbulence로 노이즈 생성</p></section>
+            <section class="section" data-bg="#1e3a5f"><span class="num">04</span><h2>Textured Blue</h2><p>플랫한 배경에 질감 추가</p></section>
+            <section class="section" data-bg="#0d4d4d"><span class="num">05</span><h2>Vintage Teal</h2><p>아트, 음악, 패션 사이트에 적합</p></section>
+        </div>
+        <div class="badge"><h4>10. Noise Overlay</h4><p>SVG Filter + CSS</p><code>feTurbulence + opacity</code></div>
+    </div>
+
+    <script>
+        // Navigation
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelectorAll('.nav a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                document.querySelectorAll('.demo').forEach(d => d.classList.remove('active'));
+                document.getElementById('d' + link.dataset.id).classList.add('active');
+            });
+        });
+
+        // Helper: Linear Interpolation
+        const lerp = (a, b, t) => a + (b - a) * t;
+
+        // 2. Gradient Observer
+        const d2 = document.getElementById('d2');
+        const d2Wrap = d2.querySelector('.snap-wrap');
+        new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    d2.className = 'demo active state-' + e.target.dataset.state;
+                }
+            });
+        }, { threshold: 0.6, root: d2Wrap }).observe(d2.querySelectorAll('.section'));
+        d2.querySelectorAll('.section').forEach(s => {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) d2.className = 'demo active state-' + e.target.dataset.state;
+                });
+            }, { threshold: 0.6, root: d2Wrap }).observe(s);
+        });
+
+        // 3. RGB Lerp
+        const d3Wrap = document.querySelector('#d3 .snap-wrap');
+        const d3Sections = d3Wrap.querySelectorAll('.section');
+        d3Wrap.addEventListener('scroll', () => {
+            const scrollTop = d3Wrap.scrollTop;
+            const h = window.innerHeight;
+            const idx = Math.floor(scrollTop / h);
+            const progress = (scrollTop % h) / h;
+            if (idx < d3Sections.length - 1) {
+                const curr = d3Sections[idx], next = d3Sections[idx + 1];
+                const r = Math.round(lerp(+curr.dataset.r, +next.dataset.r, progress));
+                const g = Math.round(lerp(+curr.dataset.g, +next.dataset.g, progress));
+                const b = Math.round(lerp(+curr.dataset.b, +next.dataset.b, progress));
+                d3Wrap.style.backgroundColor = `rgb(${r},${g},${b})`;
+            }
+        });
+
+        // 4. Hue Rotate
+        const d4Wrap = document.querySelector('#d4 .snap-wrap');
+        const d4Sections = d4Wrap.querySelectorAll('.section');
+        d4Wrap.addEventListener('scroll', () => {
+            const scrollTop = d4Wrap.scrollTop;
+            const h = window.innerHeight;
+            const idx = Math.floor(scrollTop / h);
+            const progress = (scrollTop % h) / h;
+            if (idx < d4Sections.length - 1) {
+                const hue = lerp(+d4Sections[idx].dataset.hue, +d4Sections[idx + 1].dataset.hue, progress);
+                d4Wrap.style.backgroundColor = `hsl(${hue}, 30%, 12%)`;
+            }
+        });
+
+        // 5. Aurora
+        const d5Wrap = document.querySelector('#d5 .snap-wrap');
+        const auroras = document.querySelectorAll('#d5 .aurora');
+        d5Wrap.querySelectorAll('.section').forEach(s => {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        auroras.forEach((a, i) => a.classList.toggle('active', i + 1 == e.target.dataset.aurora));
+                    }
+                });
+            }, { threshold: 0.6, root: d5Wrap }).observe(s);
+        });
+
+        // 6. Mesh Hue
+        const d6Wrap = document.querySelector('#d6 .snap-wrap');
+        const mesh = document.querySelector('#d6 .mesh');
+        d6Wrap.querySelectorAll('.section').forEach(s => {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) mesh.style.filter = `hue-rotate(${e.target.dataset.hue}deg)`;
+                });
+            }, { threshold: 0.6, root: d6Wrap }).observe(s);
+        });
+
+        // 7. Split
+        const d7Wrap = document.querySelector('#d7 .snap-wrap');
+        const splitL = document.querySelector('#d7 .split-left');
+        const splitR = document.querySelector('#d7 .split-right');
+        d7Wrap.querySelectorAll('.section').forEach(s => {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        splitL.style.backgroundColor = e.target.dataset.left;
+                        splitR.style.backgroundColor = e.target.dataset.right;
+                    }
+                });
+            }, { threshold: 0.6, root: d7Wrap }).observe(s);
+        });
+
+        // 8. Diagonal
+        const d8Wrap = document.querySelector('#d8 .snap-wrap');
+        const diagLayer = document.querySelector('#d8 .diag-layer');
+        d8Wrap.querySelectorAll('.section').forEach(s => {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const clip = +e.target.dataset.clip;
+                        diagLayer.style.backgroundColor = e.target.dataset.color;
+                        diagLayer.style.clipPath = `polygon(0 0, ${clip + 20}% 0, ${clip}% 100%, 0 100%)`;
+                    }
+                });
+            }, { threshold: 0.6, root: d8Wrap }).observe(s);
+        });
+
+        // 9. Circle
+        const d9Wrap = document.querySelector('#d9 .snap-wrap');
+        const circleBg = document.querySelector('#d9 .circle-bg');
+        d9Wrap.querySelectorAll('.section').forEach((s, i) => {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        circleBg.style.backgroundColor = e.target.dataset.color;
+                        circleBg.classList.add('expand');
+                    }
+                });
+            }, { threshold: 0.6, root: d9Wrap }).observe(s);
+        });
+
+        // 10. Noise
+        const d10Wrap = document.querySelector('#d10 .snap-wrap');
+        d10Wrap.querySelectorAll('.section').forEach(s => {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) d10Wrap.style.backgroundColor = e.target.dataset.bg;
+                });
+            }, { threshold: 0.6, root: d10Wrap }).observe(s);
+        });
+    </script>
+</body>
+</html>

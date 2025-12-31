@@ -20,6 +20,11 @@ function initPageComponents() {
     if (typeof initTextbookModal === 'function') {
         initTextbookModal();
     }
+
+    // 스크롤 애니메이션 초기화 (scroll-animations.js)
+    if (typeof initScrollAnimations === 'function') {
+        initScrollAnimations();
+    }
 }
 
 // 교재 컴포넌트 초기화
@@ -78,6 +83,11 @@ document.body.addEventListener('htmx:afterSwap', function(event) {
 
         // 페이지 컴포넌트 재초기화
         initPageComponents();
+
+        // 스크롤 애니메이션 재초기화
+        if (typeof ScrollAnimations !== 'undefined') {
+            ScrollAnimations.reinit();
+        }
 
         // 교재 갤러리 섹션이 포함된 경우에만 교재 컴포넌트 초기화
         if (event.detail.target.querySelector('.textbook-carousel') ||

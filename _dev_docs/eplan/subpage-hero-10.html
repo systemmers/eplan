@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서브 페이지 히어로 & 헤더 10종</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 24px;
+            border-radius: 30px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 95vw;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .nav a:hover {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.7;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Demo Section */
+        .demo-section {
+            padding: 60px 0 0;
+            background: #f5f5f5;
+        }
+
+        .demo-label {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .demo-label .number {
+            width: 32px;
+            height: 32px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .demo-label .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .demo-label .tags {
+            display: flex;
+            gap: 6px;
+            margin-left: auto;
+        }
+
+        .demo-label .tag {
+            padding: 4px 10px;
+            background: #e0e0e0;
+            border-radius: 12px;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .demo-label .tag.recommend {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* ====================================================
+           1. MINIMAL GRADIENT - 미니멀 그라데이션
+           ==================================================== */
+        .hero-1 {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-1::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-1 .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+
+        .hero-1 .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero-1 .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .hero-1 h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .hero-1 p {
+            font-size: 18px;
+            opacity: 0.7;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* ====================================================
+           2. IMAGE OVERLAY - 이미지 오버레이
+           ==================================================== */
+        .hero-2 {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600') center/cover;
+            color: #fff;
+            padding: 140px 40px 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-2 .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            opacity: 0.6;
+            margin-bottom: 24px;
+        }
+
+        .hero-2 .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero-2 h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero-2 p {
+            font-size: 18px;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ====================================================
+           3. SPLIT LAYOUT - 분할 레이아웃
+           ==================================================== */
+        .hero-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+        }
+
+        .hero-3 .content {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-3 .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            opacity: 0.5;
+            margin-bottom: 20px;
+        }
+
+        .hero-3 .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero-3 h1 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-3 p {
+            font-size: 16px;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .hero-3 .visual {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-3 .visual-icon {
+            font-size: 120px;
+            opacity: 0.3;
+        }
+
+        .hero-3 .visual::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+        }
+
+        /* ====================================================
+           4. GEOMETRIC PATTERN - 기하학적 패턴
+           ==================================================== */
+        .hero-4 {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-4::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(30deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+                linear-gradient(150deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+                linear-gradient(30deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+                linear-gradient(150deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a);
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+            opacity: 0.5;
+        }
+
+        .hero-4 .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-4 .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            opacity: 0.5;
+            margin-bottom: 20px;
+        }
+
+        .hero-4 .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero-4 h1 {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-4 p {
+            font-size: 17px;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .hero-4 .accent-line {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin-bottom: 24px;
+            border-radius: 2px;
+        }
+
+        /* ====================================================
+           5. GLASSMORPHISM - 글래스모피즘
+           ==================================================== */
+        .hero-5 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            padding: 100px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-5::before,
+        .hero-5::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .hero-5::before {
+            width: 400px;
+            height: 400px;
+            background: rgba(102, 126, 234, 0.3);
+            top: -100px;
+            right: -100px;
+            filter: blur(60px);
+        }
+
+        .hero-5::after {
+            width: 300px;
+            height: 300px;
+            background: rgba(118, 75, 162, 0.3);
+            bottom: -50px;
+            left: -50px;
+            filter: blur(60px);
+        }
+
+        .hero-5 .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 50px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero-5 .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+
+        .hero-5 .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero-5 h1 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-5 p {
+            font-size: 16px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* ====================================================
+           6. WAVE BOTTOM - 웨이브 하단
+           ==================================================== */
+        .hero-6 {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 120px 40px 120px;
+            position: relative;
+        }
+
+        .hero-6 .content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-6 .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            opacity: 0.5;
+            margin-bottom: 24px;
+        }
+
+        .hero-6 .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero-6 h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-6 p {
+            font-size: 18px;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .hero-6 .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+        }
+
+        .hero-6 .wave svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ====================================================
+           7. DIAGONAL SPLIT - 대각선 분할
+           ==================================================== */
+        .hero-7 {
+            position: relative;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-7 .bg-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background: #0a0a0a;
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+        }
+
+        .hero-7 .bg-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .hero-7 .content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            padding: 60px;
+            max-width: 600px;
+        }
+
+        .hero-7 .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+
+        .hero-7 .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero-7 h1 {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-7 p {
+            font-size: 16px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* ====================================================
+           8. DOT PATTERN - 도트 패턴
+           ==================================================== */
+        .hero-8 {
+            background: #fff;
+            color: #0a0a0a;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-8::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(#ddd 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .hero-8 .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-8 .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .hero-8 .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .hero-8 .breadcrumb a:hover {
+            color: #0a0a0a;
+        }
+
+        .hero-8 h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #0a0a0a, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-8 p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .hero-8 .decorator {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 30px;
+            opacity: 0.1;
+        }
+
+        /* ====================================================
+           9. GRADIENT MESH - 그라데이션 메시
+           ==================================================== */
+        .hero-9 {
+            background: 
+                radial-gradient(at 40% 20%, #667eea40 0px, transparent 50%),
+                radial-gradient(at 80% 0%, #764ba240 0px, transparent 50%),
+                radial-gradient(at 0% 50%, #ee785640 0px, transparent 50%),
+                radial-gradient(at 80% 50%, #10b98140 0px, transparent 50%),
+                radial-gradient(at 0% 100%, #ec489940 0px, transparent 50%),
+                #0a0a0a;
+            color: #fff;
+            padding: 120px 40px 80px;
+            position: relative;
+        }
+
+        .hero-9 .content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-9 .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            opacity: 0.5;
+            margin-bottom: 24px;
+        }
+
+        .hero-9 .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero-9 h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-9 p {
+            font-size: 18px;
+            opacity: 0.7;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ====================================================
+           10. 3D TEXT - 3D 입체 텍스트
+           ==================================================== */
+        .hero-10 {
+            background: #0a0a0a;
+            color: #fff;
+            padding: 100px 40px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-10::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 60%);
+        }
+
+        .hero-10 .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-10 .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            opacity: 0.5;
+            margin-bottom: 30px;
+        }
+
+        .hero-10 .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero-10 h1 {
+            font-size: clamp(48px, 8vw, 100px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            text-shadow: 
+                0 1px 0 #ccc,
+                0 2px 0 #c9c9c9,
+                0 3px 0 #bbb,
+                0 4px 0 #b9b9b9,
+                0 5px 0 #aaa,
+                0 6px 1px rgba(0,0,0,.1),
+                0 0 5px rgba(0,0,0,.1),
+                0 1px 3px rgba(0,0,0,.3),
+                0 3px 5px rgba(0,0,0,.2),
+                0 5px 10px rgba(0,0,0,.25),
+                0 10px 10px rgba(0,0,0,.2),
+                0 20px 20px rgba(0,0,0,.15);
+        }
+
+        .hero-10 p {
+            font-size: 18px;
+            opacity: 0.6;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==================== BONUS STYLES ==================== */
+
+        /* Summary Section */
+        .summary {
+            background: #fff;
+            padding: 80px 40px;
+        }
+
+        .summary h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+        }
+
+        .summary-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .summary-card {
+            background: #f9f9f9;
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .summary-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary-card h4 span {
+            width: 24px;
+            height: 24px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .summary-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .summary-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .summary-card .tag {
+            padding: 3px 10px;
+            background: #e8e8e8;
+            border-radius: 10px;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .summary-card .tag.best {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            color: rgba(255,255,255,0.5);
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                top: 10px;
+                padding: 8px 12px;
+            }
+
+            .nav a {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+
+            .hero-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-3 .visual {
+                min-height: 200px;
+            }
+
+            .hero-7 .bg-left {
+                width: 100%;
+                clip-path: none;
+            }
+
+            .hero-7 .bg-right {
+                display: none;
+            }
+
+            .demo-label {
+                flex-wrap: wrap;
+            }
+
+            .demo-label .tags {
+                margin-left: 0;
+                margin-top: 8px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#hero1">미니멀</a>
+        <a href="#hero2">이미지</a>
+        <a href="#hero3">분할</a>
+        <a href="#hero4">기하학</a>
+        <a href="#hero5">글래스</a>
+        <a href="#hero6">웨이브</a>
+        <a href="#hero7">대각선</a>
+        <a href="#hero8">도트</a>
+        <a href="#hero9">메시</a>
+        <a href="#hero10">3D</a>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>서브 페이지 히어로 10종</h1>
+        <p>Subpage Hero & Header Designs</p>
+        <div class="scroll-hint">↓ 스크롤</div>
+    </header>
+
+    <!-- 1. Minimal Gradient -->
+    <section class="demo-section" id="hero1">
+        <div class="demo-label">
+            <span class="number">1</span>
+            <span class="title">Minimal Gradient</span>
+            <div class="tags">
+                <span class="tag recommend">★ 추천</span>
+                <span class="tag">심플</span>
+                <span class="tag">범용적</span>
+            </div>
+        </div>
+        <div class="hero-1">
+            <div class="breadcrumb">
+                <a href="#">홈</a>
+                <span>›</span>
+                <a href="#">서비스</a>
+                <span>›</span>
+                <span>상세</span>
+            </div>
+            <h1>서비스 소개</h1>
+            <p>최고의 솔루션으로 비즈니스 성장을 도와드립니다. 전문가 팀이 맞춤형 서비스를 제공합니다.</p>
+        </div>
+    </section>
+
+    <!-- 2. Image Overlay -->
+    <section class="demo-section" id="hero2">
+        <div class="demo-label">
+            <span class="number">2</span>
+            <span class="title">Image Overlay</span>
+            <div class="tags">
+                <span class="tag recommend">★ 추천</span>
+                <span class="tag">임팩트</span>
+                <span class="tag">비주얼</span>
+            </div>
+        </div>
+        <div class="hero-2">
+            <div class="breadcrumb">
+                <a href="#">Home</a>
+                <span>›</span>
+                <a href="#">About</a>
+                <span>›</span>
+                <span>Our Story</span>
+            </div>
+            <h1>회사 소개</h1>
+            <p>10년간 쌓아온 신뢰와 경험으로 고객의 성공을 함께 만들어갑니다</p>
+        </div>
+    </section>
+
+    <!-- 3. Split Layout -->
+    <section class="demo-section" id="hero3">
+        <div class="demo-label">
+            <span class="number">3</span>
+            <span class="title">Split Layout</span>
+            <div class="tags">
+                <span class="tag">모던</span>
+                <span class="tag">구조적</span>
+            </div>
+        </div>
+        <div class="hero-3">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a>
+                    <span>›</span>
+                    <a href="#">프로그램</a>
+                    <span>›</span>
+                    <span>교육 과정</span>
+                </div>
+                <h1>교육 프로그램</h1>
+                <p>체계적인 커리큘럼과 실무 중심의 교육으로 전문가로 성장할 수 있도록 지원합니다.</p>
+            </div>
+            <div class="visual">
+                <span class="visual-icon">📚</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Geometric Pattern -->
+    <section class="demo-section" id="hero4">
+        <div class="demo-label">
+            <span class="number">4</span>
+            <span class="title">Geometric Pattern</span>
+            <div class="tags">
+                <span class="tag">테크</span>
+                <span class="tag">세련됨</span>
+            </div>
+        </div>
+        <div class="hero-4">
+            <div class="content">
+                <div class="accent-line"></div>
+                <div class="breadcrumb">
+                    <a href="#">홈</a>
+                    <span>›</span>
+                    <a href="#">기술</a>
+                    <span>›</span>
+                    <span>솔루션</span>
+                </div>
+                <h1>기술 솔루션</h1>
+                <p>최신 기술을 활용한 혁신적인 솔루션으로 디지털 트랜스포메이션을 실현합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Glassmorphism -->
+    <section class="demo-section" id="hero5">
+        <div class="demo-label">
+            <span class="number">5</span>
+            <span class="title">Glassmorphism</span>
+            <div class="tags">
+                <span class="tag recommend">★ 추천</span>
+                <span class="tag">트렌드</span>
+                <span class="tag">모던</span>
+            </div>
+        </div>
+        <div class="hero-5">
+            <div class="glass-card">
+                <div class="breadcrumb">
+                    <a href="#">홈</a>
+                    <span>›</span>
+                    <a href="#">제품</a>
+                    <span>›</span>
+                    <span>상세</span>
+                </div>
+                <h1>프리미엄 서비스</h1>
+                <p>글래스모피즘 스타일의 세련된 디자인으로 프리미엄 브랜드 이미지를 전달합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Wave Bottom -->
+    <section class="demo-section" id="hero6">
+        <div class="demo-label">
+            <span class="number">6</span>
+            <span class="title">Wave Bottom</span>
+            <div class="tags">
+                <span class="tag recommend">★ 추천</span>
+                <span class="tag">부드러움</span>
+                <span class="tag">자연스러움</span>
+            </div>
+        </div>
+        <div class="hero-6">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a>
+                    <span>›</span>
+                    <a href="#">블로그</a>
+                    <span>›</span>
+                    <span>아티클</span>
+                </div>
+                <h1>인사이트 블로그</h1>
+                <p>최신 트렌드와 인사이트를 공유합니다. 비즈니스 성장에 도움이 되는 정보를 확인하세요.</p>
+            </div>
+            <div class="wave">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" fill="#f5f5f5"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Diagonal Split -->
+    <section class="demo-section" id="hero7">
+        <div class="demo-label">
+            <span class="number">7</span>
+            <span class="title">Diagonal Split</span>
+            <div class="tags">
+                <span class="tag">역동적</span>
+                <span class="tag">크리에이티브</span>
+            </div>
+        </div>
+        <div class="hero-7">
+            <div class="bg-left"></div>
+            <div class="bg-right"></div>
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a>
+                    <span>›</span>
+                    <a href="#">포트폴리오</a>
+                    <span>›</span>
+                    <span>프로젝트</span>
+                </div>
+                <h1>포트폴리오</h1>
+                <p>창의적인 아이디어와 전문 기술로 완성한 프로젝트들을 확인해 보세요.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Dot Pattern -->
+    <section class="demo-section" id="hero8">
+        <div class="demo-label">
+            <span class="number">8</span>
+            <span class="title">Dot Pattern (Light)</span>
+            <div class="tags">
+                <span class="tag">밝음</span>
+                <span class="tag">깔끔</span>
+            </div>
+        </div>
+        <div class="hero-8">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a>
+                    <span>›</span>
+                    <a href="#">고객지원</a>
+                    <span>›</span>
+                    <span>FAQ</span>
+                </div>
+                <h1>자주 묻는 질문</h1>
+                <p>고객님들이 가장 많이 문의하시는 내용을 정리했습니다. 원하시는 답변을 빠르게 찾아보세요.</p>
+            </div>
+            <div class="decorator"></div>
+        </div>
+    </section>
+
+    <!-- 9. Gradient Mesh -->
+    <section class="demo-section" id="hero9">
+        <div class="demo-label">
+            <span class="number">9</span>
+            <span class="title">Gradient Mesh</span>
+            <div class="tags">
+                <span class="tag recommend">★ 추천</span>
+                <span class="tag">트렌드</span>
+                <span class="tag">화려함</span>
+            </div>
+        </div>
+        <div class="hero-9">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a>
+                    <span>›</span>
+                    <a href="#">이벤트</a>
+                    <span>›</span>
+                    <span>프로모션</span>
+                </div>
+                <h1>특별 이벤트</h1>
+                <p>놓치면 후회할 특별한 혜택! 지금 바로 참여하세요.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. 3D Text -->
+    <section class="demo-section" id="hero10">
+        <div class="demo-label">
+            <span class="number">10</span>
+            <span class="title">3D Typography</span>
+            <div class="tags">
+                <span class="tag">임팩트</span>
+                <span class="tag">대담함</span>
+            </div>
+        </div>
+        <div class="hero-10">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a>
+                    <span>›</span>
+                    <a href="#">브랜드</a>
+                    <span>›</span>
+                    <span>스토리</span>
+                </div>
+                <h1>BRAND</h1>
+                <p>우리의 브랜드 스토리를 만나보세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary -->
+    <section class="summary">
+        <h2>📋 서브 페이지 히어로 10종 요약</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h4><span>1</span> Minimal Gradient</h4>
+                <p>심플한 그라데이션 배경. 가장 범용적으로 사용 가능.</p>
+                <div class="tags">
+                    <span class="tag best">★ 추천</span>
+                    <span class="tag">기업</span>
+                    <span class="tag">서비스</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>2</span> Image Overlay</h4>
+                <p>배경 이미지 + 어두운 오버레이. 임팩트 있는 비주얼.</p>
+                <div class="tags">
+                    <span class="tag best">★ 추천</span>
+                    <span class="tag">소개</span>
+                    <span class="tag">랜딩</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>3</span> Split Layout</h4>
+                <p>좌우 분할 레이아웃. 콘텐츠와 비주얼 분리.</p>
+                <div class="tags">
+                    <span class="tag">프로그램</span>
+                    <span class="tag">제품</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>4</span> Geometric Pattern</h4>
+                <p>CSS 기하학적 패턴 배경. 테크/IT 느낌.</p>
+                <div class="tags">
+                    <span class="tag">테크</span>
+                    <span class="tag">솔루션</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>5</span> Glassmorphism</h4>
+                <p>블러 + 반투명 카드. 모던하고 트렌디.</p>
+                <div class="tags">
+                    <span class="tag best">★ 추천</span>
+                    <span class="tag">프리미엄</span>
+                    <span class="tag">SaaS</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>6</span> Wave Bottom</h4>
+                <p>하단 SVG 웨이브. 부드러운 섹션 전환.</p>
+                <div class="tags">
+                    <span class="tag best">★ 추천</span>
+                    <span class="tag">블로그</span>
+                    <span class="tag">뉴스</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>7</span> Diagonal Split</h4>
+                <p>대각선 색상 분할. 역동적인 느낌.</p>
+                <div class="tags">
+                    <span class="tag">포트폴리오</span>
+                    <span class="tag">크리에이티브</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>8</span> Dot Pattern (Light)</h4>
+                <p>밝은 배경 + 도트 패턴. 깔끔한 화이트 테마.</p>
+                <div class="tags">
+                    <span class="tag">FAQ</span>
+                    <span class="tag">고객지원</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>9</span> Gradient Mesh</h4>
+                <p>여러 색상의 메시 그라데이션. 화려하고 트렌디.</p>
+                <div class="tags">
+                    <span class="tag best">★ 추천</span>
+                    <span class="tag">이벤트</span>
+                    <span class="tag">프로모션</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>10</span> 3D Typography</h4>
+                <p>입체감 있는 큰 타이포그래피. 강렬한 임팩트.</p>
+                <div class="tags">
+                    <span class="tag">브랜드</span>
+                    <span class="tag">캠페인</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        서브 페이지 히어로 & 헤더 10종 — Subpage Hero Designs
+    </footer>
+</body>
+</html>

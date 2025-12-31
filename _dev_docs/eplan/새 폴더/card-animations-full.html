@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Scroll Animations Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8f9fa;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: clamp(14px, 2vw, 18px);
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .hero .count {
+            margin-top: 20px;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Section styles */
+        .section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 6px 16px;
+            background: #e8f4f8;
+            color: #0984e3;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-size: clamp(22px, 3.5vw, 32px);
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+
+        .section-desc {
+            color: #636e72;
+            font-size: 15px;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        /* Card grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        /* Base card style */
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2d3436;
+        }
+
+        .card p {
+            color: #636e72;
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        /* ========== ANIMATIONS ========== */
+
+        /* 01: Fade Up */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .fade-up:nth-child(1) { transition-delay: 0s; }
+        .fade-up:nth-child(2) { transition-delay: 0.1s; }
+        .fade-up:nth-child(3) { transition-delay: 0.2s; }
+        .fade-up .card-icon { background: #fff5f5; }
+
+        /* 02: Scale In */
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
+        .scale-in:nth-child(1) { transition-delay: 0s; }
+        .scale-in:nth-child(2) { transition-delay: 0.12s; }
+        .scale-in:nth-child(3) { transition-delay: 0.24s; }
+        .scale-in .card-icon { background: #f0fff4; }
+
+        /* 03: Slide from Sides */
+        .slide-sides:nth-child(odd) {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .slide-sides:nth-child(even) {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .slide-sides.visible { opacity: 1; transform: translateX(0); }
+        .slide-sides:nth-child(1) { transition-delay: 0s; }
+        .slide-sides:nth-child(2) { transition-delay: 0.1s; }
+        .slide-sides:nth-child(3) { transition-delay: 0.2s; }
+        .slide-sides .card-icon { background: #fff8e6; }
+
+        /* 04: Blur In */
+        .blur-in {
+            opacity: 0;
+            filter: blur(8px);
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+        }
+        .blur-in.visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .blur-in:nth-child(1) { transition-delay: 0s; }
+        .blur-in:nth-child(2) { transition-delay: 0.15s; }
+        .blur-in:nth-child(3) { transition-delay: 0.3s; }
+        .blur-in .card-icon { background: #f3e8ff; }
+
+        /* 05: Cascade Down */
+        .cascade {
+            opacity: 0;
+            transform: translateY(-30px) rotate(-2deg);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cascade.visible { opacity: 1; transform: translateY(0) rotate(0deg); }
+        .cascade:nth-child(1) { transition-delay: 0s; }
+        .cascade:nth-child(2) { transition-delay: 0.15s; }
+        .cascade:nth-child(3) { transition-delay: 0.3s; }
+        .cascade .card-icon { background: #e8f8f5; }
+
+        /* 06: Gather Center */
+        .gather-center:nth-child(1) {
+            opacity: 0;
+            transform: translate(-70px, -30px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gather-center:nth-child(2) {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transition-delay: 0.1s;
+        }
+        .gather-center:nth-child(3) {
+            opacity: 0;
+            transform: translate(70px, -30px);
+            transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transition-delay: 0.2s;
+        }
+        .gather-center.visible { opacity: 1; transform: translate(0, 0); }
+        .gather-center .card-icon { background: #ffeef0; }
+
+        /* 07: Flip In */
+        .flip-in {
+            opacity: 0;
+            transform: perspective(800px) rotateX(-12deg);
+            transform-origin: top center;
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .flip-in.visible { opacity: 1; transform: perspective(800px) rotateX(0); }
+        .flip-in:nth-child(1) { transition-delay: 0s; }
+        .flip-in:nth-child(2) { transition-delay: 0.12s; }
+        .flip-in:nth-child(3) { transition-delay: 0.24s; }
+        .flip-in .card-icon { background: #e6f2ff; }
+
+        /* 08: Zoom Rotate */
+        .zoom-rotate {
+            opacity: 0;
+            transform: scale(0.85) rotate(3deg);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .zoom-rotate.visible { opacity: 1; transform: scale(1) rotate(0deg); }
+        .zoom-rotate:nth-child(1) { transition-delay: 0s; }
+        .zoom-rotate:nth-child(2) { transition-delay: 0.1s; }
+        .zoom-rotate:nth-child(3) { transition-delay: 0.2s; }
+        .zoom-rotate .card-icon { background: #fff0f6; }
+
+        /* 09: Slide Up Stagger */
+        .slide-stagger {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .slide-stagger.visible { opacity: 1; transform: translateY(0); }
+        .slide-stagger:nth-child(1) { transition-delay: 0s; }
+        .slide-stagger:nth-child(2) { transition-delay: 0.2s; }
+        .slide-stagger:nth-child(3) { transition-delay: 0.4s; }
+        .slide-stagger .card-icon { background: #e6fff9; }
+
+        /* 10: Float Rise */
+        .float-rise {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .float-rise.visible { opacity: 1; transform: translateY(0) scale(1); }
+        .float-rise:nth-child(1) { transition-delay: 0.05s; }
+        .float-rise:nth-child(2) { transition-delay: 0.15s; }
+        .float-rise:nth-child(3) { transition-delay: 0.25s; }
+        .float-rise .card-icon { background: #fff4e6; }
+
+        /* 11: Swing In */
+        .swing-in {
+            opacity: 0;
+            transform: rotate(-5deg) translateY(20px);
+            transform-origin: top left;
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .swing-in.visible { opacity: 1; transform: rotate(0deg) translateY(0); }
+        .swing-in:nth-child(1) { transition-delay: 0s; }
+        .swing-in:nth-child(2) { transition-delay: 0.1s; }
+        .swing-in:nth-child(3) { transition-delay: 0.2s; }
+        .swing-in .card-icon { background: #ffe6e6; }
+
+        /* 12: Slide Down Fade */
+        .slide-down {
+            opacity: 0;
+            transform: translateY(-40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .slide-down.visible { opacity: 1; transform: translateY(0); }
+        .slide-down:nth-child(1) { transition-delay: 0s; }
+        .slide-down:nth-child(2) { transition-delay: 0.12s; }
+        .slide-down:nth-child(3) { transition-delay: 0.24s; }
+        .slide-down .card-icon { background: #e6f0ff; }
+
+        /* 13: Diagonal Slide */
+        .diagonal-slide:nth-child(1) {
+            opacity: 0;
+            transform: translate(-40px, -40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .diagonal-slide:nth-child(2) {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition-delay: 0.1s;
+        }
+        .diagonal-slide:nth-child(3) {
+            opacity: 0;
+            transform: translate(40px, -40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition-delay: 0.2s;
+        }
+        .diagonal-slide.visible { opacity: 1; transform: translate(0, 0); }
+        .diagonal-slide .card-icon { background: #f0f0ff; }
+
+        /* 14: Elastic Pop */
+        .elastic-pop {
+            opacity: 0;
+            transform: scale(0.7);
+            transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.68, -0.3, 0.32, 1.3);
+        }
+        .elastic-pop.visible { opacity: 1; transform: scale(1); }
+        .elastic-pop:nth-child(1) { transition-delay: 0s; }
+        .elastic-pop:nth-child(2) { transition-delay: 0.08s; }
+        .elastic-pop:nth-child(3) { transition-delay: 0.16s; }
+        .elastic-pop .card-icon { background: #fffde6; }
+
+        /* 15: Curtain Reveal */
+        .curtain-reveal {
+            opacity: 0;
+            clip-path: inset(0 100% 0 0);
+            transition: opacity 0.6s ease, clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .curtain-reveal.visible { opacity: 1; clip-path: inset(0 0 0 0); }
+        .curtain-reveal:nth-child(1) { transition-delay: 0s; }
+        .curtain-reveal:nth-child(2) { transition-delay: 0.15s; }
+        .curtain-reveal:nth-child(3) { transition-delay: 0.3s; }
+        .curtain-reveal .card-icon { background: #e6fff0; }
+
+        /* 16: Rotate Y */
+        .rotate-y {
+            opacity: 0;
+            transform: perspective(600px) rotateY(-15deg);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .rotate-y.visible { opacity: 1; transform: perspective(600px) rotateY(0deg); }
+        .rotate-y:nth-child(1) { transition-delay: 0s; }
+        .rotate-y:nth-child(2) { transition-delay: 0.12s; }
+        .rotate-y:nth-child(3) { transition-delay: 0.24s; }
+        .rotate-y .card-icon { background: #ffe6f5; }
+
+        /* 17: Slide Right */
+        .slide-right {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide-right.visible { opacity: 1; transform: translateX(0); }
+        .slide-right:nth-child(1) { transition-delay: 0s; }
+        .slide-right:nth-child(2) { transition-delay: 0.1s; }
+        .slide-right:nth-child(3) { transition-delay: 0.2s; }
+        .slide-right .card-icon { background: #f5f0ff; }
+
+        /* 18: Zoom Blur */
+        .zoom-blur {
+            opacity: 0;
+            transform: scale(1.1);
+            filter: blur(5px);
+            transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+        }
+        .zoom-blur.visible { opacity: 1; transform: scale(1); filter: blur(0); }
+        .zoom-blur:nth-child(1) { transition-delay: 0s; }
+        .zoom-blur:nth-child(2) { transition-delay: 0.12s; }
+        .zoom-blur:nth-child(3) { transition-delay: 0.24s; }
+        .zoom-blur .card-icon { background: #e6f9ff; }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #dfe6e9, transparent);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section { padding: 50px 20px; }
+            .card { padding: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>Card Animation Collection</h1>
+        <p>스크롤하여 다양한 카드 애니메이션 효과를 확인해 보세요</p>
+        <div class="count">총 18가지 애니메이션</div>
+    </header>
+
+    <!-- 01: Fade Up -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 01</span>
+            <h2 class="section-title">Fade Up</h2>
+            <p class="section-desc">아래에서 위로 자연스럽게 나타나는 기본 애니메이션</p>
+        </div>
+        <div class="card-grid">
+            <div class="card fade-up">
+                <div class="card-icon">📊</div>
+                <h3>데이터 분석</h3>
+                <p>복잡한 데이터를 시각화하여 인사이트를 도출합니다.</p>
+            </div>
+            <div class="card fade-up">
+                <div class="card-icon">🎯</div>
+                <h3>목표 설정</h3>
+                <p>명확한 목표와 KPI를 설정하여 방향성을 맞춥니다.</p>
+            </div>
+            <div class="card fade-up">
+                <div class="card-icon">📈</div>
+                <h3>성과 측정</h3>
+                <p>실시간으로 성과를 모니터링하고 개선합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 02: Scale In -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 02</span>
+            <h2 class="section-title">Scale In</h2>
+            <p class="section-desc">부드럽게 확대되며 나타나는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card scale-in">
+                <div class="card-icon">🌱</div>
+                <h3>지속 가능한 성장</h3>
+                <p>장기적 관점에서 건강한 성장을 추구합니다.</p>
+            </div>
+            <div class="card scale-in">
+                <div class="card-icon">🤝</div>
+                <h3>파트너십</h3>
+                <p>신뢰를 바탕으로 협력 관계를 구축합니다.</p>
+            </div>
+            <div class="card scale-in">
+                <div class="card-icon">💡</div>
+                <h3>혁신</h3>
+                <p>새로운 아이디어를 탐색하고 실험합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 03: Slide from Sides -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 03</span>
+            <h2 class="section-title">Slide from Sides</h2>
+            <p class="section-desc">양쪽에서 중앙으로 모이는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card slide-sides">
+                <div class="card-icon">⏰</div>
+                <h3>시간 관리</h3>
+                <p>효율적인 일정 관리로 생산성을 높입니다.</p>
+            </div>
+            <div class="card slide-sides">
+                <div class="card-icon">📋</div>
+                <h3>프로젝트 관리</h3>
+                <p>체계적인 진행으로 목표를 달성합니다.</p>
+            </div>
+            <div class="card slide-sides">
+                <div class="card-icon">🔄</div>
+                <h3>프로세스 개선</h3>
+                <p>지속적인 개선으로 효율을 높입니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 04: Blur In -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 04</span>
+            <h2 class="section-title">Blur In</h2>
+            <p class="section-desc">흐릿한 상태에서 선명해지는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card blur-in">
+                <div class="card-icon">🎨</div>
+                <h3>디자인 시스템</h3>
+                <p>일관된 디자인으로 브랜드를 강화합니다.</p>
+            </div>
+            <div class="card blur-in">
+                <div class="card-icon">🖼️</div>
+                <h3>비주얼 커뮤니케이션</h3>
+                <p>시각적 요소로 메시지를 전달합니다.</p>
+            </div>
+            <div class="card blur-in">
+                <div class="card-icon">✨</div>
+                <h3>사용자 경험</h3>
+                <p>직관적인 사용자 경험을 설계합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 05: Cascade -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 05</span>
+            <h2 class="section-title">Cascade</h2>
+            <p class="section-desc">위에서 떨어지듯 순차적으로 나타나는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card cascade">
+                <div class="card-icon">📱</div>
+                <h3>모바일 최적화</h3>
+                <p>모든 디바이스에서 최적의 경험을 제공합니다.</p>
+            </div>
+            <div class="card cascade">
+                <div class="card-icon">🔒</div>
+                <h3>보안 강화</h3>
+                <p>안전한 데이터 보호로 신뢰를 구축합니다.</p>
+            </div>
+            <div class="card cascade">
+                <div class="card-icon">⚡</div>
+                <h3>성능 최적화</h3>
+                <p>빠른 로딩으로 사용자 만족도를 높입니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 06: Gather Center -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 06</span>
+            <h2 class="section-title">Gather Center</h2>
+            <p class="section-desc">각 방향에서 중앙으로 모이는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card gather-center">
+                <div class="card-icon">🌍</div>
+                <h3>글로벌 확장</h3>
+                <p>전 세계로 비즈니스를 확대합니다.</p>
+            </div>
+            <div class="card gather-center">
+                <div class="card-icon">🏢</div>
+                <h3>조직 문화</h3>
+                <p>건강한 문화로 구성원 성장을 지원합니다.</p>
+            </div>
+            <div class="card gather-center">
+                <div class="card-icon">📚</div>
+                <h3>지식 공유</h3>
+                <p>팀 간 지식을 효과적으로 공유합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 07: Flip In -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 07</span>
+            <h2 class="section-title">Flip In</h2>
+            <p class="section-desc">위에서 펼쳐지듯 나타나는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card flip-in">
+                <div class="card-icon">🎓</div>
+                <h3>교육 프로그램</h3>
+                <p>맞춤형 교육으로 역량을 개발합니다.</p>
+            </div>
+            <div class="card flip-in">
+                <div class="card-icon">🏆</div>
+                <h3>성과 보상</h3>
+                <p>공정한 평가와 보상으로 동기 부여합니다.</p>
+            </div>
+            <div class="card flip-in">
+                <div class="card-icon">🌟</div>
+                <h3>커리어 성장</h3>
+                <p>명확한 성장 경로를 제시합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 08: Zoom Rotate -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 08</span>
+            <h2 class="section-title">Zoom Rotate</h2>
+            <p class="section-desc">회전하며 확대되어 나타나는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card zoom-rotate">
+                <div class="card-icon">🔍</div>
+                <h3>시장 조사</h3>
+                <p>정확한 분석으로 전략을 수립합니다.</p>
+            </div>
+            <div class="card zoom-rotate">
+                <div class="card-icon">📣</div>
+                <h3>브랜드 마케팅</h3>
+                <p>효과적인 마케팅으로 인지도를 높입니다.</p>
+            </div>
+            <div class="card zoom-rotate">
+                <div class="card-icon">💬</div>
+                <h3>고객 소통</h3>
+                <p>고객 목소리에 귀 기울이고 대응합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 09: Slide Stagger -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 09</span>
+            <h2 class="section-title">Slide Stagger</h2>
+            <p class="section-desc">순차적으로 올라오는 계단식 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card slide-stagger">
+                <div class="card-icon">🧩</div>
+                <h3>모듈화 설계</h3>
+                <p>재사용 가능한 컴포넌트로 효율을 높입니다.</p>
+            </div>
+            <div class="card slide-stagger">
+                <div class="card-icon">🔗</div>
+                <h3>시스템 통합</h3>
+                <p>다양한 시스템을 유기적으로 연결합니다.</p>
+            </div>
+            <div class="card slide-stagger">
+                <div class="card-icon">📐</div>
+                <h3>표준화</h3>
+                <p>일관된 기준으로 품질을 유지합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 10: Float Rise -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 10</span>
+            <h2 class="section-title">Float Rise</h2>
+            <p class="section-desc">가볍게 떠오르며 나타나는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card float-rise">
+                <div class="card-icon">🎈</div>
+                <h3>창의적 발상</h3>
+                <p>자유로운 사고로 새로운 아이디어를 발굴합니다.</p>
+            </div>
+            <div class="card float-rise">
+                <div class="card-icon">🌈</div>
+                <h3>다양성 존중</h3>
+                <p>다양한 관점을 수용하고 통합합니다.</p>
+            </div>
+            <div class="card float-rise">
+                <div class="card-icon">🎭</div>
+                <h3>브랜드 스토리</h3>
+                <p>진정성 있는 이야기로 공감을 이끕니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 11: Swing In -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 11</span>
+            <h2 class="section-title">Swing In</h2>
+            <p class="section-desc">살짝 흔들리며 나타나는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card swing-in">
+                <div class="card-icon">🎪</div>
+                <h3>이벤트 기획</h3>
+                <p>참여를 유도하는 매력적인 이벤트를 설계합니다.</p>
+            </div>
+            <div class="card swing-in">
+                <div class="card-icon">🎤</div>
+                <h3>발표 스킬</h3>
+                <p>효과적인 커뮤니케이션으로 메시지를 전달합니다.</p>
+            </div>
+            <div class="card swing-in">
+                <div class="card-icon">🎬</div>
+                <h3>콘텐츠 제작</h3>
+                <p>다양한 형식의 콘텐츠를 기획하고 제작합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 12: Slide Down -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 12</span>
+            <h2 class="section-title">Slide Down</h2>
+            <p class="section-desc">위에서 아래로 내려오는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card slide-down">
+                <div class="card-icon">📥</div>
+                <h3>데이터 수집</h3>
+                <p>다양한 소스에서 데이터를 수집합니다.</p>
+            </div>
+            <div class="card slide-down">
+                <div class="card-icon">🗂️</div>
+                <h3>정보 분류</h3>
+                <p>체계적으로 정보를 분류하고 관리합니다.</p>
+            </div>
+            <div class="card slide-down">
+                <div class="card-icon">📤</div>
+                <h3>결과 공유</h3>
+                <p>분석 결과를 효과적으로 공유합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 13: Diagonal Slide -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 13</span>
+            <h2 class="section-title">Diagonal Slide</h2>
+            <p class="section-desc">대각선 방향에서 중앙으로 모이는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card diagonal-slide">
+                <div class="card-icon">🧭</div>
+                <h3>방향 설정</h3>
+                <p>명확한 비전으로 방향을 제시합니다.</p>
+            </div>
+            <div class="card diagonal-slide">
+                <div class="card-icon">🗺️</div>
+                <h3>로드맵 수립</h3>
+                <p>단계별 실행 계획을 수립합니다.</p>
+            </div>
+            <div class="card diagonal-slide">
+                <div class="card-icon">🚀</div>
+                <h3>실행 추진</h3>
+                <p>계획을 실행에 옮기고 추진합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 14: Elastic Pop -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 14</span>
+            <h2 class="section-title">Elastic Pop</h2>
+            <p class="section-desc">탄성있게 튀어나오는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card elastic-pop">
+                <div class="card-icon">💪</div>
+                <h3>역량 강화</h3>
+                <p>지속적인 학습으로 역량을 강화합니다.</p>
+            </div>
+            <div class="card elastic-pop">
+                <div class="card-icon">🎖️</div>
+                <h3>전문성 인정</h3>
+                <p>각 분야 전문성을 인정하고 활용합니다.</p>
+            </div>
+            <div class="card elastic-pop">
+                <div class="card-icon">🔥</div>
+                <h3>열정 유지</h3>
+                <p>지속적인 동기부여로 열정을 유지합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 15: Curtain Reveal -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 15</span>
+            <h2 class="section-title">Curtain Reveal</h2>
+            <p class="section-desc">커튼이 열리듯 옆에서 펼쳐지는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card curtain-reveal">
+                <div class="card-icon">🎁</div>
+                <h3>신규 서비스</h3>
+                <p>새로운 서비스를 기획하고 출시합니다.</p>
+            </div>
+            <div class="card curtain-reveal">
+                <div class="card-icon">🔮</div>
+                <h3>미래 예측</h3>
+                <p>트렌드를 분석하고 미래를 예측합니다.</p>
+            </div>
+            <div class="card curtain-reveal">
+                <div class="card-icon">🌠</div>
+                <h3>비전 공유</h3>
+                <p>조직의 비전을 명확하게 공유합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 16: Rotate Y -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 16</span>
+            <h2 class="section-title">Rotate Y</h2>
+            <p class="section-desc">Y축 기준으로 회전하며 나타나는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card rotate-y">
+                <div class="card-icon">🔄</div>
+                <h3>변화 관리</h3>
+                <p>조직의 변화를 체계적으로 관리합니다.</p>
+            </div>
+            <div class="card rotate-y">
+                <div class="card-icon">⚙️</div>
+                <h3>자동화</h3>
+                <p>반복 업무를 자동화하여 효율을 높입니다.</p>
+            </div>
+            <div class="card rotate-y">
+                <div class="card-icon">🔧</div>
+                <h3>최적화</h3>
+                <p>지속적인 개선으로 성과를 최적화합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 17: Slide Right -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 17</span>
+            <h2 class="section-title">Slide Right</h2>
+            <p class="section-desc">왼쪽에서 오른쪽으로 슬라이드되는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card slide-right">
+                <div class="card-icon">➡️</div>
+                <h3>진행 상황</h3>
+                <p>프로젝트 진행 상황을 실시간으로 파악합니다.</p>
+            </div>
+            <div class="card slide-right">
+                <div class="card-icon">📊</div>
+                <h3>성과 리포트</h3>
+                <p>정기적인 리포트로 성과를 공유합니다.</p>
+            </div>
+            <div class="card slide-right">
+                <div class="card-icon">📈</div>
+                <h3>트렌드 분석</h3>
+                <p>데이터 기반의 트렌드를 분석합니다.</p>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- 18: Zoom Blur -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label">Animation 18</span>
+            <h2 class="section-title">Zoom Blur</h2>
+            <p class="section-desc">확대된 상태에서 축소되며 선명해지는 효과</p>
+        </div>
+        <div class="card-grid">
+            <div class="card zoom-blur">
+                <div class="card-icon">🔬</div>
+                <h3>세부 분석</h3>
+                <p>데이터를 깊이 있게 분석합니다.</p>
+            </div>
+            <div class="card zoom-blur">
+                <div class="card-icon">🎯</div>
+                <h3>정밀 타겟팅</h3>
+                <p>정확한 타겟에게 메시지를 전달합니다.</p>
+            </div>
+            <div class="card zoom-blur">
+                <div class="card-icon">💎</div>
+                <h3>품질 관리</h3>
+                <p>높은 품질 기준을 유지하고 관리합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>총 18가지 자연스러운 카드 애니메이션 효과</p>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -80px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        const animatedCards = document.querySelectorAll(
+            '.fade-up, .scale-in, .slide-sides, .blur-in, .cascade, .gather-center, ' +
+            '.flip-in, .zoom-rotate, .slide-stagger, .float-rise, .swing-in, .slide-down, ' +
+            '.diagonal-slide, .elastic-pop, .curtain-reveal, .rotate-y, .slide-right, .zoom-blur'
+        );
+
+        animatedCards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>

@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 배경 전환 기법 20가지 (2024-2025 트렌드)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 95vw;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 15px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav a:hover, .nav a.new {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .nav a.new {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        /* Header */
+        .header {
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: floatOrb 8s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.15) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation: floatOrb 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .header h1 {
+            font-size: clamp(28px, 5vw, 52px);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.7;
+            max-width: 500px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .badge {
+            margin-top: 20px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Demo Section Base */
+        .demo {
+            position: relative;
+        }
+
+        .demo-header {
+            padding: 60px 40px 30px;
+            background: #f5f5f5;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .demo-header.new-section {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+        }
+
+        .demo-header .number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 50%;
+            line-height: 36px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .demo-header .number.new {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .demo-header .trend-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            border-radius: 10px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .demo-header h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .demo-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .demo-header code {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 12px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        /* Section Content */
+        .section-content {
+            text-align: center;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .section-content h3 {
+            font-size: clamp(24px, 4vw, 36px);
+            margin-bottom: 12px;
+        }
+
+        .section-content p {
+            font-size: 16px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* Common Container */
+        .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* ====================================================
+           1. GRADIENT FADE
+           ==================================================== */
+        .demo-1 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* ====================================================
+           2. CLIP-PATH REVEAL
+           ==================================================== */
+        .demo-2 .layer {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-2 .layer-black {
+            background: #0a0a0a;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .demo-2 .layer-white {
+            background: #fff;
+            color: #0a0a0a;
+            z-index: 2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            clip-path: inset(100% 0 0 0);
+        }
+
+        /* ====================================================
+           3. OPACITY CROSSFADE
+           ==================================================== */
+        .demo-3 .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-3 .layer-black {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-3 .layer-white {
+            background: #fff;
+            color: #0a0a0a;
+            opacity: 0;
+        }
+
+        /* ====================================================
+           4. WAVE RISE
+           ==================================================== */
+        .demo-4 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-4 .wave-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: #fff;
+        }
+
+        .demo-4 .wave-svg {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+        }
+
+        .demo-4 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           5. CIRCLE EXPAND
+           ==================================================== */
+        .demo-5 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-5 .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .demo-5 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           6. SPLIT CURTAIN
+           ==================================================== */
+        .demo-6 .split-half {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-6 .split-left {
+            left: 0;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-6 .split-right {
+            right: 0;
+            background: #fff;
+            color: #0a0a0a;
+        }
+
+        .demo-6 .center-content {
+            position: absolute;
+            z-index: 10;
+            opacity: 0;
+        }
+
+        /* ====================================================
+           7. CARD SLIDE UP
+           ==================================================== */
+        .demo-7 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-7 .card-overlay {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #fff;
+            color: #0a0a0a;
+            border-radius: 40px 40px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+        }
+
+        /* ====================================================
+           8. DIAGONAL WIPE
+           ==================================================== */
+        .demo-8 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-8 .diagonal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        }
+
+        .demo-8 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           9. VERTICAL BLINDS
+           ==================================================== */
+        .demo-9 .sticky {
+            background: #0a0a0a;
+        }
+
+        .demo-9 .blinds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .demo-9 .blind {
+            flex: 1;
+            background: #fff;
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+
+        .demo-9 .content {
+            position: relative;
+            z-index: 10;
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+
+        /* ====================================================
+           10. PIXEL DISSOLVE
+           ==================================================== */
+        .demo-10 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-10 .pixels {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+        }
+
+        .demo-10 .pixel {
+            background: #fff;
+            opacity: 0;
+        }
+
+        .demo-10 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           11. SCROLL-DRIVEN ANIMATION (CSS Native) - NEW
+           ==================================================== */
+        .demo-11 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-11 .morph-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            clip-path: circle(0% at 50% 100%);
+        }
+
+        .demo-11 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           12. 3D FLIP ROTATE - NEW
+           ==================================================== */
+        .demo-12 .sticky {
+            perspective: 1500px;
+            background: #888;
+        }
+
+        .demo-12 .flip-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .demo-12 .flip-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+        }
+
+        .demo-12 .flip-front {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-12 .flip-back {
+            background: #fff;
+            color: #0a0a0a;
+            transform: rotateY(180deg);
+        }
+
+        /* ====================================================
+           13. GLASSMORPHISM REVEAL - NEW
+           ==================================================== */
+        .demo-13 .sticky {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            color: #fff;
+        }
+
+        .demo-13 .glass-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(0px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-13 .glass-card {
+            padding: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        /* ====================================================
+           14. NOISE GRAIN DISSOLVE - NEW
+           ==================================================== */
+        .demo-14 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-14 .noise-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            opacity: 0;
+        }
+
+        .demo-14 .noise-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.15;
+        }
+
+        .demo-14 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           15. LIQUID MORPH - NEW
+           ==================================================== */
+        .demo-15 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-15 .liquid-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .demo-15 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           16. STAGGERED BOXES - NEW
+           ==================================================== */
+        .demo-16 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-16 .boxes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+        }
+
+        .demo-16 .box {
+            background: #fff;
+            transform: scale(0);
+            border-radius: 8px;
+            margin: 4px;
+        }
+
+        .demo-16 .content {
+            position: relative;
+            z-index: 10;
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+
+        /* ====================================================
+           17. RADIAL GRADIENT SWEEP - NEW
+           ==================================================== */
+        .demo-17 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-17 .radial-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #fff 0%, #fff 0%, transparent 0%);
+        }
+
+        .demo-17 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           18. HORIZONTAL SCROLL WIPE - NEW
+           ==================================================== */
+        .demo-18 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-18 .h-wipe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #fff;
+        }
+
+        .demo-18 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           19. ZOOM BLUR TRANSITION - NEW
+           ==================================================== */
+        .demo-19 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-19 .zoom-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transform: scale(3);
+            opacity: 0;
+            filter: blur(30px);
+        }
+
+        .demo-19 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           20. STRIPE REVEAL - NEW
+           ==================================================== */
+        .demo-20 .sticky {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-20 .stripes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .demo-20 .stripe {
+            flex: 1;
+            background: #fff;
+            transform: scaleX(0);
+        }
+
+        .demo-20 .stripe:nth-child(odd) {
+            transform-origin: left;
+        }
+
+        .demo-20 .stripe:nth-child(even) {
+            transform-origin: right;
+        }
+
+        .demo-20 .content {
+            position: relative;
+            z-index: 10;
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+
+        /* Summary */
+        .summary {
+            background: #f9f9f9;
+            padding: 80px 40px;
+        }
+
+        .summary h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .summary .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .summary-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .summary-section h3 {
+            font-size: 20px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .summary-section h3 span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .summary-card.new {
+            border: 2px solid transparent;
+            background: linear-gradient(#fff, #fff) padding-box,
+                        linear-gradient(135deg, #667eea, #764ba2) border-box;
+        }
+
+        .summary-card h4 {
+            font-size: 15px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-card h4 span {
+            width: 22px;
+            height: 22px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .summary-card h4 span.new {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .summary-card p {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .summary-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .summary-card .tag {
+            padding: 2px 8px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            font-size: 10px;
+            color: #555;
+        }
+
+        .summary-card .tag.best {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .summary-card .tag.trend {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            color: rgba(255,255,255,0.5);
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                top: 10px;
+                padding: 8px 10px;
+                gap: 2px;
+            }
+            .nav a {
+                font-size: 9px;
+                padding: 4px 6px;
+            }
+            .demo-header {
+                padding: 40px 20px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#demo1">1.그라데이션</a>
+        <a href="#demo2">2.클립패스</a>
+        <a href="#demo3">3.크로스페이드</a>
+        <a href="#demo4">4.웨이브</a>
+        <a href="#demo5">5.원형</a>
+        <a href="#demo6">6.분할</a>
+        <a href="#demo7">7.카드</a>
+        <a href="#demo8">8.대각선</a>
+        <a href="#demo9">9.블라인드</a>
+        <a href="#demo10">10.픽셀</a>
+        <a href="#demo11" class="new">11.서클모프</a>
+        <a href="#demo12" class="new">12.3D플립</a>
+        <a href="#demo13" class="new">13.글래스</a>
+        <a href="#demo14" class="new">14.노이즈</a>
+        <a href="#demo15" class="new">15.리퀴드</a>
+        <a href="#demo16" class="new">16.박스</a>
+        <a href="#demo17" class="new">17.레이디얼</a>
+        <a href="#demo18" class="new">18.수평와이프</a>
+        <a href="#demo19" class="new">19.줌블러</a>
+        <a href="#demo20" class="new">20.스트라이프</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>스크롤 배경 전환 <span>20가지</span></h1>
+        <p>Black ↔ White 섹션 간 자연스러운 전환을 위한 스크롤 인터랙션 기법</p>
+        <div class="badge">2024-2025 트렌드 포함</div>
+        <div class="scroll-hint">↓ 스크롤</div>
+    </header>
+
+    <!-- ==================== BASIC TECHNIQUES (1-10) ==================== -->
+
+    <!-- 1. Gradient Fade -->
+    <section class="demo demo-1" id="demo1">
+        <div class="demo-header">
+            <span class="number">1</span>
+            <h2>Gradient Fade</h2>
+            <p>스크롤 진행률에 따라 RGB 값을 점진적으로 변화</p>
+            <code>background: rgb(progress, progress, progress)</code>
+        </div>
+        <div class="container">
+            <div class="sticky" id="gradient-sticky">
+                <div class="section-content">
+                    <h3>가장 부드러운 전환</h3>
+                    <p>스크롤하면 배경색이 서서히 변합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Clip-Path Reveal -->
+    <section class="demo demo-2" id="demo2">
+        <div class="demo-header">
+            <span class="number">2</span>
+            <h2>Clip-Path Reveal</h2>
+            <p>clip-path: inset()으로 위에서 아래로 드러내기</p>
+            <code>clip-path: inset(progress% 0 0 0)</code>
+        </div>
+        <div class="container">
+            <div class="layer layer-black">
+                <div class="section-content">
+                    <h3>아래 레이어 (Black)</h3>
+                    <p>기본 배경입니다</p>
+                </div>
+            </div>
+            <div class="layer layer-white" id="clip-layer">
+                <div class="section-content">
+                    <h3>위 레이어 (White)</h3>
+                    <p>스크롤하면 드러납니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Opacity Crossfade -->
+    <section class="demo demo-3" id="demo3">
+        <div class="demo-header">
+            <span class="number">3</span>
+            <h2>Opacity Crossfade</h2>
+            <p>두 레이어의 투명도를 교차하여 페이드</p>
+            <code>opacity: progress</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="layer layer-black">
+                    <div class="section-content">
+                        <h3>Black Layer</h3>
+                        <p>기본 레이어</p>
+                    </div>
+                </div>
+                <div class="layer layer-white" id="opacity-layer">
+                    <div class="section-content">
+                        <h3>White Layer</h3>
+                        <p>페이드인 됩니다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Wave Rise -->
+    <section class="demo demo-4" id="demo4">
+        <div class="demo-header">
+            <span class="number">4</span>
+            <h2>Wave Rise</h2>
+            <p>SVG 웨이브가 아래에서 위로 상승</p>
+            <code>height: progress% + SVG wave</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>웨이브 상승</h3>
+                    <p>물결 모양으로 전환됩니다</p>
+                </div>
+                <div class="wave-overlay" id="wave-overlay">
+                    <svg class="wave-svg" viewBox="0 0 1200 50" preserveAspectRatio="none">
+                        <path d="M0,50 C200,0 400,50 600,25 C800,0 1000,40 1200,10 L1200,50 L0,50 Z" fill="#fff"/>
+                    </svg>
+                </div>
+                <div class="content-white section-content" id="wave-content">
+                    <h3>새로운 섹션</h3>
+                    <p>웨이브로 드러났습니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Circle Expand -->
+    <section class="demo demo-5" id="demo5">
+        <div class="demo-header">
+            <span class="number">5</span>
+            <h2>Circle Expand</h2>
+            <p>중앙에서 원형이 확장되며 전환</p>
+            <code>width/height: progress * maxSize</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>원형 확장</h3>
+                    <p>중앙에서 커집니다</p>
+                </div>
+                <div class="circle" id="circle"></div>
+                <div class="content-white section-content" id="circle-content">
+                    <h3>새로운 섹션</h3>
+                    <p>원형으로 드러났습니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Split Curtain -->
+    <section class="demo demo-6" id="demo6">
+        <div class="demo-header">
+            <span class="number">6</span>
+            <h2>Split Curtain</h2>
+            <p>좌우로 화면이 갈라지며 전환</p>
+            <code>translateX: ±progress%</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="split-half split-left" id="split-left">
+                    <span style="font-size: 20px; font-weight: 700;">BLACK</span>
+                </div>
+                <div class="split-half split-right" id="split-right">
+                    <span style="font-size: 20px; font-weight: 700;">WHITE</span>
+                </div>
+                <div class="center-content" id="split-center">
+                    <h3 style="font-size: 28px; color: #667eea;">REVEAL</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Card Slide Up -->
+    <section class="demo demo-7" id="demo7">
+        <div class="demo-header">
+            <span class="number">7</span>
+            <h2>Card Slide Up</h2>
+            <p>둥근 모서리 카드가 아래에서 올라옴</p>
+            <code>top: 100% - progress%</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 1;">
+                    <h3>기본 배경</h3>
+                    <p>카드가 올라옵니다</p>
+                </div>
+                <div class="card-overlay" id="card-overlay">
+                    <div class="section-content">
+                        <h3>카드 오버레이</h3>
+                        <p>앱 스타일 전환</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Diagonal Wipe -->
+    <section class="demo demo-8" id="demo8">
+        <div class="demo-header">
+            <span class="number">8</span>
+            <h2>Diagonal Wipe</h2>
+            <p>대각선으로 와이프되며 전환</p>
+            <code>clip-path: polygon(diagonal)</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>대각선 와이프</h3>
+                    <p>비스듬히 전환됩니다</p>
+                </div>
+                <div class="diagonal-overlay" id="diagonal-overlay"></div>
+                <div class="content-white section-content" id="diagonal-content">
+                    <h3>새로운 섹션</h3>
+                    <p>대각선으로 드러났습니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Vertical Blinds -->
+    <section class="demo demo-9" id="demo9">
+        <div class="demo-header">
+            <span class="number">9</span>
+            <h2>Vertical Blinds</h2>
+            <p>세로 블라인드가 순차적으로 열림</p>
+            <code>scaleY: progress (staggered)</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="blinds" id="blinds">
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                </div>
+                <div class="content section-content">
+                    <h3>블라인드 효과</h3>
+                    <p>순차적으로 열립니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Pixel Dissolve -->
+    <section class="demo demo-10" id="demo10">
+        <div class="demo-header">
+            <span class="number">10</span>
+            <h2>Pixel Dissolve</h2>
+            <p>픽셀 단위로 무작위 디졸브</p>
+            <code>opacity: random order</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>픽셀 디졸브</h3>
+                    <p>무작위로 전환됩니다</p>
+                </div>
+                <div class="pixels" id="pixels"></div>
+                <div class="content-white section-content" id="pixel-content">
+                    <h3>새로운 섹션</h3>
+                    <p>픽셀로 드러났습니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NEW TRENDING TECHNIQUES (11-20) ==================== -->
+
+    <!-- 11. Circle Morph (CSS Native Animation) -->
+    <section class="demo demo-11" id="demo11">
+        <div class="demo-header new-section">
+            <span class="number new">11</span>
+            <h2>Circle Morph <span class="trend-badge">NEW</span></h2>
+            <p>하단 중앙에서 원형이 확장되며 전환 (모던 앱 스타일)</p>
+            <code>clip-path: circle(progress% at 50% 100%)</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>서클 모프</h3>
+                    <p>하단에서 확장됩니다</p>
+                </div>
+                <div class="morph-bg" id="morph-bg"></div>
+                <div class="content-white section-content" id="morph-content">
+                    <h3>새로운 섹션</h3>
+                    <p>원형 클립패스로 드러남</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. 3D Flip Rotate -->
+    <section class="demo demo-12" id="demo12">
+        <div class="demo-header new-section">
+            <span class="number new">12</span>
+            <h2>3D Flip Rotate <span class="trend-badge">NEW</span></h2>
+            <p>Y축 기준 3D 회전으로 뒤집히며 전환</p>
+            <code>transform: rotateY(progress * 180deg)</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="flip-container" id="flip-container">
+                    <div class="flip-face flip-front">
+                        <div class="section-content">
+                            <h3>앞면 (Black)</h3>
+                            <p>3D로 뒤집힙니다</p>
+                        </div>
+                    </div>
+                    <div class="flip-face flip-back">
+                        <div class="section-content">
+                            <h3>뒷면 (White)</h3>
+                            <p>회전 완료!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Glassmorphism Reveal -->
+    <section class="demo demo-13" id="demo13">
+        <div class="demo-header new-section">
+            <span class="number new">13</span>
+            <h2>Glassmorphism Reveal <span class="trend-badge">NEW</span></h2>
+            <p>블러 효과와 함께 글래스 카드가 나타남</p>
+            <code>backdrop-filter: blur(progress * 20px)</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 1;">
+                    <h3>글래스모피즘</h3>
+                    <p>트렌디한 블러 효과</p>
+                </div>
+                <div class="glass-overlay" id="glass-overlay">
+                    <div class="glass-card" id="glass-card">
+                        <div class="section-content">
+                            <h3 style="color: #fff;">Glass Card</h3>
+                            <p style="color: rgba(255,255,255,0.8);">모던 UI 스타일</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. Noise Grain Dissolve -->
+    <section class="demo demo-14" id="demo14">
+        <div class="demo-header new-section">
+            <span class="number new">14</span>
+            <h2>Noise Grain Dissolve <span class="trend-badge">NEW</span></h2>
+            <p>필름 그레인 텍스처와 함께 디졸브</p>
+            <code>SVG noise filter + opacity</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>노이즈 디졸브</h3>
+                    <p>필름 같은 질감</p>
+                </div>
+                <div class="noise-overlay" id="noise-overlay"></div>
+                <div class="content-white section-content" id="noise-content">
+                    <h3>새로운 섹션</h3>
+                    <p>그레인 효과 완료</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. Liquid Morph -->
+    <section class="demo demo-15" id="demo15">
+        <div class="demo-header new-section">
+            <span class="number new">15</span>
+            <h2>Liquid Morph <span class="trend-badge">NEW</span></h2>
+            <p>액체처럼 유동적으로 변형되며 전환</p>
+            <code>SVG path morphing</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>리퀴드 모프</h3>
+                    <p>유기적인 형태 변화</p>
+                </div>
+                <svg class="liquid-svg" id="liquid-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path id="liquid-path" d="M0,100 L0,100 Q25,100 50,100 T100,100 L100,100 Z" fill="#fff"/>
+                </svg>
+                <div class="content-white section-content" id="liquid-content">
+                    <h3>새로운 섹션</h3>
+                    <p>리퀴드 전환 완료</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. Staggered Boxes -->
+    <section class="demo demo-16" id="demo16">
+        <div class="demo-header new-section">
+            <span class="number new">16</span>
+            <h2>Staggered Boxes <span class="trend-badge">NEW</span></h2>
+            <p>박스들이 순차적으로 스케일업되며 채워짐</p>
+            <code>transform: scale(progress) staggered</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="boxes" id="boxes"></div>
+                <div class="content section-content">
+                    <h3>스태거드 박스</h3>
+                    <p>그리드 애니메이션</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17. Radial Gradient Sweep -->
+    <section class="demo demo-17" id="demo17">
+        <div class="demo-header new-section">
+            <span class="number new">17</span>
+            <h2>Radial Gradient Sweep <span class="trend-badge">NEW</span></h2>
+            <p>중앙에서 방사형으로 퍼지는 그라데이션</p>
+            <code>radial-gradient: circle progress%</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>레이디얼 스윕</h3>
+                    <p>방사형으로 퍼집니다</p>
+                </div>
+                <div class="radial-overlay" id="radial-overlay"></div>
+                <div class="content-white section-content" id="radial-content">
+                    <h3>새로운 섹션</h3>
+                    <p>방사형 전환 완료</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18. Horizontal Scroll Wipe -->
+    <section class="demo demo-18" id="demo18">
+        <div class="demo-header new-section">
+            <span class="number new">18</span>
+            <h2>Horizontal Wipe <span class="trend-badge">NEW</span></h2>
+            <p>좌에서 우로 수평 와이프 전환</p>
+            <code>width: progress%</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>수평 와이프</h3>
+                    <p>좌에서 우로</p>
+                </div>
+                <div class="h-wipe" id="h-wipe"></div>
+                <div class="content-white section-content" id="h-wipe-content">
+                    <h3>새로운 섹션</h3>
+                    <p>수평 전환 완료</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 19. Zoom Blur Transition -->
+    <section class="demo demo-19" id="demo19">
+        <div class="demo-header new-section">
+            <span class="number new">19</span>
+            <h2>Zoom Blur <span class="trend-badge">NEW</span></h2>
+            <p>확대되면서 블러가 해제되며 전환</p>
+            <code>scale + blur + opacity</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>줌 블러</h3>
+                    <p>확대하며 선명해짐</p>
+                </div>
+                <div class="zoom-layer" id="zoom-layer"></div>
+                <div class="content-white section-content" id="zoom-content">
+                    <h3>새로운 섹션</h3>
+                    <p>줌 블러 완료</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 20. Stripe Reveal -->
+    <section class="demo demo-20" id="demo20">
+        <div class="demo-header new-section">
+            <span class="number new">20</span>
+            <h2>Stripe Reveal <span class="trend-badge">NEW</span></h2>
+            <p>가로 스트라이프가 번갈아 확장되며 전환</p>
+            <code>scaleX: progress (alternating origin)</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="stripes" id="stripes">
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                </div>
+                <div class="content section-content">
+                    <h3>스트라이프 리빌</h3>
+                    <p>번갈아 확장</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary -->
+    <section class="summary">
+        <h2>📋 스크롤 전환 기법 20가지</h2>
+        <p class="subtitle">기본 10가지 + 2024-2025 트렌드 10가지</p>
+
+        <!-- Basic Techniques -->
+        <div class="summary-section">
+            <h3>🔹 기본 기법 (1-10)</h3>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h4><span>1</span> Gradient Fade</h4>
+                    <p>RGB 값을 스크롤에 따라 보간</p>
+                    <div class="tags">
+                        <span class="tag best">★ 추천</span>
+                        <span class="tag">부드러움</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h4><span>2</span> Clip-Path Reveal</h4>
+                    <p>clip-path로 점진적 노출</p>
+                    <div class="tags">
+                        <span class="tag best">★ 추천</span>
+                        <span class="tag">모던</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h4><span>3</span> Opacity Crossfade</h4>
+                    <p>투명도 교차 페이드</p>
+                    <div class="tags">
+                        <span class="tag">간단함</span>
+                        <span class="tag">범용적</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h4><span>4</span> Wave Rise</h4>
+                    <p>SVG 웨이브 상승</p>
+                    <div class="tags">
+                        <span class="tag best">★ 추천</span>
+                        <span class="tag">유기적</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h4><span>5</span> Circle Expand</h4>
+                    <p>중앙에서 원형 확장</p>
+                    <div class="tags">
+                        <span class="tag">독특함</span>
+                        <span class="tag">포커스</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h4><span>6</span> Split Curtain</h4>
+                    <p>좌우 분할 전환</p>
+                    <div class="tags">
+                        <span class="tag">역동적</span>
+                        <span class="tag">드라마틱</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h4><span>7</span> Card Slide Up</h4>
+                    <p>카드 슬라이드업</p>
+                    <div class="tags">
+                        <span class="tag best">★ 추천</span>
+                        <span class="tag">앱 스타일</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h4><span>8</span> Diagonal Wipe</h4>
+                    <p>대각선 와이프</p>
+                    <div class="tags">
+                        <span class="tag">영상 스타일</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h4><span>9</span> Vertical Blinds</h4>
+                    <p>세로 블라인드 순차</p>
+                    <div class="tags">
+                        <span class="tag">독특함</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <h4><span>10</span> Pixel Dissolve</h4>
+                    <p>무작위 픽셀 디졸브</p>
+                    <div class="tags">
+                        <span class="tag">레트로</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Trending Techniques -->
+        <div class="summary-section">
+            <h3>🔸 <span>2024-2025 트렌드</span> (11-20)</h3>
+            <div class="summary-grid">
+                <div class="summary-card new">
+                    <h4><span class="new">11</span> Circle Morph</h4>
+                    <p>하단 중앙에서 원형 확장 (iOS 스타일)</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag best">★ 추천</span>
+                    </div>
+                </div>
+                <div class="summary-card new">
+                    <h4><span class="new">12</span> 3D Flip</h4>
+                    <p>Y축 3D 회전 뒤집기</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag">3D 효과</span>
+                    </div>
+                </div>
+                <div class="summary-card new">
+                    <h4><span class="new">13</span> Glassmorphism</h4>
+                    <p>블러 + 글래스 카드 효과</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag best">★ 추천</span>
+                    </div>
+                </div>
+                <div class="summary-card new">
+                    <h4><span class="new">14</span> Noise Dissolve</h4>
+                    <p>필름 그레인 텍스처 디졸브</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag">아티스틱</span>
+                    </div>
+                </div>
+                <div class="summary-card new">
+                    <h4><span class="new">15</span> Liquid Morph</h4>
+                    <p>액체처럼 유동적 형태 변화</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag best">★ 추천</span>
+                    </div>
+                </div>
+                <div class="summary-card new">
+                    <h4><span class="new">16</span> Staggered Boxes</h4>
+                    <p>그리드 박스 순차 스케일</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag">모션 그래픽</span>
+                    </div>
+                </div>
+                <div class="summary-card new">
+                    <h4><span class="new">17</span> Radial Sweep</h4>
+                    <p>방사형 그라데이션 퍼짐</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag">부드러움</span>
+                    </div>
+                </div>
+                <div class="summary-card new">
+                    <h4><span class="new">18</span> Horizontal Wipe</h4>
+                    <p>좌→우 수평 와이프</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag">심플</span>
+                    </div>
+                </div>
+                <div class="summary-card new">
+                    <h4><span class="new">19</span> Zoom Blur</h4>
+                    <p>확대 + 블러 해제 전환</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag">영상 스타일</span>
+                    </div>
+                </div>
+                <div class="summary-card new">
+                    <h4><span class="new">20</span> Stripe Reveal</h4>
+                    <p>번갈아 확장하는 스트라이프</p>
+                    <div class="tags">
+                        <span class="tag trend">트렌드</span>
+                        <span class="tag">역동적</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        스크롤 배경 전환 기법 20가지 — Basic 10 + Trending 10 (2024-2025)
+    </footer>
+
+    <script>
+        // ============================================================
+        // UTILITY FUNCTIONS
+        // ============================================================
+        function getScrollProgress(container) {
+            const rect = container.getBoundingClientRect();
+            const height = container.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            const scrolled = -rect.top;
+            const total = height - viewportHeight;
+            return Math.max(0, Math.min(1, scrolled / total));
+        }
+
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        function easeOutQuart(t) {
+            return 1 - Math.pow(1 - t, 4);
+        }
+
+        // ============================================================
+        // 1. GRADIENT FADE
+        // ============================================================
+        const gradientSticky = document.getElementById('gradient-sticky');
+        const gradientContainer = gradientSticky?.closest('.container');
+
+        function updateGradient() {
+            if (!gradientContainer) return;
+            const progress = getScrollProgress(gradientContainer);
+            const eased = easeInOutCubic(progress);
+            const value = Math.round(10 + 245 * eased);
+            gradientSticky.style.backgroundColor = `rgb(${value}, ${value}, ${value})`;
+            gradientSticky.style.color = progress > 0.5 ? '#0a0a0a' : '#fff';
+        }
+
+        // ============================================================
+        // 2. CLIP-PATH REVEAL
+        // ============================================================
+        const clipLayer = document.getElementById('clip-layer');
+        const clipContainer = clipLayer?.closest('.container');
+
+        function updateClipPath() {
+            if (!clipContainer) return;
+            const progress = getScrollProgress(clipContainer);
+            const clipValue = 100 - progress * 100;
+            clipLayer.style.clipPath = `inset(${clipValue}% 0 0 0)`;
+        }
+
+        // ============================================================
+        // 3. OPACITY CROSSFADE
+        // ============================================================
+        const opacityLayer = document.getElementById('opacity-layer');
+        const opacityContainer = opacityLayer?.closest('.container');
+
+        function updateOpacity() {
+            if (!opacityContainer) return;
+            const progress = getScrollProgress(opacityContainer);
+            opacityLayer.style.opacity = progress;
+        }
+
+        // ============================================================
+        // 4. WAVE RISE
+        // ============================================================
+        const waveOverlay = document.getElementById('wave-overlay');
+        const waveContent = document.getElementById('wave-content');
+        const waveContainer = waveOverlay?.closest('.container');
+
+        function updateWave() {
+            if (!waveContainer) return;
+            const progress = getScrollProgress(waveContainer);
+            waveOverlay.style.height = `${progress * 100}%`;
+            waveContent.style.opacity = progress > 0.5 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 5. CIRCLE EXPAND
+        // ============================================================
+        const circle = document.getElementById('circle');
+        const circleContent = document.getElementById('circle-content');
+        const circleContainer = circle?.closest('.container');
+
+        function updateCircle() {
+            if (!circleContainer) return;
+            const progress = getScrollProgress(circleContainer);
+            const maxSize = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 2;
+            const size = progress * maxSize;
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+            circleContent.style.opacity = progress > 0.4 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 6. SPLIT CURTAIN
+        // ============================================================
+        const splitLeft = document.getElementById('split-left');
+        const splitRight = document.getElementById('split-right');
+        const splitCenter = document.getElementById('split-center');
+        const splitContainer = splitLeft?.closest('.container');
+
+        function updateSplit() {
+            if (!splitContainer) return;
+            const progress = getScrollProgress(splitContainer);
+            const offset = progress * 100;
+            splitLeft.style.transform = `translateX(-${offset}%)`;
+            splitRight.style.transform = `translateX(${offset}%)`;
+            splitCenter.style.opacity = progress > 0.3 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 7. CARD SLIDE UP
+        // ============================================================
+        const cardOverlay = document.getElementById('card-overlay');
+        const cardContainer = cardOverlay?.closest('.container');
+
+        function updateCard() {
+            if (!cardContainer) return;
+            const progress = getScrollProgress(cardContainer);
+            const topValue = 100 - progress * 100;
+            cardOverlay.style.top = `${topValue}%`;
+        }
+
+        // ============================================================
+        // 8. DIAGONAL WIPE
+        // ============================================================
+        const diagonalOverlay = document.getElementById('diagonal-overlay');
+        const diagonalContent = document.getElementById('diagonal-content');
+        const diagonalContainer = diagonalOverlay?.closest('.container');
+
+        function updateDiagonal() {
+            if (!diagonalContainer) return;
+            const progress = getScrollProgress(diagonalContainer);
+            const p = progress * 200;
+            diagonalOverlay.style.clipPath = `polygon(${p - 100}% 0, ${p}% 0, ${p}% 100%, ${p - 100}% 100%)`;
+            diagonalContent.style.opacity = progress > 0.5 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 9. VERTICAL BLINDS
+        // ============================================================
+        const blinds = document.querySelectorAll('.demo-9 .blind');
+        const blindsContainer = document.querySelector('.demo-9 .container');
+
+        function updateBlinds() {
+            if (!blindsContainer) return;
+            const progress = getScrollProgress(blindsContainer);
+            blinds.forEach((blind, i) => {
+                const delay = i * 0.08;
+                const blindProgress = Math.max(0, Math.min(1, (progress - delay) * 2));
+                blind.style.transform = `scaleY(${blindProgress})`;
+            });
+        }
+
+        // ============================================================
+        // 10. PIXEL DISSOLVE
+        // ============================================================
+        const pixelsContainer = document.getElementById('pixels');
+        const pixelContent = document.getElementById('pixel-content');
+        const pixelContainer = pixelsContainer?.closest('.container');
+        let pixelOrder = [];
+
+        function initPixels() {
+            if (!pixelsContainer) return;
+            for (let i = 0; i < 100; i++) {
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                pixelsContainer.appendChild(pixel);
+                pixelOrder.push(i);
+            }
+            for (let i = pixelOrder.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pixelOrder[i], pixelOrder[j]] = [pixelOrder[j], pixelOrder[i]];
+            }
+        }
+
+        function updatePixels() {
+            if (!pixelContainer) return;
+            const progress = getScrollProgress(pixelContainer);
+            const pixels = pixelsContainer.children;
+            const threshold = Math.floor(progress * 100);
+            for (let i = 0; i < 100; i++) {
+                const orderIndex = pixelOrder.indexOf(i);
+                pixels[i].style.opacity = orderIndex < threshold ? 1 : 0;
+            }
+            pixelContent.style.opacity = progress > 0.7 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 11. CIRCLE MORPH (NEW)
+        // ============================================================
+        const morphBg = document.getElementById('morph-bg');
+        const morphContent = document.getElementById('morph-content');
+        const morphContainer = morphBg?.closest('.container');
+
+        function updateMorph() {
+            if (!morphContainer) return;
+            const progress = getScrollProgress(morphContainer);
+            const radius = progress * 150;
+            morphBg.style.clipPath = `circle(${radius}% at 50% 100%)`;
+            morphContent.style.opacity = progress > 0.5 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 12. 3D FLIP (NEW)
+        // ============================================================
+        const flipContainer = document.getElementById('flip-container');
+        const flipContainerParent = flipContainer?.closest('.container');
+
+        function updateFlip() {
+            if (!flipContainerParent) return;
+            const progress = getScrollProgress(flipContainerParent);
+            const rotation = progress * 180;
+            flipContainer.style.transform = `rotateY(${rotation}deg)`;
+        }
+
+        // ============================================================
+        // 13. GLASSMORPHISM (NEW)
+        // ============================================================
+        const glassOverlay = document.getElementById('glass-overlay');
+        const glassCard = document.getElementById('glass-card');
+        const glassContainer = glassOverlay?.closest('.container');
+
+        function updateGlass() {
+            if (!glassContainer) return;
+            const progress = getScrollProgress(glassContainer);
+            const blur = progress * 20;
+            const bgOpacity = progress * 0.3;
+            glassOverlay.style.background = `rgba(255, 255, 255, ${bgOpacity})`;
+            glassOverlay.style.backdropFilter = `blur(${blur}px)`;
+            glassCard.style.opacity = progress;
+            glassCard.style.transform = `scale(${0.8 + progress * 0.2})`;
+        }
+
+        // ============================================================
+        // 14. NOISE DISSOLVE (NEW)
+        // ============================================================
+        const noiseOverlay = document.getElementById('noise-overlay');
+        const noiseContent = document.getElementById('noise-content');
+        const noiseContainer = noiseOverlay?.closest('.container');
+
+        function updateNoise() {
+            if (!noiseContainer) return;
+            const progress = getScrollProgress(noiseContainer);
+            noiseOverlay.style.opacity = progress;
+            noiseContent.style.opacity = progress > 0.6 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 15. LIQUID MORPH (NEW)
+        // ============================================================
+        const liquidPath = document.getElementById('liquid-path');
+        const liquidContent = document.getElementById('liquid-content');
+        const liquidContainer = liquidPath?.closest('.container');
+
+        function updateLiquid() {
+            if (!liquidContainer) return;
+            const progress = getScrollProgress(liquidContainer);
+            const y = 100 - progress * 100;
+            const wave = Math.sin(progress * Math.PI * 2) * 20;
+            const wave2 = Math.cos(progress * Math.PI * 3) * 15;
+            liquidPath.setAttribute('d', 
+                `M0,100 L0,${y} Q25,${y + wave} 50,${y + wave2} T100,${y} L100,100 Z`
+            );
+            liquidContent.style.opacity = progress > 0.6 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 16. STAGGERED BOXES (NEW)
+        // ============================================================
+        const boxesContainer = document.getElementById('boxes');
+        const boxesParent = boxesContainer?.closest('.container');
+        let boxOrder = [];
+
+        function initBoxes() {
+            if (!boxesContainer) return;
+            for (let i = 0; i < 20; i++) {
+                const box = document.createElement('div');
+                box.className = 'box';
+                boxesContainer.appendChild(box);
+                boxOrder.push(i);
+            }
+            // Shuffle for random order
+            for (let i = boxOrder.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [boxOrder[i], boxOrder[j]] = [boxOrder[j], boxOrder[i]];
+            }
+        }
+
+        function updateBoxes() {
+            if (!boxesParent) return;
+            const progress = getScrollProgress(boxesParent);
+            const boxes = boxesContainer.children;
+            for (let i = 0; i < 20; i++) {
+                const orderIndex = boxOrder.indexOf(i);
+                const boxProgress = Math.max(0, Math.min(1, (progress - orderIndex * 0.04) * 2));
+                boxes[i].style.transform = `scale(${easeOutQuart(boxProgress)})`;
+            }
+        }
+
+        // ============================================================
+        // 17. RADIAL SWEEP (NEW)
+        // ============================================================
+        const radialOverlay = document.getElementById('radial-overlay');
+        const radialContent = document.getElementById('radial-content');
+        const radialContainer = radialOverlay?.closest('.container');
+
+        function updateRadial() {
+            if (!radialContainer) return;
+            const progress = getScrollProgress(radialContainer);
+            const radius = progress * 150;
+            radialOverlay.style.background = `radial-gradient(circle at 50% 50%, #fff 0%, #fff ${radius}%, transparent ${radius}%)`;
+            radialContent.style.opacity = progress > 0.6 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 18. HORIZONTAL WIPE (NEW)
+        // ============================================================
+        const hWipe = document.getElementById('h-wipe');
+        const hWipeContent = document.getElementById('h-wipe-content');
+        const hWipeContainer = hWipe?.closest('.container');
+
+        function updateHWipe() {
+            if (!hWipeContainer) return;
+            const progress = getScrollProgress(hWipeContainer);
+            hWipe.style.width = `${progress * 100}%`;
+            hWipeContent.style.opacity = progress > 0.5 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 19. ZOOM BLUR (NEW)
+        // ============================================================
+        const zoomLayer = document.getElementById('zoom-layer');
+        const zoomContent = document.getElementById('zoom-content');
+        const zoomContainer = zoomLayer?.closest('.container');
+
+        function updateZoom() {
+            if (!zoomContainer) return;
+            const progress = getScrollProgress(zoomContainer);
+            const scale = 3 - progress * 2; // 3 -> 1
+            const blur = 30 - progress * 30; // 30 -> 0
+            zoomLayer.style.transform = `scale(${scale})`;
+            zoomLayer.style.filter = `blur(${blur}px)`;
+            zoomLayer.style.opacity = progress;
+            zoomContent.style.opacity = progress > 0.7 ? 1 : 0;
+        }
+
+        // ============================================================
+        // 20. STRIPE REVEAL (NEW)
+        // ============================================================
+        const stripes = document.querySelectorAll('.demo-20 .stripe');
+        const stripesContainer = document.querySelector('.demo-20 .container');
+
+        function updateStripes() {
+            if (!stripesContainer) return;
+            const progress = getScrollProgress(stripesContainer);
+            stripes.forEach((stripe, i) => {
+                const delay = i * 0.06;
+                const stripeProgress = Math.max(0, Math.min(1, (progress - delay) * 2));
+                stripe.style.transform = `scaleX(${easeOutQuart(stripeProgress)})`;
+            });
+        }
+
+        // ============================================================
+        // INITIALIZE & SCROLL HANDLER
+        // ============================================================
+        initPixels();
+        initBoxes();
+
+        function onScroll() {
+            requestAnimationFrame(() => {
+                // Basic (1-10)
+                updateGradient();
+                updateClipPath();
+                updateOpacity();
+                updateWave();
+                updateCircle();
+                updateSplit();
+                updateCard();
+                updateDiagonal();
+                updateBlinds();
+                updatePixels();
+                // New Trending (11-20)
+                updateMorph();
+                updateFlip();
+                updateGlass();
+                updateNoise();
+                updateLiquid();
+                updateBoxes();
+                updateRadial();
+                updateHWipe();
+                updateZoom();
+                updateStripes();
+            });
+        }
+
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('resize', onScroll);
+        onScroll();
+    </script>
+</body>
+</html>

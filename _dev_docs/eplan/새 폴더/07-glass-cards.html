@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Glass Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 07: Hero + Glass Cards
+    - 글래스모피즘 카드
+    - 비디오 배경 + 반투명 카드
+    - 모던하고 세련된 느낌
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+">
+    <!-- Video Background -->
+    <video style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    " autoplay muted loop playsinline>
+        <source src="../../app/static/videos/main.mp4" type="video/mp4">
+    </video>
+
+    <!-- Overlay -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,99,92,0.7) 100%);
+        z-index: 1;
+    "></div>
+
+    <!-- Content -->
+    <div style="
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 2rem;
+        color: white;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 2rem;
+        ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        ">Global Education Innovation</h1>
+        <p style="
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.9;
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        ">Practice Makes Perfect - Your Success is Just Around the Corner</p>
+
+        <!-- Glass Cards Grid -->
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            width: 100%;
+        ">
+            <!-- Glass Card 1 -->
+            <div style="
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 20px;
+                padding: 2rem;
+                text-align: center;
+            ">
+                <div style="
+                    width: 60px;
+                    height: 60px;
+                    background: rgba(255,183,77,0.3);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <rect x="5" y="2" width="14" height="20" rx="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                ">Phone English</h3>
+                <p style="
+                    font-size: 0.875rem;
+                    opacity: 0.8;
+                    margin-bottom: 1.5rem;
+                ">1:1 Personalized Learning</p>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #FFB74D;
+                ">500+</span>
+                <p style="
+                    font-size: 0.75rem;
+                    opacity: 0.7;
+                ">Instructors</p>
+            </div>
+
+            <!-- Glass Card 2 -->
+            <div style="
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 20px;
+                padding: 2rem;
+                text-align: center;
+            ">
+                <div style="
+                    width: 60px;
+                    height: 60px;
+                    background: rgba(99,161,155,0.3);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                        <path d="M9 22v-4h6v4"></path>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                ">Corporate</h3>
+                <p style="
+                    font-size: 0.875rem;
+                    opacity: 0.8;
+                    margin-bottom: 1.5rem;
+                ">Enterprise Solutions</p>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #63A19B;
+                ">2,000+</span>
+                <p style="
+                    font-size: 0.75rem;
+                    opacity: 0.7;
+                ">Clients</p>
+            </div>
+
+            <!-- Glass Card 3 -->
+            <div style="
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 20px;
+                padding: 2rem;
+                text-align: center;
+            ">
+                <div style="
+                    width: 60px;
+                    height: 60px;
+                    background: rgba(0,99,92,0.3);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                ">Writing</h3>
+                <p style="
+                    font-size: 0.875rem;
+                    opacity: 0.8;
+                    margin-bottom: 1.5rem;
+                ">Professional Editing</p>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #FFB74D;
+                ">15+</span>
+                <p style="
+                    font-size: 0.75rem;
+                    opacity: 0.7;
+                ">Years Experience</p>
+            </div>
+
+            <!-- Glass Card 4 -->
+            <div style="
+                background: rgba(255,255,255,0.1);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255,255,255,0.2);
+                border-radius: 20px;
+                padding: 2rem;
+                text-align: center;
+            ">
+                <div style="
+                    width: 60px;
+                    height: 60px;
+                    background: rgba(255,183,77,0.3);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                ">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h3 style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                ">Satisfaction</h3>
+                <p style="
+                    font-size: 0.875rem;
+                    opacity: 0.8;
+                    margin-bottom: 1.5rem;
+                ">Student Reviews</p>
+                <span style="
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #63A19B;
+                ">98%</span>
+                <p style="
+                    font-size: 0.75rem;
+                    opacity: 0.7;
+                ">Happy Students</p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

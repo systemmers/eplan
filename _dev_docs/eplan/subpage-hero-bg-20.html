@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경 이미지 서브 페이지 히어로 20종</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f0f0;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 10px 16px;
+            border-radius: 30px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 95vw;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .nav a:hover {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(28px, 5vw, 52px);
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.7;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Demo Section */
+        .demo-section {
+            padding: 50px 0 0;
+        }
+
+        .demo-label {
+            max-width: 1400px;
+            margin: 0 auto 16px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .demo-label .number {
+            width: 28px;
+            height: 28px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .demo-label .title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .demo-label .tags {
+            display: flex;
+            gap: 6px;
+            margin-left: auto;
+        }
+
+        .demo-label .tag {
+            padding: 4px 10px;
+            background: #e0e0e0;
+            border-radius: 12px;
+            font-size: 10px;
+            color: #555;
+        }
+
+        .demo-label .tag.best {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Common Hero Base */
+        .hero {
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .hero .content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .hero .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .hero .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .hero .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 17px;
+            opacity: 0.85;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* Sample Images */
+        .img-office { background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600'); }
+        .img-city { background-image: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1600'); }
+        .img-nature { background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600'); }
+        .img-tech { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600'); }
+        .img-team { background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600'); }
+        .img-abstract { background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1600'); }
+        .img-mountain { background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600'); }
+        .img-ocean { background-image: url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1600'); }
+        .img-building { background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600'); }
+        .img-meeting { background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600'); }
+
+        /* ====================================================
+           1. DARK OVERLAY - 다크 오버레이 (기본)
+           ==================================================== */
+        .hero-1 {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600') center/cover;
+        }
+
+        /* ====================================================
+           2. GRADIENT OVERLAY - 그라데이션 오버레이
+           ==================================================== */
+        .hero-2 {
+            background: linear-gradient(135deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 100%),
+                        url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1600') center/cover;
+        }
+
+        /* ====================================================
+           3. COLOR TINT - 컬러 틴트 (브랜드 컬러)
+           ==================================================== */
+        .hero-3 {
+            background: linear-gradient(rgba(102, 126, 234, 0.85), rgba(118, 75, 162, 0.85)),
+                        url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600') center/cover;
+        }
+
+        /* ====================================================
+           4. BOTTOM GRADIENT - 하단 그라데이션
+           ==================================================== */
+        .hero-4 {
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600') center/cover;
+        }
+
+        .hero-4::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 100%);
+        }
+
+        .hero-4 .content {
+            align-self: flex-end;
+            padding-bottom: 50px;
+        }
+
+        /* ====================================================
+           5. LEFT GRADIENT - 좌측 그라데이션
+           ==================================================== */
+        .hero-5 {
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600') center/cover;
+        }
+
+        .hero-5::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, transparent 100%);
+        }
+
+        /* ====================================================
+           6. DUOTONE - 듀오톤 효과
+           ==================================================== */
+        .hero-6 {
+            background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1600') center/cover;
+        }
+
+        .hero-6::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            mix-blend-mode: multiply;
+        }
+
+        .hero-6::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            mix-blend-mode: lighten;
+            opacity: 0.3;
+        }
+
+        /* ====================================================
+           7. BLUR OVERLAY - 블러 오버레이
+           ==================================================== */
+        .hero-7 {
+            background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600') center/cover;
+        }
+
+        .hero-7::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.4);
+        }
+
+        /* ====================================================
+           8. VIGNETTE - 비네트 효과
+           ==================================================== */
+        .hero-8 {
+            background: url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1600') center/cover;
+        }
+
+        .hero-8::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+        }
+
+        .hero-8 .content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-8 h1 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-8 p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ====================================================
+           9. SPLIT IMAGE - 분할 이미지
+           ==================================================== */
+        .hero-9 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .hero-9 .content {
+            background: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+        }
+
+        .hero-9 .image-side {
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600') center/cover;
+            min-height: 400px;
+        }
+
+        /* ====================================================
+           10. DIAGONAL IMAGE - 대각선 이미지
+           ==================================================== */
+        .hero-10 {
+            background: #0a0a0a;
+        }
+
+        .hero-10::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600') center/cover;
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .hero-10::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(to right, #0a0a0a 0%, transparent 30%);
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        /* ====================================================
+           11. MESH GRADIENT OVERLAY - 메시 그라데이션
+           ==================================================== */
+        .hero-11 {
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600') center/cover;
+        }
+
+        .hero-11::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(at 0% 0%, rgba(102, 126, 234, 0.6) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(118, 75, 162, 0.6) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.4) 0px, transparent 50%),
+                rgba(0,0,0,0.5);
+        }
+
+        /* ====================================================
+           12. GRAYSCALE + COLOR ACCENT - 흑백 + 컬러 악센트
+           ==================================================== */
+        .hero-12 {
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600') center/cover;
+        }
+
+        .hero-12::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: grayscale(100%);
+        }
+
+        .hero-12 .accent-bar {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin-bottom: 24px;
+            border-radius: 2px;
+        }
+
+        /* ====================================================
+           13. PARALLAX READY - 패럴랙스 레디
+           ==================================================== */
+        .hero-13 {
+            background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600') center/cover fixed;
+        }
+
+        .hero-13::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+        }
+
+        .hero-13 .content {
+            text-align: center;
+        }
+
+        .hero-13 h1, .hero-13 p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ====================================================
+           14. CARD OVERLAY - 카드 오버레이
+           ==================================================== */
+        .hero-14 {
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600') center/cover;
+            justify-content: center;
+        }
+
+        .hero-14::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-14 .content {
+            max-width: 700px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero-14 h1, .hero-14 p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ====================================================
+           15. NOISE TEXTURE - 노이즈 텍스처
+           ==================================================== */
+        .hero-15 {
+            background: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1600') center/cover;
+        }
+
+        .hero-15::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .hero-15::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        /* ====================================================
+           16. BOTTOM STRIP - 하단 스트립
+           ==================================================== */
+        .hero-16 {
+            background: url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1600') center/cover;
+            min-height: 450px;
+        }
+
+        .hero-16::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-16 .bottom-strip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+        }
+
+        .hero-16 .bottom-strip .content {
+            padding: 0;
+            max-width: 1200px;
+        }
+
+        .hero-16 .bottom-strip h1 {
+            font-size: clamp(24px, 4vw, 40px);
+            margin-bottom: 8px;
+        }
+
+        .hero-16 .bottom-strip p {
+            font-size: 15px;
+        }
+
+        /* ====================================================
+           17. CORNER ACCENT - 코너 악센트
+           ==================================================== */
+        .hero-17 {
+            background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600') center/cover;
+        }
+
+        .hero-17::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, transparent 50%),
+                        rgba(0,0,0,0.4);
+        }
+
+        .hero-17 .corner-decoration {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.1) 50%);
+        }
+
+        /* ====================================================
+           18. DOUBLE EXPOSURE - 이중 노출
+           ==================================================== */
+        .hero-18 {
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600') center/cover;
+        }
+
+        .hero-18::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1600') center/cover;
+            mix-blend-mode: overlay;
+            opacity: 0.7;
+        }
+
+        .hero-18::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        /* ====================================================
+           19. GRADIENT BORDER - 그라데이션 테두리
+           ==================================================== */
+        .hero-19 {
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600') center/cover;
+            padding: 8px;
+        }
+
+        .hero-19::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 300% 300%;
+            animation: gradientMove 8s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-19 .inner {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600') center/cover;
+            min-height: 384px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* ====================================================
+           20. SPOTLIGHT - 스포트라이트
+           ==================================================== */
+        .hero-20 {
+            background: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1600') center/cover;
+        }
+
+        .hero-20::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 50%, transparent 0%, rgba(0,0,0,0.8) 100%),
+                rgba(0,0,0,0.3);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .nav {
+                top: 10px;
+                padding: 6px 10px;
+            }
+
+            .nav a {
+                font-size: 9px;
+                padding: 4px 6px;
+            }
+
+            .hero {
+                min-height: 350px;
+            }
+
+            .hero .content {
+                padding: 40px 20px;
+            }
+
+            .hero-9 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-9 .image-side {
+                min-height: 200px;
+            }
+
+            .hero-10::before,
+            .hero-10::after {
+                display: none;
+            }
+
+            .hero-10 {
+                background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                            url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600') center/cover;
+            }
+
+            .demo-label .tags {
+                margin-left: 0;
+                margin-top: 8px;
+                width: 100%;
+            }
+        }
+
+        /* Summary Section */
+        .summary {
+            background: #fff;
+            padding: 80px 40px;
+        }
+
+        .summary h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 50px;
+        }
+
+        .summary-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-card {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .summary-card h4 {
+            font-size: 14px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-card h4 span {
+            width: 22px;
+            height: 22px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .summary-card p {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .summary-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .summary-card .tag {
+            padding: 2px 8px;
+            background: #e8e8e8;
+            border-radius: 8px;
+            font-size: 10px;
+            color: #555;
+        }
+
+        .summary-card .tag.best {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            color: rgba(255,255,255,0.5);
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#hero1">1.다크</a>
+        <a href="#hero2">2.그라데이션</a>
+        <a href="#hero3">3.컬러틴트</a>
+        <a href="#hero4">4.하단</a>
+        <a href="#hero5">5.좌측</a>
+        <a href="#hero6">6.듀오톤</a>
+        <a href="#hero7">7.블러</a>
+        <a href="#hero8">8.비네트</a>
+        <a href="#hero9">9.분할</a>
+        <a href="#hero10">10.대각선</a>
+        <a href="#hero11">11.메시</a>
+        <a href="#hero12">12.흑백</a>
+        <a href="#hero13">13.패럴랙스</a>
+        <a href="#hero14">14.카드</a>
+        <a href="#hero15">15.노이즈</a>
+        <a href="#hero16">16.스트립</a>
+        <a href="#hero17">17.코너</a>
+        <a href="#hero18">18.이중노출</a>
+        <a href="#hero19">19.테두리</a>
+        <a href="#hero20">20.스포트</a>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>배경 이미지 히어로 20종</h1>
+        <p>Background Image Subpage Hero Designs</p>
+        <div class="scroll-hint">↓ 스크롤</div>
+    </header>
+
+    <!-- 1. Dark Overlay -->
+    <section class="demo-section" id="hero1">
+        <div class="demo-label">
+            <span class="number">1</span>
+            <span class="title">Dark Overlay</span>
+            <div class="tags">
+                <span class="tag best">★ 추천</span>
+                <span class="tag">기본</span>
+                <span class="tag">범용</span>
+            </div>
+        </div>
+        <div class="hero hero-1">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">회사소개</a> <span>›</span> <span>비전</span>
+                </div>
+                <h1>다크 오버레이</h1>
+                <p>가장 기본적이고 범용적인 스타일. 어두운 반투명 오버레이로 텍스트 가독성을 확보합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Gradient Overlay -->
+    <section class="demo-section" id="hero2">
+        <div class="demo-label">
+            <span class="number">2</span>
+            <span class="title">Gradient Overlay</span>
+            <div class="tags">
+                <span class="tag best">★ 추천</span>
+                <span class="tag">세련됨</span>
+            </div>
+        </div>
+        <div class="hero hero-2">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">서비스</a> <span>›</span> <span>컨설팅</span>
+                </div>
+                <h1>그라데이션 오버레이</h1>
+                <p>대각선 방향의 그라데이션으로 한쪽은 진하게, 반대쪽은 이미지가 보이도록 처리합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Color Tint -->
+    <section class="demo-section" id="hero3">
+        <div class="demo-label">
+            <span class="number">3</span>
+            <span class="title">Color Tint</span>
+            <div class="tags">
+                <span class="tag">브랜드</span>
+                <span class="tag">컬러풀</span>
+            </div>
+        </div>
+        <div class="hero hero-3">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">브랜드</a> <span>›</span> <span>아이덴티티</span>
+                </div>
+                <h1>컬러 틴트</h1>
+                <p>브랜드 컬러를 반투명하게 오버레이하여 일관된 브랜드 이미지를 유지합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Bottom Gradient -->
+    <section class="demo-section" id="hero4">
+        <div class="demo-label">
+            <span class="number">4</span>
+            <span class="title">Bottom Gradient</span>
+            <div class="tags">
+                <span class="tag best">★ 추천</span>
+                <span class="tag">이미지 강조</span>
+            </div>
+        </div>
+        <div class="hero hero-4">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">갤러리</a> <span>›</span> <span>포트폴리오</span>
+                </div>
+                <h1>하단 그라데이션</h1>
+                <p>상단은 이미지를 그대로 보여주고, 하단으로 갈수록 어두워져 텍스트 가독성을 확보합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Left Gradient -->
+    <section class="demo-section" id="hero5">
+        <div class="demo-label">
+            <span class="number">5</span>
+            <span class="title">Left Gradient</span>
+            <div class="tags">
+                <span class="tag best">★ 추천</span>
+                <span class="tag">균형</span>
+            </div>
+        </div>
+        <div class="hero hero-5">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">팀</a> <span>›</span> <span>소개</span>
+                </div>
+                <h1>좌측 그라데이션</h1>
+                <p>좌측에 텍스트 영역을 확보하고 우측으로 갈수록 이미지가 선명하게 보입니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Duotone -->
+    <section class="demo-section" id="hero6">
+        <div class="demo-label">
+            <span class="number">6</span>
+            <span class="title">Duotone Effect</span>
+            <div class="tags">
+                <span class="tag">트렌디</span>
+                <span class="tag">아티스틱</span>
+            </div>
+        </div>
+        <div class="hero hero-6">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">크리에이티브</a> <span>›</span> <span>디자인</span>
+                </div>
+                <h1>듀오톤 효과</h1>
+                <p>mix-blend-mode를 활용한 듀오톤 효과로 독특하고 아티스틱한 분위기를 연출합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Blur Overlay -->
+    <section class="demo-section" id="hero7">
+        <div class="demo-label">
+            <span class="number">7</span>
+            <span class="title">Blur Overlay</span>
+            <div class="tags">
+                <span class="tag">모던</span>
+                <span class="tag">소프트</span>
+            </div>
+        </div>
+        <div class="hero hero-7">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">자연</a> <span>›</span> <span>여행</span>
+                </div>
+                <h1>블러 오버레이</h1>
+                <p>backdrop-filter: blur()를 사용하여 이미지를 부드럽게 처리하고 텍스트를 강조합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Vignette -->
+    <section class="demo-section" id="hero8">
+        <div class="demo-label">
+            <span class="number">8</span>
+            <span class="title">Vignette</span>
+            <div class="tags">
+                <span class="tag">중앙 집중</span>
+                <span class="tag">드라마틱</span>
+            </div>
+        </div>
+        <div class="hero hero-8">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">스토리</a> <span>›</span> <span>히스토리</span>
+                </div>
+                <h1>비네트 효과</h1>
+                <p>중앙은 밝고 가장자리로 갈수록 어두워지는 비네트 효과로 시선을 중앙에 집중시킵니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Split Image -->
+    <section class="demo-section" id="hero9">
+        <div class="demo-label">
+            <span class="number">9</span>
+            <span class="title">Split Image</span>
+            <div class="tags">
+                <span class="tag best">★ 추천</span>
+                <span class="tag">구조적</span>
+            </div>
+        </div>
+        <div class="hero hero-9">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">오피스</a> <span>›</span> <span>위치</span>
+                </div>
+                <h1>분할 이미지</h1>
+                <p>화면을 반으로 나눠 한쪽은 콘텐츠, 한쪽은 이미지로 구성합니다.</p>
+            </div>
+            <div class="image-side"></div>
+        </div>
+    </section>
+
+    <!-- 10. Diagonal Image -->
+    <section class="demo-section" id="hero10">
+        <div class="demo-label">
+            <span class="number">10</span>
+            <span class="title">Diagonal Image</span>
+            <div class="tags">
+                <span class="tag">역동적</span>
+                <span class="tag">모던</span>
+            </div>
+        </div>
+        <div class="hero hero-10">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">미팅</a> <span>›</span> <span>협업</span>
+                </div>
+                <h1>대각선 이미지</h1>
+                <p>clip-path로 이미지를 대각선으로 잘라 역동적인 레이아웃을 만듭니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Mesh Gradient Overlay -->
+    <section class="demo-section" id="hero11">
+        <div class="demo-label">
+            <span class="number">11</span>
+            <span class="title">Mesh Gradient</span>
+            <div class="tags">
+                <span class="tag best">★ 추천</span>
+                <span class="tag">트렌드</span>
+            </div>
+        </div>
+        <div class="hero hero-11">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">프로덕트</a> <span>›</span> <span>런칭</span>
+                </div>
+                <h1>메시 그라데이션</h1>
+                <p>여러 개의 radial-gradient를 조합하여 화려한 메시 그라데이션 오버레이를 만듭니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Grayscale + Color Accent -->
+    <section class="demo-section" id="hero12">
+        <div class="demo-label">
+            <span class="number">12</span>
+            <span class="title">Grayscale + Accent</span>
+            <div class="tags">
+                <span class="tag">모노톤</span>
+                <span class="tag">세련됨</span>
+            </div>
+        </div>
+        <div class="hero hero-12">
+            <div class="content">
+                <div class="accent-bar"></div>
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">팀워크</a> <span>›</span> <span>문화</span>
+                </div>
+                <h1>흑백 + 컬러 악센트</h1>
+                <p>이미지를 흑백 처리하고 컬러 악센트로 포인트를 주어 세련된 느낌을 연출합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Parallax Ready -->
+    <section class="demo-section" id="hero13">
+        <div class="demo-label">
+            <span class="number">13</span>
+            <span class="title">Parallax Ready</span>
+            <div class="tags">
+                <span class="tag">인터랙티브</span>
+                <span class="tag">깊이감</span>
+            </div>
+        </div>
+        <div class="hero hero-13">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">어드벤처</a> <span>›</span> <span>익스플로어</span>
+                </div>
+                <h1>패럴랙스 레디</h1>
+                <p>background-attachment: fixed로 스크롤 시 패럴랙스 효과를 줄 수 있는 레이아웃입니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. Card Overlay -->
+    <section class="demo-section" id="hero14">
+        <div class="demo-label">
+            <span class="number">14</span>
+            <span class="title">Card Overlay</span>
+            <div class="tags">
+                <span class="tag best">★ 추천</span>
+                <span class="tag">글래스</span>
+            </div>
+        </div>
+        <div class="hero hero-14">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">프리미엄</a> <span>›</span> <span>서비스</span>
+                </div>
+                <h1>카드 오버레이</h1>
+                <p>글래스모피즘 스타일의 카드로 콘텐츠를 감싸 프리미엄한 느낌을 줍니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 15. Noise Texture -->
+    <section class="demo-section" id="hero15">
+        <div class="demo-label">
+            <span class="number">15</span>
+            <span class="title">Noise Texture</span>
+            <div class="tags">
+                <span class="tag">빈티지</span>
+                <span class="tag">질감</span>
+            </div>
+        </div>
+        <div class="hero hero-15">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">시티</a> <span>›</span> <span>라이프</span>
+                </div>
+                <h1>노이즈 텍스처</h1>
+                <p>SVG 노이즈 패턴을 오버레이하여 필름 그레인 같은 빈티지한 질감을 더합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16. Bottom Strip -->
+    <section class="demo-section" id="hero16">
+        <div class="demo-label">
+            <span class="number">16</span>
+            <span class="title">Bottom Strip</span>
+            <div class="tags">
+                <span class="tag">이미지 중심</span>
+                <span class="tag">미니멀</span>
+            </div>
+        </div>
+        <div class="hero hero-16">
+            <div class="bottom-strip">
+                <div class="content">
+                    <div class="breadcrumb">
+                        <a href="#">홈</a> <span>›</span> <a href="#">오션</a> <span>›</span> <span>뷰</span>
+                    </div>
+                    <h1>하단 스트립</h1>
+                    <p>이미지를 최대한 보여주고 하단에 스트립 형태로 텍스트를 배치합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 17. Corner Accent -->
+    <section class="demo-section" id="hero17">
+        <div class="demo-label">
+            <span class="number">17</span>
+            <span class="title">Corner Accent</span>
+            <div class="tags">
+                <span class="tag">디테일</span>
+                <span class="tag">세련됨</span>
+            </div>
+        </div>
+        <div class="hero hero-17">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">워크숍</a> <span>›</span> <span>세션</span>
+                </div>
+                <h1>코너 악센트</h1>
+                <p>코너에 그라데이션과 장식 요소를 추가하여 디테일을 살린 디자인입니다.</p>
+            </div>
+            <div class="corner-decoration"></div>
+        </div>
+    </section>
+
+    <!-- 18. Double Exposure -->
+    <section class="demo-section" id="hero18">
+        <div class="demo-label">
+            <span class="number">18</span>
+            <span class="title">Double Exposure</span>
+            <div class="tags">
+                <span class="tag">아티스틱</span>
+                <span class="tag">독특함</span>
+            </div>
+        </div>
+        <div class="hero hero-18">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">아트</a> <span>›</span> <span>비주얼</span>
+                </div>
+                <h1>이중 노출</h1>
+                <p>두 개의 이미지를 mix-blend-mode로 합성하여 독특한 이중 노출 효과를 만듭니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 19. Gradient Border -->
+    <section class="demo-section" id="hero19">
+        <div class="demo-label">
+            <span class="number">19</span>
+            <span class="title">Gradient Border</span>
+            <div class="tags">
+                <span class="tag">애니메이션</span>
+                <span class="tag">화려함</span>
+            </div>
+        </div>
+        <div class="hero hero-19">
+            <div class="inner">
+                <div class="content">
+                    <div class="breadcrumb">
+                        <a href="#">홈</a> <span>›</span> <a href="#">스페셜</a> <span>›</span> <span>이벤트</span>
+                    </div>
+                    <h1>그라데이션 테두리</h1>
+                    <p>애니메이션되는 그라데이션 테두리로 시선을 끄는 화려한 디자인입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 20. Spotlight -->
+    <section class="demo-section" id="hero20">
+        <div class="demo-label">
+            <span class="number">20</span>
+            <span class="title">Spotlight</span>
+            <div class="tags">
+                <span class="tag best">★ 추천</span>
+                <span class="tag">포커스</span>
+            </div>
+        </div>
+        <div class="hero hero-20">
+            <div class="content">
+                <div class="breadcrumb">
+                    <a href="#">홈</a> <span>›</span> <a href="#">네이처</a> <span>›</span> <span>랜드스케이프</span>
+                </div>
+                <h1>스포트라이트</h1>
+                <p>좌측에 스포트라이트처럼 밝은 영역을 두어 텍스트에 자연스럽게 시선을 유도합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary -->
+    <section class="summary">
+        <h2>📋 배경 이미지 히어로 20종 요약</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h4><span>1</span> Dark Overlay</h4>
+                <p>기본 어두운 반투명 오버레이</p>
+                <div class="tags"><span class="tag best">★</span><span class="tag">범용</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>2</span> Gradient Overlay</h4>
+                <p>대각선 방향 그라데이션</p>
+                <div class="tags"><span class="tag best">★</span><span class="tag">세련</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>3</span> Color Tint</h4>
+                <p>브랜드 컬러 오버레이</p>
+                <div class="tags"><span class="tag">브랜드</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>4</span> Bottom Gradient</h4>
+                <p>상단→하단 그라데이션</p>
+                <div class="tags"><span class="tag best">★</span><span class="tag">이미지</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>5</span> Left Gradient</h4>
+                <p>좌측→우측 그라데이션</p>
+                <div class="tags"><span class="tag best">★</span><span class="tag">균형</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>6</span> Duotone</h4>
+                <p>mix-blend-mode 듀오톤</p>
+                <div class="tags"><span class="tag">아트</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>7</span> Blur Overlay</h4>
+                <p>backdrop-filter 블러</p>
+                <div class="tags"><span class="tag">모던</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>8</span> Vignette</h4>
+                <p>중앙 밝음, 가장자리 어둠</p>
+                <div class="tags"><span class="tag">드라마</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>9</span> Split Image</h4>
+                <p>좌우 분할 레이아웃</p>
+                <div class="tags"><span class="tag best">★</span><span class="tag">구조</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>10</span> Diagonal Image</h4>
+                <p>대각선 clip-path</p>
+                <div class="tags"><span class="tag">역동</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>11</span> Mesh Gradient</h4>
+                <p>다중 radial-gradient</p>
+                <div class="tags"><span class="tag best">★</span><span class="tag">트렌드</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>12</span> Grayscale</h4>
+                <p>흑백 + 컬러 악센트</p>
+                <div class="tags"><span class="tag">모노톤</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>13</span> Parallax</h4>
+                <p>fixed 배경 패럴랙스</p>
+                <div class="tags"><span class="tag">인터랙티브</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>14</span> Card Overlay</h4>
+                <p>글래스 카드 중앙 배치</p>
+                <div class="tags"><span class="tag best">★</span><span class="tag">프리미엄</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>15</span> Noise Texture</h4>
+                <p>SVG 노이즈 오버레이</p>
+                <div class="tags"><span class="tag">빈티지</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>16</span> Bottom Strip</h4>
+                <p>하단 스트립 텍스트</p>
+                <div class="tags"><span class="tag">미니멀</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>17</span> Corner Accent</h4>
+                <p>코너 그라데이션 장식</p>
+                <div class="tags"><span class="tag">디테일</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>18</span> Double Exposure</h4>
+                <p>이미지 합성 이중노출</p>
+                <div class="tags"><span class="tag">아트</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>19</span> Gradient Border</h4>
+                <p>애니메이션 테두리</p>
+                <div class="tags"><span class="tag">화려</span></div>
+            </div>
+            <div class="summary-card">
+                <h4><span>20</span> Spotlight</h4>
+                <p>좌측 스포트라이트</p>
+                <div class="tags"><span class="tag best">★</span><span class="tag">포커스</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        배경 이미지 서브 페이지 히어로 20종 — Background Image Hero Designs
+    </footer>
+</body>
+</html>

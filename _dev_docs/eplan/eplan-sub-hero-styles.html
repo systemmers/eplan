@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePLAN Sub Hero Styles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #1d1d1f, #2d2d2f);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            padding: 40px 20px 60px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .demo-section:nth-child(even) {
+            background: #fff;
+        }
+
+        .section-info {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: #1d1d1f;
+            color: white;
+            border-radius: 50%;
+            line-height: 32px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section-number.recommended {
+            background: linear-gradient(135deg, #007aff, #5856d6);
+        }
+
+        .recommended-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            color: white;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            color: #6e6e73;
+            font-size: 14px;
+        }
+
+        /* ========== BASE SUB HERO STYLES ========== */
+        .sub-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sub-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .breadcrumb span {
+            opacity: 0.5;
+        }
+
+        .breadcrumb .current {
+            opacity: 1;
+            font-weight: 500;
+        }
+
+        .sub-hero-title {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .sub-hero-desc {
+            font-size: clamp(14px, 2vw, 18px);
+            opacity: 0.8;
+            max-width: 600px;
+        }
+
+        /* ==================== STYLE 01: Minimal Clean ==================== */
+        .sub-hero-01 {
+            background: #fafafa;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .sub-hero-01 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-01 .sub-hero-title {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease 0.2s forwards;
+        }
+
+        .sub-hero-01 .sub-hero-desc {
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease 0.4s forwards;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==================== STYLE 02: Gradient Background ==================== */
+        .sub-hero-02 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .sub-hero-02 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-02 .sub-hero-content {
+            opacity: 0;
+            animation: scaleIn 0.6s ease 0.2s forwards;
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ==================== STYLE 03: Left Aligned with Line ==================== */
+        .sub-hero-03 {
+            background: #1d1d1f;
+            color: white;
+            padding: 60px 40px;
+        }
+
+        .sub-hero-03 .sub-hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .sub-hero-03 .title-line {
+            width: 4px;
+            height: 80px;
+            background: linear-gradient(180deg, #007aff, #5856d6);
+            border-radius: 2px;
+            flex-shrink: 0;
+            transform: scaleY(0);
+            transform-origin: top;
+            animation: lineGrow 0.5s ease 0.2s forwards;
+        }
+
+        @keyframes lineGrow {
+            to { transform: scaleY(1); }
+        }
+
+        .sub-hero-03 .sub-hero-title {
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideRight 0.6s ease 0.4s forwards;
+        }
+
+        .sub-hero-03 .sub-hero-desc {
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideRight 0.6s ease 0.5s forwards;
+        }
+
+        @keyframes slideRight {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ==================== STYLE 04: Split Color (RECOMMENDED) ==================== */
+        .sub-hero-04 {
+            display: flex;
+            min-height: 280px;
+        }
+
+        .sub-hero-04 .color-block {
+            width: 40%;
+            background: linear-gradient(135deg, #007aff, #5856d6);
+            position: relative;
+            transform: translateX(-100%);
+            animation: slideIn 0.6s ease 0.2s forwards;
+        }
+
+        @keyframes slideIn {
+            to { transform: translateX(0); }
+        }
+
+        .sub-hero-04 .content-block {
+            width: 60%;
+            background: #1d1d1f;
+            color: white;
+            padding: 60px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sub-hero-04 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.5s forwards;
+        }
+
+        .sub-hero-04 .sub-hero-desc {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.6s forwards;
+        }
+
+        /* ==================== STYLE 05: Geometric Pattern ==================== */
+        .sub-hero-05 {
+            background: #f8f9fa;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-05 .geo-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .sub-hero-05 .geo {
+            position: absolute;
+            opacity: 0.08;
+        }
+
+        .sub-hero-05 .geo-1 {
+            width: 200px;
+            height: 200px;
+            background: #007aff;
+            border-radius: 50%;
+            top: -50px;
+            left: -50px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .sub-hero-05 .geo-2 {
+            width: 150px;
+            height: 150px;
+            background: #5856d6;
+            top: 20%;
+            right: 10%;
+            transform: rotate(45deg);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .sub-hero-05 .geo-3 {
+            width: 100px;
+            height: 100px;
+            background: #34c759;
+            border-radius: 50%;
+            bottom: -30px;
+            right: 30%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .sub-hero-05 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-05 .sub-hero-title {
+            opacity: 0;
+            animation: popIn 0.5s ease 0.3s forwards;
+        }
+
+        .sub-hero-05 .sub-hero-desc {
+            margin: 0 auto;
+            opacity: 0;
+            animation: popIn 0.5s ease 0.4s forwards;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ==================== STYLE 06: Dark with Glow ==================== */
+        .sub-hero-06 {
+            background: #0a0a0a;
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-06 .glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+        }
+
+        .sub-hero-06 .glow-1 {
+            background: #007aff;
+            top: -200px;
+            left: 20%;
+        }
+
+        .sub-hero-06 .glow-2 {
+            background: #5856d6;
+            bottom: -200px;
+            right: 20%;
+        }
+
+        .sub-hero-06 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-06 .sub-hero-title {
+            opacity: 0;
+            filter: blur(10px);
+            animation: blurIn 0.8s ease 0.3s forwards;
+        }
+
+        .sub-hero-06 .sub-hero-desc {
+            margin: 0 auto;
+            opacity: 0;
+            filter: blur(10px);
+            animation: blurIn 0.8s ease 0.5s forwards;
+        }
+
+        @keyframes blurIn {
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        /* ==================== STYLE 07: Underline Reveal (RECOMMENDED) ==================== */
+        .sub-hero-07 {
+            background: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .sub-hero-07 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-07 .sub-hero-title {
+            display: inline-block;
+            position: relative;
+        }
+
+        .sub-hero-07 .sub-hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, rgba(0, 122, 255, 0.2), rgba(88, 86, 214, 0.2));
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: underlineReveal 0.6s ease 0.4s forwards;
+        }
+
+        @keyframes underlineReveal {
+            to { transform: scaleX(1); }
+        }
+
+        .sub-hero-07 .sub-hero-desc {
+            margin: 16px auto 0;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.6s forwards;
+        }
+
+        /* ==================== STYLE 08: Card Style ==================== */
+        .sub-hero-08 {
+            background: linear-gradient(135deg, #f5f7fa, #e4e8ec);
+            padding: 60px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sub-hero-08 .hero-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            max-width: 700px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardUp 0.6s ease 0.2s forwards;
+        }
+
+        @keyframes cardUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sub-hero-08 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-08 .sub-hero-title .highlight {
+            color: #007aff;
+        }
+
+        /* ==================== STYLE 09: Wave Bottom ==================== */
+        .sub-hero-09 {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 80px 40px 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-09 .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z' fill='%23f5f5f7'/%3E%3C/svg%3E");
+            background-size: cover;
+        }
+
+        .sub-hero-09 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-09 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.3s forwards;
+        }
+
+        .sub-hero-09 .sub-hero-title .highlight {
+            color: #48dbfb;
+        }
+
+        .sub-hero-09 .sub-hero-desc {
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 10: Parallax Image (RECOMMENDED) ==================== */
+        .sub-hero-10 {
+            min-height: 300px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        linear-gradient(135deg, #667eea, #764ba2);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 80px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .sub-hero-10 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-10 .sub-hero-title {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            animation: heroReveal 0.8s ease 0.3s forwards;
+        }
+
+        .sub-hero-10 .sub-hero-desc {
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroReveal 0.8s ease 0.5s forwards;
+        }
+
+        @keyframes heroReveal {
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* ==================== STYLE 11: Typing Title ==================== */
+        .sub-hero-11 {
+            background: #121212;
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .sub-hero-11 .breadcrumb {
+            justify-content: center;
+            color: #00ff88;
+        }
+
+        .sub-hero-11 .sub-hero-title {
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            border-right: 3px solid #00ff88;
+            white-space: nowrap;
+            display: inline-block;
+            animation: typing 1.5s steps(15) 0.5s forwards, blink 0.8s step-end infinite;
+            width: 0;
+        }
+
+        @keyframes typing {
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .sub-hero-11 .sub-hero-desc {
+            font-family: 'Courier New', monospace;
+            color: #888;
+            margin: 20px auto 0;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* ==================== STYLE 12: Stacked Text ==================== */
+        .sub-hero-12 {
+            background: #fafafa;
+            padding: 80px 40px;
+        }
+
+        .sub-hero-12 .sub-hero-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .sub-hero-12 .title-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .sub-hero-12 .title-line-text {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: stackIn 0.5s ease forwards;
+        }
+
+        .sub-hero-12 .title-line-text:nth-child(1) { animation-delay: 0.2s; }
+        .sub-hero-12 .title-line-text:nth-child(2) { animation-delay: 0.3s; color: #007aff; }
+
+        @keyframes stackIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .sub-hero-12 .sub-hero-desc {
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeUp 0.5s ease 0.5s forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sub-hero-04 {
+                flex-direction: column;
+            }
+
+            .sub-hero-04 .color-block {
+                width: 100%;
+                height: 100px;
+                transform: translateY(-100%);
+            }
+
+            .sub-hero-04 .content-block {
+                width: 100%;
+                padding: 40px 30px;
+            }
+
+            .sub-hero-03 .sub-hero-inner {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .sub-hero-03 .title-line {
+                width: 60px;
+                height: 4px;
+            }
+
+            .sub-hero-08 .hero-card {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Sub Hero Title Styles</h1>
+        <p>ePLAN 내부 페이지를 위한 서브 히어로 타이틀 12가지 제안</p>
+    </header>
+
+    <!-- Style 01: Minimal Clean -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">01</div>
+            <h2 class="section-title">Minimal Clean</h2>
+            <p class="section-desc">가장 깔끔하고 기본적인 스타일. 심플한 페이드업 애니메이션.</p>
+        </div>
+        <div class="sub-hero sub-hero-01">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">About Us</span>
+                </nav>
+                <h1 class="sub-hero-title">회사 소개</h1>
+                <p class="sub-hero-desc">글로벌 교육의 혁신을 이끄는 ePLAN을 소개합니다</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 02: Gradient Background -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">02</div>
+            <h2 class="section-title">Gradient Background</h2>
+            <p class="section-desc">브랜드 컬러 그라데이션 배경. 부드러운 스케일 인 효과.</p>
+        </div>
+        <div class="sub-hero sub-hero-02">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Programs</span>
+                </nav>
+                <h1 class="sub-hero-title">교육 프로그램</h1>
+                <p class="sub-hero-desc">맞춤형 글로벌 역량 강화 프로그램을 만나보세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 03: Left Aligned with Line -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">03</div>
+            <h2 class="section-title">Left Aligned with Line</h2>
+            <p class="section-desc">좌측 정렬과 세로 라인 강조. 전문적이고 모던한 느낌.</p>
+        </div>
+        <div class="sub-hero sub-hero-03">
+            <div class="sub-hero-inner">
+                <div class="title-line"></div>
+                <div class="sub-hero-content">
+                    <nav class="breadcrumb">
+                        <a href="#">Home</a>
+                        <span>/</span>
+                        <span class="current">Services</span>
+                    </nav>
+                    <h1 class="sub-hero-title">서비스 안내</h1>
+                    <p class="sub-hero-desc">기업과 개인을 위한 맞춤형 교육 서비스</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 04: Split Color (RECOMMENDED) -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number recommended">04</div>
+            <h2 class="section-title">Split Color <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">화면 분할 디자인. 시각적 임팩트가 강하고 세련된 스타일.</p>
+        </div>
+        <div class="sub-hero sub-hero-04">
+            <div class="color-block"></div>
+            <div class="content-block">
+                <div class="sub-hero-content">
+                    <nav class="breadcrumb">
+                        <a href="#">Home</a>
+                        <span>/</span>
+                        <span class="current">Partners</span>
+                    </nav>
+                    <h1 class="sub-hero-title">파트너십</h1>
+                    <p class="sub-hero-desc">전 세계 교육 기관과 함께 성장합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 05: Geometric Pattern -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">05</div>
+            <h2 class="section-title">Geometric Pattern</h2>
+            <p class="section-desc">떠다니는 기하학 도형 배경. 교육적이고 창의적인 느낌.</p>
+        </div>
+        <div class="sub-hero sub-hero-05">
+            <div class="geo-shapes">
+                <div class="geo geo-1"></div>
+                <div class="geo geo-2"></div>
+                <div class="geo geo-3"></div>
+            </div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Courses</span>
+                </nav>
+                <h1 class="sub-hero-title">커리큘럼</h1>
+                <p class="sub-hero-desc">체계적인 학습 경로로 글로벌 역량을 키워보세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 06: Dark with Glow -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">06</div>
+            <h2 class="section-title">Dark with Glow</h2>
+            <p class="section-desc">다크 배경에 글로우 효과. 프리미엄하고 고급스러운 느낌.</p>
+        </div>
+        <div class="sub-hero sub-hero-06">
+            <div class="glow glow-1"></div>
+            <div class="glow glow-2"></div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Enterprise</span>
+                </nav>
+                <h1 class="sub-hero-title">기업 교육</h1>
+                <p class="sub-hero-desc">글로벌 인재 양성을 위한 맞춤형 기업 솔루션</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 07: Underline Reveal (RECOMMENDED) -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number recommended">07</div>
+            <h2 class="section-title">Underline Reveal <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">밑줄이 펼쳐지는 효과. 깔끔하면서도 포인트가 있는 스타일.</p>
+        </div>
+        <div class="sub-hero sub-hero-07">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">About</span>
+                </nav>
+                <h1 class="sub-hero-title">ePLAN 소개</h1>
+                <p class="sub-hero-desc">Practice Makes Perfect! 실천으로 완성하는 글로벌 교육</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 08: Card Style -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">08</div>
+            <h2 class="section-title">Card Style</h2>
+            <p class="section-desc">카드 형태의 컨테이너. 콘텐츠가 돋보이는 디자인.</p>
+        </div>
+        <div class="sub-hero sub-hero-08">
+            <div class="hero-card">
+                <div class="sub-hero-content">
+                    <nav class="breadcrumb">
+                        <a href="#">Home</a>
+                        <span>/</span>
+                        <span class="current">News</span>
+                    </nav>
+                    <h1 class="sub-hero-title"><span class="highlight">e</span>PLAN 소식</h1>
+                    <p class="sub-hero-desc">ePLAN의 새로운 소식과 업데이트를 확인하세요</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 09: Wave Bottom -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">09</div>
+            <h2 class="section-title">Wave Bottom</h2>
+            <p class="section-desc">하단에 물결 모양 효과. 부드럽고 친근한 느낌.</p>
+        </div>
+        <div class="sub-hero sub-hero-09">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Contact</span>
+                </nav>
+                <h1 class="sub-hero-title"><span class="highlight">e</span>PLAN과 함께하기</h1>
+                <p class="sub-hero-desc">글로벌 교육 혁신의 여정에 함께해 주세요</p>
+            </div>
+            <div class="wave"></div>
+        </div>
+    </section>
+
+    <!-- Style 10: Parallax Image (RECOMMENDED) -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number recommended">10</div>
+            <h2 class="section-title">Parallax Background <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">패럴랙스 배경 효과. 스크롤 시 깊이감을 주는 임팩트 있는 스타일.</p>
+        </div>
+        <div class="sub-hero sub-hero-10">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Global</span>
+                </nav>
+                <h1 class="sub-hero-title">글로벌 네트워크</h1>
+                <p class="sub-hero-desc">전 세계 파트너와 함께 교육의 미래를 만들어갑니다</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 11: Typing Title -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">11</div>
+            <h2 class="section-title">Typing Effect</h2>
+            <p class="section-desc">타이핑 애니메이션. 테크 느낌의 개발자/IT 관련 페이지에 적합.</p>
+        </div>
+        <div class="sub-hero sub-hero-11">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Tech</span>
+                </nav>
+                <h1 class="sub-hero-title">기술 혁신</h1>
+                <p class="sub-hero-desc">AI와 함께하는 스마트 러닝 플랫폼</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 12: Stacked Text -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">12</div>
+            <h2 class="section-title">Stacked Text</h2>
+            <p class="section-desc">큰 텍스트가 쌓이는 효과. 강렬하고 대담한 타이포그래피.</p>
+        </div>
+        <div class="sub-hero sub-hero-12">
+            <div class="sub-hero-inner">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Vision</span>
+                </nav>
+                <div class="title-stack">
+                    <span class="title-line-text">글로벌 교육</span>
+                    <span class="title-line-text">혁신 리더</span>
+                </div>
+                <p class="sub-hero-desc">ePLAN이 그리는 교육의 미래 비전을 소개합니다</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-header" style="padding: 40px 20px;">
+        <p style="opacity: 0.7;">ePLAN Sub Hero Styles — 12 Variations</p>
+    </footer>
+</body>
+</html>

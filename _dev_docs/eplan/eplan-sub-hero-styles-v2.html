@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePLAN Sub Hero Styles Vol.2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        /* ePLAN Brand Colors */
+        :root {
+            --gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --gold-dark: #B8923E;
+            --black: #1a1a1a;
+            --e-yellow: #F5B820;
+            --p-green: #2E8B57;
+            --l-red: #E53935;
+            --a-blue: #1E88E5;
+            --n-red: #E53935;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, var(--black), #2d2d2d);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            padding: 40px 20px 60px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .demo-section:nth-child(even) {
+            background: #fff;
+        }
+
+        .section-info {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border-radius: 50%;
+            line-height: 32px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-number.recommended {
+            background: linear-gradient(135deg, var(--gold), var(--e-yellow));
+            box-shadow: 0 4px 15px rgba(212, 168, 75, 0.4);
+        }
+
+        .recommended-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            color: #6e6e73;
+            font-size: 14px;
+        }
+
+        .version-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .version-tab {
+            padding: 6px 14px;
+            background: #eee;
+            border: none;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .version-tab:hover, .version-tab.active {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* ========== BASE STYLES ========== */
+        .sub-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sub-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .breadcrumb span {
+            opacity: 0.5;
+        }
+
+        .breadcrumb .current {
+            opacity: 1;
+            font-weight: 500;
+        }
+
+        .sub-hero-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .sub-hero-desc {
+            font-size: clamp(14px, 2vw, 18px);
+            opacity: 0.85;
+            max-width: 600px;
+        }
+
+        /* Colorful Text */
+        .color-e { color: var(--e-yellow); }
+        .color-p { color: var(--p-green); }
+        .color-l { color: var(--l-red); }
+        .color-a { color: var(--a-blue); }
+        .color-n { color: var(--l-red); }
+        .color-gold { color: var(--gold); }
+
+        /* Logo */
+        .logo-img {
+            width: 50px;
+            height: auto;
+            margin-bottom: 16px;
+        }
+
+        /* ==================== STYLE 13: Gold Stripe ==================== */
+        .sub-hero-13 {
+            background: var(--black);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-13 .stripe {
+            position: absolute;
+            height: 100%;
+            width: 60px;
+            background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+            top: 0;
+        }
+
+        .sub-hero-13 .stripe-1 { left: 10%; opacity: 0.15; }
+        .sub-hero-13 .stripe-2 { left: 12%; opacity: 0.1; width: 20px; }
+        .sub-hero-13 .stripe-3 { right: 10%; opacity: 0.15; }
+        .sub-hero-13 .stripe-4 { right: 12%; opacity: 0.1; width: 20px; }
+
+        .sub-hero-13 .stripe {
+            transform: scaleY(0);
+            animation: stripeGrow 0.8s ease forwards;
+        }
+
+        .sub-hero-13 .stripe-1 { animation-delay: 0.1s; }
+        .sub-hero-13 .stripe-2 { animation-delay: 0.2s; }
+        .sub-hero-13 .stripe-3 { animation-delay: 0.3s; }
+        .sub-hero-13 .stripe-4 { animation-delay: 0.4s; }
+
+        @keyframes stripeGrow {
+            to { transform: scaleY(1); }
+        }
+
+        .sub-hero-13 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-13 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.5s forwards;
+        }
+
+        .sub-hero-13 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.7s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==================== STYLE 14: Gold Gradient Shine (RECOMMENDED) ==================== */
+        .sub-hero-14 {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sub-hero-14 .shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.1), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        .sub-hero-14 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-14 .sub-hero-title {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: scaleIn 0.6s ease 0.3s forwards;
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .sub-hero-14 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 15: Colorful Letters Animation ==================== */
+        .sub-hero-15 {
+            background: #fafafa;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .sub-hero-15 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-15 .title-wrapper {
+            display: inline-block;
+        }
+
+        .sub-hero-15 .animated-letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px) rotate(-10deg);
+            animation: letterBounce 0.5s ease forwards;
+        }
+
+        @keyframes letterBounce {
+            0% { opacity: 0; transform: translateY(30px) rotate(-10deg); }
+            60% { transform: translateY(-5px) rotate(2deg); }
+            100% { opacity: 1; transform: translateY(0) rotate(0); }
+        }
+
+        .sub-hero-15 .sub-hero-desc {
+            margin: 16px auto 0;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 1.2s forwards;
+        }
+
+        /* ==================== STYLE 16: Split Gold Black ==================== */
+        .sub-hero-16 {
+            display: flex;
+            min-height: 280px;
+        }
+
+        .sub-hero-16 .gold-block {
+            width: 35%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-100%);
+            animation: slideRight 0.6s ease 0.2s forwards;
+        }
+
+        @keyframes slideRight {
+            to { transform: translateX(0); }
+        }
+
+        .sub-hero-16 .gold-block .logo-img {
+            width: 80px;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+            opacity: 0;
+            animation: logoReveal 0.6s ease 0.6s forwards;
+        }
+
+        @keyframes logoReveal {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .sub-hero-16 .content-block {
+            width: 65%;
+            background: var(--black);
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sub-hero-16 .breadcrumb {
+            color: var(--gold);
+        }
+
+        .sub-hero-16 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.5s forwards;
+        }
+
+        .sub-hero-16 .sub-hero-desc {
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.7s forwards;
+        }
+
+        /* ==================== STYLE 17: Bee Pattern (RECOMMENDED) ==================== */
+        .sub-hero-17 {
+            background: var(--black);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-17 .bee-stripes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                135deg,
+                transparent,
+                transparent 40px,
+                rgba(212, 168, 75, 0.05) 40px,
+                rgba(212, 168, 75, 0.05) 80px
+            );
+            animation: stripeMove 20s linear infinite;
+        }
+
+        @keyframes stripeMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 200px 200px; }
+        }
+
+        .sub-hero-17 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-17 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.3s forwards;
+        }
+
+        .sub-hero-17 .sub-hero-title .gold-text {
+            color: var(--gold);
+        }
+
+        .sub-hero-17 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 18: Floating Pin ==================== */
+        .sub-hero-18 {
+            background: linear-gradient(180deg, #f8f8f8 0%, #eeeeee 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sub-hero-18 .floating-pin {
+            position: absolute;
+            opacity: 0.08;
+            animation: floatPin 6s ease-in-out infinite;
+        }
+
+        .sub-hero-18 .pin-1 {
+            width: 120px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .sub-hero-18 .pin-2 {
+            width: 80px;
+            top: 60%;
+            left: 15%;
+            animation-delay: -2s;
+        }
+
+        .sub-hero-18 .pin-3 {
+            width: 100px;
+            top: 20%;
+            right: 8%;
+            animation-delay: -4s;
+        }
+
+        .sub-hero-18 .pin-4 {
+            width: 60px;
+            bottom: 20%;
+            right: 15%;
+            animation-delay: -3s;
+        }
+
+        @keyframes floatPin {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        .sub-hero-18 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-18 .sub-hero-title {
+            opacity: 0;
+            animation: popIn 0.5s ease 0.3s forwards;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .sub-hero-18 .sub-hero-desc {
+            margin: 0 auto;
+            opacity: 0;
+            animation: popIn 0.5s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 19: Gold Border Frame ==================== */
+        .sub-hero-19 {
+            background: var(--black);
+            color: white;
+            padding: 80px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sub-hero-19 .frame {
+            border: 3px solid var(--gold);
+            padding: 50px 80px;
+            text-align: center;
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            clip-path: inset(0 100% 0 0);
+            animation: frameReveal 0.8s ease 0.3s forwards;
+        }
+
+        @keyframes frameReveal {
+            to { clip-path: inset(0 0 0 0); }
+        }
+
+        .sub-hero-19 .frame::before,
+        .sub-hero-19 .frame::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--gold);
+        }
+
+        .sub-hero-19 .frame::before {
+            top: -8px;
+            left: -8px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .sub-hero-19 .frame::after {
+            bottom: -8px;
+            right: -8px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .sub-hero-19 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-19 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.8s forwards;
+        }
+
+        .sub-hero-19 .sub-hero-desc {
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 1s forwards;
+        }
+
+        /* ==================== STYLE 20: Gradient Wave (RECOMMENDED) ==================== */
+        .sub-hero-20 {
+            background: var(--black);
+            color: white;
+            padding: 80px 40px 120px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-20 .gold-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z' fill='%23D4A84B'/%3E%3C/svg%3E");
+            background-size: 50% 100%;
+            animation: waveMove 10s linear infinite;
+            opacity: 0.15;
+        }
+
+        .sub-hero-20 .gold-wave:nth-child(2) {
+            opacity: 0.1;
+            animation-direction: reverse;
+            animation-duration: 7s;
+        }
+
+        @keyframes waveMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .sub-hero-20 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-20 .sub-hero-title {
+            opacity: 0;
+            animation: riseUp 0.8s ease 0.3s forwards;
+        }
+
+        @keyframes riseUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sub-hero-20 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: riseUp 0.8s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 21: Spotlight Gold ==================== */
+        .sub-hero-21 {
+            background: #0a0a0a;
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sub-hero-21 .spotlight {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 168, 75, 0.2) 0%, transparent 70%);
+            animation: spotlightMove 8s ease-in-out infinite;
+        }
+
+        @keyframes spotlightMove {
+            0%, 100% { transform: translate(-30%, -30%); }
+            25% { transform: translate(60%, -20%); }
+            50% { transform: translate(40%, 60%); }
+            75% { transform: translate(-20%, 40%); }
+        }
+
+        .sub-hero-21 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-21 .sub-hero-content {
+            opacity: 0;
+            animation: spotlightReveal 1s ease 0.3s forwards;
+        }
+
+        @keyframes spotlightReveal {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .sub-hero-21 .sub-hero-title .gold-text {
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212, 168, 75, 0.5);
+        }
+
+        .sub-hero-21 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ==================== STYLE 22: Typewriter Multilingual ==================== */
+        .sub-hero-22 {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .sub-hero-22 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-22 .typewriter-container {
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sub-hero-22 .sub-hero-title {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid var(--gold);
+            white-space: nowrap;
+            animation: typing 2s steps(20) 0.5s forwards, blink 0.8s step-end infinite;
+            width: 0;
+        }
+
+        @keyframes typing {
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .sub-hero-22 .sub-hero-desc {
+            margin: 20px auto 0;
+            color: rgba(255,255,255,0.6);
+            opacity: 0;
+            animation: fadeIn 0.5s ease 2.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sub-hero-16 {
+                flex-direction: column;
+            }
+
+            .sub-hero-16 .gold-block {
+                width: 100%;
+                height: 150px;
+                transform: translateY(-100%);
+            }
+
+            .sub-hero-16 .content-block {
+                width: 100%;
+                padding: 40px 30px;
+            }
+
+            .sub-hero-19 .frame {
+                padding: 30px 25px;
+            }
+
+            .version-tabs {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>ePLAN Sub Hero Styles Vol.2</h1>
+        <p>브랜드 컬러(골드/블랙/다채로운 텍스트)를 반영한 서브 히어로 10가지</p>
+    </header>
+
+    <!-- Style 13: Gold Stripe -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">13</div>
+            <h2 class="section-title">Gold Stripe</h2>
+            <p class="section-desc">골드 세로 스트라이프가 순차적으로 나타나는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(13, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(13, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(13, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-13">
+            <div class="stripe stripe-1"></div>
+            <div class="stripe stripe-2"></div>
+            <div class="stripe stripe-3"></div>
+            <div class="stripe stripe-4"></div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">About</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="<span class='color-e'>e</span><span class='color-p'>P</span><span class='color-l'>L</span><span class='color-a'>A</span><span class='color-n'>N</span> 소개" data-ko="회사 소개" data-en="About Us">
+                    <span class="color-e">e</span><span class="color-p">P</span><span class="color-l">L</span><span class="color-a">A</span><span class="color-n">N</span> 소개
+                </h1>
+                <p class="sub-hero-desc">글로벌 교육의 혁신을 이끄는 ePLAN을 소개합니다</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 14: Gold Gradient Shine (RECOMMENDED) -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number recommended">14</div>
+            <h2 class="section-title">Gold Gradient Shine <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">골드 그라데이션 텍스트와 빛나는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(14, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(14, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(14, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-14">
+            <div class="shine"></div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Programs</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="Global Education Programs" data-ko="교육 프로그램" data-en="Education Programs">
+                    Global Education Programs
+                </h1>
+                <p class="sub-hero-desc">Practice Makes Perfect! 실천으로 완성하는 글로벌 역량</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 15: Colorful Letters Animation -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">15</div>
+            <h2 class="section-title">Colorful Letters Animation</h2>
+            <p class="section-desc">로고 색상을 반영한 글자별 바운스 애니메이션</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(15, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(15, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(15, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-15">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Services</span>
+                </nav>
+                <div class="title-wrapper">
+                    <h1 class="sub-hero-title" id="colorfulTitle15"></h1>
+                </div>
+                <p class="sub-hero-desc">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 16: Split Gold Black -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">16</div>
+            <h2 class="section-title">Split Gold Black</h2>
+            <p class="section-desc">골드/블랙 분할 레이아웃과 로고 강조</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(16, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(16, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(16, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-16">
+            <div class="gold-block">
+                <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN Logo" class="logo-img">
+            </div>
+            <div class="content-block">
+                <div class="sub-hero-content">
+                    <nav class="breadcrumb">
+                        <a href="#">Home</a>
+                        <span>/</span>
+                        <span class="current">Partners</span>
+                    </nav>
+                    <h1 class="sub-hero-title version-text" data-mixed="Global Partnership" data-ko="파트너십" data-en="Partnership">
+                        Global Partnership
+                    </h1>
+                    <p class="sub-hero-desc">전 세계 교육 기관과 함께 성장합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 17: Bee Pattern (RECOMMENDED) -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number recommended">17</div>
+            <h2 class="section-title">Bee Pattern <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">로고의 벌 패턴을 반영한 움직이는 스트라이프 배경</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(17, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(17, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(17, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-17">
+            <div class="bee-stripes"></div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Courses</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="<span class='gold-text'>글로벌</span> 커리큘럼" data-ko="커리큘럼 안내" data-en="<span class='gold-text'>Global</span> Curriculum">
+                    <span class="gold-text">글로벌</span> 커리큘럼
+                </h1>
+                <p class="sub-hero-desc">체계적인 학습 경로로 글로벌 역량을 키워보세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 18: Floating Pin -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">18</div>
+            <h2 class="section-title">Floating Pin</h2>
+            <p class="section-desc">로고 핀 모양이 떠다니는 배경 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(18, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(18, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(18, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-18">
+            <img src="/mnt/user-data/uploads/image_6.png" alt="" class="floating-pin pin-1">
+            <img src="/mnt/user-data/uploads/image_6.png" alt="" class="floating-pin pin-2">
+            <img src="/mnt/user-data/uploads/image_6.png" alt="" class="floating-pin pin-3">
+            <img src="/mnt/user-data/uploads/image_6.png" alt="" class="floating-pin pin-4">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Locations</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="<span class='color-e'>e</span><span class='color-p'>P</span><span class='color-l'>L</span><span class='color-a'>A</span><span class='color-n'>N</span> 센터 안내" data-ko="센터 안내" data-en="Our Locations">
+                    <span class="color-e">e</span><span class="color-p">P</span><span class="color-l">L</span><span class="color-a">A</span><span class="color-n">N</span> 센터 안내
+                </h1>
+                <p class="sub-hero-desc">전국 ePLAN 교육 센터를 찾아보세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 19: Gold Border Frame -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">19</div>
+            <h2 class="section-title">Gold Border Frame</h2>
+            <p class="section-desc">골드 테두리 프레임이 펼쳐지는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(19, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(19, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(19, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-19">
+            <div class="frame">
+                <div class="sub-hero-content">
+                    <nav class="breadcrumb">
+                        <a href="#">Home</a>
+                        <span>/</span>
+                        <span class="current">Enterprise</span>
+                    </nav>
+                    <h1 class="sub-hero-title version-text" data-mixed="Enterprise Solutions" data-ko="기업 교육 솔루션" data-en="Enterprise Solutions">
+                        Enterprise Solutions
+                    </h1>
+                    <p class="sub-hero-desc">글로벌 인재 양성을 위한 맞춤형 기업 솔루션</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 20: Gradient Wave (RECOMMENDED) -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number recommended">20</div>
+            <h2 class="section-title">Gold Wave <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">골드 웨이브가 하단에서 흐르는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(20, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(20, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(20, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-20">
+            <div class="gold-wave"></div>
+            <div class="gold-wave"></div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Contact</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="<span class='color-gold'>ePLAN</span>과 함께하기" data-ko="문의하기" data-en="Contact <span class='color-gold'>ePLAN</span>">
+                    <span class="color-gold">ePLAN</span>과 함께하기
+                </h1>
+                <p class="sub-hero-desc">글로벌 교육 혁신의 여정에 함께해 주세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 21: Spotlight Gold -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">21</div>
+            <h2 class="section-title">Spotlight Gold</h2>
+            <p class="section-desc">골드 스포트라이트가 움직이는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(21, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(21, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(21, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-21">
+            <div class="spotlight"></div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Vision</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="<span class='gold-text'>교육</span>의 미래를 그리다" data-ko="비전과 미션" data-en="Shaping the <span class='gold-text'>Future</span>">
+                    <span class="gold-text">교육</span>의 미래를 그리다
+                </h1>
+                <p class="sub-hero-desc">Practice Makes Perfect! ePLAN이 그리는 글로벌 교육의 비전</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 22: Typewriter Multilingual -->
+    <section class="demo-section">
+        <div class="section-info">
+            <div class="section-number">22</div>
+            <h2 class="section-title">Typewriter Multilingual</h2>
+            <p class="section-desc">타이핑 효과가 있는 다국어 지원 스타일</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(22, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(22, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(22, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-22">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">News</span>
+                </nav>
+                <div class="typewriter-container">
+                    <h1 class="sub-hero-title version-text" data-mixed="ePLAN News & Updates" data-ko="새소식" data-en="News & Updates">
+                        ePLAN News & Updates
+                    </h1>
+                </div>
+                <p class="sub-hero-desc">ePLAN의 새로운 소식과 업데이트를 확인하세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-header" style="padding: 40px 20px;">
+        <p style="opacity: 0.7;">ePLAN Sub Hero Styles Vol.2 — 10 Brand Color Variations</p>
+    </footer>
+
+    <script>
+        // Colorful Letters Animation for Style 15
+        function animateColorfulTitle() {
+            const title = document.getElementById('colorfulTitle15');
+            const text = 'ePLAN 서비스';
+            const colors = {
+                'e': 'color-e',
+                'P': 'color-p', 
+                'L': 'color-l',
+                'A': 'color-a',
+                'N': 'color-n'
+            };
+            
+            title.innerHTML = '';
+            
+            text.split('').forEach((char, i) => {
+                const span = document.createElement('span');
+                span.className = 'animated-letter';
+                if (colors[char]) {
+                    span.classList.add(colors[char]);
+                }
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.style.animationDelay = `${0.3 + i * 0.08}s`;
+                title.appendChild(span);
+            });
+        }
+
+        // Version switcher
+        function showVersion(styleNum, version) {
+            const section = document.querySelectorAll('.demo-section')[styleNum - 13];
+            const tabs = section.querySelectorAll('.version-tab');
+            const versionTexts = section.querySelectorAll('.version-text');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            versionTexts.forEach(el => {
+                const text = el.getAttribute(`data-${version}`);
+                if (text) {
+                    el.innerHTML = text;
+                }
+            });
+
+            // Special handling for Style 15
+            if (styleNum === 15) {
+                const title = document.getElementById('colorfulTitle15');
+                const texts = {
+                    'mixed': 'ePLAN 서비스',
+                    'ko': '서비스 안내',
+                    'en': 'Our Services'
+                };
+                const text = texts[version];
+                const colors = { 'e': 'color-e', 'P': 'color-p', 'L': 'color-l', 'A': 'color-a', 'N': 'color-n' };
+                
+                title.innerHTML = '';
+                text.split('').forEach((char, i) => {
+                    const span = document.createElement('span');
+                    span.className = 'animated-letter';
+                    if (colors[char]) span.classList.add(colors[char]);
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    span.style.animationDelay = `${0.1 + i * 0.08}s`;
+                    title.appendChild(span);
+                });
+            }
+        }
+
+        // Initialize
+        animateColorfulTitle();
+    </script>
+</body>
+</html>

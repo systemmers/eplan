@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePLAN - 글로벌 교육의 혁신</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --gold-dark: #B8923E;
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --blue-50: #eff6ff;
+            --blue-100: #dbeafe;
+            --blue-200: #bfdbfe;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --blue-900: #1e3a5f;
+            --cream: #fefcf3;
+            --cream-dark: #faf5e4;
+            --mint: #f0fdf4;
+            --e-yellow: #F5B820;
+            --p-green: #2E8B57;
+            --l-red: #E53935;
+            --a-blue: #1E88E5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+            color: var(--black);
+        }
+
+        /* Smooth Background Transition Container */
+        .bg-transition-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ==================== NAVIGATION ==================== */
+        .nav-wrapper {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .nav-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 8px 8px 8px 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-logo-text {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .nav-logo-text .e { color: var(--e-yellow); }
+        .nav-logo-text .p { color: var(--p-green); }
+        .nav-logo-text .l { color: var(--l-red); }
+        .nav-logo-text .a { color: var(--a-blue); }
+        .nav-logo-text .n { color: var(--l-red); }
+
+        .nav-divider {
+            width: 1px;
+            height: 24px;
+            background: rgba(0, 0, 0, 0.1);
+            margin: 0 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--black);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black) !important;
+            font-weight: 600;
+            padding: 10px 20px;
+        }
+
+        .nav-cta:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            transform: scale(1.02);
+        }
+
+        /* ==================== SECTIONS ==================== */
+        .section {
+            min-height: 100vh;
+            padding: 120px 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: var(--gold-dark);
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .section-desc {
+            font-size: clamp(16px, 2vw, 18px);
+            line-height: 1.7;
+            color: #555;
+            max-width: 600px;
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+
+        /* ==================== SECTION 1: HERO ==================== */
+        #hero {
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .hero-logo {
+            width: 120px;
+            margin-bottom: 30px;
+            animation: floatLogo 3s ease-in-out infinite;
+            filter: drop-shadow(0 20px 40px rgba(212, 168, 75, 0.2));
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: var(--blue-600);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(40px, 7vw, 72px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--black) 0%, var(--blue-900) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .eplan-text .letter {
+            display: inline-block;
+            animation: letterBounce 2s ease-in-out infinite;
+        }
+
+        .eplan-text .letter.e { color: var(--e-yellow); -webkit-text-fill-color: var(--e-yellow); animation-delay: 0s; }
+        .eplan-text .letter.p { color: var(--p-green); -webkit-text-fill-color: var(--p-green); animation-delay: 0.1s; }
+        .eplan-text .letter.l { color: var(--l-red); -webkit-text-fill-color: var(--l-red); animation-delay: 0.2s; }
+        .eplan-text .letter.a { color: var(--a-blue); -webkit-text-fill-color: var(--a-blue); animation-delay: 0.3s; }
+        .eplan-text .letter.n { color: var(--l-red); -webkit-text-fill-color: var(--l-red); animation-delay: 0.4s; }
+
+        @keyframes letterBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: #666;
+            margin: 0 auto 16px;
+            max-width: 500px;
+        }
+
+        .hero-slogan {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 700;
+            font-style: italic;
+            color: var(--gold-dark);
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            box-shadow: 0 10px 30px rgba(212, 168, 75, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 168, 75, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold-dark);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .scroll-hint span {
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* ==================== SECTION 2: ABOUT ==================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            background: linear-gradient(135deg, var(--blue-100), var(--cream));
+            border-radius: 30px;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--gold), transparent);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            opacity: 0.3;
+        }
+
+        .about-image-wrapper img {
+            width: 180px;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+        }
+
+        .about-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--blue-900);
+        }
+
+        .about-content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .about-stat {
+            text-align: center;
+        }
+
+        .about-stat-number {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--gold-dark);
+        }
+
+        .about-stat-label {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* ==================== SECTION 3: FEATURES ==================== */
+        #features {
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 24px;
+        }
+
+        .feature-card:nth-child(1) .feature-icon {
+            background: linear-gradient(135deg, #fff7e6, #fff3d6);
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--black);
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ==================== SECTION 4: PROGRAMS ==================== */
+        .programs-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 36px;
+            border: 1px solid #eee;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .program-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .program-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .program-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--blue-100);
+            color: var(--blue-600);
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .program-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .program-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .program-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .program-tag {
+            padding: 6px 12px;
+            background: var(--gray-100);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        /* ==================== SECTION 5: PROCESS ==================== */
+        #process {
+            text-align: center;
+        }
+
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue-200), var(--gold), var(--blue-200));
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--gold-dark);
+            margin: 0 auto 24px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+
+        .process-step:hover .process-number {
+            background: var(--gold);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .process-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .process-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* ==================== SECTION 6: STATS ==================== */
+        #stats {
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-card {
+            padding: 40px 20px;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 15px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* ==================== SECTION 7: TESTIMONIALS ==================== */
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-quote {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--blue-200), var(--blue-100));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--blue-600);
+        }
+
+        .testimonial-info h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-info p {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* ==================== SECTION 8: PARTNERS ==================== */
+        #partners {
+            text-align: center;
+        }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
+        .partner-logo {
+            width: 140px;
+            height: 70px;
+            background: var(--white);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #999;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            color: var(--gold-dark);
+        }
+
+        /* ==================== SECTION 9: FAQ ==================== */
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 24px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--gold-dark);
+        }
+
+        .faq-toggle {
+            width: 28px;
+            height: 28px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            background: var(--gold);
+            color: var(--white);
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 30px 24px;
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* ==================== SECTION 10: CONTACT ==================== */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 50px;
+            margin-top: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--gray-50);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: var(--white);
+        }
+
+        textarea.form-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 24px;
+            padding: 18px;
+            font-size: 16px;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--blue-900);
+            color: var(--white);
+            padding: 80px 40px 40px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand img {
+            width: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .footer-social a:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .footer-links h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            margin-left: 24px;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--gold);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .features-grid { grid-template-columns: 1fr; }
+            .programs-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-timeline { flex-wrap: wrap; gap: 40px; }
+            .process-timeline::before { display: none; }
+            .process-step { flex: none; width: 45%; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 80px 20px; }
+            .nav-pill { padding: 8px 12px; }
+            .nav-links { display: none; }
+            .nav-divider { display: none; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+            .stat-number { font-size: 40px; }
+            .process-step { width: 100%; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .footer-bottom a { margin: 0 12px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Transition Layer -->
+    <div class="bg-transition-layer" id="bgLayer"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-wrapper">
+        <div class="nav-pill">
+            <a href="#hero" class="nav-logo">
+                <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN">
+                <span class="nav-logo-text">
+                    <span class="e">e</span><span class="p">P</span><span class="l">L</span><span class="a">A</span><span class="n">N</span>
+                </span>
+            </a>
+            <div class="nav-divider"></div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">소개</a>
+                <a href="#programs" class="nav-link">프로그램</a>
+                <a href="#process" class="nav-link">학습과정</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contact" class="nav-link nav-cta">문의하기</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section class="section" id="hero" data-bg="#ffffff">
+        <div class="section-inner">
+            <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN" class="hero-logo">
+            <p class="hero-subtitle reveal">Global Education Innovation</p>
+            <h1 class="hero-title reveal delay-1">
+                글로벌 교육의 <span class="highlight">혁신</span>,<br>
+                <span class="eplan-text">
+                    <span class="letter e">e</span><span class="letter p">P</span><span class="letter l">L</span><span class="letter a">A</span><span class="letter n">N</span>
+                </span>
+            </h1>
+            <p class="hero-desc reveal delay-2">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="hero-slogan reveal delay-3">"Practice Makes Perfect!"</p>
+            <div class="hero-buttons reveal delay-4">
+                <a href="#programs" class="btn btn-primary">프로그램 살펴보기</a>
+                <a href="#contact" class="btn btn-secondary">문의하기</a>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <span>↓</span>
+            Scroll
+        </div>
+    </section>
+
+    <!-- Section 2: About -->
+    <section class="section" id="about" data-bg="#eff6ff">
+        <div class="section-inner">
+            <p class="section-label reveal">About Us</p>
+            <h2 class="section-title reveal delay-1">ePLAN을 소개합니다</h2>
+            <p class="section-desc reveal delay-2">글로벌 교육의 새로운 패러다임을 제시하며,<br>전 세계와 함께 미래 인재를 양성합니다.</p>
+            
+            <div class="about-grid">
+                <div class="about-visual reveal-left delay-3">
+                    <div class="about-image-wrapper">
+                        <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN">
+                    </div>
+                </div>
+                <div class="about-content reveal-right delay-3">
+                    <h3>글로벌 교육 혁신의 리더</h3>
+                    <p>
+                        ePLAN은 2010년 설립 이래 글로벌 교육 시장에서 혁신적인 교육 솔루션을 제공해 왔습니다. 
+                        14개 언어, 103개 교육 과정을 통해 전 세계 학습자들의 글로벌 역량 강화를 돕고 있습니다.
+                        <br><br>
+                        "Practice Makes Perfect!" 우리의 슬로건처럼 실전 중심의 교육으로 실질적인 성과를 만들어냅니다.
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <div class="about-stat-number">14+</div>
+                            <div class="about-stat-label">지원 언어</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-number">103</div>
+                            <div class="about-stat-label">교육 과정</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-number">50K+</div>
+                            <div class="about-stat-label">수료생</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Features -->
+    <section class="section" id="features" data-bg="#ffffff">
+        <div class="section-inner">
+            <p class="section-label reveal">Why ePLAN</p>
+            <h2 class="section-title reveal delay-1">왜 ePLAN인가요?</h2>
+            <p class="section-desc reveal delay-2" style="margin: 0 auto;">체계적인 커리큘럼과 실전 중심의 교육</p>
+            
+            <div class="features-grid">
+                <div class="feature-card reveal delay-2">
+                    <div class="feature-icon">🌏</div>
+                    <h3 class="feature-title">글로벌 네트워크</h3>
+                    <p class="feature-desc">전 세계 교육 기관과의 파트너십을 통해 글로벌 수준의 교육 프로그램을 제공합니다.</p>
+                </div>
+                <div class="feature-card reveal delay-3">
+                    <div class="feature-icon">📚</div>
+                    <h3 class="feature-title">맞춤형 커리큘럼</h3>
+                    <p class="feature-desc">개인과 기업의 니즈에 맞춘 맞춤형 교육 프로그램으로 효과적인 학습을 지원합니다.</p>
+                </div>
+                <div class="feature-card reveal delay-4">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">실전 중심 교육</h3>
+                    <p class="feature-desc">Practice Makes Perfect! 이론과 실습을 병행한 실전 중심의 교육 방식입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Programs -->
+    <section class="section" id="programs" data-bg="#fefcf3">
+        <div class="section-inner">
+            <div class="programs-header">
+                <p class="section-label reveal">Programs</p>
+                <h2 class="section-title reveal delay-1">교육 프로그램</h2>
+                <p class="section-desc reveal delay-2" style="margin: 0 auto;">목표와 수준에 맞는 최적의 프로그램을 선택하세요</p>
+            </div>
+            
+            <div class="programs-grid">
+                <div class="program-card reveal delay-2">
+                    <span class="program-badge">기업 교육</span>
+                    <h3 class="program-title">글로벌 비즈니스 커뮤니케이션</h3>
+                    <p class="program-desc">비즈니스 환경에서 필요한 글로벌 커뮤니케이션 역량을 강화하는 맞춤형 기업 교육입니다.</p>
+                    <div class="program-tags">
+                        <span class="program-tag">비즈니스 영어</span>
+                        <span class="program-tag">프레젠테이션</span>
+                        <span class="program-tag">협상 스킬</span>
+                    </div>
+                </div>
+                <div class="program-card reveal delay-3">
+                    <span class="program-badge">어학 교육</span>
+                    <h3 class="program-title">다국어 마스터 프로그램</h3>
+                    <p class="program-desc">14개 언어를 체계적으로 학습할 수 있는 종합 어학 프로그램입니다.</p>
+                    <div class="program-tags">
+                        <span class="program-tag">14개 언어</span>
+                        <span class="program-tag">레벨별 과정</span>
+                        <span class="program-tag">원어민 강사</span>
+                    </div>
+                </div>
+                <div class="program-card reveal delay-4">
+                    <span class="program-badge">문화 교육</span>
+                    <h3 class="program-title">글로벌 문화 이해 과정</h3>
+                    <p class="program-desc">다양한 문화에 대한 이해를 바탕으로 글로벌 적응력을 높이는 교육 과정입니다.</p>
+                    <div class="program-tags">
+                        <span class="program-tag">문화 이해</span>
+                        <span class="program-tag">비즈니스 매너</span>
+                        <span class="program-tag">이문화 소통</span>
+                    </div>
+                </div>
+                <div class="program-card reveal delay-5">
+                    <span class="program-badge">온라인</span>
+                    <h3 class="program-title">ePLAN 온라인 아카데미</h3>
+                    <p class="program-desc">시간과 장소에 구애받지 않고 학습할 수 있는 온라인 교육 플랫폼입니다.</p>
+                    <div class="program-tags">
+                        <span class="program-tag">자기주도 학습</span>
+                        <span class="program-tag">실시간 화상</span>
+                        <span class="program-tag">모바일 지원</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Process -->
+    <section class="section" id="process" data-bg="#dbeafe">
+        <div class="section-inner">
+            <p class="section-label reveal">Learning Process</p>
+            <h2 class="section-title reveal delay-1">학습 과정</h2>
+            <p class="section-desc reveal delay-2" style="margin: 0 auto;">체계적인 4단계 학습으로 글로벌 역량을 완성합니다</p>
+            
+            <div class="process-timeline">
+                <div class="process-step reveal delay-2">
+                    <div class="process-number">1</div>
+                    <h3 class="process-title">레벨 테스트</h3>
+                    <p class="process-desc">현재 수준을 정확히 파악하고 맞춤 커리큘럼을 설계합니다</p>
+                </div>
+                <div class="process-step reveal delay-3">
+                    <div class="process-number">2</div>
+                    <h3 class="process-title">기초 역량 강화</h3>
+                    <p class="process-desc">언어 기초와 글로벌 마인드셋을 형성합니다</p>
+                </div>
+                <div class="process-step reveal delay-4">
+                    <div class="process-number">3</div>
+                    <h3 class="process-title">심화 학습</h3>
+                    <p class="process-desc">실전 비즈니스 상황에 적용할 수 있는 역량을 개발합니다</p>
+                </div>
+                <div class="process-step reveal delay-5">
+                    <div class="process-number">4</div>
+                    <h3 class="process-title">실전 프로젝트</h3>
+                    <p class="process-desc">실제 업무 환경을 시뮬레이션한 프로젝트로 학습을 완성합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Stats -->
+    <section class="section" id="stats" data-bg="#ffffff">
+        <div class="section-inner">
+            <p class="section-label reveal">Achievements</p>
+            <h2 class="section-title reveal delay-1">ePLAN의 성과</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card reveal delay-2">
+                    <div class="stat-number">14+</div>
+                    <div class="stat-label">지원 언어</div>
+                </div>
+                <div class="stat-card reveal delay-3">
+                    <div class="stat-number">103</div>
+                    <div class="stat-label">교육 과정</div>
+                </div>
+                <div class="stat-card reveal delay-4">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">수료생</div>
+                </div>
+                <div class="stat-card reveal delay-5">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">만족도</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Testimonials -->
+    <section class="section" id="testimonials" data-bg="#f0fdf4">
+        <div class="section-inner">
+            <div class="testimonials-header">
+                <p class="section-label reveal">Testimonials</p>
+                <h2 class="section-title reveal delay-1">수강생 후기</h2>
+                <p class="section-desc reveal delay-2" style="margin: 0 auto;">ePLAN과 함께 성장한 분들의 이야기</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal delay-2">
+                    <p class="testimonial-quote">ePLAN의 비즈니스 영어 과정을 통해 해외 바이어와의 협상에서 자신감을 얻었습니다. 실전 중심의 커리큘럼이 정말 도움이 되었어요.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">K</div>
+                        <div class="testimonial-info">
+                            <h4>김민수</h4>
+                            <p>무역회사 과장</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal delay-3">
+                    <p class="testimonial-quote">다국어 프로그램 덕분에 일본어와 중국어를 동시에 학습할 수 있었습니다. 체계적인 커리큘럼이 인상적이었습니다.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">L</div>
+                        <div class="testimonial-info">
+                            <h4>이지은</h4>
+                            <p>대학생</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal delay-4">
+                    <p class="testimonial-quote">기업 교육으로 팀 전체의 글로벌 커뮤니케이션 역량이 향상되었습니다. 맞춤형 프로그램에 만족합니다.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <h4>박영희</h4>
+                            <p>IT기업 HR팀장</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Partners -->
+    <section class="section" id="partners" data-bg="#eff6ff">
+        <div class="section-inner">
+            <p class="section-label reveal">Partners</p>
+            <h2 class="section-title reveal delay-1">글로벌 파트너</h2>
+            <p class="section-desc reveal delay-2" style="margin: 0 auto;">전 세계 유수의 교육 기관 및 기업들과 함께합니다</p>
+            
+            <div class="partners-logos reveal delay-3">
+                <div class="partner-logo">Partner 1</div>
+                <div class="partner-logo">Partner 2</div>
+                <div class="partner-logo">Partner 3</div>
+                <div class="partner-logo">Partner 4</div>
+                <div class="partner-logo">Partner 5</div>
+                <div class="partner-logo">Partner 6</div>
+            </div>
+            
+            <div style="text-align: center;" class="reveal delay-4">
+                <a href="#contact" class="btn btn-primary">파트너십 문의</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: FAQ -->
+    <section class="section" id="faq" data-bg="#ffffff">
+        <div class="section-inner">
+            <div class="faq-header">
+                <p class="section-label reveal">FAQ</p>
+                <h2 class="section-title reveal delay-1">자주 묻는 질문</h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item reveal delay-2">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>ePLAN의 교육 프로그램은 어떤 특징이 있나요?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            ePLAN은 "Practice Makes Perfect"를 모토로 이론과 실전을 병행하는 교육을 제공합니다. 14개 언어, 103개 과정을 통해 개인과 기업의 니즈에 맞는 맞춤형 교육을 진행합니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item reveal delay-3">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>온라인 교육도 가능한가요?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            네, ePLAN 온라인 아카데미를 통해 시간과 장소에 구애받지 않고 학습하실 수 있습니다. 실시간 화상 수업과 자기주도 학습 콘텐츠를 모두 제공합니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item reveal delay-4">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>기업 단체 교육은 어떻게 진행되나요?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            기업의 업종, 직무, 교육 목표에 맞춰 맞춤형 커리큘럼을 설계합니다. 출강 교육과 온라인 교육 모두 가능하며, 담당 컨설턴트가 전 과정을 관리합니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item reveal delay-5">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>수강료와 교육 기간은 어떻게 되나요?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            프로그램과 과정에 따라 수강료와 기간이 상이합니다. 정확한 안내를 위해 무료 상담을 신청해 주시면 맞춤 견적을 제공해 드립니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 10: Contact -->
+    <section class="section" id="contact" data-bg="#fefcf3">
+        <div class="section-inner">
+            <div class="contact-wrapper">
+                <p class="section-label reveal">Contact Us</p>
+                <h2 class="section-title reveal delay-1">문의하기</h2>
+                <p class="section-desc reveal delay-2" style="margin: 0 auto;">
+                    글로벌 교육에 관한 궁금증을 해결해 드립니다.<br>
+                    맞춤 상담을 통해 최적의 프로그램을 안내받으세요.
+                </p>
+                
+                <form class="contact-form reveal delay-3">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">이름</label>
+                            <input type="text" class="form-input" placeholder="홍길동">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">연락처</label>
+                            <input type="tel" class="form-input" placeholder="010-1234-5678">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label class="form-label">이메일</label>
+                            <input type="email" class="form-input" placeholder="example@email.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full">
+                            <label class="form-label">문의 내용</label>
+                            <textarea class="form-input" placeholder="문의하실 내용을 입력해 주세요"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">문의 보내기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN">
+                <p>글로벌 교육의 혁신을 이끄는 ePLAN<br>Practice Makes Perfect!</p>
+                <div class="footer-social">
+                    <a href="#">f</a>
+                    <a href="#">in</a>
+                    <a href="#">Y</a>
+                    <a href="#">@</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>프로그램</h4>
+                <a href="#">기업 교육</a>
+                <a href="#">어학 교육</a>
+                <a href="#">문화 교육</a>
+                <a href="#">온라인 아카데미</a>
+            </div>
+            <div class="footer-links">
+                <h4>회사 정보</h4>
+                <a href="#">회사 소개</a>
+                <a href="#">파트너십</a>
+                <a href="#">채용 정보</a>
+                <a href="#">뉴스룸</a>
+            </div>
+            <div class="footer-links">
+                <h4>고객 지원</h4>
+                <a href="#">자주 묻는 질문</a>
+                <a href="#">문의하기</a>
+                <a href="#">센터 안내</a>
+                <a href="#">학습 자료</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 ePLAN. All rights reserved.</p>
+            <div>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이용약관</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Background Layer Reference
+        const bgLayer = document.getElementById('bgLayer');
+        const sections = document.querySelectorAll('.section');
+
+        // Smooth Background Color Transition
+        function updateBackground() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const sectionTop = rect.top;
+                const sectionHeight = rect.height;
+
+                // Check if section is in viewport center
+                if (sectionTop < windowHeight * 0.5 && sectionTop > -sectionHeight * 0.5) {
+                    const targetBg = section.getAttribute('data-bg');
+                    bgLayer.style.background = targetBg;
+                }
+            });
+        }
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all reveal elements
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const faqItem = element.closest('.faq-item');
+            const isActive = faqItem.classList.contains('active');
+
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('scroll', updateBackground);
+        window.addEventListener('load', () => {
+            updateBackground();
+            // Initial reveal for hero section
+            document.querySelectorAll('#hero .reveal').forEach(el => {
+                el.classList.add('visible');
+            });
+        });
+    </script>
+</body>
+</html>

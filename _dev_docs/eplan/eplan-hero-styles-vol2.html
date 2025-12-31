@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePLAN Hero Styles Vol.2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Navigation */
+        .style-nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .style-nav h4 {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .style-nav a {
+            display: block;
+            padding: 8px 0;
+            color: #333;
+            text-decoration: none;
+            font-size: 13px;
+            border-bottom: 1px solid #eee;
+            transition: color 0.3s;
+        }
+
+        .style-nav a:last-child { border-bottom: none; }
+        .style-nav a:hover { color: #667eea; }
+
+        /* Section label */
+        .section-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            z-index: 10;
+        }
+
+        /* Base hero styles */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: clamp(14px, 2vw, 18px);
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .title {
+            font-size: clamp(32px, 6vw, 64px);
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .description {
+            font-size: clamp(16px, 2.5vw, 22px);
+            margin-bottom: 16px;
+            opacity: 0.85;
+        }
+
+        .slogan {
+            font-size: clamp(18px, 3vw, 28px);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* ==================== STYLE 13: Aurora Borealis ==================== */
+        .hero-13 {
+            background: #0a0a1a;
+            color: white;
+        }
+
+        .hero-13 .aurora {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(0, 255, 150, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 30%, rgba(0, 150, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(150, 0, 255, 0.15) 0%, transparent 50%);
+            animation: aurora 10s ease-in-out infinite;
+            filter: blur(30px);
+        }
+
+        @keyframes aurora {
+            0%, 100% { 
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+            25% { 
+                transform: translateY(-20px) scale(1.05);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(10px) scale(0.95);
+                opacity: 0.7;
+            }
+            75% { 
+                transform: translateY(-10px) scale(1.02);
+                opacity: 0.9;
+            }
+        }
+
+        .hero-13 .subtitle { opacity: 0; animation: auroraFade 1s ease 0.3s forwards; }
+        .hero-13 .title { opacity: 0; animation: auroraFade 1s ease 0.5s forwards; }
+        .hero-13 .title .highlight { 
+            background: linear-gradient(90deg, #00ff96, #00d4ff, #b388ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-13 .description { opacity: 0; animation: auroraFade 1s ease 0.7s forwards; }
+        .hero-13 .slogan { 
+            color: #00ff96;
+            opacity: 0; 
+            animation: auroraFade 1s ease 0.9s forwards; 
+        }
+
+        .hero-13 .cta-btn {
+            background: linear-gradient(135deg, #00ff96, #00d4ff);
+            color: #0a0a1a;
+            opacity: 0;
+            animation: auroraFade 1s ease 1.1s forwards;
+        }
+
+        @keyframes auroraFade {
+            from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        /* ==================== STYLE 14: Spotlight ==================== */
+        .hero-14 {
+            background: #0d0d0d;
+            color: white;
+        }
+
+        .hero-14 .spotlight {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: spotlightMove 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes spotlightMove {
+            0%, 100% { transform: translate(-30%, -30%); }
+            25% { transform: translate(60%, -20%); }
+            50% { transform: translate(40%, 60%); }
+            75% { transform: translate(-20%, 40%); }
+        }
+
+        .hero-14 .hero-content {
+            opacity: 0;
+            animation: spotlightReveal 1.5s ease 0.5s forwards;
+        }
+
+        @keyframes spotlightReveal {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .hero-14 .title .highlight { color: #ffd700; }
+        .hero-14 .slogan { color: #ffd700; }
+
+        .hero-14 .cta-btn {
+            background: #ffd700;
+            color: #0d0d0d;
+        }
+
+        .hero-14 .cta-btn:hover {
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+        }
+
+        /* ==================== STYLE 15: Gradient Text Flow ==================== */
+        .hero-15 {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .hero-15 .title {
+            background: linear-gradient(
+                90deg,
+                #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff, #5f27cd, #ff6b6b
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 4s linear infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .hero-15 .subtitle { 
+            color: rgba(255,255,255,0.6);
+            opacity: 0; 
+            animation: slideUp 0.8s ease 0.2s forwards; 
+        }
+        .hero-15 .description { 
+            opacity: 0; 
+            animation: slideUp 0.8s ease 0.4s forwards; 
+        }
+        .hero-15 .slogan { 
+            color: #feca57;
+            opacity: 0; 
+            animation: slideUp 0.8s ease 0.6s forwards; 
+        }
+
+        .hero-15 .cta-btn {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: #1a1a2e;
+            opacity: 0;
+            animation: slideUp 0.8s ease 0.8s forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==================== STYLE 16: Card Stack ==================== */
+        .hero-16 {
+            background: linear-gradient(135deg, #f5f7fa, #e4e8ec);
+            color: #1a1a2e;
+        }
+
+        .hero-16 .card-bg {
+            position: absolute;
+            width: 80%;
+            max-width: 700px;
+            height: 400px;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .hero-16 .card-bg:nth-child(1) {
+            transform: rotate(-3deg) translateY(20px);
+            opacity: 0.5;
+            animation: cardStack1 0.8s ease 0.2s forwards;
+        }
+
+        .hero-16 .card-bg:nth-child(2) {
+            transform: rotate(2deg) translateY(10px);
+            opacity: 0.7;
+            animation: cardStack2 0.8s ease 0.4s forwards;
+        }
+
+        .hero-16 .card-bg:nth-child(3) {
+            transform: rotate(0deg);
+            animation: cardStack3 0.8s ease 0.6s forwards;
+        }
+
+        @keyframes cardStack1 {
+            from { transform: rotate(-10deg) translateY(100px); opacity: 0; }
+            to { transform: rotate(-3deg) translateY(20px); opacity: 0.5; }
+        }
+
+        @keyframes cardStack2 {
+            from { transform: rotate(8deg) translateY(100px); opacity: 0; }
+            to { transform: rotate(2deg) translateY(10px); opacity: 0.7; }
+        }
+
+        @keyframes cardStack3 {
+            from { transform: rotate(0deg) translateY(100px); opacity: 0; }
+            to { transform: rotate(0deg) translateY(0); opacity: 1; }
+        }
+
+        .hero-16 .hero-content {
+            opacity: 0;
+            animation: fadeIn 0.8s ease 1s forwards;
+        }
+
+        .hero-16 .title .highlight { color: #667eea; }
+        .hero-16 .slogan { color: #764ba2; }
+
+        .hero-16 .cta-btn {
+            background: #667eea;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* ==================== STYLE 17: Circular Reveal ==================== */
+        .hero-17 {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .hero-17 .circle-reveal {
+            position: absolute;
+            width: 150vmax;
+            height: 150vmax;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: scale(0);
+            animation: circleExpand 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes circleExpand {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .hero-17 .subtitle { opacity: 0; animation: revealText 0.6s ease 1s forwards; }
+        .hero-17 .title { opacity: 0; animation: revealText 0.6s ease 1.2s forwards; }
+        .hero-17 .description { opacity: 0; animation: revealText 0.6s ease 1.4s forwards; }
+        .hero-17 .slogan { 
+            color: #feca57;
+            opacity: 0; 
+            animation: revealText 0.6s ease 1.6s forwards; 
+        }
+
+        .hero-17 .cta-btn {
+            background: white;
+            color: #764ba2;
+            opacity: 0;
+            animation: revealText 0.6s ease 1.8s forwards;
+        }
+
+        @keyframes revealText {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==================== STYLE 18: Parallax Depth ==================== */
+        .hero-18 {
+            background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            perspective: 1000px;
+        }
+
+        .hero-18 .layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-18 .layer-1 {
+            transform: translateZ(-200px) scale(1.4);
+            opacity: 0.3;
+        }
+
+        .hero-18 .layer-2 {
+            transform: translateZ(-100px) scale(1.2);
+            opacity: 0.5;
+        }
+
+        .hero-18 .layer-circle {
+            width: 300px;
+            height: 300px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            animation: layerFloat 6s ease-in-out infinite;
+        }
+
+        .hero-18 .layer-1 .layer-circle { animation-delay: 0s; }
+        .hero-18 .layer-2 .layer-circle { animation-delay: -3s; width: 400px; height: 400px; }
+
+        @keyframes layerFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .hero-18 .subtitle { opacity: 0; animation: depthReveal 0.8s ease 0.3s forwards; }
+        .hero-18 .title { opacity: 0; animation: depthReveal 0.8s ease 0.5s forwards; }
+        .hero-18 .title .highlight { color: #48dbfb; }
+        .hero-18 .description { opacity: 0; animation: depthReveal 0.8s ease 0.7s forwards; }
+        .hero-18 .slogan { color: #48dbfb; opacity: 0; animation: depthReveal 0.8s ease 0.9s forwards; }
+
+        .hero-18 .cta-btn {
+            background: #48dbfb;
+            color: #0f2027;
+            opacity: 0;
+            animation: depthReveal 0.8s ease 1.1s forwards;
+        }
+
+        @keyframes depthReveal {
+            from { opacity: 0; transform: translateZ(-50px); }
+            to { opacity: 1; transform: translateZ(0); }
+        }
+
+        /* ==================== STYLE 19: Text Scramble ==================== */
+        .hero-19 {
+            background: #121212;
+            color: white;
+        }
+
+        .hero-19 .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .hero-19 .title {
+            font-family: 'Courier New', monospace;
+        }
+
+        .hero-19 .scramble-text {
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero-19 .scramble-text::after {
+            content: '|';
+            animation: cursorBlink 1s step-end infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero-19 .subtitle { 
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            opacity: 0;
+            animation: terminalType 0.5s ease 0.3s forwards;
+        }
+        .hero-19 .description { 
+            color: #888;
+            opacity: 0;
+            animation: terminalType 0.5s ease 1.5s forwards;
+        }
+        .hero-19 .slogan { 
+            color: #00ff88;
+            opacity: 0;
+            animation: terminalType 0.5s ease 2s forwards;
+        }
+
+        .hero-19 .cta-btn {
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            background: transparent;
+            font-family: 'Courier New', monospace;
+            opacity: 0;
+            animation: terminalType 0.5s ease 2.5s forwards;
+        }
+
+        .hero-19 .cta-btn:hover {
+            background: #00ff88;
+            color: #121212;
+        }
+
+        @keyframes terminalType {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ==================== STYLE 20: Ink Spread ==================== */
+        .hero-20 {
+            background: #fafafa;
+            color: #1a1a2e;
+        }
+
+        .hero-20 .ink-drop {
+            position: absolute;
+            border-radius: 50%;
+            background: #1a1a2e;
+            transform: scale(0);
+            animation: inkSpread 2s ease-out forwards;
+        }
+
+        .hero-20 .ink-1 {
+            width: 800px;
+            height: 800px;
+            top: 20%;
+            left: 10%;
+            opacity: 0.03;
+            animation-delay: 0s;
+        }
+
+        .hero-20 .ink-2 {
+            width: 600px;
+            height: 600px;
+            top: 40%;
+            right: 5%;
+            opacity: 0.05;
+            animation-delay: 0.3s;
+        }
+
+        .hero-20 .ink-3 {
+            width: 400px;
+            height: 400px;
+            bottom: 10%;
+            left: 30%;
+            opacity: 0.04;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes inkSpread {
+            0% { transform: scale(0); border-radius: 50%; }
+            50% { border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%; }
+            100% { transform: scale(1); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .hero-20 .subtitle { 
+            opacity: 0;
+            animation: inkFade 0.8s ease 0.8s forwards;
+        }
+        .hero-20 .title { 
+            opacity: 0;
+            animation: inkFade 0.8s ease 1s forwards;
+        }
+        .hero-20 .title .highlight { 
+            color: #667eea;
+        }
+        .hero-20 .description { 
+            opacity: 0;
+            animation: inkFade 0.8s ease 1.2s forwards;
+        }
+        .hero-20 .slogan { 
+            color: #764ba2;
+            opacity: 0;
+            animation: inkFade 0.8s ease 1.4s forwards;
+        }
+
+        .hero-20 .cta-btn {
+            background: #1a1a2e;
+            color: white;
+            opacity: 0;
+            animation: inkFade 0.8s ease 1.6s forwards;
+        }
+
+        @keyframes inkFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==================== STYLE 21: Split Screen ==================== */
+        .hero-21 {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .hero-21 .split-left,
+        .hero-21 .split-right {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+        }
+
+        .hero-21 .split-left {
+            left: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: translateX(-100%);
+            animation: splitLeft 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+        }
+
+        .hero-21 .split-right {
+            right: 0;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            transform: translateX(100%);
+            animation: splitRight 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+        }
+
+        @keyframes splitLeft {
+            to { transform: translateX(0); }
+        }
+
+        @keyframes splitRight {
+            to { transform: translateX(0); }
+        }
+
+        .hero-21 .hero-content {
+            opacity: 0;
+            animation: splitContent 0.8s ease 1.3s forwards;
+        }
+
+        @keyframes splitContent {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero-21 .slogan { color: #feca57; }
+
+        .hero-21 .cta-btn {
+            background: white;
+            color: #764ba2;
+        }
+
+        /* ==================== STYLE 22: Bounce Letters ==================== */
+        .hero-22 {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            color: #1a1a2e;
+        }
+
+        .hero-22 .title {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-22 .letter {
+            display: inline-block;
+            animation: bounceLetter 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+
+        .hero-22 .letter.space {
+            width: 0.3em;
+        }
+
+        .hero-22 .letter.highlight {
+            color: #e74c3c;
+        }
+
+        @keyframes bounceLetter {
+            0% { opacity: 0; transform: translateY(-50px); }
+            60% { transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-22 .subtitle { opacity: 0; animation: fadeUp 0.6s ease 0.1s forwards; }
+        .hero-22 .description { opacity: 0; animation: fadeUp 0.6s ease 1.5s forwards; }
+        .hero-22 .slogan { color: #e74c3c; opacity: 0; animation: fadeUp 0.6s ease 1.7s forwards; }
+
+        .hero-22 .cta-btn {
+            background: #e74c3c;
+            color: white;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 1.9s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .style-nav { display: none; }
+            .hero { padding: 40px 20px; }
+            .hero-16 .card-bg { width: 90%; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="style-nav">
+        <h4>Hero Styles Vol.2</h4>
+        <a href="#style-13">13. Aurora Borealis</a>
+        <a href="#style-14">14. Spotlight</a>
+        <a href="#style-15">15. Gradient Text Flow</a>
+        <a href="#style-16">16. Card Stack</a>
+        <a href="#style-17">17. Circular Reveal</a>
+        <a href="#style-18">18. Parallax Depth</a>
+        <a href="#style-19">19. Text Scramble</a>
+        <a href="#style-20">20. Ink Spread</a>
+        <a href="#style-21">21. Split Screen</a>
+        <a href="#style-22">22. Bounce Letters</a>
+    </nav>
+
+    <!-- Style 13: Aurora Borealis -->
+    <section class="hero hero-13" id="style-13">
+        <span class="section-label">Style 13 — Aurora Borealis</span>
+        <div class="aurora"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 14: Spotlight -->
+    <section class="hero hero-14" id="style-14">
+        <span class="section-label">Style 14 — Spotlight</span>
+        <div class="spotlight"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 15: Gradient Text Flow -->
+    <section class="hero hero-15" id="style-15">
+        <span class="section-label">Style 15 — Gradient Text Flow</span>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, ePLAN</h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 16: Card Stack -->
+    <section class="hero hero-16" id="style-16">
+        <span class="section-label">Style 16 — Card Stack</span>
+        <div class="card-bg"></div>
+        <div class="card-bg"></div>
+        <div class="card-bg"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 17: Circular Reveal -->
+    <section class="hero hero-17" id="style-17">
+        <span class="section-label">Style 17 — Circular Reveal</span>
+        <div class="circle-reveal"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, ePLAN</h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 18: Parallax Depth -->
+    <section class="hero hero-18" id="style-18">
+        <span class="section-label">Style 18 — Parallax Depth</span>
+        <div class="layer layer-1">
+            <div class="layer-circle"></div>
+        </div>
+        <div class="layer layer-2">
+            <div class="layer-circle"></div>
+        </div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 19: Text Scramble -->
+    <section class="hero hero-19" id="style-19">
+        <span class="section-label">Style 19 — Text Scramble</span>
+        <div class="grid-bg"></div>
+        <div class="hero-content">
+            <p class="subtitle">> system.initialize()</p>
+            <h1 class="title"><span class="scramble-text" id="scrambleText"></span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 20: Ink Spread -->
+    <section class="hero hero-20" id="style-20">
+        <span class="section-label">Style 20 — Ink Spread</span>
+        <div class="ink-drop ink-1"></div>
+        <div class="ink-drop ink-2"></div>
+        <div class="ink-drop ink-3"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 21: Split Screen -->
+    <section class="hero hero-21" id="style-21">
+        <span class="section-label">Style 21 — Split Screen</span>
+        <div class="split-left"></div>
+        <div class="split-right"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, ePLAN</h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 22: Bounce Letters -->
+    <section class="hero hero-22" id="style-22">
+        <span class="section-label">Style 22 — Bounce Letters</span>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title" id="bounceTitle"></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('.style-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Text Scramble Effect for Style 19
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            
+            update() {
+                let output = '';
+                let complete = 0;
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.randomChar();
+                            this.queue[i].char = char;
+                        }
+                        output += `<span style="color:#00ff88">${char}</span>`;
+                    } else {
+                        output += from;
+                    }
+                }
+                this.el.innerHTML = output;
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+            
+            randomChar() {
+                return this.chars[Math.floor(Math.random() * this.chars.length)];
+            }
+        }
+
+        // Initialize scramble effect
+        const scrambleEl = document.getElementById('scrambleText');
+        if (scrambleEl) {
+            const fx = new TextScramble(scrambleEl);
+            setTimeout(() => {
+                fx.setText('글로벌 교육의 혁신, ePLAN');
+            }, 500);
+        }
+
+        // Bounce Letters for Style 22
+        const bounceTitle = document.getElementById('bounceTitle');
+        if (bounceTitle) {
+            const text = '글로벌 교육의 혁신, ePLAN';
+            const highlightStart = text.indexOf('ePLAN');
+            
+            text.split('').forEach((char, i) => {
+                const span = document.createElement('span');
+                span.className = 'letter';
+                if (char === ' ') {
+                    span.classList.add('space');
+                    span.innerHTML = '&nbsp;';
+                } else {
+                    span.textContent = char;
+                }
+                if (i >= highlightStart) {
+                    span.classList.add('highlight');
+                }
+                span.style.animationDelay = `${0.3 + i * 0.05}s`;
+                bounceTitle.appendChild(span);
+            });
+        }
+    </script>
+</body>
+</html>

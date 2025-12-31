@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>섹션 경계 처리 기법 - Black & White Transitions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Base Section Styles */
+        .section {
+            padding: 120px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-black {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+        .section-white {
+            background: #ffffff;
+            color: #0a0a0a;
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-black .section-number {
+            background: #ffffff;
+            color: #0a0a0a;
+        }
+
+        .section-white .section-number {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            font-size: 16px;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .technique-name {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .section-black .technique-name {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .section-white .technique-name {
+            background: rgba(0,0,0,0.05);
+            color: #333;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            opacity: 0.7;
+            font-size: 18px;
+        }
+
+        /* ==================== 1. SVG WAVE ==================== */
+        .divider-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 5;
+        }
+
+        .divider-wave svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ==================== 2. DIAGONAL / ANGLED ==================== */
+        .divider-diagonal {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 5;
+        }
+
+        .divider-diagonal::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        }
+
+        .section-white .divider-diagonal::before {
+            background: #0a0a0a;
+        }
+
+        .section-black .divider-diagonal::before {
+            background: #ffffff;
+        }
+
+        /* ==================== 3. GRADIENT FADE ==================== */
+        .divider-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            z-index: 5;
+        }
+
+        .section-black .divider-gradient {
+            background: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+        }
+
+        .section-white .divider-gradient {
+            background: linear-gradient(to bottom, transparent 0%, #0a0a0a 100%);
+        }
+
+        /* ==================== 4. CURVED / ARC ==================== */
+        .divider-curve {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 5;
+        }
+
+        .divider-curve svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ==================== 5. TRIANGLE / ARROW ==================== */
+        .divider-triangle {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            z-index: 5;
+        }
+
+        .section-black .divider-triangle {
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 60px solid #ffffff;
+        }
+
+        .section-white .divider-triangle {
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 60px solid #0a0a0a;
+        }
+
+        /* ==================== 6. ZIGZAG ==================== */
+        .divider-zigzag {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            z-index: 5;
+        }
+
+        .section-black .divider-zigzag {
+            background: linear-gradient(135deg, #ffffff 25%, transparent 25%) -20px 0,
+                        linear-gradient(225deg, #ffffff 25%, transparent 25%) -20px 0,
+                        linear-gradient(315deg, #ffffff 25%, transparent 25%),
+                        linear-gradient(45deg, #ffffff 25%, transparent 25%);
+            background-size: 40px 40px;
+            background-color: transparent;
+        }
+
+        .section-white .divider-zigzag {
+            background: linear-gradient(135deg, #0a0a0a 25%, transparent 25%) -20px 0,
+                        linear-gradient(225deg, #0a0a0a 25%, transparent 25%) -20px 0,
+                        linear-gradient(315deg, #0a0a0a 25%, transparent 25%),
+                        linear-gradient(45deg, #0a0a0a 25%, transparent 25%);
+            background-size: 40px 40px;
+            background-color: transparent;
+        }
+
+        /* ==================== 7. BLOB / ORGANIC ==================== */
+        .divider-blob {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            z-index: 5;
+        }
+
+        .divider-blob svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ==================== 8. DOTTED FADE ==================== */
+        .divider-dots {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .dot-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 5px 0;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .section-black .dot {
+            background: #ffffff;
+        }
+
+        .section-white .dot {
+            background: #0a0a0a;
+        }
+
+        .dot-row:nth-child(1) .dot { opacity: 0.1; }
+        .dot-row:nth-child(2) .dot { opacity: 0.2; }
+        .dot-row:nth-child(3) .dot { opacity: 0.35; }
+        .dot-row:nth-child(4) .dot { opacity: 0.5; }
+        .dot-row:nth-child(5) .dot { opacity: 0.7; }
+        .dot-row:nth-child(6) .dot { opacity: 0.9; }
+
+        /* ==================== 9. SPLIT DIAGONAL ==================== */
+        .divider-split {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            z-index: 5;
+            overflow: hidden;
+        }
+
+        .divider-split::before,
+        .divider-split::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 51%;
+            height: 100%;
+        }
+
+        .divider-split::before {
+            left: 0;
+            clip-path: polygon(0 100%, 100% 30%, 100% 100%);
+        }
+
+        .divider-split::after {
+            right: 0;
+            clip-path: polygon(0 30%, 100% 100%, 0 100%);
+        }
+
+        .section-black .divider-split::before,
+        .section-black .divider-split::after {
+            background: #ffffff;
+        }
+
+        .section-white .divider-split::before,
+        .section-white .divider-split::after {
+            background: #0a0a0a;
+        }
+
+        /* ==================== 10. MULTIPLE WAVES ==================== */
+        .divider-multi-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            z-index: 5;
+        }
+
+        .divider-multi-wave svg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .divider-multi-wave .wave-1 { opacity: 0.3; }
+        .divider-multi-wave .wave-2 { opacity: 0.5; }
+        .divider-multi-wave .wave-3 { opacity: 1; }
+
+        /* ==================== 11. BRUSH STROKE ==================== */
+        .divider-brush {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 5;
+        }
+
+        .divider-brush svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ==================== 12. NOISE / GRAIN FADE ==================== */
+        .divider-noise {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            z-index: 5;
+        }
+
+        .section-black .divider-noise {
+            background: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+            mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .section-white .divider-noise {
+            background: linear-gradient(to bottom, transparent 0%, #0a0a0a 100%);
+            mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* ==================== 13. SLANT WITH SHADOW ==================== */
+        .divider-slant-shadow {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 5;
+        }
+
+        .section-black .divider-slant-shadow {
+            background: #ffffff;
+            clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
+            box-shadow: 0 -20px 40px rgba(0,0,0,0.3);
+        }
+
+        .section-white .divider-slant-shadow {
+            background: #0a0a0a;
+            clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
+            box-shadow: 0 -20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* ==================== 14. STACKED LAYERS ==================== */
+        .divider-stacked {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            z-index: 5;
+        }
+
+        .stacked-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .section-black .stacked-layer {
+            background: #ffffff;
+        }
+
+        .section-white .stacked-layer {
+            background: #0a0a0a;
+        }
+
+        .stacked-layer:nth-child(1) {
+            clip-path: polygon(0 80%, 100% 40%, 100% 100%, 0 100%);
+            opacity: 0.3;
+        }
+
+        .stacked-layer:nth-child(2) {
+            clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+            opacity: 0.5;
+        }
+
+        .stacked-layer:nth-child(3) {
+            clip-path: polygon(0 40%, 100% 80%, 100% 100%, 0 100%);
+            opacity: 1;
+        }
+
+        /* ==================== 15. CIRCLE REVEAL ==================== */
+        .divider-circle {
+            position: absolute;
+            bottom: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300%;
+            height: 300px;
+            border-radius: 50%;
+            z-index: 5;
+        }
+
+        .section-black .divider-circle {
+            background: #ffffff;
+        }
+
+        .section-white .divider-circle {
+            background: #0a0a0a;
+        }
+
+        /* ==================== 16. ASYMMETRIC CURVE ==================== */
+        .divider-asymmetric {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 5;
+        }
+
+        .divider-asymmetric svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.6);
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 20px;
+            }
+
+            .divider-wave,
+            .divider-curve,
+            .divider-multi-wave {
+                height: 50px;
+            }
+
+            .divider-gradient,
+            .divider-noise {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>섹션 경계 처리 기법</h1>
+        <p>Black & White 섹션 간 자연스러운 전환을 위한 16가지 방법</p>
+    </header>
+
+    <!-- 1. SVG Wave -->
+    <section class="section section-black">
+        <div class="section-content">
+            <div class="section-number">1</div>
+            <h2 class="section-title">SVG Wave</h2>
+            <p class="section-desc">SVG path를 이용한 물결 모양의 경계선입니다.<br>가장 널리 사용되는 부드러운 전환 기법입니다.</p>
+            <span class="technique-name">Black → White</span>
+        </div>
+        <div class="divider-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" fill="#ffffff"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 2. Diagonal -->
+    <section class="section section-white">
+        <div class="section-content">
+            <div class="section-number">2</div>
+            <h2 class="section-title">Diagonal / Angled</h2>
+            <p class="section-desc">CSS clip-path를 이용한 대각선 경계입니다.<br>모던하고 역동적인 느낌을 줍니다.</p>
+            <span class="technique-name">White → Black</span>
+        </div>
+        <div class="divider-diagonal"></div>
+    </section>
+
+    <!-- 3. Gradient Fade -->
+    <section class="section section-black">
+        <div class="section-content">
+            <div class="section-number">3</div>
+            <h2 class="section-title">Gradient Fade</h2>
+            <p class="section-desc">CSS linear-gradient를 이용한 점진적 페이드 효과입니다.<br>가장 부드럽고 자연스러운 전환을 제공합니다.</p>
+            <span class="technique-name">Black → White</span>
+        </div>
+        <div class="divider-gradient"></div>
+    </section>
+
+    <!-- 4. Curved / Arc -->
+    <section class="section section-white">
+        <div class="section-content">
+            <div class="section-number">4</div>
+            <h2 class="section-title">Curved / Arc</h2>
+            <p class="section-desc">SVG를 이용한 곡선형 경계입니다.<br>우아하고 세련된 느낌을 줍니다.</p>
+            <span class="technique-name">White → Black</span>
+        </div>
+        <div class="divider-curve">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z" fill="#0a0a0a"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 5. Triangle / Arrow -->
+    <section class="section section-black">
+        <div class="section-content">
+            <div class="section-number">5</div>
+            <h2 class="section-title">Triangle / Arrow</h2>
+            <p class="section-desc">CSS border를 이용한 삼각형 포인터입니다.<br>다음 섹션으로의 방향성을 제시합니다.</p>
+            <span class="technique-name">Black → White</span>
+        </div>
+        <div class="divider-triangle"></div>
+    </section>
+
+    <!-- 6. Zigzag -->
+    <section class="section section-white">
+        <div class="section-content">
+            <div class="section-number">6</div>
+            <h2 class="section-title">Zigzag Pattern</h2>
+            <p class="section-desc">CSS background gradient를 이용한 지그재그 패턴입니다.<br>플레이풀하고 독특한 느낌을 줍니다.</p>
+            <span class="technique-name">White → Black</span>
+        </div>
+        <div class="divider-zigzag"></div>
+    </section>
+
+    <!-- 7. Blob / Organic -->
+    <section class="section section-black">
+        <div class="section-content">
+            <div class="section-number">7</div>
+            <h2 class="section-title">Blob / Organic Shape</h2>
+            <p class="section-desc">SVG를 이용한 유기적인 형태의 경계입니다.<br>자연스럽고 친근한 느낌을 줍니다.</p>
+            <span class="technique-name">Black → White</span>
+        </div>
+        <div class="divider-blob">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V6c0,21.6,291,111.46,741,110.26,445.39,3.6,459-88.3,459-110.26V0Z" fill="#ffffff"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 8. Dotted Fade -->
+    <section class="section section-white">
+        <div class="section-content">
+            <div class="section-number">8</div>
+            <h2 class="section-title">Dotted Fade</h2>
+            <p class="section-desc">점진적으로 밀도가 증가하는 도트 패턴입니다.<br>하프톤 인쇄 기법에서 영감을 받았습니다.</p>
+            <span class="technique-name">White → Black</span>
+        </div>
+        <div class="divider-dots">
+            <div class="dot-row">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div class="dot-row">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div class="dot-row">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div class="dot-row">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div class="dot-row">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+            <div class="dot-row">
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Split Diagonal -->
+    <section class="section section-black">
+        <div class="section-content">
+            <div class="section-number">9</div>
+            <h2 class="section-title">Split Diagonal</h2>
+            <p class="section-desc">좌우로 분리되는 대각선 형태입니다.<br>중앙에서 갈라지는 역동적인 효과를 줍니다.</p>
+            <span class="technique-name">Black → White</span>
+        </div>
+        <div class="divider-split"></div>
+    </section>
+
+    <!-- 10. Multiple Waves -->
+    <section class="section section-white">
+        <div class="section-content">
+            <div class="section-number">10</div>
+            <h2 class="section-title">Multiple Waves</h2>
+            <p class="section-desc">여러 겹의 웨이브가 레이어링된 형태입니다.<br>깊이감과 움직임을 표현합니다.</p>
+            <span class="technique-name">White → Black</span>
+        </div>
+        <div class="divider-multi-wave">
+            <svg class="wave-1" viewBox="0 0 1200 120" preserveAspectRatio="none" style="height: 80px;">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" fill="#0a0a0a"></path>
+            </svg>
+            <svg class="wave-2" viewBox="0 0 1200 120" preserveAspectRatio="none" style="height: 60px;">
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="#0a0a0a"></path>
+            </svg>
+            <svg class="wave-3" viewBox="0 0 1200 120" preserveAspectRatio="none" style="height: 40px;">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" fill="#0a0a0a"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 11. Brush Stroke -->
+    <section class="section section-black">
+        <div class="section-content">
+            <div class="section-number">11</div>
+            <h2 class="section-title">Brush Stroke</h2>
+            <p class="section-desc">붓질을 연상시키는 불규칙한 경계선입니다.<br>예술적이고 핸드메이드 느낌을 줍니다.</p>
+            <span class="technique-name">Black → White</span>
+        </div>
+        <div class="divider-brush">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,49.98c84.67,32.78,141.09,44.41,199.62,41.73,58.54-2.68,97.91-21.44,166-38.4s138.67,3.54,193.08,22.66,114.18,27.26,187.69,20.06c73.51-7.2,140.74-26.37,193.49-42.76s101.25-28.69,160.12-31.6S1200,34.71,1200,34.71V120H0Z" fill="#ffffff"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 12. Noise / Grain Fade -->
+    <section class="section section-white">
+        <div class="section-content">
+            <div class="section-number">12</div>
+            <h2 class="section-title">Noise / Grain Fade</h2>
+            <p class="section-desc">노이즈 텍스처를 마스크로 사용한 페이드 효과입니다.<br>필름 그레인 같은 질감을 제공합니다.</p>
+            <span class="technique-name">White → Black</span>
+        </div>
+        <div class="divider-noise"></div>
+    </section>
+
+    <!-- 13. Slant with Shadow -->
+    <section class="section section-black">
+        <div class="section-content">
+            <div class="section-number">13</div>
+            <h2 class="section-title">Slant with Shadow</h2>
+            <p class="section-desc">그림자가 있는 경사면 경계입니다.<br>입체감과 깊이를 더해줍니다.</p>
+            <span class="technique-name">Black → White</span>
+        </div>
+        <div class="divider-slant-shadow"></div>
+    </section>
+
+    <!-- 14. Stacked Layers -->
+    <section class="section section-white">
+        <div class="section-content">
+            <div class="section-number">14</div>
+            <h2 class="section-title">Stacked Layers</h2>
+            <p class="section-desc">여러 레이어가 겹쳐진 형태의 경계입니다.<br>종이가 겹쳐진 듯한 효과를 줍니다.</p>
+            <span class="technique-name">White → Black</span>
+        </div>
+        <div class="divider-stacked">
+            <div class="stacked-layer"></div>
+            <div class="stacked-layer"></div>
+            <div class="stacked-layer"></div>
+        </div>
+    </section>
+
+    <!-- 15. Circle Reveal -->
+    <section class="section section-black">
+        <div class="section-content">
+            <div class="section-number">15</div>
+            <h2 class="section-title">Circle Reveal</h2>
+            <p class="section-desc">큰 원형이 다음 섹션을 살짝 드러내는 형태입니다.<br>부드럽고 연속적인 느낌을 줍니다.</p>
+            <span class="technique-name">Black → White</span>
+        </div>
+        <div class="divider-circle"></div>
+    </section>
+
+    <!-- 16. Asymmetric Curve -->
+    <section class="section section-white" style="padding-bottom: 80px;">
+        <div class="section-content">
+            <div class="section-number">16</div>
+            <h2 class="section-title">Asymmetric Curve</h2>
+            <p class="section-desc">비대칭적인 곡선 형태의 경계입니다.<br>자연스럽고 독특한 흐름을 만들어냅니다.</p>
+            <span class="technique-name">마지막 섹션</span>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section class="section section-black" style="padding: 80px 40px;">
+        <div class="section-content">
+            <h2 class="section-title" style="margin-bottom: 40px;">🎯 추천 사용 케이스</h2>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <div style="margin-bottom: 24px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                    <strong style="color: #D4A84B;">모던 & 미니멀</strong>
+                    <p style="margin-top: 8px; opacity: 0.7;">→ Gradient Fade, Diagonal, Slant with Shadow</p>
+                </div>
+                <div style="margin-bottom: 24px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                    <strong style="color: #D4A84B;">부드럽고 유기적</strong>
+                    <p style="margin-top: 8px; opacity: 0.7;">→ SVG Wave, Curved/Arc, Blob, Circle Reveal</p>
+                </div>
+                <div style="margin-bottom: 24px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                    <strong style="color: #D4A84B;">역동적 & 플레이풀</strong>
+                    <p style="margin-top: 8px; opacity: 0.7;">→ Zigzag, Split Diagonal, Multiple Waves</p>
+                </div>
+                <div style="margin-bottom: 24px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                    <strong style="color: #D4A84B;">아티스틱 & 크리에이티브</strong>
+                    <p style="margin-top: 8px; opacity: 0.7;">→ Brush Stroke, Noise/Grain, Dotted Fade</p>
+                </div>
+                <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                    <strong style="color: #D4A84B;">입체감 & 깊이</strong>
+                    <p style="margin-top: 8px; opacity: 0.7;">→ Stacked Layers, Multiple Waves, Slant with Shadow</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>섹션 경계 처리 기법 데모 — 16가지 Black & White Transition Techniques</p>
+    </footer>
+</body>
+</html>

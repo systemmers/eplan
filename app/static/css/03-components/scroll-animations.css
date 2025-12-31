@@ -1,0 +1,47 @@
+/**
+ * Scroll Animations Component
+ *
+ * Description: 스크롤 기반 진입 애니메이션 (IntersectionObserver 활용)
+ * Usage: data-scroll-animate="animation-type" 속성으로 적용
+ * Pattern: BEM with data-attribute selector
+ */
+
+/* ============================================
+   Base: 스크롤 애니메이션 공통
+   ============================================ */
+[data-scroll-animate] {
+    will-change: opacity, transform;
+}
+
+/* ============================================
+   Elastic Pop Animation
+   ============================================ */
+[data-scroll-animate="elastic-pop"] {
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.68, -0.3, 0.32, 1.3);
+}
+
+[data-scroll-animate="elastic-pop"].is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger delays (부모 내 순서 기반) */
+[data-scroll-animate="elastic-pop"]:nth-child(1) { transition-delay: 0s; }
+[data-scroll-animate="elastic-pop"]:nth-child(2) { transition-delay: 0.08s; }
+[data-scroll-animate="elastic-pop"]:nth-child(3) { transition-delay: 0.16s; }
+[data-scroll-animate="elastic-pop"]:nth-child(4) { transition-delay: 0.24s; }
+[data-scroll-animate="elastic-pop"]:nth-child(5) { transition-delay: 0.32s; }
+[data-scroll-animate="elastic-pop"]:nth-child(6) { transition-delay: 0.40s; }
+
+/* ============================================
+   Accessibility: Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    [data-scroll-animate] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스냅스크롤 + 배경색 전환 효과 10종</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            padding: 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 95vw;
+        }
+
+        .main-nav a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 11px;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            background: #fff;
+            color: #0a0a0a;
+        }
+
+        /* Demo Container */
+        .demo-container {
+            display: none;
+        }
+
+        .demo-container.active {
+            display: block;
+        }
+
+        /* Common Snap Container */
+        .snap-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .snap-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .snap-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Common Section */
+        .snap-section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 40px;
+            position: relative;
+            transition: background 0.8s ease;
+        }
+
+        .snap-section h2 {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            text-align: center;
+        }
+
+        .snap-section p {
+            font-size: 15px;
+            opacity: 0.6;
+            max-width: 500px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .section-number {
+            position: absolute;
+            top: 100px;
+            left: 40px;
+            font-size: 14px;
+            font-family: 'SF Mono', Monaco, monospace;
+            opacity: 0.3;
+        }
+
+        /* Scroll Hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.4;
+            font-size: 12px;
+        }
+
+        .scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* Method Badge */
+        .method-badge {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 100;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 16px 24px;
+        }
+
+        .method-badge h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .method-badge p {
+            font-size: 11px;
+            opacity: 0.5;
+        }
+
+        /* ====================================================
+           METHOD 1: Solid Color Transition (단색 전환)
+           ==================================================== */
+        #demo-1 .snap-section {
+            transition: background-color 0.8s ease;
+        }
+        #demo-1 .section-1 { background: #0a0a0a; }
+        #demo-1 .section-2 { background: #1a1a2e; }
+        #demo-1 .section-3 { background: #16213e; }
+        #demo-1 .section-4 { background: #0f3460; }
+        #demo-1 .section-5 { background: #1a1a1a; }
+
+        /* ====================================================
+           METHOD 2: Gradient Morph (그라데이션 모프)
+           ==================================================== */
+        #demo-2 .snap-container {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+            transition: background 1s ease;
+        }
+        #demo-2 .snap-section {
+            background: transparent;
+        }
+        #demo-2.bg-1 .snap-container { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); }
+        #demo-2.bg-2 .snap-container { background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%); }
+        #demo-2.bg-3 .snap-container { background: linear-gradient(135deg, #2d1b4e 0%, #1e3a5f 100%); }
+        #demo-2.bg-4 .snap-container { background: linear-gradient(135deg, #1e3a5f 0%, #0d4d4d 100%); }
+        #demo-2.bg-5 .snap-container { background: linear-gradient(135deg, #0d4d4d 0%, #0a0a0a 100%); }
+
+        /* ====================================================
+           METHOD 3: RGB Interpolation (RGB 보간)
+           ==================================================== */
+        #demo-3 .snap-container {
+            transition: background-color 0.6s ease;
+        }
+        #demo-3 .snap-section {
+            background: transparent;
+        }
+
+        /* ====================================================
+           METHOD 4: Hue Rotation (색상 회전)
+           ==================================================== */
+        #demo-4 .snap-container {
+            background: hsl(0, 50%, 10%);
+            transition: background-color 0.8s ease;
+        }
+        #demo-4 .snap-section {
+            background: transparent;
+        }
+
+        /* ====================================================
+           METHOD 5: Aurora Blend (오로라 블렌드)
+           ==================================================== */
+        #demo-5 .snap-container {
+            position: relative;
+            background: #050510;
+        }
+        #demo-5 .aurora-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            transition: opacity 1s ease;
+            z-index: 0;
+        }
+        #demo-5 .aurora-1 {
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 20%, rgba(100, 100, 200, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(150, 100, 180, 0.2) 0%, transparent 50%);
+        }
+        #demo-5 .aurora-2 {
+            background: 
+                radial-gradient(ellipse 70% 50% at 70% 30%, rgba(100, 180, 150, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 40% at 30% 70%, rgba(80, 150, 200, 0.2) 0%, transparent 50%);
+            opacity: 0;
+        }
+        #demo-5 .aurora-3 {
+            background: 
+                radial-gradient(ellipse 60% 60% at 50% 50%, rgba(200, 100, 150, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 30% at 20% 80%, rgba(150, 80, 180, 0.2) 0%, transparent 50%);
+            opacity: 0;
+        }
+        #demo-5 .aurora-4 {
+            background: 
+                radial-gradient(ellipse 70% 40% at 80% 20%, rgba(100, 200, 180, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 50% at 20% 60%, rgba(80, 180, 150, 0.2) 0%, transparent 50%);
+            opacity: 0;
+        }
+        #demo-5 .aurora-5 {
+            background: 
+                radial-gradient(ellipse 60% 50% at 50% 30%, rgba(150, 150, 200, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse 70% 40% at 50% 70%, rgba(100, 100, 180, 0.2) 0%, transparent 50%);
+            opacity: 0;
+        }
+        #demo-5 .snap-section {
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ====================================================
+           METHOD 6: Mesh Gradient Shift (메시 그라데이션)
+           ==================================================== */
+        #demo-6 .snap-container {
+            position: relative;
+            background: #08080c;
+        }
+        #demo-6 .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: filter 1.5s ease, opacity 1s ease;
+            pointer-events: none;
+            background: 
+                radial-gradient(at 20% 30%, rgba(100, 80, 180, 0.25) 0px, transparent 50%),
+                radial-gradient(at 80% 20%, rgba(180, 100, 150, 0.2) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, rgba(80, 120, 180, 0.2) 0px, transparent 50%);
+        }
+        #demo-6 .snap-section {
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ====================================================
+           METHOD 7: Duotone Shift (듀오톤 전환)
+           ==================================================== */
+        #demo-7 .snap-section {
+            position: relative;
+            overflow: hidden;
+        }
+        #demo-7 .snap-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: background 1s ease;
+            z-index: 0;
+        }
+        #demo-7 .snap-section > * {
+            position: relative;
+            z-index: 1;
+        }
+        #demo-7 .section-1::before { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); opacity: 0.15; }
+        #demo-7 .section-2::before { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); opacity: 0.15; }
+        #demo-7 .section-3::before { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); opacity: 0.15; }
+        #demo-7 .section-4::before { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); opacity: 0.15; }
+        #demo-7 .section-5::before { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); opacity: 0.15; }
+        #demo-7 .snap-section { background: #0a0a0a; }
+
+        /* ====================================================
+           METHOD 8: Radial Reveal (방사형 리빌)
+           ==================================================== */
+        #demo-8 .snap-container {
+            position: relative;
+            background: #0a0a0a;
+        }
+        #demo-8 .radial-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200vmax;
+            height: 200vmax;
+            border-radius: 50%;
+            transition: background-color 0.8s ease, transform 0.8s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+        #demo-8 .snap-section {
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ====================================================
+           METHOD 9: Stripe Blend (스트라이프 블렌드)
+           ==================================================== */
+        #demo-9 .snap-container {
+            position: relative;
+        }
+        #demo-9 .stripe-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            pointer-events: none;
+            z-index: 0;
+        }
+        #demo-9 .stripe {
+            flex: 1;
+            transition: background-color 0.6s ease;
+            transition-delay: calc(var(--i) * 0.05s);
+        }
+        #demo-9 .snap-section {
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ====================================================
+           METHOD 10: Particle Fade (파티클 페이드)
+           ==================================================== */
+        #demo-10 .snap-container {
+            position: relative;
+            transition: background-color 1s ease;
+        }
+        #demo-10 .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        #demo-10 .particle {
+            position: absolute;
+            border-radius: 50%;
+            transition: background-color 1s ease, opacity 1s ease;
+        }
+        #demo-10 .snap-section {
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-nav {
+                top: 10px;
+                padding: 6px;
+            }
+            .main-nav a {
+                font-size: 9px;
+                padding: 6px 10px;
+            }
+            .method-badge {
+                left: 10px;
+                bottom: 10px;
+                padding: 12px 16px;
+            }
+            .section-number {
+                top: 80px;
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="#" class="active" data-method="1">단색</a>
+        <a href="#" data-method="2">그라데이션</a>
+        <a href="#" data-method="3">RGB보간</a>
+        <a href="#" data-method="4">색상회전</a>
+        <a href="#" data-method="5">오로라</a>
+        <a href="#" data-method="6">메시</a>
+        <a href="#" data-method="7">듀오톤</a>
+        <a href="#" data-method="8">방사형</a>
+        <a href="#" data-method="9">스트라이프</a>
+        <a href="#" data-method="10">파티클</a>
+    </nav>
+
+    <!-- METHOD 1: Solid Color Transition -->
+    <div class="demo-container active" id="demo-1">
+        <div class="snap-container">
+            <section class="snap-section section-1">
+                <span class="section-number">01</span>
+                <h2>Solid Color</h2>
+                <p>가장 기본적인 단색 배경 전환. CSS transition으로 부드럽게 색상이 변합니다.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section section-2">
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>각 섹션마다 고유한 배경색을 지정합니다.</p>
+            </section>
+            <section class="snap-section section-3">
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>transition: background-color 0.8s ease로 부드러운 전환.</p>
+            </section>
+            <section class="snap-section section-4">
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>브랜드 컬러 팔레트를 활용하면 일관된 느낌을 줄 수 있습니다.</p>
+            </section>
+            <section class="snap-section section-5">
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>가장 간단하고 성능이 좋은 방식입니다.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>1. Solid Color</h4>
+            <p>CSS Only · 단색 전환</p>
+        </div>
+    </div>
+
+    <!-- METHOD 2: Gradient Morph -->
+    <div class="demo-container" id="demo-2">
+        <div class="snap-container">
+            <section class="snap-section section-1" data-bg="1">
+                <span class="section-number">01</span>
+                <h2>Gradient Morph</h2>
+                <p>그라데이션 배경이 부드럽게 변형됩니다.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section section-2" data-bg="2">
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>컨테이너의 그라데이션이 전환됩니다.</p>
+            </section>
+            <section class="snap-section section-3" data-bg="3">
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>섹션은 투명하게 유지합니다.</p>
+            </section>
+            <section class="snap-section section-4" data-bg="4">
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>JavaScript로 현재 섹션을 감지하여 클래스를 변경합니다.</p>
+            </section>
+            <section class="snap-section section-5" data-bg="5">
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>고급스럽고 현대적인 느낌을 줍니다.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>2. Gradient Morph</h4>
+            <p>CSS + JS · 그라데이션 변형</p>
+        </div>
+    </div>
+
+    <!-- METHOD 3: RGB Interpolation -->
+    <div class="demo-container" id="demo-3">
+        <div class="snap-container" id="rgb-container">
+            <section class="snap-section" data-r="10" data-g="10" data-b="10">
+                <span class="section-number">01</span>
+                <h2>RGB Interpolation</h2>
+                <p>스크롤 위치에 따라 RGB 값이 실시간으로 보간됩니다.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section" data-r="26" data-g="26" data-b="46">
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>섹션 사이를 스크롤할 때 색상이 점진적으로 변합니다.</p>
+            </section>
+            <section class="snap-section" data-r="45" data-g="27" data-b="78">
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>중간 지점에서는 두 색상이 혼합됩니다.</p>
+            </section>
+            <section class="snap-section" data-r="30" data-g="58" data-b="95">
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>가장 자연스러운 색상 전환 방식입니다.</p>
+            </section>
+            <section class="snap-section" data-r="13" data-g="77" data-b="77">
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>스크롤 이벤트로 실시간 계산합니다.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>3. RGB Interpolation</h4>
+            <p>JavaScript · 실시간 색상 보간</p>
+        </div>
+    </div>
+
+    <!-- METHOD 4: Hue Rotation -->
+    <div class="demo-container" id="demo-4">
+        <div class="snap-container" id="hue-container">
+            <section class="snap-section" data-hue="0">
+                <span class="section-number">01</span>
+                <h2>Hue Rotation</h2>
+                <p>HSL 색상환을 따라 색상이 회전합니다.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section" data-hue="60">
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>Hue 값만 변경하여 채도와 명도는 유지됩니다.</p>
+            </section>
+            <section class="snap-section" data-hue="120">
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>무지개 스펙트럼을 따라 자연스럽게 전환됩니다.</p>
+            </section>
+            <section class="snap-section" data-hue="200">
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>색상환의 보색 관계를 활용할 수 있습니다.</p>
+            </section>
+            <section class="snap-section" data-hue="280">
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>브랜딩에서 색상 다양성을 표현하기 좋습니다.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>4. Hue Rotation</h4>
+            <p>JavaScript · HSL 색상 회전</p>
+        </div>
+    </div>
+
+    <!-- METHOD 5: Aurora Blend -->
+    <div class="demo-container" id="demo-5">
+        <div class="snap-container">
+            <div class="aurora-layer aurora-1"></div>
+            <div class="aurora-layer aurora-2"></div>
+            <div class="aurora-layer aurora-3"></div>
+            <div class="aurora-layer aurora-4"></div>
+            <div class="aurora-layer aurora-5"></div>
+            <section class="snap-section section-1" data-aurora="1">
+                <span class="section-number">01</span>
+                <h2>Aurora Blend</h2>
+                <p>오로라처럼 여러 레이어의 그라데이션이 블렌딩됩니다.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section section-2" data-aurora="2">
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>각 레이어의 opacity를 조절하여 블렌딩합니다.</p>
+            </section>
+            <section class="snap-section section-3" data-aurora="3">
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>여러 radial-gradient가 겹쳐져 깊이감을 만듭니다.</p>
+            </section>
+            <section class="snap-section section-4" data-aurora="4">
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>몽환적이고 프리미엄한 느낌을 연출합니다.</p>
+            </section>
+            <section class="snap-section section-5" data-aurora="5">
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>SaaS, 테크 제품 랜딩에 적합합니다.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>5. Aurora Blend</h4>
+            <p>CSS + JS · 오로라 블렌딩</p>
+        </div>
+    </div>
+
+    <!-- METHOD 6: Mesh Gradient Shift -->
+    <div class="demo-container" id="demo-6">
+        <div class="snap-container">
+            <div class="mesh-bg" id="mesh-bg"></div>
+            <section class="snap-section" data-hue-shift="0">
+                <span class="section-number">01</span>
+                <h2>Mesh Gradient</h2>
+                <p>메시 그라데이션이 색상 필터로 변형됩니다.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section" data-hue-shift="40">
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>CSS filter: hue-rotate()로 전체 색조를 변경합니다.</p>
+            </section>
+            <section class="snap-section" data-hue-shift="80">
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>하나의 메시 그라데이션으로 다양한 분위기를 연출합니다.</p>
+            </section>
+            <section class="snap-section" data-hue-shift="160">
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>성능 효율적인 방식입니다.</p>
+            </section>
+            <section class="snap-section" data-hue-shift="240">
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>2024-2025 트렌드 메시 그라데이션.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>6. Mesh Gradient</h4>
+            <p>CSS + JS · Hue 필터</p>
+        </div>
+    </div>
+
+    <!-- METHOD 7: Duotone Shift -->
+    <div class="demo-container" id="demo-7">
+        <div class="snap-container">
+            <section class="snap-section section-1">
+                <span class="section-number">01</span>
+                <h2>Duotone Shift</h2>
+                <p>듀오톤 그라데이션 오버레이가 전환됩니다.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section section-2">
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>::before 가상요소에 그라데이션을 적용합니다.</p>
+            </section>
+            <section class="snap-section section-3">
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>낮은 opacity로 은은한 컬러 틴트 효과.</p>
+            </section>
+            <section class="snap-section section-4">
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>각 섹션마다 다른 무드를 연출합니다.</p>
+            </section>
+            <section class="snap-section section-5">
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>브랜드 컬러를 활용하기 좋습니다.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>7. Duotone Shift</h4>
+            <p>CSS Only · 듀오톤 오버레이</p>
+        </div>
+    </div>
+
+    <!-- METHOD 8: Radial Reveal -->
+    <div class="demo-container" id="demo-8">
+        <div class="snap-container">
+            <div class="radial-bg" id="radial-bg"></div>
+            <section class="snap-section" data-color="#1a1a2e">
+                <span class="section-number">01</span>
+                <h2>Radial Reveal</h2>
+                <p>중앙에서 퍼져나가는 원형 배경 전환.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section" data-color="#2d1b4e">
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>거대한 원형 div가 색상 전환됩니다.</p>
+            </section>
+            <section class="snap-section" data-color="#1e3a5f">
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>화면 중앙을 기준으로 퍼져나갑니다.</p>
+            </section>
+            <section class="snap-section" data-color="#0d4d4d">
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>부드럽고 유기적인 전환 효과.</p>
+            </section>
+            <section class="snap-section" data-color="#1a1a1a">
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>크리에이티브한 사이트에 적합합니다.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>8. Radial Reveal</h4>
+            <p>CSS + JS · 원형 전환</p>
+        </div>
+    </div>
+
+    <!-- METHOD 9: Stripe Blend -->
+    <div class="demo-container" id="demo-9">
+        <div class="snap-container">
+            <div class="stripe-layer" id="stripe-layer">
+                <div class="stripe" style="--i: 0"></div>
+                <div class="stripe" style="--i: 1"></div>
+                <div class="stripe" style="--i: 2"></div>
+                <div class="stripe" style="--i: 3"></div>
+                <div class="stripe" style="--i: 4"></div>
+                <div class="stripe" style="--i: 5"></div>
+                <div class="stripe" style="--i: 6"></div>
+                <div class="stripe" style="--i: 7"></div>
+                <div class="stripe" style="--i: 8"></div>
+                <div class="stripe" style="--i: 9"></div>
+            </div>
+            <section class="snap-section" data-colors='["#0a0a0a","#0f0f0f","#141414","#191919","#1e1e1e","#232323","#282828","#2d2d2d","#323232","#373737"]'>
+                <span class="section-number">01</span>
+                <h2>Stripe Blend</h2>
+                <p>수직 스트라이프가 순차적으로 색상 전환됩니다.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section" data-colors='["#1a1a2e","#1e1e35","#22223c","#262643","#2a2a4a","#2e2e51","#323258","#36365f","#3a3a66","#3e3e6d"]'>
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>각 스트라이프에 transition-delay를 적용합니다.</p>
+            </section>
+            <section class="snap-section" data-colors='["#2d1b4e","#321f54","#37235a","#3c2760","#412b66","#462f6c","#4b3372","#503778","#553b7e","#5a3f84"]'>
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>물결처럼 순차적으로 전환되는 효과.</p>
+            </section>
+            <section class="snap-section" data-colors='["#1e3a5f","#223e63","#264267","#2a466b","#2e4a6f","#324e73","#365277","#3a567b","#3e5a7f","#425e83"]'>
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>독특하고 리드미컬한 시각 효과.</p>
+            </section>
+            <section class="snap-section" data-colors='["#0d4d4d","#115151","#155555","#195959","#1d5d5d","#216161","#256565","#296969","#2d6d6d","#317171"]'>
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>음악이나 리듬과 연관된 사이트에 적합.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>9. Stripe Blend</h4>
+            <p>CSS + JS · 순차 전환</p>
+        </div>
+    </div>
+
+    <!-- METHOD 10: Particle Fade -->
+    <div class="demo-container" id="demo-10">
+        <div class="snap-container" id="particle-container">
+            <div class="particles" id="particles"></div>
+            <section class="snap-section" data-particle-color="rgba(100,100,200,0.3)" data-bg="#0a0a0a">
+                <span class="section-number">01</span>
+                <h2>Particle Fade</h2>
+                <p>배경의 파티클들이 색상과 함께 전환됩니다.</p>
+                <div class="scroll-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <span>Scroll</span>
+                </div>
+            </section>
+            <section class="snap-section" data-particle-color="rgba(200,100,150,0.3)" data-bg="#1a1a2e">
+                <span class="section-number">02</span>
+                <h2>Section Two</h2>
+                <p>파티클 색상과 배경색이 동시에 변합니다.</p>
+            </section>
+            <section class="snap-section" data-particle-color="rgba(100,200,150,0.3)" data-bg="#0d4d4d">
+                <span class="section-number">03</span>
+                <h2>Section Three</h2>
+                <p>부유하는 파티클이 생동감을 더합니다.</p>
+            </section>
+            <section class="snap-section" data-particle-color="rgba(200,180,100,0.3)" data-bg="#3d3d1a">
+                <span class="section-number">04</span>
+                <h2>Section Four</h2>
+                <p>인터랙티브하고 현대적인 느낌.</p>
+            </section>
+            <section class="snap-section" data-particle-color="rgba(150,100,200,0.3)" data-bg="#2d1b4e">
+                <span class="section-number">05</span>
+                <h2>Section Five</h2>
+                <p>테크 기업, 스타트업 사이트에 적합.</p>
+            </section>
+        </div>
+        <div class="method-badge">
+            <h4>10. Particle Fade</h4>
+            <p>CSS + JS · 파티클 전환</p>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        const navLinks = document.querySelectorAll('.main-nav a');
+        const demoContainers = document.querySelectorAll('.demo-container');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const method = link.dataset.method;
+
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                demoContainers.forEach(container => {
+                    container.classList.remove('active');
+                });
+                document.getElementById(`demo-${method}`).classList.add('active');
+            });
+        });
+
+        // ============ METHOD 2: Gradient Morph ============
+        const demo2 = document.getElementById('demo-2');
+        const demo2Container = demo2.querySelector('.snap-container');
+        const demo2Sections = demo2.querySelectorAll('.snap-section');
+
+        const gradientObserver2 = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bg = entry.target.dataset.bg;
+                    demo2.className = 'demo-container active bg-' + bg;
+                }
+            });
+        }, { threshold: 0.5, root: demo2Container });
+
+        demo2Sections.forEach(section => gradientObserver2.observe(section));
+
+        // ============ METHOD 3: RGB Interpolation ============
+        const rgbContainer = document.getElementById('rgb-container');
+        if (rgbContainer) {
+            const rgbSections = rgbContainer.querySelectorAll('.snap-section');
+            
+            rgbContainer.addEventListener('scroll', () => {
+                const scrollTop = rgbContainer.scrollTop;
+                const sectionHeight = window.innerHeight;
+                const currentIndex = Math.floor(scrollTop / sectionHeight);
+                const progress = (scrollTop % sectionHeight) / sectionHeight;
+                
+                if (currentIndex < rgbSections.length - 1) {
+                    const current = rgbSections[currentIndex];
+                    const next = rgbSections[currentIndex + 1];
+                    
+                    const r = Math.round(lerp(+current.dataset.r, +next.dataset.r, progress));
+                    const g = Math.round(lerp(+current.dataset.g, +next.dataset.g, progress));
+                    const b = Math.round(lerp(+current.dataset.b, +next.dataset.b, progress));
+                    
+                    rgbContainer.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                }
+            });
+        }
+
+        function lerp(a, b, t) {
+            return a + (b - a) * t;
+        }
+
+        // ============ METHOD 4: Hue Rotation ============
+        const hueContainer = document.getElementById('hue-container');
+        if (hueContainer) {
+            const hueSections = hueContainer.querySelectorAll('.snap-section');
+            
+            hueContainer.addEventListener('scroll', () => {
+                const scrollTop = hueContainer.scrollTop;
+                const sectionHeight = window.innerHeight;
+                const currentIndex = Math.floor(scrollTop / sectionHeight);
+                const progress = (scrollTop % sectionHeight) / sectionHeight;
+                
+                if (currentIndex < hueSections.length - 1) {
+                    const currentHue = +hueSections[currentIndex].dataset.hue;
+                    const nextHue = +hueSections[currentIndex + 1].dataset.hue;
+                    const hue = lerp(currentHue, nextHue, progress);
+                    
+                    hueContainer.style.backgroundColor = `hsl(${hue}, 40%, 12%)`;
+                } else if (currentIndex === hueSections.length - 1) {
+                    const hue = +hueSections[currentIndex].dataset.hue;
+                    hueContainer.style.backgroundColor = `hsl(${hue}, 40%, 12%)`;
+                }
+            });
+        }
+
+        // ============ METHOD 5: Aurora Blend ============
+        const demo5 = document.getElementById('demo-5');
+        const demo5Container = demo5.querySelector('.snap-container');
+        const demo5Sections = demo5.querySelectorAll('.snap-section');
+        const auroraLayers = demo5.querySelectorAll('.aurora-layer');
+
+        const auroraObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const auroraNum = entry.target.dataset.aurora;
+                    auroraLayers.forEach((layer, i) => {
+                        layer.style.opacity = (i + 1) == auroraNum ? '1' : '0';
+                    });
+                }
+            });
+        }, { threshold: 0.5, root: demo5Container });
+
+        demo5Sections.forEach(section => auroraObserver.observe(section));
+
+        // ============ METHOD 6: Mesh Gradient ============
+        const demo6 = document.getElementById('demo-6');
+        const demo6Container = demo6.querySelector('.snap-container');
+        const demo6Sections = demo6.querySelectorAll('.snap-section');
+        const meshBg = document.getElementById('mesh-bg');
+
+        const meshObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const hueShift = entry.target.dataset.hueShift;
+                    meshBg.style.filter = `hue-rotate(${hueShift}deg)`;
+                }
+            });
+        }, { threshold: 0.5, root: demo6Container });
+
+        demo6Sections.forEach(section => meshObserver.observe(section));
+
+        // ============ METHOD 8: Radial Reveal ============
+        const demo8 = document.getElementById('demo-8');
+        const demo8Container = demo8.querySelector('.snap-container');
+        const demo8Sections = demo8.querySelectorAll('.snap-section');
+        const radialBg = document.getElementById('radial-bg');
+
+        const radialObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const color = entry.target.dataset.color;
+                    radialBg.style.backgroundColor = color;
+                }
+            });
+        }, { threshold: 0.5, root: demo8Container });
+
+        demo8Sections.forEach(section => radialObserver.observe(section));
+
+        // ============ METHOD 9: Stripe Blend ============
+        const demo9 = document.getElementById('demo-9');
+        const demo9Container = demo9.querySelector('.snap-container');
+        const demo9Sections = demo9.querySelectorAll('.snap-section');
+        const stripes = document.querySelectorAll('#stripe-layer .stripe');
+
+        const stripeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const colors = JSON.parse(entry.target.dataset.colors);
+                    stripes.forEach((stripe, i) => {
+                        stripe.style.backgroundColor = colors[i] || colors[colors.length - 1];
+                    });
+                }
+            });
+        }, { threshold: 0.5, root: demo9Container });
+
+        demo9Sections.forEach(section => stripeObserver.observe(section));
+
+        // ============ METHOD 10: Particle Fade ============
+        const demo10 = document.getElementById('demo-10');
+        const particleContainer = document.getElementById('particle-container');
+        const particlesDiv = document.getElementById('particles');
+        const demo10Sections = demo10.querySelectorAll('.snap-section');
+
+        // Create particles
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 100 + 30 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.backgroundColor = 'rgba(100,100,200,0.3)';
+            particle.style.filter = `blur(${Math.random() * 40 + 20}px)`;
+            particlesDiv.appendChild(particle);
+        }
+
+        const particles = particlesDiv.querySelectorAll('.particle');
+
+        const particleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const particleColor = entry.target.dataset.particleColor;
+                    const bgColor = entry.target.dataset.bg;
+                    
+                    particleContainer.style.backgroundColor = bgColor;
+                    particles.forEach(p => {
+                        p.style.backgroundColor = particleColor;
+                    });
+                }
+            });
+        }, { threshold: 0.5, root: particleContainer });
+
+        demo10Sections.forEach(section => particleObserver.observe(section));
+    </script>
+</body>
+</html>

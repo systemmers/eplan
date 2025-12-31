@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025-2026 트렌드 섹션 디자인 패턴 20종 (Minimal)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* SVG Icon Base */
+        .icon-svg {
+            width: 32px;
+            height: 32px;
+            stroke: currentColor;
+            stroke-width: 1.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .icon-svg.lg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .icon-svg.xl {
+            width: 64px;
+            height: 64px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(10,10,10,0.8);
+            backdrop-filter: blur(20px);
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 95vw;
+        }
+
+        .nav a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Page Header */
+        .page-header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            background: #0a0a0a;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%);
+        }
+
+        .page-header h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            opacity: 0.4;
+            font-weight: 400;
+        }
+
+        .page-header .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            opacity: 0.3;
+        }
+
+        .scroll-hint svg {
+            width: 24px;
+            height: 24px;
+            stroke: #fff;
+            stroke-width: 1.5;
+            animation: scrollBounce 2s infinite;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* Demo Section Wrapper */
+        .demo-wrapper {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .demo-label {
+            max-width: 1400px;
+            margin: 0 auto 32px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .demo-label .number {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.3);
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+
+        .demo-label .title {
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+            letter-spacing: -0.3px;
+        }
+
+        .demo-label .tag {
+            margin-left: auto;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 4px;
+            font-size: 10px;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ====================================================
+           1. BENTO GRID
+           ==================================================== */
+        .section-1 {
+            padding: 0 24px 80px;
+            background: #0a0a0a;
+        }
+
+        .bento-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 240px);
+            gap: 12px;
+        }
+
+        .bento-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .bento-item:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.08);
+        }
+
+        .bento-item.large { grid-column: span 2; }
+        .bento-item.tall { grid-row: span 2; }
+
+        .bento-item .icon-wrap {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .bento-item h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .bento-item p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.5;
+        }
+
+        /* ====================================================
+           2. AURORA GRADIENT
+           ==================================================== */
+        .section-2 {
+            padding: 140px 24px;
+            background: #050508;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aurora-bg {
+            position: absolute;
+            top: -50%;
+            left: -25%;
+            width: 150%;
+            height: 200%;
+            background: 
+                radial-gradient(ellipse 50% 30% at 50% 30%, rgba(100,100,180,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 25% at 30% 40%, rgba(80,150,120,0.1) 0%, transparent 50%);
+            animation: auroraFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes auroraFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(2deg); }
+        }
+
+        .aurora-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .aurora-content h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .aurora-content p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.7;
+        }
+
+        /* ====================================================
+           3. GLASSMORPHISM 2.0
+           ==================================================== */
+        .section-3 {
+            padding: 100px 24px;
+            background: #0a0a10;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .glass-glow-1 { background: rgba(100,120,200,0.5); top: -100px; left: -100px; }
+        .glass-glow-2 { background: rgba(150,100,180,0.4); bottom: -100px; right: -100px; }
+
+        .glass-cards {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .glass-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 36px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateY(-4px);
+        }
+
+        .glass-card .icon-wrap {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .glass-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .glass-card p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.6;
+        }
+
+        /* ====================================================
+           4. BOLD TYPOGRAPHY
+           ==================================================== */
+        .section-4 {
+            padding: 120px 24px;
+            background: #fafafa;
+            color: #0a0a0a;
+        }
+
+        .bold-typo {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bold-typo h2 {
+            font-size: clamp(48px, 10vw, 120px);
+            font-weight: 600;
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 48px;
+            color: #0a0a0a;
+        }
+
+        .bold-typo h2 span {
+            color: rgba(0,0,0,0.15);
+        }
+
+        .bold-typo .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 32px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .bold-typo .meta p {
+            max-width: 400px;
+            font-size: 14px;
+            color: rgba(0,0,0,0.5);
+            line-height: 1.7;
+        }
+
+        .bold-typo .stats {
+            display: flex;
+            gap: 48px;
+        }
+
+        .bold-typo .stat h4 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #0a0a0a;
+        }
+
+        .bold-typo .stat span {
+            font-size: 12px;
+            color: rgba(0,0,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ====================================================
+           5. NEUMORPHISM 2.0
+           ==================================================== */
+        .section-5 {
+            padding: 100px 24px;
+            background: #e8ecf0;
+        }
+
+        .neu-cards {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .neu-card {
+            background: #e8ecf0;
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: 
+                12px 12px 24px #c8ccd0,
+                -12px -12px 24px #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .neu-card:hover {
+            box-shadow: 
+                inset 4px 4px 8px #c8ccd0,
+                inset -4px -4px 8px #ffffff;
+        }
+
+        .neu-card .icon-wrap {
+            width: 56px;
+            height: 56px;
+            background: #e8ecf0;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: rgba(0,0,0,0.4);
+            box-shadow: 
+                6px 6px 12px #c8ccd0,
+                -6px -6px 12px #ffffff;
+        }
+
+        .neu-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .neu-card p {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* ====================================================
+           6. ANIMATED MESH
+           ==================================================== */
+        .section-6 {
+            padding: 140px 24px;
+            position: relative;
+            overflow: hidden;
+            background: #08080c;
+        }
+
+        .mesh-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(at 20% 30%, rgba(100,80,180,0.2) 0px, transparent 50%),
+                radial-gradient(at 80% 20%, rgba(180,100,150,0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, rgba(80,120,180,0.15) 0px, transparent 50%);
+            animation: meshShift 20s ease infinite;
+        }
+
+        @keyframes meshShift {
+            0%, 100% { filter: hue-rotate(0deg); opacity: 1; }
+            50% { filter: hue-rotate(20deg); opacity: 0.8; }
+        }
+
+        .mesh-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mesh-content h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .mesh-content p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .mesh-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .mesh-btn:hover {
+            background: #fff;
+            color: #0a0a0a;
+        }
+
+        .mesh-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ====================================================
+           7. CLAYMORPHISM
+           ==================================================== */
+        .section-7 {
+            padding: 100px 24px;
+            background: #f0f2f5;
+        }
+
+        .clay-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .clay-card {
+            background: linear-gradient(145deg, #ffffff, #e6e9ed);
+            border-radius: 32px;
+            padding: 36px;
+            box-shadow: 
+                16px 16px 32px rgba(0,0,0,0.08),
+                -8px -8px 24px rgba(255,255,255,0.9),
+                inset 0 0 0 1px rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .clay-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .clay-card .icon-wrap {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(145deg, #fff, #e8ebef);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: rgba(0,0,0,0.4);
+            box-shadow: 
+                6px 6px 12px rgba(0,0,0,0.08),
+                -3px -3px 8px rgba(255,255,255,0.9);
+        }
+
+        .clay-card h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .clay-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ====================================================
+           8. DARK MINIMAL
+           ==================================================== */
+        .section-8 {
+            padding: 100px 24px;
+            background: #0a0a0a;
+        }
+
+        .dark-minimal {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .dark-minimal .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .dark-minimal h2 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .dark-minimal .header p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.3);
+            max-width: 300px;
+            text-align: right;
+        }
+
+        .dark-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .dark-feature {
+            background: #0a0a0a;
+            padding: 32px;
+            transition: background 0.2s;
+        }
+
+        .dark-feature:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .dark-feature .icon-wrap {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .dark-feature h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .dark-feature p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+            line-height: 1.5;
+        }
+
+        /* ====================================================
+           9. 3D CARD STACK
+           ==================================================== */
+        .section-9 {
+            padding: 120px 24px;
+            background: linear-gradient(180deg, #0a0a12 0%, #12121a 100%);
+            perspective: 1000px;
+        }
+
+        .card-stack {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stack-card {
+            width: 280px;
+            height: 360px;
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 32px;
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stack-card:nth-child(1) { transform: rotateY(-12deg) translateZ(40px); z-index: 1; }
+        .stack-card:nth-child(2) { transform: rotateY(0deg) translateZ(80px); z-index: 2; margin: 0 -40px; }
+        .stack-card:nth-child(3) { transform: rotateY(12deg) translateZ(40px); z-index: 1; }
+
+        .stack-card:hover {
+            transform: rotateY(0deg) translateZ(120px) scale(1.02);
+            z-index: 10;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .stack-card .icon-wrap {
+            margin-bottom: 24px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .stack-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .stack-card p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.6;
+        }
+
+        /* ====================================================
+           10. HORIZONTAL SCROLL
+           ==================================================== */
+        .section-10 {
+            padding: 80px 0;
+            background: #0a0a0a;
+        }
+
+        .h-scroll-header {
+            max-width: 1200px;
+            margin: 0 auto 32px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .h-scroll-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .h-scroll-header .nav-arrows {
+            display: flex;
+            gap: 8px;
+        }
+
+        .h-scroll-header .nav-arrow {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .h-scroll-header .nav-arrow:hover {
+            background: #fff;
+            color: #0a0a0a;
+        }
+
+        .h-scroll-track {
+            display: flex;
+            gap: 16px;
+            padding: 0 24px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .h-scroll-track::-webkit-scrollbar { display: none; }
+
+        .h-scroll-card {
+            flex-shrink: 0;
+            width: 300px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .h-scroll-card:hover {
+            border-color: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        .h-scroll-card .img {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.2);
+        }
+
+        .h-scroll-card .info {
+            padding: 24px;
+        }
+
+        .h-scroll-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .h-scroll-card p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ====================================================
+           11. BRUTALISM
+           ==================================================== */
+        .section-11 {
+            padding: 80px 24px;
+            background: #f5f5f5;
+        }
+
+        .brutal-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .brutal-item {
+            border: 2px solid #000;
+            padding: 32px;
+            background: #fff;
+            margin: -1px;
+            transition: all 0.15s;
+        }
+
+        .brutal-item:hover {
+            background: #000;
+            color: #fff;
+            transform: translate(-3px, -3px);
+            box-shadow: 6px 6px 0 #000;
+        }
+
+        .brutal-item .icon-wrap {
+            margin-bottom: 20px;
+            color: currentColor;
+            opacity: 0.3;
+        }
+
+        .brutal-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .brutal-item p {
+            font-size: 13px;
+            line-height: 1.5;
+            opacity: 0.7;
+        }
+
+        /* ====================================================
+           12. FLOATING ELEMENTS
+           ==================================================== */
+        .section-12 {
+            padding: 140px 24px;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .float-shape {
+            position: absolute;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 50%;
+            animation: floatAnim 8s ease-in-out infinite;
+        }
+
+        .float-shape:nth-child(1) { width: 80px; height: 80px; top: 15%; left: 10%; animation-delay: 0s; }
+        .float-shape:nth-child(2) { width: 50px; height: 50px; top: 60%; right: 15%; animation-delay: 2s; }
+        .float-shape:nth-child(3) { width: 60px; height: 60px; top: 30%; right: 25%; animation-delay: 4s; }
+        .float-shape:nth-child(4) { width: 40px; height: 40px; bottom: 20%; left: 25%; animation-delay: 1s; }
+
+        @keyframes floatAnim {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        .float-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .float-content h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .float-content p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.7;
+        }
+
+        /* ====================================================
+           13. SPLIT REVEAL
+           ==================================================== */
+        .section-13 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+        }
+
+        .split-left {
+            background: #0a0a0a;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .split-left h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .split-left p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .split-left .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #fff;
+            color: #0a0a0a;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            width: fit-content;
+            transition: all 0.2s;
+        }
+
+        .split-left .btn:hover {
+            transform: translateX(4px);
+        }
+
+        .split-left .btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .split-right {
+            background: rgba(255,255,255,0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.06);
+        }
+
+        .split-right svg {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* ====================================================
+           14. TESTIMONIAL MODERN
+           ==================================================== */
+        .section-14 {
+            padding: 120px 24px;
+            background: #0a0a0a;
+        }
+
+        .testimonial-modern {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-modern .quote-icon {
+            margin-bottom: 32px;
+            color: rgba(255,255,255,0.1);
+        }
+
+        .testimonial-modern .quote {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .testimonial-author .avatar {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .testimonial-author .info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-author .info span {
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ====================================================
+           15. PRICING MINIMAL
+           ==================================================== */
+        .section-15 {
+            padding: 100px 24px;
+            background: #0a0a0a;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-header h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .pricing-header p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .pricing-cards {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .pricing-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            padding: 36px;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .pricing-card h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card .price span {
+            font-size: 14px;
+            color: rgba(255,255,255,0.35);
+            font-weight: 400;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-card li {
+            padding: 10px 0;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-card li svg {
+            width: 16px;
+            height: 16px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .pricing-card .btn {
+            display: block;
+            padding: 14px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .pricing-card .btn:hover {
+            background: #fff;
+            color: #0a0a0a;
+        }
+
+        .pricing-card.featured .btn {
+            background: #fff;
+            color: #0a0a0a;
+        }
+
+        /* ====================================================
+           16. STACKED CARDS
+           ==================================================== */
+        .section-16 {
+            padding: 100px 24px;
+            background: #fafafa;
+        }
+
+        .stacked-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .stacked-header h2 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #0a0a0a;
+            letter-spacing: -0.5px;
+        }
+
+        .stacked-cards {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            height: 340px;
+        }
+
+        .stacked-card {
+            position: absolute;
+            width: 100%;
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stacked-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 3; }
+        .stacked-card:nth-child(2) { transform: translateY(24px) scale(0.96); z-index: 2; opacity: 0.6; }
+        .stacked-card:nth-child(3) { transform: translateY(48px) scale(0.92); z-index: 1; opacity: 0.3; }
+
+        .stacked-card .icon-wrap {
+            margin-bottom: 20px;
+            color: rgba(0,0,0,0.2);
+        }
+
+        .stacked-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0a0a0a;
+            margin-bottom: 12px;
+        }
+
+        .stacked-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ====================================================
+           17. GRADIENT TEXT HERO
+           ==================================================== */
+        .section-17 {
+            padding: 150px 24px;
+            background: #0a0a0a;
+            text-align: center;
+        }
+
+        .gradient-text-hero h2 {
+            font-size: clamp(48px, 12vw, 140px);
+            font-weight: 600;
+            line-height: 0.95;
+            margin-bottom: 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.9) 0%,
+                rgba(255,255,255,0.4) 50%,
+                rgba(255,255,255,0.9) 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s linear infinite;
+            letter-spacing: -4px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .gradient-text-hero p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.35);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* ====================================================
+           18. INTERACTIVE GRID
+           ==================================================== */
+        .section-18 {
+            padding: 80px 24px;
+            background: #0a0a0a;
+        }
+
+        .interactive-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 6px;
+        }
+
+        .grid-cell {
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .grid-cell:hover {
+            background: rgba(255,255,255,0.08);
+            transform: scale(1.1);
+        }
+
+        .grid-cell.highlight {
+            background: rgba(255,255,255,0.06);
+            grid-column: span 2;
+            grid-row: span 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ====================================================
+           19. TIMELINE MODERN
+           ==================================================== */
+        .section-19 {
+            padding: 100px 24px;
+            background: #0a0a0a;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .timeline-header h2 {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .timeline {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 48px;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: calc(50% - 32px);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content { margin-right: auto; }
+        .timeline-item:nth-child(even) .timeline-content { margin-left: auto; }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: #0a0a0a;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+        }
+
+        .timeline-content .year {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 8px;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+
+        .timeline-content h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.5;
+        }
+
+        /* ====================================================
+           20. CTA IMMERSIVE
+           ==================================================== */
+        .section-20 {
+            padding: 160px 24px;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            animation: ctaPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .cta-content p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .cta-btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .cta-btn.primary {
+            background: #fff;
+            color: #0a0a0a;
+        }
+
+        .cta-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .cta-btn.secondary:hover {
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+            .bento-item.tall { grid-row: span 1; }
+            .glass-cards, .pricing-cards { grid-template-columns: 1fr; max-width: 400px; }
+            .dark-features { grid-template-columns: repeat(2, 1fr); }
+            .card-stack { flex-direction: column; gap: 16px; }
+            .stack-card, .stack-card:nth-child(1), .stack-card:nth-child(2), .stack-card:nth-child(3) {
+                transform: none;
+                margin: 0;
+            }
+            .brutal-grid { grid-template-columns: 1fr; }
+            .section-13 { grid-template-columns: 1fr; }
+            .split-right { min-height: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav { top: 10px; padding: 6px 10px; }
+            .nav a { font-size: 9px; padding: 4px 8px; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-item.large { grid-column: span 1; }
+            .neu-cards, .clay-grid { grid-template-columns: 1fr; }
+            .dark-features { grid-template-columns: 1fr; }
+            .bold-typo .meta { flex-direction: column; gap: 32px; align-items: flex-start; }
+            .bold-typo .stats { gap: 32px; }
+            .timeline::before { left: 16px; }
+            .timeline-content { width: calc(100% - 48px); margin-left: 48px !important; }
+            .timeline-dot { left: 16px; }
+            .interactive-grid { grid-template-columns: repeat(6, 1fr); }
+            .cta-buttons { flex-direction: column; }
+        }
+
+        /* Footer */
+        .footer {
+            background: #050505;
+            color: rgba(255,255,255,0.25);
+            padding: 60px 24px;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#s1">Bento</a>
+        <a href="#s2">Aurora</a>
+        <a href="#s3">Glass</a>
+        <a href="#s4">Typo</a>
+        <a href="#s5">Neu</a>
+        <a href="#s6">Mesh</a>
+        <a href="#s7">Clay</a>
+        <a href="#s8">Dark</a>
+        <a href="#s9">3D</a>
+        <a href="#s10">Scroll</a>
+        <a href="#s11">Brutal</a>
+        <a href="#s12">Float</a>
+        <a href="#s13">Split</a>
+        <a href="#s14">Quote</a>
+        <a href="#s15">Price</a>
+        <a href="#s16">Stack</a>
+        <a href="#s17">Gradient</a>
+        <a href="#s18">Grid</a>
+        <a href="#s19">Timeline</a>
+        <a href="#s20">CTA</a>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Section Patterns</h1>
+        <p>2025—2026 Minimal Design Collection</p>
+        <div class="badge">20 Patterns</div>
+        <div class="scroll-hint">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- 1. Bento Grid -->
+    <div class="demo-wrapper" id="s1">
+        <div class="demo-label">
+            <span class="number">01</span>
+            <span class="title">Bento Grid</span>
+            <span class="tag">Layout</span>
+        </div>
+        <section class="section-1">
+            <div class="bento-grid">
+                <div class="bento-item large">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <h3>Performance</h3>
+                    <p>Optimized algorithms deliver fast processing speeds across all operations.</p>
+                </div>
+                <div class="bento-item">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    </div>
+                    <h3>Security</h3>
+                    <p>End-to-end encryption</p>
+                </div>
+                <div class="bento-item">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    </div>
+                    <h3>Global</h3>
+                    <p>Worldwide access</p>
+                </div>
+                <div class="bento-item tall">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+                    </div>
+                    <h3>Real-time Sync</h3>
+                    <p>Data synchronizes instantly across all your devices and platforms.</p>
+                </div>
+                <div class="bento-item">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    </div>
+                    <h3>Analytics</h3>
+                    <p>Detailed insights</p>
+                </div>
+                <div class="bento-item">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                    </div>
+                    <h3>Settings</h3>
+                    <p>Customize freely</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 2. Aurora Gradient -->
+    <div class="demo-wrapper" id="s2">
+        <div class="demo-label">
+            <span class="number">02</span>
+            <span class="title">Aurora Gradient</span>
+            <span class="tag">Background</span>
+        </div>
+        <section class="section-2">
+            <div class="aurora-bg"></div>
+            <div class="aurora-content">
+                <h2>Fluid Motion</h2>
+                <p>Inspired by northern lights, subtle gradient animations create an immersive atmosphere without distraction.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 3. Glassmorphism 2.0 -->
+    <div class="demo-wrapper" id="s3">
+        <div class="demo-label">
+            <span class="number">03</span>
+            <span class="title">Glassmorphism 2.0</span>
+            <span class="tag">Cards</span>
+        </div>
+        <section class="section-3">
+            <div class="glass-glow glass-glow-1"></div>
+            <div class="glass-glow glass-glow-2"></div>
+            <div class="glass-cards">
+                <div class="glass-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>Premium</h3>
+                    <p>Refined glass effect delivers a premium, modern aesthetic.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </div>
+                    <h3>Clarity</h3>
+                    <p>Blur separates content from background naturally.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>Focus</h3>
+                    <p>Guide attention to what matters most.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 4. Bold Typography -->
+    <div class="demo-wrapper" id="s4">
+        <div class="demo-label">
+            <span class="number">04</span>
+            <span class="title">Bold Typography</span>
+            <span class="tag">Type</span>
+        </div>
+        <section class="section-4">
+            <div class="bold-typo">
+                <h2>DIGITAL<br><span>EXPERIENCE</span></h2>
+                <div class="meta">
+                    <p>Oversized typography creates bold first impressions. Minimal design combined with large text keeps focus on the message.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h4>500+</h4>
+                            <span>Projects</span>
+                        </div>
+                        <div class="stat">
+                            <h4>98%</h4>
+                            <span>Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 5. Neumorphism 2.0 -->
+    <div class="demo-wrapper" id="s5">
+        <div class="demo-label">
+            <span class="number">05</span>
+            <span class="title">Neumorphism 2.0</span>
+            <span class="tag">Soft UI</span>
+        </div>
+        <section class="section-5">
+            <div class="neu-cards">
+                <div class="neu-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                    </div>
+                    <h3>App Design</h3>
+                    <p>Soft shadows create depth and tactile feel in interfaces.</p>
+                </div>
+                <div class="neu-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>Eye-comfortable soft UI enhances user experience.</p>
+                </div>
+                <div class="neu-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M15 6v12a3 3 0 100-6H9a3 3 0 100 6V6a3 3 0 100 6h6"/></svg>
+                    </div>
+                    <h3>Interaction</h3>
+                    <p>Natural press-in interactions feel intuitive.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 6. Animated Mesh -->
+    <div class="demo-wrapper" id="s6">
+        <div class="demo-label">
+            <span class="number">06</span>
+            <span class="title">Animated Mesh</span>
+            <span class="tag">Background</span>
+        </div>
+        <section class="section-6">
+            <div class="mesh-bg"></div>
+            <div class="mesh-content">
+                <h2>Living Colors</h2>
+                <p>Animated mesh gradients bring dynamic, contemporary energy to any interface.</p>
+                <a href="#" class="mesh-btn">
+                    Get Started
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- 7. Claymorphism -->
+    <div class="demo-wrapper" id="s7">
+        <div class="demo-label">
+            <span class="number">07</span>
+            <span class="title">Claymorphism</span>
+            <span class="tag">3D Soft</span>
+        </div>
+        <section class="section-7">
+            <div class="clay-grid">
+                <div class="clay-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Layered</h3>
+                    <p>Clay-like 3D surfaces feel approachable and friendly.</p>
+                </div>
+                <div class="clay-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <h3>Warm</h3>
+                    <p>Rounded corners and soft shadows create warmth.</p>
+                </div>
+                <div class="clay-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                    </div>
+                    <h3>Dimension</h3>
+                    <p>Multi-layer shadows add realistic depth.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 8. Dark Minimal -->
+    <div class="demo-wrapper" id="s8">
+        <div class="demo-label">
+            <span class="number">08</span>
+            <span class="title">Dark Minimal</span>
+            <span class="tag">Clean</span>
+        </div>
+        <section class="section-8">
+            <div class="dark-minimal">
+                <div class="header">
+                    <h2>Features</h2>
+                    <p>Stripped-down dark theme focuses attention on content.</p>
+                </div>
+                <div class="dark-features">
+                    <div class="dark-feature">
+                        <div class="icon-wrap">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83"/></svg>
+                        </div>
+                        <h4>Minimal Design</h4>
+                        <p>Remove excess, focus on essentials.</p>
+                    </div>
+                    <div class="dark-feature">
+                        <div class="icon-wrap">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                        </div>
+                        <h4>Dark Theme</h4>
+                        <p>Reduce eye strain with dark backgrounds.</p>
+                    </div>
+                    <div class="dark-feature">
+                        <div class="icon-wrap">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                        <h4>Grid System</h4>
+                        <p>Organized layout delivers information clearly.</p>
+                    </div>
+                    <div class="dark-feature">
+                        <div class="icon-wrap">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+                        </div>
+                        <h4>Typography</h4>
+                        <p>Clear hierarchy enhances readability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 9. 3D Card Stack -->
+    <div class="demo-wrapper" id="s9">
+        <div class="demo-label">
+            <span class="number">09</span>
+            <span class="title">3D Card Stack</span>
+            <span class="tag">Perspective</span>
+        </div>
+        <section class="section-9">
+            <div class="card-stack">
+                <div class="stack-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg lg" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    </div>
+                    <h3>Analytics</h3>
+                    <p>Collect and analyze real-time data for actionable insights.</p>
+                </div>
+                <div class="stack-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    </div>
+                    <h3>Goals</h3>
+                    <p>Set clear targets and track progress toward achievement.</p>
+                </div>
+                <div class="stack-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg lg" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                    </div>
+                    <h3>Growth</h3>
+                    <p>Streamline workflows to accelerate business expansion.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 10. Horizontal Scroll -->
+    <div class="demo-wrapper" id="s10">
+        <div class="demo-label">
+            <span class="number">10</span>
+            <span class="title">Horizontal Scroll</span>
+            <span class="tag">Gallery</span>
+        </div>
+        <section class="section-10">
+            <div class="h-scroll-header">
+                <h2>Works</h2>
+                <div class="nav-arrows">
+                    <div class="nav-arrow">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </div>
+                    <div class="nav-arrow">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="h-scroll-track">
+                <div class="h-scroll-card">
+                    <div class="img">
+                        <svg class="icon-svg xl" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                    </div>
+                    <div class="info">
+                        <h4>Branding</h4>
+                        <p>Brand identity and guidelines</p>
+                    </div>
+                </div>
+                <div class="h-scroll-card">
+                    <div class="img">
+                        <svg class="icon-svg xl" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                    </div>
+                    <div class="info">
+                        <h4>App UI/UX</h4>
+                        <p>Mobile interface design</p>
+                    </div>
+                </div>
+                <div class="h-scroll-card">
+                    <div class="img">
+                        <svg class="icon-svg xl" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </div>
+                    <div class="info">
+                        <h4>Web Design</h4>
+                        <p>Responsive websites</p>
+                    </div>
+                </div>
+                <div class="h-scroll-card">
+                    <div class="img">
+                        <svg class="icon-svg xl" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    </div>
+                    <div class="info">
+                        <h4>Dashboard</h4>
+                        <p>Data visualization</p>
+                    </div>
+                </div>
+                <div class="h-scroll-card">
+                    <div class="img">
+                        <svg class="icon-svg xl" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                    </div>
+                    <div class="info">
+                        <h4>Motion</h4>
+                        <p>Brand videos and animation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 11. Brutalism -->
+    <div class="demo-wrapper" id="s11">
+        <div class="demo-label">
+            <span class="number">11</span>
+            <span class="title">Brutalism</span>
+            <span class="tag">Raw</span>
+        </div>
+        <section class="section-11">
+            <div class="brutal-grid">
+                <div class="brutal-item">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg lg" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </div>
+                    <h3>No Rules</h3>
+                    <p>Break conventions. Express boldly with raw design.</p>
+                </div>
+                <div class="brutal-item">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg lg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/></svg>
+                    </div>
+                    <h3>Bold</h3>
+                    <p>Strong lines and high contrast capture attention.</p>
+                </div>
+                <div class="brutal-item">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg lg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+                    </div>
+                    <h3>Raw</h3>
+                    <p>Embrace unpolished, authentic aesthetics.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 12. Floating Elements -->
+    <div class="demo-wrapper" id="s12">
+        <div class="demo-label">
+            <span class="number">12</span>
+            <span class="title">Floating Elements</span>
+            <span class="tag">Motion</span>
+        </div>
+        <section class="section-12">
+            <div class="floating-shapes">
+                <div class="float-shape"></div>
+                <div class="float-shape"></div>
+                <div class="float-shape"></div>
+                <div class="float-shape"></div>
+            </div>
+            <div class="float-content">
+                <h2>Subtle Movement</h2>
+                <p>Floating shapes add depth and life to static pages through gentle, continuous motion.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 13. Split Reveal -->
+    <div class="demo-wrapper" id="s13">
+        <div class="demo-label">
+            <span class="number">13</span>
+            <span class="title">Split Reveal</span>
+            <span class="tag">Layout</span>
+        </div>
+        <section class="section-13">
+            <div class="split-left">
+                <h2>Divided Layout</h2>
+                <p>Split screens separate content and visuals effectively. Contrasting tones maximize visual impact.</p>
+                <a href="#" class="btn">
+                    Learn More
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="split-right">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M3 9h18M9 21V9"/>
+                </svg>
+            </div>
+        </section>
+    </div>
+
+    <!-- 14. Testimonial Modern -->
+    <div class="demo-wrapper" id="s14">
+        <div class="demo-label">
+            <span class="number">14</span>
+            <span class="title">Testimonial</span>
+            <span class="tag">Social Proof</span>
+        </div>
+        <section class="section-14">
+            <div class="testimonial-modern">
+                <div class="quote-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                    </svg>
+                </div>
+                <div class="quote">
+                    Since adopting this platform, our team productivity has increased by 200%. Truly a remarkable experience.
+                </div>
+                <div class="testimonial-author">
+                    <div class="avatar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="info">
+                        <h4>Sarah Kim</h4>
+                        <span>CEO, TechCorp</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 15. Pricing Minimal -->
+    <div class="demo-wrapper" id="s15">
+        <div class="demo-label">
+            <span class="number">15</span>
+            <span class="title">Pricing</span>
+            <span class="tag">Conversion</span>
+        </div>
+        <section class="section-15">
+            <div class="pricing-header">
+                <h2>Pricing</h2>
+                <p>Choose the plan that fits your needs</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$29<span>/mo</span></div>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Basic features</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 5GB storage</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Email support</li>
+                    </ul>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <div class="price">$79<span>/mo</span></div>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> All features</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 100GB storage</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Priority support</li>
+                    </ul>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Unlimited</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Unlimited storage</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Dedicated manager</li>
+                    </ul>
+                    <a href="#" class="btn">Contact</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 16. Stacked Cards -->
+    <div class="demo-wrapper" id="s16">
+        <div class="demo-label">
+            <span class="number">16</span>
+            <span class="title">Stacked Cards</span>
+            <span class="tag">Depth</span>
+        </div>
+        <section class="section-16">
+            <div class="stacked-header">
+                <h2>Layered</h2>
+            </div>
+            <div class="stacked-cards">
+                <div class="stacked-card">
+                    <div class="icon-wrap">
+                        <svg class="icon-svg lg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>First Card</h3>
+                    <p>Stacked layout creates depth and hierarchy. Scroll or click to reveal more content beneath.</p>
+                </div>
+                <div class="stacked-card">
+                    <h3>Second Card</h3>
+                    <p>Visible edges hint at additional content waiting to be discovered.</p>
+                </div>
+                <div class="stacked-card">
+                    <h3>Third Card</h3>
+                    <p>Natural shadows add realistic dimension.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 17. Gradient Text Hero -->
+    <div class="demo-wrapper" id="s17">
+        <div class="demo-label">
+            <span class="number">17</span>
+            <span class="title">Gradient Text</span>
+            <span class="tag">Type</span>
+        </div>
+        <section class="section-17">
+            <div class="gradient-text-hero">
+                <h2>FUTURE</h2>
+                <p>Animated gradient text creates eye-catching, memorable headlines.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 18. Interactive Grid -->
+    <div class="demo-wrapper" id="s18">
+        <div class="demo-label">
+            <span class="number">18</span>
+            <span class="title">Interactive Grid</span>
+            <span class="tag">Hover</span>
+        </div>
+        <section class="section-18">
+            <div class="interactive-grid">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell highlight">HOVER</div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 19. Timeline Modern -->
+    <div class="demo-wrapper" id="s19">
+        <div class="demo-label">
+            <span class="number">19</span>
+            <span class="title">Timeline</span>
+            <span class="tag">Story</span>
+        </div>
+        <section class="section-19">
+            <div class="timeline-header">
+                <h2>Journey</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="year">2020</div>
+                        <h4>Founded</h4>
+                        <p>Started in a small office with three founding members.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="year">2022</div>
+                        <h4>Series A</h4>
+                        <p>Secured $10M investment to accelerate growth.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="year">2024</div>
+                        <h4>Global</h4>
+                        <p>Expanded services to five countries across Asia.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 20. CTA Immersive -->
+    <div class="demo-wrapper" id="s20">
+        <div class="demo-label">
+            <span class="number">20</span>
+            <span class="title">CTA Immersive</span>
+            <span class="tag">Conversion</span>
+        </div>
+        <section class="section-20">
+            <div class="cta-glow"></div>
+            <div class="cta-content">
+                <h2>Get Started Today</h2>
+                <p>Start free and experience growth. 14-day trial, no credit card required.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-btn primary">Start Free</a>
+                    <a href="#" class="cta-btn secondary">View Demo</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        2025—2026 Minimal Section Patterns · 20 Designs
+    </footer>
+</body>
+</html>

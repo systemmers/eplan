@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePLAN Sub Hero Styles Vol.3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        /* ePLAN Brand Colors */
+        :root {
+            --gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --gold-dark: #B8923E;
+            --black: #1a1a1a;
+            --e-yellow: #F5B820;
+            --p-green: #2E8B57;
+            --l-red: #E53935;
+            --a-blue: #1E88E5;
+            --n-red: #E53935;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, var(--black), #2d2d2d);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .page-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            padding: 40px 20px 60px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .demo-section:nth-child(even) {
+            background: #fff;
+        }
+
+        .section-info {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border-radius: 50%;
+            line-height: 32px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-number.recommended {
+            background: linear-gradient(135deg, var(--gold), var(--e-yellow));
+            box-shadow: 0 4px 15px rgba(212, 168, 75, 0.4);
+        }
+
+        .recommended-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            color: #6e6e73;
+            font-size: 14px;
+        }
+
+        .version-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .version-tab {
+            padding: 6px 14px;
+            background: #eee;
+            border: none;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .version-tab:hover, .version-tab.active {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* ========== BASE STYLES ========== */
+        .sub-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sub-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .breadcrumb span {
+            opacity: 0.5;
+        }
+
+        .breadcrumb .current {
+            opacity: 1;
+            font-weight: 500;
+        }
+
+        .sub-hero-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .sub-hero-desc {
+            font-size: clamp(14px, 2vw, 18px);
+            opacity: 0.85;
+            max-width: 600px;
+        }
+
+        /* Colorful Text */
+        .color-e { color: var(--e-yellow); }
+        .color-p { color: var(--p-green); }
+        .color-l { color: var(--l-red); }
+        .color-a { color: var(--a-blue); }
+        .color-n { color: var(--l-red); }
+        .color-gold { color: var(--gold); }
+
+        /* Logo */
+        .logo-img {
+            width: 60px;
+            height: auto;
+        }
+
+        /* ==================== STYLE 23: Diagonal Gold Sweep ==================== */
+        .sub-hero-23 {
+            background: var(--black);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-23 .diagonal-sweep {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 40%, rgba(212, 168, 75, 0.15) 50%, transparent 60%);
+            animation: diagonalSweep 4s ease-in-out infinite;
+        }
+
+        @keyframes diagonalSweep {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        .sub-hero-23 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-23 .sub-hero-title {
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideIn 0.7s ease 0.3s forwards;
+        }
+
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .sub-hero-23 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: slideIn 0.7s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 24: Rotating Border (RECOMMENDED) ==================== */
+        .sub-hero-24 {
+            background: #fafafa;
+            padding: 80px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sub-hero-24 .border-box {
+            position: relative;
+            padding: 60px 80px;
+            text-align: center;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .sub-hero-24 .border-box::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: conic-gradient(from 0deg, var(--e-yellow), var(--p-green), var(--a-blue), var(--l-red), var(--e-yellow));
+            border-radius: 22px;
+            z-index: -1;
+            animation: rotateBorder 4s linear infinite;
+        }
+
+        @keyframes rotateBorder {
+            to { transform: rotate(360deg); }
+        }
+
+        .sub-hero-24 .border-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .sub-hero-24 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-24 .sub-hero-title {
+            opacity: 0;
+            animation: popUp 0.6s ease 0.3s forwards;
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sub-hero-24 .sub-hero-desc {
+            margin: 0 auto;
+            opacity: 0;
+            animation: popUp 0.6s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 25: Particle Dots ==================== */
+        .sub-hero-25 {
+            background: linear-gradient(180deg, var(--black) 0%, #2a2a2a 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-25 .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .sub-hero-25 .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: particleFloat 8s ease-in-out infinite;
+        }
+
+        .sub-hero-25 .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .sub-hero-25 .particle:nth-child(2) { left: 20%; top: 60%; animation-delay: -1s; background: var(--e-yellow); }
+        .sub-hero-25 .particle:nth-child(3) { left: 35%; top: 30%; animation-delay: -2s; background: var(--p-green); }
+        .sub-hero-25 .particle:nth-child(4) { left: 50%; top: 70%; animation-delay: -3s; background: var(--a-blue); }
+        .sub-hero-25 .particle:nth-child(5) { left: 65%; top: 25%; animation-delay: -4s; background: var(--l-red); }
+        .sub-hero-25 .particle:nth-child(6) { left: 80%; top: 55%; animation-delay: -5s; }
+        .sub-hero-25 .particle:nth-child(7) { left: 90%; top: 40%; animation-delay: -6s; background: var(--e-yellow); }
+        .sub-hero-25 .particle:nth-child(8) { left: 15%; top: 80%; animation-delay: -7s; background: var(--p-green); }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+            50% { transform: translateY(-30px) scale(1.5); opacity: 0.8; }
+        }
+
+        .sub-hero-25 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-25 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.3s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sub-hero-25 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 26: Color Blocks Stack ==================== */
+        .sub-hero-26 {
+            background: #f5f5f5;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-26 .color-blocks {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .sub-hero-26 .block {
+            width: 60px;
+            height: 200px;
+            border-radius: 10px;
+            opacity: 0.1;
+            transform: scaleY(0);
+            animation: blockGrow 0.5s ease forwards;
+        }
+
+        .sub-hero-26 .block:nth-child(1) { background: var(--e-yellow); animation-delay: 0.1s; }
+        .sub-hero-26 .block:nth-child(2) { background: var(--p-green); animation-delay: 0.2s; }
+        .sub-hero-26 .block:nth-child(3) { background: var(--gold); animation-delay: 0.3s; }
+        .sub-hero-26 .block:nth-child(4) { background: var(--a-blue); animation-delay: 0.4s; }
+        .sub-hero-26 .block:nth-child(5) { background: var(--l-red); animation-delay: 0.5s; }
+
+        @keyframes blockGrow {
+            to { transform: scaleY(1); }
+        }
+
+        .sub-hero-26 .breadcrumb {
+            justify-content: center;
+        }
+
+        .sub-hero-26 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.6s forwards;
+        }
+
+        .sub-hero-26 .sub-hero-desc {
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.8s forwards;
+        }
+
+        /* ==================== STYLE 27: Glowing Text (RECOMMENDED) ==================== */
+        .sub-hero-27 {
+            background: #0a0a0a;
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .sub-hero-27 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-27 .sub-hero-title {
+            opacity: 0;
+            animation: glowReveal 1s ease 0.3s forwards;
+        }
+
+        .sub-hero-27 .glow-letter {
+            display: inline-block;
+            animation: letterGlow 2s ease-in-out infinite;
+        }
+
+        .sub-hero-27 .glow-letter.gl-e { 
+            color: var(--e-yellow); 
+            text-shadow: 0 0 20px var(--e-yellow);
+            animation-delay: 0s;
+        }
+        .sub-hero-27 .glow-letter.gl-p { 
+            color: var(--p-green); 
+            text-shadow: 0 0 20px var(--p-green);
+            animation-delay: 0.1s;
+        }
+        .sub-hero-27 .glow-letter.gl-l { 
+            color: var(--l-red); 
+            text-shadow: 0 0 20px var(--l-red);
+            animation-delay: 0.2s;
+        }
+        .sub-hero-27 .glow-letter.gl-a { 
+            color: var(--a-blue); 
+            text-shadow: 0 0 20px var(--a-blue);
+            animation-delay: 0.3s;
+        }
+        .sub-hero-27 .glow-letter.gl-n { 
+            color: var(--l-red); 
+            text-shadow: 0 0 20px var(--l-red);
+            animation-delay: 0.4s;
+        }
+
+        @keyframes letterGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.5); }
+        }
+
+        @keyframes glowReveal {
+            from { opacity: 0; filter: blur(10px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        .sub-hero-27 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.6);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.8s forwards;
+        }
+
+        /* ==================== STYLE 28: Split Reveal ==================== */
+        .sub-hero-28 {
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sub-hero-28 .split-left,
+        .sub-hero-28 .split-right {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sub-hero-28 .split-left {
+            left: 0;
+            background: var(--black);
+            justify-content: flex-end;
+            padding-right: 60px;
+            transform: translateX(-100%);
+            animation: splitLeftIn 0.8s ease 0.2s forwards;
+        }
+
+        .sub-hero-28 .split-right {
+            right: 0;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            justify-content: flex-start;
+            padding-left: 60px;
+            transform: translateX(100%);
+            animation: splitRightIn 0.8s ease 0.2s forwards;
+        }
+
+        @keyframes splitLeftIn {
+            to { transform: translateX(0); }
+        }
+
+        @keyframes splitRightIn {
+            to { transform: translateX(0); }
+        }
+
+        .sub-hero-28 .split-left .sub-hero-content {
+            text-align: right;
+            color: white;
+        }
+
+        .sub-hero-28 .split-right .sub-hero-content {
+            color: var(--black);
+        }
+
+        .sub-hero-28 .breadcrumb {
+            justify-content: flex-end;
+            color: var(--gold);
+        }
+
+        .sub-hero-28 .split-right .breadcrumb {
+            justify-content: flex-start;
+            color: var(--black);
+            opacity: 0.7;
+        }
+
+        .sub-hero-28 .sub-hero-title,
+        .sub-hero-28 .sub-hero-desc {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.8s forwards;
+        }
+
+        /* ==================== STYLE 29: Morphing Background ==================== */
+        .sub-hero-29 {
+            background: var(--black);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .sub-hero-29 .morph-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--gold), var(--e-yellow));
+            opacity: 0.1;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: morphShape 8s ease-in-out infinite;
+        }
+
+        @keyframes morphShape {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            50% { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+            75% { border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%; }
+        }
+
+        .sub-hero-29 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-29 .sub-hero-title {
+            opacity: 0;
+            animation: zoomIn 0.6s ease 0.3s forwards;
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .sub-hero-29 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: zoomIn 0.6s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 30: Horizontal Scroll Text ==================== */
+        .sub-hero-30 {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sub-hero-30 .scroll-text-bg {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            font-size: 120px;
+            font-weight: 900;
+            opacity: 0.03;
+            animation: scrollText 20s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateY(-50%) translateX(0); }
+            100% { transform: translateY(-50%) translateX(-50%); }
+        }
+
+        .sub-hero-30 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-30 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.3s forwards;
+        }
+
+        .sub-hero-30 .sub-hero-desc {
+            margin: 0 auto;
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.5s forwards;
+        }
+
+        /* ==================== STYLE 31: Flip Card Reveal (RECOMMENDED) ==================== */
+        .sub-hero-31 {
+            background: #f8f8f8;
+            padding: 60px 40px;
+            display: flex;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .sub-hero-31 .flip-card {
+            width: 100%;
+            max-width: 800px;
+            min-height: 250px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: flipReveal 1s ease 0.3s forwards;
+            transform: rotateX(90deg);
+        }
+
+        @keyframes flipReveal {
+            to { transform: rotateX(0); }
+        }
+
+        .sub-hero-31 .card-inner {
+            background: var(--black);
+            color: white;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .sub-hero-31 .logo-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .sub-hero-31 .logo-img {
+            opacity: 0;
+            animation: fadeUp 0.5s ease 1s forwards;
+        }
+
+        .sub-hero-31 .breadcrumb {
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .sub-hero-31 .sub-hero-title {
+            opacity: 0;
+            animation: fadeUp 0.5s ease 1.2s forwards;
+        }
+
+        .sub-hero-31 .sub-hero-desc {
+            color: rgba(255,255,255,0.7);
+            opacity: 0;
+            animation: fadeUp 0.5s ease 1.4s forwards;
+        }
+
+        /* ==================== STYLE 32: Gradient Line Accent (RECOMMENDED) ==================== */
+        .sub-hero-32 {
+            background: white;
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .sub-hero-32 .gradient-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--e-yellow), var(--p-green), var(--a-blue), var(--l-red), var(--gold));
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .sub-hero-32 .sub-hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .sub-hero-32 .logo-side {
+            flex-shrink: 0;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideIn 0.6s ease 0.3s forwards;
+        }
+
+        .sub-hero-32 .logo-side .logo-img {
+            width: 100px;
+        }
+
+        .sub-hero-32 .content-side {
+            flex: 1;
+        }
+
+        .sub-hero-32 .sub-hero-title {
+            opacity: 0;
+            animation: slideIn 0.6s ease 0.5s forwards;
+        }
+
+        .sub-hero-32 .sub-hero-desc {
+            opacity: 0;
+            animation: slideIn 0.6s ease 0.7s forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sub-hero-24 .border-box {
+                padding: 40px 30px;
+            }
+
+            .sub-hero-28 {
+                min-height: 400px;
+            }
+
+            .sub-hero-28 .split-left,
+            .sub-hero-28 .split-right {
+                width: 100%;
+                height: 50%;
+            }
+
+            .sub-hero-28 .split-left {
+                top: 0;
+                justify-content: center;
+                padding: 40px 30px;
+                transform: translateY(-100%);
+                animation: splitTopIn 0.8s ease 0.2s forwards;
+            }
+
+            .sub-hero-28 .split-right {
+                top: 50%;
+                justify-content: center;
+                padding: 40px 30px;
+                transform: translateY(100%);
+                animation: splitBottomIn 0.8s ease 0.2s forwards;
+            }
+
+            @keyframes splitTopIn {
+                to { transform: translateY(0); }
+            }
+
+            @keyframes splitBottomIn {
+                to { transform: translateY(0); }
+            }
+
+            .sub-hero-28 .split-left .sub-hero-content {
+                text-align: center;
+            }
+
+            .sub-hero-28 .breadcrumb {
+                justify-content: center;
+            }
+
+            .sub-hero-31 .card-inner {
+                padding: 40px 30px;
+            }
+
+            .sub-hero-32 .sub-hero-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .version-tabs {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>ePLAN Sub Hero Styles Vol.3</h1>
+        <p>브랜드 컬러를 반영한 애니메이션 서브 히어로 10가지 추가</p>
+    </header>
+
+    <!-- Style 23: Diagonal Gold Sweep -->
+    <section class="demo-section" data-style="23">
+        <div class="section-info">
+            <div class="section-number">23</div>
+            <h2 class="section-title">Diagonal Gold Sweep</h2>
+            <p class="section-desc">대각선 방향으로 골드 빛이 스윕되는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(23, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(23, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(23, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-23">
+            <div class="diagonal-sweep"></div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">About</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="<span class='color-e'>e</span><span class='color-p'>P</span><span class='color-l'>L</span><span class='color-a'>A</span><span class='color-n'>N</span> 회사 소개" data-ko="회사 소개" data-en="About <span class='color-e'>e</span><span class='color-p'>P</span><span class='color-l'>L</span><span class='color-a'>A</span><span class='color-n'>N</span>">
+                    <span class="color-e">e</span><span class="color-p">P</span><span class="color-l">L</span><span class="color-a">A</span><span class="color-n">N</span> 회사 소개
+                </h1>
+                <p class="sub-hero-desc version-text" data-mixed="글로벌 교육의 혁신을 이끄는 ePLAN을 소개합니다" data-ko="글로벌 교육의 혁신을 이끄는 회사를 소개합니다" data-en="Discover the company leading global education innovation">글로벌 교육의 혁신을 이끄는 ePLAN을 소개합니다</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 24: Rotating Border (RECOMMENDED) -->
+    <section class="demo-section" data-style="24">
+        <div class="section-info">
+            <div class="section-number recommended">24</div>
+            <h2 class="section-title">Rotating Border <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">로고 색상이 회전하는 테두리 애니메이션</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(24, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(24, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(24, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-24">
+            <div class="border-box">
+                <div class="sub-hero-content">
+                    <nav class="breadcrumb">
+                        <a href="#">Home</a>
+                        <span>/</span>
+                        <span class="current">Programs</span>
+                    </nav>
+                    <h1 class="sub-hero-title version-text" data-mixed="Global Education Programs" data-ko="교육 프로그램" data-en="Education Programs">
+                        Global Education Programs
+                    </h1>
+                    <p class="sub-hero-desc version-text" data-mixed="Practice Makes Perfect! 실천으로 완성하는 글로벌 역량" data-ko="실천으로 완성하는 글로벌 역량 강화 프로그램" data-en="Practice Makes Perfect! Building global competencies">Practice Makes Perfect! 실천으로 완성하는 글로벌 역량</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 25: Particle Dots -->
+    <section class="demo-section" data-style="25">
+        <div class="section-info">
+            <div class="section-number">25</div>
+            <h2 class="section-title">Particle Dots</h2>
+            <p class="section-desc">로고 색상의 파티클이 떠다니는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(25, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(25, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(25, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-25">
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Services</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="서비스 Services" data-ko="서비스 안내" data-en="Our Services">
+                    서비스 Services
+                </h1>
+                <p class="sub-hero-desc version-text" data-mixed="지식 파트너십을 통한 글로벌 성공 역량 강화" data-ko="지식 파트너십을 통한 성공 역량 강화" data-en="Empowering global success through knowledge partnership">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 26: Color Blocks Stack -->
+    <section class="demo-section" data-style="26">
+        <div class="section-info">
+            <div class="section-number">26</div>
+            <h2 class="section-title">Color Blocks Stack</h2>
+            <p class="section-desc">로고 색상 블록이 순차적으로 쌓이는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(26, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(26, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(26, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-26">
+            <div class="color-blocks">
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+                <div class="block"></div>
+            </div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Courses</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="커리큘럼 Curriculum" data-ko="커리큘럼" data-en="Our Curriculum">
+                    커리큘럼 Curriculum
+                </h1>
+                <p class="sub-hero-desc version-text" data-mixed="체계적인 학습 경로로 글로벌 역량을 키워보세요" data-ko="체계적인 학습 경로를 제공합니다" data-en="Build your global competencies with structured learning paths">체계적인 학습 경로로 글로벌 역량을 키워보세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 27: Glowing Text (RECOMMENDED) -->
+    <section class="demo-section" data-style="27">
+        <div class="section-info">
+            <div class="section-number recommended">27</div>
+            <h2 class="section-title">Glowing Text <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">로고 색상이 빛나는 글로우 텍스트 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(27, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(27, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(27, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-27">
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Brand</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="<span class='glow-letter gl-e'>e</span><span class='glow-letter gl-p'>P</span><span class='glow-letter gl-l'>L</span><span class='glow-letter gl-a'>A</span><span class='glow-letter gl-n'>N</span> 브랜드" data-ko="브랜드 스토리" data-en="<span class='glow-letter gl-e'>e</span><span class='glow-letter gl-p'>P</span><span class='glow-letter gl-l'>L</span><span class='glow-letter gl-a'>A</span><span class='glow-letter gl-n'>N</span> Brand">
+                    <span class="glow-letter gl-e">e</span><span class="glow-letter gl-p">P</span><span class="glow-letter gl-l">L</span><span class="glow-letter gl-a">A</span><span class="glow-letter gl-n">N</span> 브랜드
+                </h1>
+                <p class="sub-hero-desc version-text" data-mixed="Practice Makes Perfect! 글로벌 교육의 새로운 기준" data-ko="글로벌 교육의 새로운 기준을 제시합니다" data-en="Practice Makes Perfect! Setting new standards in global education">Practice Makes Perfect! 글로벌 교육의 새로운 기준</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 28: Split Reveal -->
+    <section class="demo-section" data-style="28">
+        <div class="section-info">
+            <div class="section-number">28</div>
+            <h2 class="section-title">Split Reveal</h2>
+            <p class="section-desc">화면이 분리되며 나타나는 듀얼 컬러 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(28, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(28, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(28, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-28">
+            <div class="split-left">
+                <div class="sub-hero-content">
+                    <nav class="breadcrumb">
+                        <a href="#">Home</a>
+                        <span>/</span>
+                        <span class="current">Partners</span>
+                    </nav>
+                    <h1 class="sub-hero-title version-text" data-mixed="Global" data-ko="글로벌" data-en="Global">Global</h1>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="sub-hero-content">
+                    <nav class="breadcrumb">
+                        <span class="current">Partnership</span>
+                    </nav>
+                    <h1 class="sub-hero-title version-text" data-mixed="Partnership" data-ko="파트너십" data-en="Partnership">Partnership</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 29: Morphing Background -->
+    <section class="demo-section" data-style="29">
+        <div class="section-info">
+            <div class="section-number">29</div>
+            <h2 class="section-title">Morphing Background</h2>
+            <p class="section-desc">유기적으로 형태가 변하는 배경 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(29, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(29, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(29, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-29">
+            <div class="morph-bg"></div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">Vision</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="<span class='color-gold'>교육</span>의 미래 Vision" data-ko="비전과 미션" data-en="Our <span class='color-gold'>Vision</span>">
+                    <span class="color-gold">교육</span>의 미래 Vision
+                </h1>
+                <p class="sub-hero-desc version-text" data-mixed="ePLAN이 그리는 글로벌 교육의 미래 비전" data-ko="글로벌 교육의 미래 비전을 제시합니다" data-en="Shaping the future of global education">ePLAN이 그리는 글로벌 교육의 미래 비전</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 30: Horizontal Scroll Text -->
+    <section class="demo-section" data-style="30">
+        <div class="section-info">
+            <div class="section-number">30</div>
+            <h2 class="section-title">Horizontal Scroll Text</h2>
+            <p class="section-desc">배경에 텍스트가 흐르는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(30, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(30, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(30, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-30">
+            <div class="scroll-text-bg">ePLAN GLOBAL EDUCATION ePLAN GLOBAL EDUCATION ePLAN GLOBAL EDUCATION ePLAN GLOBAL EDUCATION</div>
+            <div class="sub-hero-content">
+                <nav class="breadcrumb">
+                    <a href="#">Home</a>
+                    <span>/</span>
+                    <span class="current">News</span>
+                </nav>
+                <h1 class="sub-hero-title version-text" data-mixed="<span class='color-e'>e</span><span class='color-p'>P</span><span class='color-l'>L</span><span class='color-a'>A</span><span class='color-n'>N</span> 새소식" data-ko="새소식" data-en="<span class='color-e'>e</span><span class='color-p'>P</span><span class='color-l'>L</span><span class='color-a'>A</span><span class='color-n'>N</span> News">
+                    <span class="color-e">e</span><span class="color-p">P</span><span class="color-l">L</span><span class="color-a">A</span><span class="color-n">N</span> 새소식
+                </h1>
+                <p class="sub-hero-desc version-text" data-mixed="ePLAN의 새로운 소식과 업데이트를 확인하세요" data-ko="새로운 소식과 업데이트를 확인하세요" data-en="Stay updated with our latest news and announcements">ePLAN의 새로운 소식과 업데이트를 확인하세요</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 31: Flip Card Reveal (RECOMMENDED) -->
+    <section class="demo-section" data-style="31">
+        <div class="section-info">
+            <div class="section-number recommended">31</div>
+            <h2 class="section-title">Flip Card Reveal <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">카드가 뒤집히며 나타나는 3D 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(31, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(31, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(31, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-31">
+            <div class="flip-card">
+                <div class="card-inner">
+                    <div class="logo-row">
+                        <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN Logo" class="logo-img">
+                    </div>
+                    <div class="sub-hero-content">
+                        <nav class="breadcrumb">
+                            <a href="#">Home</a>
+                            <span>/</span>
+                            <span class="current">Enterprise</span>
+                        </nav>
+                        <h1 class="sub-hero-title version-text" data-mixed="Enterprise Solutions" data-ko="기업 교육 솔루션" data-en="Enterprise Solutions">
+                            Enterprise Solutions
+                        </h1>
+                        <p class="sub-hero-desc version-text" data-mixed="글로벌 인재 양성을 위한 맞춤형 기업 솔루션" data-ko="글로벌 인재 양성을 위한 맞춤형 솔루션" data-en="Customized solutions for global talent development">글로벌 인재 양성을 위한 맞춤형 기업 솔루션</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style 32: Gradient Line Accent (RECOMMENDED) -->
+    <section class="demo-section" data-style="32">
+        <div class="section-info">
+            <div class="section-number recommended">32</div>
+            <h2 class="section-title">Gradient Line Accent <span class="recommended-badge">★ 추천</span></h2>
+            <p class="section-desc">상단에 로고 색상 그라데이션 라인이 흐르는 효과</p>
+            <div class="version-tabs">
+                <button class="version-tab active" onclick="showVersion(32, 'mixed')">한영 혼합</button>
+                <button class="version-tab" onclick="showVersion(32, 'ko')">한글</button>
+                <button class="version-tab" onclick="showVersion(32, 'en')">English</button>
+            </div>
+        </div>
+        <div class="sub-hero sub-hero-32">
+            <div class="gradient-line"></div>
+            <div class="sub-hero-inner">
+                <div class="logo-side">
+                    <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN Logo" class="logo-img">
+                </div>
+                <div class="content-side">
+                    <div class="sub-hero-content">
+                        <nav class="breadcrumb">
+                            <a href="#">Home</a>
+                            <span>/</span>
+                            <span class="current">Contact</span>
+                        </nav>
+                        <h1 class="sub-hero-title version-text" data-mixed="<span class='color-gold'>ePLAN</span>과 함께하기" data-ko="문의하기" data-en="Contact <span class='color-gold'>ePLAN</span>">
+                            <span class="color-gold">ePLAN</span>과 함께하기
+                        </h1>
+                        <p class="sub-hero-desc version-text" data-mixed="글로벌 교육 혁신의 여정에 함께해 주세요" data-ko="교육 혁신의 여정에 함께해 주세요" data-en="Join us on the journey of global education innovation">글로벌 교육 혁신의 여정에 함께해 주세요</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-header" style="padding: 40px 20px;">
+        <p style="opacity: 0.7;">ePLAN Sub Hero Styles Vol.3 — 10 Additional Variations (Style 23-32)</p>
+    </footer>
+
+    <script>
+        // Version switcher
+        function showVersion(styleNum, version) {
+            const section = document.querySelector(`[data-style="${styleNum}"]`);
+            const tabs = section.querySelectorAll('.version-tab');
+            const versionTexts = section.querySelectorAll('.version-text');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            versionTexts.forEach(el => {
+                const text = el.getAttribute(`data-${version}`);
+                if (text) {
+                    el.innerHTML = text;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

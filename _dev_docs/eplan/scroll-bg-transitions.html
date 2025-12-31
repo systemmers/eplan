@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 배경 전환 기법 10가지</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 90vw;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 15px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav a:hover {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Page Header */
+        .header {
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .header h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            margin-bottom: 16px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.7;
+            max-width: 500px;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Demo Section Base */
+        .demo {
+            position: relative;
+        }
+
+        .demo-header {
+            padding: 60px 40px 30px;
+            background: #f5f5f5;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .demo-header .number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 50%;
+            line-height: 36px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .demo-header h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .demo-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .demo-header code {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 12px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        /* Section Content */
+        .section-content {
+            text-align: center;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .section-content h3 {
+            font-size: clamp(24px, 4vw, 36px);
+            margin-bottom: 12px;
+        }
+
+        .section-content p {
+            font-size: 16px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        /* ====================================================
+           1. GRADIENT FADE - 그라데이션 페이드
+           ==================================================== */
+        .demo-1 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-1 .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.05s linear, color 0.05s linear;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* ====================================================
+           2. CLIP-PATH REVEAL - 클립패스 드러내기
+           ==================================================== */
+        .demo-2 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-2 .layer {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-2 .layer-black {
+            background: #0a0a0a;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .demo-2 .layer-white {
+            background: #fff;
+            color: #0a0a0a;
+            z-index: 2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            clip-path: inset(100% 0 0 0);
+        }
+
+        /* ====================================================
+           3. OPACITY CROSSFADE - 투명도 교차
+           ==================================================== */
+        .demo-3 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-3 .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        .demo-3 .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-3 .layer-black {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-3 .layer-white {
+            background: #fff;
+            color: #0a0a0a;
+            opacity: 0;
+        }
+
+        /* ====================================================
+           4. WAVE RISE - 웨이브 상승
+           ==================================================== */
+        .demo-4 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-4 .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background: #0a0a0a;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .demo-4 .wave-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: #fff;
+        }
+
+        .demo-4 .wave-svg {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+        }
+
+        .demo-4 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* ====================================================
+           5. CIRCLE EXPAND - 원형 확장
+           ==================================================== */
+        .demo-5 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-5 .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background: #0a0a0a;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .demo-5 .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .demo-5 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           6. SPLIT CURTAIN - 좌우 분리
+           ==================================================== */
+        .demo-6 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-6 .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .demo-6 .split-left,
+        .demo-6 .split-right {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-6 .split-left {
+            left: 0;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .demo-6 .split-right {
+            right: 0;
+            background: #fff;
+            color: #0a0a0a;
+        }
+
+        .demo-6 .center-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            opacity: 0;
+        }
+
+        /* ====================================================
+           7. CARD SLIDE UP - 카드 슬라이드
+           ==================================================== */
+        .demo-7 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-7 .base {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background: #0a0a0a;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-7 .card-overlay {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #fff;
+            color: #0a0a0a;
+            border-radius: 40px 40px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+        }
+
+        /* ====================================================
+           8. DIAGONAL WIPE - 대각선 와이프
+           ==================================================== */
+        .demo-8 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-8 .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background: #0a0a0a;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .demo-8 .diagonal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        }
+
+        .demo-8 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* ====================================================
+           9. BLINDS - 블라인드
+           ==================================================== */
+        .demo-9 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-9 .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .demo-9 .blinds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .demo-9 .blind {
+            flex: 1;
+            background: #fff;
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+
+        .demo-9 .content {
+            position: relative;
+            z-index: 10;
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+
+        /* ====================================================
+           10. PIXEL DISSOLVE - 픽셀 디졸브
+           ==================================================== */
+        .demo-10 .container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .demo-10 .sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background: #0a0a0a;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .demo-10 .pixels {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+        }
+
+        .demo-10 .pixel {
+            background: #fff;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .demo-10 .content-white {
+            position: absolute;
+            color: #0a0a0a;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* Summary */
+        .summary {
+            background: #f9f9f9;
+            padding: 80px 40px;
+        }
+
+        .summary h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+        }
+
+        .summary-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .summary-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .summary-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-card h4 span {
+            width: 24px;
+            height: 24px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .summary-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .summary-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .summary-card .tag {
+            padding: 3px 8px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .summary-card .tag.best {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            color: rgba(255,255,255,0.5);
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                top: 10px;
+                padding: 8px 12px;
+            }
+            .nav a {
+                font-size: 10px;
+                padding: 5px 8px;
+            }
+            .demo-header {
+                padding: 40px 20px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#demo1">그라데이션</a>
+        <a href="#demo2">클립패스</a>
+        <a href="#demo3">크로스페이드</a>
+        <a href="#demo4">웨이브</a>
+        <a href="#demo5">원형</a>
+        <a href="#demo6">분할</a>
+        <a href="#demo7">카드</a>
+        <a href="#demo8">대각선</a>
+        <a href="#demo9">블라인드</a>
+        <a href="#demo10">픽셀</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>스크롤 배경 전환 기법</h1>
+        <p>Black ↔ White 섹션 간 자연스러운 전환을 위한 10가지 스크롤 인터랙션</p>
+        <div class="scroll-hint">↓ 스크롤</div>
+    </header>
+
+    <!-- 1. Gradient Fade -->
+    <section class="demo demo-1" id="demo1">
+        <div class="demo-header">
+            <span class="number">1</span>
+            <h2>Gradient Fade</h2>
+            <p>스크롤 진행률에 따라 RGB 값을 점진적으로 변화</p>
+            <code>background: rgb(progress, progress, progress)</code>
+        </div>
+        <div class="container">
+            <div class="sticky" id="gradient-sticky">
+                <div class="section-content">
+                    <h3>가장 부드러운 전환</h3>
+                    <p>스크롤하면 배경색이 서서히 변합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Clip-Path Reveal -->
+    <section class="demo demo-2" id="demo2">
+        <div class="demo-header">
+            <span class="number">2</span>
+            <h2>Clip-Path Reveal</h2>
+            <p>clip-path: inset()으로 위에서 아래로 드러내기</p>
+            <code>clip-path: inset(progress% 0 0 0)</code>
+        </div>
+        <div class="container">
+            <div class="layer layer-black">
+                <div class="section-content">
+                    <h3>아래 레이어 (Black)</h3>
+                    <p>기본 배경입니다</p>
+                </div>
+            </div>
+            <div class="layer layer-white" id="clip-layer">
+                <div class="section-content">
+                    <h3>위 레이어 (White)</h3>
+                    <p>스크롤하면 드러납니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Opacity Crossfade -->
+    <section class="demo demo-3" id="demo3">
+        <div class="demo-header">
+            <span class="number">3</span>
+            <h2>Opacity Crossfade</h2>
+            <p>두 레이어의 투명도를 교차하여 페이드</p>
+            <code>opacity: progress (white layer)</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="layer layer-black">
+                    <div class="section-content">
+                        <h3>Black Layer</h3>
+                        <p>기본 레이어</p>
+                    </div>
+                </div>
+                <div class="layer layer-white" id="opacity-layer">
+                    <div class="section-content">
+                        <h3>White Layer</h3>
+                        <p>페이드인 됩니다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Wave Rise -->
+    <section class="demo demo-4" id="demo4">
+        <div class="demo-header">
+            <span class="number">4</span>
+            <h2>Wave Rise</h2>
+            <p>SVG 웨이브가 아래에서 위로 상승</p>
+            <code>height: progress% + SVG wave</code>
+        </div>
+        <div class="container">
+            <div class="sticky" id="wave-sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>웨이브 상승</h3>
+                    <p>물결 모양으로 전환됩니다</p>
+                </div>
+                <div class="wave-overlay" id="wave-overlay">
+                    <svg class="wave-svg" viewBox="0 0 1200 50" preserveAspectRatio="none">
+                        <path d="M0,50 C200,0 400,50 600,25 C800,0 1000,40 1200,10 L1200,50 L0,50 Z" fill="#fff"/>
+                    </svg>
+                </div>
+                <div class="content-white section-content" id="wave-content">
+                    <h3>새로운 섹션</h3>
+                    <p>웨이브로 드러났습니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Circle Expand -->
+    <section class="demo demo-5" id="demo5">
+        <div class="demo-header">
+            <span class="number">5</span>
+            <h2>Circle Expand</h2>
+            <p>중앙에서 원형이 확장되며 전환</p>
+            <code>width/height: progress * maxSize</code>
+        </div>
+        <div class="container">
+            <div class="sticky" id="circle-sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>원형 확장</h3>
+                    <p>중앙에서 커집니다</p>
+                </div>
+                <div class="circle" id="circle"></div>
+                <div class="content-white section-content" id="circle-content">
+                    <h3>새로운 섹션</h3>
+                    <p>원형으로 드러났습니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Split Curtain -->
+    <section class="demo demo-6" id="demo6">
+        <div class="demo-header">
+            <span class="number">6</span>
+            <h2>Split Curtain</h2>
+            <p>좌우로 화면이 갈라지며 전환</p>
+            <code>translateX: ±progress%</code>
+        </div>
+        <div class="container">
+            <div class="sticky">
+                <div class="split-left" id="split-left">
+                    <span style="font-size: 20px; font-weight: 700;">BLACK</span>
+                </div>
+                <div class="split-right" id="split-right">
+                    <span style="font-size: 20px; font-weight: 700;">WHITE</span>
+                </div>
+                <div class="center-content" id="split-center">
+                    <h3 style="font-size: 28px; color: #D4A84B;">REVEAL</h3>
+                    <p style="color: #666;">중앙이 드러납니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Card Slide Up -->
+    <section class="demo demo-7" id="demo7">
+        <div class="demo-header">
+            <span class="number">7</span>
+            <h2>Card Slide Up</h2>
+            <p>둥근 모서리 카드가 아래에서 올라옴</p>
+            <code>top: 100% - progress%</code>
+        </div>
+        <div class="container">
+            <div class="base">
+                <div class="section-content">
+                    <h3>기본 배경</h3>
+                    <p>카드가 올라옵니다</p>
+                </div>
+                <div class="card-overlay" id="card-overlay">
+                    <div class="section-content">
+                        <h3>카드 오버레이</h3>
+                        <p>앱 스타일 전환</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Diagonal Wipe -->
+    <section class="demo demo-8" id="demo8">
+        <div class="demo-header">
+            <span class="number">8</span>
+            <h2>Diagonal Wipe</h2>
+            <p>대각선으로 와이프되며 전환</p>
+            <code>clip-path: polygon(대각선)</code>
+        </div>
+        <div class="container">
+            <div class="sticky" id="diagonal-sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>대각선 와이프</h3>
+                    <p>비스듬히 전환됩니다</p>
+                </div>
+                <div class="diagonal-overlay" id="diagonal-overlay"></div>
+                <div class="content-white section-content" id="diagonal-content">
+                    <h3>새로운 섹션</h3>
+                    <p>대각선으로 드러났습니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Blinds -->
+    <section class="demo demo-9" id="demo9">
+        <div class="demo-header">
+            <span class="number">9</span>
+            <h2>Vertical Blinds</h2>
+            <p>세로 블라인드가 순차적으로 열림</p>
+            <code>scaleY: progress (staggered)</code>
+        </div>
+        <div class="container">
+            <div class="sticky" id="blinds-sticky">
+                <div class="blinds" id="blinds">
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                    <div class="blind"></div>
+                </div>
+                <div class="content section-content">
+                    <h3>블라인드 효과</h3>
+                    <p>순차적으로 열립니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Pixel Dissolve -->
+    <section class="demo demo-10" id="demo10">
+        <div class="demo-header">
+            <span class="number">10</span>
+            <h2>Pixel Dissolve</h2>
+            <p>픽셀 단위로 무작위 디졸브</p>
+            <code>opacity: random order by progress</code>
+        </div>
+        <div class="container">
+            <div class="sticky" id="pixel-sticky">
+                <div class="section-content" style="z-index: 5;">
+                    <h3>픽셀 디졸브</h3>
+                    <p>무작위로 전환됩니다</p>
+                </div>
+                <div class="pixels" id="pixels"></div>
+                <div class="content-white section-content" id="pixel-content">
+                    <h3>새로운 섹션</h3>
+                    <p>픽셀로 드러났습니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary -->
+    <section class="summary">
+        <h2>📋 기법 요약</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h4><span>1</span> Gradient Fade</h4>
+                <p>RGB 값을 스크롤에 따라 보간. 가장 부드럽고 자연스러운 전환.</p>
+                <div class="tags">
+                    <span class="tag best">★ 추천</span>
+                    <span class="tag">부드러움</span>
+                    <span class="tag">성능 좋음</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>2</span> Clip-Path Reveal</h4>
+                <p>clip-path: inset()으로 레이어를 점진적으로 노출.</p>
+                <div class="tags">
+                    <span class="tag best">★ 추천</span>
+                    <span class="tag">시각적</span>
+                    <span class="tag">모던</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>3</span> Opacity Crossfade</h4>
+                <p>두 레이어의 opacity를 교차. 가장 간단한 구현.</p>
+                <div class="tags">
+                    <span class="tag">간단함</span>
+                    <span class="tag">범용적</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>4</span> Wave Rise</h4>
+                <p>SVG 웨이브가 아래에서 상승하며 전환.</p>
+                <div class="tags">
+                    <span class="tag best">★ 추천</span>
+                    <span class="tag">자연스러움</span>
+                    <span class="tag">유기적</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>5</span> Circle Expand</h4>
+                <p>중앙에서 원형이 확장되며 전환. 시선 집중 효과.</p>
+                <div class="tags">
+                    <span class="tag">독특함</span>
+                    <span class="tag">포커스</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>6</span> Split Curtain</h4>
+                <p>좌우로 화면이 갈라지며 전환. 드라마틱한 효과.</p>
+                <div class="tags">
+                    <span class="tag">역동적</span>
+                    <span class="tag">드라마틱</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>7</span> Card Slide Up</h4>
+                <p>둥근 모서리 카드가 슬라이드업. 앱 스타일.</p>
+                <div class="tags">
+                    <span class="tag best">★ 추천</span>
+                    <span class="tag">앱 스타일</span>
+                    <span class="tag">친숙함</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>8</span> Diagonal Wipe</h4>
+                <p>대각선으로 와이프되며 전환. 영상 편집 스타일.</p>
+                <div class="tags">
+                    <span class="tag">영상 스타일</span>
+                    <span class="tag">역동적</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>9</span> Vertical Blinds</h4>
+                <p>세로 블라인드가 순차적으로 열림.</p>
+                <div class="tags">
+                    <span class="tag">독특함</span>
+                    <span class="tag">순차 애니메이션</span>
+                </div>
+            </div>
+            <div class="summary-card">
+                <h4><span>10</span> Pixel Dissolve</h4>
+                <p>픽셀 단위 무작위 디졸브. 레트로/디지털 느낌.</p>
+                <div class="tags">
+                    <span class="tag">레트로</span>
+                    <span class="tag">디지털</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        스크롤 배경 전환 기법 10가지 — Scroll-Based Background Transitions
+    </footer>
+
+    <script>
+        // Utility: Get scroll progress within a container
+        function getScrollProgress(container) {
+            const rect = container.getBoundingClientRect();
+            const height = container.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            const scrolled = -rect.top;
+            const total = height - viewportHeight;
+            return Math.max(0, Math.min(1, scrolled / total));
+        }
+
+        // Easing function
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        // 1. Gradient Fade
+        const gradientSticky = document.getElementById('gradient-sticky');
+        const gradientContainer = gradientSticky?.closest('.container');
+
+        function updateGradient() {
+            if (!gradientContainer) return;
+            const progress = getScrollProgress(gradientContainer);
+            const eased = easeInOutCubic(progress);
+            const value = Math.round(10 + 245 * eased);
+            gradientSticky.style.backgroundColor = `rgb(${value}, ${value}, ${value})`;
+            gradientSticky.style.color = progress > 0.5 ? '#0a0a0a' : '#fff';
+        }
+
+        // 2. Clip-Path Reveal
+        const clipLayer = document.getElementById('clip-layer');
+        const clipContainer = clipLayer?.closest('.container');
+
+        function updateClipPath() {
+            if (!clipContainer) return;
+            const progress = getScrollProgress(clipContainer);
+            const clipValue = 100 - progress * 100;
+            clipLayer.style.clipPath = `inset(${clipValue}% 0 0 0)`;
+        }
+
+        // 3. Opacity Crossfade
+        const opacityLayer = document.getElementById('opacity-layer');
+        const opacityContainer = opacityLayer?.closest('.container');
+
+        function updateOpacity() {
+            if (!opacityContainer) return;
+            const progress = getScrollProgress(opacityContainer);
+            opacityLayer.style.opacity = progress;
+        }
+
+        // 4. Wave Rise
+        const waveOverlay = document.getElementById('wave-overlay');
+        const waveContent = document.getElementById('wave-content');
+        const waveContainer = waveOverlay?.closest('.container');
+
+        function updateWave() {
+            if (!waveContainer) return;
+            const progress = getScrollProgress(waveContainer);
+            waveOverlay.style.height = `${progress * 100}%`;
+            waveContent.style.opacity = progress > 0.5 ? 1 : 0;
+        }
+
+        // 5. Circle Expand
+        const circle = document.getElementById('circle');
+        const circleContent = document.getElementById('circle-content');
+        const circleContainer = circle?.closest('.container');
+
+        function updateCircle() {
+            if (!circleContainer) return;
+            const progress = getScrollProgress(circleContainer);
+            const maxSize = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 2;
+            const size = progress * maxSize;
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+            circleContent.style.opacity = progress > 0.4 ? 1 : 0;
+        }
+
+        // 6. Split Curtain
+        const splitLeft = document.getElementById('split-left');
+        const splitRight = document.getElementById('split-right');
+        const splitCenter = document.getElementById('split-center');
+        const splitContainer = splitLeft?.closest('.container');
+
+        function updateSplit() {
+            if (!splitContainer) return;
+            const progress = getScrollProgress(splitContainer);
+            const offset = progress * 100;
+            splitLeft.style.transform = `translateX(-${offset}%)`;
+            splitRight.style.transform = `translateX(${offset}%)`;
+            splitCenter.style.opacity = progress > 0.3 ? 1 : 0;
+        }
+
+        // 7. Card Slide Up
+        const cardOverlay = document.getElementById('card-overlay');
+        const cardContainer = cardOverlay?.closest('.container');
+
+        function updateCard() {
+            if (!cardContainer) return;
+            const progress = getScrollProgress(cardContainer);
+            const topValue = 100 - progress * 100;
+            cardOverlay.style.top = `${topValue}%`;
+        }
+
+        // 8. Diagonal Wipe
+        const diagonalOverlay = document.getElementById('diagonal-overlay');
+        const diagonalContent = document.getElementById('diagonal-content');
+        const diagonalContainer = diagonalOverlay?.closest('.container');
+
+        function updateDiagonal() {
+            if (!diagonalContainer) return;
+            const progress = getScrollProgress(diagonalContainer);
+            const p = progress * 200;
+            diagonalOverlay.style.clipPath = `polygon(${p - 100}% 0, ${p}% 0, ${p}% 100%, ${p - 100}% 100%)`;
+            diagonalContent.style.opacity = progress > 0.5 ? 1 : 0;
+        }
+
+        // 9. Blinds
+        const blinds = document.querySelectorAll('.demo-9 .blind');
+        const blindsContainer = document.querySelector('.demo-9 .container');
+
+        function updateBlinds() {
+            if (!blindsContainer) return;
+            const progress = getScrollProgress(blindsContainer);
+            blinds.forEach((blind, i) => {
+                const delay = i * 0.08;
+                const blindProgress = Math.max(0, Math.min(1, (progress - delay) * 2));
+                blind.style.transform = `scaleY(${blindProgress})`;
+            });
+        }
+
+        // 10. Pixel Dissolve
+        const pixelsContainer = document.getElementById('pixels');
+        const pixelContent = document.getElementById('pixel-content');
+        const pixelContainer = pixelsContainer?.closest('.container');
+        let pixelOrder = [];
+
+        function initPixels() {
+            if (!pixelsContainer) return;
+            for (let i = 0; i < 100; i++) {
+                const pixel = document.createElement('div');
+                pixel.className = 'pixel';
+                pixelsContainer.appendChild(pixel);
+                pixelOrder.push(i);
+            }
+            // Shuffle order
+            for (let i = pixelOrder.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pixelOrder[i], pixelOrder[j]] = [pixelOrder[j], pixelOrder[i]];
+            }
+        }
+
+        function updatePixels() {
+            if (!pixelContainer) return;
+            const progress = getScrollProgress(pixelContainer);
+            const pixels = pixelsContainer.children;
+            const threshold = Math.floor(progress * 100);
+            
+            for (let i = 0; i < 100; i++) {
+                const orderIndex = pixelOrder.indexOf(i);
+                pixels[i].style.opacity = orderIndex < threshold ? 1 : 0;
+            }
+            pixelContent.style.opacity = progress > 0.7 ? 1 : 0;
+        }
+
+        // Initialize
+        initPixels();
+
+        // Scroll handler
+        function onScroll() {
+            requestAnimationFrame(() => {
+                updateGradient();
+                updateClipPath();
+                updateOpacity();
+                updateWave();
+                updateCircle();
+                updateSplit();
+                updateCard();
+                updateDiagonal();
+                updateBlinds();
+                updatePixels();
+            });
+        }
+
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('resize', onScroll);
+        onScroll();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePLAN Hero Styles Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Navigation */
+        .style-nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .style-nav h4 {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .style-nav a {
+            display: block;
+            padding: 8px 0;
+            color: #333;
+            text-decoration: none;
+            font-size: 13px;
+            border-bottom: 1px solid #eee;
+            transition: color 0.3s;
+        }
+
+        .style-nav a:last-child {
+            border-bottom: none;
+        }
+
+        .style-nav a:hover {
+            color: #667eea;
+        }
+
+        /* Section label */
+        .section-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            z-index: 10;
+        }
+
+        /* Base hero styles */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: clamp(14px, 2vw, 18px);
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .title {
+            font-size: clamp(32px, 6vw, 64px);
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .title .highlight {
+            color: inherit;
+        }
+
+        .description {
+            font-size: clamp(16px, 2.5vw, 22px);
+            margin-bottom: 16px;
+            opacity: 0.85;
+        }
+
+        .slogan {
+            font-size: clamp(18px, 3vw, 28px);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* ==================== STYLE 01: Gradient Wave ==================== */
+        .hero-01 {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-01 .subtitle {
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease 0.3s forwards;
+        }
+
+        .hero-01 .title {
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease 0.5s forwards;
+        }
+
+        .hero-01 .description {
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease 0.7s forwards;
+        }
+
+        .hero-01 .slogan {
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease 0.9s forwards;
+        }
+
+        .hero-01 .cta-btn {
+            background: white;
+            color: #764ba2;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease 1.1s forwards;
+        }
+
+        .hero-01 .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==================== STYLE 02: Typing Effect ==================== */
+        .hero-02 {
+            background: #0a0a0a;
+            color: #00ff88;
+        }
+
+        .hero-02 .subtitle {
+            color: #888;
+            font-family: 'Courier New', monospace;
+        }
+
+        .hero-02 .title {
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            border-right: 3px solid #00ff88;
+            white-space: nowrap;
+            animation: typing 2s steps(20) 0.5s forwards, blink 0.8s step-end infinite;
+            width: 0;
+            display: inline-block;
+        }
+
+        .hero-02 .description {
+            color: #aaa;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 2.5s forwards;
+        }
+
+        .hero-02 .slogan {
+            color: #00ff88;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 3s forwards;
+        }
+
+        .hero-02 .cta-btn {
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            background: transparent;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 3.5s forwards;
+        }
+
+        .hero-02 .cta-btn:hover {
+            background: #00ff88;
+            color: #0a0a0a;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* ==================== STYLE 03: Split Text ==================== */
+        .hero-03 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+
+        .hero-03 .title {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .hero-03 .title .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(50px) rotateX(-90deg);
+            animation: splitReveal 0.6s ease forwards;
+        }
+
+        .hero-03 .title .word:nth-child(1) { animation-delay: 0.1s; }
+        .hero-03 .title .word:nth-child(2) { animation-delay: 0.2s; }
+        .hero-03 .title .word:nth-child(3) { animation-delay: 0.3s; }
+        .hero-03 .title .word:nth-child(4) { animation-delay: 0.4s; color: #f093fb; }
+
+        .hero-03 .subtitle,
+        .hero-03 .description,
+        .hero-03 .slogan {
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease forwards;
+        }
+
+        .hero-03 .subtitle { animation-delay: 0s; }
+        .hero-03 .description { animation-delay: 0.6s; }
+        .hero-03 .slogan { animation-delay: 0.8s; color: #feca57; }
+
+        .hero-03 .cta-btn {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease 1s forwards;
+        }
+
+        @keyframes splitReveal {
+            to { opacity: 1; transform: translateY(0) rotateX(0); }
+        }
+
+        /* ==================== STYLE 04: Minimal Elegant ==================== */
+        .hero-04 {
+            background: #fafafa;
+            color: #222;
+        }
+
+        .hero-04::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-04 .subtitle {
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #888;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.3s forwards;
+        }
+
+        .hero-04 .title {
+            font-weight: 300;
+            font-size: clamp(36px, 7vw, 72px);
+            opacity: 0;
+            animation: scaleIn 1s ease 0.5s forwards;
+        }
+
+        .hero-04 .title .highlight {
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-04 .description {
+            color: #555;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.8s forwards;
+        }
+
+        .hero-04 .slogan {
+            color: #764ba2;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        .hero-04 .cta-btn {
+            background: #222;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
+        }
+
+        .hero-04 .cta-btn:hover {
+            background: #764ba2;
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ==================== STYLE 05: Particles Background ==================== */
+        .hero-05 {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+        }
+
+        .hero-05 .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-05 .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .hero-05 .subtitle {
+            opacity: 0;
+            animation: zoomFade 0.8s ease 0.3s forwards;
+        }
+
+        .hero-05 .title {
+            opacity: 0;
+            animation: zoomFade 0.8s ease 0.5s forwards;
+        }
+
+        .hero-05 .title .highlight {
+            color: #feca57;
+        }
+
+        .hero-05 .description {
+            opacity: 0;
+            animation: zoomFade 0.8s ease 0.7s forwards;
+        }
+
+        .hero-05 .slogan {
+            color: #feca57;
+            opacity: 0;
+            animation: zoomFade 0.8s ease 0.9s forwards;
+        }
+
+        .hero-05 .cta-btn {
+            background: linear-gradient(135deg, #feca57, #ff9f43);
+            color: #1a1a2e;
+            opacity: 0;
+            animation: zoomFade 0.8s ease 1.1s forwards;
+        }
+
+        @keyframes zoomFade {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ==================== STYLE 06: Glitch Effect ==================== */
+        .hero-06 {
+            background: #0a0a0a;
+            color: white;
+        }
+
+        .hero-06 .title {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        .hero-06 .title::before,
+        .hero-06 .title::after {
+            content: '글로벌 교육의 혁신, ePLAN';
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: #0a0a0a;
+        }
+
+        .hero-06 .title::before {
+            animation: glitch-1 0.3s infinite;
+            color: #ff00ff;
+            z-index: -1;
+        }
+
+        .hero-06 .title::after {
+            animation: glitch-2 0.3s infinite;
+            color: #00ffff;
+            z-index: -2;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+            98% { transform: translate(2px, 2px); }
+        }
+
+        @keyframes glitch-1 {
+            0%, 90%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+            92% { clip-path: inset(20% 0 60% 0); transform: translate(-3px); }
+            94% { clip-path: inset(50% 0 30% 0); transform: translate(3px); }
+            96% { clip-path: inset(70% 0 10% 0); transform: translate(-3px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 90%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+            91% { clip-path: inset(10% 0 80% 0); transform: translate(3px); }
+            93% { clip-path: inset(40% 0 40% 0); transform: translate(-3px); }
+            95% { clip-path: inset(80% 0 5% 0); transform: translate(3px); }
+        }
+
+        .hero-06 .slogan {
+            color: #ff00ff;
+        }
+
+        .hero-06 .cta-btn {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+
+        .hero-06 .cta-btn:hover {
+            background: white;
+            color: #0a0a0a;
+        }
+
+        /* ==================== STYLE 07: Morphing Blob ==================== */
+        .hero-07 {
+            background: #f8f9fa;
+            color: #1a1a2e;
+        }
+
+        .hero-07 .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 8s ease-in-out infinite;
+            filter: blur(40px);
+        }
+
+        .hero-07 .blob-1 { top: 10%; left: 10%; }
+        .hero-07 .blob-2 { 
+            bottom: 10%; 
+            right: 10%; 
+            animation-delay: -4s;
+            background: linear-gradient(135deg, rgba(245, 87, 108, 0.3), rgba(254, 202, 87, 0.3));
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+        }
+
+        .hero-07 .subtitle { opacity: 0; animation: slideFromLeft 0.8s ease 0.3s forwards; }
+        .hero-07 .title { opacity: 0; animation: slideFromRight 0.8s ease 0.5s forwards; }
+        .hero-07 .title .highlight { color: #764ba2; }
+        .hero-07 .description { opacity: 0; animation: slideFromLeft 0.8s ease 0.7s forwards; }
+        .hero-07 .slogan { color: #667eea; opacity: 0; animation: slideFromRight 0.8s ease 0.9s forwards; }
+
+        .hero-07 .cta-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease 1.1s forwards;
+        }
+
+        @keyframes slideFromLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideFromRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ==================== STYLE 08: Underline Reveal ==================== */
+        .hero-08 {
+            background: white;
+            color: #1a1a2e;
+        }
+
+        .hero-08 .line-deco {
+            position: absolute;
+            background: #667eea;
+            opacity: 0.1;
+        }
+
+        .hero-08 .line-1 {
+            width: 200px;
+            height: 3px;
+            top: 30%;
+            left: 10%;
+            animation: expandWidth 1s ease 0.5s forwards;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .hero-08 .line-2 {
+            width: 3px;
+            height: 200px;
+            top: 20%;
+            right: 15%;
+            animation: expandHeight 1s ease 0.7s forwards;
+            transform: scaleY(0);
+            transform-origin: top;
+        }
+
+        .hero-08 .line-3 {
+            width: 150px;
+            height: 3px;
+            bottom: 25%;
+            right: 20%;
+            animation: expandWidth 1s ease 0.9s forwards;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        @keyframes expandWidth {
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes expandHeight {
+            to { transform: scaleY(1); }
+        }
+
+        .hero-08 .subtitle {
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: #888;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.3s forwards;
+        }
+
+        .hero-08 .title {
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.5s forwards;
+        }
+
+        .hero-08 .title::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: underlineReveal 0.8s ease 1s forwards;
+        }
+
+        @keyframes underlineReveal {
+            to { transform: scaleX(1); }
+        }
+
+        .hero-08 .description { opacity: 0; animation: fadeIn 0.8s ease 0.7s forwards; }
+        .hero-08 .slogan { color: #764ba2; opacity: 0; animation: fadeIn 0.8s ease 0.9s forwards; }
+
+        .hero-08 .cta-btn {
+            background: #1a1a2e;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 1.1s forwards;
+        }
+
+        /* ==================== STYLE 09: 3D Perspective ==================== */
+        .hero-09 {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            perspective: 1000px;
+        }
+
+        .hero-09 .hero-content {
+            transform-style: preserve-3d;
+            animation: float3d 6s ease-in-out infinite;
+        }
+
+        @keyframes float3d {
+            0%, 100% { transform: rotateX(2deg) rotateY(-2deg); }
+            50% { transform: rotateX(-2deg) rotateY(2deg); }
+        }
+
+        .hero-09 .subtitle { opacity: 0; animation: flip3dIn 0.8s ease 0.3s forwards; }
+        .hero-09 .title { opacity: 0; animation: flip3dIn 0.8s ease 0.5s forwards; }
+        .hero-09 .title .highlight { color: #f1c40f; }
+        .hero-09 .description { opacity: 0; animation: flip3dIn 0.8s ease 0.7s forwards; }
+        .hero-09 .slogan { color: #f1c40f; opacity: 0; animation: flip3dIn 0.8s ease 0.9s forwards; }
+
+        .hero-09 .cta-btn {
+            background: #f1c40f;
+            color: #2c3e50;
+            opacity: 0;
+            animation: flip3dIn 0.8s ease 1.1s forwards;
+        }
+
+        @keyframes flip3dIn {
+            from { opacity: 0; transform: translateZ(-100px) rotateX(30deg); }
+            to { opacity: 1; transform: translateZ(0) rotateX(0); }
+        }
+
+        /* ==================== STYLE 10: Neon Glow ==================== */
+        .hero-10 {
+            background: #0a0a0a;
+            color: white;
+        }
+
+        .hero-10 .title {
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #ff00de,
+                0 0 40px #ff00de,
+                0 0 50px #ff00de;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            from {
+                text-shadow: 
+                    0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px #ff00de,
+                    0 0 40px #ff00de,
+                    0 0 50px #ff00de;
+            }
+            to {
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 15px #ff00de,
+                    0 0 20px #ff00de,
+                    0 0 25px #ff00de;
+            }
+        }
+
+        .hero-10 .slogan {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+        }
+
+        .hero-10 .cta-btn {
+            border: 2px solid #ff00de;
+            color: #ff00de;
+            background: transparent;
+            text-shadow: 0 0 10px #ff00de;
+            box-shadow: 0 0 20px rgba(255, 0, 222, 0.3);
+        }
+
+        .hero-10 .cta-btn:hover {
+            background: #ff00de;
+            color: white;
+            text-shadow: none;
+        }
+
+        /* ==================== STYLE 11: Geometric ==================== */
+        .hero-11 {
+            background: #f0f4f8;
+            color: #1a1a2e;
+        }
+
+        .hero-11 .geo-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: geoFloat 10s ease-in-out infinite;
+        }
+
+        .hero-11 .geo-1 {
+            width: 100px;
+            height: 100px;
+            background: #667eea;
+            top: 15%;
+            left: 10%;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        }
+
+        .hero-11 .geo-2 {
+            width: 80px;
+            height: 80px;
+            background: #764ba2;
+            top: 20%;
+            right: 15%;
+            border-radius: 50%;
+            animation-delay: -3s;
+        }
+
+        .hero-11 .geo-3 {
+            width: 120px;
+            height: 120px;
+            background: #f5576c;
+            bottom: 20%;
+            left: 15%;
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+            animation-delay: -5s;
+        }
+
+        .hero-11 .geo-4 {
+            width: 60px;
+            height: 60px;
+            background: #feca57;
+            bottom: 25%;
+            right: 20%;
+            animation-delay: -7s;
+        }
+
+        @keyframes geoFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .hero-11 .subtitle { opacity: 0; animation: popIn 0.6s ease 0.3s forwards; }
+        .hero-11 .title { opacity: 0; animation: popIn 0.6s ease 0.5s forwards; }
+        .hero-11 .title .highlight { color: #667eea; }
+        .hero-11 .description { opacity: 0; animation: popIn 0.6s ease 0.7s forwards; }
+        .hero-11 .slogan { color: #764ba2; opacity: 0; animation: popIn 0.6s ease 0.9s forwards; }
+
+        .hero-11 .cta-btn {
+            background: #667eea;
+            color: white;
+            opacity: 0;
+            animation: popIn 0.6s ease 1.1s forwards;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ==================== STYLE 12: Waves ==================== */
+        .hero-12 {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+
+        .hero-12 .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .hero-12 .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
+            background-size: 50% 100%;
+            animation: wave 10s linear infinite;
+        }
+
+        .hero-12 .wave:nth-child(2) {
+            bottom: 10px;
+            opacity: 0.5;
+            animation: wave 7s linear infinite reverse;
+        }
+
+        .hero-12 .wave:nth-child(3) {
+            bottom: 20px;
+            opacity: 0.3;
+            animation: wave 5s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero-12 .subtitle { opacity: 0; animation: riseUp 0.8s ease 0.3s forwards; }
+        .hero-12 .title { opacity: 0; animation: riseUp 0.8s ease 0.5s forwards; }
+        .hero-12 .title .highlight { color: #00d2ff; }
+        .hero-12 .description { opacity: 0; animation: riseUp 0.8s ease 0.7s forwards; }
+        .hero-12 .slogan { color: #00d2ff; opacity: 0; animation: riseUp 0.8s ease 0.9s forwards; }
+
+        .hero-12 .cta-btn {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            color: white;
+            opacity: 0;
+            animation: riseUp 0.8s ease 1.1s forwards;
+        }
+
+        @keyframes riseUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .style-nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero-02 .title {
+                white-space: normal;
+                border-right: none;
+                animation: fadeIn 1s ease 0.5s forwards;
+                width: auto;
+            }
+
+            .hero-07 .blob {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="style-nav">
+        <h4>Hero Styles</h4>
+        <a href="#style-01">01. Gradient Wave</a>
+        <a href="#style-02">02. Typing Effect</a>
+        <a href="#style-03">03. Split Text</a>
+        <a href="#style-04">04. Minimal Elegant</a>
+        <a href="#style-05">05. Particles</a>
+        <a href="#style-06">06. Glitch Effect</a>
+        <a href="#style-07">07. Morphing Blob</a>
+        <a href="#style-08">08. Underline Reveal</a>
+        <a href="#style-09">09. 3D Perspective</a>
+        <a href="#style-10">10. Neon Glow</a>
+        <a href="#style-11">11. Geometric</a>
+        <a href="#style-12">12. Ocean Waves</a>
+    </nav>
+
+    <!-- Style 01: Gradient Wave -->
+    <section class="hero hero-01" id="style-01">
+        <span class="section-label">Style 01 — Gradient Wave</span>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 02: Typing Effect -->
+    <section class="hero hero-02" id="style-02">
+        <span class="section-label">Style 02 — Typing Effect</span>
+        <div class="hero-content">
+            <p class="subtitle">> initializing ePLAN...</p>
+            <h1 class="title">글로벌 교육의 혁신, ePLAN</h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 03: Split Text -->
+    <section class="hero hero-03" id="style-03">
+        <span class="section-label">Style 03 — Split Text</span>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">
+                <span class="word">글로벌</span>
+                <span class="word">교육의</span>
+                <span class="word">혁신,</span>
+                <span class="word">ePLAN</span>
+            </h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 04: Minimal Elegant -->
+    <section class="hero hero-04" id="style-04">
+        <span class="section-label">Style 04 — Minimal Elegant</span>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 05: Particles -->
+    <section class="hero hero-05" id="style-05">
+        <span class="section-label">Style 05 — Particles Background</span>
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 06: Glitch Effect -->
+    <section class="hero hero-06" id="style-06">
+        <span class="section-label">Style 06 — Glitch Effect</span>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, ePLAN</h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 07: Morphing Blob -->
+    <section class="hero hero-07" id="style-07">
+        <span class="section-label">Style 07 — Morphing Blob</span>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 08: Underline Reveal -->
+    <section class="hero hero-08" id="style-08">
+        <span class="section-label">Style 08 — Underline Reveal</span>
+        <div class="line-deco line-1"></div>
+        <div class="line-deco line-2"></div>
+        <div class="line-deco line-3"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, ePLAN</h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 09: 3D Perspective -->
+    <section class="hero hero-09" id="style-09">
+        <span class="section-label">Style 09 — 3D Perspective</span>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 10: Neon Glow -->
+    <section class="hero hero-10" id="style-10">
+        <span class="section-label">Style 10 — Neon Glow</span>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, ePLAN</h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 11: Geometric -->
+    <section class="hero hero-11" id="style-11">
+        <span class="section-label">Style 11 — Geometric</span>
+        <div class="geo-shape geo-1"></div>
+        <div class="geo-shape geo-2"></div>
+        <div class="geo-shape geo-3"></div>
+        <div class="geo-shape geo-4"></div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <!-- Style 12: Ocean Waves -->
+    <section class="hero hero-12" id="style-12">
+        <span class="section-label">Style 12 — Ocean Waves</span>
+        <div class="wave-container">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <div class="hero-content">
+            <p class="subtitle">Global Education Innovation</p>
+            <h1 class="title">글로벌 교육의 혁신, <span class="highlight">ePLAN</span></h1>
+            <p class="description">지식 파트너십을 통한 글로벌 성공 역량 강화</p>
+            <p class="slogan">Practice Makes Perfect!</p>
+            <a href="#" class="cta-btn">시작하기</a>
+        </div>
+    </section>
+
+    <script>
+        // Generate particles for Style 05
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('.style-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

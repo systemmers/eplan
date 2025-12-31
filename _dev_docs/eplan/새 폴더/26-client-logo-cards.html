@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Client Logo Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .client-card {
+            transition: all 0.3s ease;
+        }
+        .client-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15) !important;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 26: Hero + Client Logo Cards
+    - 고객사 로고 그리드
+    - 신뢰도 강화 디자인
+    - 업종별 분류
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #00635C 0%, #004d47 100%);
+    color: white;
+">
+    <!-- Hero Content -->
+    <div style="
+        text-align: center;
+        padding: 4rem 2rem 2rem;
+    ">
+        <img src="../../app/static/images/eplan_logo_white.png" alt="ePlan" style="
+            height: 50px;
+            margin-bottom: 1.5rem;
+        ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        ">Trusted by <span style="color: #FFB74D;">2,000+</span> Companies</h1>
+        <p style="
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        ">Leading enterprises choose ePlan for their English training needs</p>
+    </div>
+
+    <!-- Client Logo Cards -->
+    <div style="
+        padding: 2rem 2rem 4rem;
+        max-width: 1100px;
+        margin: 0 auto;
+    ">
+        <!-- Category Tabs -->
+        <div style="
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        ">
+            <button style="
+                background: #FFB74D;
+                color: #1a1a1a;
+                border: none;
+                padding: 0.75rem 1.5rem;
+                border-radius: 30px;
+                font-weight: 600;
+                cursor: pointer;
+            ">All Industries</button>
+            <button style="
+                background: rgba(255,255,255,0.1);
+                color: white;
+                border: 1px solid rgba(255,255,255,0.2);
+                padding: 0.75rem 1.5rem;
+                border-radius: 30px;
+                font-weight: 600;
+                cursor: pointer;
+            ">Technology</button>
+            <button style="
+                background: rgba(255,255,255,0.1);
+                color: white;
+                border: 1px solid rgba(255,255,255,0.2);
+                padding: 0.75rem 1.5rem;
+                border-radius: 30px;
+                font-weight: 600;
+                cursor: pointer;
+            ">Finance</button>
+            <button style="
+                background: rgba(255,255,255,0.1);
+                color: white;
+                border: 1px solid rgba(255,255,255,0.2);
+                padding: 0.75rem 1.5rem;
+                border-radius: 30px;
+                font-weight: 600;
+                cursor: pointer;
+            ">Manufacturing</button>
+        </div>
+
+        <!-- Logo Grid -->
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        ">
+            <!-- Client Card 1 -->
+            <div class="client-card" style="
+                background: rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            ">
+                <div style="
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <div style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: white;
+                    ">SAMSUNG</div>
+                </div>
+                <span style="
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.1);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">Technology</span>
+            </div>
+
+            <!-- Client Card 2 -->
+            <div class="client-card" style="
+                background: rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            ">
+                <div style="
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <div style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: white;
+                    ">LG</div>
+                </div>
+                <span style="
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.1);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">Electronics</span>
+            </div>
+
+            <!-- Client Card 3 -->
+            <div class="client-card" style="
+                background: rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            ">
+                <div style="
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <div style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: white;
+                    ">HYUNDAI</div>
+                </div>
+                <span style="
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.1);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">Automotive</span>
+            </div>
+
+            <!-- Client Card 4 -->
+            <div class="client-card" style="
+                background: rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            ">
+                <div style="
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <div style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: white;
+                    ">SK</div>
+                </div>
+                <span style="
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.1);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">Conglomerate</span>
+            </div>
+
+            <!-- Client Card 5 -->
+            <div class="client-card" style="
+                background: rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            ">
+                <div style="
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <div style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: white;
+                    ">KB Bank</div>
+                </div>
+                <span style="
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.1);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">Finance</span>
+            </div>
+
+            <!-- Client Card 6 -->
+            <div class="client-card" style="
+                background: rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            ">
+                <div style="
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <div style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: white;
+                    ">POSCO</div>
+                </div>
+                <span style="
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.1);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">Steel</span>
+            </div>
+
+            <!-- Client Card 7 -->
+            <div class="client-card" style="
+                background: rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            ">
+                <div style="
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <div style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: white;
+                    ">NAVER</div>
+                </div>
+                <span style="
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.1);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">Technology</span>
+            </div>
+
+            <!-- Client Card 8 -->
+            <div class="client-card" style="
+                background: rgba(255,255,255,0.1);
+                border-radius: 16px;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            ">
+                <div style="
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
+                ">
+                    <div style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: white;
+                    ">KAKAO</div>
+                </div>
+                <span style="
+                    font-size: 0.75rem;
+                    background: rgba(255,255,255,0.1);
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 20px;
+                ">Technology</span>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div style="
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        ">
+            <div style="text-align: center;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: #FFB74D;">2,000+</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">Corporate Clients</div>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: #FFB74D;">98%</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">Retention Rate</div>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: #FFB74D;">15+</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;">Industries Served</div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <button style="
+                background: #FFB74D;
+                color: #1a1a1a;
+                border: none;
+                padding: 1rem 2.5rem;
+                border-radius: 12px;
+                font-size: 1rem;
+                font-weight: 700;
+                cursor: pointer;
+            ">Join Our Clients</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

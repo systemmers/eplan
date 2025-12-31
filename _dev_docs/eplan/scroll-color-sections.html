@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Color Transition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            transition: background-color 0.6s ease;
+            background-color: #1a1a2e;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .section-number {
+            font-size: clamp(80px, 15vw, 200px);
+            font-weight: 800;
+            opacity: 0.1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .section.active .section-number {
+            opacity: 0.15;
+        }
+
+        .content {
+            text-align: center;
+            z-index: 1;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section.active .content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        /* Section specific colors */
+        .section[data-color="midnight"] {
+            color: #edf2f4;
+        }
+        .section[data-color="midnight"] .section-number {
+            color: #ffffff;
+        }
+
+        .section[data-color="coral"] {
+            color: #ffffff;
+        }
+        .section[data-color="coral"] .section-number {
+            color: #ffffff;
+        }
+
+        .section[data-color="forest"] {
+            color: #ffffff;
+        }
+        .section[data-color="forest"] .section-number {
+            color: #ffffff;
+        }
+
+        .section[data-color="ocean"] {
+            color: #ffffff;
+        }
+        .section[data-color="ocean"] .section-number {
+            color: #ffffff;
+        }
+
+        .section[data-color="sunset"] {
+            color: #1a1a2e;
+        }
+        .section[data-color="sunset"] .section-number {
+            color: #1a1a2e;
+        }
+
+        .section[data-color="lavender"] {
+            color: #ffffff;
+        }
+        .section[data-color="lavender"] .section-number {
+            color: #ffffff;
+        }
+
+        /* Navigation dots */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-dot:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .nav-dot.active {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.3);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            z-index: 100;
+        }
+
+        .scroll-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .scroll-indicator span {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            color: #edf2f4;
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid #edf2f4;
+            border-bottom: 2px solid #edf2f4;
+            transform: rotate(45deg);
+            animation: bounce 2s infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: rotate(45deg) translateY(0);
+            }
+            40% {
+                transform: rotate(45deg) translateY(10px);
+            }
+            60% {
+                transform: rotate(45deg) translateY(5px);
+            }
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .decoration-1 {
+            width: 300px;
+            height: 300px;
+            background: currentColor;
+            top: 10%;
+            left: -100px;
+        }
+
+        .decoration-2 {
+            width: 200px;
+            height: 200px;
+            background: currentColor;
+            bottom: 15%;
+            right: -50px;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .nav-dots {
+                right: 15px;
+            }
+
+            .section {
+                padding: 40px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <div class="scroll-indicator" id="scrollIndicator">
+        <span>Scroll</span>
+        <div class="scroll-arrow"></div>
+    </div>
+
+    <section class="section" data-color="midnight" data-bg="#1a1a2e">
+        <div class="section-number">01</div>
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="content">
+            <h2>미드나잇 블루</h2>
+            <p>깊은 밤하늘을 닮은 고요한 색상입니다. 집중력과 창의성을 높여주는 색으로 알려져 있습니다.</p>
+        </div>
+    </section>
+
+    <section class="section" data-color="coral" data-bg="#e84545">
+        <div class="section-number">02</div>
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="content">
+            <h2>코랄 레드</h2>
+            <p>따뜻하고 활기찬 에너지를 전달하는 색상입니다. 열정과 용기를 상징하며 강렬한 인상을 남깁니다.</p>
+        </div>
+    </section>
+
+    <section class="section" data-color="forest" data-bg="#2d6a4f">
+        <div class="section-number">03</div>
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="content">
+            <h2>포레스트 그린</h2>
+            <p>자연의 평화로움을 담은 색상입니다. 안정감과 균형을 주며 마음을 차분하게 만들어 줍니다.</p>
+        </div>
+    </section>
+
+    <section class="section" data-color="ocean" data-bg="#0077b6">
+        <div class="section-number">04</div>
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="content">
+            <h2>오션 블루</h2>
+            <p>넓은 바다의 깊이를 표현한 색상입니다. 신뢰와 지혜를 상징하며 시원한 느낌을 전달합니다.</p>
+        </div>
+    </section>
+
+    <section class="section" data-color="sunset" data-bg="#ffd166">
+        <div class="section-number">05</div>
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="content">
+            <h2>선셋 옐로우</h2>
+            <p>황금빛 석양을 닮은 색상입니다. 희망과 낙관을 나타내며 따뜻한 행복감을 선사합니다.</p>
+        </div>
+    </section>
+
+    <section class="section" data-color="lavender" data-bg="#6c5ce7">
+        <div class="section-number">06</div>
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="content">
+            <h2>라벤더 퍼플</h2>
+            <p>우아하고 신비로운 분위기의 색상입니다. 상상력과 영감을 자극하며 창조적인 에너지를 불러일으킵니다.</p>
+        </div>
+    </section>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const navDotsContainer = document.getElementById('navDots');
+        const progressBar = document.getElementById('progressBar');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+
+        // Create navigation dots
+        sections.forEach((section, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('nav-dot');
+            dot.addEventListener('click', () => {
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+            navDotsContainer.appendChild(dot);
+        });
+
+        const navDots = document.querySelectorAll('.nav-dot');
+
+        // Intersection Observer for section detection
+        const observerOptions = {
+            root: null,
+            rootMargin: '-40% 0px -40% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const section = entry.target;
+                    const bgColor = section.dataset.bg;
+                    const index = Array.from(sections).indexOf(section);
+
+                    // Update background color
+                    document.body.style.backgroundColor = bgColor;
+
+                    // Update active section
+                    sections.forEach(s => s.classList.remove('active'));
+                    section.classList.add('active');
+
+                    // Update nav dots
+                    navDots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Activate first section on load
+        sections[0].classList.add('active');
+        navDots[0].classList.add('active');
+
+        // Progress bar and scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+
+            progressBar.style.width = scrollPercent + '%';
+
+            // Hide scroll indicator after scrolling
+            if (scrollTop > 100) {
+                scrollIndicator.classList.add('hidden');
+            } else {
+                scrollIndicator.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

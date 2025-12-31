@@ -8,11 +8,243 @@
 {% endblock %}
 
 {% block content %}
-<!-- Page Header -->
+<!-- Page Header
 <section class="page-header page-header--curriculum">
     <div class="container">
         <h1>CURRICULUM ROADMAP</h1>
         <p>Level-based textbook structure and learning path</p>
+    </div>
+</section> -->
+
+<!-- Hero Parallax Section -->
+<section class="hero-parallax" id="heroParallax">
+    <div class="hero-parallax__header">
+        <h1>체계적인 레벨별 학습 과정<br>CURRICULUM ROADMAP</h1>
+        <p>초급부터 고급까지, 단계별 학습 목표와 교재 구성을 한눈에 확인하세요. 14개 언어를 지원하는 9레벨 커리큘럼으로 여러분의 학습 여정을 안내합니다.</p>
+    </div>
+
+    <div class="hero-parallax__container" id="motionContainer">
+        <!-- Row 1 (reverse) -->
+        <div class="parallax-row parallax-row--reverse" id="row1">
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/sukusukuJapanese1_cover.png') }}" alt="스꾸스꾸 일본어 1" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">스꾸스꾸 일본어 1</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/sukusukuJapanese2_cover.png') }}" alt="스꾸스꾸 일본어 2" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">스꾸스꾸 일본어 2</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/sukusukuJapanese3_cover.png') }}" alt="스꾸스꾸 일본어 3" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">스꾸스꾸 일본어 3</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/travelEnglish100DaysMiracle_cover.png') }}" alt="여행영어 100일의 기적" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">여행영어 100일의 기적</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/americanEnglishFile1_cover.png') }}" alt="American English File 1" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">American English File 1</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/americanEnglishFile4_3rdEdition_cover.png') }}" alt="American English File 4" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">American English File 4</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/americanEnglishFile5_cover.png') }}" alt="American English File 5" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">American English File 5</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/stretchStarter_cover.png') }}" alt="Stretch Starter" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">Stretch Starter</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/stretch1_cover.png') }}" alt="Stretch 1" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">Stretch 1</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/stretch2_cover.png') }}" alt="Stretch 2" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">Stretch 2</h2>
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="parallax-row" id="row2">
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/stretch3_cover.png') }}" alt="Stretch 3" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">Stretch 3</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/newConnection1_cover.png') }}" alt="New Connection 1" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">New Connection 1</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/newConnection2_cover.png') }}" alt="New Connection 2" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">New Connection 2</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/newConnection3_cover.png') }}" alt="New Connection 3" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">New Connection 3</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/smartChoice1_cover.png') }}" alt="Smart Choice 1" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">Smart Choice 1</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/smartChoice2_cover.png') }}" alt="Smart Choice 2" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">Smart Choice 2</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/jazzEnglish1_cover.png') }}" alt="Jazz English 1" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">Jazz English 1</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/jazzEnglish2_cover.png') }}" alt="Jazz English 2" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">Jazz English 2</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/beginAgainVol1_cover.png') }}" alt="비긴어게인 VOL.1" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">비긴어게인 VOL.1</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/beginAgainVol2_cover.png') }}" alt="비긴어게인 VOL.2" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">비긴어게인 VOL.2</h2>
+            </div>
+        </div>
+
+        <!-- Row 3 (reverse) -->
+        <div class="parallax-row parallax-row--reverse" id="row3">
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/sukusukuJapanese4_cover.png') }}" alt="스꾸스꾸 일본어 4" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">스꾸스꾸 일본어 4</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/sukusukuJapaneseBasic1_cover.png') }}" alt="스꾸스꾸 일본어 기초완성 상" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">스꾸스꾸 일본어 기초완성 상</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/sukusukuJapaneseBasic2_cover.png') }}" alt="스꾸스꾸 일본어 기초완성 하" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">스꾸스꾸 일본어 기초완성 하</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/newDynamicJapanese1_cover.png') }}" alt="New 다이나믹 일본어 1" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">New 다이나믹 일본어 1</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/newDynamicJapanese2_cover.png') }}" alt="New 다이나믹 일본어 2" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">New 다이나믹 일본어 2</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/newDynamicJapanese3_cover.png') }}" alt="New 다이나믹 일본어 3" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">New 다이나믹 일본어 3</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/newDynamicJapanese4_cover.png') }}" alt="New 다이나믹 일본어 4" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">New 다이나믹 일본어 4</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/freeTalkingJapaneseMastery_cover.png') }}" alt="프리토킹 일본어회화 완전정복" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">프리토킹 일본어회화 완전정복</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/deliciousTravelJapanese_cover.png') }}" alt="맛있는 여행 일본어" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">맛있는 여행 일본어</h2>
+            </div>
+            <div class="parallax-card">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='images/books/liveLocalBusinessJapanese_cover.png') }}" alt="생생 체험 현지 비즈니스 일본어" class="parallax-card__image" loading="lazy">
+                </a>
+                <div class="parallax-card__overlay"></div>
+                <h2 class="parallax-card__title">생생 체험 현지 비즈니스 일본어</h2>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -183,4 +415,7 @@
     }
 })();
 </script>
+
+<!-- Hero Parallax Animation -->
+<script src="{{ url_for('static', filename='js/parallax.js') }}"></script>
 {% endblock %}

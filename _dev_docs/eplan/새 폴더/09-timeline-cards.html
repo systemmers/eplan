@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero + Timeline Cards - ePlan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+<!--
+    STYLE 09: Hero + Timeline/Process Cards
+    - 프로세스/단계 카드
+    - 학습 여정 시각화
+    - 순차적 진행 강조
+-->
+<section style="
+    position: relative;
+    min-height: 100vh;
+    background: #FAFAFA;
+">
+    <!-- Hero Content -->
+    <div style="
+        text-align: center;
+        padding: 5rem 2rem 3rem;
+    ">
+        <img src="../../app/static/images/eplan_logo.png" alt="ePlan" style="
+            height: 60px;
+            margin-bottom: 2rem;
+        ">
+        <h1 style="
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #263238;
+            margin-bottom: 1rem;
+        ">Your Learning <span style="color: #00635C;">Journey</span></h1>
+        <p style="
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #607D8B;
+            max-width: 600px;
+            margin: 0 auto;
+        ">Simple steps to achieve your English learning goals</p>
+    </div>
+
+    <!-- Timeline Cards -->
+    <div style="
+        padding: 2rem 2rem 5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+    ">
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        ">
+            <!-- Connecting Line -->
+            <div style="
+                position: absolute;
+                top: 60px;
+                left: 12.5%;
+                right: 12.5%;
+                height: 3px;
+                background: linear-gradient(90deg, #00635C, #63A19B, #FFB74D, #00635C);
+                z-index: 0;
+            "></div>
+
+            <!-- Step 1 -->
+            <div style="
+                position: relative;
+                z-index: 1;
+                text-align: center;
+            ">
+                <div style="
+                    width: 120px;
+                    height: 120px;
+                    background: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                    box-shadow: 0 10px 40px rgba(0,99,92,0.2);
+                    border: 4px solid #00635C;
+                ">
+                    <div style="text-align: center;">
+                        <span style="
+                            font-family: 'Poppins', sans-serif;
+                            font-size: 2rem;
+                            font-weight: 800;
+                            color: #00635C;
+                        ">01</span>
+                    </div>
+                </div>
+                <div style="
+                    background: white;
+                    border-radius: 16px;
+                    padding: 2rem;
+                    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                ">
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        color: #263238;
+                        margin-bottom: 0.75rem;
+                    ">Consultation</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #607D8B;
+                        line-height: 1.6;
+                    ">Free assessment to understand your level and goals</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div style="
+                position: relative;
+                z-index: 1;
+                text-align: center;
+            ">
+                <div style="
+                    width: 120px;
+                    height: 120px;
+                    background: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                    box-shadow: 0 10px 40px rgba(99,161,155,0.2);
+                    border: 4px solid #63A19B;
+                ">
+                    <div style="text-align: center;">
+                        <span style="
+                            font-family: 'Poppins', sans-serif;
+                            font-size: 2rem;
+                            font-weight: 800;
+                            color: #63A19B;
+                        ">02</span>
+                    </div>
+                </div>
+                <div style="
+                    background: white;
+                    border-radius: 16px;
+                    padding: 2rem;
+                    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                ">
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        color: #263238;
+                        margin-bottom: 0.75rem;
+                    ">Customization</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #607D8B;
+                        line-height: 1.6;
+                    ">Personalized curriculum designed for you</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div style="
+                position: relative;
+                z-index: 1;
+                text-align: center;
+            ">
+                <div style="
+                    width: 120px;
+                    height: 120px;
+                    background: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                    box-shadow: 0 10px 40px rgba(255,183,77,0.2);
+                    border: 4px solid #FFB74D;
+                ">
+                    <div style="text-align: center;">
+                        <span style="
+                            font-family: 'Poppins', sans-serif;
+                            font-size: 2rem;
+                            font-weight: 800;
+                            color: #FFB74D;
+                        ">03</span>
+                    </div>
+                </div>
+                <div style="
+                    background: white;
+                    border-radius: 16px;
+                    padding: 2rem;
+                    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+                ">
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        color: #263238;
+                        margin-bottom: 0.75rem;
+                    ">Practice</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        color: #607D8B;
+                        line-height: 1.6;
+                    ">Regular lessons with native instructors</p>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div style="
+                position: relative;
+                z-index: 1;
+                text-align: center;
+            ">
+                <div style="
+                    width: 120px;
+                    height: 120px;
+                    background: linear-gradient(135deg, #00635C, #004d47);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 1.5rem;
+                    box-shadow: 0 10px 40px rgba(0,99,92,0.3);
+                ">
+                    <div style="text-align: center;">
+                        <span style="
+                            font-family: 'Poppins', sans-serif;
+                            font-size: 2rem;
+                            font-weight: 800;
+                            color: white;
+                        ">04</span>
+                    </div>
+                </div>
+                <div style="
+                    background: linear-gradient(135deg, #00635C, #004d47);
+                    border-radius: 16px;
+                    padding: 2rem;
+                    color: white;
+                ">
+                    <h3 style="
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        margin-bottom: 0.75rem;
+                    ">Success!</h3>
+                    <p style="
+                        font-size: 0.9rem;
+                        opacity: 0.9;
+                        line-height: 1.6;
+                    ">Achieve your global communication goals</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="
+            text-align: center;
+            margin-top: 4rem;
+        ">
+            <button style="
+                background: linear-gradient(135deg, #00635C, #004d47);
+                color: white;
+                border: none;
+                padding: 1.25rem 3rem;
+                border-radius: 12px;
+                font-size: 1.125rem;
+                font-weight: 600;
+                cursor: pointer;
+            ">Start Your Journey</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

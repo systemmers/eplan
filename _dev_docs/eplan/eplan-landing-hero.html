@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePLAN - 글로벌 교육의 혁신</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --gold-dark: #B8923E;
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --e-yellow: #F5B820;
+            --p-green: #2E8B57;
+            --l-red: #E53935;
+            --a-blue: #1E88E5;
+            --n-red: #E53935;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--black);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ==================== DYNAMIC ISLAND NAVIGATION ==================== */
+        .nav-wrapper {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .dynamic-nav {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            transition: gap 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dynamic-nav.expanded {
+            gap: 4px;
+        }
+
+        .nav-logo-pill {
+            background: var(--black-light);
+            border-radius: 50px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(212, 168, 75, 0.2);
+            backdrop-filter: blur(20px);
+        }
+
+        .nav-logo-pill:hover {
+            border-color: rgba(212, 168, 75, 0.5);
+        }
+
+        .nav-logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .dynamic-nav.expanded .nav-logo-img {
+            transform: rotate(360deg);
+        }
+
+        .nav-logo-text {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo-text .color-e { color: var(--e-yellow); }
+        .nav-logo-text .color-p { color: var(--p-green); }
+        .nav-logo-text .color-l { color: var(--l-red); }
+        .nav-logo-text .color-a { color: var(--a-blue); }
+        .nav-logo-text .color-n { color: var(--l-red); }
+
+        .nav-menu-pill {
+            background: var(--black-light);
+            border-radius: 50px;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            width: 0;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(212, 168, 75, 0.2);
+            backdrop-filter: blur(20px);
+        }
+
+        .dynamic-nav.expanded .nav-menu-pill {
+            width: 420px;
+            opacity: 1;
+            padding: 10px 20px;
+        }
+
+        .nav-item {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: white;
+            background: rgba(212, 168, 75, 0.2);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .nav-cta:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: var(--black);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Effects */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .bg-gradient {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+        }
+
+        .bg-gradient-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--gold);
+            top: -200px;
+            right: -100px;
+            animation: floatGradient 15s ease-in-out infinite;
+        }
+
+        .bg-gradient-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--a-blue);
+            bottom: -150px;
+            left: -100px;
+            animation: floatGradient 12s ease-in-out infinite reverse;
+        }
+
+        .bg-gradient-3 {
+            width: 400px;
+            height: 400px;
+            background: var(--p-green);
+            top: 40%;
+            left: 60%;
+            animation: floatGradient 18s ease-in-out infinite;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatGradient {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 10px) scale(1.05); }
+        }
+
+        /* Bee Stripe Pattern */
+        .bee-stripes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                135deg,
+                transparent,
+                transparent 80px,
+                rgba(212, 168, 75, 0.03) 80px,
+                rgba(212, 168, 75, 0.03) 160px
+            );
+            animation: stripeShift 30s linear infinite;
+        }
+
+        @keyframes stripeShift {
+            0% { background-position: 0 0; }
+            100% { background-position: 400px 400px; }
+        }
+
+        /* Gold Shine Effect */
+        .gold-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 168, 75, 0.08), transparent);
+            animation: shineMove 6s ease-in-out infinite;
+        }
+
+        @keyframes shineMove {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+        }
+
+        /* Logo Animation */
+        .hero-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: scale(0.5) rotate(-180deg);
+            animation: logoReveal 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+            filter: drop-shadow(0 20px 40px rgba(212, 168, 75, 0.3));
+        }
+
+        @keyframes logoReveal {
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        /* Subtitle */
+        .hero-subtitle {
+            font-size: clamp(14px, 2vw, 18px);
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Main Title */
+        .hero-title {
+            font-size: clamp(36px, 7vw, 80px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-title .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-title .line-inner {
+            display: block;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: lineReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .hero-title .line:nth-child(1) .line-inner { animation-delay: 0.8s; }
+        .hero-title .line:nth-child(2) .line-inner { animation-delay: 0.9s; }
+
+        @keyframes lineReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title .eplan-text {
+            display: inline-block;
+        }
+
+        .hero-title .eplan-letter {
+            display: inline-block;
+            animation: letterPulse 3s ease-in-out infinite;
+        }
+
+        .hero-title .eplan-letter.el-e { color: var(--e-yellow); animation-delay: 0s; }
+        .hero-title .eplan-letter.el-p { color: var(--p-green); animation-delay: 0.1s; }
+        .hero-title .eplan-letter.el-l { color: var(--l-red); animation-delay: 0.2s; }
+        .hero-title .eplan-letter.el-a { color: var(--a-blue); animation-delay: 0.3s; }
+        .hero-title .eplan-letter.el-n { color: var(--l-red); animation-delay: 0.4s; }
+
+        @keyframes letterPulse {
+            0%, 100% { filter: brightness(1); transform: translateY(0); }
+            50% { filter: brightness(1.3); transform: translateY(-3px); }
+        }
+
+        /* Description */
+        .hero-desc {
+            font-size: clamp(16px, 2.5vw, 22px);
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1.1s forwards;
+        }
+
+        /* Slogan */
+        .hero-slogan {
+            font-size: clamp(20px, 3vw, 32px);
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1.3s forwards;
+        }
+
+        .hero-slogan .gold {
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212, 168, 75, 0.5);
+        }
+
+        /* CTA Buttons */
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1.5s forwards;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            box-shadow: 0 10px 40px rgba(212, 168, 75, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(212, 168, 75, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1.8s forwards;
+        }
+
+        .scroll-text {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .scroll-mouse {
+            width: 24px;
+            height: 40px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-mouse::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: scrollAnim 1.5s ease-in-out infinite;
+        }
+
+        @keyframes scrollAnim {
+            0%, 100% { top: 8px; opacity: 1; }
+            50% { top: 20px; opacity: 0.3; }
+        }
+
+        /* ==================== FEATURES SECTION ==================== */
+        .features {
+            padding: 120px 40px;
+            background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-label.visible {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-title.visible {
+            animation: fadeUp 0.6s ease 0.1s forwards;
+        }
+
+        .section-desc {
+            font-size: 18px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-desc.visible {
+            animation: fadeUp 0.6s ease 0.2s forwards;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .feature-card.visible {
+            animation: cardReveal 0.6s ease forwards;
+        }
+
+        .feature-card:nth-child(1).visible { animation-delay: 0.1s; }
+        .feature-card:nth-child(2).visible { animation-delay: 0.2s; }
+        .feature-card:nth-child(3).visible { animation-delay: 0.3s; }
+
+        @keyframes cardReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-card:hover {
+            background: rgba(212, 168, 75, 0.05);
+            border-color: rgba(212, 168, 75, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+
+        .feature-card:nth-child(1) .feature-icon {
+            background: linear-gradient(135deg, rgba(245, 184, 32, 0.2), rgba(245, 184, 32, 0.05));
+            color: var(--e-yellow);
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.2), rgba(46, 139, 87, 0.05));
+            color: var(--p-green);
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.2), rgba(30, 136, 229, 0.05));
+            color: var(--a-blue);
+        }
+
+        .feature-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+
+        /* ==================== STATS SECTION ==================== */
+        .stats {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--black);
+        }
+
+        .stat-number {
+            font-size: clamp(40px, 8vw, 64px);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta-section {
+            padding: 120px 40px;
+            text-align: center;
+            background: var(--black-light);
+            position: relative;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .cta-title.visible {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .cta-desc {
+            font-size: 18px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .cta-desc.visible {
+            animation: fadeUp 0.6s ease 0.1s forwards;
+        }
+
+        .cta-buttons {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .cta-buttons.visible {
+            animation: fadeUp 0.6s ease 0.2s forwards;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            padding: 60px 40px;
+            background: var(--black);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo img {
+            width: 40px;
+            height: auto;
+        }
+
+        .footer-logo-text {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                top: 15px;
+            }
+
+            .dynamic-nav.expanded .nav-menu-pill {
+                width: 280px;
+            }
+
+            .nav-item {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-logo {
+                width: 80px;
+                margin-bottom: 30px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            .features {
+                padding: 80px 20px;
+            }
+
+            .stats {
+                padding: 60px 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-wrapper">
+        <div class="dynamic-nav" id="dynamicNav">
+            <div class="nav-logo-pill" onclick="toggleNav()">
+                <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN" class="nav-logo-img">
+                <span class="nav-logo-text">
+                    <span class="color-e">e</span><span class="color-p">P</span><span class="color-l">L</span><span class="color-a">A</span><span class="color-n">N</span>
+                </span>
+            </div>
+            <div class="nav-menu-pill">
+                <a href="#features" class="nav-item">프로그램</a>
+                <a href="#" class="nav-item">소개</a>
+                <a href="#" class="nav-item">파트너</a>
+                <a href="#contact" class="nav-item nav-cta">문의하기</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="bg-gradient bg-gradient-1"></div>
+            <div class="bg-gradient bg-gradient-2"></div>
+            <div class="bg-gradient bg-gradient-3"></div>
+            <div class="bee-stripes"></div>
+            <div class="gold-shine"></div>
+        </div>
+
+        <div class="hero-content">
+            <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN Logo" class="hero-logo">
+            
+            <p class="hero-subtitle">Global Education Innovation</p>
+            
+            <h1 class="hero-title">
+                <span class="line">
+                    <span class="line-inner">글로벌 교육의 <span class="highlight">혁신</span>,</span>
+                </span>
+                <span class="line">
+                    <span class="line-inner eplan-text">
+                        <span class="eplan-letter el-e">e</span><span class="eplan-letter el-p">P</span><span class="eplan-letter el-l">L</span><span class="eplan-letter el-a">A</span><span class="eplan-letter el-n">N</span>
+                    </span>
+                </span>
+            </h1>
+            
+            <p class="hero-desc">
+                지식 파트너십을 통한 글로벌 성공 역량 강화<br>
+                전 세계 교육 기관과 함께 미래 인재를 양성합니다
+            </p>
+            
+            <p class="hero-slogan">
+                <span class="gold">"Practice Makes Perfect!"</span>
+            </p>
+            
+            <div class="hero-cta">
+                <a href="#features" class="btn btn-primary">프로그램 살펴보기</a>
+                <a href="#contact" class="btn btn-secondary">문의하기</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span class="scroll-text">Scroll</span>
+            <div class="scroll-mouse"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <p class="section-label">Why ePLAN</p>
+            <h2 class="section-title">글로벌 교육의 새로운 기준</h2>
+            <p class="section-desc">
+                체계적인 커리큘럼과 실전 중심의 교육으로<br>
+                글로벌 인재를 양성합니다
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌏</div>
+                <h3 class="feature-title">글로벌 네트워크</h3>
+                <p class="feature-desc">
+                    전 세계 교육 기관과의 파트너십을 통해 글로벌 수준의 교육 프로그램을 제공합니다.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3 class="feature-title">맞춤형 커리큘럼</h3>
+                <p class="feature-desc">
+                    개인과 기업의 니즈에 맞춘 맞춤형 교육 프로그램으로 효과적인 학습을 지원합니다.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">실전 중심 교육</h3>
+                <p class="feature-desc">
+                    Practice Makes Perfect! 이론과 실습을 병행한 실전 중심의 교육 방식을 채택합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">14+</div>
+                <div class="stat-label">지원 언어</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">103</div>
+                <div class="stat-label">교육 과정</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">수료생</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">만족도</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2 class="cta-title">글로벌 교육 혁신의 여정에<br>함께해 주세요</h2>
+            <p class="cta-desc">
+                ePLAN과 함께 글로벌 인재로 성장하세요.<br>
+                맞춤형 상담을 통해 최적의 교육 프로그램을 안내해 드립니다.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">무료 상담 신청</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/mnt/user-data/uploads/image_6.png" alt="ePLAN">
+                <span class="footer-logo-text">ePLAN</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">회사 소개</a>
+                <a href="#">프로그램</a>
+                <a href="#">파트너십</a>
+                <a href="#">문의하기</a>
+                <a href="#">개인정보처리방침</a>
+            </div>
+            <p class="footer-copy">© 2024 ePLAN. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Toggle
+        function toggleNav() {
+            const nav = document.getElementById('dynamicNav');
+            nav.classList.toggle('expanded');
+        }
+
+        // Auto expand nav on scroll up, collapse on scroll down
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.getElementById('dynamicNav');
+            
+            if (currentScroll > 100) {
+                if (currentScroll > lastScroll) {
+                    nav.classList.remove('expanded');
+                }
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.section-label, .section-title, .section-desc, .feature-card, .cta-title, .cta-desc, .cta-buttons').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Expand nav on page load after delay
+        setTimeout(() => {
+            document.getElementById('dynamicNav').classList.add('expanded');
+        }, 2000);
+    </script>
+</body>
+</html>

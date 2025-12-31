@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Gathering Animations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+
+        .scroll-hint {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-hint span {
+            font-size: 14px;
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid rgba(255,255,255,0.5);
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+            transform: rotate(45deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Section Styles */
+        .section {
+            min-height: 100vh;
+            padding: 100px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            opacity: 0.6;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section:nth-child(odd) {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Card Base Styles */
+        .card {
+            width: 160px;
+            height: 220px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            position: absolute;
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05) !important;
+            z-index: 100 !important;
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .card-desc {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        /* ========== EFFECT 1: Fan Spread ========== */
+        .fan-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            perspective: 1000px;
+        }
+
+        .fan-container .card {
+            left: 50%;
+            bottom: 0;
+            transform-origin: bottom center;
+        }
+
+        .fan-container .card:nth-child(1) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transform: translateX(-50%) translateY(300px) rotate(-40deg); }
+        .fan-container .card:nth-child(2) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); transform: translateX(-50%) translateY(300px) rotate(-20deg); }
+        .fan-container .card:nth-child(3) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); transform: translateX(-50%) translateY(300px) rotate(0deg); }
+        .fan-container .card:nth-child(4) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); transform: translateX(-50%) translateY(300px) rotate(20deg); }
+        .fan-container .card:nth-child(5) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); transform: translateX(-50%) translateY(300px) rotate(40deg); }
+
+        .fan-container.active .card:nth-child(1) { transform: translateX(-50%) translateY(0) rotate(-30deg); z-index: 1; }
+        .fan-container.active .card:nth-child(2) { transform: translateX(-50%) translateY(0) rotate(-15deg); z-index: 2; }
+        .fan-container.active .card:nth-child(3) { transform: translateX(-50%) translateY(0) rotate(0deg); z-index: 3; }
+        .fan-container.active .card:nth-child(4) { transform: translateX(-50%) translateY(0) rotate(15deg); z-index: 4; }
+        .fan-container.active .card:nth-child(5) { transform: translateX(-50%) translateY(0) rotate(30deg); z-index: 5; }
+
+        /* ========== EFFECT 2: Stack Collapse ========== */
+        .stack-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+        }
+
+        .stack-container .card {
+            left: 50%;
+            top: 50%;
+        }
+
+        .stack-container .card:nth-child(1) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; transform: translate(-350px, -50%) rotate(-15deg); }
+        .stack-container .card:nth-child(2) { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); color: #333; transform: translate(-180px, -50%) rotate(-8deg); }
+        .stack-container .card:nth-child(3) { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; transform: translate(0px, -50%) rotate(0deg); }
+        .stack-container .card:nth-child(4) { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); color: #333; transform: translate(180px, -50%) rotate(8deg); }
+        .stack-container .card:nth-child(5) { background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); color: #333; transform: translate(350px, -50%) rotate(15deg); }
+
+        .stack-container.active .card:nth-child(1) { transform: translate(-50%, -50%) rotate(-8deg); z-index: 1; }
+        .stack-container.active .card:nth-child(2) { transform: translate(-50%, -50%) rotate(-4deg); z-index: 2; }
+        .stack-container.active .card:nth-child(3) { transform: translate(-50%, -50%) rotate(0deg); z-index: 3; }
+        .stack-container.active .card:nth-child(4) { transform: translate(-50%, -50%) rotate(4deg); z-index: 4; }
+        .stack-container.active .card:nth-child(5) { transform: translate(-50%, -50%) rotate(8deg); z-index: 5; }
+
+        /* ========== EFFECT 3: Explosion to Grid ========== */
+        .explode-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+        }
+
+        .explode-container .card {
+            width: 140px;
+            height: 180px;
+        }
+
+        .explode-container .card:nth-child(1) { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); transform: translate(-500px, -400px) rotate(-45deg) scale(0.5); }
+        .explode-container .card:nth-child(2) { background: linear-gradient(135deg, #c31432 0%, #240b36 100%); transform: translate(500px, -300px) rotate(60deg) scale(0.5); }
+        .explode-container .card:nth-child(3) { background: linear-gradient(135deg, #00467f 0%, #a5cc82 100%); transform: translate(-400px, 400px) rotate(-30deg) scale(0.5); }
+        .explode-container .card:nth-child(4) { background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%); color: #333; transform: translate(400px, 350px) rotate(45deg) scale(0.5); }
+        .explode-container .card:nth-child(5) { background: linear-gradient(135deg, #834d9b 0%, #d04ed6 100%); transform: translate(0px, -450px) rotate(20deg) scale(0.5); }
+        .explode-container .card:nth-child(6) { background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%); transform: translate(-550px, 0px) rotate(-60deg) scale(0.5); }
+
+        .explode-container.active .card:nth-child(1) { transform: translate(80px, 50px) rotate(0deg) scale(1); }
+        .explode-container.active .card:nth-child(2) { transform: translate(240px, 50px) rotate(0deg) scale(1); }
+        .explode-container.active .card:nth-child(3) { transform: translate(400px, 50px) rotate(0deg) scale(1); }
+        .explode-container.active .card:nth-child(4) { transform: translate(80px, 260px) rotate(0deg) scale(1); }
+        .explode-container.active .card:nth-child(5) { transform: translate(240px, 260px) rotate(0deg) scale(1); }
+        .explode-container.active .card:nth-child(6) { transform: translate(400px, 260px) rotate(0deg) scale(1); }
+
+        /* ========== EFFECT 4: Spiral Gather ========== */
+        .spiral-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+        }
+
+        .spiral-container .card {
+            width: 130px;
+            height: 170px;
+            left: 50%;
+            top: 50%;
+        }
+
+        .spiral-container .card:nth-child(1) { background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%); transform: translate(-50%, -50%) rotate(0deg) translateX(400px) scale(0.3); opacity: 0; }
+        .spiral-container .card:nth-child(2) { background: linear-gradient(135deg, #5f27cd 0%, #341f97 100%); transform: translate(-50%, -50%) rotate(60deg) translateX(400px) scale(0.3); opacity: 0; }
+        .spiral-container .card:nth-child(3) { background: linear-gradient(135deg, #00d2d3 0%, #54a0ff 100%); transform: translate(-50%, -50%) rotate(120deg) translateX(400px) scale(0.3); opacity: 0; }
+        .spiral-container .card:nth-child(4) { background: linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%); transform: translate(-50%, -50%) rotate(180deg) translateX(400px) scale(0.3); opacity: 0; }
+        .spiral-container .card:nth-child(5) { background: linear-gradient(135deg, #1dd1a1 0%, #10ac84 100%); transform: translate(-50%, -50%) rotate(240deg) translateX(400px) scale(0.3); opacity: 0; }
+        .spiral-container .card:nth-child(6) { background: linear-gradient(135deg, #ff9f43 0%, #ee5a24 100%); transform: translate(-50%, -50%) rotate(300deg) translateX(400px) scale(0.3); opacity: 0; }
+
+        .spiral-container.active .card:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateX(180px) rotate(0deg) scale(1); opacity: 1; transition-delay: 0s; }
+        .spiral-container.active .card:nth-child(2) { transform: translate(-50%, -50%) rotate(60deg) translateX(180px) rotate(-60deg) scale(1); opacity: 1; transition-delay: 0.1s; }
+        .spiral-container.active .card:nth-child(3) { transform: translate(-50%, -50%) rotate(120deg) translateX(180px) rotate(-120deg) scale(1); opacity: 1; transition-delay: 0.2s; }
+        .spiral-container.active .card:nth-child(4) { transform: translate(-50%, -50%) rotate(180deg) translateX(180px) rotate(-180deg) scale(1); opacity: 1; transition-delay: 0.3s; }
+        .spiral-container.active .card:nth-child(5) { transform: translate(-50%, -50%) rotate(240deg) translateX(180px) rotate(-240deg) scale(1); opacity: 1; transition-delay: 0.4s; }
+        .spiral-container.active .card:nth-child(6) { transform: translate(-50%, -50%) rotate(300deg) translateX(180px) rotate(-300deg) scale(1); opacity: 1; transition-delay: 0.5s; }
+
+        /* ========== EFFECT 5: 3D Flip Cascade ========== */
+        .flip-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 400px;
+            perspective: 1500px;
+        }
+
+        .flip-container .card {
+            width: 150px;
+            height: 200px;
+            backface-visibility: hidden;
+        }
+
+        .flip-container .card:nth-child(1) { background: linear-gradient(135deg, #0c0c0c 0%, #434343 100%); left: 10%; top: 50%; transform: translateY(-50%) rotateY(180deg) scale(0.8); opacity: 0; }
+        .flip-container .card:nth-child(2) { background: linear-gradient(135deg, #3d3d3d 0%, #000000 100%); left: 25%; top: 50%; transform: translateY(-50%) rotateY(180deg) scale(0.8); opacity: 0; }
+        .flip-container .card:nth-child(3) { background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%); left: 40%; top: 50%; transform: translateY(-50%) rotateY(180deg) scale(0.8); opacity: 0; }
+        .flip-container .card:nth-child(4) { background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); left: 55%; top: 50%; transform: translateY(-50%) rotateY(180deg) scale(0.8); opacity: 0; }
+        .flip-container .card:nth-child(5) { background: linear-gradient(135deg, #614385 0%, #516395 100%); left: 70%; top: 50%; transform: translateY(-50%) rotateY(180deg) scale(0.8); opacity: 0; }
+
+        .flip-container.active .card:nth-child(1) { transform: translateY(-50%) rotateY(0deg) scale(1); opacity: 1; transition-delay: 0s; }
+        .flip-container.active .card:nth-child(2) { transform: translateY(-50%) rotateY(0deg) scale(1); opacity: 1; transition-delay: 0.15s; }
+        .flip-container.active .card:nth-child(3) { transform: translateY(-50%) rotateY(0deg) scale(1); opacity: 1; transition-delay: 0.3s; }
+        .flip-container.active .card:nth-child(4) { transform: translateY(-50%) rotateY(0deg) scale(1); opacity: 1; transition-delay: 0.45s; }
+        .flip-container.active .card:nth-child(5) { transform: translateY(-50%) rotateY(0deg) scale(1); opacity: 1; transition-delay: 0.6s; }
+
+        /* ========== EFFECT 6: Wave Rise ========== */
+        .wave-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 400px;
+        }
+
+        .wave-container .card {
+            width: 140px;
+            height: 190px;
+            bottom: 0;
+        }
+
+        .wave-container .card:nth-child(1) { background: linear-gradient(180deg, #74ebd5 0%, #ACB6E5 100%); left: 5%; transform: translateY(400px); }
+        .wave-container .card:nth-child(2) { background: linear-gradient(180deg, #ee9ca7 0%, #ffdde1 100%); color: #333; left: 20%; transform: translateY(400px); }
+        .wave-container .card:nth-child(3) { background: linear-gradient(180deg, #667eea 0%, #764ba2 100%); left: 35%; transform: translateY(400px); }
+        .wave-container .card:nth-child(4) { background: linear-gradient(180deg, #f093fb 0%, #f5576c 100%); left: 50%; transform: translateY(400px); }
+        .wave-container .card:nth-child(5) { background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%); left: 65%; transform: translateY(400px); }
+        .wave-container .card:nth-child(6) { background: linear-gradient(180deg, #43e97b 0%, #38f9d7 100%); left: 80%; transform: translateY(400px); }
+
+        .wave-container.active .card:nth-child(1) { transform: translateY(-20px); transition-delay: 0s; }
+        .wave-container.active .card:nth-child(2) { transform: translateY(-50px); transition-delay: 0.1s; }
+        .wave-container.active .card:nth-child(3) { transform: translateY(-30px); transition-delay: 0.2s; }
+        .wave-container.active .card:nth-child(4) { transform: translateY(-60px); transition-delay: 0.3s; }
+        .wave-container.active .card:nth-child(5) { transform: translateY(-25px); transition-delay: 0.4s; }
+        .wave-container.active .card:nth-child(6) { transform: translateY(-45px); transition-delay: 0.5s; }
+
+        /* ========== EFFECT 7: Zoom Tunnel ========== */
+        .tunnel-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            perspective: 1200px;
+        }
+
+        .tunnel-container .card {
+            width: 150px;
+            height: 200px;
+            left: 50%;
+            top: 50%;
+        }
+
+        .tunnel-container .card:nth-child(1) { background: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%); transform: translate(-50%, -50%) translateZ(-1500px) scale(0.1); opacity: 0; }
+        .tunnel-container .card:nth-child(2) { background: linear-gradient(135deg, #FC466B 0%, #3F5EFB 100%); transform: translate(-50%, -50%) translateZ(-1200px) scale(0.2); opacity: 0; }
+        .tunnel-container .card:nth-child(3) { background: linear-gradient(135deg, #3494E6 0%, #EC6EAD 100%); transform: translate(-50%, -50%) translateZ(-900px) scale(0.3); opacity: 0; }
+        .tunnel-container .card:nth-child(4) { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); transform: translate(-50%, -50%) translateZ(-600px) scale(0.4); opacity: 0; }
+        .tunnel-container .card:nth-child(5) { background: linear-gradient(135deg, #f12711 0%, #f5af19 100%); transform: translate(-50%, -50%) translateZ(-300px) scale(0.5); opacity: 0; }
+
+        .tunnel-container.active .card:nth-child(1) { transform: translate(-280px, -50%) translateZ(0) scale(1) rotate(-5deg); opacity: 1; transition-delay: 0.4s; }
+        .tunnel-container.active .card:nth-child(2) { transform: translate(-140px, -50%) translateZ(0) scale(1) rotate(-2deg); opacity: 1; transition-delay: 0.3s; }
+        .tunnel-container.active .card:nth-child(3) { transform: translate(-50%, -50%) translateZ(0) scale(1) rotate(0deg); opacity: 1; transition-delay: 0.2s; }
+        .tunnel-container.active .card:nth-child(4) { transform: translate(40px, -50%) translateZ(0) scale(1) rotate(2deg); opacity: 1; transition-delay: 0.1s; }
+        .tunnel-container.active .card:nth-child(5) { transform: translate(180px, -50%) translateZ(0) scale(1) rotate(5deg); opacity: 1; transition-delay: 0s; }
+
+        /* ========== EFFECT 8: Magnetic Pull ========== */
+        .magnetic-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+        }
+
+        .magnetic-container .card {
+            width: 130px;
+            height: 170px;
+            transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .magnetic-container .card:nth-child(1) { background: linear-gradient(135deg, #F3904F 0%, #3B4371 100%); left: 0; top: 0; transform: translate(-100px, -100px) rotate(-45deg); }
+        .magnetic-container .card:nth-child(2) { background: linear-gradient(135deg, #0052D4 0%, #65C7F7 50%, #9CECFB 100%); right: 0; top: 0; transform: translate(100px, -100px) rotate(45deg); }
+        .magnetic-container .card:nth-child(3) { background: linear-gradient(135deg, #EB3349 0%, #F45C43 100%); left: 0; bottom: 0; transform: translate(-100px, 100px) rotate(45deg); }
+        .magnetic-container .card:nth-child(4) { background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%); right: 0; bottom: 0; transform: translate(100px, 100px) rotate(-45deg); }
+        .magnetic-container .card:nth-child(5) { background: linear-gradient(135deg, #DA22FF 0%, #9733EE 100%); left: 50%; top: 0; transform: translate(-50%, -150px) rotate(0deg); }
+        .magnetic-container .card:nth-child(6) { background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%); left: 50%; bottom: 0; transform: translate(-50%, 150px) rotate(0deg); }
+
+        .magnetic-container.active .card:nth-child(1) { transform: translate(120px, 80px) rotate(-8deg); }
+        .magnetic-container.active .card:nth-child(2) { transform: translate(-120px, 80px) rotate(8deg); }
+        .magnetic-container.active .card:nth-child(3) { transform: translate(120px, -80px) rotate(8deg); }
+        .magnetic-container.active .card:nth-child(4) { transform: translate(-120px, -80px) rotate(-8deg); }
+        .magnetic-container.active .card:nth-child(5) { transform: translate(-50%, 120px) rotate(-4deg); }
+        .magnetic-container.active .card:nth-child(6) { transform: translate(-50%, -120px) rotate(4deg); }
+
+        /* Reset Button */
+        .reset-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 20px;
+            }
+
+            .card {
+                width: 100px !important;
+                height: 140px !important;
+                padding: 12px !important;
+            }
+
+            .card-icon {
+                font-size: 20px !important;
+            }
+
+            .card-title {
+                font-size: 11px !important;
+            }
+
+            .card-desc {
+                font-size: 9px !important;
+            }
+
+            .explode-container.active .card:nth-child(1) { transform: translate(20px, 30px) rotate(0deg) scale(1); }
+            .explode-container.active .card:nth-child(2) { transform: translate(130px, 30px) rotate(0deg) scale(1); }
+            .explode-container.active .card:nth-child(3) { transform: translate(240px, 30px) rotate(0deg) scale(1); }
+            .explode-container.active .card:nth-child(4) { transform: translate(20px, 190px) rotate(0deg) scale(1); }
+            .explode-container.active .card:nth-child(5) { transform: translate(130px, 190px) rotate(0deg) scale(1); }
+            .explode-container.active .card:nth-child(6) { transform: translate(240px, 190px) rotate(0deg) scale(1); }
+
+            .spiral-container.active .card { transform: translate(-50%, -50%) rotate(0deg) translateX(100px) rotate(0deg) scale(1) !important; }
+
+            .tunnel-container.active .card:nth-child(1) { transform: translate(-160px, -50%) translateZ(0) scale(1) rotate(-5deg); }
+            .tunnel-container.active .card:nth-child(2) { transform: translate(-110px, -50%) translateZ(0) scale(1) rotate(-2deg); }
+            .tunnel-container.active .card:nth-child(3) { transform: translate(-50%, -50%) translateZ(0) scale(1) rotate(0deg); }
+            .tunnel-container.active .card:nth-child(4) { transform: translate(10px, -50%) translateZ(0) scale(1) rotate(2deg); }
+            .tunnel-container.active .card:nth-child(5) { transform: translate(60px, -50%) translateZ(0) scale(1) rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Card Gathering Animations</h1>
+        <p>스크롤하여 다양한 카드 모임 애니메이션을 확인하세요</p>
+        <div class="scroll-hint">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </div>
+
+    <!-- Effect 1: Fan Spread -->
+    <section class="section">
+        <h2 class="section-title">🎴 Fan Spread</h2>
+        <p class="section-subtitle">부채꼴로 펼쳐지는 카드</p>
+        <div class="fan-container card-container">
+            <div class="card"><div class="card-icon">🎨</div><div class="card-title">Design</div><div class="card-desc">Creative solutions</div></div>
+            <div class="card"><div class="card-icon">💻</div><div class="card-title">Code</div><div class="card-desc">Clean development</div></div>
+            <div class="card"><div class="card-icon">🚀</div><div class="card-title">Launch</div><div class="card-desc">Ship products</div></div>
+            <div class="card"><div class="card-icon">📊</div><div class="card-title">Analytics</div><div class="card-desc">Data insights</div></div>
+            <div class="card"><div class="card-icon">🎯</div><div class="card-title">Strategy</div><div class="card-desc">Business growth</div></div>
+        </div>
+    </section>
+
+    <!-- Effect 2: Stack Collapse -->
+    <section class="section">
+        <h2 class="section-title">📚 Stack Collapse</h2>
+        <p class="section-subtitle">흩어진 카드가 한 곳에 모이기</p>
+        <div class="stack-container card-container">
+            <div class="card"><div class="card-icon">🌸</div><div class="card-title">Spring</div><div class="card-desc">New beginnings</div></div>
+            <div class="card"><div class="card-icon">☀️</div><div class="card-title">Summer</div><div class="card-desc">Warm sunshine</div></div>
+            <div class="card"><div class="card-icon">🍂</div><div class="card-title">Autumn</div><div class="card-desc">Golden leaves</div></div>
+            <div class="card"><div class="card-icon">❄️</div><div class="card-title">Winter</div><div class="card-desc">Peaceful snow</div></div>
+            <div class="card"><div class="card-icon">🌈</div><div class="card-title">Rainbow</div><div class="card-desc">After the rain</div></div>
+        </div>
+    </section>
+
+    <!-- Effect 3: Explosion to Grid -->
+    <section class="section">
+        <h2 class="section-title">💥 Explosion to Grid</h2>
+        <p class="section-subtitle">폭발 후 그리드 정렬</p>
+        <div class="explode-container card-container">
+            <div class="card"><div class="card-icon">🎵</div><div class="card-title">Music</div><div class="card-desc">Feel the beat</div></div>
+            <div class="card"><div class="card-icon">🎬</div><div class="card-title">Movies</div><div class="card-desc">Visual stories</div></div>
+            <div class="card"><div class="card-icon">📚</div><div class="card-title">Books</div><div class="card-desc">Written worlds</div></div>
+            <div class="card"><div class="card-icon">🎮</div><div class="card-title">Games</div><div class="card-desc">Interactive fun</div></div>
+            <div class="card"><div class="card-icon">🎭</div><div class="card-title">Theater</div><div class="card-desc">Live performance</div></div>
+            <div class="card"><div class="card-icon">🎪</div><div class="card-title">Circus</div><div class="card-desc">Amazing acts</div></div>
+        </div>
+    </section>
+
+    <!-- Effect 4: Spiral Gather -->
+    <section class="section">
+        <h2 class="section-title">🌀 Spiral Gather</h2>
+        <p class="section-subtitle">소용돌이처럼 모여드는 카드</p>
+        <div class="spiral-container card-container">
+            <div class="card"><div class="card-icon">🔴</div><div class="card-title">Red</div><div class="card-desc">Passion & Energy</div></div>
+            <div class="card"><div class="card-icon">🟣</div><div class="card-title">Purple</div><div class="card-desc">Mystery & Magic</div></div>
+            <div class="card"><div class="card-icon">🔵</div><div class="card-title">Blue</div><div class="card-desc">Calm & Trust</div></div>
+            <div class="card"><div class="card-icon">🩷</div><div class="card-title">Pink</div><div class="card-desc">Love & Care</div></div>
+            <div class="card"><div class="card-icon">🟢</div><div class="card-title">Green</div><div class="card-desc">Growth & Nature</div></div>
+            <div class="card"><div class="card-icon">🟠</div><div class="card-title">Orange</div><div class="card-desc">Joy & Creativity</div></div>
+        </div>
+    </section>
+
+    <!-- Effect 5: 3D Flip Cascade -->
+    <section class="section">
+        <h2 class="section-title">🔄 3D Flip Cascade</h2>
+        <p class="section-subtitle">순차적으로 뒤집어지는 카드</p>
+        <div class="flip-container card-container">
+            <div class="card"><div class="card-icon">🏠</div><div class="card-title">Home</div><div class="card-desc">Your sanctuary</div></div>
+            <div class="card"><div class="card-icon">🏢</div><div class="card-title">Office</div><div class="card-desc">Productivity hub</div></div>
+            <div class="card"><div class="card-icon">🏖️</div><div class="card-title">Beach</div><div class="card-desc">Relaxation spot</div></div>
+            <div class="card"><div class="card-icon">🏔️</div><div class="card-title">Mountain</div><div class="card-desc">Adventure awaits</div></div>
+            <div class="card"><div class="card-icon">🌃</div><div class="card-title">City</div><div class="card-desc">Urban exploration</div></div>
+        </div>
+    </section>
+
+    <!-- Effect 6: Wave Rise -->
+    <section class="section">
+        <h2 class="section-title">🌊 Wave Rise</h2>
+        <p class="section-subtitle">파도처럼 솟아오르는 카드</p>
+        <div class="wave-container card-container">
+            <div class="card"><div class="card-icon">🌅</div><div class="card-title">Dawn</div><div class="card-desc">New day begins</div></div>
+            <div class="card"><div class="card-icon">🌄</div><div class="card-title">Morning</div><div class="card-desc">Fresh energy</div></div>
+            <div class="card"><div class="card-icon">🌞</div><div class="card-title">Noon</div><div class="card-desc">Peak activity</div></div>
+            <div class="card"><div class="card-icon">🌆</div><div class="card-title">Evening</div><div class="card-desc">Golden hours</div></div>
+            <div class="card"><div class="card-icon">🌇</div><div class="card-title">Sunset</div><div class="card-desc">Beautiful end</div></div>
+            <div class="card"><div class="card-icon">🌙</div><div class="card-title">Night</div><div class="card-desc">Peaceful rest</div></div>
+        </div>
+    </section>
+
+    <!-- Effect 7: Zoom Tunnel -->
+    <section class="section">
+        <h2 class="section-title">🚇 Zoom Tunnel</h2>
+        <p class="section-subtitle">터널에서 줌인되는 카드</p>
+        <div class="tunnel-container card-container">
+            <div class="card"><div class="card-icon">⭐</div><div class="card-title">Star</div><div class="card-desc">Shine bright</div></div>
+            <div class="card"><div class="card-icon">🌙</div><div class="card-title">Moon</div><div class="card-desc">Night guardian</div></div>
+            <div class="card"><div class="card-icon">☀️</div><div class="card-title">Sun</div><div class="card-desc">Life source</div></div>
+            <div class="card"><div class="card-icon">🌍</div><div class="card-title">Earth</div><div class="card-desc">Our home</div></div>
+            <div class="card"><div class="card-icon">🪐</div><div class="card-title">Saturn</div><div class="card-desc">Ring beauty</div></div>
+        </div>
+    </section>
+
+    <!-- Effect 8: Magnetic Pull -->
+    <section class="section">
+        <h2 class="section-title">🧲 Magnetic Pull</h2>
+        <p class="section-subtitle">자석처럼 끌려오는 카드</p>
+        <div class="magnetic-container card-container">
+            <div class="card"><div class="card-icon">🎯</div><div class="card-title">Focus</div><div class="card-desc">Stay centered</div></div>
+            <div class="card"><div class="card-icon">💡</div><div class="card-title">Idea</div><div class="card-desc">Bright thoughts</div></div>
+            <div class="card"><div class="card-icon">⚡</div><div class="card-title">Energy</div><div class="card-desc">Power up</div></div>
+            <div class="card"><div class="card-icon">🔥</div><div class="card-title">Passion</div><div class="card-desc">Burning desire</div></div>
+            <div class="card"><div class="card-icon">💎</div><div class="card-title">Value</div><div class="card-desc">Precious gem</div></div>
+            <div class="card"><div class="card-icon">🎁</div><div class="card-title">Gift</div><div class="card-desc">Special surprise</div></div>
+        </div>
+    </section>
+
+    <button class="reset-btn" onclick="resetAnimations()">↺ Reset All</button>
+
+    <script>
+        const containers = document.querySelectorAll('.card-container');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -20% 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        containers.forEach(container => {
+            observer.observe(container);
+        });
+
+        function resetAnimations() {
+            containers.forEach(container => {
+                container.classList.remove('active');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Re-trigger animations after scroll
+            setTimeout(() => {
+                containers.forEach(container => {
+                    const rect = container.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
+                        container.classList.add('active');
+                    }
+                });
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
